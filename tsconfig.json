@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    /* 目标语言版本相关设置 */
+    "target": "ES2020", // 设置目标语言版本为ES2020，这决定了TypeScript编译后的JavaScript代码将遵循的ECMAScript规范版本
+
+    /* 装饰器相关设置 */
+    "experimentalDecorators": true, // 启用实验性的装饰器特性，允许在代码中使用装饰器语法
+
+    "useDefineForClassFields": false, // 控制类字段的初始化方式，设置为false表示不使用特定的定义方式来初始化类字段
+
+    /* 模块相关设置 */
+    "module": "ESNext", // 指定模块系统为ESNext，采用最新的ES模块规范相关的特性和语法
+    "esModuleInterop": false, // 当设置为false时，不进行ES模块互操作的特殊处理，保持模块导入导出的原始行为
+    "allowImportingTsExtensions": true, // 允许导入以.ts扩展名结尾的文件，方便在模块导入时直接使用TypeScript源文件
+
+    /* 错误处理相关设置 */
+    "noEmitOnError": true, // 如果在编译过程中出现错误，将不会生成输出文件，避免生成错误的代码
+    "noEmit": true, // 直接禁止生成输出文件，通常用于一些特定的构建或检查场景，如只进行类型检查而不生成实际的代码
+
+    /* 库相关设置 */
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // 指定在编译过程中要包含的标准库，这里包含了ES2021标准库以及DOM相关的可迭代库，用于提供相应的类型定义和功能支持
+    "skipLibCheck": true, // 跳过对库文件的类型检查，可加快编译速度，但可能会忽略一些库中的类型问题
+
+    /* 辅助工具相关设置 */
+    "importHelpers": true, // 启用导入辅助函数的功能，在某些情况下可以优化生成的代码结构
+
+    /* 输出目录及源映射相关设置 */
+    "outDir": "dist", // 指定编译后输出文件的存放目录为'dist'文件夹
+    "sourceMap": true, // 生成源映射文件，方便在调试时将编译后的代码映射回原始的TypeScript代码
+    "inlineSources": true, // 将源文件的内容嵌入到源映射文件中，进一步方便调试时查看原始代码
+
+    /* 根目录相关设置 */
+    "rootDir": "./", // 设置项目的根目录为当前目录，用于确定相对路径的起点
+
+    /* Bundler模式相关设置 */
+    "moduleResolution": "Bundler", // 采用Bundler模式来解析模块，适用于与打包工具配合使用的场景
+    "isolatedModules": true, // 强制每个模块在编译时被视为独立的模块，便于与某些打包工具或构建系统兼容
+    "moduleDetection": "force", // 强制进行模块检测，确保模块相关的设置能够准确生效
+
+    /* Linting相关设置 */
+    "strict": true, // 启用严格模式，会对代码进行更严格的类型检查、未使用变量等方面的检查
+    "noUnusedLocals": true, // 检查并禁止出现未使用的局部变量，促使代码更加精简和规范
+    "noUnusedParameters": true,
+    // 检查并禁止出现未使用的参数，提高代码的有效性和可维护性
+    "noFallthroughCasesInSwitch": true, // 禁止在switch语句中出现没有break语句的贯穿情况，避免意外的逻辑错误
+    "noUncheckedSideEffectImports": true // 检查并禁止出现未经过检查的有副作用的导入，确保代码的安全性和可维护性
+  },
+  "include": ["src"], // 指定需要包含在编译范围内的目录，这里只包含'src'目录下的文件会被进行TypeScript编译
+  "exclude": ["src/**/__docs__", "src/**/__test__"]
+}
