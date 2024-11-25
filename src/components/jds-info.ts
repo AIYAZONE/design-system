@@ -1,6 +1,5 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import jkyDLogo from "/logo.svg";
 
 /**
  * 示例组件
@@ -90,7 +89,11 @@ export class JDSInfo extends LitElement {
     return html`
       <div>
         <a href="https://demo-docs.jackery.com" target="_blank">
-          <img src=${jkyDLogo} class="logo" alt="Vite logo" />
+          <img
+            src="../assets/jds-logo.svg"
+            class="logo"
+            alt="Jackery Design System Logo"
+          />
         </a>
       </div>
       <slot></slot>
