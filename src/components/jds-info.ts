@@ -8,8 +8,8 @@ import jkyDLogo from "/logo.svg";
  * @slot - This element has a slot
  * @csspart button - The button
  */
-@customElement("jkyd-info")
-export class JkydInfo extends LitElement {
+@customElement("jds-info")
+export class JDSInfo extends LitElement {
   static styles = css`
     :host {
       max-width: 1280px;
@@ -110,6 +110,6 @@ export class JkydInfo extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "jkyd-info": JkydInfo;
+    "jds-info": JDSInfo;
   }
 }

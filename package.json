@@ -2,7 +2,7 @@
   "name": "@jackery/design-system",
   "private": true,
   "version": "0.0.1",
-  "description": "Jackery Design System",
+  "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
   "main": "dist/index.cjs.js",

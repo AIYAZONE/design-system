@@ -1,7 +1,8 @@
 # Jackery Design System
 
-Jackery Business Components（缩写：jkyb）
-作为全球官网中心核心前端设计系统，按照前端规范，使用Web Components技术实现跨技术栈统一的Web端基础库。
+简称：JDS
+
+作为全球官网中心前端设计系统，按照前端规范，基于Web Components技术实现跨技术栈统一的Web端基础库。
 
 - 基于Lit + TS + Vite + Storybook实现的Jackery设计系统
 
