@@ -1,14 +1,20 @@
 {
   "name": "@jackery/design-system",
-  "private": true,
   "version": "0.0.1",
   "description": "Jackery Design System (JDS)",
-  "author": {
-    "name": "Jackery F2E Team"
-  },
+  "author": "Jackery F2E Team",
   "type": "module",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.30.241/global-website/jackery-design-system.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
