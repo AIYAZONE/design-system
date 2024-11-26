@@ -8,7 +8,7 @@ import { customElement, property } from "lit/decorators.js";
  * @csspart button - The button
  */
 @customElement("jds-info")
-export class JDSInfo extends LitElement {
+export class JdsInfo extends LitElement {
   static styles = css`
     :host {
       max-width: 1280px;
@@ -113,6 +113,6 @@ export class JDSInfo extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "jds-info": JDSInfo;
+    "jds-info": JdsInfo;
   }
 }

@@ -1,1 +1,3 @@
-export { JDSInfo } from "./components/jds-info.js";
+import { JdsInfo } from "./components/jds-info.js";
+
+export { JdsInfo };

@@ -27,3 +27,5 @@ dist-ssr
 
 storybook-static
 chromatic.config.json
+
+*.tgz
