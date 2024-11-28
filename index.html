@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jackery Design System</title>
   <link rel="stylesheet" href="./src/styles/default.css" />
+  <link rel="stylesheet" href="./src/styles/index.less" />
 </head>
 
 <body>
@@ -44,6 +45,21 @@
     <jds-button slot="secondary-action" variant="secondary" size="large">Disagree</jds-button>
     <jds-button slot="tertiary-action" variant="tertiary" size="large">Cancel</jds-button>
   </jds-dialog>
+
+  <jds-toast icon>Info Variant</jds-toast>
+
+  <jds-toast variant="warning" icon="alert">Warning Variant</jds-toast>
+  </jds-toast>
+  <jds-toast variant="success" icon>Success Variant</jds-toast>
+  <jds-toast variant="success" countdownTime="5" icon>Success Variant</jds-toast>
+
+  <jds-toast variant="danger" icon>Danger Variant</jds-toast>
+
+  <jds-toast variant="danger">Danger Text
+    <jds-button slot="action">Action Link</jds-button>
+    <jds-button slot="action-secondary">Action Link</jds-button>
+  </jds-toast>
+
   <script type="module" src="./src/index.ts"></script>
 
   <script>
