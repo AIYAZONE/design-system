@@ -1,6 +1,6 @@
 import { css, html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "../icon/jds-icon"; // 导入图标组件
+import "../icon"; // 导入图标组件
 import { JackeryIcon } from "../icon/icon-list"; // 导入图标列表类型
 
 // 定义徽章组件的大小类型

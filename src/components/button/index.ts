@@ -4,9 +4,9 @@ import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { submit } from "@open-wc/form-helpers";
 import { event, EventDispatcher } from "../../utils/event";
-import "../icon/jds-icon";
+import "../icon";
 import { JackeryIcon } from "../icon/icon-list";
-import "../spinner/jds-spinner";
+import "../spinner";
 
 // 按钮变体的类型定义
 export type ButtonVariant = "primary" | "secondary" | "tertiary";

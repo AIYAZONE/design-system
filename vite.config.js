@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
@@ -16,33 +15,28 @@ const baseBuildConfig = {
   emptyOutDir: true,
 };
 
-// 通用函数：获取目录中的文件
-const getEntries = (dir, extension, isDirectory = false) => {
-  const fullDir = path.resolve(__dirname, dir);
-  const entries = {};
-
-  fs.readdirSync(fullDir).forEach((file) => {
-    const fullPath = path.join(fullDir, file);
-    if (isDirectory && fs.statSync(fullPath).isDirectory()) {
-      const tsFile = path.join(fullPath, `${file}.ts`);
-      if (fs.existsSync(tsFile)) {
-        entries[`components/${file}`] = tsFile;
-      }
-    } else if (file.endsWith(extension)) {
-      const name = file.replace(extension, "");
-      entries[`${dir.split("/").pop()}/${name}`] = fullPath;
+// 获取指定目录下的文件入口
+const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
+  const absolutePath = path.resolve(__dirname, dirPath);
+  return fs.readdirSync(absolutePath).reduce((entries, file) => {
+    const fullPath = path.join(absolutePath, file);
+    const isDir = fs.statSync(fullPath).isDirectory();
+    if (
+      (isDirectory && isDir) ||
+      (!isDirectory && file.endsWith(fileExtension))
+    ) {
+      const entryKey = isDirectory ? `components/${file}` : file;
+      const entryValue = isDirectory
+        ? path.join(fullPath, "index.ts")
+        : fullPath;
+      entries[entryKey] = entryValue;
     }
-  });
-
-  return entries;
+    return entries;
+  }, {});
 };
 
-// 获取组件和样式文件的入口
-const getComponentEntries = (dir) => getEntries(dir, ".ts", true);
-const getStyleEntries = (dir) => getEntries(dir, ".less");
-
 // 检查是否存在 SVG 文件
-const svgExists =
+const hasSvgFiles =
   fs.existsSync(path.resolve(__dirname, "src/assets")) &&
   fs
     .readdirSync(path.resolve(__dirname, "src/assets"))
@@ -53,51 +47,57 @@ export default defineConfig(({ mode }) => {
     build: {
       ...baseBuildConfig,
       outDir: "dist",
-      cssCodeSplit: true, // 保持 CSS 拆分
+      cssCodeSplit: true,
       rollupOptions: {
         input: {
-          index: "./index.html", // 确保 HTML 作为入口
-          ...getStyleEntries("src/styles"),
-          ...getComponentEntries("src/components"),
+          index: "./index.html",
+          ...getEntriesInDir("src/styles", ".less"),
+          ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
-          entryFileNames: (chunk) => `${chunk.name}.js`,
-          chunkFileNames: (chunkInfo) => `${chunkInfo.name || "chunk"}.js`,
+          entryFileNames: (chunkInfo) => {
+            if (chunkInfo.facadeModuleId.startsWith("components/")) {
+              return `components/${chunkInfo.name}.js`;
+            }
+            return `${chunkInfo.name}.js`;
+          },
+          chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
             const ext = path.extname(assetInfo.name);
-            if (ext === ".css") {
-              return "[name].[ext]"; // 输出到 css 文件夹
+            switch (ext) {
+              case ".css":
+                // 输出到 styles 目录
+                return "styles/[name].[ext]";
+              case ".svg":
+              case ".png":
+              case ".jpg":
+              case ".gif":
+                return "assets/[name][ext]";
+              default:
+                return "[name].[ext]";
             }
-            if ([".svg", ".png", ".jpg", ".gif"].includes(ext)) {
-              return "assets/[name][ext]"; // 确保图片输出到 assets 文件夹
-            }
-            return "[name].[ext]";
           },
         },
       },
     },
+    base: "./", // 添加此行以使用相对路径
     plugins: [
-      // 仅在存在 SVG 文件时复制
-      svgExists &&
+      hasSvgFiles &&
         viteStaticCopy({
           targets: [
             {
-              src: "src/assets/*.svg", // 源文件路径
-              dest: "assets", // 目标文件夹
+              src: "src/assets/*.svg",
+              dest: "assets",
             },
           ],
         }),
-    ].filter(Boolean), // 过滤掉 false 值
+    ].filter(Boolean),
     css: {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
         },
       },
-    },
-    test: {
-      globals: true,
-      environment: "jsdom",
     },
   };
 });

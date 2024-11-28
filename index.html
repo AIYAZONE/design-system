@@ -6,16 +6,28 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jackery Design System</title>
-  <!-- <link rel="stylesheet" href="./src/styles/index.less" /> -->
   <link rel="stylesheet" href="./src/styles/default.css" />
 </head>
 
 <body>
-  <jds-badge style="
-        --jds-badge-bg-color: var(--jds-color-success-contrast);
-        --jds-badge-color: var(--jds-color-success);
-      ">Hot</jds-badge>
-  <jds-icon name="close" size="64"></jds-icon>
+  <jds-badge>Hot</jds-badge>
+  <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In
+    Progress</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-neutral-lightest);--jds-badge-color:var(--jds-color-neutral-darker);">Neutral</jds-badge>
+  <jds-badge style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Offer</jds-badge>
+  <jds-badge style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Winner</jds-badge>
+  <jds-icon name="close"></jds-icon>
+  <jds-button>Primary Button</jds-button>
+  <jds-button variant="secondary">Secondary Button</jds-button>
+  <jds-button variant="tertiary">Tertiary Button</jds-button>
+
   <jds-button size="large">按钮</jds-button>
   <jds-button size="medium">按钮</jds-button>
   <jds-button size="large" icon="info">Primary Button</jds-button>
@@ -23,23 +35,24 @@
   <jds-button size="small" icon="info">Primary Button</jds-button>
   <jds-spinner></jds-spinner>
 
-  <jds-button variant="secondary" @click="showDialog()">Open Dialog</jds-button>
+  <jds-button variant="secondary" id="open-dialog-button">打开弹窗</jds-button>
 
   <jds-dialog id="dl-basic" caption="Use location service?">
     Let us help determine location. This means sending anonymous location data
     to us.
-
     <jds-button slot="primary-action" variant="primary" size="large">Agree</jds-button>
     <jds-button slot="secondary-action" variant="secondary" size="large">Disagree</jds-button>
     <jds-button slot="tertiary-action" variant="tertiary" size="large">Cancel</jds-button>
   </jds-dialog>
+  <script type="module" src="./src/index.ts"></script>
 
-  <script type="module" src="src/index.ts"></script>
   <script>
-    function showDialog() {
+    // 添加事件监听器
+    document.getElementById('open-dialog-button').addEventListener('click', () => {
+      console.info('hhhh')
       const dialog = document.querySelector('#dl-basic');
       dialog.setAttribute('open', true);
-    }
+    });
   </script>
 </body>
 

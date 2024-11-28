@@ -2,12 +2,12 @@ import { css, html, LitElement, PropertyValues, TemplateResult } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { event, EventDispatcher } from "../../utils/event";
-import "../button/jds-button";
+import "../button";
 
 // 定义对话框元素的接口
 interface DialogElement {
-  showModal: () => void;
-  close: () => void;
+  showModal: () => void; // 显示模态对话框
+  close: () => void; // 关闭对话框
 }
 
 /**
@@ -22,7 +22,7 @@ export default class JdsDialog extends LitElement {
   // 组件的样式
   static styles = css`
     :host {
-      display: contents;
+      display: contents; /* 使宿主元素不影响布局 */
     }
 
     .container {
@@ -53,7 +53,7 @@ export default class JdsDialog extends LitElement {
     }
 
     .dialog::backdrop {
-      background-color: #273142b3;
+      background-color: #273142b3; /* 对话框背景色 */
     }
 
     .dialog-polyfill {
@@ -66,11 +66,11 @@ export default class JdsDialog extends LitElement {
       align-items: center;
       justify-content: center;
       z-index: var(--jds-index-dialog);
-      background-color: #273142b3;
+      background-color: #273142b3; /* 遮罩层背景色 */
     }
 
     :host([open]) .dialog-polyfill {
-      display: flex;
+      display: flex; /* 打开对话框时显示遮罩 */
     }
 
     header {
@@ -81,8 +81,8 @@ export default class JdsDialog extends LitElement {
       padding: var(--jds-size-xl) var(--jds-size-xl) 0 var(--jds-size-xl);
     }
 
-    header bl-button {
-      margin-inline-start: auto;
+    header jds-button {
+      margin-inline-start: auto; /* 关闭按钮的左边距 */
     }
 
     header h2 {
@@ -91,34 +91,36 @@ export default class JdsDialog extends LitElement {
       overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: var(--jds-dialog-caption-line-clamp, 1);
+      -webkit-line-clamp: var(
+        --jds-dialog-caption-line-clamp,
+        1
+      ); /* 限制标题行数 */
       margin: 0;
       padding: 0;
     }
 
     .content {
       padding: var(--jds-size-xl);
-      overflow: auto;
+      overflow: auto; /* 内容溢出时可滚动 */
     }
 
     :host([critical]) .content {
-      padding-top: 0;
+      padding-top: 0; /* 关键对话框顶部无内边距 */
     }
 
     .container.has-footer .content {
-      padding-bottom: 0;
+      padding-bottom: 0; /* 若有页脚则底部无内边距 */
     }
 
     footer {
       padding: var(--jds-size-xl);
       display: flex;
-      flex-flow: row-reverse wrap;
+      flex-flow: row-reverse wrap; /* 反向排列页脚按钮 */
       gap: var(--jds-size-m);
     }
 
     footer.shadow {
-      /* FIXME: Use variables for sizes */
-      box-shadow: 0 -4px 15px #27314226;
+      box-shadow: 0 -4px 15px #27314226; /* 页脚阴影 */
     }
 
     @media only screen and (max-width: 471px) {
@@ -130,14 +132,14 @@ export default class JdsDialog extends LitElement {
       }
 
       footer {
-        flex-flow: column wrap;
+        flex-flow: column wrap; /* 小屏幕下页脚按钮竖排 */
       }
     }
 
     ::slotted(bl-tab-group) {
       display: block;
       transform: translateX(calc(var(--jds-size-xl) * -1));
-      width: calc(100% + calc(var(--jds-size-xl) * 2));
+      width: calc(100% + calc(var(--jds-size-xl) * 2)); /* 适应宽度 */
     }
   `;
 
@@ -147,7 +149,6 @@ export default class JdsDialog extends LitElement {
   @property({
     type: Boolean,
     reflect: true,
-    // 判断属性值是否发生变化
     hasChanged(newVal: boolean, oldVal: boolean | undefined) {
       // 如果新值为false且旧值为undefined，则假设初始值为false
       if (newVal === false && oldVal === undefined) {
@@ -156,7 +157,7 @@ export default class JdsDialog extends LitElement {
       return newVal !== oldVal;
     },
   })
-  open = false;
+  open = false; // 对话框的状态，默认关闭
 
   /**
    * 设置对话框的标题
@@ -171,11 +172,7 @@ export default class JdsDialog extends LitElement {
   critical = false;
 
   /**
-   * 确定对话框是否当前使用填充版本而非原生 HTML 对话框。默认情况下，
-   * 如果浏览器支持，则使用原生对话框，否则使用填充版本。在某些情况下，
-   * 如需在对话框上方显示某些内容（例如无法使用 Popover API 时），
-   * 可以通过将此设置为 true 来强制使用填充版本。请注意，填充版本
-   * 可能会在可访问性和堆叠上下文方面造成一些不一致，因此请谨慎使用。
+   * 确定对话框是否当前使用填充版本而非原生 HTML 对话框。
    */
   @property({ type: Boolean, reflect: true })
   polyfilled = true;
@@ -200,8 +197,7 @@ export default class JdsDialog extends LitElement {
   private onOpen!: EventDispatcher<object>;
 
   /**
-   * 在通过内部操作（如点击关闭按钮、按 Escape 键或点击遮罩层）关闭对话框之前触发。
-   * 可以通过调用 `event.preventDefault()` 来阻止关闭。
+   * 在通过内部操作关闭对话框之前触发。
    */
   @event("jds-dialog-request-close")
   private onRequestClose!: EventDispatcher<{
@@ -224,7 +220,7 @@ export default class JdsDialog extends LitElement {
 
   // 判断是否有页脚
   private get _hasFooter() {
-    // 检查子节点中是否存在 `jds-BUTTON` 元素
+    // 检查子节点中是否存在 `jds-button` 元素
     return [...this.childNodes].some((node) => node.nodeName === "JDS-BUTTON");
   }
 
@@ -234,17 +230,17 @@ export default class JdsDialog extends LitElement {
       // 打开对话框
       this.dialog?.showModal?.();
       this.onOpen({ isOpen: true });
-      document.body.style.overflow = "hidden";
-      this.toggleFooterShadow();
+      document.body.style.overflow = "hidden"; // 禁止背景滚动
+      this.toggleFooterShadow(); // 切换页脚阴影
       // 添加事件监听器
-      window?.addEventListener("keydown", (event) => this.onKeydown(event));
+      window?.addEventListener("keydown", this.onKeydown);
       window?.addEventListener("resize", this.toggleFooterShadow);
       this.content?.addEventListener("scroll", this.toggleFooterShadow);
     } else {
       // 关闭对话框
       this.dialog?.close?.();
       this.onClose({ isOpen: false }, { bubbles: false });
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // 恢复背景滚动
       // 移除事件监听器
       window?.removeEventListener("keydown", this.onKeydown);
       window?.removeEventListener("resize", this.toggleFooterShadow);
@@ -261,15 +257,15 @@ export default class JdsDialog extends LitElement {
     );
 
     if (requestCloseEvent.defaultPrevented) {
-      return;
+      return; // 如果关闭被阻止，提前返回
     }
 
-    this.open = false;
+    this.open = false; // 关闭对话框
   }
 
   // 处理点击对话框外部的事件
   private clickOutsideHandler = (event: MouseEvent) => {
-    if (this.critical) return;
+    if (this.critical) return; // 关键对话框不允许点击外部关闭
 
     const eventPath = event.composedPath() as HTMLElement[];
 
@@ -283,7 +279,7 @@ export default class JdsDialog extends LitElement {
   private onKeydown = (event: KeyboardEvent): void => {
     // 如果按下 Escape 键且对话框处于打开状态且不是关键对话框，则关闭对话框
     if (event.code === "Escape" && this.open && !this.critical) {
-      event.preventDefault();
+      event.preventDefault(); // 阻止默认行为
       this.closeDialog("keyboard");
     }
   };
