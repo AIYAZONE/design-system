@@ -14,6 +14,7 @@ export default class JdsSpinner extends LitElement {
     :host {
       cursor: wait; // 设置鼠标悬停时的光标样式为等待状态
       display: inline-flex;
+      width: max-content;
       align-items: center;
     }
 

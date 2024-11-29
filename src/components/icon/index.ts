@@ -20,6 +20,7 @@ export default class JdsIcon extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
+      width: max-content;
     }
 
     :host div {
