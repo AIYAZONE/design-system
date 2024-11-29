@@ -144,8 +144,8 @@ export default class JdsButton extends LitElement {
   // 下拉菜单的图标模板
   private caretTemplate(): TemplateResult {
     return html`
-      <jds-icon class="open" name="arrow_up"></jds-icon>
-      <jds-icon class="close" name="arrow_down"></jds-icon>
+      <jds-icon class="open" name="arrow-up"></jds-icon>
+      <jds-icon class="close" name="arrow-down"></jds-icon>
     `;
   }
 
@@ -168,7 +168,6 @@ export default class JdsButton extends LitElement {
         submit(targetForm);
       }
     }
-    console.info("点击事件");
     // 触发点击事件
     this.onClick("Click event fired!");
   }
