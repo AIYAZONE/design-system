@@ -4,6 +4,7 @@ export const buttonStyles = css`
   :host {
     display: var(--jds-button-display, inline-block);
     max-width: 100%;
+    width: max-content;
     position: relative;
   }
 

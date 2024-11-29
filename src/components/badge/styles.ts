@@ -4,6 +4,7 @@ export const badgeStyles = css`
   :host {
     display: inline-block;
     max-width: 100%;
+    width: max-content;
   }
 
   .badge {

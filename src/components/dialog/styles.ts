@@ -2,6 +2,7 @@ import { css } from "lit";
 export const dialogStyles = css`
   :host {
     display: contents; /* 使宿主元素不影响布局 */
+    width: max-content;
   }
 
   .container {

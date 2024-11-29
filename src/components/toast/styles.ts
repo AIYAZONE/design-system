@@ -2,6 +2,7 @@ import { css } from "lit";
 export const toastStyles = css`
   :host {
     display: block; /* 设置为块级元素 */
+    width: max-content;
   }
 
   .toast {
@@ -17,7 +18,6 @@ export const toastStyles = css`
     background-color: var(--main-bg-color);
     color: var(--jds-color-neutral-darker);
     box-shadow: inset 0 0 0 1px var(--main-color);
-    border-radius: var(--jds-border-radius-l); /* 边角圆润 */
     padding: calc(var(--padding) / 2) var(--padding);
     padding-inline-end: calc(var(--padding) / 2);
   }
