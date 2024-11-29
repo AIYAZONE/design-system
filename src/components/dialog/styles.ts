@@ -1,0 +1,123 @@
+import { css } from "lit";
+export const dialogStyles = css`
+  :host {
+    display: contents; /* 使宿主元素不影响布局 */
+  }
+
+  .container {
+    --background-color: var(--jds-color-neutral-full);
+
+    display: flex;
+    flex-direction: column;
+    background: var(--background-color);
+    width: var(--jds-dialog-width, auto);
+    max-width: calc(100vw - var(--jds-size-4xl));
+    max-height: calc(100vh - var(--jds-size-4xl));
+    min-width: 424px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--jds-border-radius-l);
+  }
+
+  .dialog,
+  .dialog-polyfill .container {
+    padding: 0;
+    border: 0;
+    border-radius: var(--jds-border-radius-l);
+  }
+
+  .dialog-polyfill .container {
+    position: fixed;
+    z-index: var(--jds-index-dialog);
+  }
+
+  .dialog::backdrop {
+    background-color: #273142b3; /* 对话框背景色 */
+  }
+
+  .dialog-polyfill {
+    display: none;
+    position: fixed;
+    inset-inline-start: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--jds-index-dialog);
+    background-color: #273142b3; /* 遮罩层背景色 */
+  }
+
+  :host([open]) .dialog-polyfill {
+    display: flex; /* 打开对话框时显示遮罩 */
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--jds-size-2xs);
+    padding: var(--jds-size-xl) var(--jds-size-xl) 0 var(--jds-size-xl);
+  }
+
+  header jds-button {
+    margin-inline-start: auto; /* 关闭按钮的左边距 */
+  }
+
+  header h2 {
+    font: var(--jds-font-title-1-medium);
+    color: var(--jds-color-neutral-darker);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(
+      --jds-dialog-caption-line-clamp,
+      1
+    ); /* 限制标题行数 */
+    margin: 0;
+    padding: 0;
+  }
+
+  .content {
+    padding: var(--jds-size-xl);
+    overflow: auto; /* 内容溢出时可滚动 */
+  }
+
+  :host([critical]) .content {
+    padding-top: 0; /* 关键对话框顶部无内边距 */
+  }
+
+  .container.has-footer .content {
+    padding-bottom: 0; /* 若有页脚则底部无内边距 */
+  }
+
+  footer {
+    padding: var(--jds-size-xl);
+    display: flex;
+    flex-flow: row-reverse wrap; /* 反向排列页脚按钮 */
+    gap: var(--jds-size-m);
+  }
+
+  footer.shadow {
+    box-shadow: 0 -4px 15px #27314226; /* 页脚阴影 */
+  }
+
+  @media only screen and (max-width: 471px) {
+    .container {
+      max-width: calc(100vw - var(--jds-size-2xl));
+      max-height: calc(100vh - var(--jds-size-2xl));
+      min-width: auto;
+      min-height: auto;
+    }
+
+    footer {
+      flex-flow: column wrap; /* 小屏幕下页脚按钮竖排 */
+    }
+  }
+
+  ::slotted(bl-tab-group) {
+    display: block;
+    transform: translateX(calc(var(--jds-size-xl) * -1));
+    width: calc(100% + calc(var(--jds-size-xl) * 2)); /* 适应宽度 */
+  }
+`;
