@@ -5,6 +5,8 @@ import JdsSpinner from "./components/spinner/index.js";
 import JdsButton from "./components/button/index.js";
 import JdsDialog from "./components/dialog/index.js";
 import JdsToast from "./components/toast/index.js";
+import JdsPopover from "./components/popover/index.js";
+import JdsTooltip from "./components/tooltip/index.js";
 
 export {
   JdsInfo,
@@ -14,4 +16,6 @@ export {
   JdsButton,
   JdsDialog,
   JdsToast,
+  JdsPopover,
+  JdsTooltip,
 };
