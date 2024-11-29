@@ -24,7 +24,7 @@
   },
   "keywords": ["web-components", "typescript", "lit"],
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
