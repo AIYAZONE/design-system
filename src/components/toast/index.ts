@@ -131,13 +131,13 @@ export default class JdsToast extends LitElement {
   private _predefinedIcons() {
     switch (this.variant) {
       case "info":
-        return "info_fill"; // 提示图标
+        return "info-fill"; // 提示图标
       case "warning":
-        return "alert_fill"; // 警告图标
+        return "alert-fill"; // 警告图标
       case "success":
-        return "check_fill"; // 成功图标
+        return "check-fill"; // 成功图标
       case "danger":
-        return "close_fill"; // 危险图标
+        return "close-fill"; // 危险图标
       default:
         return this.variant; // 返回默认变体
     }
