@@ -124,6 +124,7 @@ export default class JdsDialog extends LitElement {
       window?.removeEventListener("keydown", this.onKeydown);
       window?.removeEventListener("resize", this.toggleFooterShadow);
       this.content?.removeEventListener("scroll", this.toggleFooterShadow);
+      this.dispatchEvent(new Event("closed", { bubbles: true })); // 确保触发关闭事件
     }
   }
 
@@ -196,7 +197,7 @@ export default class JdsDialog extends LitElement {
     const closeButton = !this.critical
       ? html`<jds-button
           @click="${() => this.closeDialog("close-button")}"
-          icon="close"
+          icon="close-fill"
           label="close"
           variant="tertiary"
           kind="neutral"
