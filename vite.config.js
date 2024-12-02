@@ -35,13 +35,6 @@ const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
   }, {});
 };
 
-// 检查是否存在 SVG 文件
-const hasSvgFiles =
-  fs.existsSync(path.resolve(__dirname, "src/assets")) &&
-  fs
-    .readdirSync(path.resolve(__dirname, "src/assets"))
-    .some((file) => file.endsWith(".svg"));
-
 export default defineConfig(({ mode }) => {
   return {
     build: {
@@ -50,7 +43,7 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       rollupOptions: {
         input: {
-          index: "./index.html",
+          index: "./index.html", // 作为组件库，后面输出storybook后，将此处去掉
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
@@ -82,16 +75,16 @@ export default defineConfig(({ mode }) => {
     },
     base: "./", // 添加此行以使用相对路径
     plugins: [
-      hasSvgFiles &&
-        viteStaticCopy({
-          targets: [
-            {
-              src: "src/assets/*.svg",
-              dest: "assets",
-            },
-          ],
-        }),
-    ].filter(Boolean),
+      viteStaticCopy({
+        targets: [
+          {
+            src: ["src/assets/**/*"], // 源目录
+            dest: "assets", // 目标目录
+          },
+        ],
+        structured: true,
+      }),
+    ],
     css: {
       preprocessorOptions: {
         less: {
