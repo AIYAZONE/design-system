@@ -61,8 +61,8 @@ export const dialogStyles = css`
     padding: var(--jds-size-xl) var(--jds-size-xl) 0 var(--jds-size-xl);
   }
 
-  header jds-button {
-    margin-inline-start: auto; /* 关闭按钮的左边距 */
+  header jds-icon {
+    cursor: pointer;
   }
 
   header h2 {

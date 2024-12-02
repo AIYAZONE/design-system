@@ -195,14 +195,12 @@ export default class JdsDialog extends LitElement {
       ? html`<h2 id="dialog-caption">${this.caption}</h2>`
       : "";
     const closeButton = !this.critical
-      ? html`<jds-button
+      ? html`<jds-icon
           @click="${() => this.closeDialog("close-button")}"
-          icon="close-fill"
+          name="close-fill"
           label="close"
-          variant="tertiary"
-          kind="neutral"
-          size="small"
-        ></jds-button>`
+          style="font-size:24px;"
+        ></jds-icon>`
       : null;
 
     const classes = {
