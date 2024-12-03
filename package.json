@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
+    "@fontsource/noto-sans-jp": "^5.1.0",
     "@fontsource/poppins": "^5.1.0",
     "@jackery/icons": "^0.0.1",
     "@open-wc/form-control": "^1.0.0",
