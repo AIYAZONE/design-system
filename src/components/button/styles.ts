@@ -21,6 +21,7 @@ export const buttonStyles = css`
     --icon-size: var(--jds-size-m);
     --font: var(--jds-font-title-3-medium);
     --height: var(--jds-size-2xl);
+    --border-radius: var(--jds-border-radius-pill);
 
     display: flex;
     gap: var(--margin-icon);
@@ -30,7 +31,7 @@ export const buttonStyles = css`
     width: max-content;
     height: var(--height);
     border: solid 1px var(--border-color);
-    border-radius: var(--jds-border-radius-m);
+    border-radius: var(--border-radius);
     text-decoration: none;
     padding: var(--padding-vertical) var(--padding-horizontal);
     cursor: pointer;
@@ -79,7 +80,7 @@ export const buttonStyles = css`
 
   .button:focus-visible::after {
     border: 2px solid var(--jds-button-focus-border-color, var(--main-color));
-    border-radius: var(--jds-border-radius-l);
+    border-radius: var(--border-radius);
     content: "";
     position: absolute;
     inset: -4px;
