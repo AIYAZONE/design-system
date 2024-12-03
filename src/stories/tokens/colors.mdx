@@ -1,0 +1,50 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { html } from 'lit';
+
+<Meta title="Tokens/Colors" />
+
+# 颜色
+
+下列是一些默认值的颜色列表
+
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-primary"
+    subtitle="Primary Color"
+    colors={{ '': 'var(--jds-color-primary)', '--highlight': 'var(--jds-color-primary-highlight)', '--contrast': 'var(--jds-color-primary-contrast)' }}
+  />
+  <ColorItem
+    title="--jds-color-success"
+    subtitle="Success Color"
+    colors={{ '': 'var(--jds-color-success)', '--highlight': 'var(--jds-color-success-highlight)', '--contrast': 'var(--jds-color-success-contrast)' }}
+  />
+  <ColorItem
+    title="--jds-color-danger"
+    subtitle="Danger Color"
+    colors={{ '': 'var(--jds-color-danger)', '--highlight': 'var(--jds-color-danger-highlight)', '--contrast': 'var(--jds-color-danger-contrast)' }}
+  />
+  <ColorItem
+    title="--jds-color-warning"
+    subtitle="Warning Color"
+    colors={{ '': 'var(--jds-color-warning)', '--highlight': 'var(--jds-color-warning-highlight)', '--contrast': 'var(--jds-color-warning-contrast)' }}
+  />
+  <ColorItem
+    title="--jds-color-info"
+    subtitle="Info Color"
+    colors={{ '': 'var(--jds-color-info)', '--highlight': 'var(--jds-color-info-highlight)', '--contrast': 'var(--jds-color-info-contrast)' }}
+  />
+  <ColorItem
+    title="--jds-color-neutral"
+    subtitle="Neutral Colors"
+    colors={{
+        '--none': 'var(--jds-color-neutral-none)',
+        '--darkest': 'var(--jds-color-neutral-darkest)',
+        '--darker': 'var(--jds-color-neutral-darker)',
+        '--dark': 'var(--jds-color-neutral-dark)',
+        '--light' : 'var(--jds-color-neutral-light)',
+        '--lighter' : 'var(--jds-color-neutral-lighter)',
+        '--lightest' : 'var(--jds-color-neutral-lightest)',
+        '--full' : 'var(--jds-color-neutral-full)',
+    }}
+  />
+</ColorPalette>

@@ -1,13 +1,16 @@
-module.exports = {
-  stories: [
-    "../src/stories/**/*.stories.@(js|jsx|ts|tsx|mjs|mdx)",
-    "../src/stories/*.@(js|jsx|ts|tsx|mjs|mdx)",
-  ],
+import type { StorybookConfig } from "@storybook/web-components-vite";
+
+const config: StorybookConfig = {
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(ts|mdx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
   ],
-  framework: "@storybook/web-components-vite",
+  framework: {
+    name: "@storybook/web-components-vite",
+    options: {},
+  },
 };
+export default config;
