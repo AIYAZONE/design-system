@@ -19,7 +19,7 @@ interface ButtonProps {
 }
 
 const meta: Meta = {
-  title: "Components/jds-button",
+  title: "组件/jds-button",
   tags: ["autodocs"],
   component: "jds-button",
   argTypes: {
@@ -82,39 +82,43 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     >${unsafeHTML(args.content)}</jds-button
   >`;
 
-export const Variants = (args: ButtonProps) => html`
-  ${SingleButtonTemplate({
+export const Default = (args: ButtonProps) =>
+  html`${SingleButtonTemplate({
     ...args,
     content: "Primary Button",
-  })}
-  ${SingleButtonTemplate({
-    ...args,
-    variant: "secondary",
-    content: "Secondary Button",
-  })}
-  ${SingleButtonTemplate({
-    ...args,
-    variant: "tertiary",
-    content: "Tertiary Button",
-  })}
-`;
+  })}`;
 
-export const Kinds = (args: ButtonProps) =>
-  html`
-    ${SingleButtonTemplate({ ...args, content: "Primary Button" })}
-    ${SingleButtonTemplate({
-      ...args,
-      content: "Primary Button",
-      kind: "neutral",
-    })}
-    ${SingleButtonTemplate({
-      ...args,
-      content: "Primary Button",
-      kind: "success",
-    })}
-    ${SingleButtonTemplate({
-      ...args,
-      content: "Primary Button",
-      kind: "danger",
-    })}
-  `;
+export const Variants = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "secondary",
+  content: "Secondary Button",
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "tertiary",
+  content: "Tertiary Button",
+})} `;
+
+export const Kinds = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Default Button",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+  kind: "neutral",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+  kind: "success",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+  kind: "danger",
+})} `;
