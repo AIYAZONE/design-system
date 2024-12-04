@@ -84,6 +84,40 @@ export const dialogStyles = css`
     overflow: auto; /* 内容溢出时可滚动 */
   }
 
+  /* 滚动条滑块 */
+  .content::-webkit-scrollbar-thumb {
+    /* 滑块颜色 */
+    background-color: #C9C9CB;
+    /* 滑块圆角 */
+    border-radius: 10px;
+  }
+
+  .content::-webkit-scrollbar-track {
+    /* 滚动条轨道透明 */
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 1440px) {
+    .content::-webkit-scrollbar {
+      /* 滚动条宽度 */
+      width: 6px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1439.98px){
+    .content::-webkit-scrollbar {
+      /* 滚动条宽度 */
+      width: 0.416666666666667vw;
+    }
+  }
+
+  @media screen and (max-width: 1023.98px) {
+    .content::-webkit-scrollbar {
+      /* 滚动条宽度 */
+      width: 1.06666666666667vw;
+    }
+  }
+
   :host([critical]) .content {
     padding-top: 0; /* 关键对话框顶部无内边距 */
   }
