@@ -65,4 +65,4 @@
 
 站在巨人的肩膀上看世界，业界优秀实践参考：
 
-![优秀实践参考](./public/design-system.png)
+![优秀实践参考](./src/stories/assets/design-system.png)
