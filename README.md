@@ -6,20 +6,19 @@
 
 - **全称：** Jackery Design System - Jackery设计系统
 - **简写：** JDS
-- **简介：** 作为全球官网中心前端设计系统，按照前端规范，基于Web Components + Vite + Lit + Storybook设计实现跨技术栈的Web端基础库。
+- **介绍：** 作为全球官网中心前端设计系统，按照前端规范，基于Web Components + Vite + Lit + Storybook设计实现跨技术栈的Web端基础库。
 - **目标：** Shoelace/Spectrum/Baklava
 - **仓库：** [http://192.168.30.241/global-website/jackery-design-system](http://192.168.30.241/global-website/jackery-design-system)
 - **设计：** [Figma - 基础UED](https://www.figma.com/design/LI5xCizwANfYUQC0kub9B6/%E5%9F%BA%E7%A1%80UED%E8%A7%84%E8%8C%83) 和 [Figma - UED控件库](https://www.figma.com/design/xRSdg9dwrFbNMQz1zQVaaE/UED%E6%8E%A7%E4%BB%B6%E5%BA%93)
-- **设计文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
+- **文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
 
 ## 2. 目标
 
 - 兼容所有框架
-- 兼容CDN
+- CDN部署
 - 可通过CSS完全自定义
 - 包含深浅两个主题
 - 无障碍优先
-- 提供使用指南
 
 ## 3. 部署
 
