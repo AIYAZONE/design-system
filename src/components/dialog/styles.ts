@@ -58,7 +58,7 @@ export const dialogStyles = css`
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--jds-size-2xs);
-    padding: var(--jds-size-xl) var(--jds-size-xl) 0 var(--jds-size-xl);
+    padding: var(--jds-size-m) var(--jds-size-m) 0 var(--jds-size-m);
   }
 
   header jds-icon {
@@ -80,8 +80,10 @@ export const dialogStyles = css`
   }
 
   .content {
-    padding: var(--jds-size-xl);
-    overflow: auto; /* 内容溢出时可滚动 */
+    margin-right: var(--jds-size-2xs);
+    margin-bottom: var(--jds-size-xl);
+    padding:0 calc(var(--jds-size-4xl) - 10px) 0 var(--jds-size-4xl);
+    overflow-y: auto; /* 内容溢出时可滚动 */
   }
 
   /* 滚动条滑块 */

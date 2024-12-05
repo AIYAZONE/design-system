@@ -199,7 +199,7 @@ export default class JdsDialog extends LitElement {
           @click="${() => this.closeDialog("close-button")}"
           name="close-fill"
           label="close"
-          style="font-size:24px;"
+          style="font-size:var(--jds-size-2xl);color:var(--jds-color-text-l3);"
         ></jds-icon>`
       : null;
 
