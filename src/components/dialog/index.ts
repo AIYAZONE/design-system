@@ -211,7 +211,7 @@ export default class JdsDialog extends LitElement {
     return html` <div class="${classMap(classes)}">
       <header>${title} ${closeButton}</header>
       <section class="content"><slot></slot></section>
-      ${this.renderFooter()}
+      <!-- ${this.renderFooter()} -->
     </div>`;
   }
 
