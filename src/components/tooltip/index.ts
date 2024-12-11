@@ -56,8 +56,8 @@ export default class JdsTooltip extends LitElement {
    * 当离开触发器时触发
    */
   @event("jds-tooltip-hide") private onHide!: EventDispatcher<string>;
-
   @property() target!: string | Element;
+  @property() private _timer!: ReturnType<typeof setTimeout> | null;
 
   protected update(changedProperties: PropertyValues) {
     if (changedProperties.has("target")) {
@@ -94,6 +94,7 @@ export default class JdsTooltip extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this._timer = null;
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
     this._addEvents();
@@ -111,14 +112,19 @@ export default class JdsTooltip extends LitElement {
     this._popover.target = this.target ?? this.trigger;
     this._popover.show();
     this.onShow("");
+    if (this._timer) {
+      clearTimeout(this._timer);
+    }
   }
 
   /**
    * 隐藏工具提示
    */
   hide() {
-    this._popover.hide();
-    this.onHide("");
+    this._timer = setTimeout(() => {
+      this._popover.hide();
+      this.onHide("");
+    }, 150)
   }
 
   /**
@@ -149,7 +155,14 @@ export default class JdsTooltip extends LitElement {
         placement="${ifDefined(this.placement)}"
         @jds-popover-hide="${() => this.onHide("")}"
       >
-        <slot class="content" id="tooltip" role="tooltip"></slot>
+        <slot
+          class="content"
+          id="tooltip"
+          role="tooltip"
+          @mouseenter=${() => this.show()}
+          @mouseleave=${() => this.hide()}
+        >
+        </slot>
       </jds-popover>
     `;
   }

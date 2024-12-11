@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.0.1",
+  "version": "0.0.1-dev",
   "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -37,6 +37,7 @@
     "@floating-ui/dom": "^1.6.12",
     "@fontsource/noto-sans-jp": "^5.1.0",
     "@fontsource/poppins": "^5.1.0",
+    "@jackery/design-system": "file:C:/Users/admin/AppData/Roaming/npm/node_modules/@jackery/design-system",
     "@jackery/icons": "^0.0.1",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",

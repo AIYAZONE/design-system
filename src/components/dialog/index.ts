@@ -45,10 +45,16 @@ export default class JdsDialog extends LitElement {
   caption?: string;
 
   /**
-   * 确定对话框是否为关键对话框，关键对话框无法通过键盘、遮罩层或关闭按钮关闭。
+   * 确定对话框是否为关键对话框，关键对话框无法通过键盘、遮罩层关闭。
    */
   @property({ type: Boolean, reflect: true })
   critical = false;
+
+  /**
+   * 确定对话框是否显示关闭按钮。
+   */
+  @property({ type: Boolean, reflect: true })
+  closable = true;
 
   /**
    * 确定对话框是否当前使用填充版本而非原生 HTML 对话框。
@@ -194,7 +200,7 @@ export default class JdsDialog extends LitElement {
     const title = this.caption
       ? html`<h2 id="dialog-caption">${this.caption}</h2>`
       : "";
-    const closeButton = !this.critical
+    const closeButton = this.closable
       ? html`<jds-icon
           @click="${() => this.closeDialog("close-button")}"
           name="close-fill"
