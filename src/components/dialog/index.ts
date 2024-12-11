@@ -106,7 +106,14 @@ export default class JdsDialog extends LitElement {
   // 判断是否有页脚
   private get _hasFooter() {
     // 检查子节点中是否存在 `jds-button` 元素
-    return [...this.childNodes].some((node) => node.nodeName === "JDS-BUTTON");
+    return [...this.childNodes].some((node) => {
+      // 确保节点是元素节点
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const element = node as HTMLElement; // 类型转换
+        return element.nodeName === "JDS-BUTTON" && element.hasAttribute('slot');
+      }
+      return false;
+    });
   }
 
   // 切换对话框的处理程序
@@ -205,7 +212,7 @@ export default class JdsDialog extends LitElement {
           @click="${() => this.closeDialog("close-button")}"
           name="close-fill"
           label="close"
-          style="font-size:24px;"
+          style="font-size:var(--jds-size-2xl);color:var(--jds-color-text-l3);"
         ></jds-icon>`
       : null;
 

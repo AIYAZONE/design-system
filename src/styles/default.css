@@ -4,17 +4,17 @@
   --jds-text-x-direction: 1; /* 文本水平方向：1 表示从左到右，-1 表示从右到左 */
 
   /* 主色调 */
-  --jds-color-primary: #fd5000; /* 主色 */
+  --jds-color-primary: #fd5000; /* 主色 - 已校准 */
   --jds-color-primary-highlight: #ef6114; /* 主色高亮 */
   --jds-color-primary-contrast: #fd6a26; /* 主色对比色 */
 
   /* 成功色 */
-  --jds-color-success: #52c41a; /* 成功状态颜色 */
+  --jds-color-success: #52c41a; /* 成功状态颜色 - 已校准 */
   --jds-color-success-highlight: #09a44e; /* 成功状态高亮 */
   --jds-color-success-contrast: #e7f9ef; /* 成功状态对比色 */
 
   /* 危险色 */
-  --jds-color-danger: #ff3b30; /* 危险状态颜色 */
+  --jds-color-danger: #ff3b30; /* 危险状态颜色 - 已校准 */
   --jds-color-danger-highlight: #ff3028; /* 危险状态高亮 */
   --jds-color-danger-contrast: #ffeeec; /* 危险状态对比色 */
 
@@ -27,6 +27,14 @@
   --jds-color-info: #5794ff; /* 信息状态颜色 */
   --jds-color-info-highlight: #457eff; /* 信息状态高亮 */
   --jds-color-info-contrast: #eef4ff; /* 信息状态对比色 */
+
+  /* 文本色 - 已校准 */
+  --jds-color-text-l1: #1a1a1a; /* 一级文本 */
+  --jds-color-text-l2: #666666; /* 二级文本 */
+  --jds-color-text-l3: #999999; /* 三级文本 */
+  --jds-color-text-invalid: #b3b3b3; /* 无效文本 */
+  --jds-color-text-hightlight: var(--jds-color-primary); /* 高亮文本 */
+  --jds-color-text-link: #0a59f7; /* 超链接文本 */
 
   /* 中性色 */
   --jds-color-neutral-none: #000; /* 无色 */
