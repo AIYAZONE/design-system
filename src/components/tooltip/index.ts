@@ -151,6 +151,7 @@ export default class JdsTooltip extends LitElement {
     return html`
       ${this.target ? "" : this.triggerTemplate()}
       <jds-popover
+        part="tooltip"
         .target="${this.target ?? this.trigger}"
         placement="${ifDefined(this.placement)}"
         @jds-popover-hide="${() => this.onHide("")}"

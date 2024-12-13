@@ -232,6 +232,7 @@ export default class JdsDialog extends LitElement {
   render(): TemplateResult {
     return this.polyfilled || !window.HTMLDialogElement
       ? html`<div
+          part="dialog-polyfill"
           class="dialog-polyfill"
           role="dialog"
           aria-labelledby="dialog-caption"
@@ -241,6 +242,7 @@ export default class JdsDialog extends LitElement {
         </div>`
       : html`
           <dialog
+            part="dialog"
             class="dialog"
             aria-labelledby="dialog-caption"
             @click=${this.clickOutsideHandler}

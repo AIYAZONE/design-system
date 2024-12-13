@@ -261,7 +261,7 @@ export default class JdsPopover extends LitElement {
       visible: this._visible,
     });
 
-    return html`<div class=${classes}>
+    return html`<div part="popover" class=${classes}>
       <slot id="popover" aria-live=${this._visible ? "polite" : "off"}></slot>
       <div class="arrow" aria-hidden="true"></div>
     </div>`;

@@ -235,6 +235,7 @@ export default class JdsButton extends LitElement {
     return isAnchor
       ? html`
           <a
+            part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
             aria-disabled="${ifDefined(isDisabled)}"
@@ -248,6 +249,7 @@ export default class JdsButton extends LitElement {
         `
       : html`
           <button
+            part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
             aria-disabled="${ifDefined(isDisabled)}"
