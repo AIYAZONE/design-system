@@ -221,7 +221,7 @@ export default class JdsDialog extends LitElement {
       "has-footer": this._hasFooter,
     };
 
-    return html` <div class="${classMap(classes)}">
+    return html`<div part="dialog-content" class="${classMap(classes)}">
       <header>${title} ${closeButton}</header>
       <section class="content"><slot></slot></section>
       ${this.renderFooter()}
