@@ -194,7 +194,7 @@ export default class JdsDialog extends LitElement {
   // 渲染页脚
   private renderFooter() {
     return this._hasFooter
-      ? html`<footer>
+      ? html`<footer part="dialog-footer">
           <slot name="primary-action"></slot>
           <slot name="secondary-action"></slot>
           <slot name="tertiary-action"></slot>
@@ -221,9 +221,9 @@ export default class JdsDialog extends LitElement {
       "has-footer": this._hasFooter,
     };
 
-    return html`<div part="dialog-content" class="${classMap(classes)}">
+    return html`<div part="dialog-container" class="${classMap(classes)}">
       <header>${title} ${closeButton}</header>
-      <section class="content"><slot></slot></section>
+      <section part="dialog-content" class="content"><slot></slot></section>
       ${this.renderFooter()}
     </div>`;
   }
