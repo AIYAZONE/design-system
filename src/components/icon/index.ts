@@ -77,7 +77,7 @@ export default class JdsIcon extends LitElement {
     const fileUrl = `${iconPath}/${this.name}.svg`;
 
     if (!requestMap.has(fileUrl)) {
-      requestMap.set(fileUrl, fetch(fileUrl));
+      requestMap.set(fileUrl, fetch(fileUrl, { method: 'GET', mode: 'cors' }));
     }
 
     try {
