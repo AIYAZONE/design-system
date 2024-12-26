@@ -14,22 +14,29 @@ export const toastStyles = css`
     display: flex; /* 使用弹性布局 */
     align-items: flex-start;
     justify-content: space-between;
-    width: 560px;
+    width: fit-content;
+    max-width: 560px;
     background-color: var(--main-bg-color);
     color: var(--jds-color-neutral-darker);
     box-shadow: inset 0 0 0 1px var(--main-color);
-    padding: calc(var(--padding) / 2) var(--padding);
-    padding-inline-end: calc(var(--padding) / 2);
   }
 
   @media screen and (min-width: 1024px) and (max-width: 1439.98px) {
     .toast {
-      width: calc(560vw / 1440 * 100);
+      max-width: calc(560vw / 1440 * 100);
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    .toast {
+      padding: var(--jds-size-m) var(--jds-size-xl);
+    }
+  }
+
   @media screen and (max-width: 1023.98px) {
     .toast {
-      width: calc(640vw / 750 * 100);
+      padding: calc(24vw / 750 * 100);
+      max-width: calc(640vw / 750 * 100);
     }
   }
 
