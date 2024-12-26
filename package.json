@@ -9,11 +9,7 @@
     "access": "public"
   },
   "license": "MIT",
-  "files": [
-    "dist/**/*",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist/**/*", "LICENSE", "README.md"],
   "repository": {
     "type": "git",
     "url": "http://192.168.30.241/global-website/jackery-design-system.git"
@@ -22,14 +18,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "npm run build && storybook build",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a"
   },
-  "keywords": [
-    "web-components",
-    "typescript",
-    "lit"
-  ],
+  "keywords": ["web-components", "typescript", "lit"],
   "engines": {
     "node": ">=18"
   },
