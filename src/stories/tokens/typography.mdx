@@ -10,7 +10,7 @@ import { html } from 'lit';
 
 ```css
 .my-header {
-  font: var(--jds-font-display-regular);
+  font: var(--jds-font-title-1-semibold);
 }
 ```
 
@@ -27,16 +27,82 @@ import { html } from 'lit';
   --jds-font-weight-semibold: 600; /* 半粗字体 */
   --jds-font-weight-bold: 700; /* 粗字体 */
 
-  /* 字体大小 - 已校准 */
-  --jds-font-size-s: 0.75rem; /* 12px */
-  --jds-font-size-m: 0.875rem; /* 14px */
-  --jds-font-size-l: 1rem; /* 16px */
-  --jds-font-size-xl: 1.125rem; /* 18px */
-  --jds-font-size-2xl: 1.5rem; /* 24px */
-  --jds-font-size-3xl: 2rem; /* 32px */
-  --jds-font-size-4xl: 2.5rem; /* 40px */
-  --jds-font-size-5xl: 3.5rem; /* 56px */
-  --jds-font-size-6xl: 4.5rem; /* 72px */
+  @media screen and (min-width: 1440px) {
+    :root {
+      /* === 字体大小 - 已校准 === */
+      /* 12px */
+      --jds-font-size-s: 0.75rem;
+      /* 14px */
+      --jds-font-size-m: 0.875rem;
+      /* 16px 8*2*/
+      --jds-font-size-l: 1rem;
+      /* 18px */
+      --jds-font-size-xl: 1.125rem;
+      /* 24px */
+      --jds-font-size-2xl: 1.5rem;
+      /* 32px */
+      --jds-font-size-3xl: 2rem;
+      /* 40px */
+      --jds-font-size-4xl: 2.5rem;
+      /* 56px */
+      --jds-font-size-5xl: 3.5rem;
+      /* 72px */
+      --jds-font-size-6xl: 4.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1439.98px) {
+    :root {
+      /* === 字体大小 - 已校准 === */
+      /* 12px */
+      --jds-font-size-s: 0.8333vw;
+      /* 14px */
+      --jds-font-size-m: 0.9722vw;
+      /* 16px */
+      --jds-font-size-l: 1.1111vw;
+      /* 18px */
+      --jds-font-size-xl: 1.25vw;
+      /* 24px */
+      --jds-font-size-2xl: 1.6667vw;
+      /* 32px */
+      --jds-font-size-3xl: 2.2222vw;
+      /* 40px */
+      --jds-font-size-4xl: 2.7778vw;
+      /* 56px */
+      --jds-font-size-5xl: 3.8889vw;
+      /* 72px */
+      --jds-font-size-6xl: 5vw;
+    }
+  }
+
+  @media screen and (max-width: 1023.98px) {
+    :root {
+      /* === 字体大小 - 已校准 === */
+      /* 16px */
+      --jds-font-size-s: 2.1333vw;
+      /* 20px */
+      --jds-font-size-m: 2.6667vw;
+      /* 24px */
+      --jds-font-size-l: 3.2vw;
+      /* 28px */
+      --jds-font-size-xl: 3.7333vw;
+      /* 32px */
+      --jds-font-size-2xl: 4.2667vw;
+      /* 40px */
+      --jds-font-size-3xl: 5.3333vw;
+      /* 48px */
+      --jds-font-size-4xl: 6.4vw;
+      /* 64px */
+      --jds-font-size-5xl: 8.5333vw;
+      /* 80px */
+      --jds-font-size-6xl: 10.6667vw;
+    }
+  }
+
+  /* 日站字体设置 */
+  :root[lang="ja"] {
+    --jds-font-family: "Noto Sans JP", sans-serif; /* 默认字体系列 */
+  }
 
   /* 非日站字体设置 */
   :root:not([lang="ja"]) {
@@ -44,8 +110,4 @@ import { html } from 'lit';
     --jds-font-family: "Poppins", sans-serif; /* 默认字体系列 */
   }
 
-  /* 日站字体设置 */
-  :root[lang="ja"] {
-    --jds-font-family: "Noto Sans JP", sans-serif; /* 默认字体系列 */
-  }
 ```

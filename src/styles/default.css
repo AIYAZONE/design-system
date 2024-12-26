@@ -5,8 +5,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(@fontsource/poppins/files/poppins-latin-400-normal.woff2)
-      format("woff2"),
+  src: url(@fontsource/poppins/files/poppins-latin-400-normal.woff2) format("woff2"),
     url(@fontsource/poppins/files/poppins-latin-400-normal.woff) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
@@ -19,8 +18,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url(@fontsource/poppins/files/poppins-latin-500-normal.woff2)
-      format("woff2"),
+  src: url(@fontsource/poppins/files/poppins-latin-500-normal.woff2) format("woff2"),
     url(@fontsource/poppins/files/poppins-latin-500-normal.woff) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
@@ -33,8 +31,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url(@fontsource/poppins/files/poppins-latin-600-normal.woff2)
-      format("woff2"),
+  src: url(@fontsource/poppins/files/poppins-latin-600-normal.woff2) format("woff2"),
     url(@fontsource/poppins/files/poppins-latin-600-normal.woff) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
@@ -47,8 +44,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(@fontsource/poppins/files/poppins-latin-700-normal.woff2)
-      format("woff2"),
+  src: url(@fontsource/poppins/files/poppins-latin-700-normal.woff2) format("woff2"),
     url(@fontsource/poppins/files/poppins-latin-700-normal.woff) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
@@ -61,10 +57,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-400-normal.woff2)
-      format("woff2"),
-    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-400-normal.woff)
-      format("woff");
+  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-400-normal.woff2) format("woff2"),
+    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-400-normal.woff) format("woff");
 }
 
 /* noto-sans-jp-japanese-500-normal */
@@ -73,10 +67,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-500-normal.woff2)
-      format("woff2"),
-    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-500-normal.woff)
-      format("woff");
+  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-500-normal.woff2) format("woff2"),
+    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-500-normal.woff) format("woff");
 }
 
 /* noto-sans-jp-japanese-600-normal */
@@ -85,10 +77,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-600-normal.woff2)
-      format("woff2"),
-    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-600-normal.woff)
-      format("woff");
+  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-600-normal.woff2) format("woff2"),
+    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-600-normal.woff) format("woff");
 }
 
 /* noto-sans-jp-japanese-700-normal */
@@ -97,306 +87,237 @@
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff2)
-      format("woff2"),
-    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff)
-      format("woff");
+  src: url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff2) format("woff2"),
+    url(@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff) format("woff");
 }
 
 /* 定义全局 CSS 变量 */
+
 :root {
-  /* 方向设置 */
-  --jds-text-x-direction: 1; /* 文本水平方向：1 表示从左到右，-1 表示从右到左 */
+  /* === 方向设置 === */
+  /* 文本水平方向：1 表示从左到右，-1 表示从右到左 */
+  --jds-text-x-direction: 1;
 
-  /* 主色调 */
-  --jds-color-primary: #fd5000; /* 主色 - 已校准 */
-  --jds-color-primary-highlight: #ef6114; /* 主色高亮 */
-  --jds-color-primary-contrast: #fd6a26; /* 主色对比色 */
+  /* === 主色调 === */
+  /* 主色 - 已校准 */
+  --jds-color-primary: #fd5000;
+  /* 主色高亮 */
+  --jds-color-primary-highlight: #ef6114;
+  /* 主色对比色 */
+  --jds-color-primary-contrast: #fd6a26;
 
-  /* 成功色 */
-  --jds-color-success: #52c41a; /* 成功状态颜色 - 已校准 */
-  --jds-color-success-highlight: #09a44e; /* 成功状态高亮 */
-  --jds-color-success-contrast: #e7f9ef; /* 成功状态对比色 */
+  /* === 成功色 === */
+  /* 成功状态颜色 - 已校准 */
+  --jds-color-success: #52c41a;
+  /* 成功状态高亮 */
+  --jds-color-success-highlight: #09a44e;
+  /* 成功状态对比色 */
+  --jds-color-success-contrast: #e7f9ef;
 
-  /* 危险色 */
-  --jds-color-danger: #ff3b30; /* 危险状态颜色 - 已校准 */
-  --jds-color-danger-highlight: #ff3028; /* 危险状态高亮 */
-  --jds-color-danger-contrast: #ffeeec; /* 危险状态对比色 */
+  /* === 危险色 === */
+  /* 危险状态颜色 - 已校准 */
+  --jds-color-danger: #ff3b30;
+  /* 危险状态高亮 */
+  --jds-color-danger-highlight: #ff3028;
+  /* 危险状态对比色 */
+  --jds-color-danger-contrast: #ffeeec;
 
-  /* 警告色 */
-  --jds-color-warning: #ffb600; /* 警告状态颜色 */
-  --jds-color-warning-highlight: #ff9800; /* 警告状态高亮 */
-  --jds-color-warning-contrast: #fff8e6; /* 警告状态对比色 */
+  /* === 警告色 === */
+  /* 警告状态颜色 */
+  --jds-color-warning: #ffb600;
+  /* 警告状态高亮 */
+  --jds-color-warning-highlight: #ff9800;
+  /* 警告状态对比色 */
+  --jds-color-warning-contrast: #fff8e6;
 
-  /* 信息色 */
-  --jds-color-info: #5794ff; /* 信息状态颜色 */
-  --jds-color-info-highlight: #457eff; /* 信息状态高亮 */
-  --jds-color-info-contrast: #eef4ff; /* 信息状态对比色 */
+  /* === 信息色 === */
+  /* 信息状态颜色 */
+  --jds-color-info: #5794ff;
+  /* 信息状态高亮 */
+  --jds-color-info-highlight: #457eff;
+  /* 信息状态对比色 */
+  --jds-color-info-contrast: #eef4ff;
 
-  /* 文本色 - 已校准 */
-  --jds-color-text-l1: #1a1a1a; /* 一级文本 */
-  --jds-color-text-l2: #666666; /* 二级文本 */
-  --jds-color-text-l3: #999999; /* 三级文本 */
-  --jds-color-text-invalid: #b3b3b3; /* 无效文本 */
-  --jds-color-text-hightlight: var(--jds-color-primary); /* 高亮文本 */
-  --jds-color-text-link: #0a59f7; /* 超链接文本 */
+  /* === 文本色 - 已校准 === */
+  /* 一级文本 */
+  --jds-color-text-l1: #1a1a1a;
+  /* 二级文本 */
+  --jds-color-text-l2: #666666;
+  /* 三级文本 */
+  --jds-color-text-l3: #999999;
+  /* 无效文本 */
+  --jds-color-text-invalid: #b3b3b3;
+  /* 高亮文本 */
+  --jds-color-text-hightlight: var(--jds-color-primary);
+  /* 超链接文本 */
+  --jds-color-text-link: #0a59f7;
 
-  /* 中性色 */
-  --jds-color-neutral-none: #000; /* 无色 */
-  --jds-color-neutral-darkest: #0f131a; /* 深色 */
-  --jds-color-neutral-darker: #273142; /* 较深色 */
-  --jds-color-neutral-dark: #6e7787; /* 深色 */
-  --jds-color-neutral-light: #95a1b5; /* 浅色 */
-  --jds-color-neutral-lighter: #afbbca; /* 较浅色 */
-  --jds-color-neutral-lightest: #f1f2f7; /* 最浅色 */
-  --jds-color-neutral-full: #fff; /* 全白 */
+  /* === 中性色 === */
+  /* 无色 */
+  --jds-color-neutral-none: #000;
+  /* 深色 */
+  --jds-color-neutral-darkest: #0f131a;
+  /* 较深色 */
+  --jds-color-neutral-darker: #273142;
+  /* 深色 */
+  --jds-color-neutral-dark: #6e7787;
+  /* 浅色 */
+  --jds-color-neutral-light: #95a1b5;
+  /* 较浅色 */
+  --jds-color-neutral-lighter: #afbbca;
+  /* 最浅色 */
+  --jds-color-neutral-lightest: #f1f2f7;
+  /* 全白 */
+  --jds-color-neutral-full: #fff;
 
-  /* 尺寸和间距 */
-  --jds-size-4xs: 0.125rem; /* 2px */
-  --jds-size-3xs: 0.25rem; /* 4px */
-  --jds-size-2xs: 0.5rem; /* 8px */
-  --jds-size-xs: 0.75rem; /* 12px */
-  --jds-size-s: 0.875rem; /* 14px */
-  --jds-size-m: 1rem; /* 16px */
-  --jds-size-l: 1.25rem; /* 20px */
-  --jds-size-xl: 1.5rem; /* 24px */
-  --jds-size-2xl: 2rem; /* 32px */
-  --jds-size-3xl: 2.5rem; /* 40px */
-  --jds-size-4xl: 3rem; /* 48px */
-  --jds-size-5xl: 4rem; /* 64px */
-  --jds-size-6xl: 5rem; /* 80px */
+  /* === 尺寸和间距 === */
+  /* 2px */
+  --jds-size-4xs: 0.125rem;
+  /* 4px */
+  --jds-size-3xs: 0.25rem;
+  /* 8px */
+  --jds-size-2xs: 0.5rem;
+  /* 12px */
+  --jds-size-xs: 0.75rem;
+  /* 14px */
+  --jds-size-s: 0.875rem;
+  /* 16px */
+  --jds-size-m: 1rem;
+  /* 20px */
+  --jds-size-l: 1.25rem;
+  /* 24px */
+  --jds-size-xl: 1.5rem;
+  /* 32px */
+  --jds-size-2xl: 2rem;
+  /* 40px */
+  --jds-size-3xl: 2.5rem;
+  /* 48px */
+  --jds-size-4xl: 3rem;
+  /* 64px */
+  --jds-size-5xl: 4rem;
+  /* 80px */
+  --jds-size-6xl: 5rem;
 
-  /* Z-index 层级 */
-  --jds-index-deep: -1; /* 深层级 */
-  --jds-index-base: 1; /* 基础层级 */
-  --jds-index-popover: 100; /* 弹出层级 */
-  --jds-index-tooltip: 200; /* 工具提示层级 */
-  --jds-index-sticky: 300; /* 固定层级 */
-  --jds-index-overlay: 400; /* 遮罩层级 */
-  --jds-index-dialog: 500; /* 对话框层级 */
-  --jds-index-notification: 600; /* 通知层级 */
+  /* === Z-index 层级 === */
+  /* 深层级 */
+  --jds-index-deep: -1;
+  /* 基础层级 */
+  --jds-index-base: 1;
+  /* 弹出层级 */
+  --jds-index-popover: 100;
+  /* 工具提示层级 */
+  --jds-index-tooltip: 200;
+  /* 固定层级 */
+  --jds-index-sticky: 300;
+  /* 遮罩层级 */
+  --jds-index-overlay: 400;
+  /* 对话框层级 */
+  --jds-index-dialog: 500;
+  /* 通知层级 */
+  --jds-index-notification: 600;
 
-  /* 字体粗细 - 已校准 */
-  --jds-font-weight-regular: 400; /* 常规字体 */
-  --jds-font-weight-medium: 500; /* 中等字体 */
-  --jds-font-weight-semibold: 600; /* 半粗字体 */
-  --jds-font-weight-bold: 700; /* 粗字体 */
+  /* === 字体粗细 - 已校准 === */
+  /* 常规字体 */
+  --jds-font-weight-regular: 400;
+  /* 中等字体 */
+  --jds-font-weight-medium: 500;
+  /* 半粗字体 */
+  --jds-font-weight-semibold: 600;
+  /* 粗字体 */
+  --jds-font-weight-bold: 700;
 
-  /* 字体大小 - 已校准 */
-  --jds-font-size-s: 0.75rem; /* 12px */
-  --jds-font-size-m: 0.875rem; /* 14px */
-  --jds-font-size-l: 1rem; /* 16px */
-  --jds-font-size-xl: 1.125rem; /* 18px */
-  --jds-font-size-2xl: 1.5rem; /* 24px */
-  --jds-font-size-3xl: 2rem; /* 32px */
-  --jds-font-size-4xl: 2.5rem; /* 40px */
-  --jds-font-size-5xl: 3.5rem; /* 56px */
-  --jds-font-size-6xl: 4.5rem; /* 72px */
+  /* === 边框半径 - 已校准 === */
+  /* 2px */
+  --jds-border-radius-xs: 0.125rem;
+  /* 4px */
+  --jds-border-radius-s: 0.25rem;
+  /* 8px */
+  --jds-border-radius-m: 0.5rem;
+  /* 12px */
+  --jds-border-radius-l: 0.75rem;
+  /* 14px */
+  --jds-border-radius-xl: 0.875rem;
+  /* 圆角，999px */
+  --jds-border-radius-pill: 62.438rem;
+  /* 圆形边框 */
+  --jds-border-radius-circle: 50%;
+}
 
-  /* 边框半径 - 已校准 */
-  --jds-border-radius-xs: 0.125rem; /* 2px */
-  --jds-border-radius-s: 0.25rem; /* 4px */
-  --jds-border-radius-m: 0.5rem; /* 8px */
-  --jds-border-radius-l: 0.75rem; /* 12px */
-  --jds-border-radius-xl: 0.875rem; /* 14px */
-  --jds-border-radius-pill: 62.438rem; /* 圆角，999px */
-  --jds-border-radius-circle: 50%; /* 圆形边框 */
+@media screen and (min-width: 1440px) {
+  :root {
+    /* === 字体大小 - 已校准 === */
+    /* 12px */
+    --jds-font-size-s: 0.75rem;
+    /* 14px */
+    --jds-font-size-m: 0.875rem;
+    /* 16px */
+    --jds-font-size-l: 1rem;
+    /* 18px */
+    --jds-font-size-xl: 1.125rem;
+    /* 24px */
+    --jds-font-size-2xl: 1.5rem;
+    /* 32px */
+    --jds-font-size-3xl: 2rem;
+    /* 40px */
+    --jds-font-size-4xl: 2.5rem;
+    /* 56px */
+    --jds-font-size-5xl: 3.5rem;
+    /* 72px */
+    --jds-font-size-6xl: 4.5rem;
+  }
+}
 
-  /* 字体样式：显示 */
-  --jds-font-display-font-size: var(--jds-font-size-5xl); /* 显示字体大小 */
-  --jds-font-display-line-height: calc(
-    var(--jds-font-display-font-size) + var(--jds-size-2xs)
-  ); /* 行高计算 */
-  --jds-font-display-size: var(--jds-font-display-font-size) /
-    var(--jds-font-display-line-height); /* 字体大小与行高的比例 */
-  --jds-font-display: var(--jds-font-display-size) var(--jds-font-family); /* 显示字体样式 */
-  --jds-font-display-regular: var(--jds-font-weight-regular)
-    var(--jds-font-display); /* 常规显示字体样式 */
-  --jds-font-display-medium: var(--jds-font-weight-medium)
-    var(--jds-font-display); /* 中等显示字体样式 */
-  --jds-font-display-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-display); /* 半粗显示字体样式 */
-  --jds-font-display-bold: var(--jds-font-weight-bold) var(--jds-font-display); /* 粗显示字体样式 */
+@media screen and (min-width: 1024px) and (max-width: 1439.98px) {
+  :root {
+    /* === 字体大小 - 已校准 === */
+    /* 12px */
+    --jds-font-size-s: 0.8333vw;
+    /* 14px */
+    --jds-font-size-m: 0.9722vw;
+    /* 16px */
+    --jds-font-size-l: 1.1111vw;
+    /* 18px */
+    --jds-font-size-xl: 1.25vw;
+    /* 24px */
+    --jds-font-size-2xl: 1.6667vw;
+    /* 32px */
+    --jds-font-size-3xl: 2.2222vw;
+    /* 40px */
+    --jds-font-size-4xl: 2.7778vw;
+    /* 56px */
+    --jds-font-size-5xl: 3.8889vw;
+    /* 72px */
+    --jds-font-size-6xl: 5vw;
+  }
+}
 
-  /* 字体样式：标题 1 */
-  --jds-font-heading-1-font-size: var(
-    --jds-font-size-4xl
-  ); /* 标题 1 字体大小 */
-  --jds-font-heading-1-line-height: calc(
-    var(--jds-font-heading-1-font-size) + var(--jds-size-3xs)
-  ); /* 标题 1 行高 */
-  --jds-font-heading-1-size: var(--jds-font-heading-1-font-size) /
-    var(--jds-font-heading-1-line-height); /* 标题 1 字体大小与行高的比例 */
-  --jds-font-heading-1: var(--jds-font-heading-1-size) var(--jds-font-family); /* 标题 1 字体样式 */
-  --jds-font-heading-1-regular: var(--jds-font-weight-regular)
-    var(--jds-font-heading-1); /* 标题 1 常规样式 */
-  --jds-font-heading-1-medium: var(--jds-font-weight-medium)
-    var(--jds-font-heading-1); /* 标题 1 中等样式 */
-  --jds-font-heading-1-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-heading-1); /* 标题 1 半粗样式 */
-  --jds-font-heading-1-bold: var(--jds-font-weight-bold)
-    var(--jds-font-heading-1); /* 标题 1 粗样式 */
+@media screen and (max-width: 1023.98px) {
+  :root {
+    /* === 字体大小 - 已校准 === */
+    /* 16px */
+    --jds-font-size-s: 2.1333vw;
+    /* 20px */
+    --jds-font-size-m: 2.6667vw;
+    /* 24px */
+    --jds-font-size-l: 3.2vw;
+    /* 28px */
+    --jds-font-size-xl: 3.7333vw;
+    /* 32px */
+    --jds-font-size-2xl: 4.2667vw;
+    /* 40px */
+    --jds-font-size-3xl: 5.3333vw;
+    /* 48px */
+    --jds-font-size-4xl: 6.4vw;
+    /* 64px */
+    --jds-font-size-5xl: 8.5333vw;
+    /* 80px */
+    --jds-font-size-6xl: 10.6667vw;
+  }
+}
 
-  /* 字体样式：标题 2 */
-  --jds-font-heading-2-font-size: var(
-    --jds-font-size-3xl
-  ); /* 标题 2 字体大小 */
-  --jds-font-heading-2-line-height: calc(
-    var(--jds-font-heading-2-font-size) + var(--jds-size-3xs)
-  ); /* 标题 2 行高 */
-  --jds-font-heading-2-size: var(--jds-font-heading-2-font-size) /
-    var(--jds-font-heading-2-line-height); /* 标题 2 字体大小与行高的比例 */
-  --jds-font-heading-2: var(--jds-font-heading-2-size) var(--jds-font-family); /* 标题 2 字体样式 */
-  --jds-font-heading-2-regular: var(--jds-font-weight-regular)
-    var(--jds-font-heading-2); /* 标题 2 常规样式 */
-  --jds-font-heading-2-medium: var(--jds-font-weight-medium)
-    var(--jds-font-heading-2); /* 标题 2 中等样式 */
-  --jds-font-heading-2-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-heading-2); /* 标题 2 半粗样式 */
-  --jds-font-heading-2-bold: var(--jds-font-weight-bold)
-    var(--jds-font-heading-2); /* 标题 2 粗样式 */
-
-  /* 字体样式：标题 3 */
-  --jds-font-heading-3-font-size: var(
-    --jds-font-size-2xl
-  ); /* 标题 3 字体大小 */
-  --jds-font-heading-3-line-height: calc(
-    var(--jds-font-heading-3-font-size) + var(--jds-size-3xs)
-  ); /* 标题 3 行高 */
-  --jds-font-heading-3-size: var(--jds-font-heading-3-font-size) /
-    var(--jds-font-heading-3-line-height); /* 标题 3 字体大小与行高的比例 */
-  --jds-font-heading-3: var(--jds-font-heading-3-size) var(--jds-font-family); /* 标题 3 字体样式 */
-  --jds-font-heading-3-regular: var(--jds-font-weight-regular)
-    var(--jds-font-heading-3); /* 标题 3 常规样式 */
-  --jds-font-heading-3-medium: var(--jds-font-weight-medium)
-    var(--jds-font-heading-3); /* 标题 3 中等样式 */
-  --jds-font-heading-3-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-heading-3); /* 标题 3 半粗样式 */
-  --jds-font-heading-3-bold: var(--jds-font-weight-bold)
-    var(--jds-font-heading-3); /* 标题 3 粗样式 */
-
-  /* 字体样式：标题 4 */
-  --jds-font-title-1-font-size: var(--jds-font-size-xl); /* 标题 1 字体大小 */
-  --jds-font-title-1-line-height: calc(
-    var(--jds-font-title-1-font-size) + var(--jds-size-3xs)
-  ); /* 标题 1 行高 */
-  --jds-font-title-1-size: var(--jds-font-title-1-font-size) /
-    var(--jds-font-title-1-line-height); /* 标题 1 字体大小与行高的比例 */
-  --jds-font-title-1: var(--jds-font-title-1-size) var(--jds-font-family); /* 标题 1 字体样式 */
-  --jds-font-title-1-regular: var(--jds-font-weight-regular)
-    var(--jds-font-title-1); /* 标题 1 常规样式 */
-  --jds-font-title-1-medium: var(--jds-font-weight-medium)
-    var(--jds-font-title-1); /* 标题 1 中等样式 */
-  --jds-font-title-1-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-title-1); /* 标题 1 半粗样式 */
-  --jds-font-title-1-bold: var(--jds-font-weight-bold) var(--jds-font-title-1); /* 标题 1 粗样式 */
-
-  /* 字体样式：标题 2 */
-  --jds-font-title-2-font-size: var(--jds-font-size-l); /* 标题 2 字体大小 */
-  --jds-font-title-2-line-height: calc(
-    var(--jds-font-title-2-font-size) + var(--jds-size-3xs)
-  ); /* 标题 2 行高 */
-  --jds-font-title-2-size: var(--jds-font-title-2-font-size) /
-    var(--jds-font-title-2-line-height); /* 标题 2 字体大小与行高的比例 */
-  --jds-font-title-2: var(--jds-font-title-2-size) var(--jds-font-family); /* 标题 2 字体样式 */
-  --jds-font-title-2-regular: var(--jds-font-weight-regular)
-    var(--jds-font-title-2); /* 标题 2 常规样式 */
-  --jds-font-title-2-medium: var(--jds-font-weight-medium)
-    var(--jds-font-title-2); /* 标题 2 中等样式 */
-  --jds-font-title-2-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-title-2); /* 标题 2 半粗样式 */
-  --jds-font-title-2-bold: var(--jds-font-weight-bold) var(--jds-font-title-2); /* 标题 2 粗样式 */
-
-  /* 字体样式：标题 3 */
-  --jds-font-title-3-font-size: var(--jds-font-size-m); /* 标题 3 字体大小 */
-  --jds-font-title-3-line-height: calc(
-    var(--jds-font-title-3-font-size) + var(--jds-size-4xs)
-  ); /* 标题 3 行高 */
-  --jds-font-title-3-size: var(--jds-font-title-3-font-size) /
-    var(--jds-font-title-3-line-height); /* 标题 3 字体大小与行高的比例 */
-  --jds-font-title-3: var(--jds-font-title-3-size) var(--jds-font-family); /* 标题 3 字体样式 */
-  --jds-font-title-3-regular: var(--jds-font-weight-regular)
-    var(--jds-font-title-3); /* 标题 3 常规样式 */
-  --jds-font-title-3-medium: var(--jds-font-weight-medium)
-    var(--jds-font-title-3); /* 标题 3 中等样式 */
-  --jds-font-title-3-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-title-3); /* 标题 3 半粗样式 */
-  --jds-font-title-3-bold: var(--jds-font-weight-bold) var(--jds-font-title-3); /* 标题 3 粗样式 */
-
-  /* 字体样式：标题 4 */
-  --jds-font-title-4-font-size: var(--jds-font-size-s); /* 标题 4 字体大小 */
-  --jds-font-title-4-line-height: calc(
-    var(--jds-font-title-4-font-size) + var(--jds-size-4xs)
-  ); /* 标题 4 行高 */
-  --jds-font-title-4-size: var(--jds-font-title-4-font-size) /
-    var(--jds-font-title-4-line-height); /* 标题 4 字体大小与行高的比例 */
-  --jds-font-title-4: var(--jds-font-title-4-size) var(--jds-font-family); /* 标题 4 字体样式 */
-  --jds-font-title-4-regular: var(--jds-font-weight-regular)
-    var(--jds-font-title-4); /* 标题 4 常规样式 */
-  --jds-font-title-4-medium: var(--jds-font-weight-medium)
-    var(--jds-font-title-4); /* 标题 4 中等样式 */
-  --jds-font-title-4-semibold: var(--jds-font-weight-semibold)
-    var(--jds-font-title-4); /* 标题 4 半粗样式 */
-  --jds-font-title-4-bold: var(--jds-font-weight-bold) var(--jds-font-title-4); /* 标题 4 粗样式 */
-
-  /* 字体样式：正文文本 1 */
-  --jds-font-body-text-1-font-size: var(
-    --jds-font-size-l
-  ); /* 正文文本 1 字体大小 */
-  --jds-font-body-text-1-line-height: calc(
-    var(--jds-font-body-text-1-font-size) + var(--jds-size-4xs)
-  ); /* 行高计算 */
-  --jds-font-body-text-1-size: var(--jds-font-body-text-1-font-size) /
-    var(--jds-font-body-text-1-line-height); /* 字体大小与行高的比例 */
-  --jds-font-body-text-1: var(--jds-font-body-text-1-size)
-    var(--jds-font-family); /* 正文文本 1 样式 */
-  --jds-font-body-text-1-regular: var(--jds-font-weight-regular)
-    var(--jds-font-body-text-1); /* 正文文本 1 常规样式 */
-  --jds-font-body-text-1-medium: var(--jds-font-weight-medium)
-    var(--jds-font-body-text-1); /* 正文文本 1 中等样式 */
-
-  /* 字体样式：正文文本 2 */
-  --jds-font-body-text-2-font-size: var(
-    --jds-font-size-m
-  ); /* 正文文本 2 字体大小 */
-  --jds-font-body-text-2-line-height: calc(
-    var(--jds-font-body-text-2-font-size) + var(--jds-size-4xs)
-  ); /* 行高计算 */
-  --jds-font-body-text-2-size: var(--jds-font-body-text-2-font-size) /
-    var(--jds-font-body-text-2-line-height); /* 字体大小与行高的比例 */
-  --jds-font-body-text-2: var(--jds-font-body-text-2-size)
-    var(--jds-font-family); /* 正文文本 2 样式 */
-  --jds-font-body-text-2-regular: var(--jds-font-weight-regular)
-    var(--jds-font-body-text-2); /* 正文文本 2 常规样式 */
-  --jds-font-body-text-2-medium: var(--jds-font-weight-medium)
-    var(--jds-font-body-text-2); /* 正文文本 2 中等样式 */
-
-  /* 字体样式：正文文本 3 */
-  --jds-font-body-text-3-font-size: var(
-    --jds-font-size-s
-  ); /* 正文文本 3 字体大小 */
-  --jds-font-body-text-3-line-height: calc(
-    var(--jds-font-body-text-3-font-size) + var(--jds-size-4xs)
-  ); /* 行高计算 */
-  --jds-font-body-text-3-size: var(--jds-font-body-text-3-font-size) /
-    var(--jds-font-body-text-3-line-height); /* 字体大小与行高的比例 */
-  --jds-font-body-text-3: var(--jds-font-body-text-3-size)
-    var(--jds-font-family); /* 正文文本 3 样式 */
-  --jds-font-body-text-3-regular: var(--jds-font-weight-regular)
-    var(--jds-font-body-text-3); /* 正文文本 3 常规样式 */
-  --jds-font-body-text-3-medium: var(--jds-font-weight-medium)
-    var(--jds-font-body-text-3); /* 正文文本 3 中等样式 */
-
-  /* 字体样式：说明文字 */
-  --jds-font-caption-font-size: var(--jds-font-size-s); /* 说明文字字体大小 */
-  --jds-font-caption-line-height: calc(
-    var(--jds-font-caption-font-size) + var(--jds-size-4xs)
-  ); /* 行高计算 */
-  --jds-font-caption-size: var(--jds-font-caption-font-size) /
-    var(--jds-font-caption-line-height); /* 字体大小与行高的比例 */
-  --jds-font-caption: var(--jds-font-weight-medium) var(--jds-font-caption-size)
-    var(--jds-font-family); /* 说明文字样式 */
-  font-family: var(--jds-font-family);
+/* 日站字体设置 */
+:root[lang="ja"] {
+  --jds-font-family: "Noto Sans JP", sans-serif;
 }
 
 /* 非日站字体设置 */
@@ -405,14 +326,246 @@
   --jds-font-family: "Poppins", sans-serif;
 }
 
-/* 日站字体设置 */
-:root[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
 /* 支持从右到左的文本方向 */
 :root[dir="rtl"] {
-  direction: rtl; /* 设置方向为从右到左 */
+  /* 设置方向为从右到左 */
+  direction: rtl;
 
-  --jds-text-x-direction: -1; /* 文本水平方向：-1 表示从右到左 */
+  /* 文本水平方向：-1 表示从右到左 */
+  --jds-text-x-direction: -1;
+}
+
+:root {
+  /* 标题 1 字体大小 */
+  --jds-font-title-1-font-size: var(--jds-font-size-6xl);
+  /* 标题 2 字体大小 */
+  --jds-font-title-2-font-size: var(--jds-font-size-5xl);
+  /* 标题 3 字体大小 */
+  --jds-font-title-3-font-size: var(--jds-font-size-4xl);
+  /* 标题 4 字体大小 */
+  --jds-font-title-4-font-size: var(--jds-font-size-3xl);
+  /* 标题 5 字体大小 */
+  --jds-font-title-5-font-size: var(--jds-font-size-2xl);
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    /* 标题 6 字体大小 */
+    --jds-font-title-6-font-size: var(--jds-font-size-xl);
+
+    /* 正文文本 1 字体大小 */
+    --jds-font-body-text-1-font-size: var(--jds-font-size-xl);
+    /* 正文文本 2 字体大小 */
+    --jds-font-body-text-2-font-size: var(--jds-font-size-l);
+    /* 正文文本 3 字体大小 */
+    --jds-font-body-text-3-font-size: var(--jds-font-size-m);
+
+    /* 说明文字 字体大小 */
+    --jds-font-caption-font-size: var(--jds-font-size-s);
+
+    /* 标题 1 行高 */
+    --jds-font-title-1-line-height: calc(var(--jds-font-title-1-font-size) + var(--jds-size-2xs));
+    /* 标题 2 行高 */
+    --jds-font-title-2-line-height: calc(var(--jds-font-title-2-font-size) + var(--jds-size-2xs));
+    /* 标题 3 行高 */
+    --jds-font-title-3-line-height: calc(var(--jds-font-title-3-font-size) + var(--jds-size-2xs));
+    /* 标题 4 行高 */
+    --jds-font-title-4-line-height: calc(var(--jds-font-title-4-font-size) + var(--jds-size-2xs));
+    /* 标题 5 行高 */
+    --jds-font-title-5-line-height: calc(var(--jds-font-title-5-font-size) + var(--jds-size-2xs));
+    /* 标题 6 行高 */
+    --jds-font-title-6-line-height: calc(var(--jds-font-title-6-font-size) + var(--jds-size-2xs));
+
+    /* 正文文本 1 行高计算 */
+    --jds-font-body-text-1-line-height: calc(var(--jds-font-body-text-1-font-size) + var(--jds-size-2xs));
+    /* 正文文本 2 行高计算 */
+    --jds-font-body-text-2-line-height: calc(var(--jds-font-body-text-2-font-size) + var(--jds-size-2xs));
+    /* 正文文本 3 行高计算 */
+    --jds-font-body-text-3-line-height: calc(var(--jds-font-body-text-3-font-size) + var(--jds-size-2xs));
+
+    /* 说明文字 行高计算 */
+    --jds-font-caption-line-height: calc(var(--jds-font-caption-font-size) + var(--jds-size-3xs));
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  :root {
+    /* 标题 6 字体大小 */
+    --jds-font-title-6-font-size: var(--jds-font-size-2xl);
+
+    /* 正文文本 1 字体大小 */
+    --jds-font-body-text-1-font-size: var(--jds-font-size-2xl);
+    /* 正文文本 2 字体大小 */
+    --jds-font-body-text-2-font-size: var(--jds-font-size-xl);
+    /* 正文文本 3 字体大小 */
+    --jds-font-body-text-3-font-size: var(--jds-font-size-l);
+
+    /* 说明文字 字体大小 */
+    --jds-font-caption-font-size: var(--jds-font-size-m);
+
+    /* 标题 1 行高 */
+    --jds-font-title-1-line-height: calc(var(--jds-font-title-1-font-size) + var(--jds-size-m));
+    /* 标题 2 行高 */
+    --jds-font-title-2-line-height: calc(var(--jds-font-title-2-font-size) + var(--jds-size-m));
+    /* 标题 3 行高 */
+    --jds-font-title-3-line-height: calc(var(--jds-font-title-3-font-size) + var(--jds-size-m));
+    /* 标题 4 行高 */
+    --jds-font-title-4-line-height: calc(var(--jds-font-title-4-font-size) + var(--jds-size-m));
+    /* 标题 5 行高 */
+    --jds-font-title-5-line-height: calc(var(--jds-font-title-5-font-size) + var(--jds-size-m));
+    /* 标题 6 行高 */
+    --jds-font-title-6-line-height: calc(var(--jds-font-title-6-font-size) + var(--jds-size-m));
+
+    /* 正文文本 1 行高计算 */
+    --jds-font-body-text-1-line-height: calc(var(--jds-font-body-text-1-font-size) + var(--jds-size-m));
+    /* 正文文本 2 行高计算 */
+    --jds-font-body-text-2-line-height: calc(var(--jds-font-body-text-2-font-size) + var(--jds-size-m));
+    /* 正文文本 3 行高计算 */
+    --jds-font-body-text-3-line-height: calc(var(--jds-font-body-text-3-font-size) + var(--jds-size-m));
+
+    /* 说明文字 行高计算 */
+    --jds-font-caption-line-height: calc(var(--jds-font-caption-font-size) + var(--jds-size-3xs));
+  }
+}
+
+:root {
+  /* === 字体样式：显示 === */
+  /* 显示字体大小 */
+  --jds-font-display-font-size: var(--jds-font-size-5xl);
+  /* 行高计算 */
+  --jds-font-display-line-height: calc(var(--jds-font-display-font-size) + var(--jds-size-2xs));
+  /* 字体大小与行高的比例 */
+  --jds-font-display-size: var(--jds-font-display-font-size) / var(--jds-font-display-line-height);
+  /* 显示字体样式 */
+  --jds-font-display: var(--jds-font-display-size) var(--jds-font-family);
+  /* 常规显示字体样式 */
+  --jds-font-display-regular: var(--jds-font-weight-regular) var(--jds-font-display);
+  /* 中等显示字体样式 */
+  --jds-font-display-medium: var(--jds-font-weight-medium) var(--jds-font-display);
+  /* 半粗显示字体样式 */
+  --jds-font-display-semibold: var(--jds-font-weight-semibold) var(--jds-font-display);
+  /* 粗显示字体样式 */
+  --jds-font-display-bold: var(--jds-font-weight-bold) var(--jds-font-display);
+
+  /* === 字体样式：标题 1 === */
+  /* 标题 1 字体大小与行高的比例 */
+  --jds-font-title-1-size: var(--jds-font-title-1-font-size) / var(--jds-font-title-1-line-height);
+  /* 标题 1 字体样式 */
+  --jds-font-title-1: var(--jds-font-title-1-size) var(--jds-font-family);
+  /* 标题 1 常规样式 */
+  --jds-font-title-1-regular: var(--jds-font-weight-regular) var(--jds-font-title-1);
+  /* 标题 1 中等样式 */
+  --jds-font-title-1-medium: var(--jds-font-weight-medium) var(--jds-font-title-1);
+  /* 标题 1 半粗样式 */
+  --jds-font-title-1-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-1);
+  /* 标题 1 粗样式 */
+  --jds-font-title-1-bold: var(--jds-font-weight-bold) var(--jds-font-title-1);
+
+  /* === 字体样式：标题 2 === */
+  /* 标题 2 字体大小与行高的比例 */
+  --jds-font-title-2-size: var(--jds-font-title-2-font-size) / var(--jds-font-title-2-line-height);
+  /* 标题 2 字体样式 */
+  --jds-font-title-2: var(--jds-font-title-2-size) var(--jds-font-family);
+  /* 标题 2 常规样式 */
+  --jds-font-title-2-regular: var(--jds-font-weight-regular) var(--jds-font-title-2);
+  /* 标题 2 中等样式 */
+  --jds-font-title-2-medium: var(--jds-font-weight-medium) var(--jds-font-title-2);
+  /* 标题 2 半粗样式 */
+  --jds-font-title-2-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-2);
+  /* 标题 2 粗样式 */
+  --jds-font-title-2-bold: var(--jds-font-weight-bold) var(--jds-font-title-2);
+
+  /* === 字体样式：标题 3 === */
+  /* 标题 3 字体大小与行高的比例 */
+  --jds-font-title-3-size: var(--jds-font-title-3-font-size) / var(--jds-font-title-3-line-height);
+  /* 标题 3 字体样式 */
+  --jds-font-title-3: var(--jds-font-title-3-size) var(--jds-font-family);
+  /* 标题 3 常规样式 */
+  --jds-font-title-3-regular: var(--jds-font-weight-regular) var(--jds-font-title-3);
+  /* 标题 3 中等样式 */
+  --jds-font-title-3-medium: var(--jds-font-weight-medium) var(--jds-font-title-3);
+  /* 标题 3 半粗样式 */
+  --jds-font-title-3-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-3);
+  /* 标题 3 粗样式 */
+  --jds-font-title-3-bold: var(--jds-font-weight-bold) var(--jds-font-title-3);
+
+  /* === 字体样式：标题 4 === */
+  /* 标题 4 字体大小与行高的比例 */
+  --jds-font-title-4-size: var(--jds-font-title-4-font-size) / var(--jds-font-title-4-line-height);
+  /* 标题 4 字体样式 */
+  --jds-font-title-4: var(--jds-font-title-4-size) var(--jds-font-family);
+  /* 标题 4 常规样式 */
+  --jds-font-title-4-regular: var(--jds-font-weight-regular) var(--jds-font-title-4);
+  /* 标题 4 中等样式 */
+  --jds-font-title-4-medium: var(--jds-font-weight-medium) var(--jds-font-title-4);
+  /* 标题 4 半粗样式 */
+  --jds-font-title-4-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-4);
+  /* 标题 4 粗样式 */
+  --jds-font-title-4-bold: var(--jds-font-weight-bold) var(--jds-font-title-4);
+
+  /* === 字体样式：标题 5 === */
+  /* 标题 5 字体大小与行高的比例 */
+  --jds-font-title-5-size: var(--jds-font-title-5-font-size) / var(--jds-font-title-5-line-height);
+  /* 标题 5 字体样式 */
+  --jds-font-title-5: var(--jds-font-title-5-size) var(--jds-font-family);
+  /* 标题 5 常规样式 */
+  --jds-font-title-5-regular: var(--jds-font-weight-regular) var(--jds-font-title-5);
+  /* 标题 5 中等样式 */
+  --jds-font-title-5-medium: var(--jds-font-weight-medium) var(--jds-font-title-5);
+  /* 标题 5 半粗样式 */
+  --jds-font-title-5-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-5);
+  /* 标题 5 粗样式 */
+  --jds-font-title-5-bold: var(--jds-font-weight-bold) var(--jds-font-title-5);
+
+  /* === 字体样式：标题 6 === */
+  /* 标题 6 字体大小与行高的比例 */
+  --jds-font-title-6-size: var(--jds-font-title-6-font-size) / var(--jds-font-title-6-line-height);
+  /* 标题 6 字体样式 */
+  --jds-font-title-6: var(--jds-font-title-6-size) var(--jds-font-family);
+  /* 标题 6 常规样式 */
+  --jds-font-title-6-regular: var(--jds-font-weight-regular) var(--jds-font-title-6);
+  /* 标题 6 中等样式 */
+  --jds-font-title-6-medium: var(--jds-font-weight-medium) var(--jds-font-title-6);
+  /* 标题 6 半粗样式 */
+  --jds-font-title-6-semibold: var(--jds-font-weight-semibold) var(--jds-font-title-6);
+  /* 标题 6 粗样式 */
+  --jds-font-title-6-bold: var(--jds-font-weight-bold) var(--jds-font-title-6);
+
+  /* === 字体样式：正文文本 1 === */
+  /* 字体大小与行高的比例 */
+  --jds-font-body-text-1-size: var(--jds-font-body-text-1-font-size) / var(--jds-font-body-text-1-line-height);
+  /* 正文文本 1 样式 */
+  --jds-font-body-text-1: var(--jds-font-body-text-1-size) var(--jds-font-family);
+  /* 正文文本 1 常规样式 */
+  --jds-font-body-text-1-regular: var(--jds-font-weight-regular) var(--jds-font-body-text-1);
+  /* 正文文本 1 中等样式 */
+  --jds-font-body-text-1-medium: var(--jds-font-weight-medium) var(--jds-font-body-text-1);
+
+  /* === 字体样式：正文文本 2 === */
+  /* 字体大小与行高的比例 */
+  --jds-font-body-text-2-size: var(--jds-font-body-text-2-font-size) / var(--jds-font-body-text-2-line-height);
+  /* 正文文本 2 样式 */
+  --jds-font-body-text-2: var(--jds-font-body-text-2-size) var(--jds-font-family);
+  /* 正文文本 2 常规样式 */
+  --jds-font-body-text-2-regular: var(--jds-font-weight-regular) var(--jds-font-body-text-2);
+  /* 正文文本 2 中等样式 */
+  --jds-font-body-text-2-medium: var(--jds-font-weight-medium) var(--jds-font-body-text-2);
+
+  /* === 字体样式：正文文本 3 === */
+  /* 字体大小与行高的比例 */
+  --jds-font-body-text-3-size: var(--jds-font-body-text-3-font-size) / var(--jds-font-body-text-3-line-height);
+  /* 正文文本 3 样式 */
+  --jds-font-body-text-3: var(--jds-font-body-text-3-size) var(--jds-font-family);
+  /* 正文文本 3 常规样式 */
+  --jds-font-body-text-3-regular: var(--jds-font-weight-regular) var(--jds-font-body-text-3);
+  /* 正文文本 3 中等样式 */
+  --jds-font-body-text-3-medium: var(--jds-font-weight-medium) var(--jds-font-body-text-3);
+
+  /* === 字体样式：说明文字 === */
+  /* 字体大小与行高的比例 */
+  --jds-font-caption-size: var(--jds-font-caption-font-size) / var(--jds-font-caption-line-height);
+  /* 说明文字样式 */
+  --jds-font-caption: var(--jds-font-weight-medium) var(--jds-font-caption-size) var(--jds-font-family);
+
+  font-family: var(--jds-font-family);
 }
