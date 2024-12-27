@@ -12,8 +12,8 @@ export const dialogStyles = css`
     flex-direction: column;
     background: var(--background-color);
     width: var(--jds-dialog-width, auto);
-    max-width: calc(100vw - var(--jds-size-4xl));
-    max-height: calc(100vh - var(--jds-size-4xl));
+    max-width: calc(100vw - var(--jds-size-5xl));
+    max-height: calc(100vh - var(--jds-size-5xl));
     min-width: 424px;
     padding: 0;
     border: 0;
@@ -82,14 +82,14 @@ export const dialogStyles = css`
   .content {
     margin-right: var(--jds-size-2xs);
     margin-bottom: var(--jds-size-xl);
-    padding:0 calc(var(--jds-size-4xl) - 10px) 0 var(--jds-size-4xl);
+    padding: 0 calc(var(--jds-size-5xl) - 10px) 0 var(--jds-size-5xl);
     overflow-y: auto; /* 内容溢出时可滚动 */
   }
 
   /* 滚动条滑块 */
   .content::-webkit-scrollbar-thumb {
     /* 滑块颜色 */
-    background-color: #C9C9CB;
+    background-color: #c9c9cb;
     /* 滑块圆角 */
     border-radius: 10px;
   }
@@ -106,7 +106,7 @@ export const dialogStyles = css`
     }
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1439.98px){
+  @media screen and (min-width: 1024px) and (max-width: 1439.98px) {
     .content::-webkit-scrollbar {
       /* 滚动条宽度 */
       width: 0.416666666666667vw;
