@@ -170,34 +170,6 @@
   /* 全白 */
   --jds-color-neutral-full: #fff;
 
-  /* === 尺寸和间距 === */
-  /* 2px */
-  --jds-size-4xs: 0.125rem;
-  /* 4px */
-  --jds-size-3xs: 0.25rem;
-  /* 8px */
-  --jds-size-2xs: 0.5rem;
-  /* 12px */
-  --jds-size-xs: 0.75rem;
-  /* 14px */
-  --jds-size-s: 0.875rem;
-  /* 16px */
-  --jds-size-m: 1rem;
-  /* 20px */
-  --jds-size-l: 1.25rem;
-  /* 24px */
-  --jds-size-xl: 1.5rem;
-  /* 32px */
-  --jds-size-2xl: 2rem;
-  /* 40px */
-  --jds-size-3xl: 2.5rem;
-  /* 48px */
-  --jds-size-4xl: 3rem;
-  /* 64px */
-  --jds-size-5xl: 4rem;
-  /* 80px */
-  --jds-size-6xl: 5rem;
-
   /* === Z-index 层级 === */
   /* 深层级 */
   --jds-index-deep: -1;
@@ -227,43 +199,47 @@
   --jds-font-weight-bold: 700;
 
   /* === 边框半径 - 已校准 === */
-  /* 2px */
-  --jds-border-radius-xs: 0.125rem;
-  /* 4px */
-  --jds-border-radius-s: 0.25rem;
-  /* 8px */
-  --jds-border-radius-m: 0.5rem;
-  /* 12px */
-  --jds-border-radius-l: 0.75rem;
-  /* 14px */
-  --jds-border-radius-xl: 0.875rem;
+  --jds-border-radius-xs: 2px;
+  --jds-border-radius-s: 4px;
+  --jds-border-radius-m: 8px;
+  --jds-border-radius-l: 12px;
+  --jds-border-radius-xl: 14px;
   /* 圆角，999px */
-  --jds-border-radius-pill: 62.438rem;
+  --jds-border-radius-pill: 999px;
   /* 圆形边框 */
   --jds-border-radius-circle: 50%;
+
+  /* === 尺寸和间距 === */
+  --jds-size-4xs: 2px;
+  --jds-size-3xs: 4px;
+  --jds-size-2xs: 8px;
+  --jds-size-xs: 12px;
+  --jds-size-s: 14px;
+  --jds-size-m: 16px;
+  --jds-size-l: 18px;
+  --jds-size-xl: 20px;
+  --jds-size-2xl: 24px;
+  --jds-size-3xl: 32px;
+  --jds-size-4xl: 36px;
+  --jds-size-5xl: 40px;
+  --jds-size-6xl: 48px;
+  --jds-size-7xl: 64px;
+  --jds-size-8xl: 80px;
 }
 
 @media screen and (min-width: 1440px) {
   :root {
     /* === 字体大小 - 已校准 === */
-    /* 12px */
-    --jds-font-size-s: 0.75rem;
-    /* 14px */
-    --jds-font-size-m: 0.875rem;
-    /* 16px */
-    --jds-font-size-l: 1rem;
-    /* 18px */
-    --jds-font-size-xl: 1.125rem;
-    /* 24px */
-    --jds-font-size-2xl: 1.5rem;
-    /* 32px */
-    --jds-font-size-3xl: 2rem;
-    /* 40px */
-    --jds-font-size-4xl: 2.5rem;
-    /* 56px */
-    --jds-font-size-5xl: 3.5rem;
-    /* 72px */
-    --jds-font-size-6xl: 4.5rem;
+    --jds-font-size-s: 12px;
+    --jds-font-size-m: 14px;
+    --jds-font-size-l: 16px;
+    --jds-font-size-xl: 18px;
+    --jds-font-size-2xl: 24px;
+    --jds-font-size-3xl: 32px;
+    --jds-font-size-4xl: 40px;
+    --jds-font-size-5xl: 56px;
+    --jds-font-size-6xl: 72px;
+
   }
 }
 
