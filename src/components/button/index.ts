@@ -10,12 +10,12 @@ import "../icon";
 import { JackeryIcon } from "../icon/icon-list";
 import "../spinner";
 
-// 按钮变体的类型定义
-export type ButtonVariant = "primary" | "secondary" | "tertiary";
+// 按钮变体的类型定义：主按钮、副按钮、次级按钮、文本按钮
+export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
 // 按钮种类的类型定义
 export type ButtonKind = "default" | "neutral" | "success" | "danger";
-// 按钮大小的类型定义
-export type ButtonSize = "small" | "medium" | "large";
+// 按钮大小的类型定义：特大、大、中、小
+export type ButtonSize = "extra" | "large" | "medium" | "small";
 // 目标类型的类型定义
 export type TargetType = "_blank" | "_parent" | "_self" | "_top";
 
@@ -48,7 +48,7 @@ export default class JdsButton extends LitElement {
    * 设置按钮的大小
    */
   @property({ type: String, reflect: true })
-  size: ButtonSize = "medium";
+  size: ButtonSize = "large";
 
   /**
    * 设置按钮的标签，用于无障碍访问
@@ -57,16 +57,16 @@ export default class JdsButton extends LitElement {
   label?: string;
 
   /**
-   * 设置加载状态下的按钮标签
-   */
-  @property({ type: String, attribute: "loading-label" })
-  loadingLabel?: string;
-
-  /**
    * 设置按钮的加载状态
    */
   @property({ type: Boolean, reflect: true })
   loading = false;
+
+  /**
+   * 设置加载状态下的按钮标签
+   */
+  @property({ type: String, attribute: "loading-label" })
+  loadingLabel?: string;
 
   /**
    * 设置按钮为禁用状态
@@ -81,16 +81,16 @@ export default class JdsButton extends LitElement {
   href?: string;
 
   /**
-   * 设置图标名称，使用jds-icon组件显示图标
-   */
-  @property({ type: String })
-  icon?: JackeryIcon;
-
-  /**
    * 设置锚点的目标，当设置了`href`时使用
    */
   @property({ type: String })
   target?: TargetType = "_self";
+
+  /**
+   * 设置图标名称，使用jds-icon组件显示图标
+   */
+  @property({ type: String })
+  icon?: JackeryIcon;
 
   /**
    * 设置按钮的类型，设置`submit`以将按钮用作父表单的提交器
@@ -220,8 +220,8 @@ export default class JdsButton extends LitElement {
       ></jds-spinner>
     `;
     const slots = html`
-      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
       <span class="label">${label}</span>
+      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
     `;
     const caret = this.dropdown ? this.caretTemplate() : "";
     const classes = classMap({

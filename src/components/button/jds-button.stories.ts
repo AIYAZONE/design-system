@@ -7,14 +7,14 @@ interface ButtonProps {
   class: string;
   variant: any;
   kind: any;
-  href: any;
-  target: any;
   size: any;
-  icon: any;
   label: string;
+  loading: boolean;
   loadingLabel: any;
   disabled: boolean;
-  loading: boolean;
+  href: any;
+  target: any;
+  icon: any;
   content: any;
 }
 
@@ -23,43 +23,58 @@ const meta: Meta = {
   tags: ["autodocs"],
   component: "jds-button",
   argTypes: {
-    label: {
-      control: {
-        type: "text",
-      },
-    },
     variant: {
-      options: ["primary", "secondary", "tertiary"],
+      options: ["primary", "secondary", "tertiary", "text"],
+      description: "设置按钮的变体",
       default: "primary",
       control: { type: "select" },
     },
     kind: {
       options: ["default", "neutral", "success", "danger"],
+      description: "设置按钮的种类",
       default: "default",
       control: { type: "select" },
     },
-    loadingLabel: {
-      control: "text",
+    size: {
+      options: ["extra", "large", "medium", "small"],
+      description: "设置按钮的大小",
+      default: "large",
+      control: { type: "select" },
+    },
+    label: {
+      description: "设置按钮的标签，用于无障碍访问",
+      control: {
+        type: "text",
+      },
     },
     loading: {
+      description: "设置按钮的加载状态",
       control: "boolean",
     },
+    loadingLabel: {
+      description: "设置加载状态下的按钮标签",
+      control: "text",
+    },
     disabled: {
+      description: "设置按钮为禁用状态",
       control: "boolean",
     },
     href: {
       control: {
         type: "text",
       },
+      description: "设置链接URL，如果设置，按钮将渲染为锚标签",
     },
     target: {
+      description: "设置锚点的目标，当设置了`href`时使用",
+      options: ["_blank", "_parent", "_self", "_top"],
+      control: { type: "select" },
+    },
+    icon: {
+      description: "设置图标名称，使用`jds-icon`组件显示图标",
       control: {
         type: "text",
       },
-    },
-    size: {
-      options: ["large", "medium", "small"],
-      control: { type: "select" },
     },
   },
 } satisfies Meta<ButtonProps>;
@@ -109,16 +124,37 @@ export const Kinds = (args: ButtonProps) => html`${SingleButtonTemplate({
 })}
 ${SingleButtonTemplate({
   ...args,
-  content: "Primary Button",
+  content: "Neutral Button",
   kind: "neutral",
 })}
 ${SingleButtonTemplate({
   ...args,
-  content: "Primary Button",
+  content: "Success Button",
   kind: "success",
 })}
 ${SingleButtonTemplate({
   ...args,
-  content: "Primary Button",
+  content: "Danger Button",
   kind: "danger",
+})} `;
+
+export const Sizes = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Extra Large Button",
+  size: "extra",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Large Button",
+  size: "large",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Medium Button",
+  size: "medium",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Small Button",
+  size: "small",
 })} `;

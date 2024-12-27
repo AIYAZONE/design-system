@@ -19,8 +19,8 @@ export const buttonStyles = css`
     --padding-horizontal: var(--jds-size-m);
     --margin-icon: var(--padding-vertical);
     --icon-size: var(--jds-size-m);
-    --font: var(--jds-font-title-3-medium);
-    --height: var(--jds-size-2xl);
+    --font: var(--jds-font-title-6-medium);
+    --height: var(--jds-size-5xl);
     --border-radius: var(--jds-border-radius-pill);
 
     display: flex;
@@ -30,7 +30,7 @@ export const buttonStyles = css`
     box-sizing: border-box;
     width: max-content;
     height: var(--height);
-    border: solid 1px var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     text-decoration: none;
     padding: var(--padding-vertical) var(--padding-horizontal);
@@ -53,20 +53,37 @@ export const buttonStyles = css`
     text-overflow: ellipsis;
   }
 
-  :host([size="small"]) .button {
-    --font: var(--jds-font-title-4-medium);
-    --padding-vertical: var(--jds-size-3xs);
-    --padding-horizontal: var(--jds-size-2xs);
-    --icon-size: var(--jds-size-s);
-    --height: var(--jds-size-xl);
+  /* 不同尺寸按钮 */
+  :host([size="extra"]) .button {
+    --padding-vertical: 18px;
+    --padding-horizontal: 32px;
+    --margin-icon: var(--jds-size-2xs);
+    --height: 56px;
+    --font: 700 22px/30px var(--jds-font-family);
   }
 
   :host([size="large"]) .button {
-    --font: var(--jds-font-title-3-medium);
     --padding-vertical: var(--jds-size-xs);
-    --padding-horizontal: var(--jds-size-xl);
+    --padding-horizontal: var(--jds-size-3xl);
     --margin-icon: var(--jds-size-2xs);
-    --height: var(--jds-size-3xl);
+    --height: var(--jds-size-6xl);
+    --font: 600 18px/26px var(--jds-font-family);
+  }
+
+  :host([size="medium"]) .button {
+    --padding-vertical: var(--jds-size-2xs);
+    --padding-horizontal: var(--jds-size-2xl);
+    --margin-icon: var(--jds-size-2xs);
+    --height: var(--jds-size-4xl);
+    --font: 600 14px/22px var(--jds-font-family);
+  }
+
+  :host([size="small"]) .button {
+    --padding-vertical: var(--jds-size-3xs);
+    --padding-horizontal: var(--jds-size-xs);
+    --icon-size: var(--jds-size-s);
+    --height: var(--jds-size-2xl);
+    --font: 600 16px/24px var(--jds-font-family);
   }
 
   .button:focus {
