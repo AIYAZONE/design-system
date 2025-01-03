@@ -100,11 +100,11 @@
 
   /* === 主色调 === */
   /* 主色 - 已校准 */
-  --jds-color-primary: #fd5000;
+  --jds-color-primary: #FD5000;
   /* 主色高亮 */
-  --jds-color-primary-highlight: #ef6114;
+  --jds-color-primary-highlight: #FD6A26;
   /* 主色对比色 */
-  --jds-color-primary-contrast: #fd6a26;
+  --jds-color-primary-contrast: #0050FD;
 
   /* === 成功色 === */
   /* 成功状态颜色 - 已校准 */
@@ -124,15 +124,15 @@
 
   /* === 警告色 === */
   /* 警告状态颜色 */
-  --jds-color-warning: #ffb600;
+  --jds-color-warning: #FFFBE6;
   /* 警告状态高亮 */
-  --jds-color-warning-highlight: #ff9800;
+  --jds-color-warning-highlight: #FFE58F;
   /* 警告状态对比色 */
   --jds-color-warning-contrast: #fff8e6;
 
   /* === 信息色 === */
   /* 信息状态颜色 */
-  --jds-color-info: #5794ff;
+  --jds-color-info: #5794FF;
   /* 信息状态高亮 */
   --jds-color-info-highlight: #457eff;
   /* 信息状态对比色 */
@@ -151,6 +151,32 @@
   --jds-color-text-hightlight: var(--jds-color-primary);
   /* 超链接文本 */
   --jds-color-text-link: #0a59f7;
+
+  /* === 系统图标颜色 - 已校准 === */
+  --jds-color-icon-normal: #1a1a1a;
+  --jds-color-icon-orange: var(--jds-color-primary);
+
+
+  --jds-color-white: #FFFFFF;
+  --jds-color-grey: #F5F5F5;
+
+  /* === 网页背景色 - 已校准 === */
+  --jds-background-color-1: var(--jds-color-white);
+  --jds-background-color-2: var(--jds-color-grey);
+
+  /* === 系统卡片色 - 已校准 === */
+  --jds-color-card-white: var(--jds-color-white);
+  --jds-color-card-grey: var(--jds-color-grey);
+  --jds-color-card-list: #F8F8F8;
+
+  /* === 线条颜色 - 已校准 === */
+  --jds-color-line: rgba(0, 0, 0, 0.15);
+  --jds-color-hr: rgba(0, 0, 0, 0.07);
+
+  /* === 蒙黑颜色 - 已校准 === */
+  --jds-color-overlay-30: rgba(0, 0, 0, 0.3);
+  --jds-color-overlay-50: rgba(0, 0, 0, 0.5);
+
 
   /* === 中性色 === */
   /* 无色 */

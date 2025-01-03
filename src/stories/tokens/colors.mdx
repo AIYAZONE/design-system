@@ -1,50 +1,151 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 import { html } from 'lit';
 
-<Meta title="设计变量/颜色" />
+<Meta title="设计变量/色彩" />
 
-# 颜色
+# 色彩
 
-下列是一些默认值的颜色列表
+
+## 功能颜色
 
 <ColorPalette>
   <ColorItem
     title="--jds-color-primary"
-    subtitle="Primary Color"
-    colors={{ '': 'var(--jds-color-primary)', '--highlight': 'var(--jds-color-primary-highlight)', '--contrast': 'var(--jds-color-primary-contrast)' }}
+    subtitle="主色"
+    colors={{ '': '#FD5000' }}
   />
   <ColorItem
     title="--jds-color-success"
-    subtitle="Success Color"
-    colors={{ '': 'var(--jds-color-success)', '--highlight': 'var(--jds-color-success-highlight)', '--contrast': 'var(--jds-color-success-contrast)' }}
+    subtitle="成功色"
+    colors={{ '': '#52C41A' }}
   />
   <ColorItem
     title="--jds-color-danger"
-    subtitle="Danger Color"
-    colors={{ '': 'var(--jds-color-danger)', '--highlight': 'var(--jds-color-danger-highlight)', '--contrast': 'var(--jds-color-danger-contrast)' }}
+    subtitle="错误色/危险色"
+    colors={{ '': '#FF3B30' }}
   />
   <ColorItem
     title="--jds-color-warning"
-    subtitle="Warning Color"
-    colors={{ '': 'var(--jds-color-warning)', '--highlight': 'var(--jds-color-warning-highlight)', '--contrast': 'var(--jds-color-warning-contrast)' }}
+    subtitle="警告色"
+    colors={{ '': '#FFFBE6' }}
   />
   <ColorItem
     title="--jds-color-info"
-    subtitle="Info Color"
-    colors={{ '': 'var(--jds-color-info)', '--highlight': 'var(--jds-color-info-highlight)', '--contrast': 'var(--jds-color-info-contrast)' }}
+    subtitle="信息色 - 暂未定义"
+    colors={{ '': '#5794FF' }}
+  />
+</ColorPalette>
+
+
+## 文本颜色
+
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-text-l1"
+    subtitle="一级文本"
+    colors={{ '': '#1a1a1a' }}
   />
   <ColorItem
-    title="--jds-color-neutral"
-    subtitle="Neutral Colors"
-    colors={{
-        '--none': 'var(--jds-color-neutral-none)',
-        '--darkest': 'var(--jds-color-neutral-darkest)',
-        '--darker': 'var(--jds-color-neutral-darker)',
-        '--dark': 'var(--jds-color-neutral-dark)',
-        '--light' : 'var(--jds-color-neutral-light)',
-        '--lighter' : 'var(--jds-color-neutral-lighter)',
-        '--lightest' : 'var(--jds-color-neutral-lightest)',
-        '--full' : 'var(--jds-color-neutral-full)',
-    }}
+    title="--jds-color-text-l2"
+    subtitle="二级文本"
+    colors={{ '': '#666666' }}
+  />
+  <ColorItem
+    title="--jds-color-text-l3"
+    subtitle="三级文本"
+    colors={{ '': '#999999'}}
+  />
+  <ColorItem
+    title="--jds-color-text-invalid"
+    subtitle="无效文本"
+    colors={{ '': '#b3b3b3' }}
+  />
+  <ColorItem
+    title="--jds-color-text-hightlight"
+    subtitle="高亮文本"
+    colors={{ '': '#fd5000' }}
+  />
+  <ColorItem
+    title="--jds-color-text-link"
+    subtitle="超链接文本"
+    colors={{ '': '#0a59f7' }}
+  />
+</ColorPalette>
+
+## 系统图标颜色
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-icon-normal"
+    subtitle="常规图标色"
+    colors={{ '': '#1a1a1a' }}
+  />
+  <ColorItem
+    title="--jds-color-icon-orange"
+    subtitle="橙色图标色"
+    colors={{ '': '#FD5000' }}
+  />
+</ColorPalette>
+
+
+## 网页背景色
+<ColorPalette>
+  <ColorItem
+    title="--jds-background-color-1"
+    subtitle="网页背景色1"
+    colors={{ '': '#FFFFFF' }}
+  />
+  <ColorItem
+    title="--jds-background-color-2"
+    subtitle="网页背景色2"
+    colors={{ '': '#F5F5F5' }}
+  />
+</ColorPalette>
+
+
+## 系统卡片色
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-card-white    "
+    subtitle="白卡片"
+    colors={{ '': '#FFFFFF' }}
+  />
+  <ColorItem
+    title="--jds-color-card-grey"
+    subtitle="灰卡片"
+    colors={{ '': '#F5F5F5' }}
+  />
+  <ColorItem
+    title="--jds-color-card-list"
+    subtitle="列表卡片（用于导航栏）"
+    colors={{ '': '#F8F8F8' }}
+  />
+</ColorPalette>
+
+## 线条颜色
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-line"
+    subtitle="产品指示线"
+    colors={{ '': 'rgba(0, 0, 0, 0.15)' }}
+  />
+  <ColorItem
+    title="--jds-color-hr"
+    subtitle="分割线"
+    colors={{ '': 'rgba(0, 0, 0, 0.07)' }}
+  />
+</ColorPalette>
+
+
+## 蒙黑颜色
+<ColorPalette>
+  <ColorItem
+    title="--jds-color-overlay-30"
+    subtitle="30%图片蒙黑（图片全局蒙黑）"
+    colors={{ '': 'rgba(0, 0, 0, 0.3)' }}
+  />
+  <ColorItem
+    title="--jds-color-overlay-50"
+    subtitle="50%图片蒙黑（信任状、文字）/系统50%蒙黑（顶部导航栏、弹窗）"
+    colors={{ '': 'rgba(0, 0, 0, 0.5)' }}
   />
 </ColorPalette>
