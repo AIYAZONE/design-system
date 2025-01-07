@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import viteCompression from 'vite-plugin-compression';
 
 
@@ -11,10 +10,10 @@ const baseBuildConfig = {
     entry: "./src/index.ts", // 主入口文件
     name: "@jackery/design-system",
     fileName: (format) => `index.${format}.js`,
-    formats: ["cjs", "es"],
+    formats: ["cjs", "es"], // 支持 CommonJS 和 ES 模块
   },
-  sourcemap: true,
-  emptyOutDir: true,
+  sourcemap: true, // 生成 sourcemap
+  emptyOutDir: true, // 构建前清空输出目录
 };
 
 // 获取指定目录下的文件入口
@@ -39,53 +38,35 @@ const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
 
 export default defineConfig(({ mode }) => {
   return {
+    base: './', // 使用相对路径
     build: {
       ...baseBuildConfig,
-      outDir: "dist",
-      cssCodeSplit: true,
+      outDir: "dist", // 输出目录
+      cssCodeSplit: true,  // 启用 CSS 代码分割
       rollupOptions: {
         input: {
-          index: "./src/index.ts",
+          index: "./src/index.ts", // 主入口文件
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
-          entryFileNames: (chunkInfo) => {
-            if (chunkInfo.facadeModuleId.startsWith("components/")) {
-              return `components/${chunkInfo.name}.js`;
-            }
-            return `${chunkInfo.name}.js`;
-          },
-          chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
+          entryFileNames: "[name].js", // 入口文件命名规则
+          chunkFileNames: "chunks/[name].js", // chunk 文件命名规则
           assetFileNames: (assetInfo) => {
             const ext = path.extname(assetInfo.name);
-            switch (ext) {
-              case ".css":
-                // 输出到 styles 目录
-                return "styles/[name].[ext]";
-              case ".svg":
-              case ".png":
-              case ".jpg":
-              case ".gif":
-                return "assets/[name][ext]";
-              default:
-                return "[name].[ext]";
+            if (ext === ".css") {
+              return "styles/index.css"; // 将所有 CSS 文件汇总为 index.css
             }
+            if (ext === ".woff" || ext === ".woff2") {
+              return "fonts/[name][ext]"; // 字体文件输出到 fonts 目录
+            }
+            return "assets/[name][ext]"; // 其他静态资源输出到 assets 目录
           },
         },
       },
     },
-    // base: "./", // 添加此行以使用相对路径
     plugins: [
-      // viteStaticCopy({
-      //   targets: [
-      //     {
-      //       src: ["src/assets/**/*"], // 源目录
-      //       dest: "assets", // 目标目录
-      //     },
-      //   ],
-      //   structured: true,
-      // }),
+      // 压缩构建输出
       viteCompression({
         algorithm: 'gzip', // 使用 gzip 压缩
         ext: '.gz', // 压缩文件后缀
@@ -96,6 +77,11 @@ export default defineConfig(({ mode }) => {
         less: {
           javascriptEnabled: true,
         },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'), // 配置路径别名
       },
     },
   };
