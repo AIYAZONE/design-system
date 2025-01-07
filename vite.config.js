@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import viteCompression from 'vite-plugin-compression';
+
 
 // 基础构建配置
 const baseBuildConfig = {
@@ -43,7 +45,7 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       rollupOptions: {
         input: {
-          index: "./index.html", // 作为组件库，后面输出storybook后，将此处去掉
+          index: "./src/index.ts",
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
@@ -73,16 +75,20 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: "./", // 添加此行以使用相对路径
+    // base: "./", // 添加此行以使用相对路径
     plugins: [
-      viteStaticCopy({
-        targets: [
-          {
-            src: ["src/assets/**/*"], // 源目录
-            dest: "assets", // 目标目录
-          },
-        ],
-        structured: true,
+      // viteStaticCopy({
+      //   targets: [
+      //     {
+      //       src: ["src/assets/**/*"], // 源目录
+      //       dest: "assets", // 目标目录
+      //     },
+      //   ],
+      //   structured: true,
+      // }),
+      viteCompression({
+        algorithm: 'gzip', // 使用 gzip 压缩
+        ext: '.gz', // 压缩文件后缀
       }),
     ],
     css: {

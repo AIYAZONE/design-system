@@ -1,5 +1,5 @@
 <div style="text-align:center;">
-  <img src="./src/assets/jds-logo.svg">
+  <img src="./logo.svg">
 </div>
 
 ## 1. 简介
@@ -65,4 +65,4 @@
 
 站在巨人的肩膀上看世界，业界优秀实践参考：
 
-![优秀实践参考](./src/stories/assets/design-system.png)
+![优秀实践参考](./design-system.png)
