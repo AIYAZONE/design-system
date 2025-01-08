@@ -22,6 +22,13 @@ const meta: Meta = {
   title: "组件/jds-button",
   tags: ["autodocs"],
   component: "jds-button",
+  parameters: {
+    docs: {
+      description: {
+        component: "这是一个按钮组件，支持多种变体和样式。", // 自定义描述
+      },
+    },
+  },
   argTypes: {
     variant: {
       options: ["primary", "secondary", "tertiary", "text"],

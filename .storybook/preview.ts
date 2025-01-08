@@ -16,7 +16,6 @@ const preview: Preview = {
       },
     },
   },
-
   tags: ["autodocs"],
   globalTypes: {
     locale: {
