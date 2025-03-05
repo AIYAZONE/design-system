@@ -29,7 +29,7 @@ export function parseAndUpdateI18nTemplates(element: HTMLElement): void {
     if (I18N_TEMPLATE_REGEX.test(text)) {
       // 重置正则表达式的lastIndex
       I18N_TEMPLATE_REGEX.lastIndex = 0;
-      
+
       // 替换所有匹配的i18n表达式
       const newText = text.replace(I18N_TEMPLATE_REGEX, (match, key, paramsStr) => {
         try {
@@ -40,7 +40,7 @@ export function parseAndUpdateI18nTemplates(element: HTMLElement): void {
           return match;
         }
       });
-      
+
       if (newText !== text) {
         node.textContent = newText;
       }
@@ -51,7 +51,7 @@ export function parseAndUpdateI18nTemplates(element: HTMLElement): void {
 /**
  * 监听语言变化事件，更新所有i18n模板
  */
-export function initializeTemplateParser(): void {
+export default function initializeTemplateParser(): void {
   // 初始解析当前页面
   parseAndUpdateI18nTemplates(document.body);
 

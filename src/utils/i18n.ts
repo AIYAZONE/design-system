@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2025-03-04 11:30:00
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 10:02:18
+ * @LastEditTime: 2025-03-05 11:33:54
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\utils\i18n.ts
  * @Description: i18n核心实现
  */
@@ -10,13 +10,42 @@
 import en from '../locales/en.json';
 import zh from '../locales/zh.json';
 import ja from '../locales/ja.json';
-import { Language, MessageSchema } from '../types/i18n.types';
+import { Language, MessageSchema, I18nInstance } from '../types/i18n.types';
+
+// 定义错误类型
+type I18nError = {
+  type: 'MISSING_KEY' | 'INVALID_PARAMS' | 'INTERNAL_ERROR';
+  key: string;
+  message: string;
+  params?: Record<string, string | number>;
+};
+
+// 错误处理函数类型
+type ErrorHandler = (error: I18nError) => void;
+
+// 配置接口
+interface I18nConfig {
+  defaultLanguage?: Language;
+  fallbackLanguage?: Language;
+  errorHandler?: ErrorHandler;
+  cacheSize?: number;
+}
 
 // 语言变化事件名称
 const I18N_LANGUAGE_CHANGE = 'i18n-language-change';
 
-// 当前语言（默认为英语）
-let _currentLanguage: Language = 'en';
+// 配置对象
+const config: I18nConfig = {
+  defaultLanguage: 'en',
+  fallbackLanguage: 'en',
+  cacheSize: 1000,
+  errorHandler: (error: I18nError) => {
+    console.warn(`[i18n] ${error.type}: ${error.message}`, error);
+  }
+};
+
+// 当前语言
+let _currentLanguage: Language = config.defaultLanguage || 'en';
 
 const messages: Record<Language, MessageSchema> = {
   en,
@@ -28,8 +57,43 @@ const messages: Record<Language, MessageSchema> = {
 const I18N_PATTERN = /\$\{window\.i18n\.t\(['"](.*?)['"](?:,\s*([^)]+))?\)\}/g;
 const PARAM_REGEX = /\{([^}]+)\}/g;
 
-// 缓存翻译结果
-const translationCache = new Map<string, string>();
+// LRU缓存实现
+class LRUCache<K, V> {
+  private cache = new Map<K, V>();
+  private readonly maxSize: number;
+
+  constructor(maxSize: number) {
+    this.maxSize = maxSize;
+  }
+
+  get(key: K): V | undefined {
+    const value = this.cache.get(key);
+    if (value !== undefined) {
+      // 刷新位置
+      this.cache.delete(key);
+      this.cache.set(key, value);
+    }
+    return value;
+  }
+
+  set(key: K, value: V): void {
+    if (this.cache.size >= this.maxSize) {
+      // 删除最早的项
+      const firstKey = this.cache.keys().next().value;
+      if (firstKey !== undefined) {
+        this.cache.delete(firstKey);
+      }
+    }
+    this.cache.set(key, value);
+  }
+
+  clear(): void {
+    this.cache.clear();
+  }
+}
+
+// 翻译缓存
+const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
 
 // 导出一个getter函数来获取当前语言
 export function getCurrentLanguage(): Language {
@@ -147,12 +211,11 @@ export function setLanguage(lang: Language): void {
  * @returns 翻译后的文本
  */
 export function t(key: string, params?: Record<string, string | number>): string {
+  const cacheKey = params ? `${key}:${JSON.stringify(params)}` : key;
   try {
-    // 如果没有参数且存在缓存，直接返回缓存的结果
-    if (!params) {
-      const cachedTranslation = translationCache.get(key);
-      if (cachedTranslation) return cachedTranslation;
-    }
+    // 检查缓存
+    const cachedTranslation = translationCache.get(cacheKey);
+    if (cachedTranslation) return cachedTranslation;
 
     const keys = key.split('.');
     let value: any = messages[_currentLanguage];
@@ -160,93 +223,112 @@ export function t(key: string, params?: Record<string, string | number>): string
     value = keys.reduce((obj, k) => (obj && typeof obj === 'object' ? obj[k] : undefined), value);
 
     if (typeof value !== 'string') {
-      console.warn(`未找到翻译，key: ${key}`);
-      return key;
+      // 尝试使用备用语言
+      if (_currentLanguage !== config.fallbackLanguage) {
+        const fallbackValue = keys.reduce(
+          (obj: any, k: string) => (obj && typeof obj === 'object' ? obj[k] : undefined),
+          messages[config.fallbackLanguage || 'en']
+        );
+        if (fallbackValue !== undefined && typeof fallbackValue === 'string') {
+          value = fallbackValue;
+        } else {
+          config?.errorHandler?.({
+            type: 'MISSING_KEY',
+            key,
+            message: `Translation key not found: ${key}`
+          });
+          return key;
+        }
+      } else {
+        config?.errorHandler?.({
+          type: 'MISSING_KEY',
+          key,
+          message: `Translation key not found: ${key}`
+        });
+        return key;
+      }
     }
 
     let result = value;
     if (params) {
-      result = value.replace(PARAM_REGEX, (_, k) => String(params[k] ?? `{${k}}`));
-    } else {
-      // 只缓存没有参数的翻译结果
-      translationCache.set(key, value);
+      result = value.replace(PARAM_REGEX, (_match: string, k: string) => {
+        if (!(k in params)) {
+          // 确保 errorHandler 存在再调用
+          config?.errorHandler?.({
+            type: 'INVALID_PARAMS',
+            key,
+            message: `Missing parameter: ${k}`,
+            params
+          });
+          return `{${k}}`;
+        }
+        return String(params[k]);
+      });
     }
+
+    // 缓存翻译结果
+    translationCache.set(cacheKey, result);
 
     return result;
   } catch (error) {
-    console.warn(`翻译失败，key: ${key}`, error);
+    config?.errorHandler?.({
+      type: 'INTERNAL_ERROR',
+      key,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      params
+    });
     return key;
   }
 }
+// 定义接口
+interface I18nControllerInterface {
+  hostDisconnected(): void;
+  t(key: string, params?: Record<string, string | number>): string;
+  readonly currentLanguage: Language;
+}
 
-/**
- * i18n控制器类，用于在Lit组件中管理国际化
- */
-export class I18nController {
+// 实现接口
+export class I18nController implements I18nControllerInterface {
   private host: HTMLElement;
   private onLanguageChange: () => void;
   private isConnected: boolean = false;
-
   constructor(host: HTMLElement) {
-    interface UpdateableElement extends HTMLElement {
-      requestUpdate?: () => void;
-    }
-
-    this.host = host as UpdateableElement;
+    this.host = host;
     this.onLanguageChange = () => {
       if (!this.isConnected) return;
-      const updateableHost = this.host as UpdateableElement;
-      if (typeof updateableHost.requestUpdate === 'function') {
-        updateableHost.requestUpdate();
+      if ('requestUpdate' in this.host && typeof this.host.requestUpdate === 'function') {
+        this.host.requestUpdate();
       }
     };
-
-    this.connect();
+  this.connect();
   }
-
-  /**
-   * 连接控制器，开始监听语言变化事件
-   */
   private connect(): void {
     if (this.isConnected) return;
     this.isConnected = true;
     window.addEventListener(I18N_LANGUAGE_CHANGE, this.onLanguageChange as EventListener);
   }
-
-  /**
-   * 断开控制器，停止监听语言变化事件
-   */
   public hostDisconnected(): void {
     if (!this.isConnected) return;
     this.isConnected = false;
     window.removeEventListener(I18N_LANGUAGE_CHANGE, this.onLanguageChange as EventListener);
   }
-
-  /**
-   * 翻译指定的键值
-   * @param key 翻译键
-   * @param params 替换参数
-   * @returns 翻译后的文本
-   */
   public t(key: string, params?: Record<string, string | number>): string {
     return t(key, params);
   }
-
-  /**
-   * 获取当前语言
-   */
   public get currentLanguage(): Language {
     return _currentLanguage;
   }
 }
+// 初始化全局i18n实例
+window.i18n = {
+  t,
+  getCurrentLanguage,
+  setLanguage,
+};
 
 /**
  * 创建一个I18n实例，保持与Vue版本API兼容
  */
-export function useI18n() {
-  return {
-    currentLanguage: getCurrentLanguage(),
-    t,
-    setLanguage,
-  };
+export function useI18n(): I18nInstance {
+  return window.i18n;
 }

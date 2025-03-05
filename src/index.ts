@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2024-11-29 17:26:11
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 11:01:03
+ * @LastEditTime: 2025-03-05 13:55:14
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\index.ts
  * @Description:
  *
@@ -19,13 +19,20 @@ import JdsPopover from "./components/popover/index.js";
 import JdsTooltip from "./components/tooltip/index.js";
 import JdsI18n from "./components/i18n/index.js";
 import JdsI18nExample from "./examples/i18n-example.js";
-import { initializeI18n } from "./utils/i18n-global.js";
-import { initI18nDom } from "./utils/i18n-dom.js";
-// 初始化i18n
-initializeI18n();
-// 初始化i18n在非Lit组件环境下的DOM支持
-initI18nDom();
 
+// 导入 i18n 相关功能
+import { 
+  initialize,
+  initI18nDom,
+  t,
+  setLanguage,
+  getCurrentLanguage,
+  I18nController
+} from './utils/i18n/index.js';
+
+// 初始化 i18n
+initialize();
+initI18nDom();
 
 export {
   JdsInfo,
@@ -38,5 +45,10 @@ export {
   JdsPopover,
   JdsTooltip,
   JdsI18n,
-  JdsI18nExample
+  JdsI18nExample,
+  // i18n 相关功能导出
+  t,
+  setLanguage,
+  getCurrentLanguage,
+  I18nController
 };
