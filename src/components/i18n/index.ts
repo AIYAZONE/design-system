@@ -1,6 +1,16 @@
+/*
+ * @Author: HB-BruceWang
+ * @Date: 2025-03-05 11:03:32
+ * @LastEditors: HB-BruceWang
+ * @LastEditTime: 2025-03-05 14:31:00
+ * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\components\i18n\index.ts
+ * @Description:
+ *
+ * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
+ */
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { I18nController } from '../../utils/i18n';
+import { I18nController } from '../../utils/i18n/index.js';
 
 @customElement('jds-i18n')
 export default class JdsI18n extends LitElement {
