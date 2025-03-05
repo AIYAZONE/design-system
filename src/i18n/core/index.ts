@@ -1,7 +1,7 @@
-import en from '../../locales/en.json';
-import zh from '../../locales/zh.json';
-import ja from '../../locales/ja.json';
-import { Language, MessageSchema, I18nConfig, I18nError } from './types';
+import en from '../locales/en.json';
+import zh from '../locales/zh.json';
+import ja from '../locales/ja.json';
+import { Language, MessageSchema,I18nInstance, I18nConfig, I18nError } from '../types';
 
 // 语言变化事件名称
 export const I18N_LANGUAGE_CHANGE = 'i18n-language-change';
@@ -55,10 +55,16 @@ let currentLanguage: Language = config.defaultLanguage || 'en';
 const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
 const PARAM_REGEX = /\{([^}]+)\}/g;
 
+/*
+ * 获取当前语言
+*/
 export function getCurrentLanguage(): Language {
   return currentLanguage;
 }
 
+/*
+ * 设置当前语言
+*/
 export function setLanguage(lang: Language): void {
   if (currentLanguage === lang) return;
   currentLanguage = lang;
@@ -66,6 +72,9 @@ export function setLanguage(lang: Language): void {
   window.dispatchEvent(new CustomEvent(I18N_LANGUAGE_CHANGE, { detail: lang }));
 }
 
+/*
+ * 翻译函数
+*/
 export function t(key: string, params?: Record<string, string | number>): string {
   const cacheKey = params ? `${key}:${JSON.stringify(params)}` : key;
   try {
@@ -132,9 +141,21 @@ export function t(key: string, params?: Record<string, string | number>): string
   }
 }
 
+// 全局初始化
+const globalI18n: I18nInstance = {
+  t,
+  getCurrentLanguage,
+  setLanguage
+};
+
+export function useI18n(): I18nInstance {
+  return globalI18n;
+}
+/*
+ * 初始化函数
+*/
 export function initialize() {
   const savedLanguage = localStorage.getItem('language');
-  // 确保使用类型安全的语言值
   const languageToUse = (savedLanguage as Language) || config.defaultLanguage;
 
   if (Object.keys(messages).includes(languageToUse) && config.defaultLanguage) {
@@ -147,4 +168,9 @@ export function initialize() {
     const lang = (event as CustomEvent<Language>).detail;
     localStorage.setItem('language', lang);
   });
+
+  // 将 i18n 功能绑定到 window 对象
+  if (typeof window !== 'undefined') {
+    window.i18n = globalI18n;
+  }
 }

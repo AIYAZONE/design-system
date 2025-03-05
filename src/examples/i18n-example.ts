@@ -10,7 +10,7 @@
  */
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { i18n } from '../decorators/i18n';
+import { i18n } from '../i18n/decorators';
 
 /**
  * @tag jds-i18n-example

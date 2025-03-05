@@ -1,4 +1,4 @@
-import type { I18nInstance } from '../utils/i18n/types';
+import type { I18nInstance } from '../i18n/types/types';
 
 declare global {
   interface Window {

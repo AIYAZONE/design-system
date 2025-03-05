@@ -1,9 +1,13 @@
-import { t } from './core';
-import { I18N_LANGUAGE_CHANGE } from './core';
+import { t } from '.';
+import { I18N_LANGUAGE_CHANGE } from '.';
 
+// 自定义属性名
 const ORIGINAL_TEXT_ATTR = 'data-i18n-key';
+
+// 匹配 ${window.i18n.t('key', params)} 的正则表达式
 const I18N_PATTERN = /\$\{window\.i18n\.t\(['"](.*?)['"](?:,\s*([^)]+))?\)\}/g;
 
+// 处理文本节点
 function processTextNode(node: Text): void {
   const text = node.textContent;
   if (!text || !text.includes('${window.i18n.t(')) return;
@@ -30,6 +34,7 @@ function processTextNode(node: Text): void {
   }
 }
 
+// 更新元素的翻译
 function updateElementTranslation(element: HTMLElement) {
   const key = element.getAttribute(ORIGINAL_TEXT_ATTR);
   if (key) {
@@ -37,6 +42,7 @@ function updateElementTranslation(element: HTMLElement) {
   }
 }
 
+// 更新所有元素的翻译
 function updateAllTranslations() {
   const elements = document.querySelectorAll(`[${ORIGINAL_TEXT_ATTR}]`);
   elements.forEach(element => {
@@ -46,6 +52,7 @@ function updateAllTranslations() {
   });
 }
 
+// 初始化i18n dom
 export function initI18nDom() {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {

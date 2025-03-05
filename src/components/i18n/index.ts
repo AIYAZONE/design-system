@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2025-03-05 11:03:32
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 14:31:00
+ * @LastEditTime: 2025-03-05 16:49:05
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\components\i18n\index.ts
  * @Description:
  *
@@ -10,7 +10,7 @@
  */
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { I18nController } from '../../utils/i18n/index.js';
+import { I18nController } from '../../i18n/core/controller.js';
 
 @customElement('jds-i18n')
 export default class JdsI18n extends LitElement {

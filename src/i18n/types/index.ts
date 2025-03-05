@@ -1,5 +1,7 @@
+// 语言
 export type Language = 'en' | 'zh' | 'ja';
 
+// 消息模式
 export type MessageSchema = {
   [key: string]: string | MessageSchema;
 };
@@ -17,8 +19,10 @@ export type I18nError = {
   params?: Record<string, string | number>;
 };
 
+// 错误处理函数
 export type ErrorHandler = (error: I18nError) => void;
 
+// 配置
 export interface I18nConfig {
   defaultLanguage?: Language;
   fallbackLanguage?: Language;
