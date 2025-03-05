@@ -1,0 +1,17 @@
+{
+  "common": {
+    "ok": "よし",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "loading": "読み込み中...",
+    "welcome": "ようこそ",
+    "hello": "こんにちは",
+    "changeLanguage": "言語を変更"
+  },
+  "validation": {
+    "required": "この項目は必須です",
+    "email": "有効なメールアドレスを入力してください",
+    "minLength": "最低{min}文字を入力してください",
+    "maxLength": "最大{max}文字まで入力できます"
+  }
+}

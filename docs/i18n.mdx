@@ -1,0 +1,117 @@
+# Jackery Design System - i18n 实现方案
+
+## 概述
+
+Jackery Design System 提供了完整的国际化（i18n）解决方案，支持多种使用方式，满足不同场景的需求。本文档将详细介绍i18n的实现方案和使用方法。
+
+## 核心功能
+
+1. 全局i18n实例
+2. 装饰器支持
+3. Web Component支持
+4. HTML静态内容支持
+
+## 使用方式
+
+### 1. 使用装饰器（在Lit组件中）
+
+```typescript
+import { i18n } from '../decorators/i18n';
+
+@customElement('my-component')
+export class MyComponent extends LitElement {
+  @i18n()
+  @property({ type: String })
+  title = 'i18n:common.title';
+
+  render() {
+    return html`<h1>${this.title}</h1>`;
+  }
+}
+```
+
+### 2. 使用Web Component
+
+```html
+<jds-i18n key="common.welcome"></jds-i18n>
+
+<!-- 支持参数传递 -->
+<jds-i18n key="common.hello" .params="{ name: 'World' }"></jds-i18n>
+```
+
+### 3. 在HTML中使用
+
+```html
+<!-- 使用data-i18n-key属性 -->
+<h1 data-i18n-key="common.title"></h1>
+
+<!-- 直接使用window.i18n -->
+<h1>${window.i18n.t('common.ok')}</h1>
+```
+
+## API参考
+
+### 全局API
+
+```typescript
+// 获取当前语言
+window.i18n.getCurrentLanguage(): Language
+
+// 设置语言
+window.i18n.setLanguage(lang: 'en' | 'zh' | 'ja'): void
+
+// 翻译文本
+window.i18n.t(key: string, params?: Record<string, string | number>): string
+```
+
+### 装饰器
+
+```typescript
+@i18n()
+property: string;
+```
+
+### Web Component
+
+```typescript
+interface JdsI18nProps {
+  key: string;
+  params?: Record<string, string | number>;
+}
+```
+
+## 语言切换
+
+系统会自动处理语言切换事件，并触发相应的更新：
+
+1. 装饰器修饰的属性会自动更新
+2. Web Component会自动重新渲染
+3. HTML静态内容会自动更新
+
+## 最佳实践
+
+1. 使用命名空间管理翻译键（如：'common.button.submit'）
+2. 在Lit组件中优先使用装饰器
+3. 对于简单的文本内容，使用`<jds-i18n>`组件
+4. 对于静态HTML内容，使用data-i18n-key属性
+
+## 示例
+
+```typescript
+@customElement('jds-i18n-example')
+export default class JdsI18nExample extends LitElement {
+  @i18n()
+  @property({ type: String })
+  title = 'i18n:common.welcome';
+
+  render() {
+    return html`
+      <div>
+        <h1>${this.title}</h1>
+        <jds-i18n key="common.hello"></jds-i18n>
+        <div data-i18n-key="common.footer"></div>
+      </div>
+    `;
+  }
+}
+```

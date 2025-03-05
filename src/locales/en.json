@@ -1,0 +1,17 @@
+{
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "changeLanguage": "Change Language"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "Please enter at least {min} characters",
+    "maxLength": "Please enter no more than {max} characters"
+  }
+}
