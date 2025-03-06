@@ -1,0 +1,17 @@
+{
+  "common": {
+    "cancel": "取消",
+    "changeLanguage": "切換語言",
+    "confirm": "確認",
+    "hello": "你好",
+    "loading": "加載中...",
+    "ok": "確定",
+    "welcome": "歡迎 {name}"
+  },
+  "validation": {
+    "email": "請輸入有效的電子郵件地址",
+    "maxLength": "請不要輸入超過 {max} 個字符",
+    "minLength": "請至少輸入 {min} 個字符",
+    "required": "此欄位為必填項"
+  }
+}

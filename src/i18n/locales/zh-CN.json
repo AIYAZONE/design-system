@@ -1,17 +1,17 @@
 {
   "common": {
-    "ok": "确定",
     "cancel": "取消",
+    "changeLanguage": "切换语言",
     "confirm": "确认",
-    "loading": "加载中...",
-    "welcome": "欢迎 {name}",
     "hello": "你好",
-    "changeLanguage": "切换语言"
+    "loading": "加载中...",
+    "ok": "确定",
+    "welcome": "欢迎 {name}"
   },
   "validation": {
-    "required": "此字段为必填项",
     "email": "请输入有效的电子邮件地址",
+    "maxLength": "请不要输入超过 {max} 个字符",
     "minLength": "请至少输入 {min} 个字符",
-    "maxLength": "请不要输入超过 {max} 个字符"
+    "required": "此字段为必填项"
   }
 }

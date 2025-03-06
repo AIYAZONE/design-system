@@ -8,43 +8,53 @@ Jackery Design System 提供了一套完整、高性能的国际化（i18n）解
 
 ```md
 src/i18n/
-├── locales/          # 语言资源文件
-│   ├── en.json       # 英文语言包
-│   ├── zh.json       # 中文语言包
-│   └── ja.json       # 日文语言包
-├── components/       # i18n相关组件
-│   └── index.ts      # 导出所有i18n组件
-├── core/             # 核心实现
-│   ├── controller.ts # i18n控制器
-│   ├── core.ts       # 核心功能实现
-│   ├── dom.ts        # DOM相关操作
-│   └── index.ts      # 核心功能导出
-├── decorators/       # i18n装饰器
-│   └── index.ts      # 装饰器实现
-├── types/            # 类型定义
-│   └── index.ts      # 类型声明文件
-└── index.ts          # 统一导出文件
+├── locales/                     # 语言资源文件
+│   ├── i18n-translations.xlsx   # 多语言翻译清单表格
+│   ├── en.json                  # 英文语言包
+│   ├── ja.json                  # 日文语言包
+│   ├── de.json                  # 德文语言包
+│   ├── it.json                  # 意大利文语言包
+│   ├── fr.json                  # 法文语言包
+│   ├── es.json                  # 西班牙文语言包
+│   ├── ko.json                  # 韩文语言包
+│   ├── zh-CN.json               # 简体中文语言包
+│   └── zh-TW.json               # 繁体中文语言包
+├── core/                        # 核心实现
+│   ├── config.ts                # 配置常量
+│   ├── dom.ts                   # DOM相关操作
+│   ├── languages.ts             # 语言资源管理
+│   ├── controller.ts            # i18n控制器
+│   └── index.ts                 # 核心功能导出
+├── decorators/                  # i18n装饰器
+│   └── index.ts                 # 装饰器实现
+├── scripts/                     # 工具脚本
+│   ├── convert-to-excel.js      # JSON转Excel工具
+│   ├── excel-to-json.js         # Excel转JSON工具
+│   └── i18n-utils.js            # 工具函数
+├── types/                       # 类型定义
+│   └── index.ts                 # 类型声明文件
+├── utils/                       # 通用工具函数
+└── index.ts                     # 统一导出文件
 ```
 
 ## 核心特性
 
 1. 多语言支持
-
    - 支持英语(en)、中文(zh)、日语(ja)等多语言切换
    - 智能的语言检测和自动切换机制
    - 完善的语言回退策略
-2. 高性能设计
 
-   - LRU 缓存机制，优化翻译性能
-   - 智能的 DOM 更新策略，避免不必要的重渲染
-   - 异步加载语言包，优化首屏加载
+2. DOM 自动更新
+   - 支持声明式和命令式的翻译方式
+   - 自动监听 DOM 变化并更新翻译
+   - 支持动态参数传递
+
 3. 开发友好
-
    - 支持参数替换和复杂文本格式化
    - TypeScript 类型支持
    - 支持 IDE 智能提示
-4. 框架集成
 
+4. 框架集成
    - 原生支持 Lit 组件
    - 支持普通 DOM 环境
    - 提供响应式的语言切换能力
@@ -67,16 +77,6 @@ export class MyComponent extends LitElement {
     `;
   }
 }
-
-
-// 使用装饰器
-import { i18n } from '@jackery/design-system/i18n/decorators';
-
-@customElement('my-component')
-export class MyComponent extends LitElement {
-  @i18n()
-  title = 'i18n:common.title';
-}
 ```
 
 ### 在普通 HTML 中使用
@@ -85,6 +85,9 @@ export class MyComponent extends LitElement {
 <!-- 使用声明式翻译 -->
 <h1 data-i18n-key="common.title"></h1>
 <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
+
+<!-- 使用模板字符串形式 -->
+<div>这是一个${window.i18n.t('common.example')}示例</div>
 
 <!-- 使用命令式翻译 -->
 <script>
@@ -111,11 +114,10 @@ setLanguage('zh');
 const currentLang = getCurrentLanguage();
 
 // 监听语言变化
-onLanguageChange((newLang, oldLang) => {
-  console.log(`Language changed from ${oldLang} to ${newLang}`);
+window.addEventListener('i18n-language-change', (event) => {
+  console.log(`Language changed to ${event.detail.language}`);
 });
 ```
-
 
 ## API 参考
 
@@ -128,162 +130,68 @@ t(key: string, params?: Record<string, any>): string;
 // 语言控制
 setLanguage(lang: Language): Promise<void>;
 getCurrentLanguage(): Language;
-onLanguageChange(callback: LanguageChangeCallback): () => void;
 
 // Lit 控制器
 class I18nController {
-  constructor(host: HTMLElement, config?: I18nConfig);
+  constructor(host: HTMLElement);
   t(key: string, params?: Record<string, any>): string;
   get currentLanguage(): Language;
   setLanguage(lang: Language): Promise<void>;
 }
 ```
 
-### 配置选项
-
-```typescript
-interface I18nConfig {
-  // 默认语言
-  defaultLanguage?: Language;
-  // 备用语言，当翻译缺失时使用
-  fallbackLanguage?: Language;
-  // LRU 缓存大小
-  cacheSize?: number;
-  // 错误处理函数
-  errorHandler?: (error: I18nError) => void;
-  // 调试模式
-  debug?: boolean;
-  // 异步加载语言包的基础路径
-  baseUrl?: string;
-}
-```
-
-## 高级特性
-
-### 1. 智能的语言持久化
-
-```typescript
-// 配置持久化选项
-const config: I18nConfig = {
-  defaultLanguage: 'en',
-  storage: {
-    type: 'localStorage', // 或 'sessionStorage'
-    key: 'app-language'
-  }
-};
-```
-
-### 2. LRU 缓存优化
-
-```typescript
-// 配置缓存大小
-const config: I18nConfig = {
-  cacheSize: 1000, // 默认值
-  debug: true // 开启调试模式查看缓存命中率
-};
-```
-
-### 3. 错误处理
-
-```typescript
-const config: I18nConfig = {
-  errorHandler: (error: I18nError) => {
-    if (error.type === 'MISSING_KEY') {
-      console.warn(`Translation missing: ${error.key}`);
-    } else if (error.type === 'INVALID_PARAMS') {
-      console.error(`Invalid params for key: ${error.key}`);
-    }
-  }
-};
-```
-
-### 4. 动态内容更新
-
-```typescript
-// 监听 DOM 变化自动更新翻译
-const config: I18nConfig = {
-  observeDom: true, // 默认开启
-  observeOptions: {
-    subtree: true,
-    childList: true
-  }
-};
-```
-
 ## 最佳实践
 
 1. 翻译键命名规范
-
    - 使用点号分隔的命名空间（如：'page.section.element'）
    - 保持键名语义化和一致性
    - 避免过深的嵌套层级（建议不超过3层）
-2. 性能优化
 
-   - 合理配置 LRU 缓存大小
-   - 使用异步加载优化大型语言包
-   - 避免频繁的语言切换操作
+2. DOM 更新优化
+   - 优先使用声明式翻译（data-i18n-key）
+   - 合理使用参数传递（data-i18n-params）
+   - 避免不必要的动态内容更新
+
 3. 类型安全
-
    - 使用 TypeScript 类型定义翻译键
-   - 利用类型系统确保参数正确性
-   - 配置 IDE 智能提示
-4. 错误处理
+   - 确保参数类型正确性
+   - 利用 IDE 智能提示
 
+4. 错误处理
    - 实现完整的错误处理策略
    - 记录并监控翻译缺失
    - 提供合适的降级显示
 
-## 完整示例
+## Excel/JSON 转换工具
 
-```typescript
-@customElement('jds-i18n-demo')
-export class JdsI18nDemo extends LitElement {
-  private i18n = new I18nController(this, {
-    defaultLanguage: 'en',
-    fallbackLanguage: 'en',
-    cacheSize: 1000,
-    debug: true,
-    errorHandler: (error) => {
-      console.warn('Translation error:', error);
-    }
-  });
+为了方便翻译管理，我们提供了Excel和JSON格式之间的转换工具：
 
-  @state()
-  private name = 'Jackery';
+### JSON转Excel
 
-  render() {
-    return html`
-      <div class="demo-container">
-        <h1>${this.i18n.t('demo.title')}</h1>
-        
-        <p>${this.i18n.t('demo.welcome', { 
-          name: this.name,
-          date: new Date().toLocaleDateString()
-        })}</p>
-        
-        <div class="language-switcher">
-          <button @click=${() => this.i18n.setLanguage('en')}>English</button>
-          <button @click=${() => this.i18n.setLanguage('zh')}>中文</button>
-          <button @click=${() => this.i18n.setLanguage('ja')}>日本語</button>
-        </div>
-
-        <div data-i18n-key="demo.footer"></div>
-      </div>
-    `;
-  }
-}
+```bash
+# 将所有语言包转换为Excel文件
+node src/i18n/scripts/convert-to-excel.js
 ```
+
+转换后将在locales目录下生成`i18n-translations.xlsx`文件，包含所有语言的翻译。
+
+### Excel转JSON
+
+```bash
+# 将Excel文件转换回JSON语言包
+node src/i18n/scripts/excel-to-json.js
+```
+
+转换后将在locales目录下生成对应的语言JSON文件。
 
 ## 更新日志
 
 ### v0.0.1
-
 - 初始版本发布
 - 支持基础的多语言切换
 - 提供 Lit 组件集成
-- 添加 LRU 缓存优化
-- 改进错误处理机制
-- 支持异步语言包加载
-- 增强类型系统支持
+- 支持 DOM 自动更新
+- 支持模板字符串形式的翻译
 - 优化 DOM 更新性能
-- 添加调试工具支持
+- 增强错误处理机制
+- 添加Excel/JSON转换工具

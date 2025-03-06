@@ -1,6 +1,6 @@
-import { t, getCurrentLanguage } from '.';
-import { I18N_LANGUAGE_CHANGE } from '.';
-import type { Language } from '../types';
+import { t, getCurrentLanguage } from './index';
+import { I18N_LANGUAGE_CHANGE } from './config';
+import { Language } from '../core/languages';
 
 /**
  * i18n控制器，用于自动翻译属性

@@ -1,59 +1,23 @@
-import en from '../locales/en.json';
-import zh from '../locales/zh.json';
-import ja from '../locales/ja.json';
-import { Language, MessageSchema,I18nInstance, I18nConfig, I18nError } from '../types';
-
-// 语言变化事件名称
-export const I18N_LANGUAGE_CHANGE = 'i18n-language-change';
-
-// 配置对象
-export const config: I18nConfig = {
-  defaultLanguage: 'en',
-  fallbackLanguage: 'en',
-  cacheSize: 1000,
-  errorHandler: (error: I18nError) => {
-    console.warn(`[i18n] ${error.type}: ${error.message}`, error);
-  }
-};
-
-// LRU缓存实现
-class LRUCache<K, V> {
-  private cache = new Map<K, V>();
-  private readonly maxSize: number;
-
-  constructor(maxSize: number) {
-    this.maxSize = maxSize;
-  }
-
-  get(key: K): V | undefined {
-    const value = this.cache.get(key);
-    if (value !== undefined) {
-      this.cache.delete(key);
-      this.cache.set(key, value);
-    }
-    return value;
-  }
-
-  set(key: K, value: V): void {
-    if (this.cache.size >= this.maxSize) {
-      const firstKey = this.cache.keys().next().value;
-      if (firstKey !== undefined) {
-        this.cache.delete(firstKey);
-      }
-    }
-    this.cache.set(key, value);
-  }
-
-  clear(): void {
-    this.cache.clear();
-  }
-}
+import { I18nInstance } from '../types';
+import { config, I18N_LANGUAGE_CHANGE } from './config';
+import { LRUCache } from '../utils/cache';
+import { Language,messages } from './languages';
 
 // 核心翻译功能实现
-const messages: Record<Language, MessageSchema> = { en, zh, ja };
 let currentLanguage: Language = config.defaultLanguage || 'en';
 const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
 const PARAM_REGEX = /\{([^}]+)\}/g;
+
+// 错误处理函数
+function handleTranslationError(error: {
+  type: "MISSING_KEY" | "INVALID_PARAMS" | "INTERNAL_ERROR";
+  key: string;
+  message: string;
+  params?: Record<string, string | number>
+}) {
+  config?.errorHandler?.(error);
+  return error.key;
+}
 
 /*
  * 获取当前语言
@@ -95,20 +59,18 @@ export function t(key: string, params?: Record<string, string | number>): string
         if (fallbackValue !== undefined && typeof fallbackValue === 'string') {
           value = fallbackValue;
         } else {
-          config?.errorHandler?.({
+          return handleTranslationError({
             type: 'MISSING_KEY',
             key,
             message: `Translation key not found: ${key}`
           });
-          return key;
         }
       } else {
-        config?.errorHandler?.({
+        return handleTranslationError({
           type: 'MISSING_KEY',
           key,
           message: `Translation key not found: ${key}`
         });
-        return key;
       }
     }
 
@@ -116,13 +78,12 @@ export function t(key: string, params?: Record<string, string | number>): string
     if (params) {
       result = value.replace(PARAM_REGEX, (_match: string, k: string) => {
         if (!(k in params)) {
-          config?.errorHandler?.({
+          return handleTranslationError({
             type: 'INVALID_PARAMS',
             key,
             message: `Missing parameter: ${k}`,
             params
           });
-          return `{${k}}`;
         }
         return String(params[k]);
       });
@@ -131,13 +92,12 @@ export function t(key: string, params?: Record<string, string | number>): string
     translationCache.set(cacheKey, result);
     return result;
   } catch (error) {
-    config?.errorHandler?.({
+    return handleTranslationError({
       type: 'INTERNAL_ERROR',
       key,
       message: error instanceof Error ? error.message : 'Unknown error',
       params
     });
-    return key;
   }
 }
 
@@ -151,25 +111,21 @@ const globalI18n: I18nInstance = {
 export function useI18n(): I18nInstance {
   return globalI18n;
 }
+
 /*
  * 初始化函数
 */
 export function initialize() {
-  const savedLanguage = localStorage.getItem('language');
-  const languageToUse = (savedLanguage as Language) || config.defaultLanguage;
+  const savedLanguage = localStorage.getItem('language') as Language;
+  const languageToUse = savedLanguage || config.defaultLanguage || 'en';
 
-  if (Object.keys(messages).includes(languageToUse) && config.defaultLanguage) {
-    setLanguage(languageToUse);
-  } else {
-    setLanguage(config.defaultLanguage || 'en');
-  }
+  setLanguage(languageToUse);
 
   window.addEventListener(I18N_LANGUAGE_CHANGE, (event: Event) => {
     const lang = (event as CustomEvent<Language>).detail;
     localStorage.setItem('language', lang);
   });
 
-  // 将 i18n 功能绑定到 window 对象
   if (typeof window !== 'undefined') {
     window.i18n = globalI18n;
   }

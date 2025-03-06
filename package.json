@@ -23,7 +23,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "build-storybook": "npm run build && storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a"
+    "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
+    "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
+    "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
   },
   "keywords": [
     "web-components",
@@ -40,7 +42,8 @@
     "@jackery/icons": "^0.0.1",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "lit": "^3.2.1"
+    "lit": "^3.2.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",

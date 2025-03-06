@@ -1,0 +1,17 @@
+{
+  "common": {
+    "cancel": "Annuler",
+    "changeLanguage": "Changer de langue",
+    "confirm": "Confirmer",
+    "hello": "Bonjour",
+    "loading": "Chargement...",
+    "ok": "OK",
+    "welcome": "Bienvenue {name}"
+  },
+  "validation": {
+    "email": "Veuillez entrer une adresse e-mail valide",
+    "maxLength": "Veuillez ne pas entrer plus de {max} caractères",
+    "minLength": "Veuillez entrer au moins {min} caractères",
+    "required": "Ce champ est obligatoire"
+  }
+}

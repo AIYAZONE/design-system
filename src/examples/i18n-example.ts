@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2025-03-04 09:35:38
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 09:01:44
+ * @LastEditTime: 2025-03-06 11:46:52
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\examples\i18n-example.ts
  * @Description:
  *
@@ -11,6 +11,7 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { i18n } from '../i18n/decorators';
+import { SUPPORTED_LANGUAGES, Language } from '../i18n/core/languages';
 
 /**
  * @tag jds-i18n-example
@@ -26,15 +27,25 @@ export default class JdsI18nExample extends LitElement {
   @property({ type: String })
   message = 'i18n:common.hello';
 
-  @i18n()
-  @property({ type: String })
-  buttonText = 'i18n:common.changeLanguage';
+  private languages = SUPPORTED_LANGUAGES.map(lang => ({
+    value: lang,
+    label: this.getLanguageLabel(lang)
+  }));
 
-  private languages = [
-    { value: 'zh', label: '中文' },
-    { value: 'en', label: 'English' },
-    { value: 'ja', label: '日本語' }
-  ];
+  private getLanguageLabel(lang: Language): string {
+    const labelMap: Record<Language, string> = {
+      'zh-CN': '中文',
+      'en': 'English',
+      'ja': '日本語',
+      'de': 'Deutsch',
+      'it': 'Italiano',
+      'fr': 'Français',
+      'es': 'Español',
+      'ko': '한국어',
+      'zh-TW': '繁體中文'
+    };
+    return labelMap[lang];
+  }
 
   render() {
     const currentLang = window.i18n.getCurrentLanguage();
@@ -56,7 +67,7 @@ export default class JdsI18nExample extends LitElement {
 
   private _changeLanguage(e: Event) {
     const select = e.target as HTMLSelectElement;
-    const newLang = select.value as 'zh' | 'en' | 'ja';
+    const newLang = select.value as Language;
     window.i18n.setLanguage(newLang);
   }
 }

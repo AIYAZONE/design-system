@@ -1,0 +1,17 @@
+{
+  "common": {
+    "cancel": "취소",
+    "changeLanguage": "언어 변경",
+    "confirm": "확인",
+    "hello": "안녕하세요",
+    "loading": "로딩 중...",
+    "ok": "확인",
+    "welcome": "{name}님 환영합니다"
+  },
+  "validation": {
+    "email": "유효한 이메일 주소를 입력해 주세요",
+    "maxLength": "{max}자를 초과할 수 없습니다",
+    "minLength": "최소 {min}자를 입력해 주세요",
+    "required": "이 필드는 필수입니다"
+  }
+}

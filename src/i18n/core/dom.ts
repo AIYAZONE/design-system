@@ -1,5 +1,5 @@
 import { t } from '.';
-import { I18N_LANGUAGE_CHANGE } from '.';
+import { I18N_LANGUAGE_CHANGE } from './config';
 
 // 自定义属性名
 const ORIGINAL_TEXT_ATTR = 'data-i18n-key';
@@ -44,7 +44,7 @@ function updateElementTranslation(element: HTMLElement) {
     // 获取并解析参数
     const paramsAttr = element.getAttribute(PARAMS_ATTR);
     let params = {};
-    
+
     if (paramsAttr) {
       try {
         params = JSON.parse(paramsAttr);
