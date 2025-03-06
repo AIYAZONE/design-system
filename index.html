@@ -11,8 +11,8 @@
 
 <body>
   <jds-i18n-example title="i18n:common.ok"></jds-i18n-example>
-  <h1>${window.i18n.t('common.cancel')}</h1>
-  <h1 data-i18n-key="common.ok"></h1>
+  <h1>${window.i18n.t('common.welcome', { name: 'World' })}</h1>
+  <h1 data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></h1>
   <jds-i18n key="common.ok"></jds-i18n>
 
   <br>
@@ -169,11 +169,13 @@
 
 
 
+
   <jds-button id="button-16">bottom-start</jds-button>
 
   <jds-popover target="button-16" id="popover-16" placement="bottom-start" style="--jds-popover-arrow-display: block;">
     Popover Content
   </jds-popover>
+
 
 
 
@@ -189,6 +191,7 @@
 
 
 
+
   <jds-button id="button-18">bottom-end</jds-button>
 
   <jds-popover target="button-18" id="popover-18" placement="bottom-end" style="--jds-popover-arrow-display: block;">
@@ -199,11 +202,13 @@
 
 
 
+
   <jds-button id="button-19">left-start</jds-button>
 
   <jds-popover target="button-19" id="popover-19" placement="left-start" style="--jds-popover-arrow-display: block;">
     Popover Content
   </jds-popover>
+
 
 
 
@@ -234,6 +239,7 @@
   <jds-popover target="button-23" id="popover-23" placement="right" style="--jds-popover-arrow-display: block;">
     Popover Content
   </jds-popover>
+
 
 
 

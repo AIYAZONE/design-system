@@ -4,7 +4,7 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "loading": "Loading...",
-    "welcome": "Welcome",
+    "welcome": "Welcome {name}",
     "hello": "Hello",
     "changeLanguage": "Change Language"
   },

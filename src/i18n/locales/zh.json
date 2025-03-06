@@ -4,7 +4,7 @@
     "cancel": "取消",
     "confirm": "确认",
     "loading": "加载中...",
-    "welcome": "欢迎",
+    "welcome": "欢迎 {name}",
     "hello": "你好",
     "changeLanguage": "切换语言"
   },
