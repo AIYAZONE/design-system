@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.0.1",
+  "version": "0.0.2-dev",
   "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
