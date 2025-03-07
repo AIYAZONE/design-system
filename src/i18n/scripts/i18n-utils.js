@@ -2,13 +2,13 @@
  * @Author: HB-BruceWang
  * @Date: 2025-03-06 14:15:16
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-06 14:41:17
+ * @LastEditTime: 2025-03-07 11:15:32
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\i18n\scripts\i18n-utils.js
  * @Description: i18n工具函数
  *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
-import XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -41,17 +41,97 @@ export const collectKeys = (obj, prefix = '', keys = new Set()) => {
   });
   return keys;
 };
+// 创建并配置Excel工作表
+export const createWorksheet = (data, options = {}) => {
+  const {
+    sheetName = '翻译',
+    headerRow = ['翻译键', ...languages],
+    keyColumnWidth = 40,
+    languageColumnWidth = 30,
+    headerFontSize = 12,
+    contentFontSize = 11,
+    fontFamily = 'Microsoft YaHei',
+    headerColor = '85B8FF'
+  } = options;
 
-// 创建Excel工作表
-export const createWorksheet = (data) => {
-  const ws = XLSX.utils.aoa_to_sheet(data);
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet(sheetName);
+
+  // 设置表头
+  worksheet.addRow(headerRow);
+
+  // 设置表头样式
+  worksheet.getRow(1).font = {
+    bold: true,
+    size: headerFontSize,
+    name: fontFamily
+  };
+  // 只为实际内容列设置背景色
+  for (let i = 1; i <= languages.length + 1; i++) {
+    worksheet.getCell(1, i).fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: headerColor }
+    };
+  }
+
+  // 添加数据
+  if (data && data.length > 0) {
+    worksheet.addRows(data);
+  }
 
   // 设置列宽
-  const colWidths = [{ wch: 40 }];
-  languages.forEach(() => colWidths.push({ wch: 50 }));
-  ws['!cols'] = colWidths;
+  worksheet.getColumn(1).width = keyColumnWidth;
+  languages.forEach((_, index) => {
+    worksheet.getColumn(index + 2).width = languageColumnWidth;
+  });
 
-  return ws;
+  // 设置冻结窗格：冻结第一行和前两列
+  worksheet.views = [
+    {
+      state: 'frozen',
+      xSplit: 2,
+      ySplit: 1,
+      topLeftCell: 'C2',
+      activeCell: 'C2'
+    }
+  ];
+
+  // 设置所有单元格的样式
+  worksheet.eachRow((row, rowNumber) => {
+    // 跳过表头行
+    if (rowNumber > 1) {
+      // 为偶数行添加背景色
+      if (rowNumber % 2 === 0) {
+        row.eachCell((cell) => {
+          cell.fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: { argb: 'E1EDFF' }
+          };
+        });
+      }
+    }
+    row.eachCell((cell) => {
+      cell.border = {
+        top: { style: 'thin' },
+        left: { style: 'thin' },
+        bottom: { style: 'thin' },
+        right: { style: 'thin' }
+      };
+      cell.alignment = {
+        vertical: 'middle',
+        horizontal: 'left',
+        wrapText: true
+      };
+      cell.font = {
+        name: fontFamily,
+        size: contentFontSize
+      };
+    });
+  });
+
+  return { workbook, worksheet };
 };
 
 // 将扁平化的键转换为嵌套对象

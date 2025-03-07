@@ -42,8 +42,8 @@
     "@jackery/icons": "^0.0.1",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "lit": "^3.2.1",
-    "xlsx": "^0.18.5"
+    "exceljs": "^4.4.0",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",

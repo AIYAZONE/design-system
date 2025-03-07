@@ -1,53 +1,75 @@
 /*
  * @Author: HB-BruceWang
- * @Date: 2025-03-06 14:15:16
+ * @Date: 2025-03-06 16:51:08
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-06 14:27:39
+ * @LastEditTime: 2025-03-07 11:00:17
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\i18n\scripts\convert-to-excel.js
- * @Description: 将JSON语言文件转换为Excel文件
+ * @Description: 将多语言JSON文件转换为Excel文件的工具脚本
  *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
-import XLSX from 'xlsx';
 import fs from 'fs';
 import path from 'path';
 import { languages, paths, getValue, collectKeys, createWorksheet } from './i18n-utils.js';
 
-// 初始化翻译对象和键集合
-const translations = {};
-const allKeys = new Set();
+/**
+ * 加载所有语言的翻译文件并收集所有翻译键
+ * @returns {Object} 返回包含translations和allKeys的对象
+ * @property {Object} translations - 包含所有语言翻译内容的对象，格式为：{ [语言代码]: 翻译内容 }
+ * @property {Set<string>} allKeys - 包含所有翻译键的集合
+ */
+function loadTranslations() {
+  const translations = {};
+  const allKeys = new Set();
 
-// 读取所有语言文件并收集翻译键
-languages.forEach(lang => {
-  const filePath = path.join(paths.localesDir, `${lang}.json`);
-  const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  translations[lang] = content;
-  collectKeys(content, '', allKeys);
-});
-
-// 准备Excel数据
-const excelData = [];
-
-// 添加表头
-const headers = ['Key', ...languages];
-excelData.push(headers);
-
-// 添加翻译数据
-Array.from(allKeys).sort().forEach(key => {
-  const row = [key];
   languages.forEach(lang => {
-    const value = getValue(translations[lang], key) || '';
-    row.push(value);
+    const filePath = path.join(paths.localesDir, `${lang}.json`);
+    try {
+      const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      translations[lang] = content;
+      collectKeys(content, '', allKeys);
+    } catch (error) {
+      console.error(`加载语言文件失败：${lang}`, error);
+    }
   });
-  excelData.push(row);
-});
 
-// 创建工作表
-const ws = createWorksheet(excelData);
+  return { translations, allKeys };
+}
 
-// 创建工作簿并保存
-const wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, 'Translations');
-XLSX.writeFile(wb, paths.i18nFile);
+/**
+ * 将翻译数据转换为Excel工作表所需的二维数组格式
+ * @param {Object} translations - 包含所有语言翻译内容的对象
+ * @param {Set<string>} allKeys - 包含所有翻译键的集合
+ * @returns {Array<Array<string>>} 返回格式化后的翻译数据数组，每行包含键名和各语言的翻译
+ */
+function prepareTranslationData(translations, allKeys) {
+  return Array.from(allKeys).sort().map(key => [
+    key,
+    ...languages.map(lang => getValue(translations[lang], key) || '')
+  ]);
+}
 
-console.log(`Excel文件已生成：${paths.i18nFile}`);
+/**
+ * 将翻译数据转换为Excel文件并保存
+ * 主要步骤：
+ * 1. 加载所有语言的翻译文件
+ * 2. 准备Excel工作表数据
+ * 3. 创建并配置Excel工作表
+ * 4. 保存Excel文件
+ */
+async function convertToExcel() {
+  const { translations, allKeys } = loadTranslations();
+  const translationData = prepareTranslationData(translations, allKeys);
+
+  const { workbook } = createWorksheet(translationData);
+
+  try {
+    await workbook.xlsx.writeFile(paths.i18nFile);
+    console.log(`Excel文件已生成：${paths.i18nFile}`);
+  } catch (error) {
+    console.error('生成Excel文件失败：', error);
+  }
+}
+
+// 执行转换程序
+convertToExcel();
