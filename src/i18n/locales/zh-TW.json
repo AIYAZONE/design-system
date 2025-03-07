@@ -8,10 +8,16 @@
     "ok": "確定",
     "welcome": "歡迎 {name}"
   },
-  "validation": {
-    "email": "請輸入有效的電子郵件地址",
-    "maxLength": "請不要輸入超過 {max} 個字符",
-    "minLength": "請至少輸入 {min} 個字符",
-    "required": "此欄位為必填項"
+  "form": {
+    "placeholder": {
+      "email": "請輸入您的電子郵件地址",
+      "phone": "請輸入您的手機號碼"
+    },
+    "validation": {
+      "email": "請輸入有效的電子郵件地址",
+      "maxLength": "請不要輸入超過 {max} 個字符",
+      "minLength": "請至少輸入 {min} 個字符",
+      "required": "此欄位為必填項"
+    }
   }
 }

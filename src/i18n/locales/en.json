@@ -8,10 +8,16 @@
     "ok": "OK",
     "welcome": "Welcome {name}"
   },
-  "validation": {
-    "email": "Please enter a valid email address",
-    "maxLength": "Please enter no more than {max} characters",
-    "minLength": "Please enter at least {min} characters",
-    "required": "This field is required"
+  "form": {
+    "placeholder": {
+      "email": "Enter Your Email Address",
+      "phone": "Enter Your Mobile Phone Number"
+    },
+    "validation": {
+      "email": "Please enter a valid email address",
+      "maxLength": "Please enter no more than {max} characters",
+      "minLength": "Please enter at least {min} characters",
+      "required": "This field is required"
+    }
   }
 }

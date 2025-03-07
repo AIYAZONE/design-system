@@ -187,6 +187,7 @@ node src/i18n/scripts/excel-to-json.js
 ## 更新日志
 
 ### v0.0.1
+
 - 初始版本发布
 - 支持基础的多语言切换
 - 提供 Lit 组件集成

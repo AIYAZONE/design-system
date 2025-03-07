@@ -8,10 +8,16 @@
     "ok": "OK",
     "welcome": "Bienvenido {name}"
   },
-  "validation": {
-    "email": "Por favor, introduce una dirección de correo electrónico válida",
-    "maxLength": "Por favor, no introduzcas más de {max} caracteres",
-    "minLength": "Por favor, introduce al menos {min} caracteres",
-    "required": "Este campo es obligatorio"
+  "form": {
+    "placeholder": {
+      "email": "Introduce tu dirección de correo electrónico",
+      "phone": "Introduce tu número de teléfono móvil"
+    },
+    "validation": {
+      "email": "Por favor, introduce una dirección de correo electrónico válida",
+      "maxLength": "Por favor, no introduzcas más de {max} caracteres",
+      "minLength": "Por favor, introduce al menos {min} caracteres",
+      "required": "Este campo es obligatorio"
+    }
   }
 }

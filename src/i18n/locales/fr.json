@@ -8,10 +8,16 @@
     "ok": "OK",
     "welcome": "Bienvenue {name}"
   },
-  "validation": {
-    "email": "Veuillez entrer une adresse e-mail valide",
-    "maxLength": "Veuillez ne pas entrer plus de {max} caractères",
-    "minLength": "Veuillez entrer au moins {min} caractères",
-    "required": "Ce champ est obligatoire"
+  "form": {
+    "placeholder": {
+      "email": "Entrez votre adresse e-mail",
+      "phone": "Entrez votre numéro de téléphone mobile"
+    },
+    "validation": {
+      "email": "Veuillez entrer une adresse e-mail valide",
+      "maxLength": "Veuillez ne pas entrer plus de {max} caractères",
+      "minLength": "Veuillez entrer au moins {min} caractères",
+      "required": "Ce champ est obligatoire"
+    }
   }
 }

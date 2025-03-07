@@ -8,10 +8,16 @@
     "ok": "OK",
     "welcome": "Willkommen {name}"
   },
-  "validation": {
-    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-    "maxLength": "Bitte geben Sie nicht mehr als {max} Zeichen ein",
-    "minLength": "Bitte geben Sie mindestens {min} Zeichen ein",
-    "required": "Dieses Feld ist erforderlich"
+  "form": {
+    "placeholder": {
+      "email": "Geben Sie Ihre E-Mail-Adresse ein",
+      "phone": "Geben Sie Ihre Mobiltelefonnummer ein"
+    },
+    "validation": {
+      "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "maxLength": "Bitte geben Sie nicht mehr als {max} Zeichen ein",
+      "minLength": "Bitte geben Sie mindestens {min} Zeichen ein",
+      "required": "Dieses Feld ist erforderlich"
+    }
   }
 }

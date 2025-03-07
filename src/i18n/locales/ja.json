@@ -8,10 +8,16 @@
     "ok": "よし",
     "welcome": "ようこそ {name}"
   },
-  "validation": {
-    "email": "有効なメールアドレスを入力してください",
-    "maxLength": "最大{max}文字まで入力できます",
-    "minLength": "最低{min}文字を入力してください",
-    "required": "この項目は必須です"
+  "form": {
+    "placeholder": {
+      "email": "メールアドレスを入力してください",
+      "phone": "携帯電話番号を入力してください"
+    },
+    "validation": {
+      "email": "有効なメールアドレスを入力してください",
+      "maxLength": "最大{max}文字まで入力できます",
+      "minLength": "最低{min}文字を入力してください",
+      "required": "この項目は必須です"
+    }
   }
 }
