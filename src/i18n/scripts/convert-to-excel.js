@@ -58,6 +58,17 @@ function prepareTranslationData(translations, allKeys) {
  * 4. 保存Excel文件
  */
 async function convertToExcel() {
+  // 检查并删除已存在的Excel文件
+  if (fs.existsSync(paths.i18nFile)) {
+    try {
+      fs.unlinkSync(paths.i18nFile);
+      console.log(`已删除旧的Excel文件：${paths.i18nFile}`);
+    } catch (error) {
+      console.error('删除旧的Excel文件失败：', error);
+      return;
+    }
+  }
+
   const { translations, allKeys } = loadTranslations();
   const translationData = prepareTranslationData(translations, allKeys);
 
