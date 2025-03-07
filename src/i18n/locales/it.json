@@ -1,23 +1,104 @@
 {
   "common": {
+    "back": "Indietro",
     "cancel": "Annulla",
     "changeLanguage": "Cambia lingua",
+    "close": "Chiudi",
     "confirm": "Conferma",
+    "create": "Crea",
+    "delete": "Elimina",
+    "edit": "Modifica",
     "hello": "Ciao",
     "loading": "Caricamento...",
+    "more": "Altro",
+    "next": "Avanti",
+    "no": "No",
     "ok": "OK",
-    "welcome": "Benvenuto {name}"
+    "open": "Apri",
+    "previous": "Precedente",
+    "save": "Salva",
+    "search": "Cerca",
+    "submit": "Invia",
+    "update": "Aggiorna",
+    "welcome": "Benvenuto {name}",
+    "yes": "Sì"
+  },
+  "components": {
+    "button": {
+      "hideAll": "Nascondi tutto",
+      "loadMore": "Carica altro",
+      "showAll": "Mostra tutto"
+    },
+    "modal": {
+      "confirmContent": "Sei sicuro di voler eseguire questa azione?",
+      "confirmTitle": "Conferma"
+    },
+    "table": {
+      "noData": "Nessun dato disponibile",
+      "selected": "{selected} elementi selezionati",
+      "total": "Totale {total} elementi"
+    },
+    "upload": {
+      "dragHere": "Trascina i file qui o clicca per caricare",
+      "fileTooBig": "La dimensione del file non può superare {size}MB"
+    }
   },
   "form": {
+    "label": {
+      "address": "Indirizzo",
+      "email": "Email",
+      "password": "Password",
+      "phone": "Numero di telefono",
+      "username": "Nome utente"
+    },
     "placeholder": {
       "email": "Inserisci il tuo indirizzo email",
-      "phone": "Inserisci il tuo numero di telefono cellulare"
+      "password": "Inserisci la tua password",
+      "phone": "Inserisci il tuo numero di telefono cellulare",
+      "search": "Inserisci le parole chiave per la ricerca",
+      "username": "Inserisci il tuo nome utente"
     },
     "validation": {
       "email": "Inserisci un indirizzo email valido",
       "maxLength": "Non inserire più di {max} caratteri",
       "minLength": "Inserisci almeno {min} caratteri",
-      "required": "Questo campo è obbligatorio"
+      "number": "Inserisci un numero valido",
+      "password": "La password deve contenere almeno 8 caratteri",
+      "passwordConfirm": "Le password non coincidono",
+      "phone": "Inserisci un numero di telefono valido",
+      "required": "Questo campo è obbligatorio",
+      "url": "Inserisci un URL valido"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "D MMMM YYYY",
+      "short": "DD/MM/YYYY",
+      "withTime": "DD/MM/YYYY HH:mm:ss"
+    },
+    "number": {
+      "currency": "€",
+      "decimal": ",",
+      "thousand": "."
+    },
+    "time": {
+      "hours": "{hours} ore",
+      "minutes": "{minutes} minuti",
+      "seconds": "{seconds} secondi"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "Accesso negato",
+      "404": "Pagina non trovata",
+      "500": "Errore interno del server"
+    },
+    "login": {
+      "forgotPassword": "Password dimenticata?",
+      "noAccount": "Non hai un account?",
+      "rememberMe": "Ricordami",
+      "signUp": "Registrati",
+      "title": "Accedi"
     }
   }
 }

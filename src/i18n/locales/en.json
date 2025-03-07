@@ -1,23 +1,104 @@
 {
   "common": {
+    "back": "Back",
     "cancel": "Cancel",
     "changeLanguage": "Change Language",
+    "close": "Close",
     "confirm": "Confirm",
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
     "hello": "Hello",
     "loading": "Loading...",
+    "more": "More",
+    "next": "Next",
+    "no": "No",
     "ok": "OK",
-    "welcome": "Welcome {name}"
+    "open": "Open",
+    "previous": "Previous",
+    "save": "Save",
+    "search": "Search",
+    "submit": "Submit",
+    "update": "Update",
+    "welcome": "Welcome {name}",
+    "yes": "Yes"
+  },
+  "components": {
+    "button": {
+      "hideAll": "Hide All",
+      "loadMore": "Load More",
+      "showAll": "Show All"
+    },
+    "modal": {
+      "confirmContent": "Are you sure you want to perform this action?",
+      "confirmTitle": "Please Confirm"
+    },
+    "table": {
+      "noData": "No Data Available",
+      "selected": "{selected} Items Selected",
+      "total": "Total {total} Items"
+    },
+    "upload": {
+      "dragHere": "Drag files here or click to upload",
+      "fileTooBig": "File size cannot exceed {size}MB"
+    }
   },
   "form": {
+    "label": {
+      "address": "Address",
+      "email": "Email",
+      "password": "Password",
+      "phone": "Phone Number",
+      "username": "Username"
+    },
     "placeholder": {
       "email": "Enter Your Email Address",
-      "phone": "Enter Your Mobile Phone Number"
+      "password": "Enter Your Password",
+      "phone": "Enter Your Mobile Phone Number",
+      "search": "Enter Keywords to Search",
+      "username": "Enter Your Username"
     },
     "validation": {
       "email": "Please enter a valid email address",
       "maxLength": "Please enter no more than {max} characters",
       "minLength": "Please enter at least {min} characters",
-      "required": "This field is required"
+      "number": "Please enter a valid number",
+      "password": "Password must contain at least 8 characters",
+      "passwordConfirm": "The two passwords do not match",
+      "phone": "Please enter a valid phone number",
+      "required": "This field is required",
+      "url": "Please enter a valid URL"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "MMMM DD, YYYY",
+      "short": "MM/DD/YYYY",
+      "withTime": "MM/DD/YYYY HH:mm:ss"
+    },
+    "number": {
+      "currency": "$",
+      "decimal": ".",
+      "thousand": ","
+    },
+    "time": {
+      "hours": "{hours} hours",
+      "minutes": "{minutes} minutes",
+      "seconds": "{seconds} seconds"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "Access Denied",
+      "404": "Page Not Found",
+      "500": "Internal Server Error"
+    },
+    "login": {
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "rememberMe": "Remember Me",
+      "signUp": "Sign Up",
+      "title": "Login"
     }
   }
 }
