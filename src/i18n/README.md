@@ -9,8 +9,8 @@ Jackery Design System 提供了一套完整、高性能的国际化（i18n）解
 ```md
 src/i18n/
 ├── locales/                     # 语言资源文件
-│   ├── i18n-translations.xlsx   # 多语言翻译清单表格
-│   ├── en.json                  # 英文语言包
+│   ├── i18n-translations.xlsx   # 多语言翻译清单表格（主要翻译管理文件）
+│   ├── en.json                  # 英文语言包（默认语言）
 │   ├── ja.json                  # 日文语言包
 │   ├── de.json                  # 德文语言包
 │   ├── it.json                  # 意大利文语言包
@@ -20,44 +20,48 @@ src/i18n/
 │   ├── zh-CN.json               # 简体中文语言包
 │   └── zh-TW.json               # 繁体中文语言包
 ├── core/                        # 核心实现
-│   ├── config.ts                # 配置常量
-│   ├── dom.ts                   # DOM相关操作
-│   ├── languages.ts             # 语言资源管理
-│   ├── controller.ts            # i18n控制器
-│   └── index.ts                 # 核心功能导出
+│   ├── config.ts                # 配置常量（语言配置、默认选项等）
+│   ├── dom.ts                   # DOM相关操作（自动翻译、属性处理）
+│   ├── languages.ts             # 语言资源管理（加载、切换、缓存）
+│   ├── controller.ts            # i18n控制器（Lit组件集成）
+│   └── index.ts                 # 核心功能导出（API封装）
 ├── decorators/                  # i18n装饰器
-│   └── index.ts                 # 装饰器实现
+│   └── index.ts                 # 装饰器实现（属性和方法装饰器）
 ├── scripts/                     # 工具脚本
-│   ├── convert-to-excel.js      # JSON转Excel工具
-│   ├── excel-to-json.js         # Excel转JSON工具
-│   └── i18n-utils.js            # 工具函数
+│   ├── convert-to-excel.js      # JSON转Excel工具（批量导出）
+│   ├── excel-to-json.js         # Excel转JSON工具（批量导入）
+│   └── i18n-utils.js            # 工具函数（格式转换、验证等）
 ├── types/                       # 类型定义
-│   └── index.ts                 # 类型声明文件
-├── utils/                       # 通用工具函数
-└── index.ts                     # 统一导出文件
+│   └── index.ts                 # 类型声明文件（Language、Options等）
+├── utils/                       # 通用工具函数（字符串处理、格式化等）
+└── index.ts                     # 统一导出文件（公共API）
 ```
 
 ## 核心特性
 
 1. 多语言支持
-   - 支持英语(en)、中文(zh)、日语(ja)等多语言切换
-   - 智能的语言检测和自动切换机制
-   - 完善的语言回退策略
+   - 支持英语(en)、中文(zh-CN/zh-TW)、日语(ja)、德语(de)、意大利语(it)、法语(fr)、西班牙语(es)、韩语(ko)等多种语言
+   - 智能的语言检测和自动切换机制（基于浏览器设置）
+   - 完善的语言回退策略（未找到翻译时自动降级到默认语言）
+   - 支持异步语言包加载和动态切换
 
 2. DOM 自动更新
-   - 支持声明式和命令式的翻译方式
+   - 支持声明式（data-i18n-key）和命令式（window.i18n.t）的翻译方式
    - 自动监听 DOM 变化并更新翻译
-   - 支持动态参数传递
+   - 支持动态参数传递（data-i18n-params）
+   - 支持模板字符串形式的翻译（${window.i18n.t()}）
 
 3. 开发友好
    - 支持参数替换和复杂文本格式化
-   - TypeScript 类型支持
+   - 完整的 TypeScript 类型支持
    - 支持 IDE 智能提示
+   - 提供装饰器支持，简化组件国际化
 
 4. 框架集成
    - 原生支持 Lit 组件
    - 支持普通 DOM 环境
    - 提供响应式的语言切换能力
+   - 高性能的缓存机制
 
 ## 使用示例
 
@@ -96,6 +100,22 @@ export class MyComponent extends LitElement {
 </script>
 ```
 
+### 使用装饰器
+
+```typescript
+import { i18n } from '@jackery/design-system/i18n/decorators';
+
+@customElement('my-component')
+export class MyComponent extends LitElement {
+  @i18n()
+  title = 'i18n:common.title';
+
+  render() {
+    return html`<h1>${this.title}</h1>`;
+  }
+}
+```
+
 ### 全局 API
 
 ```typescript
@@ -108,7 +128,7 @@ const text = t('common.title');
 const welcome = t('common.welcome', { name: 'World' });
 
 // 切换语言
-setLanguage('zh');
+setLanguage('zh-CN');
 
 // 获取当前语言
 const currentLang = getCurrentLanguage();
@@ -119,25 +139,24 @@ window.addEventListener('i18n-language-change', (event) => {
 });
 ```
 
-## API 参考
+## Excel/JSON 转换工具
 
-### 核心 API
+为了方便翻译管理，我们提供了Excel和JSON格式之间的转换工具。这些工具支持批量处理、数据验证和格式化功能。
 
-```typescript
-// 翻译函数
-t(key: string, params?: Record<string, any>): string;
+### JSON转Excel
 
-// 语言控制
-setLanguage(lang: Language): Promise<void>;
-getCurrentLanguage(): Language;
+将所有JSON语言包合并导出为单个Excel文件：
 
-// Lit 控制器
-class I18nController {
-  constructor(host: HTMLElement);
-  t(key: string, params?: Record<string, any>): string;
-  get currentLanguage(): Language;
-  setLanguage(lang: Language): Promise<void>;
-}
+```bash
+npm run i18n:to-excel
+```
+
+### Excel转JSON
+
+将翻译好的Excel文件转换回各语言的JSON文件：
+
+```bash
+npm run i18n:to-json
 ```
 
 ## 最佳实践
@@ -162,28 +181,6 @@ class I18nController {
    - 记录并监控翻译缺失
    - 提供合适的降级显示
 
-## Excel/JSON 转换工具
-
-为了方便翻译管理，我们提供了Excel和JSON格式之间的转换工具：
-
-### JSON转Excel
-
-```bash
-# 将所有语言包转换为Excel文件
-node src/i18n/scripts/convert-to-excel.js
-```
-
-转换后将在locales目录下生成`i18n-translations.xlsx`文件，包含所有语言的翻译。
-
-### Excel转JSON
-
-```bash
-# 将Excel文件转换回JSON语言包
-node src/i18n/scripts/excel-to-json.js
-```
-
-转换后将在locales目录下生成对应的语言JSON文件。
-
 ## 更新日志
 
 ### v0.0.1
@@ -193,6 +190,3 @@ node src/i18n/scripts/excel-to-json.js
 - 提供 Lit 组件集成
 - 支持 DOM 自动更新
 - 支持模板字符串形式的翻译
-- 优化 DOM 更新性能
-- 增强错误处理机制
-- 添加Excel/JSON转换工具

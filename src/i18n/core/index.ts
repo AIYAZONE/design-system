@@ -1,7 +1,7 @@
 import { I18nInstance } from '../types';
 import { config, I18N_LANGUAGE_CHANGE } from './config';
 import { LRUCache } from '../utils/cache';
-import { Language,messages } from './languages';
+import { Language,messages } from '../types/languages';
 
 // 核心翻译功能实现
 let currentLanguage: Language = config.defaultLanguage || 'en';

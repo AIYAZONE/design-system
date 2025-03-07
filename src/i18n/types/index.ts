@@ -1,4 +1,4 @@
-import { Language } from '../core/languages';
+import { Language } from './languages';
 
 // 消息模式
 export type MessageSchema = {
