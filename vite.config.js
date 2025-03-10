@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       rollupOptions: {
         input: {
-          index: "./index.html", // 作为组件库，后面输出storybook后，将此处去掉
+          index: "./src/index.ts",
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
