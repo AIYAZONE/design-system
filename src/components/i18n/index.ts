@@ -2,9 +2,9 @@
  * @Author: HB-BruceWang
  * @Date: 2025-03-05 11:03:32
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 16:49:05
+ * @LastEditTime: 2025-03-10 13:40:50
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\components\i18n\index.ts
- * @Description:
+ * @Description: 国际化组件
  *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
