@@ -68,7 +68,7 @@ export interface I18nInstance {
    * 设置当前语言
    * @param lang - 要设置的目标语言
    */
-  setLanguage(lang: Language): void;
+  setCurrLanguage(lang: Language): void;
 }
 
 /**

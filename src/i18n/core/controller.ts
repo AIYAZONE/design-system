@@ -1,4 +1,4 @@
-import { t, getCurrentLanguage } from './index';
+import { t, getCurrLanguage } from './index';
 import { I18N_LANGUAGE_CHANGE } from './config';
 import { Language } from '../types/languages';
 
@@ -58,6 +58,6 @@ export class I18nController {
    * @returns 当前语言
    */
   public get currentLanguage(): Language {
-    return getCurrentLanguage();
+    return getCurrLanguage();
   }
 }

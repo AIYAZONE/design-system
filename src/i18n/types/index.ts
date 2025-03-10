@@ -7,8 +7,8 @@ export type MessageSchema = {
 
 export interface I18nInstance {
   t: (key: string, params?: Record<string, string | number>) => string;
-  getCurrentLanguage: () => Language;
-  setLanguage: (lang: Language) => void;
+  getCurrLanguage: () => Language;
+  setCurrLanguage: (lang: Language) => void;
 }
 
 export type I18nError = {

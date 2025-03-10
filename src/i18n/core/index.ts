@@ -22,14 +22,14 @@ function handleTranslationError(error: {
 /*
  * 获取当前语言
 */
-export function getCurrentLanguage(): Language {
+export function getCurrLanguage(): Language {
   return currentLanguage;
 }
 
 /*
  * 设置当前语言
 */
-export function setLanguage(lang: Language): void {
+export function setCurrLanguage(lang: Language): void {
   if (currentLanguage === lang) return;
   currentLanguage = lang;
   translationCache.clear();
@@ -104,8 +104,8 @@ export function t(key: string, params?: Record<string, string | number>): string
 // 全局初始化
 const globalI18n: I18nInstance = {
   t,
-  getCurrentLanguage,
-  setLanguage
+  getCurrLanguage,
+  setCurrLanguage
 };
 
 export function useI18n(): I18nInstance {
@@ -116,14 +116,14 @@ export function useI18n(): I18nInstance {
  * 初始化函数
 */
 export function initialize() {
-  const savedLanguage = localStorage.getItem('language') as Language;
+  const savedLanguage = localStorage.getItem('jds-language') as Language;
   const languageToUse = savedLanguage || config.defaultLanguage || 'en';
 
-  setLanguage(languageToUse);
+  setCurrLanguage(languageToUse);
 
   window.addEventListener(I18N_LANGUAGE_CHANGE, (event: Event) => {
     const lang = (event as CustomEvent<Language>).detail;
-    localStorage.setItem('language', lang);
+    localStorage.setItem('jds-language', lang);
   });
 
   if (typeof window !== 'undefined') {

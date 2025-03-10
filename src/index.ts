@@ -2,9 +2,9 @@
  * @Author: HB-BruceWang
  * @Date: 2024-11-29 17:26:11
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-03-05 16:46:46
+ * @LastEditTime: 2025-03-10 10:39:19
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\index.ts
- * @Description:
+ * @Description: Jackery Design System
  *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
@@ -18,15 +18,14 @@ import JdsToast from "./components/toast/index.js";
 import JdsPopover from "./components/popover/index.js";
 import JdsTooltip from "./components/tooltip/index.js";
 import JdsI18n from "./components/i18n/index.js";
-import JdsI18nExample from "./examples/i18n-example.js";
 
-// 导入 i18n 相关功能
+// i18n
 import {
   initialize,
   initI18nDom,
+  setCurrLanguage,
+  getCurrLanguage,
   t,
-  setLanguage,
-  getCurrentLanguage,
   I18nController
 } from './i18n/index.js';
 
@@ -45,10 +44,11 @@ export {
   JdsPopover,
   JdsTooltip,
   JdsI18n,
-  JdsI18nExample,
   // i18n 相关功能导出
+  initialize,
+  initI18nDom,
   t,
-  setLanguage,
-  getCurrentLanguage,
+  setCurrLanguage,
+  getCurrLanguage,
   I18nController
 };

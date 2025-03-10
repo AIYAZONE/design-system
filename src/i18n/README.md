@@ -119,7 +119,7 @@ export class MyComponent extends LitElement {
 ### 全局 API
 
 ```typescript
-import { t, setLanguage, getCurrentLanguage } from '@jackery/design-system/i18n';
+import { t, setCurrLanguage, getCurrLanguage } from '@jackery/design-system/i18n';
 
 // 基础翻译
 const text = t('common.title');
@@ -128,10 +128,10 @@ const text = t('common.title');
 const welcome = t('common.welcome', { name: 'World' });
 
 // 切换语言
-setLanguage('zh-CN');
+setCurrLanguage('zh-CN');
 
 // 获取当前语言
-const currentLang = getCurrentLanguage();
+const currentLang = getCurrLanguage();
 
 // 监听语言变化
 window.addEventListener('i18n-language-change', (event) => {
