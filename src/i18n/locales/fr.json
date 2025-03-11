@@ -56,6 +56,7 @@
       "password": "Entrez votre mot de passe",
       "phone": "Entrez votre numéro de téléphone mobile",
       "search": "Entrez les mots-clés pour la recherche",
+      "enterKeyword": "Entrez un mot-clé",
       "username": "Entrez votre nom d'utilisateur"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "Les mots de passe ne correspondent pas",
       "phone": "Veuillez entrer un numéro de téléphone valide",
       "required": "Ce champ est obligatoire",
-      "url": "Veuillez entrer une URL valide"
+      "url": "Veuillez entrer une URL valide",
+      "enterKeyword": "Aucune donnée de recherche",
+      "termsOfService": "Veuillez accepter les Conditions d'utilisation et la Politique de confidentialité"
     }
   },
   "format": {

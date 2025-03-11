@@ -56,6 +56,7 @@
       "password": "請輸入您的密碼",
       "phone": "請輸入您的手機號碼",
       "search": "請輸入關鍵字搜尋",
+      "enterKeyword": "請輸入關鍵字",
       "username": "請輸入您的用戶名"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "兩次輸入的密碼不一致",
       "phone": "請輸入有效的手機號碼",
       "required": "此欄位為必填項",
-      "url": "請輸入有效的網址"
+      "url": "請輸入有效的網址",
+      "enterKeyword": "暫無搜尋資料",
+      "termsOfService": "請同意服務條款和隱私政策"
     }
   },
   "format": {

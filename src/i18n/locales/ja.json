@@ -56,6 +56,7 @@
       "password": "パスワードを入力してください",
       "phone": "携帯電話番号を入力してください",
       "search": "検索キーワードを入力してください",
+      "enterKeyword": "キーワードを入力",
       "username": "ユーザー名を入力してください"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "パスワードが一致しません",
       "phone": "有効な電話番号を入力してください",
       "required": "この項目は必須です",
-      "url": "有効なURLを入力してください"
+      "url": "有効なURLを入力してください",
+      "enterKeyword": "検索データがありません",
+      "termsOfService": "利用規約とプライバシーポリシーに同意してください"
     }
   },
   "format": {

@@ -56,6 +56,7 @@
       "password": "비밀번호를 입력하세요",
       "phone": "휴대폰 번호를 입력하세요",
       "search": "검색어를 입력하세요",
+      "enterKeyword": "키워드를 입력하세요",
       "username": "사용자 이름을 입력하세요"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "비밀번호가 일치하지 않습니다",
       "phone": "유효한 전화번호를 입력해 주세요",
       "required": "이 필드는 필수입니다",
-      "url": "유효한 URL을 입력해 주세요"
+      "url": "유효한 URL을 입력해 주세요",
+      "enterKeyword": "검색 데이터가 없습니다",
+      "termsOfService": "서비스 이용약관 및 개인정보 처리방침에 동의해 주세요"
     }
   },
   "format": {

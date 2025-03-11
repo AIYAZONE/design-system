@@ -56,6 +56,7 @@
       "password": "Introduce tu contraseña",
       "phone": "Introduce tu número de teléfono móvil",
       "search": "Introduce palabras clave para buscar",
+      "enterKeyword": "Introduce palabra clave",
       "username": "Introduce tu nombre de usuario"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "Las contraseñas no coinciden",
       "phone": "Por favor, introduce un número de teléfono válido",
       "required": "Este campo es obligatorio",
-      "url": "Por favor, introduce una URL válida"
+      "url": "Por favor, introduce una URL válida",
+      "enterKeyword": "No hay datos de búsqueda",
+      "termsOfService": "Por favor, acepta los Términos de servicio y la Política de privacidad"
     }
   },
   "format": {

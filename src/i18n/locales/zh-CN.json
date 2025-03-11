@@ -56,6 +56,7 @@
       "password": "请输入您的密码",
       "phone": "请输入您的手机号码",
       "search": "请输入搜索关键词",
+      "enterKeyword": "请输入关键词",
       "username": "请输入您的用户名"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "两次输入的密码不一致",
       "phone": "请输入有效的手机号码",
       "required": "此字段为必填项",
-      "url": "请输入有效的URL"
+      "url": "请输入有效的URL",
+      "enterKeyword": "暂无搜索数据",
+      "termsOfService": "请同意服务条款和隐私政策"
     }
   },
   "format": {

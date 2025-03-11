@@ -56,6 +56,7 @@
       "password": "Enter Your Password",
       "phone": "Enter Your Mobile Phone Number",
       "search": "Enter Keywords to Search",
+      "enterKeyword": "Enter keyword",
       "username": "Enter Your Username"
     },
     "validation": {
@@ -67,7 +68,9 @@
       "passwordConfirm": "The two passwords do not match",
       "phone": "Please enter a valid phone number",
       "required": "This field is required",
-      "url": "Please enter a valid URL"
+      "url": "Please enter a valid URL",
+      "enterKeyword": "No search data",
+      "termsOfService": "Please agree to the Terms of Service and Privacy policy."
     }
   },
   "format": {
