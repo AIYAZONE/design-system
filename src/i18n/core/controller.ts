@@ -1,3 +1,13 @@
+/*
+ * @Author: HB-BruceWang
+ * @Date: 2025-03-07 18:46:21
+ * @LastEditors: HB-BruceWang
+ * @LastEditTime: 2025-03-11 14:22:23
+ * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\i18n\core\controller.ts
+ * @Description:
+ *
+ * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
+ */
 import { t, getCurrLanguage } from './index';
 import { I18N_LANGUAGE_CHANGE } from './config';
 import { Language } from '../types/languages';

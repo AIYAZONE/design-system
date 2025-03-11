@@ -7,6 +7,7 @@
  * @Description: i18n装饰器实现
  */
 
+import { I18N_LANGUAGE_CHANGE } from '../core/config'
 /**
  * i18n装饰器，用于自动处理属性的国际化
  * @returns void
@@ -14,9 +15,9 @@
 export function i18n(): (protoOrDescriptor: any, name: PropertyKey) => void {
   return (protoOrDescriptor: any, name: PropertyKey): any => {
     // 在组件销毁时移除事件监听器
-    const cleanup = function(this: any) {
+    const cleanup = function (this: any) {
       if (this[`__${String(name)}UpdateHandler`]) {
-        window.removeEventListener('i18n-language-change', this[`__${String(name)}UpdateHandler`]);
+        window.removeEventListener(I18N_LANGUAGE_CHANGE, this[`__${String(name)}UpdateHandler`]);
         this[`__${String(name)}UpdateHandler`] = null;
       }
     };
@@ -24,12 +25,12 @@ export function i18n(): (protoOrDescriptor: any, name: PropertyKey) => void {
     // 确保在组件断开连接时清理事件监听器
     if (protoOrDescriptor.disconnectedCallback) {
       const originalDisconnected = protoOrDescriptor.disconnectedCallback;
-      protoOrDescriptor.disconnectedCallback = function() {
+      protoOrDescriptor.disconnectedCallback = function () {
         cleanup.call(this);
         originalDisconnected.call(this);
       };
     } else {
-      protoOrDescriptor.disconnectedCallback = function() {
+      protoOrDescriptor.disconnectedCallback = function () {
         cleanup.call(this);
       };
     }
@@ -57,7 +58,7 @@ export function i18n(): (protoOrDescriptor: any, name: PropertyKey) => void {
             this[`__${String(name)}UpdateHandler`] = () => {
               this.requestUpdate(name, oldValue);
             };
-            window.addEventListener('i18n-language-change', this[`__${String(name)}UpdateHandler`]);
+            window.addEventListener(I18N_LANGUAGE_CHANGE, this[`__${String(name)}UpdateHandler`]);
           }
 
           this.requestUpdate(name, oldValue);

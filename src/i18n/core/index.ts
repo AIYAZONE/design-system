@@ -1,35 +1,42 @@
-import { I18nInstance } from '../types';
+// 类型导入
+import { I18nInstance, I18nError, MessageSchema } from '../types';
+import { Language, messages } from '../types/languages';
+
+// 配置和工具导入
 import { config, I18N_LANGUAGE_CHANGE } from './config';
 import { LRUCache } from '../utils/cache';
-import { Language,messages } from '../types/languages';
 import { getCookie, setCookie } from '../../utils/common';
 
-// 核心翻译功能实现
-let currentLanguage: Language = config.defaultLanguage || 'en';
-const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
+// 常量定义
 const PARAM_REGEX = /\{([^}]+)\}/g;
 
-// 错误处理函数
-function handleTranslationError(error: {
-  type: "MISSING_KEY" | "INVALID_PARAMS" | "INTERNAL_ERROR";
-  key: string;
-  message: string;
-  params?: Record<string, string | number>
-}) {
+// 核心状态
+let currentLanguage: Language = config.defaultLanguage || 'en';
+const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
+
+/**
+ * 错误处理函数
+ * @param error - 错误信息对象，包含错误类型、键值和消息
+ * @returns 错误键值，用于显示给用户
+ */
+function handleTranslationError(error: I18nError): string {
   config?.errorHandler?.(error);
   return error.key;
 }
 
-/*
+/**
  * 获取当前语言
-*/
+ * @returns 当前设置的语言标识
+ */
 export function getCurrLanguage(): Language {
   return currentLanguage;
 }
 
-/*
+/**
  * 设置当前语言
-*/
+ * @param lang - 要设置的目标语言标识
+ * @description 更新当前语言，清除缓存并触发语言变更事件
+ */
 export function setCurrLanguage(lang: Language): void {
   if (currentLanguage === lang) return;
   currentLanguage = lang;
@@ -37,9 +44,13 @@ export function setCurrLanguage(lang: Language): void {
   window.dispatchEvent(new CustomEvent(I18N_LANGUAGE_CHANGE, { detail: lang }));
 }
 
-/*
+/**
  * 翻译函数
-*/
+ * @param key - 翻译键，支持点号分隔的嵌套键值，如 'common.button.submit'
+ * @param params - 替换参数对象，用于替换翻译文本中的占位符，如 {name: 'John'}
+ * @returns 翻译后的文本，如果翻译失败则返回键值
+ * @description 支持缓存、嵌套键值、参数替换和错误处理
+ */
 export function t(key: string, params?: Record<string, string | number>): string {
   const cacheKey = params ? `${key}:${JSON.stringify(params)}` : key;
   try {
@@ -102,21 +113,30 @@ export function t(key: string, params?: Record<string, string | number>): string
   }
 }
 
-// 全局初始化
+/**
+ * 全局i18n实例
+ * @description 提供全局可访问的i18n功能实例
+ */
 const globalI18n: I18nInstance = {
   t,
   getCurrLanguage,
   setCurrLanguage
 };
 
+/**
+ * 获取i18n实例
+ * @returns i18n实例，包含翻译和语言管理功能
+ * @description 用于在组件中获取i18n功能实例
+ */
 export function useI18n(): I18nInstance {
   return globalI18n;
 }
 
-/*
- * 初始化函数
-*/
-export function initialize() {
+/**
+ * 初始化i18n系统
+ * @description 初始化i18n系统，设置默认语言，绑定事件监听，并挂载全局实例
+ */
+export function initialize(): void {
   const savedLanguage = getCookie('jds-language') as Language;
   const languageToUse = savedLanguage || config.defaultLanguage || 'en';
 

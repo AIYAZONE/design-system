@@ -26,7 +26,8 @@ import {
   setCurrLanguage,
   getCurrLanguage,
   t,
-  I18nController
+  I18nController,
+  type I18nInstance
 } from './i18n/index.js';
 
 // 初始化 i18n
@@ -50,5 +51,6 @@ export {
   t,
   setCurrLanguage,
   getCurrLanguage,
-  I18nController
+  I18nController,
+  type I18nInstance
 };
