@@ -2,6 +2,7 @@ import { I18nInstance } from '../types';
 import { config, I18N_LANGUAGE_CHANGE } from './config';
 import { LRUCache } from '../utils/cache';
 import { Language,messages } from '../types/languages';
+import { getCookie, setCookie } from '../../utils/common';
 
 // 核心翻译功能实现
 let currentLanguage: Language = config.defaultLanguage || 'en';
@@ -116,14 +117,14 @@ export function useI18n(): I18nInstance {
  * 初始化函数
 */
 export function initialize() {
-  const savedLanguage = localStorage.getItem('jds-language') as Language;
+  const savedLanguage = getCookie('jds-language') as Language;
   const languageToUse = savedLanguage || config.defaultLanguage || 'en';
 
   setCurrLanguage(languageToUse);
 
   window.addEventListener(I18N_LANGUAGE_CHANGE, (event: Event) => {
     const lang = (event as CustomEvent<Language>).detail;
-    localStorage.setItem('jds-language', lang);
+    setCookie('jds-language', lang);
   });
 
   if (typeof window !== 'undefined') {
