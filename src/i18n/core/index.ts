@@ -1,5 +1,5 @@
 // 类型导入
-import { I18nInstance, I18nError, MessageSchema } from '../types';
+import { I18nInstance, I18nError } from '../types';
 import { Language, messages } from '../types/languages';
 
 // 配置和工具导入
