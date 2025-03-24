@@ -19,6 +19,7 @@
     "url": "http://192.168.30.241/global-website/jackery-design-system.git"
   },
   "scripts": {
+    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
