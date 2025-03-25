@@ -1,0 +1,107 @@
+{
+  "common": {
+    "back": "뒤로",
+    "cancel": "취소",
+    "changeLanguage": "언어 변경",
+    "close": "닫기",
+    "confirm": "확인",
+    "create": "생성",
+    "delete": "삭제",
+    "edit": "편집",
+    "hello": "안녕하세요",
+    "loading": "로딩 중...",
+    "more": "더 보기",
+    "next": "다음",
+    "no": "아니오",
+    "ok": "확인",
+    "open": "열기",
+    "previous": "이전",
+    "save": "저장",
+    "search": "검색",
+    "submit": "제출",
+    "update": "업데이트",
+    "welcome": "{name}님 환영합니다",
+    "yes": "예"
+  },
+  "components": {
+    "button": {
+      "hideAll": "전체 숨기기",
+      "loadMore": "더 불러오기",
+      "showAll": "전체 보기"
+    },
+    "modal": {
+      "confirmContent": "이 작업을 수행하시겠습니까?",
+      "confirmTitle": "확인해 주세요"
+    },
+    "table": {
+      "noData": "데이터가 없습니다",
+      "selected": "{selected}개 항목 선택됨",
+      "total": "총 {total}개 항목"
+    },
+    "upload": {
+      "dragHere": "파일을 여기에 끌어다 놓거나 클릭하여 업로드",
+      "fileTooBig": "파일 크기는 {size}MB를 초과할 수 없습니다"
+    }
+  },
+  "form": {
+    "label": {
+      "address": "주소",
+      "email": "이메일",
+      "password": "비밀번호",
+      "phone": "전화번호",
+      "username": "사용자 이름"
+    },
+    "placeholder": {
+      "email": "이메일 주소를 입력하세요",
+      "password": "비밀번호를 입력하세요",
+      "phone": "휴대폰 번호를 입력하세요",
+      "search": "검색어를 입력하세요",
+      "enterKeyword": "키워드를 입력하세요",
+      "username": "사용자 이름을 입력하세요"
+    },
+    "validation": {
+      "email": "유효한 이메일 주소를 입력해 주세요",
+      "maxLength": "{max}자를 초과할 수 없습니다",
+      "minLength": "최소 {min}자를 입력해 주세요",
+      "number": "유효한 숫자를 입력해 주세요",
+      "password": "비밀번호는 최소 8자 이상이어야 합니다",
+      "passwordConfirm": "비밀번호가 일치하지 않습니다",
+      "phone": "유효한 전화번호를 입력해 주세요",
+      "required": "이 필드는 필수입니다",
+      "url": "유효한 URL을 입력해 주세요",
+      "enterKeyword": "검색 데이터가 없습니다",
+      "termsOfService": "서비스 이용약관 및 개인정보 처리방침에 동의해 주세요"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "YYYY년 M월 D일",
+      "short": "YYYY.MM.DD",
+      "withTime": "YYYY.MM.DD HH:mm:ss"
+    },
+    "number": {
+      "currency": "₩",
+      "decimal": ".",
+      "thousand": ","
+    },
+    "time": {
+      "hours": "{hours}시간",
+      "minutes": "{minutes}분",
+      "seconds": "{seconds}초"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "접근이 거부되었습니다",
+      "404": "페이지를 찾을 수 없습니다",
+      "500": "서버 내부 오류"
+    },
+    "login": {
+      "forgotPassword": "비밀번호를 잊으셨나요?",
+      "noAccount": "계정이 없으신가요?",
+      "rememberMe": "로그인 상태 유지",
+      "signUp": "회원가입",
+      "title": "로그인"
+    }
+  }
+}

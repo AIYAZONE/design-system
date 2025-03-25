@@ -29,3 +29,5 @@ storybook-static
 chromatic.config.json
 
 *.tgz
+
+.npmrc

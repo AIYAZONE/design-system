@@ -1,0 +1,107 @@
+{
+  "common": {
+    "back": "返回",
+    "cancel": "取消",
+    "changeLanguage": "切换语言",
+    "close": "关闭",
+    "confirm": "确认",
+    "create": "创建",
+    "delete": "删除",
+    "edit": "编辑",
+    "hello": "你好",
+    "loading": "加载中...",
+    "more": "更多",
+    "next": "下一步",
+    "no": "否",
+    "ok": "确定",
+    "open": "打开",
+    "previous": "上一步",
+    "save": "保存",
+    "search": "搜索",
+    "submit": "提交",
+    "update": "更新",
+    "welcome": "欢迎 {name}",
+    "yes": "是"
+  },
+  "components": {
+    "button": {
+      "hideAll": "隐藏全部",
+      "loadMore": "加载更多",
+      "showAll": "显示全部"
+    },
+    "modal": {
+      "confirmContent": "确定要执行此操作吗？",
+      "confirmTitle": "请确认"
+    },
+    "table": {
+      "noData": "暂无数据",
+      "selected": "已选择 {selected} 项",
+      "total": "共 {total} 条"
+    },
+    "upload": {
+      "dragHere": "将文件拖到此处或点击上传",
+      "fileTooBig": "文件大小不能超过 {size}MB"
+    }
+  },
+  "form": {
+    "label": {
+      "address": "地址",
+      "email": "电子邮件",
+      "password": "密码",
+      "phone": "手机号码",
+      "username": "用户名"
+    },
+    "placeholder": {
+      "email": "请输入您的电子邮件地址",
+      "password": "请输入您的密码",
+      "phone": "请输入您的手机号码",
+      "search": "请输入搜索关键词",
+      "enterKeyword": "请输入关键词",
+      "username": "请输入您的用户名"
+    },
+    "validation": {
+      "email": "请输入有效的电子邮件地址",
+      "maxLength": "请不要输入超过 {max} 个字符",
+      "minLength": "请至少输入 {min} 个字符",
+      "number": "请输入有效的数字",
+      "password": "密码必须至少包含8个字符",
+      "passwordConfirm": "两次输入的密码不一致",
+      "phone": "请输入有效的手机号码",
+      "required": "此字段为必填项",
+      "url": "请输入有效的URL",
+      "enterKeyword": "暂无搜索数据",
+      "termsOfService": "请同意服务条款和隐私政策"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "YYYY年M月D日",
+      "short": "YYYY/MM/DD",
+      "withTime": "YYYY/MM/DD HH:mm:ss"
+    },
+    "number": {
+      "currency": "¥",
+      "decimal": ".",
+      "thousand": ","
+    },
+    "time": {
+      "hours": "{hours}小时",
+      "minutes": "{minutes}分钟",
+      "seconds": "{seconds}秒"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "访问被拒绝",
+      "404": "页面未找到",
+      "500": "服务器内部错误"
+    },
+    "login": {
+      "forgotPassword": "忘记密码？",
+      "noAccount": "还没有账号？",
+      "rememberMe": "记住我",
+      "signUp": "注册",
+      "title": "登录"
+    }
+  }
+}
