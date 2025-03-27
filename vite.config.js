@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import viteCompression from "vite-plugin-compression";
 
 // 基础构建配置
 const baseBuildConfig = {
@@ -75,6 +76,13 @@ export default defineConfig(({ mode }) => {
     },
     base: "./", // 添加此行以使用相对路径
     plugins: [
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
       viteStaticCopy({
         targets: [
           {
