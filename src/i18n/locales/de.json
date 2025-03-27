@@ -53,14 +53,15 @@
     },
     "placeholder": {
       "email": "Geben Sie Ihre E-Mail-Adresse ein",
+      "enterKeyword": "Suchbegriff eingeben",
       "password": "Geben Sie Ihr Passwort ein",
       "phone": "Geben Sie Ihre Mobiltelefonnummer ein",
       "search": "Suchbegriffe eingeben",
-      "enterKeyword": "Suchbegriff eingeben",
       "username": "Geben Sie Ihren Benutzernamen ein"
     },
     "validation": {
       "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "enterKeyword": "Keine Suchdaten",
       "maxLength": "Bitte geben Sie nicht mehr als {max} Zeichen ein",
       "minLength": "Bitte geben Sie mindestens {min} Zeichen ein",
       "number": "Bitte geben Sie eine gültige Zahl ein",
@@ -68,9 +69,8 @@
       "passwordConfirm": "Die Passwörter stimmen nicht überein",
       "phone": "Bitte geben Sie eine gültige Telefonnummer ein",
       "required": "Dieses Feld ist erforderlich",
-      "url": "Bitte geben Sie eine gültige URL ein",
-      "enterKeyword": "Keine Suchdaten",
-      "termsOfService": "Bitte stimmen Sie den Nutzungsbedingungen und der Datenschutzerklärung zu"
+      "termsOfService": "Bitte stimmen Sie den Nutzungsbedingungen und der Datenschutzerklärung zu",
+      "url": "Bitte geben Sie eine gültige URL ein"
     }
   },
   "format": {
@@ -94,7 +94,8 @@
     "error": {
       "403": "Zugriff verweigert",
       "404": "Seite nicht gefunden",
-      "500": "Interner Serverfehler"
+      "500": "Interner Serverfehler",
+      "default": "Ups, etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
     },
     "login": {
       "forgotPassword": "Passwort vergessen?",

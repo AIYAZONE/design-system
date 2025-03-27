@@ -53,14 +53,15 @@
     },
     "placeholder": {
       "email": "Introduce tu dirección de correo electrónico",
+      "enterKeyword": "Introduce palabra clave",
       "password": "Introduce tu contraseña",
       "phone": "Introduce tu número de teléfono móvil",
       "search": "Introduce palabras clave para buscar",
-      "enterKeyword": "Introduce palabra clave",
       "username": "Introduce tu nombre de usuario"
     },
     "validation": {
       "email": "Por favor, introduce una dirección de correo electrónico válida",
+      "enterKeyword": "No hay datos de búsqueda",
       "maxLength": "Por favor, no introduzcas más de {max} caracteres",
       "minLength": "Por favor, introduce al menos {min} caracteres",
       "number": "Por favor, introduce un número válido",
@@ -68,9 +69,8 @@
       "passwordConfirm": "Las contraseñas no coinciden",
       "phone": "Por favor, introduce un número de teléfono válido",
       "required": "Este campo es obligatorio",
-      "url": "Por favor, introduce una URL válida",
-      "enterKeyword": "No hay datos de búsqueda",
-      "termsOfService": "Por favor, acepta los Términos de servicio y la Política de privacidad"
+      "termsOfService": "Por favor, acepta los Términos de servicio y la Política de privacidad",
+      "url": "Por favor, introduce una URL válida"
     }
   },
   "format": {
@@ -94,7 +94,8 @@
     "error": {
       "403": "Acceso denegado",
       "404": "Página no encontrada",
-      "500": "Error interno del servidor"
+      "500": "Error interno del servidor",
+      "default": "Ups, algo salió mal. Por favor, inténtelo de nuevo más tarde."
     },
     "login": {
       "forgotPassword": "¿Olvidaste tu contraseña?",
