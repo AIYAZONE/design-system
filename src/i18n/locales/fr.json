@@ -53,14 +53,15 @@
     },
     "placeholder": {
       "email": "Entrez votre adresse e-mail",
+      "enterKeyword": "Entrez un mot-clé",
       "password": "Entrez votre mot de passe",
       "phone": "Entrez votre numéro de téléphone mobile",
       "search": "Entrez les mots-clés pour la recherche",
-      "enterKeyword": "Entrez un mot-clé",
       "username": "Entrez votre nom d'utilisateur"
     },
     "validation": {
       "email": "Veuillez entrer une adresse e-mail valide",
+      "enterKeyword": "Aucune donnée de recherche",
       "maxLength": "Veuillez ne pas entrer plus de {max} caractères",
       "minLength": "Veuillez entrer au moins {min} caractères",
       "number": "Veuillez entrer un nombre valide",
@@ -68,9 +69,8 @@
       "passwordConfirm": "Les mots de passe ne correspondent pas",
       "phone": "Veuillez entrer un numéro de téléphone valide",
       "required": "Ce champ est obligatoire",
-      "url": "Veuillez entrer une URL valide",
-      "enterKeyword": "Aucune donnée de recherche",
-      "termsOfService": "Veuillez accepter les Conditions d'utilisation et la Politique de confidentialité"
+      "termsOfService": "Veuillez accepter les Conditions d'utilisation et la Politique de confidentialité",
+      "url": "Veuillez entrer une URL valide"
     }
   },
   "format": {
@@ -81,8 +81,7 @@
     },
     "number": {
       "currency": "€",
-      "decimal": ",",
-      "thousand": " "
+      "decimal": ","
     },
     "time": {
       "hours": "{hours} heures",
@@ -94,7 +93,8 @@
     "error": {
       "403": "Accès refusé",
       "404": "Page non trouvée",
-      "500": "Erreur interne du serveur"
+      "500": "Erreur interne du serveur",
+      "default": "Oups, quelque chose s'est mal passé. Veuillez réessayer plus tard."
     },
     "login": {
       "forgotPassword": "Mot de passe oublié ?",

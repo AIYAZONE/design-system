@@ -53,14 +53,15 @@
     },
     "placeholder": {
       "email": "請輸入您的電子郵件地址",
+      "enterKeyword": "請輸入關鍵字",
       "password": "請輸入您的密碼",
       "phone": "請輸入您的手機號碼",
       "search": "請輸入關鍵字搜尋",
-      "enterKeyword": "請輸入關鍵字",
       "username": "請輸入您的用戶名"
     },
     "validation": {
       "email": "請輸入有效的電子郵件地址",
+      "enterKeyword": "暫無搜尋資料",
       "maxLength": "請不要輸入超過 {max} 個字符",
       "minLength": "請至少輸入 {min} 個字符",
       "number": "請輸入有效的數字",
@@ -68,9 +69,8 @@
       "passwordConfirm": "兩次輸入的密碼不一致",
       "phone": "請輸入有效的手機號碼",
       "required": "此欄位為必填項",
-      "url": "請輸入有效的網址",
-      "enterKeyword": "暫無搜尋資料",
-      "termsOfService": "請同意服務條款和隱私政策"
+      "termsOfService": "請同意服務條款和隱私政策",
+      "url": "請輸入有效的網址"
     }
   },
   "format": {
@@ -94,7 +94,8 @@
     "error": {
       "403": "拒絕存取",
       "404": "找不到頁面",
-      "500": "伺服器內部錯誤"
+      "500": "伺服器內部錯誤",
+      "default": "抱歉，出現了一些問題，請稍後再試。"
     },
     "login": {
       "forgotPassword": "忘記密碼？",
