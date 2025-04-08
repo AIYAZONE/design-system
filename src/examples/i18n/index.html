@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples</title>
+</head>
+<body>
+  <h2>国际化使用示例</h2>
+  <p>当前调试使用，后面将该示例转到Storybook中</p>
+
+  <h3>1. 自定义i18n组件：jds-i18n —— html或Lit组件内均可使用，推荐使用</h3>
+  <jds-i18n key="common.ok"></jds-i18n>
+  <jds-i18n key="common.welcome" params='{"name":"World"}'></jds-i18n>
+
+  <h3>2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用</h3>
+  <p>common.yes: <span data-i18n-key="common.yes"></span></p>
+  <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
+
+  <h3>3. 模板字符串形式 —— html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新</h3>
+  <p title="${window.i18n.t('common.ok')}">common.ok:${window.i18n.t('common.ok')}</p>
+
+  <jds-i18n-example title="i18n:common.ok" message="i18n:common.yes"></jds-i18n-example>
+
+  <script type="module" src="../../index.ts"></script>
+  <script type="module" src="./index.ts"></script>
+</body>
+</html>
