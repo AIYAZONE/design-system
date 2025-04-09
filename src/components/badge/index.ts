@@ -2,8 +2,6 @@ import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import { badgeStyles } from "./styles";
-import "../icon"; // 导入图标组件
-import { JackeryIcon } from "../icon/icon-list"; // 导入图标列表类型
 
 // 定义徽章组件的大小类型
 export type BadgeSize = "small" | "medium" | "large";
@@ -30,7 +28,7 @@ export default class JdsBadge extends LitElement {
    * 设置图标的名称
    */
   @property({ type: String })
-  icon?: JackeryIcon;
+  icon?: string;
 
   // 组件的渲染方法
   render(): TemplateResult {
