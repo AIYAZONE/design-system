@@ -6,8 +6,6 @@ import { stringBooleanConverter } from "../../utils/string-boolean.converter.js"
 
 import { toastStyles } from "./styles.js";
 import { ButtonVariant, ButtonKind, ButtonSize } from "../button/index.js";
-import "../icon/index.js";
-import { JackeryIcon } from "../icon/icon-list.js";
 
 export type ToastVariant = "info" | "warning" | "success" | "danger";
 
@@ -36,7 +34,7 @@ export default class JdsToast extends LitElement {
    * 允许自定义轻提示图标
    */
   @property({ converter: stringBooleanConverter() })
-  icon?: boolean | JackeryIcon; // 图标可选，支持布尔值和自定义图标
+  icon?: boolean | string; // 图标可选，支持布尔值和自定义图标
 
   /**
    * 显示关闭按钮
@@ -144,7 +142,7 @@ export default class JdsToast extends LitElement {
   }
 
   // 获取图标
-  private _getIcon(): JackeryIcon | string {
+  private _getIcon(): string {
     if (!this.icon) return ""; // 如果没有图标，返回空
     if (this.icon === true) return this._predefinedIcons(); // 返回预定义图标
     return this.icon; // 返回自定义图标
