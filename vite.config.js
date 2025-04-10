@@ -88,9 +88,10 @@ export default defineConfig(({ mode }) => {
           {
             src: ["src/assets/**/*"], // 源目录
             dest: "assets", // 目标目录
+            flatten: true, // 平铺所有文件
           },
         ],
-        structured: true,
+        structured: false,
       }),
     ],
     css: {
