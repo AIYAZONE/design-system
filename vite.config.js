@@ -79,7 +79,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: "./", // 添加此行以使用相对路径
     plugins: [
       viteCompression({
         verbose: true,
@@ -87,16 +86,6 @@ export default defineConfig(({ mode }) => {
         threshold: 10240,
         algorithm: 'gzip',
         ext: '.gz',
-      }),
-      viteStaticCopy({
-        targets: [
-          {
-            src: ["src/assets/**/*"], // 源目录
-            dest: "assets", // 目标目录
-            flatten: true, // 平铺所有文件
-          },
-        ],
-        structured: false,
       }),
     ],
     css: {
