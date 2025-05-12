@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -19,12 +19,15 @@
     "url": "http://192.168.30.241/global-website/jackery-design-system.git"
   },
   "scripts": {
+    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "npm run build && storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a"
+    "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
+    "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
+    "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
   },
   "keywords": [
     "web-components",
@@ -36,9 +39,10 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
-    "@jackery/icons": "^0.0.1",
+    "@jackery/icons": "^0.0.3",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
+    "exceljs": "^4.4.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {

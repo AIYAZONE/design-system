@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
-import viteCompression from 'vite-plugin-compression';
-
+import { viteStaticCopy } from "vite-plugin-static-copy";
+import viteCompression from "vite-plugin-compression";
 
 // 基础构建配置
 const baseBuildConfig = {
@@ -50,26 +50,53 @@ export default defineConfig(({ mode }) => {
           ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
-          entryFileNames: "[name].js", // 入口文件命名规则
-          chunkFileNames: "chunks/[name].js", // chunk 文件命名规则
+          entryFileNames: (chunkInfo) => {
+            if (chunkInfo.facadeModuleId.startsWith("components/")) {
+              return `components/${chunkInfo.name}.js`;
+            }
+            return `${chunkInfo.name}.js`;
+          },
+          chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
             const ext = path.extname(assetInfo.name);
-            if (ext === ".css") {
-              return "styles/index.css"; // 将所有 CSS 文件汇总为 index.css
+            switch (ext) {
+              case ".css":
+                // 输出到 styles 目录
+                return "styles/[name].[ext]";
+              case ".woff":
+              case ".woff2":
+                // 字体文件输出到fonts目录
+                return "fonts/[name][ext]";
+              case ".svg":
+              case ".png":
+              case ".jpg":
+              case ".gif":
+                return "assets/[name][ext]";
+              default:
+                return "[name].[ext]";
             }
-            if (ext === ".woff" || ext === ".woff2") {
-              return "fonts/[name][ext]"; // 字体文件输出到 fonts 目录
-            }
-            return "assets/[name][ext]"; // 其他静态资源输出到 assets 目录
           },
         },
       },
     },
+    base: "./", // 添加此行以使用相对路径
     plugins: [
-      // 压缩构建输出
       viteCompression({
-        algorithm: 'gzip', // 使用 gzip 压缩
-        ext: '.gz', // 压缩文件后缀
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
+      viteStaticCopy({
+        targets: [
+          {
+            src: ["src/assets/**/*"], // 源目录
+            dest: "assets", // 目标目录
+            flatten: true, // 平铺所有文件
+          },
+        ],
+        structured: false,
       }),
     ],
     css: {

@@ -6,8 +6,6 @@ import { submit } from "@open-wc/form-helpers";
 import { event, EventDispatcher } from "../../utils/event";
 
 import { buttonStyles } from "./styles";
-import "../icon";
-import { JackeryIcon } from "../icon/icon-list";
 import "../spinner";
 
 // 按钮变体的类型定义：主按钮、副按钮、次级按钮、文本按钮
@@ -81,16 +79,16 @@ export default class JdsButton extends LitElement {
   href?: string;
 
   /**
+   * 设置图标名称，使用jds-icon组件显示图标
+   */
+  @property({ type: String })
+  icon?: string;
+
+  /**
    * 设置锚点的目标，当设置了`href`时使用
    */
   @property({ type: String })
   target?: TargetType = "_self";
-
-  /**
-   * 设置图标名称，使用jds-icon组件显示图标
-   */
-  @property({ type: String })
-  icon?: JackeryIcon;
 
   /**
    * 设置按钮的类型，设置`submit`以将按钮用作父表单的提交器
