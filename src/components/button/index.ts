@@ -6,8 +6,6 @@ import { submit } from "@open-wc/form-helpers";
 import { event, EventDispatcher } from "../../utils/event";
 
 import { buttonStyles } from "./styles";
-import "../icon";
-import { JackeryIcon } from "../icon/icon-list";
 import "../spinner";
 
 // 按钮变体的类型定义
@@ -84,7 +82,7 @@ export default class JdsButton extends LitElement {
    * 设置图标名称，使用jds-icon组件显示图标
    */
   @property({ type: String })
-  icon?: JackeryIcon;
+  icon?: string;
 
   /**
    * 设置锚点的目标，当设置了`href`时使用
