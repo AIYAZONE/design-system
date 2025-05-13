@@ -104,56 +104,56 @@
   /* 主色高亮 */
   --jds-color-primary-highlight: #FD6A26;
   /* 主色对比色 */
-  --jds-color-primary-contrast: #0050FD;
+  --jds-color-primary-contrast: #FEF2E8;
 
   /* === 成功色 === */
   /* 成功状态颜色 - 已校准 */
-  --jds-color-success: #52c41a;
+  --jds-color-success: #52C41A;
   /* 成功状态高亮 */
-  --jds-color-success-highlight: #09a44e;
+  --jds-color-success-highlight: #09A44E;
   /* 成功状态对比色 */
-  --jds-color-success-contrast: #e7f9ef;
+  --jds-color-success-contrast: #E7F9EF;
 
   /* === 危险色 === */
   /* 危险状态颜色 - 已校准 */
-  --jds-color-danger: #ff3b30;
+  --jds-color-danger: #FF3B30;
   /* 危险状态高亮 */
-  --jds-color-danger-highlight: #ff3028;
+  --jds-color-danger-highlight: #FF3028;
   /* 危险状态对比色 */
-  --jds-color-danger-contrast: #ffeeec;
+  --jds-color-danger-contrast: #FFEEEC;
 
   /* === 警告色 === */
   /* 警告状态颜色 */
-  --jds-color-warning: #FFFBE6;
+  --jds-color-warning: #FAAD14;
   /* 警告状态高亮 */
   --jds-color-warning-highlight: #FFE58F;
   /* 警告状态对比色 */
-  --jds-color-warning-contrast: #fff8e6;
+  --jds-color-warning-contrast: #FFF8E6;
 
   /* === 信息色 === */
   /* 信息状态颜色 */
   --jds-color-info: #5794FF;
   /* 信息状态高亮 */
-  --jds-color-info-highlight: #457eff;
+  --jds-color-info-highlight: #457EFF;
   /* 信息状态对比色 */
-  --jds-color-info-contrast: #eef4ff;
+  --jds-color-info-contrast: #EEF4FF;
 
   /* === 文本色 - 已校准 === */
   /* 一级文本 */
-  --jds-color-text-l1: #1a1a1a;
+  --jds-color-text-l1: #1A1A1A;
   /* 二级文本 */
   --jds-color-text-l2: #666666;
   /* 三级文本 */
   --jds-color-text-l3: #999999;
   /* 无效文本 */
-  --jds-color-text-invalid: #b3b3b3;
+  --jds-color-text-invalid: #B3B3B3;
   /* 高亮文本 */
-  --jds-color-text-hightlight: var(--jds-color-primary);
+  --jds-color-text-highlight: var(--jds-color-primary);
   /* 超链接文本 */
-  --jds-color-text-link: #0a59f7;
+  --jds-color-text-link: #0A59F7;
 
   /* === 系统图标颜色 - 已校准 === */
-  --jds-color-icon-normal: #1a1a1a;
+  --jds-color-icon-normal: #1A1A1A;
   --jds-color-icon-orange: var(--jds-color-primary);
 
 
@@ -181,20 +181,20 @@
   /* === 中性色 === */
   /* 无色 */
   --jds-color-neutral-none: #000;
-  /* 深色 */
-  --jds-color-neutral-darkest: #0f131a;
+  /* 最深色 */
+  --jds-color-neutral-darkest: #0F131A;
   /* 较深色 */
   --jds-color-neutral-darker: #273142;
   /* 深色 */
-  --jds-color-neutral-dark: #6e7787;
+  --jds-color-neutral-dark: #6E7787;
   /* 浅色 */
-  --jds-color-neutral-light: #95a1b5;
+  --jds-color-neutral-light: #95A1B5;
   /* 较浅色 */
-  --jds-color-neutral-lighter: #afbbca;
+  --jds-color-neutral-lighter: #AFBBCA;
   /* 最浅色 */
-  --jds-color-neutral-lightest: #f1f2f7;
+  --jds-color-neutral-lightest: #F1F2F7;
   /* 全白 */
-  --jds-color-neutral-full: #fff;
+  --jds-color-neutral-full: var(--jds-color-white);
 
   /* === Z-index 层级 === */
   /* 深层级 */
