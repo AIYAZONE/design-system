@@ -58,7 +58,9 @@ export default defineConfig(({ mode }) => {
           },
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
-            const ext = path.extname(assetInfo.name);
+            // 检查fileName是否为undefined，如果是则使用空字符串作为默认值
+            const fileName = assetInfo.fileName || '';
+            const ext = path.extname(fileName);
             switch (ext) {
               case ".css":
                 // 输出到 styles 目录
