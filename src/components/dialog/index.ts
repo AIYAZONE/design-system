@@ -1,8 +1,8 @@
-import { html, LitElement, PropertyValues, TemplateResult } from "lit";
+import { html, LitElement, PropertyValues, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { event, EventDispatcher } from "../../utils/event";
-import { dialogStyles } from "./styles";
+import styles from "./index.less?inline";
 import "../button";
 
 // 定义对话框元素的接口
@@ -21,7 +21,7 @@ interface DialogElement {
 @customElement("jds-dialog")
 export default class JdsDialog extends LitElement {
   // 组件的样式
-  static styles = [dialogStyles];
+  static styles = [unsafeCSS(styles)];
   /**
    * 设置对话框的打开/关闭状态
    */

@@ -1,11 +1,11 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, state, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { submit } from "@open-wc/form-helpers";
 import { event, EventDispatcher } from "../../utils/event";
 
-import { buttonStyles } from "./styles";
+import styles from "./index.less?inline";
 import "../spinner";
 
 // 按钮变体的类型定义：主按钮、副按钮、次级按钮、文本按钮
@@ -28,7 +28,7 @@ export type TargetType = "_blank" | "_parent" | "_self" | "_top";
 @customElement("jds-button")
 export default class JdsButton extends LitElement {
   // 获取组件的CSS样式
-  static styles = [buttonStyles];
+  static styles = [unsafeCSS(styles)];
 
   /**
    * 设置按钮的变体

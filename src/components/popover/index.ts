@@ -1,4 +1,4 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import {
@@ -15,7 +15,7 @@ import {
 } from "@floating-ui/dom";
 import { getTarget } from "../../utils/elements";
 import { event, EventDispatcher } from "../../utils/event";
-import { popoverStyles } from "./styles";
+import styles from "./index.less?inline";
 
 export type Placement =
   | "top-start"
@@ -46,7 +46,7 @@ export type Placement =
  */
 @customElement("jds-popover")
 export default class JdsPopover extends LitElement {
-  static styles = [popoverStyles];
+  static styles = [unsafeCSS(styles)];
 
   @query(".popover") private _popover!: HTMLElement;
   @query(".arrow") private arrow!: HTMLElement;
