@@ -43,13 +43,13 @@ export const badgeStyles = css`
 
   // 小号徽章样式
   :host([size="small"]) .badge {
-    --font: var(--jds-font-caption);
+    --font: var(--jds-font-c1);
     --height: var(--jds-size-m);
   }
 
   // 大号徽章样式
   :host([size="large"]) .badge {
-    --font: var(--jds-font-title-3-medium);
+    --font: var(--jds-font-h3-medium);
     --padding-vertical: var(--jds-size-2xs);
     --padding-horizontal: var(--jds-size-2xs);
     --height: var(--jds-size-2xl);
