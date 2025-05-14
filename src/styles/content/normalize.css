@@ -78,7 +78,6 @@ summary {
   border: 0;
   /* 1em */
   font-size: 100%;
-  // font: inherit;
   /* 使得基线对齐 */
   vertical-align: baseline;
 }
