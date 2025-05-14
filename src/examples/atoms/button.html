@@ -1,22 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Button - 按钮</title>
   <link rel="stylesheet" href="../../styles/index.less" />
 </head>
+
 <body>
-  <jds-button>Primary Button</jds-button>
-  <jds-button variant="secondary">Secondary Button</jds-button>
-  <jds-button variant="tertiary">Tertiary Button</jds-button>
+  <h2>按钮变体 - variant</h2>
+  <p>
+    <jds-button>Primary Button</jds-button>
+    <jds-button variant="secondary">Secondary Button</jds-button>
+    <jds-button variant="text">Text Button</jds-button>
+  </p>
 
-  <jds-button size="large">Button</jds-button>
-  <jds-button size="medium">Button</jds-button>
-  <jds-button size="large" icon="info-fill">Primary Button</jds-button>
-  <jds-button size="medium" icon="info-fill">Primary Button</jds-button>
-  <jds-button size="small" icon="info-fill">Primary Button</jds-button>
+  <h2>按钮种类 - kind - 暂未设计，先参考业界实现</h2>
+  <p>
+    <jds-button kind="default">Default Button</jds-button>
+    <jds-button kind="neutral">Neutral Button</jds-button>
+    <jds-button kind="success">Success Button</jds-button>
+    <jds-button kind="danger">Danger Button</jds-button>
+  </p>
+
+  <p>
+    <jds-button variant="secondary">Primary Button</jds-button>
+    <jds-button variant="secondary" kind="neutral">Secondary Button</jds-button>
+    <jds-button variant="secondary" kind="success">Text Button</jds-button>
+    <jds-button variant="secondary" kind="danger">Text Button</jds-button>
+  </p>
+
+  <p>
+    <jds-button variant="text">Primary Button</jds-button>
+    <jds-button variant="text" kind="neutral">Secondary Button</jds-button>
+    <jds-button variant="text" kind="success">Text Button</jds-button>
+    <jds-button variant="text" kind="danger">Text Button</jds-button>
+  </p>
+
+  <h2>按钮大小 - size</h2>
+  <p>
+    <jds-button size="extra">Extra Button</jds-button>
+    <jds-button size="large">Large Button</jds-button>
+    <jds-button size="medium">Medium Button</jds-button>
+    <jds-button size="small">Small Button</jds-button>
+  </p>
+  <h3>样式配置：style="--jds-button-display:block;"</h3>
+  <p>
+    <jds-button style="--jds-button-display: block">Confirm</jds-button>
+    <br />
+    <jds-button size="medium" style="--jds-button-display: block">Confirm</jds-button>
+  </p>
+  <h3>样式配置：style="--jds-button-display:block;max-width:200px;"</h3>
+  <jds-button style="--jds-button-display: block; max-width: 200px" title="A very long text content">A very long text
+    content</jds-button>
+
+  <h2>图标按钮</h2>
+  <p>
+    <jds-button icon="arrow-right" size="extra">Primary + Icon Button</jds-button>
+    <jds-button variant="secondary" icon="arrow-right" size="extra">Secondary + Icon Button</jds-button>
+    <jds-button variant="text" icon="arrow-right" size="extra">Text + Icon Button</jds-button>
+  </p>
+  <p>
+    <jds-button icon="arrow-right">Primary + Icon Button</jds-button>
+    <jds-button variant="secondary" icon="arrow-right">Secondary + Icon Button</jds-button>
+    <jds-button variant="text" icon="arrow-right">Text + Icon Button</jds-button>
+  </p>
+  <p>
+    <jds-button icon="arrow-right" size="medium">Primary + Icon Button</jds-button>
+    <jds-button variant="secondary" icon="arrow-right" size="medium">Secondary + Icon Button</jds-button>
+    <jds-button variant="text" icon="arrow-right" size="medium">Text + Icon Button</jds-button>
+  </p>
+
+  <p>
+    <jds-button icon="arrow-right" size="small">Primary + Icon Button</jds-button>
+    <jds-button variant="secondary" icon="arrow-right" size="small">Secondary + Icon Button</jds-button>
+    <jds-button variant="text" icon="arrow-right" size="small">Text + Icon Button</jds-button>
+  </p>
+
+  <h2>禁用状态</h2>
+  <p>
+    <jds-button disabled>Primary Button</jds-button>
+    <jds-button variant="secondary" disabled>Secondary Button</jds-button>
+    <jds-button variant="text" disabled>Text Button</jds-button>
+  </p>
+
+  <h2>加载状态</h2>
+  <p>
+    Primary Button：<jds-button loading>Primary Button</jds-button>
+    Secondary Button：<jds-button variant="secondary" loading>Secondary Button</jds-button>
+    文本按钮无加载状态
+  </p>
+
+  <jds-button icon="arrow-right"></jds-button>
+
+
   <script type="module" src="../../index.ts"></script>
-
 </body>
+
 </html>

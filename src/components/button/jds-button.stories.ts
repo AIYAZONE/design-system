@@ -31,7 +31,7 @@ const meta: Meta = {
   },
   argTypes: {
     variant: {
-      options: ["primary", "secondary", "tertiary", "text"],
+      options: ["primary", "secondary", "text"],
       description: "设置按钮的变体",
       default: "primary",
       control: { type: "select" },
@@ -121,8 +121,8 @@ ${SingleButtonTemplate({
 })}
 ${SingleButtonTemplate({
   ...args,
-  variant: "tertiary",
-  content: "Tertiary Button",
+  variant: "text",
+  content: "Text Button",
 })} `;
 
 export const Kinds = (args: ButtonProps) => html`${SingleButtonTemplate({

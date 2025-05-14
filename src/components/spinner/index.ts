@@ -43,7 +43,7 @@ export default class JdsSpinner extends LitElement {
       class="spinner"
       name="loading"
       style="color: ${this.disabled
-        ? "var(--jds-color-neutral-light)"
+        ? "var(--jds-color-white)"
         : this.color}; font-size: ${this.size};"
     ></jds-icon>`;
   }

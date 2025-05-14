@@ -9,7 +9,7 @@ import styles from "./index.less?inline";
 import "../spinner";
 
 // 按钮变体的类型定义：主按钮、副按钮、次级按钮、文本按钮
-export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
+export type ButtonVariant = "primary" | "secondary" | "text";
 // 按钮种类的类型定义
 export type ButtonKind = "default" | "neutral" | "success" | "danger";
 // 按钮大小的类型定义：特大、大、中、小
@@ -59,12 +59,6 @@ export default class JdsButton extends LitElement {
    */
   @property({ type: Boolean, reflect: true })
   loading = false;
-
-  /**
-   * 设置加载状态下的按钮标签
-   */
-  @property({ type: String, attribute: "loading-label" })
-  loadingLabel?: string;
 
   /**
    * 设置按钮为禁用状态
@@ -204,17 +198,15 @@ export default class JdsButton extends LitElement {
   // 渲染组件的HTML模板
   render(): TemplateResult {
     const isDisabled = this.loading || this.disabled;
-    const label =
-      this.loading && this.loadingLabel
-        ? this.loadingLabel
-        : html`<slot></slot>`;
+    const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
     const icon = this.icon ? html`<jds-icon name=${this.icon}></jds-icon>` : "";
     const loadingIcon = html`
       <jds-spinner
         class="loading-spinner"
         ?disabled="${isDisabled}"
-        size="${this.size}"
+        size="var(--jds-font-size-2xl)"
+        color="var(--jds-color-white)"
       ></jds-spinner>
     `;
     const slots = html`

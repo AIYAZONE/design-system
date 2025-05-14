@@ -1,7 +1,6 @@
 :host {
   display: var(--jds-button-display, inline-block);
   max-width: 100%;
-  width: max-content;
   position: relative;
 }
 
@@ -14,10 +13,10 @@
   --border-color: var(--main-color);
   --padding-vertical: var(--jds-size-2xs);
   --padding-horizontal: var(--jds-size-m);
-  --margin-icon: var(--padding-vertical);
-  --icon-size: var(--jds-size-m);
-  --font: var(--jds-font-title-6-medium);
-  --height: var(--jds-size-5xl);
+  --margin-icon: var(--jds-size-2xs);
+  --icon-size: var(--jds-size-xs);
+  --font: var(--jds-font-h6-medium);
+  --height: var(--jds-size-6xl);
   --border-radius: var(--jds-border-radius-pill);
 
   display: flex;
@@ -25,7 +24,7 @@
   justify-content: var(--jds-button-justify, center);
   align-items: center;
   box-sizing: border-box;
-  width: max-content;
+  width: 100%;
   height: var(--height);
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -50,37 +49,82 @@
   text-overflow: ellipsis;
 }
 
-/* 不同尺寸按钮 */
+// 不同变体的按钮
+:host([variant="secondary"]) .button {
+  --bg-color: transparent;
+  --content-color: var(--main-color);
+}
+
+:host([variant="text"]) .button {
+  --content-color: var(--main-color);
+  --border-color: transparent;
+  --bg-color: transparent;
+}
+
+// 不同种类按钮
+:host([kind="neutral"]) .button {
+  --main-color: var(--jds-color-neutral-darker);
+  --main-hover-color: var(--jds-color-neutral-darkest);
+}
+
+:host([kind="success"]) .button {
+  --main-color: var(--jds-color-success);
+  --main-hover-color: var(--jds-color-success-highlight);
+}
+
+:host([kind="danger"]) .button {
+  --main-color: var(--jds-color-danger);
+  --main-hover-color: var(--jds-color-danger-highlight);
+}
+
+// 不同尺寸按钮
 :host([size="extra"]) .button {
-  --padding-vertical: 18px;
-  --padding-horizontal: 32px;
+  --height: var(--jds-size-7xl);
+  --padding-vertical: var(--jds-size-l);
+  --padding-horizontal: var(--jds-size-3xl);
   --margin-icon: var(--jds-size-2xs);
-  --height: 56px;
-  --font: 700 22px/30px var(--jds-font-family);
+  --font: var(--jds-font-weight-semibold) 22px/30px var(--jds-font-family);
+}
+
+:host([size="extra"][variant="text"]) .button {
+  --font: var(--jds-font-weight-semibold) 24px/26px var(--jds-font-family);
 }
 
 :host([size="large"]) .button {
+  --height: var(--jds-size-6xl);
   --padding-vertical: var(--jds-size-xs);
   --padding-horizontal: var(--jds-size-3xl);
-  --margin-icon: var(--jds-size-2xs);
-  --height: var(--jds-size-6xl);
-  --font: 600 18px/26px var(--jds-font-family);
+  --margin-icon: var(--jds-size-3xs);
+  --font: var(--jds-font-weight-medium) 18px/26px var(--jds-font-family);
+}
+
+:host([size="large"][variant="text"]) .button {
+  --font: var(--jds-font-weight-medium) 20px/26px var(--jds-font-family);
 }
 
 :host([size="medium"]) .button {
+  --height: var(--jds-size-4xl);
   --padding-vertical: var(--jds-size-2xs);
   --padding-horizontal: var(--jds-size-2xl);
-  --margin-icon: var(--jds-size-2xs);
-  --height: var(--jds-size-4xl);
-  --font: 600 14px/22px var(--jds-font-family);
+  --margin-icon: var(--jds-size-4xs);
+  --font: var(--jds-font-weight-medium) 14px/22px var(--jds-font-family);
+}
+
+:host([size="medium"][variant="text"]) .button {
+  --font: var(--jds-font-weight-medium) 16px/22px var(--jds-font-family);
 }
 
 :host([size="small"]) .button {
+  --height: var(--jds-size-2xl);
   --padding-vertical: var(--jds-size-3xs);
   --padding-horizontal: var(--jds-size-xs);
-  --icon-size: var(--jds-size-s);
-  --height: var(--jds-size-2xl);
-  --font: 600 16px/24px var(--jds-font-family);
+  --margin-icon: var(--jds-size-4xs);
+  --icon-size: var(--jds-size-2xs);
+  --font: var(--jds-font-weight-medium) 16px/24px var(--jds-font-family);
+}
+
+:host([size="small"][variant="text"]) .button {
+  --font: var(--jds-font-weight-medium) 14px/24px var(--jds-font-family);
 }
 
 .button:focus {
@@ -100,65 +144,79 @@
   inset: -4px;
 }
 
-:host ::slotted(bl-icon) {
+// 按钮图标
+:host slot[name="icon"] jds-icon  {
   font-size: var(--icon-size);
-}
-
-:host([loading]) ::slotted(bl-icon) {
-  display: none;
 }
 
 :host .has-icon:not(.has-content) {
   --padding-horizontal: var(--padding-vertical);
   --margin-icon: 0;
-}
-
-:host([variant="secondary"]) .button {
-  --bg-color: transparent;
-  --content-color: var(--main-color);
-}
-
-:host([variant="tertiary"]) .button {
-  --content-color: var(--main-color);
-  --border-color: transparent;
-  --bg-color: transparent;
-}
-
-:host([kind="neutral"]) .button {
-  --main-color: var(--jds-color-neutral-darker);
-  --main-hover-color: var(--jds-color-neutral-darkest);
-}
-
-:host([kind="success"]) .button {
-  --main-color: var(--jds-color-success);
-  --main-hover-color: var(--jds-color-success-highlight);
-}
-
-:host([kind="danger"]) .button {
-  --main-color: var(--jds-color-danger);
-  --main-hover-color: var(--jds-color-danger-highlight);
+  width: 48px;
 }
 
 :host([disabled]) {
   cursor: not-allowed;
 }
 
-:host([loading]) {
-  cursor: wait;
-}
 
+
+// 禁用状态
 :host .button[aria-disabled="true"] {
-  --main-color: var(--jds-color-neutral-lightest);
-  --main-hover-color: var(--jds-color-neutral-lightest);
-  --content-color: var(--jds-color-neutral-lighter);
-  --bg-color: var(--main-color);
-
+  --main-color: color-mix(in srgb, var(--jds-color-primary) 70%, transparent);
+  --main-hover-color: var(--main-color);
   pointer-events: none;
   text-decoration: none;
 }
 
-:host([variant="tertiary"]) .button[aria-disabled="true"] {
-  --main-color: transparent;
+:host([variant="primary"]) .button[aria-disabled="true"] {
+  --bg-color: var(--main-color);
+  --content-color: var(--jds-color-white);
+  --border-color: transparent;
+}
+
+:host([variant="text"]) .button[aria-disabled="true"] {
+  text-decoration: underline;
+}
+
+// 加载状态
+:host([loading]) {
+  cursor: wait;
+}
+
+:host([loading]) .button .label {
+  visibility: hidden;
+}
+
+:host([loading]) .button slot[name="icon"] jds-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+:host([loading]) .button {
+  --bg-color: var(--jds-color-primary);
+}
+:host([variant="primary"][loading]) .button[aria-disabled="true"] {
+  --bg-color: var(--jds-color-primary);
+}
+
+:host([variant="secondary"][loading]) .button {
+  --border-color: transparent;
+}
+
+:host([loading]:hover) .button[aria-disabled="true"]{
+  --bg-color: var(--main-color);
+}
+
+// 悬浮状态
+:host([variant="text"]:hover) .button {
+  text-decoration: underline;
+}
+
+:host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
+  --main-hover-color: var(--jds-color-primary);
 }
 
 :host([variant="secondary"]:hover) .button[aria-disabled="false"] {
@@ -166,9 +224,9 @@
   --bg-color: var(--main-hover-color);
 }
 
-:host([variant="tertiary"]:hover) .button[aria-disabled="false"] {
+:host([variant="text"]:hover) .button[aria-disabled="false"] {
   --content-color: var(--main-hover-color);
-  --bg-color: var(--text-hover-color);
+  --bg-color: transparent;
 }
 
 :host([dropdown]) .open {
@@ -193,7 +251,7 @@
   --bg-color: var(--main-hover-color);
 }
 
-:host([variant="tertiary"]) .active.button {
+:host([variant="text"]) .active.button {
   --content-color: var(--main-color);
   --bg-color: var(--jds-color-neutral-lightest);
   --border-color: transparent;
