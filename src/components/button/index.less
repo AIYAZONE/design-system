@@ -36,6 +36,23 @@
   font: var(--font);
   font-kerning: none;
   user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    position: relative;
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    border: 2px solid var(--jds-button-focus-border-color, var(--main-color));
+    border-radius: var(--border-radius);
+    content: "";
+    position: absolute;
+    inset: -4px;
+  }
 }
 
 :host(:hover) .button {
@@ -127,25 +144,8 @@
   --font: var(--jds-font-weight-medium) 14px/24px var(--jds-font-family);
 }
 
-.button:focus {
-  outline: none;
-}
-
-.button:focus-visible {
-  position: relative;
-  outline: none;
-}
-
-.button:focus-visible::after {
-  border: 2px solid var(--jds-button-focus-border-color, var(--main-color));
-  border-radius: var(--border-radius);
-  content: "";
-  position: absolute;
-  inset: -4px;
-}
-
 // 按钮图标
-:host slot[name="icon"] jds-icon  {
+:host slot[name="icon"] jds-icon {
   font-size: var(--icon-size);
 }
 
@@ -185,22 +185,23 @@
 // 加载状态
 :host([loading]) {
   cursor: wait;
+
+  .button {
+    --bg-color: var(--jds-color-primary);
+
+    .label {
+      visibility: hidden;
+    }
+
+    slot[name="icon"] jds-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
-:host([loading]) .button .label {
-  visibility: hidden;
-}
-
-:host([loading]) .button slot[name="icon"] jds-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-:host([loading]) .button {
-  --bg-color: var(--jds-color-primary);
-}
 :host([variant="primary"][loading]) .button[aria-disabled="true"] {
   --bg-color: var(--jds-color-primary);
 }
