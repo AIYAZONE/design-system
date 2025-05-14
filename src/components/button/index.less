@@ -112,7 +112,7 @@
   --padding-vertical: var(--jds-size-xs);
   --padding-horizontal: var(--jds-size-3xl);
   --margin-icon: var(--jds-size-3xs);
-  --font: var(--jds-font-weight-medium) 18px/26px var(--jds-font-family);
+  --font: var(--jds-font-b1-medium);
 }
 
 :host([size="large"][variant="text"]) .button {
@@ -124,11 +124,11 @@
   --padding-vertical: var(--jds-size-2xs);
   --padding-horizontal: var(--jds-size-2xl);
   --margin-icon: var(--jds-size-4xs);
-  --font: var(--jds-font-weight-medium) 14px/22px var(--jds-font-family);
+  --font: var(--jds-font-b3-medium);
 }
 
 :host([size="medium"][variant="text"]) .button {
-  --font: var(--jds-font-weight-medium) 16px/22px var(--jds-font-family);
+  --font: var(--jds-font-b2-medium);
 }
 
 :host([size="small"]) .button {
@@ -137,11 +137,11 @@
   --padding-horizontal: var(--jds-size-xs);
   --margin-icon: var(--jds-size-4xs);
   --icon-size: var(--jds-size-2xs);
-  --font: var(--jds-font-weight-medium) 16px/24px var(--jds-font-family);
+  --font: var(--jds-font-b2-medium);
 }
 
 :host([size="small"][variant="text"]) .button {
-  --font: var(--jds-font-weight-medium) 14px/24px var(--jds-font-family);
+  --font: var(--jds-font-b3-medium);
 }
 
 // 按钮图标
@@ -156,6 +156,7 @@
   --icon-size: var(--jds-size-l);
   width: var(--height);
 }
+
 :host([size="extra"]) .has-icon:not(.has-content) {
   --icon-size: var(--jds-size-2xl);
 }
@@ -210,7 +211,7 @@
   --border-color: transparent;
 }
 
-:host([loading]:hover) .button[aria-disabled="true"]{
+:host([loading]:hover) .button[aria-disabled="true"] {
   --bg-color: var(--main-color);
 }
 
@@ -259,4 +260,42 @@
   --content-color: var(--main-color);
   --bg-color: var(--jds-color-neutral-lightest);
   --border-color: transparent;
+}
+
+@media screen and (max-width: 1023.98px) {
+  .button {
+    --height: 10.6667vw; // 80px
+  }
+
+  :host([size="extra"]) .button {
+    --height: 12.8vw; // 96px
+    --font: var(--jds-font-b1-medium);
+  }
+
+  :host([size="large"]) .button {
+    --height: 10.6667vw; // 80
+    --font: var(--jds-font-b2-medium);
+  }
+
+  :host([size="medium"]) .button {
+    --height: 8.5333vw; // 64px
+    --font: var(--jds-font-b2-medium);
+  }
+
+  :host([size="small"]) .button {
+    --height: 6.4vw; // 48px
+    --font: var(--jds-font-b3-medium);
+  }
+
+  :host([size="extra"][variant="text"]) .button {
+    --font: var(--jds-font-b1-medium);
+  }
+
+  :host([size="large"][variant="text"]) .button {
+    --font: var(--jds-font-b2-medium);
+  }
+
+  :host .has-icon:not(.has-content) {
+    --icon-size: 3.2vw; // 24px
+  }
 }
