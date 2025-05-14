@@ -149,17 +149,20 @@
   font-size: var(--icon-size);
 }
 
+// 纯图标按钮 -- 当前仅支持一个尺寸
 :host .has-icon:not(.has-content) {
   --padding-horizontal: var(--padding-vertical);
   --margin-icon: 0;
-  width: 48px;
+  --icon-size: var(--jds-size-l);
+  width: var(--height);
+}
+:host([size="extra"]) .has-icon:not(.has-content) {
+  --icon-size: var(--jds-size-2xl);
 }
 
 :host([disabled]) {
   cursor: not-allowed;
 }
-
-
 
 // 禁用状态
 :host .button[aria-disabled="true"] {

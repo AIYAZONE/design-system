@@ -200,7 +200,7 @@ export default class JdsButton extends LitElement {
     const isDisabled = this.loading || this.disabled;
     const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
-    const icon = this.icon ? html`<jds-icon name=${this.icon}></jds-icon>` : "";
+    const icon = this.icon ? html`<jds-icon part="icon" name=${this.icon}></jds-icon>` : "";
     const loadingIcon = html`
       <jds-spinner
         class="loading-spinner"
