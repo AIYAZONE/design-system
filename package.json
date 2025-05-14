@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
-    "@jackery/icons": "^0.0.3",
+    "@jackery/icons": "^0.0.5",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
     "exceljs": "^4.4.0",
