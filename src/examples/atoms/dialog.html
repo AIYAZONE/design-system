@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dialog - 对话弹窗</title>
   <link rel="stylesheet" href="../../styles/index.less" />
 </head>
-<body>
-  <jds-button variant="secondary" id="open-dialog-button">打开弹窗</jds-button>
 
-  <jds-dialog id="dl-basic" caption="Use location service?" style="--jds-dialog-width:200px;">
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
+<body>
+  <jds-button variant="secondary">打开弹窗</jds-button>
+
+  <jds-dialog caption="Use location service?"
+    style="--jds-dialog-width:640px;--jds-dialog-index:10000;--jds-dialog-title-align:center;">
+    <div>
+      <ol>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+      </ol>
+      <ul>
+        <li>a124124</li>
+        <li>a124124</li>
+        <li>a124124</li>
+        <li>a124124</li>
+      </ul>
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+    </div>
     <jds-button variant="primary" size="large">Agree</jds-button>
-    <jds-button slot="primary-action" variant="primary" size="large">Agree</jds-button>
-    <jds-button slot="secondary-action" variant="secondary" size="large">Disagree</jds-button>
-    <jds-button slot="tertiary-action" variant="tertiary" size="large">Cancel</jds-button>
   </jds-dialog>
   <script type="module" src="../../index.ts"></script>
   <script>
     // 添加事件监听器
-    document.getElementById('open-dialog-button').addEventListener('click', () => {
-      const dialog = document.querySelector('#dl-basic');
+    document.querySelector('jds-button').addEventListener('click', () => {
+      const dialog = document.querySelector('jds-dialog');
       dialog.setAttribute('open', true);
     });
   </script>
 </body>
+
 </html>

@@ -1,18 +1,19 @@
+@import url(../../styles/common.css);
 :host {
-  display: contents;
   /* 使宿主元素不影响布局 */
+  display: contents;
   width: max-content;
 }
 
 .container {
-  --background-color: var(--jds-color-neutral-full);
+  --background-color: var(--jds-color-white);
 
   display: flex;
   flex-direction: column;
   background: var(--background-color);
-  width: var(--jds-dialog-width, auto);
+  width: var(--jds-dialog-width, 640px);
   max-width: calc(100vw - var(--jds-size-5xl));
-  max-height: calc(100vh - var(--jds-size-5xl));
+  max-height: calc(100vh - 2 * var(--jds-size-8xl));
   min-width: 424px;
   padding: 0;
   border: 0;
@@ -32,8 +33,8 @@
 }
 
 .dialog::backdrop {
-  background-color: #273142b3;
   /* 对话框背景色 */
+  background-color: var(--jds-color-overlay-70);
 }
 
 .dialog-polyfill {
@@ -45,14 +46,14 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  z-index: var(--jds-index-dialog);
-  background-color: #273142b3;
+  z-index: var(--jds-dialog-index,500);
   /* 遮罩层背景色 */
+  background-color: var(--jds-color-overlay-70);
 }
 
 :host([open]) .dialog-polyfill {
-  display: flex;
   /* 打开对话框时显示遮罩 */
+  display: flex;
 }
 
 header {
@@ -63,30 +64,25 @@ header {
   padding: var(--jds-size-m) var(--jds-size-m) 0 var(--jds-size-m);
 }
 
-header jds-icon {
+jds-icon {
+  position: absolute;
+  top: var(--jds-size-m);
+  right: var(--jds-size-m);
   cursor: pointer;
 }
 
-header h2 {
-  font: var(--jds-font-h1-medium);
-  color: var(--jds-color-neutral-darker);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--jds-dialog-caption-line-clamp,
-      1);
-  /* 限制标题行数 */
-  margin: 0;
-  padding: 0;
+#dialog-caption{
+  text-align: var(--jds-dialog-title-align, left);
+}
+.content {
+  margin-top: var(--jds-size-2xl);
+  margin-right: var(--jds-size-3xs);
+  margin-bottom: var(--jds-size-2xl);
+  padding: 0 calc(var(--jds-size-8xl) - var(--jds-size-3xs)) 0 var(--jds-size-8xl);
+  /* 内容溢出时可滚动 */
+  overflow-y: auto;
 }
 
-.content {
-  margin-right: var(--jds-size-2xs);
-  margin-bottom: var(--jds-size-xl);
-  padding: 0 calc(var(--jds-size-5xl) - 10px) 0 var(--jds-size-5xl);
-  overflow-y: auto;
-  /* 内容溢出时可滚动 */
-}
 
 /* 滚动条滑块 */
 .content::-webkit-scrollbar-thumb {
@@ -123,26 +119,26 @@ header h2 {
 }
 
 :host([critical]) .content {
-  padding-top: 0;
   /* 关键对话框顶部无内边距 */
+  padding-top: 0;
 }
 
 .container.has-footer .content {
-  padding-bottom: 0;
   /* 若有页脚则底部无内边距 */
+  padding-bottom: 0;
 }
 
 footer {
   padding: var(--jds-size-xl);
   display: flex;
-  flex-flow: row-reverse wrap;
   /* 反向排列页脚按钮 */
+  flex-flow: row-reverse wrap;
   gap: var(--jds-size-m);
 }
 
 footer.shadow {
-  box-shadow: 0 -4px 15px #27314226;
   /* 页脚阴影 */
+  box-shadow: 0 -4px 15px #27314226;
 }
 
 @media only screen and (max-width: 471px) {
@@ -154,14 +150,14 @@ footer.shadow {
   }
 
   footer {
-    flex-flow: column wrap;
     /* 小屏幕下页脚按钮竖排 */
+    flex-flow: column wrap;
   }
 }
 
 ::slotted(bl-tab-group) {
   display: block;
-  transform: translateX(calc(var(--jds-size-xl) * -1));
-  width: calc(100% + calc(var(--jds-size-xl) * 2));
   /* 适应宽度 */
+  width: calc(100% + calc(var(--jds-size-xl) * 2));
+  transform: translateX(calc(var(--jds-size-xl) * -1));
 }

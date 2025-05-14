@@ -15,8 +15,9 @@ interface DialogElement {
  * @tag jds-dialog
  * @summary Baklava 对话框组件
  *
- * @cssproperty [--jds-dialog-width=auto] - 设置对话框内容的宽度
- * @cssproperty [--jds-dialog-caption-line-clamp=1] - 设置标题的显示行数
+ * @cssproperty [--jds-dialog-width=640px] - 设置对话框内容的宽度
+ * @cssproperty [--jds-dialog-title-align=left] - 设置对话框标题的对齐方式
+ * @cssproperty [--jds-dialog-index=500] - 设置对话框的z-index值
  */
 @customElement("jds-dialog")
 export default class JdsDialog extends LitElement {
@@ -205,14 +206,14 @@ export default class JdsDialog extends LitElement {
   // 渲染对话框容器
   private renderContainer() {
     const title = this.caption
-      ? html`<h2 id="dialog-caption">${this.caption}</h2>`
+      ? html`<h4 id="dialog-caption" class="jds-h4">${this.caption}</h4>`
       : "";
     const closeButton = this.closable
       ? html`<jds-icon
           @click="${() => this.closeDialog("close-button")}"
           name="close-fill"
           label="close"
-          style="font-size:var(--jds-size-2xl);color:var(--jds-color-text-l3);"
+          style="font-size:var(--jds-size-3xl);color:var(--jds-color-text-l3);"
         ></jds-icon>`
       : null;
 
@@ -222,8 +223,11 @@ export default class JdsDialog extends LitElement {
     };
 
     return html`<div part="dialog-container" class="${classMap(classes)}">
-      <header>${title} ${closeButton}</header>
-      <section part="dialog-content" class="content"><slot></slot></section>
+      ${closeButton}
+      <section part="dialog-content" class="content">
+        ${title}
+        <slot></slot>
+      </section>
       ${this.renderFooter()}
     </div>`;
   }
