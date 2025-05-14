@@ -91,12 +91,6 @@ export default class JdsButton extends LitElement {
   type?: "submit";
 
   /**
-   * 设置按钮类型为下拉菜单
-   */
-  @property({ type: Boolean })
-  dropdown = false;
-
-  /**
    * 设置按钮自动获取键盘焦点
    */
   @property({ type: Boolean, reflect: true })
@@ -131,14 +125,6 @@ export default class JdsButton extends LitElement {
   // 组件连接到文档DOM时的回调
   connectedCallback() {
     super.connectedCallback();
-  }
-
-  // 下拉菜单的图标模板
-  private caretTemplate(): TemplateResult {
-    return html`
-      <jds-icon class="open" name="arrow-up"></jds-icon>
-      <jds-icon class="close" name="arrow-down"></jds-icon>
-    `;
   }
 
   // 处理按钮点击事件
@@ -213,7 +199,6 @@ export default class JdsButton extends LitElement {
       <span class="label">${label}</span>
       <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
     `;
-    const caret = this.dropdown ? this.caretTemplate() : "";
     const classes = classMap({
       button: true,
       "has-icon": this.icon || this._hasIconSlot,
@@ -247,7 +232,7 @@ export default class JdsButton extends LitElement {
             ?disabled=${isDisabled}
             @click="${this._handleClick}"
           >
-            ${slots} ${caret}
+            ${slots}
           </button>
         `;
   }
