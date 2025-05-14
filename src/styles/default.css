@@ -236,8 +236,9 @@
   --jds-border-radius-circle: 50%;
 
   /* === 尺寸和间距 === */
-  --jds-size-4xs: 2px;
-  --jds-size-3xs: 4px;
+  --jds-size-5xs: 2px;
+  --jds-size-4xs: 4px;
+  --jds-size-3xs: 6px;
   --jds-size-2xs: 8px;
   --jds-size-xs: 12px;
   --jds-size-s: 14px;
@@ -249,8 +250,9 @@
   --jds-size-4xl: 36px;
   --jds-size-5xl: 40px;
   --jds-size-6xl: 48px;
-  --jds-size-7xl: 64px;
-  --jds-size-8xl: 80px;
+  --jds-size-7xl: 56px;
+  --jds-size-8xl: 64px;
+  --jds-size-9xl: 80px;
 }
 
 @media screen and (min-width: 1440px) {
