@@ -27,6 +27,18 @@
         <li>123123</li>
       </ul>
     </div>
+    <h2>本项目LESS文件 变量对应值使用 @vw计算失效</h2>
+    <pre>
+      @base: 750;
+      @vw: (1vw / @base) * 100;
+      .button {
+        --height: 80 * @vw; // Error - 失效
+        --height: 10.6667vw; // 生效 80px
+        --height: max(0, 80 * @vw); // 生效 80px
+        height: 80 * @vw; // 生效 80px
+      }
+    </pre>
   </section>
+
 </body>
 </html>
