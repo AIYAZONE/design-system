@@ -1,0 +1,32 @@
+// 动效按钮
+.jds-animate-btn {
+  jds-button {
+    position: absolute;
+    transform: scale(0);
+    transform-origin: center center;
+    transition: all .5s cubic-bezier(.8, 0, .2, 1);
+
+    &::part(icon) {
+      transform: translateX(calc(0px - 48px));
+      transition: transform.5s cubic-bezier(.8, 0, .2, 1);
+    }
+  }
+
+  &:hover jds-button {
+    transform: scale(1);
+
+    &::part(icon) {
+      transform: translateX(0);
+    }
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  .jds-animate-btn jds-button {
+    transform: scale(1);
+
+    &::part(icon) {
+      transform: translateX(0);
+    }
+  }
+}

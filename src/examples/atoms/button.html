@@ -17,7 +17,7 @@
       margin: 20px;
       cursor: pointer;
     }
-    </style>
+  </style>
 </head>
 
 <body>
@@ -123,34 +123,11 @@
 
   <h2>动效按钮</h2>
 
-  <div class="card animate-btn">
+  <h3>纯图标动效按钮</h3>
+  <div class="card jds-animate-btn">
     <p>鼠标悬浮到卡片上方查看效果</p>
     <jds-button icon="arrow-right-long"></jds-button>
-    <style>
-      .animate-btn jds-button {
-        position: absolute;
-        transform: scale(0);
-        transform-origin: center center;
-        transition: all .5s cubic-bezier(.8, 0, .2, 1);
-      }
-
-      .animate-btn:hover jds-button {
-        transform: scale(1);
-      }
-
-      .animate-btn jds-button::part(icon) {
-        transform: translateX(calc(0px - 48px));
-        transition: transform .5s cubic-bezier(.8, 0, .2, 1);
-      }
-
-      .animate-btn:hover jds-button::part(icon) {
-        transform: translateX(0);
-      }
-    </style>
   </div>
-
-
-
 
   <script type="module" src="../../index.ts"></script>
 </body>
