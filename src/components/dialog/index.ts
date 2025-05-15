@@ -13,7 +13,7 @@ interface DialogElement {
 
 /**
  * @tag jds-dialog
- * @summary Baklava 对话框组件
+ * @summary Jackery 对话框组件
  *
  * @cssproperty [--jds-dialog-width=640px] - 设置对话框内容的宽度
  * @cssproperty [--jds-dialog-title-align=left] - 设置对话框标题的对齐方式

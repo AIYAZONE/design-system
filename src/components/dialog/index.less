@@ -1,4 +1,5 @@
 @import url(../../styles/common.css);
+
 :host {
   /* 使宿主元素不影响布局 */
   display: contents;
@@ -46,7 +47,7 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  z-index: var(--jds-dialog-index,500);
+  z-index: var(--jds-dialog-index, 500);
   /* 遮罩层背景色 */
   background-color: var(--jds-color-overlay-70);
 }
@@ -71,9 +72,10 @@ jds-icon {
   cursor: pointer;
 }
 
-#dialog-caption{
+#dialog-caption {
   text-align: var(--jds-dialog-title-align, left);
 }
+
 .content {
   margin-top: var(--jds-size-2xl);
   margin-right: var(--jds-size-3xs);
