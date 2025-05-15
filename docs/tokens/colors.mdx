@@ -13,27 +13,27 @@ import { html } from 'lit';
   <ColorItem
     title="--jds-color-primary-{x}"
     subtitle="主色"
-    colors={{ '(正常)': '#FD5000', '-highlight (高亮)': '#FD6A26', '-contrast (对比)': '#FEF2E8' }}
+    colors={{ '(正常)': '#FD5000', 'highlight (高亮)': '#FD6A26', 'contrast (对比)': '#FEF2E8' }}
   />
   <ColorItem
     title="--jds-color-success-{x}"
     subtitle="成功色"
-    colors={{ '(正常)': '#52C41A', '-highlight (高亮)': '#09A44E', '-contrast (对比)': '#E7F9EF'  }}
+    colors={{ '(正常)': '#52C41A', 'highlight (高亮)': '#09A44E', 'contrast (对比)': '#E7F9EF'  }}
   />
   <ColorItem
     title="--jds-color-danger-{x}"
     subtitle="错误色/危险色"
-    colors={{ '(正常)': '#FF3B30', '-highlight (高亮)': '#FF3028', '-contrast (对比)': '#FFEEEC'  }}
+    colors={{ '(正常)': '#FF3B30', 'highlight (高亮)': '#FF3028', 'contrast (对比)': '#FFEEEC'  }}
   />
   <ColorItem
     title="--jds-color-warning-{x}"
     subtitle="警告色 - 暂未定义"
-    colors={{ '(正常)': '#FAAD14', '-highlight (高亮)': '#FFE58F', '-contrast (对比)': '#FFF8E6'  }}
+    colors={{ '(正常)': '#FAAD14', 'highlight (高亮)': '#FFE58F', 'contrast (对比)': '#FFF8E6'  }}
   />
   <ColorItem
     title="--jds-color-info-{x}"
     subtitle="信息色 - 暂未定义"
-    colors={{ '(正常)': '#5794FF', '-highlight (高亮)': '#457EFF', '-contrast (对比)': '#EEF4FF'  }}
+    colors={{ '(正常)': '#5794FF', 'highlight (高亮)': '#457EFF', 'contrast (对比)': '#EEF4FF'  }}
   />
 </ColorPalette>
 
@@ -47,12 +47,12 @@ import { html } from 'lit';
   <ColorItem
     title="--jds-color-text-{x}"
     subtitle="文本"
-    colors={{ '-l1(一级文本)': '#1A1A1A','-l2(二级文本)': '#666666','-l3(三级文本)': '#999999' }}
+    colors={{ 'l1(一级文本)': '#1A1A1A','l2(二级文本)': '#666666','l3(三级文本)': '#999999' }}
   />
   <ColorItem
     title="--jds-color-text-{x}"
     subtitle="状态文本"
-    colors={{ '-invalid(无效文本)': '#B3B3B3','-highlight(高亮文本)': '#FD5000','-link(超链接文本)': '#0A59F7'  }}
+    colors={{ 'invalid(无效文本)': '#B3B3B3','highlight(高亮文本)': '#FD5000','link(超链接文本)': '#0A59F7'  }}
   />
 </ColorPalette>
 
@@ -62,36 +62,41 @@ import { html } from 'lit';
   <ColorItem
     title="--jds-color-icon-{x}"
     subtitle="系统图标颜色"
-    colors={{ '-normal(常规图标色)': '#1A1A1A','-orange(橙色图标色)': '#FD5000' }}
+    colors={{ 'normal(常规图标色)': '#1A1A1A','orange(橙色图标色)': '#FD5000' }}
   />
   <ColorItem
     title="--jds-color-{x}"
     subtitle="基础色"
-    colors={{ '-white(白色)': '#FFFFFF','-grey(灰色)': '#F5F5F5' }}
+    colors={{ 'white(白色)': '#FFFFFF','grey(灰色)': '#F5F5F5' }}
   />
   <ColorItem
     title="--jds-background-color-{x}"
     subtitle="网页背景色"
-    colors={{ '-1(背景色1)': '#FFFFFF','-2(背景色2)': '#F5F5F5' }}
+    colors={{ '1(背景色1)': '#FFFFFF','2(背景色2)': '#F5F5F5' }}
   />
   <ColorItem
     title="--jds-color-card-{x}"
     subtitle="系统卡片色"
-    colors={{ '-white(白卡片)': '#FFFFFF','-grey(灰卡片)': '#F5F5F5','-list(列表卡片（用于导航栏）)': '#F8F8F8' }}
+    colors={{ 'white(白卡片)': '#FFFFFF','grey(灰卡片)': '#F5F5F5','list(列表卡片（用于导航栏）)': '#F8F8F8' }}
   />
   <ColorItem
     title="--jds-color-{x}"
     subtitle="线条颜色"
-    colors={{ '-line(产品指示线)': 'rgba(0, 0, 0, 0.15)','-hr(分割线)': 'rgba(0, 0, 0, 0.07)' }}
+    colors={{ 'line(产品指示线)': 'rgba(0, 0, 0, 0.15)','hr(分割线)': 'rgba(0, 0, 0, 0.07)' }}
   />
   <ColorItem
     title="--jds-color-overlay-{x}"
     subtitle="蒙黑颜色"
-    colors={{ '-30(30%图片蒙黑-图片全局蒙黑)': 'rgba(0, 0, 0, 0.3)' ,'-50(50%图片蒙黑（信任状、文字）/系统50%蒙黑（顶部导航栏、弹窗）)': 'rgba(0, 0, 0, 0.5)' }}
+    colors={{ '30(30%图片蒙黑-图片全局蒙黑)': 'rgba(0, 0, 0, 0.3)' ,'50(50%图片蒙黑（信任状、文字）/系统50%蒙黑（顶部导航栏、弹窗）)': 'rgba(0, 0, 0, 0.5)' }}
+  />
+  <ColorItem
+    title="--jds-color-primary-{x}"
+    subtitle="品牌澄色"
+    colors={{ '500': '#FD5000','400': '#FD7333','300': '#FE9666','200': '#FEB999','100': '#FEDCCC'}}
   />
   <ColorItem
     title="--jds-color-neutral-{x}"
     subtitle="中性色 - 暂未定义"
-    colors={{ '-none(无色)': '#000','-darkest(最深色)': '#0F131A','-darker(较深色)': '#273142','-dark(深色)': '#6E7787','-light(浅色)': '#95A1B5','-lighter(较浅色)': '#AFBBCA','-lightest(最浅色)': '#F1F2F7','-full(全白)': '#FFF' }}
+    colors={{ '500': '#273142','400': '#6E7787','300': '#95A1B5','200': '#AFBBCA','100': '#F1F2F7'}}
   />
 </ColorPalette>

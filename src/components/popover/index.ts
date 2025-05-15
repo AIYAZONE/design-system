@@ -36,11 +36,11 @@ export type Placement =
  * @summary Jackery Popover 组件
  *
  * @cssproperty [--jds-popover-arrow-display=none] - 设置弹出框箭头的显示。设置为 `block` 以使箭头可见。
- * @cssproperty [--jds-popover-background-color=--bl-color-neutral-full] - 设置弹出框的背景颜色。
- * @cssproperty [--jds-popover-border-color=--bl-color-primary-highlight] - 设置弹出框的边框颜色。
+ * @cssproperty [--jds-popover-background-color=--jds-color-white] - 设置弹出框的背景颜色。
+ * @cssproperty [--jds-popover-border-color=--jds-color-primary-highlight] - 设置弹出框的边框颜色。
  * @cssproperty [--jds-popover-border-size=1px] - 设置弹出框的边框大小。可以设置为 `0px` 以去掉边框（如果使用自定义背景颜色）。始终使用长度单位。
- * @cssproperty [--jds-popover-padding=--bl-size-m] - 设置弹出框的内边距。
- * @cssproperty [--jds-popover-border-radius=--bl-size-3xs] - 设置弹出框的边框圆角。
+ * @cssproperty [--jds-popover-padding=--jds-size-m] - 设置弹出框的内边距。
+ * @cssproperty [--jds-popover-border-radius=--jds-size-3xs] - 设置弹出框的边框圆角。
  * @cssproperty [--jds-popover-max-width=100vw] - 设置弹出框的最大宽度（包括边框和内边距）。
  * @cssproperty [--jds-popover-position=fixed] - 设置弹出框的位置。可以设置为 `absolute` 如果父元素是固定定位的元素，如抽屉或对话框。
  */

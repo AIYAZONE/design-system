@@ -7,8 +7,8 @@
 .button {
   --main-color: var(--jds-color-primary);
   --main-hover-color: var(--jds-color-primary-highlight);
-  --text-hover-color: var(--jds-color-neutral-lightest);
-  --content-color: var(--jds-color-neutral-full);
+  --text-hover-color: var(--jds-color-neutral-100);
+  --content-color: var(--jds-color-white);
   --bg-color: var(--main-color);
   --border-color: var(--main-color);
   --padding-vertical: var(--jds-size-2xs);
@@ -80,8 +80,8 @@
 
 // 不同种类按钮
 :host([kind="neutral"]) .button {
-  --main-color: var(--jds-color-neutral-darker);
-  --main-hover-color: var(--jds-color-neutral-darkest);
+  --main-color: var(--jds-color-neutral-400);
+  --main-hover-color: var(--jds-color-neutral-500);
 }
 
 :host([kind="success"]) .button {
@@ -225,7 +225,7 @@
 }
 
 :host([variant="secondary"]:hover) .button[aria-disabled="false"] {
-  --content-color: var(--jds-color-neutral-full);
+  --content-color: var(--jds-color-white);
   --bg-color: var(--main-hover-color);
 }
 
@@ -252,13 +252,13 @@
 }
 
 :host([variant="secondary"]) .active.button {
-  --content-color: var(--jds-color-neutral-full);
+  --content-color: var(--jds-color-white);
   --bg-color: var(--main-hover-color);
 }
 
 :host([variant="text"]) .active.button {
   --content-color: var(--main-color);
-  --bg-color: var(--jds-color-neutral-lightest);
+  --bg-color: var(--jds-color-neutral-100);
   --border-color: transparent;
 }
 
