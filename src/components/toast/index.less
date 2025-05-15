@@ -6,7 +6,7 @@
 
 .toast {
   /* 设置内边距 */
-  --padding: var(--jds-size-m);
+  --padding: var(--jds-size-16);
   /* 主颜色 */
   --main-color: var(--jds-color-info);
   /* 背景颜色 */
@@ -32,7 +32,7 @@
 
 @media screen and (min-width: 1024px) {
   .toast {
-    padding: var(--jds-size-m) var(--jds-size-xl);
+    padding: var(--jds-size-16) var(--jds-size-20);
   }
 }
 
@@ -60,7 +60,7 @@
 
 .content {
   display: flex;
-  margin-inline-end: var(--jds-size-2xs);
+  margin-inline-end: var(--jds-size-8);
   /* 设置弹性缩放 */
   flex: 20 1 70%;
   padding: calc(var(--padding) / 2) 0;
@@ -68,7 +68,7 @@
 
 .icon {
   padding: calc(var(--padding) / 2) 0;
-  margin-inline-end: var(--jds-size-2xs);
+  margin-inline-end: var(--jds-size-8);
   color: var(--main-color);
 }
 
@@ -90,7 +90,7 @@
   /* 换行 */
   flex-wrap: wrap;
   /* 间距 */
-  gap: var(--jds-size-m);
+  gap: var(--jds-size-16);
   padding: calc(var(--padding) / 2) 0;
 }
 
@@ -101,7 +101,7 @@
 
 .caption+.description {
   /* 标题与描述之间的间距 */
-  margin-top: var(--jds-size-2xs);
+  margin-top: var(--jds-size-8);
 }
 
 :host([closed]) {

@@ -17,11 +17,11 @@ export const badgeStyles = css`
       var(--jds-color-primary)
     ); // 徽章文字颜色
     --font: var(--jds-font-title-4-medium); // 徽章字体
-    --padding-vertical: var(--jds-size-4xs); // 徽章垂直内边距
-    --padding-horizontal: var(--jds-size-3xs); // 徽章水平内边距
-    --margin-icon: var(--jds-size-3xs); // 图标外边距
-    --icon-size: var(--jds-size-s); // 图标大小
-    --height: var(--jds-size-xl); // 徽章高度
+    --padding-vertical: var(--jds-size-4); // 徽章垂直内边距
+    --padding-horizontal: var(--jds-size-6); // 徽章水平内边距
+    --margin-icon: var(--jds-size-6); // 图标外边距
+    --icon-size: var(--jds-size-14); // 图标大小
+    --height: var(--jds-size-20); // 徽章高度
 
     display: flex;
     gap: var(--margin-icon);
@@ -31,7 +31,7 @@ export const badgeStyles = css`
     box-sizing: border-box;
     width: 100%;
     border: none;
-    border-radius: var(--jds-size-4xs);
+    border-radius: var(--jds-size-4);
     margin: 0;
     padding: var(--padding-vertical) var(--padding-horizontal);
     background-color: var(--bg-color);
@@ -44,16 +44,16 @@ export const badgeStyles = css`
   // 小号徽章样式
   :host([size="small"]) .badge {
     --font: var(--jds-font-c1);
-    --height: var(--jds-size-m);
+    --height: var(--jds-size-16);
   }
 
   // 大号徽章样式
   :host([size="large"]) .badge {
     --font: var(--jds-font-h3-medium);
-    --padding-vertical: var(--jds-size-2xs);
-    --padding-horizontal: var(--jds-size-2xs);
-    --height: var(--jds-size-2xl);
-    --icon-size: var(--jds-size-m);
+    --padding-vertical: var(--jds-size-8);
+    --padding-horizontal: var(--jds-size-8);
+    --height: var(--jds-size-24);
+    --icon-size: var(--jds-size-16);
   }
 
   // 插槽中的图标样式

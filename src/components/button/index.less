@@ -11,12 +11,12 @@
   --content-color: var(--jds-color-white);
   --bg-color: var(--main-color);
   --border-color: var(--main-color);
-  --padding-vertical: var(--jds-size-2xs);
-  --padding-horizontal: var(--jds-size-m);
-  --margin-icon: var(--jds-size-2xs);
-  --icon-size: var(--jds-size-xs);
+  --padding-vertical: var(--jds-size-8);
+  --padding-horizontal: var(--jds-size-16);
+  --margin-icon: var(--jds-size-8);
+  --icon-size: var(--jds-size-12);
   --font: var(--jds-font-h6-medium);
-  --height: var(--jds-size-6xl);
+  --height: var(--jds-size-48);
   --border-radius: var(--jds-border-radius-pill);
 
   display: flex;
@@ -96,10 +96,10 @@
 
 // 不同尺寸按钮
 :host([size="extra"]) .button {
-  --height: var(--jds-size-7xl);
-  --padding-vertical: var(--jds-size-l);
-  --padding-horizontal: var(--jds-size-3xl);
-  --margin-icon: var(--jds-size-2xs);
+  --height: var(--jds-size-56);
+  --padding-vertical: var(--jds-size-18);
+  --padding-horizontal: var(--jds-size-32);
+  --margin-icon: var(--jds-size-8);
   --font: var(--jds-font-weight-semibold) 22px/30px var(--jds-font-family);
 }
 
@@ -108,10 +108,10 @@
 }
 
 :host([size="large"]) .button {
-  --height: var(--jds-size-6xl);
-  --padding-vertical: var(--jds-size-xs);
-  --padding-horizontal: var(--jds-size-3xl);
-  --margin-icon: var(--jds-size-3xs);
+  --height: var(--jds-size-48);
+  --padding-vertical: var(--jds-size-12);
+  --padding-horizontal: var(--jds-size-32);
+  --margin-icon: var(--jds-size-6);
   --font: var(--jds-font-b1-medium);
 }
 
@@ -120,10 +120,10 @@
 }
 
 :host([size="medium"]) .button {
-  --height: var(--jds-size-4xl);
-  --padding-vertical: var(--jds-size-2xs);
-  --padding-horizontal: var(--jds-size-2xl);
-  --margin-icon: var(--jds-size-4xs);
+  --height: var(--jds-size-36);
+  --padding-vertical: var(--jds-size-8);
+  --padding-horizontal: var(--jds-size-24);
+  --margin-icon: var(--jds-size-4);
   --font: var(--jds-font-b3-medium);
 }
 
@@ -132,11 +132,11 @@
 }
 
 :host([size="small"]) .button {
-  --height: var(--jds-size-2xl);
-  --padding-vertical: var(--jds-size-3xs);
-  --padding-horizontal: var(--jds-size-xs);
-  --margin-icon: var(--jds-size-4xs);
-  --icon-size: var(--jds-size-2xs);
+  --height: var(--jds-size-24);
+  --padding-vertical: var(--jds-size-6);
+  --padding-horizontal: var(--jds-size-12);
+  --margin-icon: var(--jds-size-4);
+  --icon-size: var(--jds-size-8);
   --font: var(--jds-font-b2-medium);
 }
 
@@ -153,12 +153,12 @@
 :host .has-icon:not(.has-content) {
   --padding-horizontal: var(--padding-vertical);
   --margin-icon: 0;
-  --icon-size: var(--jds-size-l);
+  --icon-size: var(--jds-size-18);
   width: var(--height);
 }
 
 :host([size="extra"]) .has-icon:not(.has-content) {
-  --icon-size: var(--jds-size-2xl);
+  --icon-size: var(--jds-size-24);
 }
 
 :host([disabled]) {
@@ -264,38 +264,38 @@
 
 @media screen and (max-width: 1023.98px) {
   .button {
-    --height: 10.6667vw; // 80px
+    --height: var(--jds-size-80); // 80px
   }
 
   :host([size="extra"]) .button {
-    --height: 12.8vw; // 96px
-    --padding-vertical: 3.7333vw; // 28px
-    --padding-horizontal: 5.3333vw; // 40px
-    --margin-icon: 1.3333vw; // 10px
+    --height: var(--jds-size-96); // 96px
+    --padding-vertical: var(--jds-size-28); // 28px
+    --padding-horizontal: var(--jds-size-40); // 40px
+    --margin-icon: var(--jds-size-10); // 10px
     --font: var(--jds-font-b1-medium);
   }
 
   :host([size="large"]) .button {
-    --height: 10.6667vw; // 80
-    --padding-vertical: 3.2000vw; // 24px
-    --padding-horizontal: 5.3333vw; // 40px
-    --margin-icon: 1.0667vw; // 8px
+    --height: var(--jds-size-80); // 80
+    --padding-vertical: var(--jds-size-24); // 24px
+    --padding-horizontal: var(--jds-size-40); // 40px
+    --margin-icon: var(--jds-size-8); // 8px
     --font: var(--jds-font-b2-medium);
   }
 
   :host([size="medium"]) .button {
-    --height: 8.5333vw; // 64px
-    --padding-vertical: 2.0000vw; // 15px
-    --padding-horizontal: 4.2667vw; // 32px
-    --margin-icon: 1.0667vw; // 8px
+    --height: var(--jds-size-64); // 64px
+    --padding-vertical: var(--jds-size-16); // 16px
+    --padding-horizontal: var(--jds-size-32); // 32px
+    --margin-icon: var(--jds-size-8); // 8px
     --font: var(--jds-font-b2-medium);
   }
 
   :host([size="small"]) .button {
-    --height: 6.4vw; // 48px
-    --padding-vertical: 1.0667vw; // 8px
-    --padding-horizontal: 3.2000vw; // 24px
-    --margin-icon: 0.5333vw; // 4px
+    --height: var(--jds-size-48); // 48px
+    --padding-vertical: var(--jds-size-8); // 8px
+    --padding-horizontal: var(--jds-size-24); // 24px
+    --margin-icon: var(--jds-size-4); // 4px
     --font: var(--jds-font-b3-medium);
   }
 
@@ -309,6 +309,6 @@
 
   :host .has-icon:not(.has-content) {
     --margin-icon: 0;
-    --icon-size: 3.2vw; // 24px
+    --icon-size: var(--jds-size-24); // 24px
   }
 }

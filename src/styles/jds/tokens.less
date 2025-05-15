@@ -139,29 +139,32 @@
   --jds-border-radius-pill: 999px;
   /* 圆形边框 */
   --jds-border-radius-circle: 50%;
-
-  /* === 尺寸和间距 === */
-  --jds-size-5xs: 2px;
-  --jds-size-4xs: 4px;
-  --jds-size-3xs: 6px;
-  --jds-size-2xs: 8px;
-  --jds-size-xs: 12px;
-  --jds-size-s: 14px;
-  --jds-size-m: 16px;
-  --jds-size-l: 18px;
-  --jds-size-xl: 20px;
-  --jds-size-2xl: 24px;
-  --jds-size-3xl: 32px;
-  --jds-size-4xl: 36px;
-  --jds-size-5xl: 40px;
-  --jds-size-6xl: 48px;
-  --jds-size-7xl: 56px;
-  --jds-size-8xl: 64px;
-  --jds-size-9xl: 80px;
 }
 
 @media screen and (min-width: 1440px) {
   :root {
+    /* === 尺寸和间距 === */
+    --jds-size-2: 2px;
+    --jds-size-4: 4px;
+    --jds-size-6: 6px;
+    --jds-size-8: 8px;
+    --jds-size-10: 10px;
+    --jds-size-12: 12px;
+    --jds-size-14: 14px;
+    --jds-size-16: 16px;
+    --jds-size-18: 18px;
+    --jds-size-20: 20px;
+    --jds-size-24: 24px;
+    --jds-size-28: 28px;
+    --jds-size-32: 32px;
+    --jds-size-36: 36px;
+    --jds-size-40: 40px;
+    --jds-size-48: 48px;
+    --jds-size-56: 56px;
+    --jds-size-64: 64px;
+    --jds-size-80: 80px;
+    --jds-size-96: 96px;
+
     /* === 字体大小 - 已校准 === */
     --jds-font-size-s: 12px;
     --jds-font-size-m: 14px;
@@ -180,6 +183,28 @@
   @vw: (1vw / @base) * 100;
 
   :root {
+    /* === 尺寸和间距 === */
+    --jds-size-2: max(0, 2 * @vw);
+    --jds-size-4: max(0, 4 * @vw);
+    --jds-size-6: max(0, 6 * @vw);
+    --jds-size-8: max(0, 8 * @vw);
+    --jds-size-10: max(0, 10 * @vw);
+    --jds-size-12: max(0, 12 * @vw);
+    --jds-size-14: max(0, 14 * @vw);
+    --jds-size-16: max(0, 16 * @vw);
+    --jds-size-18: max(0, 18 * @vw);
+    --jds-size-20: max(0, 20 * @vw);
+    --jds-size-24: max(0, 24 * @vw);
+    --jds-size-28: max(0, 28 * @vw);
+    --jds-size-32: max(0, 32 * @vw);
+    --jds-size-36: max(0, 36 * @vw);
+    --jds-size-40: max(0, 40 * @vw);
+    --jds-size-48: max(0, 48 * @vw);
+    --jds-size-56: max(0, 56 * @vw);
+    --jds-size-64: max(0, 64 * @vw);
+    --jds-size-80: max(0, 80 * @vw);
+    --jds-size-96: max(0, 96 * @vw);
+
     /* === 字体大小 - 已校准 === */
     /* 12px */
     --jds-font-size-s: 12px;
@@ -207,27 +232,47 @@
   @vw: (1vw / @base) * 100;
 
   :root {
+    /* === 尺寸和间距 === */
+    --jds-size-2: min(2px, max(0, 2 * @vw));
+    --jds-size-4: min(4px, max(0, 4 * @vw));
+    --jds-size-6: min(6px, max(0, 6 * @vw));
+    --jds-size-8: min(8px, max(0, 8 * @vw));
+    --jds-size-10: min(10px, max(0, 10 * @vw));
+    --jds-size-12: min(12px, max(0, 12 * @vw));
+    --jds-size-14: min(14px, max(0, 14 * @vw));
+    --jds-size-16: min(16px, max(0, 16 * @vw));
+    --jds-size-18: min(18px, max(0, 18 * @vw));
+    --jds-size-20: min(20px, max(0, 20 * @vw));
+    --jds-size-24: min(24px, max(0, 24 * @vw));
+    --jds-size-28: min(28px, max(0, 28 * @vw));
+    --jds-size-32: min(32px, max(0, 32 * @vw));
+    --jds-size-36: min(36px, max(0, 36 * @vw));
+    --jds-size-40: min(40px, max(0, 40 * @vw));
+    --jds-size-48: min(48px, max(0, 48 * @vw));
+    --jds-size-56: min(56px, max(0, 56 * @vw));
+    --jds-size-64: min(64px, max(0, 64 * @vw));
+    --jds-size-80: min(80px, max(0, 80 * @vw));
+    --jds-size-96: min(96px, max(0, 96 * @vw));
+
     /* === 字体大小 - 已校准 === */
     /* 20px */
-    --jds-font-size-s: max(12px, 20 * @vw);
+    --jds-font-size-s: min(20px, max(12px, 20 * @vw));
     /* 24px */
-    --jds-font-size-m: max(12px, 24 * @vw);
+    --jds-font-size-m: min(24px, max(12px, 24 * @vw));
     /* 28px */
-    --jds-font-size-l: max(12px, 28 * @vw);
+    --jds-font-size-l: min(28px, max(12px, 28 * @vw));
     /* 32px */
-    --jds-font-size-xl: max(12px, 32 * @vw);
+    --jds-font-size-xl: min(32px, max(12px, 32 * @vw));
     /* 36px */
-    --jds-font-size-2xl: max(12px, 36 * @vw);
+    --jds-font-size-2xl: min(36px, max(12px, 36 * @vw));
     /* 40px */
-    --jds-font-size-3xl: max(12px, 40 * @vw);
+    --jds-font-size-3xl: min(40px, max(12px, 40 * @vw));
     /* 56px */
-    --jds-font-size-4xl: max(12px, 56 * @vw);
+    --jds-font-size-4xl: min(56px, max(12px, 56 * @vw));
     /* 64px */
-    --jds-font-size-5xl: max(12px, 64 * @vw);
+    --jds-font-size-5xl: min(64px, max(12px, 64 * @vw));
     /* 80px */
-    --jds-font-size-6xl: max(12px, 80 * @vw);
-
-    --jds-size-96: 96 * @vw;
+    --jds-font-size-6xl: min(80px, max(12px, 80 * @vw));
   }
 }
 
@@ -279,60 +324,60 @@
 @media screen and (min-width: 1024px) {
   :root {
     /* 标题 1 行高 */
-    --jds-h1-line-height: calc(var(--jds-h1-font-size) + var(--jds-size-2xs));
+    --jds-h1-line-height: calc(var(--jds-h1-font-size) + var(--jds-size-8));
     /* 标题 2 行高 */
-    --jds-h2-line-height: calc(var(--jds-h2-font-size) + var(--jds-size-2xs));
+    --jds-h2-line-height: calc(var(--jds-h2-font-size) + var(--jds-size-8));
     /* 标题 3 行高 */
-    --jds-h3-line-height: calc(var(--jds-h3-font-size) + var(--jds-size-2xs));
+    --jds-h3-line-height: calc(var(--jds-h3-font-size) + var(--jds-size-8));
     /* 标题 4 行高 */
-    --jds-h4-line-height: calc(var(--jds-h4-font-size) + var(--jds-size-2xs));
+    --jds-h4-line-height: calc(var(--jds-h4-font-size) + var(--jds-size-8));
     /* 标题 5 行高 */
-    --jds-h5-line-height: calc(var(--jds-h5-font-size) + var(--jds-size-2xs));
+    --jds-h5-line-height: calc(var(--jds-h5-font-size) + var(--jds-size-8));
     /* 标题 6 行高 */
-    --jds-h6-line-height: calc(var(--jds-h6-font-size) + var(--jds-size-2xs));
+    --jds-h6-line-height: calc(var(--jds-h6-font-size) + var(--jds-size-8));
 
     /* 标题 5 字间距 */
     --jds-h5-letter-spacing: calc(-0.01 * var(--jds-h5-font-size));
 
     /* 正文文本 1 行高计算 */
-    --jds-b1-line-height: calc(var(--jds-b1-font-size) + var(--jds-size-2xs));
+    --jds-b1-line-height: calc(var(--jds-b1-font-size) + var(--jds-size-8));
     /* 正文文本 2 行高计算 */
-    --jds-b2-line-height: calc(var(--jds-b2-font-size) + var(--jds-size-2xs));
+    --jds-b2-line-height: calc(var(--jds-b2-font-size) + var(--jds-size-8));
     /* 正文文本 3 行高计算 */
-    --jds-b3-line-height: calc(var(--jds-b3-font-size) + var(--jds-size-2xs));
+    --jds-b3-line-height: calc(var(--jds-b3-font-size) + var(--jds-size-8));
 
     /* 说明文字 行高计算 */
-    --jds-c1-line-height: calc(var(--jds-c1-font-size) + var(--jds-size-3xs));
+    --jds-c1-line-height: calc(var(--jds-c1-font-size) + var(--jds-size-6));
   }
 }
 
 @media screen and (max-width: 1023.98px) {
   :root {
     /* 标题 1 行高 */
-    --jds-h1-line-height: calc(var(--jds-h1-font-size) + var(--jds-size-m));
+    --jds-h1-line-height: calc(var(--jds-h1-font-size) + var(--jds-size-16));
     /* 标题 2 行高 */
-    --jds-h2-line-height: calc(var(--jds-h2-font-size) + var(--jds-size-m));
+    --jds-h2-line-height: calc(var(--jds-h2-font-size) + var(--jds-size-16));
     /* 标题 3 行高 */
-    --jds-h3-line-height: calc(var(--jds-h3-font-size) + var(--jds-size-m));
+    --jds-h3-line-height: calc(var(--jds-h3-font-size) + var(--jds-size-16));
     /* 标题 4 行高 */
-    --jds-h4-line-height: calc(var(--jds-h4-font-size) + var(--jds-size-m));
+    --jds-h4-line-height: calc(var(--jds-h4-font-size) + var(--jds-size-16));
     /* 标题 5 行高 */
-    --jds-h5-line-height: calc(var(--jds-h5-font-size) + var(--jds-size-2xs));
+    --jds-h5-line-height: calc(var(--jds-h5-font-size) + var(--jds-size-8));
     /* 标题 6 行高 */
-    --jds-h6-line-height: calc(var(--jds-h6-font-size) + var(--jds-size-m));
+    --jds-h6-line-height: calc(var(--jds-h6-font-size) + var(--jds-size-16));
 
     /* 标题 5 字间距 */
     --jds-h5-letter-spacing: calc(-0.02 * var(--jds-h5-font-size));
 
     /* 正文文本 1 行高计算 */
-    --jds-b1-line-height: calc(var(--jds-b1-font-size) + var(--jds-size-m));
+    --jds-b1-line-height: calc(var(--jds-b1-font-size) + var(--jds-size-16));
     /* 正文文本 2 行高计算 */
-    --jds-b2-line-height: calc(var(--jds-b2-font-size) + var(--jds-size-m));
+    --jds-b2-line-height: calc(var(--jds-b2-font-size) + var(--jds-size-16));
     /* 正文文本 3 行高计算 */
-    --jds-b3-line-height: calc(var(--jds-b3-font-size) + var(--jds-size-m));
+    --jds-b3-line-height: calc(var(--jds-b3-font-size) + var(--jds-size-16));
 
     /* 说明文字 行高计算 */
-    --jds-c1-line-height: calc(var(--jds-c1-font-size) + var(--jds-size-xs));
+    --jds-c1-line-height: calc(var(--jds-c1-font-size) + var(--jds-size-12));
   }
 }
 
