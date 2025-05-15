@@ -3,9 +3,9 @@
   visibility: hidden;
 }
 
-jds-dialog {
-  ul,
-  ol {
-    padding-inline-start: 1em;
-  }
+/* 统一列表样式 */
+ul:not(.jds-rte ul),
+ol:not(.jds-rte ol){
+  /* 移除默认列表样式 */
+  list-style: none;
 }

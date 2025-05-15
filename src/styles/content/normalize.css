@@ -82,49 +82,26 @@ summary {
   vertical-align: baseline;
 }
 
-/* 为旧版浏览器提供 HTML5 显示角色重置 */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section {
-  display: block;
-}
-
 /* 对于表格元素的重置 */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* 统一列表样式 */
-ul,
-ol {
-  list-style: none;
-  /* 移除默认列表样式 */
-}
-
 /* 链接样式 */
 a {
-  text-decoration: none;
   /* 移除下划线 */
-  color: inherit;
+  text-decoration: none;
   /* 继承父元素的颜色 */
+  color: inherit;
 }
 
 /* 对于图像的处理 */
 img {
-  max-width: 100%;
   /* 使得图片响应式 */
-  height: auto;
+  max-width: 100%;
   /* 维持纵横比 */
+  height: auto;
 }
 
 /* 对于输入框的重置 */
@@ -132,12 +109,12 @@ input,
 button,
 textarea,
 select {
-  font-family: inherit;
   /* 继承字体 */
-  font-size: inherit;
+  font-family: inherit;
   /* 继承字体大小 */
-  color: inherit;
+  font-size: inherit;
   /* 继承字体颜色 */
+  color: inherit;
 }
 
 /* 统一盒模型 */
