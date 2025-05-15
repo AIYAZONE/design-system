@@ -1,0 +1,97 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { html } from 'lit';
+
+<Meta title="设计变量/尺寸和间距" />
+
+# 尺寸和间距 - Size and Spacing
+
+## CSS 变量
+
+
+```css
+
+  @media screen and (min-width: 1440px) {
+    :root {
+      /* === 尺寸和间距 === */
+      --jds-size-2: 2px;
+      --jds-size-4: 4px;
+      --jds-size-6: 6px;
+      --jds-size-8: 8px;
+      --jds-size-10: 10px;
+      --jds-size-12: 12px;
+      --jds-size-14: 14px;
+      --jds-size-16: 16px;
+      --jds-size-18: 18px;
+      --jds-size-20: 20px;
+      --jds-size-24: 24px;
+      --jds-size-28: 28px;
+      --jds-size-32: 32px;
+      --jds-size-36: 36px;
+      --jds-size-40: 40px;
+      --jds-size-48: 48px;
+      --jds-size-56: 56px;
+      --jds-size-64: 64px;
+      --jds-size-80: 80px;
+      --jds-size-96: 96px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1439.98px) {
+    @base: 1440;
+    @vw: (1vw / @base) * 100;
+
+    :root {
+      /* === 尺寸和间距 === */
+      --jds-size-2: max(0, 2 * @vw);
+      --jds-size-4: max(0, 4 * @vw);
+      --jds-size-6: max(0, 6 * @vw);
+      --jds-size-8: max(0, 8 * @vw);
+      --jds-size-10: max(0, 10 * @vw);
+      --jds-size-12: max(0, 12 * @vw);
+      --jds-size-14: max(0, 14 * @vw);
+      --jds-size-16: max(0, 16 * @vw);
+      --jds-size-18: max(0, 18 * @vw);
+      --jds-size-20: max(0, 20 * @vw);
+      --jds-size-24: max(0, 24 * @vw);
+      --jds-size-28: max(0, 28 * @vw);
+      --jds-size-32: max(0, 32 * @vw);
+      --jds-size-36: max(0, 36 * @vw);
+      --jds-size-40: max(0, 40 * @vw);
+      --jds-size-48: max(0, 48 * @vw);
+      --jds-size-56: max(0, 56 * @vw);
+      --jds-size-64: max(0, 64 * @vw);
+      --jds-size-80: max(0, 80 * @vw);
+      --jds-size-96: max(0, 96 * @vw);
+    }
+  }
+
+  @media screen and (max-width: 1023.98px) {
+    @base: 750;
+    @vw: (1vw / @base) * 100;
+
+    :root {
+      /* === 尺寸和间距 === */
+      --jds-size-2: min(2px, max(0, 2 * @vw));
+      --jds-size-4: min(4px, max(0, 4 * @vw));
+      --jds-size-6: min(6px, max(0, 6 * @vw));
+      --jds-size-8: min(8px, max(0, 8 * @vw));
+      --jds-size-10: min(10px, max(0, 10 * @vw));
+      --jds-size-12: min(12px, max(0, 12 * @vw));
+      --jds-size-14: min(14px, max(0, 14 * @vw));
+      --jds-size-16: min(16px, max(0, 16 * @vw));
+      --jds-size-18: min(18px, max(0, 18 * @vw));
+      --jds-size-20: min(20px, max(0, 20 * @vw));
+      --jds-size-24: min(24px, max(0, 24 * @vw));
+      --jds-size-28: min(28px, max(0, 28 * @vw));
+      --jds-size-32: min(32px, max(0, 32 * @vw));
+      --jds-size-36: min(36px, max(0, 36 * @vw));
+      --jds-size-40: min(40px, max(0, 40 * @vw));
+      --jds-size-48: min(48px, max(0, 48 * @vw));
+      --jds-size-56: min(56px, max(0, 56 * @vw));
+      --jds-size-64: min(64px, max(0, 64 * @vw));
+      --jds-size-80: min(80px, max(0, 80 * @vw));
+      --jds-size-96: min(96px, max(0, 96 * @vw));
+    }
+  }
+
+```
