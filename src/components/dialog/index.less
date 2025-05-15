@@ -13,8 +13,9 @@
   flex-direction: column;
   background: var(--background-color);
   width: var(--jds-dialog-width, 640px);
-  max-width: calc(100vw - var(--jds-size-5xl));
-  max-height: calc(100vh - 2 * var(--jds-size-8xl));
+  max-width: calc(100vw - var(--jds-size-40));
+  max-height: calc(100vh - 2 * var(--jds-size-64));
+  min-height: 240px;
   min-width: 424px;
   padding: 0;
   border: 0;
@@ -26,11 +27,6 @@
   padding: 0;
   border: 0;
   border-radius: var(--jds-border-radius-l);
-}
-
-.dialog-polyfill .container {
-  position: fixed;
-  z-index: var(--jds-index-dialog);
 }
 
 .dialog::backdrop {
@@ -48,8 +44,12 @@
   align-items: center;
   justify-content: center;
   z-index: var(--jds-dialog-index, 500);
-  /* 遮罩层背景色 */
   background-color: var(--jds-color-overlay-70);
+
+  .container {
+    position: fixed;
+    z-index: var(--jds-index-dialog);
+  }
 }
 
 :host([open]) .dialog-polyfill {
@@ -57,18 +57,12 @@
   display: flex;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--jds-size-2xs);
-  padding: var(--jds-size-m) var(--jds-size-m) 0 var(--jds-size-m);
-}
-
-jds-icon {
+jds-icon.close {
   position: absolute;
-  top: var(--jds-size-m);
-  right: var(--jds-size-m);
+  top: var(--jds-size-16);
+  right: var(--jds-size-16);
+  font-size:var(--jds-size-32);
+  color:var(--jds-color-text-l3);
   cursor: pointer;
 }
 
@@ -77,46 +71,40 @@ jds-icon {
 }
 
 .content {
-  margin-top: var(--jds-size-2xl);
-  margin-right: var(--jds-size-3xs);
-  margin-bottom: var(--jds-size-2xl);
-  padding: 0 calc(var(--jds-size-8xl) - var(--jds-size-3xs)) 0 var(--jds-size-8xl);
+  margin-top: var(--jds-size-24);
+  margin-right: var(--jds-size-6);
+  margin-bottom: var(--jds-size-24);
+  padding: 0 calc(var(--jds-size-64) - var(--jds-size-6)) 0 var(--jds-size-64);
   /* 内容溢出时可滚动 */
   overflow-y: auto;
-}
 
-
-/* 滚动条滑块 */
-.content::-webkit-scrollbar-thumb {
-  /* 滑块颜色 */
-  background-color: #c9c9cb;
-  /* 滑块圆角 */
-  border-radius: 10px;
-}
-
-.content::-webkit-scrollbar-track {
-  /* 滚动条轨道透明 */
-  background-color: transparent;
-}
-
-@media screen and (min-width: 1440px) {
-  .content::-webkit-scrollbar {
-    /* 滚动条宽度 */
-    width: 6px;
+  // 滚动条
+  &::-webkit-scrollbar {
+    // 垂直滚动条宽度
+    width: 7px;
+    // 水平滚动条高度
+    height: 7px;
   }
-}
 
-@media screen and (min-width: 1024px) and (max-width: 1439.98px) {
-  .content::-webkit-scrollbar {
-    /* 滚动条宽度 */
-    width: 0.416666666666667vw;
+  /* 滚动条滑块 */
+  &::-webkit-scrollbar-thumb {
+    /* 滑块颜色 */
+    background-color: rgba(51, 51, 51, 0.5);
+    /* 滑块圆角 */
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgba(51, 51, 51, 0.7);
+    }
   }
-}
 
-@media screen and (max-width: 1023.98px) {
-  .content::-webkit-scrollbar {
-    /* 滚动条宽度 */
-    width: 1.06666666666667vw;
+  &::-webkit-scrollbar-track {
+    /* 滚动条轨道透明 */
+    background-color: transparent;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 
@@ -131,22 +119,36 @@ jds-icon {
 }
 
 footer {
-  padding: var(--jds-size-xl);
+  padding: var(--jds-size-20);
   display: flex;
   /* 反向排列页脚按钮 */
   flex-flow: row-reverse wrap;
-  gap: var(--jds-size-m);
+  gap: var(--jds-size-16);
+
+  &.shadow {
+    /* 页脚阴影 */
+    box-shadow: 0 -4px 15px #27314226;
+  }
 }
 
-footer.shadow {
-  /* 页脚阴影 */
-  box-shadow: 0 -4px 15px #27314226;
+@media screen and (max-width: 1023.98px) {
+  @base: 750;
+  @vw: (1vw / @base) * 100;
+
+  .content::-webkit-scrollbar {
+    /* 滚动条宽度 */
+    width: 6px;
+  }
+
+  jds-icon.close {
+    font-size: var(--jds-size-48);
+  }
 }
 
 @media only screen and (max-width: 471px) {
   .container {
-    max-width: calc(100vw - var(--jds-size-2xl));
-    max-height: calc(100vh - var(--jds-size-2xl));
+    max-width: calc(100vw - var(--jds-size-24));
+    max-height: calc(100vh - var(--jds-size-24));
     min-width: auto;
     min-height: auto;
   }
@@ -155,11 +157,4 @@ footer.shadow {
     /* 小屏幕下页脚按钮竖排 */
     flex-flow: column wrap;
   }
-}
-
-::slotted(bl-tab-group) {
-  display: block;
-  /* 适应宽度 */
-  width: calc(100% + calc(var(--jds-size-xl) * 2));
-  transform: translateX(calc(var(--jds-size-xl) * -1));
 }
