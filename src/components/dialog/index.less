@@ -134,6 +134,15 @@ footer {
 @media screen and (max-width: 1023.98px) {
   @base: 750;
   @vw: (1vw / @base) * 100;
+  :host{
+    --jds-size-128: min(128px, max(0, 128 * @vw));
+  }
+  .container {
+    max-width: calc(100vw - var(--jds-size-48) * 2);
+    max-height: calc(100vh - var(--jds-size-128) * 2);
+    min-height: 320px;
+    min-width: auto;
+  }
 
   .content::-webkit-scrollbar {
     /* 滚动条宽度 */
@@ -146,13 +155,6 @@ footer {
 }
 
 @media only screen and (max-width: 471px) {
-  .container {
-    max-width: calc(100vw - var(--jds-size-24));
-    max-height: calc(100vh - var(--jds-size-24));
-    min-width: auto;
-    min-height: auto;
-  }
-
   footer {
     /* 小屏幕下页脚按钮竖排 */
     flex-flow: column wrap;
