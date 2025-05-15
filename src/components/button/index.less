@@ -269,21 +269,33 @@
 
   :host([size="extra"]) .button {
     --height: 12.8vw; // 96px
+    --padding-vertical: 3.7333vw; // 28px
+    --padding-horizontal: 5.3333vw; // 40px
+    --margin-icon: 1.3333vw; // 10px
     --font: var(--jds-font-b1-medium);
   }
 
   :host([size="large"]) .button {
     --height: 10.6667vw; // 80
+    --padding-vertical: 3.2000vw; // 24px
+    --padding-horizontal: 5.3333vw; // 40px
+    --margin-icon: 1.0667vw; // 8px
     --font: var(--jds-font-b2-medium);
   }
 
   :host([size="medium"]) .button {
     --height: 8.5333vw; // 64px
+    --padding-vertical: 2.0000vw; // 15px
+    --padding-horizontal: 4.2667vw; // 32px
+    --margin-icon: 1.0667vw; // 8px
     --font: var(--jds-font-b2-medium);
   }
 
   :host([size="small"]) .button {
     --height: 6.4vw; // 48px
+    --padding-vertical: 1.0667vw; // 8px
+    --padding-horizontal: 3.2000vw; // 24px
+    --margin-icon: 0.5333vw; // 4px
     --font: var(--jds-font-b3-medium);
   }
 
@@ -296,6 +308,7 @@
   }
 
   :host .has-icon:not(.has-content) {
+    --margin-icon: 0;
     --icon-size: 3.2vw; // 24px
   }
 }
