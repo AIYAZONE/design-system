@@ -62,9 +62,6 @@ export default defineConfig(({ mode }) => {
             const fileName = assetInfo.name || '';
             const ext = path.extname(fileName);
             switch (ext) {
-              case ".css":
-                // 输出到 styles 目录
-                return "styles/[name].[ext]";
               case ".woff":
               case ".woff2":
                 // 字体文件输出到fonts目录
