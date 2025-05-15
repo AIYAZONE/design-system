@@ -16,6 +16,7 @@ interface ButtonProps {
   target: any;
   icon: any;
   content: any;
+  style: any;
 }
 
 const meta: Meta = {
@@ -25,7 +26,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: "这是一个按钮组件，支持多种变体和样式。", // 自定义描述
+        component: "这是一个按钮组件，支持多种变体和样式。支持纯图标按钮、超链接按钮和自定义CSS属性配置。", // 自定义描述
       },
     },
   },
@@ -83,6 +84,12 @@ const meta: Meta = {
         type: "text",
       },
     },
+    style: {
+      description: "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block",
+      control: {
+        type: "text",
+      },
+    },
   },
 } satisfies Meta<ButtonProps>;
 
@@ -101,6 +108,7 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     loading-label="${ifDefined(args.loadingLabel)}"
     ?disabled=${args.disabled}
     ?loading=${args.loading}
+    style="${ifDefined(args.style)}"
     >${unsafeHTML(args.content)}</jds-button
   >`;
 
@@ -165,3 +173,133 @@ ${SingleButtonTemplate({
   content: "Small Button",
   size: "small",
 })} `;
+
+export const IconButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Primary + Icon Button",
+  icon: "arrow-right",
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "secondary",
+  content: "Secondary + Icon Button",
+  icon: "arrow-right",
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "text",
+  content: "Text + Icon Button",
+  icon: "arrow-right",
+})} `;
+
+export const IconOnlyButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "info-fill",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-right",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-right-long",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-up-long",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-right",
+  size: "extra",
+  variant: "secondary",
+})} `;
+
+export const LinkButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "info-fill",
+  href: "https://www.jackery.com",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-right-long",
+  href: "https://www.jackery.com",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Jackery Home Page",
+  href: "https://www.jackery.com",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Jackery Home Page",
+  href: "https://www.jackery.com",
+  target: "_self",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Jackery Home Page",
+  icon: "arrow-right-long",
+  href: "https://www.jackery.com",
+})} `;
+
+export const DisabledButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+  disabled: true,
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "secondary",
+  content: "Secondary Button",
+  disabled: true,
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "text",
+  content: "Text Button",
+  disabled: true,
+})} `;
+
+export const LoadingButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+  ...args,
+  content: "Primary Button",
+  loading: true,
+})}
+${SingleButtonTemplate({
+  ...args,
+  variant: "secondary",
+  content: "Secondary Button",
+  loading: true,
+})} `;
+
+export const CustomStyleButtons = (args: ButtonProps) => html`
+<div style="display: flex; flex-direction: column; gap: 16px;">
+  <div>
+    <h4>样式配置：--jds-button-display: block</h4>
+    <div style="width: 300px; height: 100px; background-color: #f5f5f5; padding: 20px; border-radius: 4px;">
+      ${SingleButtonTemplate({
+        ...args,
+        content: "Confirm",
+        style: "--jds-button-display: block",
+      })}
+    </div>
+  </div>
+
+  <div>
+    <h4>样式配置：--jds-button-display: block; max-width: 200px</h4>
+    ${SingleButtonTemplate({
+      ...args,
+      content: "A very long text content",
+      style: "--jds-button-display: block; max-width: 200px",
+    })}
+  </div>
+</div>
+`;
