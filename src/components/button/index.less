@@ -45,14 +45,6 @@
     position: relative;
     outline: none;
   }
-
-  &:focus-visible::after {
-    border: 2px solid var(--jds-button-focus-border-color, var(--main-color));
-    border-radius: var(--border-radius);
-    content: "";
-    position: absolute;
-    inset: -4px;
-  }
 }
 
 :host(:hover) .button {
@@ -182,7 +174,6 @@
 :host([variant="text"]) .button[aria-disabled="true"] {
   text-decoration: underline;
 }
-
 // 加载状态
 :host([loading]) {
   cursor: wait;
