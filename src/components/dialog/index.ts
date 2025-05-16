@@ -67,14 +67,8 @@ export default class JdsDialog extends LitElement {
   @query(".dialog")
   private dialog!: HTMLDialogElement & DialogElement;
 
-  @query("footer")
-  private footer!: HTMLElement;
-
   @query(".container")
   private container!: HTMLElement;
-
-  @query(".content")
-  private content!: HTMLElement;
 
   /**
    * 对话框打开时触发
@@ -104,19 +98,6 @@ export default class JdsDialog extends LitElement {
     }
   }
 
-  // 判断是否有页脚
-  private get _hasFooter() {
-    // 检查子节点中是否存在 `jds-button` 元素
-    return [...this.childNodes].some((node) => {
-      // 确保节点是元素节点
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        const element = node as HTMLElement; // 类型转换
-        return element.nodeName === "JDS-BUTTON" && element.hasAttribute('slot');
-      }
-      return false;
-    });
-  }
-
   // 切换对话框的处理程序
   private toggleDialogHandler() {
     if (this.open) {
@@ -124,11 +105,8 @@ export default class JdsDialog extends LitElement {
       this.dialog?.showModal?.();
       this.onOpen({ isOpen: true });
       document.body.style.overflow = "hidden"; // 禁止背景滚动
-      this.toggleFooterShadow(); // 切换页脚阴影
       // 添加事件监听器
       window?.addEventListener("keydown", this.onKeydown);
-      window?.addEventListener("resize", this.toggleFooterShadow);
-      this.content?.addEventListener("scroll", this.toggleFooterShadow);
     } else {
       // 关闭对话框
       this.dialog?.close?.();
@@ -136,8 +114,6 @@ export default class JdsDialog extends LitElement {
       document.body.style.overflow = "auto"; // 恢复背景滚动
       // 移除事件监听器
       window?.removeEventListener("keydown", this.onKeydown);
-      window?.removeEventListener("resize", this.toggleFooterShadow);
-      this.content?.removeEventListener("scroll", this.toggleFooterShadow);
       this.dispatchEvent(new Event("closed", { bubbles: true })); // 确保触发关闭事件
     }
   }
@@ -178,31 +154,6 @@ export default class JdsDialog extends LitElement {
     }
   };
 
-  // 切换页脚阴影
-  private toggleFooterShadow = () => {
-    const scrollTop = this.content?.scrollTop;
-    const scrollHeight = this.content?.scrollHeight;
-    const clientHeight = this.content?.clientHeight;
-
-    // 如果滚动到底部，则移除页脚阴影，否则添加页脚阴影
-    if (scrollTop + clientHeight >= scrollHeight) {
-      this.footer?.classList?.remove("shadow");
-    } else {
-      this.footer?.classList?.add("shadow");
-    }
-  };
-
-  // 渲染页脚
-  private renderFooter() {
-    return this._hasFooter
-      ? html`<footer part="dialog-footer">
-          <slot name="primary-action"></slot>
-          <slot name="secondary-action"></slot>
-          <slot name="tertiary-action"></slot>
-        </footer>`
-      : "";
-  }
-
   // 渲染对话框容器
   private renderContainer() {
     const title = this.caption
@@ -220,7 +171,6 @@ export default class JdsDialog extends LitElement {
 
     const classes = {
       container: true,
-      "has-footer": this._hasFooter,
     };
 
     return html`<div part="dialog-container" class="${classMap(classes)}">
@@ -229,7 +179,6 @@ export default class JdsDialog extends LitElement {
         ${title}
         <slot></slot>
       </section>
-      ${this.renderFooter()}
     </div>`;
   }
 
