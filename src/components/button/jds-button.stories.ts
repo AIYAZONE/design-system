@@ -209,6 +209,11 @@ ${SingleButtonTemplate({
 ${SingleButtonTemplate({
   ...args,
   content: "",
+  icon: "arrow-left",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
   icon: "arrow-right",
 })}
 ${SingleButtonTemplate({
@@ -220,6 +225,13 @@ ${SingleButtonTemplate({
   ...args,
   content: "",
   icon: "arrow-up-long",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-left",
+  size: "extra",
+  variant: "secondary",
 })}
 ${SingleButtonTemplate({
   ...args,
