@@ -25,6 +25,7 @@
     "preview": "vite preview",
     "storybook": "npm run build && storybook dev -p 6006",
     "build-storybook": "npm run build && storybook build",
+    "preview-storybook": "storybook build && serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
     "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
@@ -62,6 +63,7 @@
     "@vitest/browser": "^2.1.5",
     "chromatic": "^11.18.1",
     "less": "^4.2.0",
+    "serve": "^14.2.4",
     "storybook": "8.4.5",
     "typescript": "~5.6.3",
     "vite": "^5.4.11",
