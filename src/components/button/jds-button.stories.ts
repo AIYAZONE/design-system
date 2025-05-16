@@ -10,7 +10,6 @@ interface ButtonProps {
   size: any;
   label: string;
   loading: boolean;
-  loadingLabel: any;
   disabled: boolean;
   href: any;
   target: any;
@@ -59,10 +58,6 @@ const meta: Meta = {
       description: "设置按钮的加载状态",
       control: "boolean",
     },
-    loadingLabel: {
-      description: "设置加载状态下的按钮标签",
-      control: "text",
-    },
     disabled: {
       description: "设置按钮为禁用状态",
       control: "boolean",
@@ -105,7 +100,6 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     size=${ifDefined(args.size)}
     icon="${ifDefined(args.icon)}"
     label="${ifDefined(args.label)}"
-    loading-label="${ifDefined(args.loadingLabel)}"
     ?disabled=${args.disabled}
     ?loading=${args.loading}
     style="${ifDefined(args.style)}"
@@ -192,7 +186,22 @@ ${SingleButtonTemplate({
   icon: "arrow-right",
 })} `;
 
-export const IconOnlyButtons = (args: ButtonProps) => html`${SingleButtonTemplate({
+export const IconOnlyButtons = (args: ButtonProps) => html`
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-left",
+  size: "small",
+  variant: "secondary",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "",
+  icon: "arrow-right",
+  size: "small",
+  variant: "secondary",
+})}
+${SingleButtonTemplate({
   ...args,
   content: "",
   icon: "info-fill",
