@@ -1,32 +1,96 @@
-// 动效按钮
-.jds-animate-btn {
-  jds-button {
-    position: absolute;
-    transform: scale(0);
-    transform-origin: center center;
-    transition: all .5s cubic-bezier(.8, 0, .2, 1);
+/*
+* PC端动效按钮
+* - 实心胶囊按钮
+* - 纯图标按钮
+*/
+.jds-animate {
 
-    &::part(icon) {
-      transform: translateX(calc(0px - 48px));
-      transition: transform.5s cubic-bezier(.8, 0, .2, 1);
+  // 实心胶囊按钮
+  &[variant="primary"] jds-button.only-icon {
+    &::part(button) {
+      --bg-color: var(--main-hover-color);
     }
   }
+}
 
-  &:hover jds-button {
-    transform: scale(1);
+@media screen and (min-width: 1024px) {
+  .jds-animate {
 
-    &::part(icon) {
-      transform: translateX(0);
+    // 纯图标按钮
+    jds-button.only-icon {
+      transform: scale(0);
+      transform-origin: center center;
+      transition: all .5s cubic-bezier(.8, 0, .2, 1);
+
+      &::part(icon) {
+        transform: translateX(calc(0px - 48px));
+        transition: transform .5s cubic-bezier(.8, 0, .2, 1);
+      }
+    }
+
+    // 纯图标按钮
+    &:hover jds-button.only-icon {
+      transform: scale(1);
+
+      &::part(icon) {
+        transform: translateX(0);
+      }
+    }
+
+    // 实心胶囊按钮
+    &[variant="primary"] {
+      &::part(button) {
+        transition: all .3s cubic-bezier(0.8, 0, 0.2, 1);
+        padding-right: 0;
+      }
+
+      &:hover::part(button) {
+        --bg-color: var(--jds-color-primary);
+        padding-right: var(--jds-size-16);
+        padding-left: var(--jds-size-16);
+      }
+
+      jds-button.only-icon {
+        margin-left: var(--jds-size-4);
+        transition: all .3s cubic-bezier(.8, 0, .2, 1);
+
+        &::part(button) {
+          --bg-color: var(--main-hover-color);
+        }
+
+        &::part(icon) {
+          transition: transform .4s cubic-bezier(.8, 0, .2, 1);
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 1023.98px) {
-  .jds-animate-btn jds-button {
-    transform: scale(1);
+  .jds-animate {
 
-    &::part(icon) {
-      transform: translateX(0);
+    // 纯图标按钮
+    jds-button.only-icon::part(button) {
+      --icon-size: var(--jds-size-24);
     }
+
+    // 实心胶囊按钮
+    &[variant="primary"] {
+      &::part(button) {
+        --bg-color: var(--jds-color-primary);
+        padding-right: var(--jds-size-32);
+        padding-left: var(--jds-size-32);
+      }
+
+      jds-button.only-icon {
+        margin-left: var(--jds-size-8);
+
+        // 纯图标按钮
+        &::part(button) {
+          --icon-size: var(--jds-size-18);
+        }
+      }
+    }
+
   }
 }
