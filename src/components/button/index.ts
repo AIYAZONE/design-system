@@ -8,10 +8,10 @@ import { event, EventDispatcher } from "../../utils/event";
 import styles from "./index.less?inline";
 import "../spinner";
 
-// 按钮变体的类型定义：主按钮、副按钮、次级按钮、文本按钮
+// 按钮变体的类型定义：主按钮-实心胶囊按钮、副按钮-空心胶囊按钮、文本按钮
 export type ButtonVariant = "primary" | "secondary" | "text";
-// 按钮种类的类型定义
-export type ButtonKind = "default" | "neutral" | "success" | "danger";
+// 按钮种类的类型定义: 默认、中性、成功、危险、自定义(需配置`--jds-button-custom-color`)
+export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
 // 按钮大小的类型定义：特大、大、中、小
 export type ButtonSize = "extra" | "large" | "medium" | "small";
 // 目标类型的类型定义
@@ -22,7 +22,7 @@ export type TargetType = "_blank" | "_parent" | "_self" | "_top";
  * @summary Jackery 按钮组件
  *
  * @cssproperty [--jds-button-display=inline-block] 设置按钮的显示属性
- * @cssproperty [--jds-button-justify=center] 设置按钮的对齐内容属性
+ * @cssproperty [--jds-button-custom-color=var(--jds-color-primary)] 设置自定义按钮的颜色（需设置`kind`为`custom`）
  *
  */
 @customElement("jds-button")

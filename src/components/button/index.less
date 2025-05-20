@@ -7,7 +7,7 @@
 .button {
   --main-color: var(--jds-color-primary);
   --main-hover-color: var(--jds-color-primary-highlight);
-  --text-hover-color: var(--jds-color-neutral-100);
+  --text-hover-color: var(--jds-color-white);
   --content-color: var(--jds-color-white);
   --bg-color: var(--main-color);
   --border-color: var(--main-color);
@@ -21,7 +21,6 @@
 
   display: inline-flex;
   gap: var(--margin-icon);
-  justify-content: var(--jds-button-justify, center);
   align-items: center;
   box-sizing: border-box;
   width: 100%;
@@ -87,6 +86,13 @@
 :host([kind="danger"]) .button {
   --main-color: var(--jds-color-danger);
   --main-hover-color: var(--jds-color-danger-highlight);
+}
+
+:host([kind="custom"]) .button {
+  --main-color: var(--jds-button-custom-color, #FD5000);
+
+  // 叠加15%的白色
+  --main-hover-color: color-mix(in srgb, var(--main-color) 85%, #fff);
 }
 
 // 不同尺寸按钮

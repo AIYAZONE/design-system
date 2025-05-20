@@ -37,8 +37,8 @@ const meta: Meta = {
       control: { type: "select" },
     },
     kind: {
-      options: ["default", "neutral", "success", "danger"],
-      description: "设置按钮的种类",
+      options: ["default", "neutral", "success", "danger","custom"],
+      description: "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color：blue)",
       default: "default",
       control: { type: "select" },
     },
@@ -80,7 +80,7 @@ const meta: Meta = {
       },
     },
     style: {
-      description: "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block",
+      description: "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block;--jds-button-custom-color:blue;",
       control: {
         type: "text",
       },
@@ -145,6 +145,12 @@ ${SingleButtonTemplate({
   ...args,
   content: "Danger Button",
   kind: "danger",
+})}
+${SingleButtonTemplate({
+  ...args,
+  content: "Custom Button",
+  kind: "custom",
+  style: "--jds-button-custom-color: blue",
 })} `;
 
 export const Sizes = (args: ButtonProps) => html`${SingleButtonTemplate({
