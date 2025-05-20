@@ -8,8 +8,8 @@
   /* === 主色调 === */
   /* 主色 - 已校准 */
   --jds-color-primary: #FD5000;
-  /* 主色高亮 */
-  --jds-color-primary-highlight: #FD6A26;
+  /* 主色高亮 - 主色叠加15% #fff*/
+  --jds-color-primary-highlight: color-mix(in srgb, var(--jds-color-primary) 85%, #fff);
   /* 主色对比色 */
   --jds-color-primary-contrast: #FEF2E8;
 
@@ -17,7 +17,7 @@
   /* 成功状态颜色 - 已校准 */
   --jds-color-success: #52C41A;
   /* 成功状态高亮 */
-  --jds-color-success-highlight: #09A44E;
+  --jds-color-success-highlight:  color-mix(in srgb, var(--jds-color-success) 85%, #fff);
   /* 成功状态对比色 */
   --jds-color-success-contrast: #E7F9EF;
 
@@ -25,7 +25,7 @@
   /* 危险状态颜色 - 已校准 */
   --jds-color-danger: #FF3B30;
   /* 危险状态高亮 */
-  --jds-color-danger-highlight: #FF3028;
+  --jds-color-danger-highlight:  color-mix(in srgb, var(--jds-color-danger) 85%, #fff);
   /* 危险状态对比色 */
   --jds-color-danger-contrast: #FFEEEC;
 
@@ -33,7 +33,7 @@
   /* 警告状态颜色 */
   --jds-color-warning: #FAAD14;
   /* 警告状态高亮 */
-  --jds-color-warning-highlight: #FFE58F;
+  --jds-color-warning-highlight:  color-mix(in srgb, var(--jds-color-warning) 85%, #fff);
   /* 警告状态对比色 */
   --jds-color-warning-contrast: #FFF8E6;
 
@@ -41,7 +41,7 @@
   /* 信息状态颜色 */
   --jds-color-info: #5794FF;
   /* 信息状态高亮 */
-  --jds-color-info-highlight: #457EFF;
+  --jds-color-info-highlight:  color-mix(in srgb, var(--jds-color-info) 85%, #fff);
   /* 信息状态对比色 */
   --jds-color-info-contrast: #EEF4FF;
 
