@@ -11,7 +11,6 @@
 
 import { JdsIcon } from "@jackery/icons";
 
-import JdsInfo from "./components/info/index.js";
 import JdsBadge from "./components/badge/index.js";
 import JdsSpinner from "./components/spinner/index.js";
 import JdsButton from "./components/button/index.js";
@@ -38,7 +37,6 @@ initI18nDom();
 
 export {
   JdsIcon,
-  JdsInfo,
   JdsBadge,
   JdsSpinner,
   JdsButton,
