@@ -43,7 +43,6 @@
     "@jackery/icons": "^0.0.5",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "exceljs": "^4.4.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
@@ -62,6 +61,7 @@
     "@storybook/web-components-vite": "8.4.5",
     "@vitest/browser": "^2.1.5",
     "chromatic": "^11.18.1",
+    "exceljs": "^4.4.0",
     "less": "^4.2.0",
     "serve": "^14.2.4",
     "storybook": "8.4.5",
