@@ -1,4 +1,5 @@
-![Logo](./public/logo.svg)
+
+![Logo](./public/logo.png)
 
 ## 1. 简介
 
