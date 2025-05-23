@@ -1,6 +1,10 @@
-<div style="text-align:center;">
-  <img src="./public/logo.svg">
-</div>
+![Logo](./public/logo.svg){: .center-img}
+<style>
+  .center-img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
 
 ## 1. 简介
 
@@ -14,7 +18,7 @@
   - [Figma - 基础UED - v2.1](https://www.figma.com/design/LI5xCizwANfYUQC0kub9B6/%E5%9F%BA%E7%A1%80UED%E8%A7%84%E8%8C%83?node-id=1108-1702&t=ptn5VD9j0Cx3DvgW-0)
   - [蓝湖 - 基础UED - v1.0](https://lanhuapp.com/web/#/item/project/stage?pid=a94d0246-a761-4bb0-947a-0616453550db&image_id=ab01c062-3104-4e5f-978a-b7298e8adf75)
   - [Figma - UED控件库 - v1.0](https://www.figma.com/design/xRSdg9dwrFbNMQz1zQVaaE/UED%E6%8E%A7%E4%BB%B6%E5%BA%93)
-  
+
 - **文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
 
 ## 2. 目标
@@ -51,7 +55,7 @@
   @jackery:registry=https://nexus.hijackery.cn/repository/npm-private-dev/
 
   ```
-  
+
 2. 命令安装：
 
   ```cmd
@@ -61,7 +65,7 @@
 ### 4.2 CDN引用
 
 1. 最新版本：
-  
+
   ```html
   <link rel="stylesheet" crossorigin href="https://f2e-cdn.jackery.com/@jackery/design-system/latest/dist/index.css">
   <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/latest/dist/index.js"></script>
