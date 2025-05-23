@@ -1,10 +1,4 @@
-![Logo](./public/logo.svg){: .center-img}
-<style>
-  .center-img {
-    display: block;
-    margin: 0 auto;
-  }
-</style>
+![Logo](./public/logo.svg)
 
 ## 1. 简介
 
