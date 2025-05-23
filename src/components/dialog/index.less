@@ -14,7 +14,7 @@
   flex-direction: column;
   background: var(--background-color);
   width: var(--jds-dialog-width, 640px);
-  max-width: calc(100vw - var(--jds-size-40));
+  max-width: 1200px;
   min-height: 240px;
   height: calc(100vh - 2 * var(--jds-size-64));
   min-width: 424px;
@@ -133,7 +133,13 @@ footer {
     box-shadow: 0 -4px 15px #27314226;
   }
 }
-
+@media screen and (min-width: 1024px) and (max-width: 1439.98px){
+  @base: 1440;
+  @vw: (1vw / @base) * 100;
+  .container {
+    max-width: 1200 * @vw;
+  }
+}
 @media screen and (max-width: 1023.98px) {
   @base: 750;
   @vw: (1vw / @base) * 100;
