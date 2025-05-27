@@ -31,3 +31,5 @@ chromatic.config.json
 *.tgz
 
 .npmrc
+
+vite.config.js.*
