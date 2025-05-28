@@ -96,8 +96,7 @@
 :host([kind="custom"]) .button {
   --main-color: var(--jds-button-custom-color, #FD5000);
 
-  // 叠加15%的白色
-  --main-hover-color: color-mix(in srgb, var(--main-color) 85%, #fff);
+  --main-hover-color: var(--main-color);
 }
 
 // 不同尺寸按钮
@@ -170,7 +169,9 @@
 
 // 禁用状态
 :host .button[aria-disabled="true"] {
-  --main-color: color-mix(in srgb, var(--jds-color-primary) 70%, transparent);
+  // 不透明度30%
+  @jds-color-primary: #FD5000;
+  --main-color: mix(transparent, @jds-color-primary, 70%);
   --main-hover-color: var(--main-color);
   pointer-events: none;
   text-decoration: none;
