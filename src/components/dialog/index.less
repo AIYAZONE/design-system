@@ -40,16 +40,16 @@
   position: fixed;
   inset-inline-start: 0;
   top: 0;
+  bottom: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
   z-index: var(--jds-dialog-index, 500);
   background-color: var(--jds-color-overlay-70);
 
   .container {
-    position: fixed;
-    z-index: var(--jds-index-dialog);
+    position: relative;
   }
 }
 
