@@ -1,19 +1,19 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, state, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { submit } from "@open-wc/form-helpers";
 import { event, EventDispatcher } from "../../utils/event";
 
-import { buttonStyles } from "./styles";
+import styles from "./index.less?inline";
 import "../spinner";
 
-// 按钮变体的类型定义
-export type ButtonVariant = "primary" | "secondary" | "tertiary";
-// 按钮种类的类型定义
-export type ButtonKind = "default" | "neutral" | "success" | "danger";
-// 按钮大小的类型定义
-export type ButtonSize = "small" | "medium" | "large";
+// 按钮变体的类型定义：主按钮-实心胶囊按钮、副按钮-空心胶囊按钮、文本按钮
+export type ButtonVariant = "primary" | "secondary" | "text";
+// 按钮种类的类型定义: 默认、中性、成功、危险、自定义(需配置`--jds-button-custom-color`)
+export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
+// 按钮大小的类型定义：特大、大、中、小
+export type ButtonSize = "extra" | "large" | "medium" | "small";
 // 目标类型的类型定义
 export type TargetType = "_blank" | "_parent" | "_self" | "_top";
 
@@ -22,13 +22,13 @@ export type TargetType = "_blank" | "_parent" | "_self" | "_top";
  * @summary Jackery 按钮组件
  *
  * @cssproperty [--jds-button-display=inline-block] 设置按钮的显示属性
- * @cssproperty [--jds-button-justify=center] 设置按钮的对齐内容属性
+ * @cssproperty [--jds-button-custom-color=var(--jds-color-primary)] 设置自定义按钮的颜色（需设置`kind`为`custom`）
  *
  */
 @customElement("jds-button")
 export default class JdsButton extends LitElement {
   // 获取组件的CSS样式
-  static styles = [buttonStyles];
+  static styles = [unsafeCSS(styles)];
 
   /**
    * 设置按钮的变体
@@ -46,19 +46,13 @@ export default class JdsButton extends LitElement {
    * 设置按钮的大小
    */
   @property({ type: String, reflect: true })
-  size: ButtonSize = "medium";
+  size: ButtonSize = "large";
 
   /**
    * 设置按钮的标签，用于无障碍访问
    */
   @property({ type: String })
   label?: string;
-
-  /**
-   * 设置加载状态下的按钮标签
-   */
-  @property({ type: String, attribute: "loading-label" })
-  loadingLabel?: string;
 
   /**
    * 设置按钮的加载状态
@@ -97,12 +91,6 @@ export default class JdsButton extends LitElement {
   type?: "submit";
 
   /**
-   * 设置按钮类型为下拉菜单
-   */
-  @property({ type: Boolean })
-  dropdown = false;
-
-  /**
    * 设置按钮自动获取键盘焦点
    */
   @property({ type: Boolean, reflect: true })
@@ -137,14 +125,6 @@ export default class JdsButton extends LitElement {
   // 组件连接到文档DOM时的回调
   connectedCallback() {
     super.connectedCallback();
-  }
-
-  // 下拉菜单的图标模板
-  private caretTemplate(): TemplateResult {
-    return html`
-      <jds-icon class="open" name="arrow-up"></jds-icon>
-      <jds-icon class="close" name="arrow-down"></jds-icon>
-    `;
   }
 
   // 处理按钮点击事件
@@ -204,24 +184,21 @@ export default class JdsButton extends LitElement {
   // 渲染组件的HTML模板
   render(): TemplateResult {
     const isDisabled = this.loading || this.disabled;
-    const label =
-      this.loading && this.loadingLabel
-        ? this.loadingLabel
-        : html`<slot></slot>`;
+    const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
-    const icon = this.icon ? html`<jds-icon name=${this.icon}></jds-icon>` : "";
+    const icon = this.icon ? html`<jds-icon part="icon" name=${this.icon}></jds-icon>` : "";
     const loadingIcon = html`
       <jds-spinner
         class="loading-spinner"
         ?disabled="${isDisabled}"
-        size="${this.size}"
+        size="var(--jds-font-size-2xl)"
+        color="var(--jds-color-white)"
       ></jds-spinner>
     `;
     const slots = html`
-      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
       <span class="label">${label}</span>
+      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
     `;
-    const caret = this.dropdown ? this.caretTemplate() : "";
     const classes = classMap({
       button: true,
       "has-icon": this.icon || this._hasIconSlot,
@@ -255,7 +232,7 @@ export default class JdsButton extends LitElement {
             ?disabled=${isDisabled}
             @click="${this._handleClick}"
           >
-            ${slots} ${caret}
+            ${slots}
           </button>
         `;
   }

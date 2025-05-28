@@ -1,7 +1,10 @@
 import type { StorybookConfig } from "@storybook/web-components-vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(ts|mdx)"],
+  stories: [
+    "../docs/**/*.mdx",
+    "../src/**/*.stories.@(ts|mdx)",
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -13,15 +16,13 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: [
-    "../dist",
-    {
-      from: "../src/assets",
-      to: "/assets",
-    },
-    {
-      from: "../src/stories/assets",
-      to: "/assets",
-    },
+    { from: '../public', to: '/public' },
+    { from: '../dist', to: '/' }
   ],
+  docs: {
+    autodocs: true,
+    defaultName: "Document",
+  },
 };
+
 export default config;

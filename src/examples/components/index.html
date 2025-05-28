@@ -11,12 +11,17 @@
 
 <body>
 
-  <h2>2.其他组件</h2>
-  <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In Progress</jds-badge>
-  <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
-  <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
-  <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
-  <jds-badge style="--jds-badge-bg-color:var(--jds-color-neutral-lightest);--jds-badge-color:var(--jds-color-neutral-darker);">Neutral</jds-badge>
+  <h2>组件</h2>
+  <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In
+    Progress</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
+  <jds-badge
+    style="--jds-badge-bg-color:var(--jds-color-neutral-100);--jds-badge-color:var(--jds-color-neutral-400);">Neutral</jds-badge>
   <jds-badge style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Offer</jds-badge>
   <jds-badge style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Winner</jds-badge>
 
@@ -34,19 +39,18 @@
   <jds-spinner></jds-spinner>
   <jds-button variant="secondary" id="open-dialog-button">打开弹窗</jds-button>
 
-  <jds-dialog id="dl-basic" caption="Use location service?" style="--jds-dialog-width:200px;">
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
-    Let us help determine location. This means sending anonymous location data to us.
+  <jds-dialog id="dl-basic" caption="Use location service?">
+    <div>
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+    </div>
     <jds-button variant="primary" size="large">Agree</jds-button>
-    <jds-button slot="primary-action" variant="primary" size="large">Agree</jds-button>
-    <jds-button slot="secondary-action" variant="secondary" size="large">Disagree</jds-button>
-    <jds-button slot="tertiary-action" variant="tertiary" size="large">Cancel</jds-button>
   </jds-dialog>
 
   <jds-toast icon>Info Variant</jds-toast>
