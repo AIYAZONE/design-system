@@ -49,6 +49,10 @@
   }
 }
 
+:host(:focus-visible) {
+  outline: none;
+}
+
 :host(:hover) .button {
   --bg-color: var(--main-hover-color);
   --border-color: var(--main-hover-color);
@@ -156,7 +160,7 @@
   --icon-size: var(--jds-size-24);
 }
 
-:host([size="small"]) .has-icon:not(.has-content){
+:host([size="small"]) .has-icon:not(.has-content) {
   --icon-size: var(--jds-size-12);
 }
 
@@ -181,6 +185,7 @@
 :host([variant="text"]) .button[aria-disabled="true"] {
   text-decoration: underline;
 }
+
 // 加载状态
 :host([loading]) {
   cursor: wait;
