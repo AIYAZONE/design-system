@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog - 对话弹窗</title>
+  <link rel="stylesheet" href="../../styles/index.less" />
+</head>
+
+<body>
+  <jds-button variant="secondary">打开弹窗</jds-button>
+
+  <jds-dialog caption="Use location service?" open
+    style="--jds-dialog-index:10000;">
+    <div class="jds-rte">
+      <ol>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+        <li>123123</li>
+      </ol>
+      <ul>
+        <li>a124124</li>
+        <li>a124124</li>
+        <li>a124124</li>
+        <li>a124124</li>
+      </ul>
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+      Let us help determine location. This means sending anonymous location data to us.
+    </div>
+    <jds-button variant="primary" size="large">Agree</jds-button>
+  </jds-dialog>
+  <script type="module" src="../../index.ts"></script>
+  <script>
+    // 添加事件监听器
+    document.querySelector('jds-button').addEventListener('click', () => {
+      const dialog = document.querySelector('jds-dialog');
+      dialog.setAttribute('open', true);
+    });
+  </script>
+</body>
+
+</html>

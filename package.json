@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -23,7 +23,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "storybook": "npm run build && storybook dev -p 6006",
     "build-storybook": "npm run build && storybook build",
+    "preview-storybook": "storybook build && serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
     "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
@@ -38,12 +40,9 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.12",
-    "@fontsource/noto-sans-jp": "^5.1.0",
-    "@fontsource/poppins": "^5.1.0",
-    "@jackery/icons": "^0.0.3",
+    "@jackery/icons": "^0.0.5",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "exceljs": "^4.4.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
@@ -53,7 +52,6 @@
     "@storybook/addon-essentials": "8.4.5",
     "@storybook/addon-interactions": "8.4.5",
     "@storybook/addon-links": "8.4.5",
-    "@storybook/addon-mdx-gfm": "8.4.5",
     "@storybook/addon-viewport": "8.4.5",
     "@storybook/blocks": "8.4.5",
     "@storybook/manager-api": "8.4.5",
@@ -63,7 +61,9 @@
     "@storybook/web-components-vite": "8.4.5",
     "@vitest/browser": "^2.1.5",
     "chromatic": "^11.18.1",
+    "exceljs": "^4.4.0",
     "less": "^4.2.0",
+    "serve": "^14.2.4",
     "storybook": "8.4.5",
     "typescript": "~5.6.3",
     "vite": "^5.4.11",
@@ -73,6 +73,8 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.27.4",
-    "@rollup/rollup-win32-x64-msvc": "^4.27.4"
+    "@rollup/rollup-win32-x64-msvc": "^4.27.4",
+    "@esbuild/linux-x64": "^0.25.0",
+    "@esbuild/win32-x64": "^0.25.0"
   }
 }
