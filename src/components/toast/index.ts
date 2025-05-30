@@ -1,10 +1,10 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { event, EventDispatcher } from "../../utils/event.js";
 import { stringBooleanConverter } from "../../utils/string-boolean.converter.js";
 
-import { toastStyles } from "./styles.js";
+import styles from "./index.less?inline";
 import { ButtonVariant, ButtonKind, ButtonSize } from "../button/index.js";
 
 export type ToastVariant = "info" | "warning" | "success" | "danger";
@@ -16,7 +16,7 @@ export type ToastVariant = "info" | "warning" | "success" | "danger";
 
 @customElement("jds-toast")
 export default class JdsToast extends LitElement {
-  static styles = [toastStyles];
+  static styles = [unsafeCSS(styles)];
 
   /**
    * 设置轻提示变体

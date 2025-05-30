@@ -1,8 +1,8 @@
-import { html, LitElement, PropertyValues, TemplateResult } from "lit";
+import { html, LitElement, PropertyValues, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { event, EventDispatcher } from "../../utils/event";
-import { dialogStyles } from "./styles";
+import styles from "./index.less?inline";
 import "../button";
 
 // 定义对话框元素的接口
@@ -13,15 +13,16 @@ interface DialogElement {
 
 /**
  * @tag jds-dialog
- * @summary Baklava 对话框组件
+ * @summary Jackery 对话框组件
  *
- * @cssproperty [--jds-dialog-width=auto] - 设置对话框内容的宽度
- * @cssproperty [--jds-dialog-caption-line-clamp=1] - 设置标题的显示行数
+ * @cssproperty [--jds-dialog-width=640px] - 设置对话框内容的宽度
+ * @cssproperty [--jds-dialog-title-align=left] - 设置对话框标题的对齐方式
+ * @cssproperty [--jds-dialog-index=500] - 设置对话框的z-index值
  */
 @customElement("jds-dialog")
 export default class JdsDialog extends LitElement {
   // 组件的样式
-  static styles = [dialogStyles];
+  static styles = [unsafeCSS(styles)];
   /**
    * 设置对话框的打开/关闭状态
    */
@@ -66,14 +67,8 @@ export default class JdsDialog extends LitElement {
   @query(".dialog")
   private dialog!: HTMLDialogElement & DialogElement;
 
-  @query("footer")
-  private footer!: HTMLElement;
-
   @query(".container")
   private container!: HTMLElement;
-
-  @query(".content")
-  private content!: HTMLElement;
 
   /**
    * 对话框打开时触发
@@ -103,19 +98,6 @@ export default class JdsDialog extends LitElement {
     }
   }
 
-  // 判断是否有页脚
-  private get _hasFooter() {
-    // 检查子节点中是否存在 `jds-button` 元素
-    return [...this.childNodes].some((node) => {
-      // 确保节点是元素节点
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        const element = node as HTMLElement; // 类型转换
-        return element.nodeName === "JDS-BUTTON" && element.hasAttribute('slot');
-      }
-      return false;
-    });
-  }
-
   // 切换对话框的处理程序
   private toggleDialogHandler() {
     if (this.open) {
@@ -123,11 +105,8 @@ export default class JdsDialog extends LitElement {
       this.dialog?.showModal?.();
       this.onOpen({ isOpen: true });
       document.body.style.overflow = "hidden"; // 禁止背景滚动
-      this.toggleFooterShadow(); // 切换页脚阴影
       // 添加事件监听器
       window?.addEventListener("keydown", this.onKeydown);
-      window?.addEventListener("resize", this.toggleFooterShadow);
-      this.content?.addEventListener("scroll", this.toggleFooterShadow);
     } else {
       // 关闭对话框
       this.dialog?.close?.();
@@ -135,8 +114,6 @@ export default class JdsDialog extends LitElement {
       document.body.style.overflow = "auto"; // 恢复背景滚动
       // 移除事件监听器
       window?.removeEventListener("keydown", this.onKeydown);
-      window?.removeEventListener("resize", this.toggleFooterShadow);
-      this.content?.removeEventListener("scroll", this.toggleFooterShadow);
       this.dispatchEvent(new Event("closed", { bubbles: true })); // 确保触发关闭事件
     }
   }
@@ -177,54 +154,31 @@ export default class JdsDialog extends LitElement {
     }
   };
 
-  // 切换页脚阴影
-  private toggleFooterShadow = () => {
-    const scrollTop = this.content?.scrollTop;
-    const scrollHeight = this.content?.scrollHeight;
-    const clientHeight = this.content?.clientHeight;
-
-    // 如果滚动到底部，则移除页脚阴影，否则添加页脚阴影
-    if (scrollTop + clientHeight >= scrollHeight) {
-      this.footer?.classList?.remove("shadow");
-    } else {
-      this.footer?.classList?.add("shadow");
-    }
-  };
-
-  // 渲染页脚
-  private renderFooter() {
-    return this._hasFooter
-      ? html`<footer part="dialog-footer">
-          <slot name="primary-action"></slot>
-          <slot name="secondary-action"></slot>
-          <slot name="tertiary-action"></slot>
-        </footer>`
-      : "";
-  }
-
   // 渲染对话框容器
   private renderContainer() {
     const title = this.caption
-      ? html`<h2 id="dialog-caption">${this.caption}</h2>`
+      ? html`<h4 id="dialog-caption" class="jds-h4" .innerHTML="${this.caption}"></h4>`
       : "";
     const closeButton = this.closable
       ? html`<jds-icon
+          part="dialog-close"
+          class="close"
           @click="${() => this.closeDialog("close-button")}"
           name="close-fill"
           label="close"
-          style="font-size:var(--jds-size-2xl);color:var(--jds-color-text-l3);"
         ></jds-icon>`
       : null;
 
     const classes = {
       container: true,
-      "has-footer": this._hasFooter,
     };
 
     return html`<div part="dialog-container" class="${classMap(classes)}">
-      <header>${title} ${closeButton}</header>
-      <section part="dialog-content" class="content"><slot></slot></section>
-      ${this.renderFooter()}
+      ${closeButton}
+      <section part="dialog-content" class="content">
+        ${title}
+        <slot></slot>
+      </section>
     </div>`;
   }
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast - 轻提示</title>
+  <link rel="stylesheet" href="../../styles/index.less" />
+</head>
+<body>
+  <jds-toast icon>Info Variant</jds-toast>
+  <jds-toast variant="warning" icon>Warning Variant</jds-toast>
+  <jds-toast variant="success" icon>Success Variant</jds-toast>
+  <jds-toast variant="success" countdownTime="5" icon>Success Variant</jds-toast>
+  <jds-toast variant="danger" icon>Danger Variant</jds-toast>
+  <jds-toast variant="danger">Danger Text
+    <jds-button slot="action">Action Link</jds-button>
+    <jds-button slot="action-secondary">Action Link</jds-button>
+  </jds-toast>
+
+  <script type="module" src="../../index.ts"></script>
+</body>
+</html>

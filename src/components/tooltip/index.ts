@@ -1,4 +1,4 @@
-import { css, html, LitElement, PropertyValues, TemplateResult } from "lit";
+import { html, LitElement, PropertyValues, TemplateResult, unsafeCSS } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { ReferenceElement } from "@floating-ui/core";
@@ -6,6 +6,7 @@ import { getTarget } from "../../utils/elements";
 import { event, EventDispatcher } from "../../utils/event";
 import "../popover";
 import JdsPopover, { Placement } from "../popover";
+import styles from "./index.less?inline";
 
 /**
  * @tag jds-tooltip
@@ -16,27 +17,7 @@ import JdsPopover, { Placement } from "../popover";
  */
 @customElement("jds-tooltip")
 export default class JdsTooltip extends LitElement {
-  static styles = css`
-    :host {
-      display: inline-block;
-    }
-
-    .trigger {
-      display: var(--jds-tooltip-trigger-display, inline-flex);
-      cursor: pointer;
-    }
-
-    jds-popover {
-      --jds-popover-background-color: var(--jds-color-info);
-      --jds-popover-arrow-display: block;
-      --jds-popover-border-size: 0px;
-      --jds-popover-max-width: 424px;
-    }
-
-    .content {
-      color: var(--jds-color-neutral-full);
-    }
-  `;
+  static styles = [unsafeCSS(styles)];
 
   @query(".trigger") private trigger: ReferenceElement;
   @query("jds-popover") private _popover!: JdsPopover;

@@ -1,7 +1,7 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult,unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import { badgeStyles } from "./styles";
+import styles from "./index.less?inline";
 
 // 定义徽章组件的大小类型
 export type BadgeSize = "small" | "medium" | "large";
@@ -16,7 +16,7 @@ export type BadgeSize = "small" | "medium" | "large";
 @customElement("jds-badge")
 export default class JdsBadge extends LitElement {
   // 组件的样式
-  static styles = [badgeStyles];
+  static styles = [unsafeCSS(styles)];
 
   /**
    * 设置徽章的大小
