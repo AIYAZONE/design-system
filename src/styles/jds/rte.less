@@ -1,11 +1,8 @@
 // JDS RTE 富文本样式
 
 .jds-rte {
+  // 默认Medium字重
   .jds-b1-style();
-
-  &.font-regular {
-   .jds-b1-regular-style();
-  }
 
   ul,
   ol {
@@ -53,4 +50,14 @@
   i {
     font-style: normal;
   }
+
+  // 可选，Regular标准字重
+  &.font-regular {
+    .jds-b1-regular-style();
+
+    p {
+      .jds-b1-regular-style();
+    }
+  }
+
 }
