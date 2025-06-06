@@ -35,6 +35,10 @@
         padding-right: 0;
       }
 
+      &::part(label){
+        overflow: visible;
+      }
+
       &:hover::part(button) {
         --bg-color: var(--jds-color-primary);
         padding-right: var(--jds-size-16);
