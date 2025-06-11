@@ -6,8 +6,6 @@
 
   ul,
   ol {
-    padding-inline-start: var(--jds-size-20);
-
     li {
       list-style: inherit;
     }
@@ -61,6 +59,20 @@
 
     p {
       .jds-b1-regular-style();
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul,
+    ol {
+      padding-inline-start: var(--jds-size-20);
+    }
+  }
+
+  @media screen and (max-width: 1023.98px) {
+    ul,
+    ol {
+      padding-inline-start: var(--jds-size-36);
     }
   }
 
