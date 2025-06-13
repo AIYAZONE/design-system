@@ -70,9 +70,21 @@
   }
 
   @media screen and (max-width: 1023.98px) {
-    ul,
+    ul {
+      padding-inline-start: var(--jds-size-28);
+    }
     ol {
       padding-inline-start: var(--jds-size-36);
+    }
+
+    // ios真机 浏览器特定适配
+    @supports (-webkit-touch-callout: none) {
+      ul {
+        padding-inline-start: var(--jds-size-40);
+      }
+      ol {
+        padding-inline-start: var(--jds-size-56);
+      }
     }
   }
 
