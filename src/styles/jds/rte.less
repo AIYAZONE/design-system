@@ -63,6 +63,7 @@
   }
 
   @media screen and (min-width: 1024px) {
+
     ul,
     ol {
       padding-inline-start: var(--jds-size-20);
@@ -70,7 +71,9 @@
   }
 
   @media screen and (max-width: 1023.98px) {
-    ul,ol {
+
+    ul,
+    ol {
       padding-inline-start: var(--jds-size-36);
     }
 
@@ -79,10 +82,21 @@
       ul {
         padding-inline-start: var(--jds-size-40);
       }
+
       ol {
         padding-inline-start: var(--jds-size-56);
       }
     }
   }
 
+}
+
+// 日站适配
+:root[lang="ja"] .jds-rte {
+  @media screen and (min-width: 1024px) {
+    ul,
+    ol {
+      padding-inline-start: var(--jds-size-24);
+    }
+  }
 }
