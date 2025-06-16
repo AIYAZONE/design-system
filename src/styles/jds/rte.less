@@ -1,4 +1,13 @@
 // JDS RTE 富文本样式
+// 默认，非日站
+:root:not([lang="ja"]) {
+  --jds-list-padding: var(--jds-size-20);
+}
+
+// 日站适配
+:root[lang="ja"]{
+  --jds-list-padding: var(--jds-size-24);
+}
 
 .jds-rte {
   // 默认Medium字重
@@ -63,10 +72,9 @@
   }
 
   @media screen and (min-width: 1024px) {
-
     ul,
     ol {
-      padding-inline-start: var(--jds-size-20);
+      padding-inline-start: var(--jds-list-padding);
     }
   }
 
@@ -91,12 +99,3 @@
 
 }
 
-// 日站适配
-:root[lang="ja"] .jds-rte {
-  @media screen and (min-width: 1024px) {
-    ul,
-    ol {
-      padding-inline-start: var(--jds-size-24);
-    }
-  }
-}
