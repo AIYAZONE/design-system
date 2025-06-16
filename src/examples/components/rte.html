@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
@@ -21,6 +21,7 @@
       margin: 20px;
       padding: 20px;
       width: 800px;
+      max-width: 100%;
       height: auto;
     }
   </style>
@@ -97,9 +98,92 @@
         </ul>
       </article>
 
+
+      <article>
+        <h3>自定义组件验证富文本样式</h3>
+        <jds-button>打开弹窗</jds-button>
+        <jds-dialog caption="自定义组件验证富文本样式" style="--jds-dialog-width: 1000px">
+          <div class="jds-rte">
+            <h3>标题</h3>
+            <article>
+              <h1>H1 Title</h1>
+              <h2>H2 Title</h2>
+              <h3>H3 Title</h3>
+              <h4>H4 Title</h4>
+              <h5>H5 Title</h5>
+              <h6>H6 Title</h6>
+              <p>This is a paragraph test.</p>
+            </article>
+
+            <h3>默认18字号正文：各类样式</h3>
+            <article>
+              <p>
+                强调：<strong>Emphasis</strong>
+                <br>
+                加粗：<b>Bold</b>
+                <br>
+
+                斜体重置：<em>Italic</em>
+                <br>
+
+                下划线：<u>Underline</u>
+                <br>
+                删除线：<del>Strikethrough</del>
+                <br>
+                超链接： <a href="https://www.jackery.com">Jackery Website Link</a>
+              </p>
+            </article>
+
+            <h3>自定义16字号正文：各类样式</h3>
+            <article>
+              <p style="font-size: 16px;">
+                强调：<strong>Emphasis</strong>
+                <br>
+                加粗：<b>Bold</b>
+                <br>
+
+                斜体重置：<em>Italic</em>
+                <br>
+
+                下划线：<u>Underline</u>
+                <br>
+                删除线：<del>Strikethrough</del>
+                <br>
+                超链接： <a href="https://www.jackery.com">Jackery Website Link</a>
+              </p>
+            </article>
+
+            <h3>有序列表</h3>
+            <article>
+              <ol>
+                <li>ol li</li>
+                <li>ol li</li>
+                <li>ol li</li>
+              </ol>
+            </article>
+            <h3>无序列表</h3>
+            <article>
+              <ul>
+                <li>ul li</li>
+                <li>ul li</li>
+                <li>ul li</li>
+              </ul>
+            </article>
+
+          </div>
+        </jds-dialog>
+      </article>
     </div>
 
   </section>
+  <script type="module" src="../../index.ts"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('jds-button').addEventListener('click', function () {
+        document.querySelector('jds-dialog').open = true;
+      })
+    });
+  </script>
 
 </body>
 
