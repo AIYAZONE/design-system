@@ -3,15 +3,6 @@
 * - 实心胶囊按钮
 * - 纯图标按钮
 */
-.jds-animate {
-
-  // 实心胶囊按钮
-  &[variant="primary"] jds-button.only-icon {
-    &::part(button) {
-      --bg-color: var(--main-hover-color);
-    }
-  }
-}
 
 @media screen and (min-width: 1024px) {
   .jds-animate {
@@ -44,6 +35,10 @@
         padding-right: 0;
       }
 
+      &::part(label){
+        overflow: visible;
+      }
+
       &:hover::part(button) {
         --bg-color: var(--jds-color-primary);
         padding-right: var(--jds-size-16);
@@ -55,10 +50,12 @@
         transition: all .3s cubic-bezier(.8, 0, .2, 1);
 
         &::part(button) {
+          --height: var(--jds-size-32);
           --bg-color: var(--main-hover-color);
         }
 
         &::part(icon) {
+          --icon-size: var(--jds-size-16);
           transition: transform .4s cubic-bezier(.8, 0, .2, 1);
         }
       }
@@ -76,19 +73,8 @@
 
     // 实心胶囊按钮
     &[variant="primary"] {
-      &::part(button) {
-        --bg-color: var(--jds-color-primary);
-        padding-right: var(--jds-size-32);
-        padding-left: var(--jds-size-32);
-      }
-
       jds-button.only-icon {
-        margin-left: var(--jds-size-8);
-
-        // 纯图标按钮
-        &::part(button) {
-          --icon-size: var(--jds-size-18);
-        }
+        display: none;
       }
     }
 
