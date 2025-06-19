@@ -23,6 +23,7 @@ interface DialogElement {
 export default class JdsDialog extends LitElement {
   // 组件的样式
   static styles = [unsafeCSS(styles)];
+
   /**
    * 设置对话框的打开/关闭状态
    */
@@ -60,6 +61,17 @@ export default class JdsDialog extends LitElement {
   /**
    * 确定对话框是否当前使用填充版本而非原生 HTML 对话框。
    */
+  /**
+   * * 确定对话框当前是否使用 polyfill 版本而非原生 HTML 对话框。
+   * * 默认情况下，如果浏览器支持，则使用原生对话框，否则使用 polyfill。
+   * * 您可以强制使用 polyfill，例如，在某些情况下，例如在对话框顶部显示一些内容，例如，如果您无法使用 Popover API。
+   * * 请注意，polyfill 版本可能会导致一些可访问性和堆叠上下文方面的不一致。因此，请格外谨慎使用。
+   * * 从当前实现开始，您可以使用 Popover API 在对话框 HTML 元素上方渲染。
+   * * 但是，它会阻止对 Popover 元素的任何操作。在开发 `jds-notification` 组件时遇到了这个问题。
+   * * 因此，我们决定默认为 `jds-dialog` 组件启用 polyfill。
+   * * 如果您更喜欢使用原生对话框，可以将此属性设置为 false。
+   * * 请注意，这样做会导致通知在对话框背景之下渲染。
+   */
   @property({ type: Boolean, reflect: true })
   polyfilled = true;
 
@@ -93,7 +105,8 @@ export default class JdsDialog extends LitElement {
   // 当属性发生变化时执行的逻辑
   updated(changedProperties: PropertyValues<this>) {
     // 如果`open`或`polyfilled`属性发生变化，则切换对话框的处理程序
-    if (changedProperties.has("open") || changedProperties.has("polyfilled")) {
+    // if (changedProperties.has("open") || changedProperties.has("polyfilled")) {
+    if (changedProperties.has("open")) {
       this.toggleDialogHandler();
     }
   }
