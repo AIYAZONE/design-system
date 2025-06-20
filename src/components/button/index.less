@@ -59,9 +59,14 @@
 }
 
 .label {
+  position: relative;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: var(--jds-button-display, flex);
+  align-items: center;
+  height: 100%;
+  line-height: 1;
 }
 
 // 不同变体的按钮
@@ -105,7 +110,8 @@
   --padding-vertical: var(--jds-size-16);
   --padding-horizontal: var(--jds-size-32);
   --margin-icon: var(--jds-size-4);
-  --font: var(--jds-font-weight-semibold) var(--jds-font-size-22)/1 var(--jds-font-family);
+  @lineHeight: calc(var(--jds-font-size-22) + var(--jds-size-8));
+  --font: var(--jds-font-weight-semibold) var(--jds-font-size-22) /@lineHeight var(--jds-font-family);
 }
 
 :host([size="large"]) .button {
@@ -183,8 +189,20 @@
   --border-color: transparent;
 }
 
-:host([variant="text"]) .button[aria-disabled="true"] {
-  text-decoration: underline;
+// 下划线样式
+.underline-style(){
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--main-color);
+}
+
+:host([variant="text"]) .button[aria-disabled="true"] .label::after {
+  .underline-style();
 }
 
 // 加载状态
@@ -220,8 +238,12 @@
 }
 
 // 悬浮状态
-:host([variant="text"]:hover) .button {
-  text-decoration: underline;
+:host([variant="text"]:hover) .button[aria-disabled="false"] .label::after {
+  .underline-style();
+}
+
+:host([variant="text"][size="small"]:hover) .button[aria-disabled="false"] .label::after {
+  height: 1px;
 }
 
 :host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
@@ -270,6 +292,7 @@
   .button {
     --height: var(--jds-size-80); // 80px
     max-width: 686px;
+    --icon-size: var(--jds-size-16); // 16px
   }
 
   :host([size="extra"]) .button {
@@ -282,7 +305,7 @@
 
   :host([size="large"]) .button {
     --height: var(--jds-size-80); // 80
-    --padding-vertical: var(--jds-size-24); // 24px
+    --padding-vertical: var(--jds-size-20); // 20px
     --padding-horizontal: var(--jds-size-40); // 40px
     --margin-icon: var(--jds-size-8); // 8px
     --font: var(--jds-font-b2-medium);
@@ -290,7 +313,7 @@
 
   :host([size="medium"]) .button {
     --height: var(--jds-size-64); // 64px
-    --padding-vertical: var(--jds-size-16); // 16px
+    --padding-vertical: var(--jds-size-14); // 14px
     --padding-horizontal: var(--jds-size-32); // 32px
     --margin-icon: var(--jds-size-8); // 8px
     --font: var(--jds-font-b2-medium);
@@ -302,6 +325,7 @@
     --padding-horizontal: var(--jds-size-24); // 24px
     --margin-icon: var(--jds-size-4); // 4px
     --font: var(--jds-font-b3-medium);
+    --icon-size: var(--jds-size-12); // 12px
   }
 
   :host([size="extra"][variant="text"]) .button {

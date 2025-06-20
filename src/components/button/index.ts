@@ -196,7 +196,7 @@ export default class JdsButton extends LitElement {
       ></jds-spinner>
     `;
     const slots = html`
-      <span class="label">${label}</span>
+      <span class="label" part="label">${label}</span>
       <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
     `;
     const classes = classMap({
