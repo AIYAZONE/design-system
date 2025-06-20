@@ -39,11 +39,11 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/dom": "^1.7.1",
     "@jackery/icons": "^0.0.5",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
