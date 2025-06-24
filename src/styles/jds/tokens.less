@@ -359,146 +359,109 @@
 :root {
   /* === 字体样式：标题 1 ，使用场景：【特大标题】 用于营销Banner标题 === */
   /* 标题 1 字体大小与行高的比例 */
-  --jds-h1-size: var(--jds-h1-font-size) / var(--jds-h1-line-height);
+  @jds-h1-size: var(--jds-h1-font-size) / var(--jds-h1-line-height);
   /* 标题 1 字间距 */
   --jds-h1-letter-spacing: calc(-0.02 * var(--jds-h1-font-size));
   /* 标题 1 字体样式 */
-  --jds-font-h1: var(--jds-h1-size) var(--jds-font-family);
-  /* 标题 1 常规样式 */
-  --jds-font-h1-regular: var(--jds-font-weight-regular) var(--jds-font-h1);
+  @jds-font-h1: @jds-h1-size var(--jds-font-family);
   /* 标题 1 中等样式 */
-  --jds-font-h1-medium: var(--jds-font-weight-medium) var(--jds-font-h1);
-  /* 标题 1 半粗样式 */
-  --jds-font-h1-semibold: var(--jds-font-weight-semibold) var(--jds-font-h1);
-  /* 标题 1 粗样式 */
-  --jds-font-h1-bold: var(--jds-font-weight-bold) var(--jds-font-h1);
+  --jds-font-h1-medium: var(--jds-font-weight-medium) @jds-font-h1;
 
   /* === 字体样式：标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题 === */
   /* 标题 2 字体大小与行高的比例 */
-  --jds-h2-size: var(--jds-h2-font-size) / var(--jds-h2-line-height);
+  @jds-h2-size: var(--jds-h2-font-size) / var(--jds-h2-line-height);
   /* 标题 2 字间距 */
   --jds-h2-letter-spacing: calc(-0.02 * var(--jds-h2-font-size));
   /* 标题 2 字体样式 */
-  --jds-font-h2: var(--jds-h2-size) var(--jds-font-family);
-  /* 标题 2 常规样式 */
-  --jds-font-h2-regular: var(--jds-font-weight-regular) var(--jds-font-h2);
+  @jds-font-h2: @jds-h2-size var(--jds-font-family);
   /* 标题 2 中等样式 */
-  --jds-font-h2-medium: var(--jds-font-weight-medium) var(--jds-font-h2);
-  /* 标题 2 半粗样式 */
-  --jds-font-h2-semibold: var(--jds-font-weight-semibold) var(--jds-font-h2);
-  /* 标题 2 粗样式 */
-  --jds-font-h2-bold: var(--jds-font-weight-bold) var(--jds-font-h2);
+  --jds-font-h2-medium: var(--jds-font-weight-medium) @jds-font-h2;
 
   /* === 字体样式：标题 3，使用场景：【标题】用于活动页标题    === */
   /* 标题 3 字体大小与行高的比例 */
-  --jds-h3-size: var(--jds-h3-font-size) / var(--jds-h3-line-height);
+  @jds-h3-size: var(--jds-h3-font-size) / var(--jds-h3-line-height);
   /* 标题 3 字间距 */
   --jds-h3-letter-spacing: calc(-0.02 * var(--jds-h3-font-size));
   /* 标题 3 字体样式 */
-  --jds-font-h3: var(--jds-h3-size) var(--jds-font-family);
-  /* 标题 3 常规样式 */
-  --jds-font-h3-regular: var(--jds-font-weight-regular) var(--jds-font-h3);
+  @jds-font-h3: @jds-h3-size var(--jds-font-family);
   /* 标题 3 中等样式 */
-  --jds-font-h3-medium: var(--jds-font-weight-medium) var(--jds-font-h3);
-  /* 标题 3 半粗样式 */
-  --jds-font-h3-semibold: var(--jds-font-weight-semibold) var(--jds-font-h3);
-  /* 标题 3 粗样式 */
-  --jds-font-h3-bold: var(--jds-font-weight-bold) var(--jds-font-h3);
+  --jds-font-h3-medium: var(--jds-font-weight-medium) @jds-font-h3;
 
   /* === 字体样式：标题 4，使用场景：待定 === */
   /* 标题 4 字体大小与行高的比例 */
-  --jds-h4-size: var(--jds-h4-font-size) / var(--jds-h4-line-height);
+  @jds-h4-size: var(--jds-h4-font-size) / var(--jds-h4-line-height);
   /* 标题 4 字间距 */
   --jds-h4-letter-spacing: calc(-0.02 * var(--jds-h4-font-size));
   /* 标题 4 字体样式 */
-  --jds-font-h4: var(--jds-h4-size) var(--jds-font-family);
-  /* 标题 4 常规样式 */
-  --jds-font-h4-regular: var(--jds-font-weight-regular) var(--jds-font-h4);
+  @jds-font-h4: @jds-h4-size var(--jds-font-family);
   /* 标题 4 中等样式 */
-  --jds-font-h4-medium: var(--jds-font-weight-medium) var(--jds-font-h4);
-  /* 标题 4 半粗样式 */
-  --jds-font-h4-semibold: var(--jds-font-weight-semibold) var(--jds-font-h4);
-  /* 标题 4 粗样式 */
-  --jds-font-h4-bold: var(--jds-font-weight-bold) var(--jds-font-h4);
+  --jds-font-h4-medium: var(--jds-font-weight-medium) @jds-font-h4;
 
   /* === 字体样式：标题 5，使用场景：待定 === */
   /* 标题 5 字体大小与行高的比例 */
-  --jds-h5-size: var(--jds-h5-font-size) / var(--jds-h5-line-height);
-
+  @jds-h5-size: var(--jds-h5-font-size) / var(--jds-h5-line-height);
   /* 标题 5 字体样式 */
-  --jds-font-h5: var(--jds-h5-size) var(--jds-font-family);
-  /* 标题 5 常规样式 */
-  --jds-font-h5-regular: var(--jds-font-weight-regular) var(--jds-font-h5);
+  @jds-font-h5: @jds-h5-size var(--jds-font-family);
   /* 标题 5 中等样式 */
-  --jds-font-h5-medium: var(--jds-font-weight-medium) var(--jds-font-h5);
-  /* 标题 5 半粗样式 */
-  --jds-font-h5-semibold: var(--jds-font-weight-semibold) var(--jds-font-h5);
-  /* 标题 5 粗样式 */
-  --jds-font-h5-bold: var(--jds-font-weight-bold) var(--jds-font-h5);
+  --jds-font-h5-medium: var(--jds-font-weight-medium) @jds-font-h5;
 
   /* === 字体样式：标题 6，使用场景：【标签级标题】用于首屏banner === */
   /* 标题 6 字体大小与行高的比例 */
-  --jds-h6-size: var(--jds-h6-font-size) / var(--jds-h6-line-height);
+  @jds-h6-size: var(--jds-h6-font-size) / var(--jds-h6-line-height);
   /* 标题 6 字体样式 */
-  --jds-font-h6: var(--jds-h6-size) var(--jds-font-family);
-  /* 标题 6 常规样式 */
-  --jds-font-h6-regular: var(--jds-font-weight-regular) var(--jds-font-h6);
-  /* 标题 6 中等样式 */
-  --jds-font-h6-medium: var(--jds-font-weight-medium) var(--jds-font-h6);
+  @jds-font-h6: @jds-h6-size var(--jds-font-family);
   /* 标题 6 半粗样式 */
-  --jds-font-h6-semibold: var(--jds-font-weight-semibold) var(--jds-font-h6);
-  /* 标题 6 粗样式 */
-  --jds-font-h6-bold: var(--jds-font-weight-bold) var(--jds-font-h6);
+  --jds-font-h6-semibold: var(--jds-font-weight-semibold) @jds-font-h6;
 
   /* === 字体样式：正文文本 1，使用场景：【正文】 === */
   /* 字体大小与行高的比例 */
-  --jds-b1-size: var(--jds-b1-font-size) / var(--jds-b1-line-height);
+  @jds-b1-size: var(--jds-b1-font-size) / var(--jds-b1-line-height);
   /* 正文文本 1 样式 */
-  --jds-font-b1: var(--jds-b1-size) var(--jds-font-family);
+  @jds-font-b1: @jds-b1-size var(--jds-font-family);
   /* 正文文本 1 常规样式 */
-  --jds-font-b1-regular: var(--jds-font-weight-regular) var(--jds-font-b1);
+  --jds-font-b1-regular: var(--jds-font-weight-regular) @jds-font-b1;
   /* 正文文本 1 中等样式 */
-  --jds-font-b1-medium: var(--jds-font-weight-medium) var(--jds-font-b1);
+  --jds-font-b1-medium: var(--jds-font-weight-medium) @jds-font-b1;
 
   /* === 字体样式：正文文本 2，使用场景：【小正文】 用于拥挤情况 === */
   /* 字体大小与行高的比例 */
-  --jds-b2-size: var(--jds-b2-font-size) / var(--jds-b2-line-height);
+  @jds-b2-size: var(--jds-b2-font-size) / var(--jds-b2-line-height);
   /* 正文文本 2 样式 */
-  --jds-font-b2: var(--jds-b2-size) var(--jds-font-family);
+  @jds-font-b2: @jds-b2-size var(--jds-font-family);
   /* 正文文本 2 常规样式 */
-  --jds-font-b2-regular: var(--jds-font-weight-regular) var(--jds-font-b2);
+  --jds-font-b2-regular: var(--jds-font-weight-regular) @jds-font-b2;
   /* 正文文本 2 中等样式 */
-  --jds-font-b2-medium: var(--jds-font-weight-medium) var(--jds-font-b2);
+  --jds-font-b2-medium: var(--jds-font-weight-medium) @jds-font-b2;
 
   /* === 字体样式：正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮； === */
   /* 字体大小与行高的比例 */
-  --jds-b3-size: var(--jds-b3-font-size) / var(--jds-b3-line-height);
+  @jds-b3-size: var(--jds-b3-font-size) / var(--jds-b3-line-height);
   /* 正文文本 3 样式 */
-  --jds-font-b3: var(--jds-b3-size) var(--jds-font-family);
+  @jds-font-b3: @jds-b3-size var(--jds-font-family);
   /* 正文文本 3 常规样式 */
-  --jds-font-b3-regular: var(--jds-font-weight-regular) var(--jds-font-b3);
+  --jds-font-b3-regular: var(--jds-font-weight-regular) @jds-font-b3;
   /* 正文文本 3 中等样式 */
-  --jds-font-b3-medium: var(--jds-font-weight-medium) var(--jds-font-b3);
+  --jds-font-b3-medium: var(--jds-font-weight-medium) @jds-font-b3;
 
   /* === 字体样式：说明文字，使用场景：【注释正文】标记、注释、页底活动说明 === */
   /* 字体大小与行高的比例 */
-  --jds-c1-size: var(--jds-c1-font-size) / var(--jds-c1-line-height);
+  @jds-c1-size: var(--jds-c1-font-size) / var(--jds-c1-line-height);
   /* 说明文字样式 */
-  --jds-font-c1: var(--jds-font-weight-medium) var(--jds-c1-size) var(--jds-font-family);
+  --jds-font-c1: var(--jds-font-weight-medium) @jds-c1-size var(--jds-font-family);
 
   /* === 字体样式：显示 === */
   /* 字体大小与行高的比例 */
-  --jds-font-display-size: var(--jds-b1-size);
+  @jds-font-display-size: @jds-b1-size;
   /* 显示字体样式 */
-  --jds-font-display: var(--jds-font-display-size) var(--jds-font-family);
+  @jds-font-display: @jds-font-display-size var(--jds-font-family);
   /* 常规显示字体样式 */
-  --jds-font-display-regular: var(--jds-font-weight-regular) var(--jds-font-display);
+  --jds-font-display-regular: var(--jds-font-weight-regular) @jds-font-display;
   /* 中等显示字体样式 */
-  --jds-font-display-medium: var(--jds-font-weight-medium) var(--jds-font-display);
+  --jds-font-display-medium: var(--jds-font-weight-medium) @jds-font-display;
   /* 半粗显示字体样式 */
-  --jds-font-display-semibold: var(--jds-font-weight-semibold) var(--jds-font-display);
+  --jds-font-display-semibold: var(--jds-font-weight-semibold) @jds-font-display;
   /* 粗显示字体样式 */
-  --jds-font-display-bold: var(--jds-font-weight-bold) var(--jds-font-display);
+  --jds-font-display-bold: var(--jds-font-weight-bold) @jds-font-display;
 
   font-family: var(--jds-font-family);
 }
