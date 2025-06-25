@@ -38,7 +38,7 @@ const meta: Meta = {
     },
     kind: {
       options: ["default", "neutral", "success", "danger","custom"],
-      description: "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color：blue)",
+      description: "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color, --jds-button-custom-text-color)",
       default: "default",
       control: { type: "select" },
     },
@@ -321,11 +321,21 @@ export const CustomStyleButtons = (args: ButtonProps) => html`
   </div>
 
   <div>
-    <h4>样式配置：--jds-button-display: block; max-width: 200px</h4>
+    <h4>设置按钮颜色</h4>
     ${SingleButtonTemplate({
       ...args,
       content: "A very long text content",
-      style: "--jds-button-display: block; max-width: 200px",
+      kind: "custom",
+      style: "--jds-button-custom-color: pink;",
+    })}
+  </div>
+  <div>
+    <h4>设置按钮文案颜色</h4>
+    ${SingleButtonTemplate({
+      ...args,
+      content: "A very long text content",
+      kind: "custom",
+      style: "--jds-button-custom-text-color: blue;",
     })}
   </div>
 </div>
