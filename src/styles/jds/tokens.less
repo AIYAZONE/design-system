@@ -1,55 +1,93 @@
 /* 定义全局 CSS 变量 */
+@jds-color-primary: #FD5000;
+@jds-color-success: #52C41A;
+@jds-color-danger: #FF3B30;
+@jds-color-warning: #FAAD14;
+@jds-color-info: #5794FF;
+
+@jds-font-weight-regular: 400;
+@jds-font-weight-medium: 500;
+@jds-font-weight-semibold: 600;
+@jds-font-weight-bold: 700;
+
+/* === Mixins === */
+// 尺寸生成Mixin
+.generate-sizes(@rem-base) {
+  --jds-size-2: max(0, 2 * @rem-base);
+  --jds-size-4: max(0, 4 * @rem-base);
+  --jds-size-6: max(0, 6 * @rem-base);
+  --jds-size-8: max(0, 8 * @rem-base);
+  --jds-size-10: max(0, 10 * @rem-base);
+  --jds-size-12: max(0, 12 * @rem-base);
+  --jds-size-14: max(0, 14 * @rem-base);
+  --jds-size-16: max(0, 16 * @rem-base);
+  --jds-size-18: max(0, 18 * @rem-base);
+  --jds-size-20: max(0, 20 * @rem-base);
+  --jds-size-22: max(0, 22 * @rem-base);
+  --jds-size-24: max(0, 24 * @rem-base);
+  --jds-size-28: max(0, 28 * @rem-base);
+  --jds-size-32: max(0, 32 * @rem-base);
+  --jds-size-36: max(0, 36 * @rem-base);
+  --jds-size-40: max(0, 40 * @rem-base);
+  --jds-size-48: max(0, 48 * @rem-base);
+  --jds-size-56: max(0, 56 * @rem-base);
+  --jds-size-64: max(0, 64 * @rem-base);
+  --jds-size-80: max(0, 80 * @rem-base);
+  --jds-size-96: max(0, 96 * @rem-base);
+}
+
+// 桌面端字体大小生成Mixin
+.generate-desktop-font-sizes(@rem-base) {
+  --jds-font-size-s: 12px;
+  --jds-font-size-m: max(12px, 14 * @rem-base);
+  --jds-font-size-l: max(12px, 16 * @rem-base);
+  --jds-font-size-xl: max(12px, 18 * @rem-base);
+  --jds-font-size-2xl: max(12px, 24 * @rem-base);
+  --jds-font-size-3xl: max(12px, 32 * @rem-base);
+  --jds-font-size-4xl: max(12px, 40 * @rem-base);
+  --jds-font-size-5xl: max(12px, 48 * @rem-base);
+  --jds-font-size-6xl: max(12px, 72 * @rem-base);
+}
+
+// 移动端字体大小生成Mixin
+.generate-mobile-font-sizes(@rem-base) {
+  --jds-font-size-s: max(12px, 20 * @rem-base);
+  --jds-font-size-m: max(12px, 24 * @rem-base);
+  --jds-font-size-l: max(12px, 28 * @rem-base);
+  --jds-font-size-xl: max(12px, 32 * @rem-base);
+  --jds-font-size-2xl: max(12px, 36 * @rem-base);
+  --jds-font-size-3xl: max(12px, 40 * @rem-base);
+  --jds-font-size-4xl: max(12px, 56 * @rem-base);
+  --jds-font-size-5xl: max(12px, 64 * @rem-base);
+  --jds-font-size-6xl: max(12px, 80 * @rem-base);
+}
+
+// 颜色高亮生成Mixin（保留mix函数）
+.generate-color-common(@color-name, @base-color, @contrast-color) {
+  // 基础色
+  --jds-color-@{color-name}: @base-color;
+  // 高亮色：基础色叠加 15%的白色
+  --jds-color-@{color-name}-highlight: mix(#FFFFFF, @base-color, 15%);
+  // 对比色
+  --jds-color-@{color-name}-contrast: @contrast-color;
+}
 
 :root {
   /* === 方向设置 === */
   /* 文本水平方向：1 表示从左到右，-1 表示从右到左 */
   --jds-text-x-direction: 1;
 
-  /* === 主色调 === */
-  /* 主色 - 已校准 */
-  --jds-color-primary: #FD5000;
-  /* 主色高亮 - 主色叠加15% #fff*/
-  @jds-color-primary: #FD5000;
-  --jds-color-primary-highlight: mix(#FFFFFF, @jds-color-primary, 15%);
-
-  /* 主色对比色 */
-  --jds-color-primary-contrast: #FEF2E8;
-
-  /* === 成功色 === */
-  /* 成功状态颜色 - 已校准 */
-  --jds-color-success: #52C41A;
-  /* 成功状态高亮 */
-  @jds-color-success: #52C41A;
-  --jds-color-success-highlight: mix(#FFFFFF, @jds-color-success, 15%);
-  /* 成功状态对比色 */
-  --jds-color-success-contrast: #E7F9EF;
-
-  /* === 危险色 === */
-  /* 危险状态颜色 - 已校准 */
-  --jds-color-danger: #FF3B30;
-  /* 危险状态高亮 */
-  @jds-color-danger: #FF3B30;
-  --jds-color-danger-highlight: mix(#FFFFFF, @jds-color-danger, 15%);
-  /* 危险状态对比色 */
-  --jds-color-danger-contrast: #FFEEEC;
-
-  /* === 警告色 === */
-  /* 警告状态颜色 */
-  --jds-color-warning: #FAAD14;
-  /* 警告状态高亮 */
-  @jds-color-warning: #FAAD14;
-  --jds-color-warning-highlight: mix(#FFFFFF, @jds-color-warning, 15%);
-  /* 警告状态对比色 */
-  --jds-color-warning-contrast: #FFF8E6;
-
-  /* === 信息色 === */
-  /* 信息状态颜色 */
-  --jds-color-info: #5794FF;
-  /* 信息状态高亮 */
-  @jds-color-info: #52C41A;
-  --jds-color-info-highlight: mix(#FFFFFF, @jds-color-info, 15%);
-  /* 信息状态对比色 */
-  --jds-color-info-contrast: #EEF4FF;
+  /* === 颜色系统 === */
+  // 主色
+  .generate-color-common(primary, @jds-color-primary, #FEF2E8);
+  // 成功色
+  .generate-color-common(success, @jds-color-success, #E7F9EF);
+  // 危险色
+  .generate-color-common(danger, @jds-color-danger, #FFEEEC);
+  // 警告色
+  .generate-color-common(warning, @jds-color-warning, #FFF8E6);
+  // 信息色
+  .generate-color-common(info, @jds-color-info, #EEF4FF);
 
   /* === 文本色 - 已校准 === */
   /* 一级文本 */
@@ -68,7 +106,6 @@
   /* === 系统图标颜色 - 已校准 === */
   --jds-color-icon-normal: #1A1A1A;
   --jds-color-icon-orange: var(--jds-color-primary);
-
 
   --jds-color-white: #FFFFFF;
   --jds-color-grey: #F5F5F5;
@@ -105,8 +142,6 @@
   --jds-color-neutral-200: #AFBBCA;
   --jds-color-neutral-100: #F1F2F7;
 
-  /* === 字体大小 - 已校准 === */
-
   /* === Z-index 层级 === */
   /* 深层级 */
   --jds-index-deep: -1;
@@ -127,13 +162,13 @@
 
   /* === 字体粗细 - 已校准 === */
   /* 常规字体 */
-  --jds-font-weight-regular: 400;
+  --jds-font-weight-regular: @jds-font-weight-regular;
   /* 中等字体 */
-  --jds-font-weight-medium: 500;
+  --jds-font-weight-medium: @jds-font-weight-medium;
   /* 半粗字体 */
-  --jds-font-weight-semibold: 600;
+  --jds-font-weight-semibold: @jds-font-weight-semibold;
   /* 粗字体 */
-  --jds-font-weight-bold: 700;
+  --jds-font-weight-bold: @jds-font-weight-bold;
 
   /* === 边框半径 - 已校准 === */
   --jds-border-radius-xs: 2px;
@@ -145,110 +180,6 @@
   --jds-border-radius-pill: 999px;
   /* 圆形边框 */
   --jds-border-radius-circle: 50%;
-}
-
-
-@media screen and (min-width: 1024px) {
-  @rem: (1rem / 16);
-
-  :root {
-    /* === 尺寸和间距 === */
-    --jds-size-2: max(0, 2 * @rem);
-    --jds-size-4: max(0, 4 * @rem);
-    --jds-size-6: max(0, 6 * @rem);
-    --jds-size-8: max(0, 8 * @rem);
-    --jds-size-10: max(0, 10 * @rem);
-    --jds-size-12: max(0, 12 * @rem);
-    --jds-size-14: max(0, 14 * @rem);
-    --jds-size-16: max(0, 16 * @rem);
-    --jds-size-18: max(0, 18 * @rem);
-    --jds-size-20: max(0, 20 * @rem);
-    --jds-size-24: max(0, 24 * @rem);
-    --jds-size-28: max(0, 28 * @rem);
-    --jds-size-32: max(0, 32 * @rem);
-    --jds-size-36: max(0, 36 * @rem);
-    --jds-size-40: max(0, 40 * @rem);
-    --jds-size-48: max(0, 48 * @rem);
-    --jds-size-56: max(0, 56 * @rem);
-    --jds-size-64: max(0, 64 * @rem);
-    --jds-size-80: max(0, 80 * @rem);
-    --jds-size-96: max(0, 96 * @rem);
-
-    /* === 字体大小 - 已校准 === */
-    /* 12px */
-    --jds-font-size-s: 12px;
-    /* 14px */
-    --jds-font-size-m: max(12px, 14 * @rem);
-    /* 16px */
-    --jds-font-size-l: max(12px, 16 * @rem);
-    /* 18px */
-    --jds-font-size-xl: max(12px, 18 * @rem);
-    /* 24px */
-    --jds-font-size-2xl: max(12px, 24 * @rem);
-    /* 32px */
-    --jds-font-size-3xl: max(12px, 32 * @rem);
-    /* 40px */
-    --jds-font-size-4xl: max(12px, 40 * @rem);
-    /* 48px */
-    --jds-font-size-5xl: max(12px, 48 * @rem);
-    /* 72px */
-    --jds-font-size-6xl: max(12px, 72 * @rem);
-
-    // 额外的字号大小
-    --jds-font-size-22: max(12px, 22 * @rem);
-  }
-}
-
-
-@media screen and (max-width: 1023.98px) {
-  @rem: (1rem / 32);
-
-  :root {
-    /* === 尺寸和间距 === */
-    --jds-size-2: max(0, 2 * @rem);
-    --jds-size-4: max(0, 4 * @rem);
-    --jds-size-6: max(0, 6 * @rem);
-    --jds-size-8: max(0, 8 * @rem);
-    --jds-size-10: max(0, 10 * @rem);
-    --jds-size-12: max(0, 12 * @rem);
-    --jds-size-14: max(0, 14 * @rem);
-    --jds-size-16: max(0, 16 * @rem);
-    --jds-size-18: max(0, 18 * @rem);
-    --jds-size-20: max(0, 20 * @rem);
-    --jds-size-24: max(0, 24 * @rem);
-    --jds-size-28: max(0, 28 * @rem);
-    --jds-size-32: max(0, 32 * @rem);
-    --jds-size-36: max(0, 36 * @rem);
-    --jds-size-40: max(0, 40 * @rem);
-    --jds-size-48: max(0, 48 * @rem);
-    --jds-size-56: max(0, 56 * @rem);
-    --jds-size-64: max(0, 64 * @rem);
-    --jds-size-80: max(0, 80 * @rem);
-    --jds-size-96: max(0, 96 * @rem);
-
-    /* === 字体大小 - 已校准 === */
-    /* 20px */
-    --jds-font-size-s: max(12px, 20 * @rem);
-    /* 24px */
-    --jds-font-size-m: max(12px, 24 * @rem);
-    /* 28px */
-    --jds-font-size-l: max(12px, 28 * @rem);
-    /* 32px */
-    --jds-font-size-xl: max(12px, 32 * @rem);
-    /* 36px */
-    --jds-font-size-2xl: max(12px, 36 * @rem);
-    /* 40px */
-    --jds-font-size-3xl: max(12px, 40 * @rem);
-    /* 56px */
-    --jds-font-size-4xl: max(12px, 56 * @rem);
-    /* 64px */
-    --jds-font-size-5xl: max(12px, 64 * @rem);
-    /* 80px */
-    --jds-font-size-6xl: max(12px, 80 * @rem);
-
-    // 额外的字号大小
-    --jds-font-size-22: max(12px, 22 * @rem);
-  }
 }
 
 /* 日站字体设置 */
@@ -269,6 +200,31 @@
 
   /* 文本水平方向：-1 表示从右到左 */
   --jds-text-x-direction: -1;
+}
+
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);
+
+  :root {
+    /* === 尺寸和间距 === */
+    .generate-sizes(@rem);
+
+    /* === 字体大小 - 已校准 === */
+    .generate-desktop-font-sizes(@rem);
+  }
+}
+
+
+@media screen and (max-width: 1023.98px) {
+  @rem: (1rem / 32);
+
+  :root {
+    /* === 尺寸和间距 === */
+    .generate-sizes(@rem);
+
+    /* === 字体大小 - 已校准 === */
+    .generate-mobile-font-sizes(@rem);
+  }
 }
 
 :root {
