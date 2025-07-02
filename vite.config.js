@@ -91,6 +91,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
+          charset: false, // 禁用Less自动添加@charset，避免编码冲突
         },
       },
     },
