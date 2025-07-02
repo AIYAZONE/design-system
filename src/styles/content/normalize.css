@@ -119,6 +119,7 @@ select {
 *::after {
   /* 使用边框盒模型 */
   box-sizing: border-box;
+  font-family: var(--jds-font-family);
 }
 
 /* PC端（>=1024px) */
