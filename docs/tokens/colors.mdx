@@ -1,7 +1,7 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 import { html } from 'lit';
 
-<Meta title="设计变量/色彩" />
+<Meta title="02 设计变量/02 色彩" />
 
 # 色彩 - Colors
 
@@ -65,14 +65,9 @@ import { html } from 'lit';
     colors={{ 'normal(常规图标色)': '#1A1A1A','orange(橙色图标色)': '#FD5000' }}
   />
   <ColorItem
-    title="--jds-color-{x}"
-    subtitle="基础色"
+    title="--jds-color-bg-{x}"
+    subtitle="背景颜色"
     colors={{ 'white(白色)': '#FFFFFF','grey(灰色)': '#F5F5F5' }}
-  />
-  <ColorItem
-    title="--jds-background-color-{x}"
-    subtitle="网页背景色"
-    colors={{ '1(背景色1)': '#FFFFFF','2(背景色2)': '#F5F5F5' }}
   />
   <ColorItem
     title="--jds-color-card-{x}"
@@ -82,7 +77,7 @@ import { html } from 'lit';
   <ColorItem
     title="--jds-color-{x}"
     subtitle="线条颜色"
-    colors={{ 'line(产品指示线)': 'rgba(0, 0, 0, 0.15)','hr(分割线)': 'rgba(0, 0, 0, 0.07)' }}
+    colors={{ 'line(产品指示线)': '#D9D9D9','hr(分割线)': '#EEEEEE' }}
   />
   <ColorItem
     title="--jds-color-overlay-{x}"

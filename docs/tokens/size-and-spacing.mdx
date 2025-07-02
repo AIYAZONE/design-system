@@ -1,115 +1,116 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 import { html } from 'lit';
 
-<Meta title="设计变量/尺寸和间距" />
+<Meta title="02 设计变量/03 尺寸和间距" />
 
 # 尺寸和间距 - Size and Spacing
+
+## 概述
+
+遵循 Jackery 设计系统响应式设计方案，以CSS 根节点`font-size`为基准，使用rem进行换算，实现跨设备的字号大小自适应。
 
 ## CSS 变量
 
 
 ```css
-@media screen and (min-width: 1024px) {
-  @rem: (1rem / 16);
 
-  :root {
-    /* === 尺寸和间距 === */
-    --jds-size-2: max(0, 2 * @rem);
-    --jds-size-4: max(0, 4 * @rem);
-    --jds-size-6: max(0, 6 * @rem);
-    --jds-size-8: max(0, 8 * @rem);
-    --jds-size-10: max(0, 10 * @rem);
-    --jds-size-12: max(0, 12 * @rem);
-    --jds-size-14: max(0, 14 * @rem);
-    --jds-size-16: max(0, 16 * @rem);
-    --jds-size-18: max(0, 18 * @rem);
-    --jds-size-20: max(0, 20 * @rem);
-    --jds-size-24: max(0, 24 * @rem);
-    --jds-size-28: max(0, 28 * @rem);
-    --jds-size-32: max(0, 32 * @rem);
-    --jds-size-36: max(0, 36 * @rem);
-    --jds-size-40: max(0, 40 * @rem);
-    --jds-size-48: max(0, 48 * @rem);
-    --jds-size-56: max(0, 56 * @rem);
-    --jds-size-64: max(0, 64 * @rem);
-    --jds-size-80: max(0, 80 * @rem);
-    --jds-size-96: max(0, 96 * @rem);
-
-    /* === 字体大小 - 已校准 === */
-    /* 12px */
-    --jds-font-size-s: 12px;
-    /* 14px */
-    --jds-font-size-m: max(12px, 14 * @rem);
-    /* 16px */
-    --jds-font-size-l: max(12px, 16 * @rem);
-    /* 18px */
-    --jds-font-size-xl: max(12px, 18 * @rem);
-    /* 24px */
-    --jds-font-size-2xl: max(12px, 24 * @rem);
-    /* 32px */
-    --jds-font-size-3xl: max(12px, 32 * @rem);
-    /* 40px */
-    --jds-font-size-4xl: max(12px, 40 * @rem);
-    /* 48px */
-    --jds-font-size-5xl: max(12px, 48 * @rem);
-    /* 72px */
-    --jds-font-size-6xl: max(12px, 72 * @rem);
-
-    // 额外的字号大小
-    --jds-font-size-22: max(12px, 22 * @rem);
-  }
+/**
+ * 尺寸生成Mixin
+ * @param {number} @rem-base - rem基准值，用于响应式计算
+ * @description 生成一套完整的尺寸变量，支持桌面端和移动端自适应
+ */
+.generate-sizes(@rem-base) {
+  --jds-size-2: max(0, 2 * @rem-base);    /* 2px等效尺寸 */
+  --jds-size-4: max(0, 4 * @rem-base);    /* 4px等效尺寸 */
+  --jds-size-6: max(0, 6 * @rem-base);    /* 6px等效尺寸 */
+  --jds-size-8: max(0, 8 * @rem-base);    /* 8px等效尺寸 */
+  --jds-size-10: max(0, 10 * @rem-base);  /* 10px等效尺寸 */
+  --jds-size-12: max(0, 12 * @rem-base);  /* 12px等效尺寸 */
+  --jds-size-14: max(0, 14 * @rem-base);  /* 14px等效尺寸 */
+  --jds-size-16: max(0, 16 * @rem-base);  /* 16px等效尺寸 */
+  --jds-size-18: max(0, 18 * @rem-base);  /* 18px等效尺寸 */
+  --jds-size-20: max(0, 20 * @rem-base);  /* 20px等效尺寸 */
+  --jds-size-22: max(0, 22 * @rem-base);  /* 22px等效尺寸 */
+  --jds-size-24: max(0, 24 * @rem-base);  /* 24px等效尺寸 */
+  --jds-size-28: max(0, 28 * @rem-base);  /* 28px等效尺寸 */
+  --jds-size-32: max(0, 32 * @rem-base);  /* 32px等效尺寸 */
+  --jds-size-36: max(0, 36 * @rem-base);  /* 36px等效尺寸 */
+  --jds-size-40: max(0, 40 * @rem-base);  /* 40px等效尺寸 */
+  --jds-size-48: max(0, 48 * @rem-base);  /* 48px等效尺寸 */
+  --jds-size-56: max(0, 56 * @rem-base);  /* 56px等效尺寸 */
+  --jds-size-64: max(0, 64 * @rem-base);  /* 64px等效尺寸 */
+  --jds-size-80: max(0, 80 * @rem-base);  /* 80px等效尺寸 */
+  --jds-size-96: max(0, 96 * @rem-base);  /* 96px等效尺寸 */
 }
 
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);  /* 桌面端rem基准：1rem = 16px */
+  :root {
+    /* 生成桌面端尺寸变量 */
+    .generate-sizes(@rem);
+  }
+}
 
 @media screen and (max-width: 1023.98px) {
-  @rem: (1rem / 32);
-
+  @rem: (1rem / 32);  /* 移动端rem基准：1rem = 32px */
   :root {
-    /* === 尺寸和间距 === */
-    --jds-size-2: max(0, 2 * @rem);
-    --jds-size-4: max(0, 4 * @rem);
-    --jds-size-6: max(0, 6 * @rem);
-    --jds-size-8: max(0, 8 * @rem);
-    --jds-size-10: max(0, 10 * @rem);
-    --jds-size-12: max(0, 12 * @rem);
-    --jds-size-14: max(0, 14 * @rem);
-    --jds-size-16: max(0, 16 * @rem);
-    --jds-size-18: max(0, 18 * @rem);
-    --jds-size-20: max(0, 20 * @rem);
-    --jds-size-24: max(0, 24 * @rem);
-    --jds-size-28: max(0, 28 * @rem);
-    --jds-size-32: max(0, 32 * @rem);
-    --jds-size-36: max(0, 36 * @rem);
-    --jds-size-40: max(0, 40 * @rem);
-    --jds-size-48: max(0, 48 * @rem);
-    --jds-size-56: max(0, 56 * @rem);
-    --jds-size-64: max(0, 64 * @rem);
-    --jds-size-80: max(0, 80 * @rem);
-    --jds-size-96: max(0, 96 * @rem);
-
-    /* === 字体大小 - 已校准 === */
-    /* 20px */
-    --jds-font-size-s: max(12px, 20 * @rem);
-    /* 24px */
-    --jds-font-size-m: max(12px, 24 * @rem);
-    /* 28px */
-    --jds-font-size-l: max(12px, 28 * @rem);
-    /* 32px */
-    --jds-font-size-xl: max(12px, 32 * @rem);
-    /* 36px */
-    --jds-font-size-2xl: max(12px, 36 * @rem);
-    /* 40px */
-    --jds-font-size-3xl: max(12px, 40 * @rem);
-    /* 56px */
-    --jds-font-size-4xl: max(12px, 56 * @rem);
-    /* 64px */
-    --jds-font-size-5xl: max(12px, 64 * @rem);
-    /* 80px */
-    --jds-font-size-6xl: max(12px, 80 * @rem);
-
-    // 额外的字号大小
-    --jds-font-size-22: max(12px, 22 * @rem);
+    /* 生成移动端尺寸变量 */
+    .generate-sizes(@rem);
   }
 }
+
+
+/* --- 编译后 --- */
+@media screen and (min-width: 1024px) {
+  :root {
+    --jds-size-2: 0.125rem;
+    --jds-size-4: 0.25rem;
+    --jds-size-6: 0.375rem;
+    --jds-size-8: 0.5rem;
+    --jds-size-10: 0.625rem;
+    --jds-size-12: 0.75rem;
+    --jds-size-14: 0.875rem;
+    --jds-size-16: 1rem;
+    --jds-size-18: 1.125rem;
+    --jds-size-20: 1.25rem;
+    --jds-size-22: 1.375rem;
+    --jds-size-24: 1.5rem;
+    --jds-size-28: 1.75rem;
+    --jds-size-32: 2rem;
+    --jds-size-36: 2.25rem;
+    --jds-size-40: 2.5rem;
+    --jds-size-48: 3rem;
+    --jds-size-56: 3.5rem;
+    --jds-size-64: 4rem;
+    --jds-size-80: 5rem;
+    --jds-size-96: 6rem;
+  }
+}
+@media screen and (max-width: 1023.98px) {
+  :root {
+    --jds-size-2: 0.0625rem;
+    --jds-size-4: 0.125rem;
+    --jds-size-6: 0.1875rem;
+    --jds-size-8: 0.25rem;
+    --jds-size-10: 0.3125rem;
+    --jds-size-12: 0.375rem;
+    --jds-size-14: 0.4375rem;
+    --jds-size-16: 0.5rem;
+    --jds-size-18: 0.5625rem;
+    --jds-size-20: 0.625rem;
+    --jds-size-22: 0.6875rem;
+    --jds-size-24: 0.75rem;
+    --jds-size-28: 0.875rem;
+    --jds-size-32: 1rem;
+    --jds-size-36: 1.125rem;
+    --jds-size-40: 1.25rem;
+    --jds-size-48: 1.5rem;
+    --jds-size-56: 1.75rem;
+    --jds-size-64: 2rem;
+    --jds-size-80: 2.5rem;
+    --jds-size-96: 3rem;
+  }
+}
+
 
 ```

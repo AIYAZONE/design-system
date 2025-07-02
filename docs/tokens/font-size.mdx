@@ -1,0 +1,92 @@
+import { Meta, Markdown } from '@storybook/blocks';
+
+<Meta title="02 设计变量/04 字体字号" />
+
+# 字体字号 - Font Size
+
+## 概述
+
+遵循 Jackery 设计系统响应式设计方案，以CSS 根节点`font-size`为基准，使用rem进行换算，实现跨设备的字号大小自适应。
+
+## 字号变量
+
+```css
+/**
+ * 字体大小生成Mixin
+ * @param {number} @rem-base - rem基准值，用于响应式字体大小计算
+ * @description 生成完整的字体大小变量，确保最小字体为12px，支持响应式缩放
+ */
+.generate-font-sizes(@rem-base) {
+  --jds-font-size-12: 12px;                        /* 最小字体：12px */
+  --jds-font-size-14: max(12px, 14 * @rem-base);   /* 小字体：14px */
+  --jds-font-size-16: max(12px, 16 * @rem-base);   /* 基础字体：16px */
+  --jds-font-size-18: max(12px, 18 * @rem-base);   /* 正文字体：18px */
+  --jds-font-size-20: max(12px, 20 * @rem-base);   /* 小标题：20px */
+  --jds-font-size-24: max(12px, 24 * @rem-base);   /* 中标题：24px */
+  --jds-font-size-28: max(12px, 28 * @rem-base);   /* 大标题：28px */
+  --jds-font-size-32: max(12px, 32 * @rem-base);   /* 特大标题：32px */
+  --jds-font-size-36: max(12px, 36 * @rem-base);   /* 超大标题：36px */
+  --jds-font-size-40: max(12px, 40 * @rem-base);   /* 巨大标题：40px */
+  --jds-font-size-48: max(12px, 48 * @rem-base);   /* 展示标题：48px */
+  --jds-font-size-56: max(12px, 56 * @rem-base);   /* 大展示标题：56px */
+  --jds-font-size-64: max(12px, 64 * @rem-base);   /* 超大展示标题：64px */
+  --jds-font-size-72: max(12px, 72 * @rem-base);   /* 巨型展示标题：72px */
+  --jds-font-size-80: max(12px, 80 * @rem-base);   /* 特大展示标题：80px */
+}
+
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);  /* 桌面端rem基准：1rem = 16px */
+  :root {
+    /* 生成桌面端字体大小变量 */
+    .generate-font-sizes(@rem);
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  @rem: (1rem / 32);  /* 移动端rem基准：1rem = 32px */
+  :root {
+    /* 生成移动端字体大小变量 */
+    .generate-font-sizes(@rem);
+  }
+}
+
+/* --- 编译后 --- */
+@media screen and (min-width: 1024px) {
+  :root {
+    --jds-font-size-12: 12px;
+    --jds-font-size-14: max(12px, 0.875rem);
+    --jds-font-size-16: max(12px, 1rem);
+    --jds-font-size-18: max(12px, 1.125rem);
+    --jds-font-size-20: max(12px, 1.25rem);
+    --jds-font-size-24: max(12px, 1.5rem);
+    --jds-font-size-28: max(12px, 1.75rem);
+    --jds-font-size-32: max(12px, 2rem);
+    --jds-font-size-36: max(12px, 2.25rem);
+    --jds-font-size-40: max(12px, 2.5rem);
+    --jds-font-size-48: max(12px, 3rem);
+    --jds-font-size-56: max(12px, 3.5rem);
+    --jds-font-size-64: max(12px, 4rem);
+    --jds-font-size-72: max(12px, 4.5rem);
+    --jds-font-size-80: max(12px, 5rem);
+  }
+}
+@media screen and (max-width: 1023.98px) {
+  :root {
+    --jds-font-size-12: 12px;
+    --jds-font-size-14: max(12px, 0.4375rem);
+    --jds-font-size-16: max(12px, 0.5rem);
+    --jds-font-size-18: max(12px, 0.5625rem);
+    --jds-font-size-20: max(12px, 0.625rem);
+    --jds-font-size-24: max(12px, 0.75rem);
+    --jds-font-size-28: max(12px, 0.875rem);
+    --jds-font-size-32: max(12px, 1rem);
+    --jds-font-size-36: max(12px, 1.125rem);
+    --jds-font-size-40: max(12px, 1.25rem);
+    --jds-font-size-48: max(12px, 1.5rem);
+    --jds-font-size-56: max(12px, 1.75rem);
+    --jds-font-size-64: max(12px, 2rem);
+    --jds-font-size-72: max(12px, 2.25rem);
+    --jds-font-size-80: max(12px, 2.5rem);
+  }
+}
+```

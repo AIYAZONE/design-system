@@ -19,7 +19,7 @@ interface ButtonProps {
 }
 
 const meta: Meta = {
-  title: "组件/jds-button",
+  title: "03 基础组件/jds-button",
   tags: ["autodocs"],
   component: "jds-button",
   parameters: {
