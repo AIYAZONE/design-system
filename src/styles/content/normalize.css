@@ -117,8 +117,8 @@ select {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   /* 使用边框盒模型 */
+  box-sizing: border-box;
 }
 
 /* PC端（>=1024px) */
