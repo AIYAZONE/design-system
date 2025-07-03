@@ -15,7 +15,7 @@ interface DialogProps {
 }
 
 const meta: Meta = {
-  title: "组件/jds-dialog",
+  title: "03 基础组件/jds-dialog",
   tags: ["autodocs"],
   component: "jds-dialog",
   parameters: {
