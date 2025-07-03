@@ -1,14 +1,81 @@
-import { Meta, Markdown } from '@storybook/blocks';
-
-<Meta title="02 设计变量/04 字体字号" />
-
-# 字体字号 - Font Size
+# 字体 - Font
 
 ## 概述
 
+Jackery 设计系统的字体规范是为了在全球化产品中实现一致的文字视觉效果。我们采用 Poppins 作为默认字体，并为日本市场特别优化使用 Noto Sans JP 字体。系统通过精心设计的字重、字号体系，结合响应式设计方案，确保了跨设备、跨语言环境下的最佳阅读体验。
+
+字体系统的核心特点：
+
+- 1.采用 CSS 变量实现灵活配置
+- 2.支持多语言字体适配
+- 3.响应式字号自适应
+- 4.标准化的字重管理
+
+## 介绍
+
+### 字体名 - Font Family
+
+设计系统中使用的字体命名：
+
+- 默认字体：**Poppins**
+- 日站字体：**Noto Sans JP**
+
+### 字重与字体关系
+
+| W3C标准字体字重对应 | 公司UED v2.1规范对应关系 |
+| --- | --- |
+| **常见粗细值名称和数值对应：** <br>`400` Normal/Regular<br>`500` Medium<br>`600` Semi Bold (Demi Bold)<br>`700` Bold | **Poppins**<br>`400` Regular<br>`500` Medium<br>`600` Semi Bold<br>`700` Bold - 设计系统保留，但常规高保设计稿中不推荐使用<br><br>**Noto Sans JP**<br>`400` `500` Regular<br>`600` `700` Bold |
+
+**说明：**
+
+- 1.开发中可通过设置字重自动匹配对应字体。
+- 2.详细代码实现，请查看文件： `src/styles/jds/font.css`
+
+### 字号 - Font Size
+
 遵循 Jackery 设计系统响应式设计方案，以CSS 根节点`font-size`为基准，使用rem进行换算，实现跨设备的字号大小自适应。
 
-## 字号变量
+## 变量
+
+### 字体族变量
+
+``` css
+  /* ========================================
+  * 字体族设置 (Font Family Configuration)
+  * ======================================== */
+
+  /**
+  * 日语站点字体设置
+  * @description 为日语内容优化的字体族，使用Noto Sans JP确保日文字符显示效果
+  */
+  :root[lang="ja"] {
+    --jds-font-family: "Noto Sans JP", sans-serif;
+  }
+
+  /**
+  * 非日语站点字体设置
+  * @description 国际化字体族，使用Poppins作为主要英文字体
+  */
+  :root:not([lang="ja"]) {
+    --jds-font-family: "Poppins", sans-serif;
+  }
+```
+
+### 字重变量
+
+```css
+  /* ----------------------------------------
+   * 字体权重系统 (Font Weight System)
+   * ---------------------------------------- */
+
+  --jds-font-regular: 400;                                       /* 常规字重：400，正文内容 */
+  --jds-font-medium: 500;                                         /* 中等字重：500，次要标题 */
+  --jds-font-semibold: 600;                                     /* 半粗字重：600，重要内容 */
+  --jds-font-bold: 700;                                             /* 粗体字重：700，主要标题 */
+
+```
+
+### 字号变量
 
 ```css
 /**
