@@ -76,6 +76,7 @@ summary {
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: var(--jds-font-family);
 }
 
 /* 对于表格元素的重置 */
@@ -119,7 +120,6 @@ select {
 *::after {
   /* 使用边框盒模型 */
   box-sizing: border-box;
-  font-family: var(--jds-font-family);
 }
 
 /* PC端（>=1024px) */
