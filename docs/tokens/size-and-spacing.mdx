@@ -6,8 +6,11 @@ import { html } from 'lit';
 # 尺寸和间距 - Size and Spacing
 
 ## 概述
+Jackery 设计系统采用响应式的尺寸和间距方案，通过 CSS 变量和 rem 单位实现跨设备的一致性体验。
 
-遵循 Jackery 设计系统响应式设计方案，以CSS 根节点`font-size`为基准，使用rem进行换算，实现跨设备的字号大小自适应。
+在桌面端（`≥1024px`）和移动端（`<1024px`）分别采用 16px 和 32px 作为根节点字号，并基于此派生出一套完整的尺寸变量（从 2px 到 96px）。这种设计确保了界面元素在不同设备上能保持合适的比例关系，同时提供了灵活的尺寸选择空间。
+
+所有尺寸变量都以 `--jds-size-` 为前缀，后接具体的像素数值，如 `--jds-size-8` 表示 8px 的等效尺寸。在实际应用中，这些变量会根据设备的根字号自动计算出对应的 rem 值，从而实现响应式布局。
 
 ## CSS 变量
 
@@ -44,7 +47,7 @@ import { html } from 'lit';
 }
 
 @media screen and (min-width: 1024px) {
-  @rem: (1rem / 16);  /* 桌面端rem基准：1rem = 16px */
+  @rem: (1rem / 16);
   :root {
     /* 生成桌面端尺寸变量 */
     .generate-sizes(@rem);
@@ -52,7 +55,7 @@ import { html } from 'lit';
 }
 
 @media screen and (max-width: 1023.98px) {
-  @rem: (1rem / 32);  /* 移动端rem基准：1rem = 32px */
+  @rem: (1rem / 32);
   :root {
     /* 生成移动端尺寸变量 */
     .generate-sizes(@rem);
