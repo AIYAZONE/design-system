@@ -11,7 +11,6 @@ const preview: Preview = {
     options: {
       storySort: {
         method: "alphabetical",
-        order: ["介绍", ["Welcome", "*"], "设计变量", "组件"],
         locales: "en-US",
       },
     },

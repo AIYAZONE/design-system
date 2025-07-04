@@ -4,30 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JDS 通用样式技巧</title>
+  <title>Public Style - 通用样式技巧</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../styles/index.less" />
-  <style>
-    section {
-      margin: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="../styles/public.less" />
+  <link rel="stylesheet" href="../styles/index.less" />
 </head>
 
 <body>
-  <section>
-    <h2>本项目LESS文件 变量对应值使用 @vw计算失效</h2>
-    <pre>
-      @base: 750;
-      @vw: (1vw / @base) * 100;
-      .button {
-        --height: 80 * @vw; // Error - 失效
-        --height: 10.6667vw; // 生效 80px
-        --height: max(0, 80 * @vw); // 生效 80px
-        height: 80 * @vw; // 生效 80px
-      }
-    </pre>
-  </section>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Public Style 通用样式技巧</h1>
+        <p class="subtitle">设计系统中的通用样式使用技巧和注意事项</p>
+      </div>
+    </header>
 
+    <main>
+      <section>
+        <h2>本项目LESS文件 变量对应值使用 @rem计算失效</h2>
+        <pre>
+        @rem: (1rem / 16);
+        .button {
+          --height: 80 * @rem;            // Error - 失效
+          --height: max(0, 80 * @rem);    // 80px等效尺寸 - 生效
+          height: 80 * @rem;              // 80px等效尺寸 - 生效
+        }
+        </pre>
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>

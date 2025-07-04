@@ -16,18 +16,19 @@
   width: var(--jds-dialog-width, 640px);
   max-width: 1200px;
   min-height: 240px;
-  height: calc(100vh - 2 * var(--jds-size-64));
+  height: auto;
+  max-height: calc(100vh - 2 * var(--jds-size-64));
   min-width: 424px;
   padding: 0;
   border: 0;
-  border-radius: var(--jds-border-radius-l);
+  border-radius: var(--jds-border-radius-12);
 }
 
 .dialog,
 .dialog-polyfill .container {
   padding: 0;
   border: 0;
-  border-radius: var(--jds-border-radius-l);
+  border-radius: var(--jds-border-radius-12);
 }
 
 .dialog::backdrop {

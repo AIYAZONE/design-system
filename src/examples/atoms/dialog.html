@@ -2,14 +2,32 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dialog - 对话弹窗</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../styles/index.less" />
+  <link rel="stylesheet" href="../styles/public.less" />
+  <link rel="stylesheet" href="../styles/index.less" />
 </head>
 
 <body>
-  <jds-button variant="secondary">打开弹窗</jds-button>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Dialog 对话弹窗组件</h1>
+        <p class="subtitle">各种样式和状态的对话弹窗展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>对话弹窗</h2>
+      <p>
+        <jds-button variant="secondary">打开弹窗</jds-button>
+      </p>
 
   <jds-dialog caption="Use location service?"
     style="--jds-dialog-index:10000;">
@@ -50,14 +68,16 @@
     </div>
     <jds-button variant="primary" size="large">Agree</jds-button>
   </jds-dialog>
-  <script type="module" src="../../index.ts"></script>
-  <script>
-    // 添加事件监听器
-    document.querySelector('jds-button').addEventListener('click', () => {
-      const dialog = document.querySelector('jds-dialog');
-      dialog.setAttribute('open', true);
-    });
-  </script>
+      <script type="module" src="../../index.ts"></script>
+      <script>
+        // 添加事件监听器
+        document.querySelector('jds-button').addEventListener('click', () => {
+          const dialog = document.querySelector('jds-dialog');
+          dialog.setAttribute('open', true);
+        });
+      </script>
+    </main>
+  </div>
 </body>
 
 </html>
