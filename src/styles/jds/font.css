@@ -1,12 +1,12 @@
-/* 默认字体系列 */
+/* 默认字体系列 暂时上传到 现网Shopify 美站店铺 内容管理系统中 */
 /* poppins-regular */
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-regular.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-regular.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff?v=1751599148) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -18,8 +18,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-medium.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-medium.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-medium.woff2?v=1751599147) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-medium.woff?v=1751599147) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -31,8 +31,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-semibold.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-semibold.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff?v=1751599147) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -44,21 +44,22 @@
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-bold.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/poppins-bold.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-bold.woff2?v=1751599147) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-bold.woff?v=1751599147) format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* 日站字体文件，暂时上传到 现网Shopify 日站店铺 内容管理系统中 */
 /* noto-sans-jp-regular */
 @font-face {
   font-family: "Noto Sans JP";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-regular.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-regular.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff2?v=1751595534) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff?v=1751595537) format("woff");
 }
 
 /* noto-sans-jp-regular */
@@ -67,8 +68,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-regular.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-regular.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff2?v=1751595534) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff?v=1751595537) format("woff");
 }
 
 /* noto-sans-jp-bold */
@@ -77,8 +78,8 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-bold.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-bold.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff2?v=1751595535) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff?v=1751595538) format("woff");
 }
 
 /* noto-sans-jp-bold */
@@ -87,6 +88,6 @@
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-bold.woff2) format("woff2"),
-    url(https://cdn.shopify.com/s/files/1/0733/5644/3969/files/noto-sans-jp-bold.woff) format("woff");
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff2?v=1751595535) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff?v=1751595538) format("woff");
 }
