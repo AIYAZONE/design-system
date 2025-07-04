@@ -1,14 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Popover - 弹出窗口</title>
-    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles/index.less" />
-  </head>
-  <body>
-    <h2>Tooltip + Popover</h2>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Popover - 弹出窗口</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles/index.less" />
+  <link rel="stylesheet" href="../styles/public.less" />
+  <link rel="stylesheet" href="../styles/index.less" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Popover 弹出窗口组件</h1>
+        <p class="subtitle">各种样式和状态的弹出窗口展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>Tooltip + Popover</h2>
     <jds-button id="button-13">top-start</jds-button>
 
     <jds-popover target="button-13" id="popover-13" placement="top-start" style="--jds-popover-arrow-display: block;">
@@ -87,15 +103,18 @@
       Popover Content
     </jds-popover>
 
-    <script type="module" src="../../index.ts"></script>
-    <script>
-      // 添加事件监听器
-      document.querySelectorAll('jds-button[id^="button-"]').forEach(button => {
-        const placement = button.id.split('-')[1];
-        button.addEventListener('jds-click', () => {
-          document.querySelector(`#popover-${placement}`).show();
+      <script type="module" src="../../index.ts"></script>
+      <script>
+        // 添加事件监听器
+        document.querySelectorAll('jds-button[id^="button-"]').forEach(button => {
+          const placement = button.id.split('-')[1];
+          button.addEventListener('jds-click', () => {
+            document.querySelector(`#popover-${placement}`).show();
+          });
         });
-      });
-    </script>
-  </body>
+      </script>
+    </main>
+  </div>
+</body>
+
 </html>

@@ -7,12 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jackery Design System - 开发调试中心</title>
   <link rel="stylesheet" href="./src/styles/index.less" />
-  <link rel="stylesheet" href="./src/styles/example/index.less" />
+  <link rel="stylesheet" href="./src/examples/styles/public.less" />
+  <link rel="stylesheet" href="./src/examples/styles/index.less" />
 </head>
 
 <body>
   <div class="container">
-    <header class="header">
+    <header class="index-header">
       <div class="logo">
         <img src="/favicon.svg" alt="Jackery Logo" />
       </div>
@@ -40,7 +41,7 @@
     </div>
 
     <nav class="nav-grid">
-      <section class="nav-section">
+      <section class="card">
         <h2>🌍 国际化与字体</h2>
         <ul class="nav-list">
           <li class="nav-item">
@@ -73,7 +74,7 @@
         </ul>
       </section>
 
-      <section class="nav-section">
+      <section class="card">
         <h2>🧩 核心组件</h2>
         <ul class="nav-list">
           <li class="nav-item">
@@ -115,7 +116,7 @@
         </ul>
       </section>
 
-      <section class="nav-section">
+      <section class="card">
         <h2>💬 交互组件</h2>
         <ul class="nav-list">
           <li class="nav-item">
@@ -147,7 +148,7 @@
           </li>
           <li class="nav-item">
             <a href="/src/examples/atoms/dialog.html" class="nav-link">
-              <span class="nav-link-icon">🗨</span>
+              <span class="nav-link-icon">DLG</span>
               <div class="nav-link-text">
                 Dialog 对话弹窗
                 <div class="nav-link-desc">模态对话框</div>
@@ -157,7 +158,7 @@
         </ul>
       </section>
 
-      <section class="nav-section">
+      <section class="card">
         <h2>🎨 样式与图标</h2>
         <ul class="nav-list">
           <li class="nav-item">
@@ -194,11 +195,14 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-info">
-          <p class="copyright">© 2024-<script>document.write(new Date().getFullYear())</script> Jackery F2E Team</p>
+          <p class="copyright">© 2024-
+            <script>document.write(new Date().getFullYear())</script> Jackery F2E Team
+          </p>
           <p class="tagline">Built with ❤️ for better user experience</p>
         </div>
         <div class="footer-links">
-          <a href="http://192.168.30.241/global-website/jackery-design-system" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <a href="http://192.168.30.241/global-website/jackery-design-system" target="_blank" rel="noopener noreferrer"
+            class="footer-link">
             <span class="link-icon">🔗</span>
             GitLab
           </a>
