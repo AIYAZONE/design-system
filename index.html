@@ -1,44 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JDS调试页面</title>
+  <title>Jackery Design System - 开发调试中心</title>
+  <link rel="stylesheet" href="./src/styles/index.less" />
+  <link rel="stylesheet" href="./src/styles/example/index.less" />
 </head>
 
 <body>
   <div class="container">
-    <h1>Jackery Design System 调试页面</h1>
-    <nav>
-      <ol>
-        <li><a href="/src/examples/i18n/index.html">国际化示例</a></li>
-        <li><a href="/src/examples/components/index.html">各基础组件</a></li>
-      </ol>
-      <h2>字体+自定义样式</h2>
-      <ol>
-        <li><a href="/src/examples/font/en.html">英语字体测试页面</a></li>
-        <li><a href="/src/examples/font/ja.html">日语字体测试页面</a></li>
-      </ol>
-      <h2>原子类组件</h2>
-      <ol>
-        <li><a href="/src/examples/atoms/badge.html">Badge - 徽章</a></li>
-        <li><a href="/src/examples/atoms/icons.html">Icons - 图标</a></li>
-        <li><a href="/src/examples/atoms/button.html">Button - 按钮</a></li>
-        <li><a href="/src/examples/atoms/spinner.html">Spinner - 加载器</a></li>
-        <li><a href="/src/examples/atoms/toast.html">Toast - 轻提示</a></li>
-        <li><a href="/src/examples/atoms/tooltip.html">Tooltip - 提示框</a></li>
-        <li><a href="/src/examples/atoms/popover.html">Popover - 弹出窗口</a></li>
-        <li><a href="/src/examples/atoms/dialog.html">Dialog - 对话弹窗</a></li>
-      </ol>
-      <h2>自定义样式</h2>
-      <ol>
-        <li><a href="/src/examples/components/public-style.html">通用样式技巧</a></li>
-        <li><a href="/src/examples/components/rte.html">Rte富文本样式</a></li>
-      </ol>
+    <header class="header">
+      <div class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </div>
+      <h1>Jackery Design System <sub id="versionNumber">加载中...</sub></h1>
+      <p class="subtitle">官网中心 - 前端团队</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">核心组件</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">语言支持</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12</div>
+        <div class="stat-label">示例页面</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">响应式设计</div>
+      </div>
+    </div>
+
+    <nav class="nav-grid">
+      <section class="nav-section">
+        <h2>🌍 国际化与字体</h2>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/src/examples/i18n/index.html" class="nav-link">
+              <span class="nav-link-icon">i18n</span>
+              <div class="nav-link-text">
+                国际化示例
+                <div class="nav-link-desc">多语言支持与本地化</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/font/en.html" class="nav-link">
+              <span class="nav-link-icon">EN</span>
+              <div class="nav-link-text">
+                英语字体测试
+                <div class="nav-link-desc">English Typography Test</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/font/ja.html" class="nav-link">
+              <span class="nav-link-icon">日</span>
+              <div class="nav-link-text">
+                日语字体测试
+                <div class="nav-link-desc">Japanese Typography Test</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="nav-section">
+        <h2>🧩 核心组件</h2>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/src/examples/components/index.html" class="nav-link">
+              <span class="nav-link-icon">ALL</span>
+              <div class="nav-link-text">
+                所有基础组件
+                <div class="nav-link-desc">完整组件展示</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/button.html" class="nav-link">
+              <span class="nav-link-icon">BTN</span>
+              <div class="nav-link-text">
+                Button 按钮
+                <div class="nav-link-desc">各种样式和状态的按钮</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/badge.html" class="nav-link">
+              <span class="nav-link-icon">🏷</span>
+              <div class="nav-link-text">
+                Badge 徽章
+                <div class="nav-link-desc">标签和状态指示器</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/spinner.html" class="nav-link">
+              <span class="nav-link-icon">⟳</span>
+              <div class="nav-link-text">
+                Spinner 加载器
+                <div class="nav-link-desc">加载状态指示器</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="nav-section">
+        <h2>💬 交互组件</h2>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/src/examples/atoms/toast.html" class="nav-link">
+              <span class="nav-link-icon">🍞</span>
+              <div class="nav-link-text">
+                Toast 轻提示
+                <div class="nav-link-desc">消息通知组件</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/tooltip.html" class="nav-link">
+              <span class="nav-link-icon">💡</span>
+              <div class="nav-link-text">
+                Tooltip 提示框
+                <div class="nav-link-desc">悬浮提示信息</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/popover.html" class="nav-link">
+              <span class="nav-link-icon">📋</span>
+              <div class="nav-link-text">
+                Popover 弹出窗口
+                <div class="nav-link-desc">弹出式内容容器</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/atoms/dialog.html" class="nav-link">
+              <span class="nav-link-icon">🗨</span>
+              <div class="nav-link-text">
+                Dialog 对话弹窗
+                <div class="nav-link-desc">模态对话框</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="nav-section">
+        <h2>🎨 样式与图标</h2>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/src/examples/atoms/icons.html" class="nav-link">
+              <span class="nav-link-icon">🎯</span>
+              <div class="nav-link-text">
+                Icons 图标
+                <div class="nav-link-desc">图标库展示</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/components/public-style.html" class="nav-link">
+              <span class="nav-link-icon">🎨</span>
+              <div class="nav-link-text">
+                通用样式技巧
+                <div class="nav-link-desc">CSS 工具类和技巧</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/examples/components/rte.html" class="nav-link">
+              <span class="nav-link-icon">📝</span>
+              <div class="nav-link-text">
+                富文本样式
+                <div class="nav-link-desc">RTE 编辑器样式</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
     </nav>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p class="copyright">© 2024-<script>document.write(new Date().getFullYear())</script> Jackery F2E Team</p>
+          <p class="tagline">Built with ❤️ for better user experience</p>
+        </div>
+        <div class="footer-links">
+          <a href="http://192.168.30.241/global-website/jackery-design-system" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <span class="link-icon">🔗</span>
+            GitLab
+          </a>
+          <a href="/docs" class="footer-link">
+            <span class="link-icon">📚</span>
+            文档
+          </a>
+          <a href="/LICENSE" class="footer-link">
+            <span class="link-icon">📄</span>
+            许可证
+          </a>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p class="build-info">基于现代 Web 技术构建 • 支持响应式设计 • 遵循无障碍标准</p>
+      </div>
+    </footer>
   </div>
+  <script>
+    // 动态获取版本号
+    async function loadVersion() {
+      try {
+        const response = await fetch('/package.json');
+        const packageData = await response.json();
+        const versionElement = document.getElementById('versionNumber');
+        if (versionElement && packageData.version) {
+          versionElement.textContent = `v${packageData.version}`;
+        }
+      } catch (error) {
+        console.warn('无法获取版本信息:', error);
+        const versionElement = document.getElementById('versionNumber');
+        if (versionElement) {
+          versionElement.textContent = 'v0.0.4';
+        }
+      }
+    }
+
+    // 页面加载完成后获取版本号
+    document.addEventListener('DOMContentLoaded', loadVersion);
+  </script>
 </body>
 
 </html>
