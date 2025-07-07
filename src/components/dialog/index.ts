@@ -11,6 +11,9 @@ interface DialogElement {
   close: () => void; // 关闭对话框
 }
 
+// 对话框尺寸类型定义：特大、大
+export type DialogSize = "extra" | "large";
+
 /**
  * @tag jds-dialog
  * @summary Jackery 对话框组件
@@ -23,6 +26,12 @@ interface DialogElement {
 export default class JdsDialog extends LitElement {
   // 组件的样式
   static styles = [unsafeCSS(styles)];
+
+  /**
+   * 对话框尺寸
+   */
+  @property({ type: String, reflect: true })
+  size: DialogSize = "large";
 
   /**
    * 设置对话框的打开/关闭状态
@@ -170,7 +179,7 @@ export default class JdsDialog extends LitElement {
   // 渲染对话框容器
   private renderContainer() {
     const title = this.caption
-      ? html`<h4 id="dialog-caption" class="jds-h4" .innerHTML="${this.caption}"></h4>`
+      ? html`<h4 id="dialogCaption" class="jds-h4" .innerHTML="${this.caption}"></h4>`
       : "";
     const closeButton = this.closable
       ? html`<jds-icon
@@ -202,7 +211,7 @@ export default class JdsDialog extends LitElement {
           part="dialog-polyfill"
           class="dialog-polyfill"
           role="dialog"
-          aria-labelledby="dialog-caption"
+          aria-labelledby="dialogCaption"
           @click=${this.clickOutsideHandler}
         >
           ${this.renderContainer()}
@@ -211,7 +220,7 @@ export default class JdsDialog extends LitElement {
           <dialog
             part="dialog"
             class="dialog"
-            aria-labelledby="dialog-caption"
+            aria-labelledby="dialogCaption"
             @click=${this.clickOutsideHandler}
           >
             ${this.renderContainer()}

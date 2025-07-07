@@ -5,6 +5,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 interface DialogProps {
   class?: string;
+  size?: string;
   caption?: string;
   open: boolean;
   critical: boolean;
@@ -26,6 +27,14 @@ const meta: Meta = {
     },
   },
   argTypes: {
+    size: {
+      description: "设置对话框的尺寸",
+      options: ["extra", "large"],
+      default: "large",
+      control: {
+        type: "select",
+      },
+    },
     caption: {
       description: "设置对话框的标题",
       control: {
@@ -77,6 +86,7 @@ const DialogTemplate = (args: DialogProps) =>
     >
     <jds-dialog
       class=${ifDefined(args.class)}
+      size=${ifDefined(args.size)}
       caption=${ifDefined(args.caption)}
       ?open=${args.open}
       ?critical=${args.critical}
