@@ -17,7 +17,7 @@ export default class JdsSpinner extends LitElement {
    * 设置加载指示器的大小
    */
   @property({ type: String, reflect: true })
-  size = "var(--jds-font-size-m)";
+  size = "var(--jds-font-size-14)";
 
   /**
    * 设置加载指示器的禁用状态
