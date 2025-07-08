@@ -5,13 +5,7 @@ import { event, EventDispatcher } from "../../utils/event";
 import styles from "./index.less?inline";
 import "../button";
 
-// 定义对话框元素的接口
-interface DialogElement {
-  showModal: () => void; // 显示模态对话框
-  close: () => void; // 关闭对话框
-}
-
-// 对话框尺寸类型定义：特大、大
+// 对话框尺寸类型定义：特大、大（默认）
 export type DialogSize = "extra" | "large";
 
 /**
@@ -30,7 +24,18 @@ export default class JdsDialog extends LitElement {
   /**
    * 对话框尺寸
    */
-  @property({ type: String, reflect: true })
+  @property({
+    type: String,
+    reflect: true,
+    hasChanged(newVal: DialogSize, oldVal: DialogSize) {
+      const validSizes: DialogSize[] = ['extra', 'large'];
+      if (!validSizes.includes(newVal)) {
+        console.warn(`Invalid dialog size: ${newVal}. Using 'large' instead.`);
+        return false;
+      }
+      return newVal !== oldVal;
+    }
+  })
   size: DialogSize = "large";
 
   /**
@@ -62,32 +67,12 @@ export default class JdsDialog extends LitElement {
   critical = false;
 
   /**
-   * 确定对话框是否显示关闭按钮。
+   * 确定对话框是否隐藏关闭按钮Icon。
    */
   @property({ type: Boolean, reflect: true })
-  closable = true;
+  noClose = false;
 
-  /**
-   * 确定对话框是否当前使用填充版本而非原生 HTML 对话框。
-   */
-  /**
-   * * 确定对话框当前是否使用 polyfill 版本而非原生 HTML 对话框。
-   * * 默认情况下，如果浏览器支持，则使用原生对话框，否则使用 polyfill。
-   * * 您可以强制使用 polyfill，例如，在某些情况下，例如在对话框顶部显示一些内容，例如，如果您无法使用 Popover API。
-   * * 请注意，polyfill 版本可能会导致一些可访问性和堆叠上下文方面的不一致。因此，请格外谨慎使用。
-   * * 从当前实现开始，您可以使用 Popover API 在对话框 HTML 元素上方渲染。
-   * * 但是，它会阻止对 Popover 元素的任何操作。在开发 `jds-notification` 组件时遇到了这个问题。
-   * * 因此，我们决定默认为 `jds-dialog` 组件启用 polyfill。
-   * * 如果您更喜欢使用原生对话框，可以将此属性设置为 false。
-   * * 请注意，这样做会导致通知在对话框背景之下渲染。
-   */
-  @property({ type: Boolean, reflect: true })
-  polyfilled = true;
-
-  // 查询选择器，获取对话框元素和其他相关元素
-  @query(".dialog")
-  private dialog!: HTMLDialogElement & DialogElement;
-
+  // 查询选择器，获取对话框相关元素
   @query(".container")
   private container!: HTMLElement;
 
@@ -113,8 +98,7 @@ export default class JdsDialog extends LitElement {
 
   // 当属性发生变化时执行的逻辑
   updated(changedProperties: PropertyValues<this>) {
-    // 如果`open`或`polyfilled`属性发生变化，则切换对话框的处理程序
-    // if (changedProperties.has("open") || changedProperties.has("polyfilled")) {
+    // 如果`open`属性发生变化，则切换对话框的处理程序
     if (changedProperties.has("open")) {
       this.toggleDialogHandler();
     }
@@ -122,21 +106,23 @@ export default class JdsDialog extends LitElement {
 
   // 切换对话框的处理程序
   private toggleDialogHandler() {
-    if (this.open) {
-      // 打开对话框
-      this.dialog?.showModal?.();
-      this.onOpen({ isOpen: true });
-      document.body.style.overflow = "hidden"; // 禁止背景滚动
-      // 添加事件监听器
-      window?.addEventListener("keydown", this.onKeydown);
-    } else {
-      // 关闭对话框
-      this.dialog?.close?.();
-      this.onClose({ isOpen: false }, { bubbles: false });
-      document.body.style.overflow = "auto"; // 恢复背景滚动
-      // 移除事件监听器
-      window?.removeEventListener("keydown", this.onKeydown);
-      this.dispatchEvent(new Event("closed", { bubbles: true })); // 确保触发关闭事件
+    try {
+      if (this.open) {
+        // 打开对话框
+        this.onOpen({ isOpen: true });
+        document.body.style.overflow = "hidden"; // 禁止背景滚动
+        // 添加事件监听器
+        window?.addEventListener("keydown", this.onKeydown);
+      } else {
+        // 关闭对话框
+        this.onClose({ isOpen: false }, { bubbles: false });
+        document.body.style.overflow = "auto"; // 恢复背景滚动
+        // 移除事件监听器
+        window?.removeEventListener("keydown", this.onKeydown);
+        this.dispatchEvent(new Event("closed", { bubbles: true })); // 确保触发关闭事件
+      }
+    } catch (error) {
+      console.error('Dialog toggle error:', error);
     }
   }
 
@@ -181,7 +167,7 @@ export default class JdsDialog extends LitElement {
     const title = this.caption
       ? html`<h4 id="dialogCaption" class="jds-h4" .innerHTML="${this.caption}"></h4>`
       : "";
-    const closeButton = this.closable
+    const closeButton = !this.noClose
       ? html`<jds-icon
           part="dialog-close"
           class="close"
@@ -206,26 +192,16 @@ export default class JdsDialog extends LitElement {
 
   // 渲染组件
   render(): TemplateResult {
-    return this.polyfilled || !window.HTMLDialogElement
-      ? html`<div
-          part="dialog-polyfill"
-          class="dialog-polyfill"
-          role="dialog"
-          aria-labelledby="dialogCaption"
-          @click=${this.clickOutsideHandler}
-        >
-          ${this.renderContainer()}
-        </div>`
-      : html`
-          <dialog
-            part="dialog"
-            class="dialog"
-            aria-labelledby="dialogCaption"
-            @click=${this.clickOutsideHandler}
-          >
-            ${this.renderContainer()}
-          </dialog>
-        `;
+    return html`<div
+      part="dialog-polyfill"
+      class="dialog-polyfill"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="${this.caption ? 'dialogCaption' : ''}"
+      @click=${this.clickOutsideHandler}
+    >
+      ${this.renderContainer()}
+    </div>`;
   }
 }
 
