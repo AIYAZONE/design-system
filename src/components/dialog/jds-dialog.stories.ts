@@ -30,42 +30,57 @@ const meta: Meta = {
     size: {
       description: "设置对话框的尺寸",
       options: ["extra", "large"],
-      default: "large",
       control: {
         type: "select",
+      },
+      table: {
+        defaultValue: { summary: "large" },
       },
     },
     caption: {
       description: "设置对话框的标题",
       control: {
         type: "text",
-        default:'默认对话框'
+      },
+      table: {
+        defaultValue: { summary: "默认对话框" },
       },
     },
     open: {
       description: "设置对话框的打开/关闭状态",
       control: "boolean",
-      default: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     critical: {
       description: "确定对话框是否为关键对话框，关键对话框无法通过键盘、遮罩层关闭",
       control: "boolean",
-      default: false,
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     closable: {
       description: "确定对话框是否显示关闭按钮",
       control: "boolean",
-      default: true,
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     polyfilled: {
       description: "确定对话框是否当前使用填充版本而非原生 HTML 对话框",
       control: "boolean",
-      default: true,
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     style: {
       description: "设置对话框的自定义样式，支持CSS变量配置，如 --jds-dialog-width: 800px",
       control: {
         type: "text",
+      },
+      table: {
+        defaultValue: { summary: "-" },
       },
     },
   },
@@ -77,7 +92,7 @@ const DialogTemplate = (args: DialogProps) =>
   html`<div style="position: relative; height: 300px; overflow: hidden;">
     <jds-button
       @click=${() => {
-        const dialog = document.querySelector('jds-dialog');
+        const dialog = document.querySelector(`jds-dialog.${args.class}`);
         if (dialog) {
           dialog.setAttribute('open', 'true');
         }
@@ -101,6 +116,7 @@ const DialogTemplate = (args: DialogProps) =>
 export const Default = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'default',
     caption: args.caption || "默认对话框",
     content: `
       <div>
@@ -113,9 +129,10 @@ export const Default = (args: DialogProps) =>
 export const WithoutTitle = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'without-title',
     caption: undefined,
     content: `
-      <div>
+      <div class="jds-b1">
         <p>这是一个没有标题的对话框示例。</p>
         <p>对话框可以不设置标题，只显示内容和操作按钮。</p>
       </div>
@@ -125,6 +142,7 @@ export const WithoutTitle = (args: DialogProps) =>
 export const CriticalDialog = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'critical',
     caption: args.caption || "关键对话框",
     critical: true,
     content: `
@@ -138,6 +156,7 @@ export const CriticalDialog = (args: DialogProps) =>
 export const ContentOnlyDialog = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'content-only',
     caption: args.caption || "纯内容对话框",
     content: `
       <div>
@@ -150,6 +169,7 @@ export const ContentOnlyDialog = (args: DialogProps) =>
 export const RichContentDialog = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'rich-content',
     caption: args.caption || "富文本内容对话框",
     content: `
       <div class="jds-rte">
@@ -168,6 +188,7 @@ export const RichContentDialog = (args: DialogProps) =>
 export const CustomStyleDialog = (args: DialogProps) =>
   html`${DialogTemplate({
     ...args,
+    class: 'custom-style',
     caption: args.caption || "自定义样式对话框",
     style: "--jds-dialog-width: 800px; --jds-dialog-title-align: center;",
     content: `
