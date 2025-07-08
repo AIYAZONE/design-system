@@ -165,7 +165,7 @@ export default class JdsDialog extends LitElement {
   // 渲染对话框容器
   private renderContainer() {
     const title = this.caption
-      ? html`<h4 id="dialogCaption" class="jds-h4" .innerHTML="${this.caption}"></h4>`
+      ? html`<h4 id="dialogCaption" part="dialog-title" class="jds-h4" .innerHTML="${this.caption}"></h4>`
       : "";
     const closeButton = !this.noClose
       ? html`<jds-icon
