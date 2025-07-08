@@ -33,56 +33,83 @@ const meta: Meta = {
     variant: {
       options: ["primary", "secondary", "text"],
       description: "设置按钮的变体",
-      default: "primary",
       control: { type: "select" },
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
     kind: {
       options: ["default", "neutral", "success", "danger","custom"],
       description: "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color：blue)",
-      default: "default",
       control: { type: "select" },
+      table: {
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
       options: ["extra", "large", "medium", "small"],
       description: "设置按钮的大小",
-      default: "large",
       control: { type: "select" },
+      table: {
+        defaultValue: { summary: "large" },
+      },
     },
     label: {
       description: "设置按钮的标签，用于无障碍访问",
       control: {
         type: "text",
       },
+      table: {
+        defaultValue: { summary: "-" },
+      },
     },
     loading: {
       description: "设置按钮的加载状态",
       control: "boolean",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     disabled: {
       description: "设置按钮为禁用状态",
       control: "boolean",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     href: {
       control: {
         type: "text",
       },
       description: "设置链接URL，如果设置，按钮将渲染为锚标签",
+      table: {
+        defaultValue: { summary: "-" },
+      },
     },
     target: {
       description: "设置锚点的目标，当设置了`href`时使用",
       options: ["_blank", "_parent", "_self", "_top"],
       control: { type: "select" },
+      table: {
+        defaultValue: { summary: "-" },
+      },
     },
     icon: {
       description: "设置图标名称，使用`jds-icon`组件显示图标",
       control: {
         type: "text",
       },
+      table: {
+        defaultValue: { summary: "-" },
+      },
     },
     style: {
       description: "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block;--jds-button-custom-color:blue;",
       control: {
         type: "text",
+      },
+      table: {
+        defaultValue: { summary: "-" },
       },
     },
   },
@@ -100,7 +127,7 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     size=${ifDefined(args.size)}
     icon="${ifDefined(args.icon)}"
     label="${ifDefined(args.label)}"
-    ?disabled=${args.disabled}
+    ?disabled=${ifDefined(args.disabled)}
     ?loading=${args.loading}
     style="${ifDefined(args.style)}"
     >${unsafeHTML(args.content)}</jds-button
