@@ -7,169 +7,141 @@
   text-align: left;
 }
 
-.container {
-  --background-color: var(--jds-color-white);
-
-  display: flex;
-  flex-direction: column;
-  background: var(--background-color);
-  width: var(--jds-dialog-width, 640px);
-  max-width: 1200px;
-  min-height: 240px;
-  height: auto;
-  max-height: calc(100vh - 2 * var(--jds-size-64));
-  min-width: 424px;
+.dialog {
   padding: 0;
   border: 0;
   border-radius: var(--jds-border-radius-12);
-}
 
-.dialog,
-.dialog-polyfill .container {
-  padding: 0;
-  border: 0;
-  border-radius: var(--jds-border-radius-12);
-}
-
-.dialog::backdrop {
-  /* 对话框背景色 */
-  background-color: var(--jds-color-overlay-70);
+  &::backdrop {
+    /* 对话框背景色 */
+    background-color: var(--jds-color-overlay-70);
+  }
 }
 
 .dialog-polyfill {
-  display: none;
-  position: fixed;
   inset-inline-start: 0;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
   z-index: var(--jds-dialog-index, 500);
   background-color: var(--jds-color-overlay-70);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
 
-  .container {
-    position: relative;
-    z-index: var(--jds-index-dialog);
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  z-index: var(--jds-index-dialog);
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  background: var(--jds-color-white);
+  transition: transform 0.3s ease-out 0.1s;
+
+  jds-icon.close {
+    position: absolute;
+    top: var(--jds-size-16);
+    right: var(--jds-size-16);
+    z-index: 1;
+    font-size: var(--jds-size-32);
+    color: var(--jds-color-text-l3);
+    cursor: pointer;
   }
+
+  #dialogCaption {
+    margin-bottom: var(--jds-size-40);
+    text-align: var(--jds-dialog-title-align, left);
+  }
+
+  .content {
+    margin: var(--jds-size-24) var(--jds-size-6) var(--jds-size-24) 0;
+    padding: 0 calc(var(--jds-size-64) - var(--jds-size-6)) 0 var(--jds-size-64);
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+:host([size='large']) .container {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 :host([open]) .dialog-polyfill {
   /* 打开对话框时显示遮罩 */
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
-jds-icon.close {
-  position: absolute;
-  top: var(--jds-size-16);
-  right: var(--jds-size-16);
-  font-size:var(--jds-size-32);
-  color:var(--jds-color-text-l3);
-  cursor: pointer;
-}
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);
 
-#dialog-caption {
-  margin-bottom: var(--jds-size-40);
-  text-align: var(--jds-dialog-title-align, left);
-}
-
-.content {
-  margin-top: var(--jds-size-24);
-  margin-right: var(--jds-size-6);
-  margin-bottom: var(--jds-size-24);
-  padding: 0 calc(var(--jds-size-64) - var(--jds-size-6)) 0 var(--jds-size-64);
-  height: 100%;
-  /* 内容溢出时可滚动 */
-  overflow-y: auto;
-
-  // 滚动条
-  &::-webkit-scrollbar {
-    // 垂直滚动条宽度
-    width: 7px;
-    // 水平滚动条高度
-    height: 7px;
-  }
-
-  /* 滚动条滑块 */
-  &::-webkit-scrollbar-thumb {
-    /* 滑块颜色 */
-    background-color: rgba(51, 51, 51, 0.5);
-    /* 滑块圆角 */
-    border-radius: 4px;
-
-    &:hover {
-      background-color: rgba(51, 51, 51, 0.7);
-    }
-  }
-
-  &::-webkit-scrollbar-track {
-    /* 滚动条轨道透明 */
-    background-color: transparent;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-  }
-}
-
-:host([critical]) .content {
-  /* 关键对话框顶部无内边距 */
-  padding-top: 0;
-}
-
-.container.has-footer .content {
-  /* 若有页脚则底部无内边距 */
-  padding-bottom: 0;
-}
-
-footer {
-  padding: var(--jds-size-20);
-  display: flex;
-  /* 反向排列页脚按钮 */
-  flex-flow: row-reverse wrap;
-  gap: var(--jds-size-16);
-
-  &.shadow {
-    /* 页脚阴影 */
-    box-shadow: 0 -4px 15px #27314226;
-  }
-}
-@media screen and (min-width: 1024px) and (max-width: 1439.98px){
-  @base: 1440;
-  @vw: (1vw / @base) * 100;
   .container {
-    max-width: 1200 * @vw;
+    min-width: 480 * @rem;
+    max-height: calc(100vh - var(--jds-size-64) * 2);
+    border-radius: var(--jds-border-radius-12);
+  }
+
+  :host([size='large']) .container {
+    width: var(--jds-dialog-width, 640px);
+    min-height: 240 * @rem;
+
+    .content{
+      min-height: 192 * @rem;
+    }
+  }
+
+  :host([size='extra']) .container {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: var(--jds-dialog-width, 1200px);
+    min-height: 400 * @rem;
   }
 }
+
 @media screen and (max-width: 1023.98px) {
-  @base: 750;
-  @vw: (1vw / @base) * 100;
-  :host{
-    --jds-size-128: min(128px, max(0, 128 * @vw));
+  @rem: (1rem / 32);
+
+  :host {
+    --jds-size-128: min(128px, max(0, 128 * @rem));
   }
+
   .container {
-    max-width: calc(100vw - var(--jds-size-48) * 2);
+    min-width: 560 * @rem;
+    border-radius: var(--jds-border-radius-24);
+
+    jds-icon.close {
+      font-size: var(--jds-size-48);
+    }
+  }
+
+  :host([size='large']) .container {
+    width: calc(100vw - var(--jds-size-48) * 2);
+    min-height: 320 * @rem;
     max-height: calc(100vh - var(--jds-size-128) * 2);
-    min-height: 320px;
-    min-width: auto;
   }
 
-  .content::-webkit-scrollbar {
-    /* 滚动条宽度 */
-    width: 6px;
+  :host([size='extra']) .dialog-polyfill {
+    align-items: flex-end;
   }
 
-  jds-icon.close {
-    font-size: var(--jds-size-48);
+  :host([size='extra']) .container {
+    bottom: 0;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    min-height: 400 * @rem;
+    max-height: calc(100vh - var(--jds-size-64));
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
-}
 
-@media only screen and (max-width: 471px) {
-  footer {
-    /* 小屏幕下页脚按钮竖排 */
-    flex-flow: column wrap;
+  :host([size='extra'][open]) .container {
+    transform: translateX(-50%) translateY(0);
   }
 }

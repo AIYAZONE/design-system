@@ -39,6 +39,11 @@ const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
 export default defineConfig(({ mode }) => {
   return {
     base: './', // 使用相对路径
+    server: {
+      host: '0.0.0.0', // 允许外部访问
+      port: 5173, // 指定端口
+      open: true, // 自动打开浏览器
+    },
     build: {
       ...baseBuildConfig,
       outDir: "dist", // 输出目录
