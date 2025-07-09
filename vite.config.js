@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // 获取指定目录下的文件入口
 const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
@@ -30,7 +31,10 @@ const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
   }
 };
 
-export default defineConfig(() => {
+export default defineConfig((configEnv) => {
+  const isDev = configEnv.mode === 'development';
+  const isProd = configEnv.mode === 'production';
+
   return {
     base: './', // 使用相对路径
     server: {
@@ -39,7 +43,8 @@ export default defineConfig(() => {
       open: true, // 自动打开浏览器
     },
     build: {
-      sourcemap: true, // 生成 sourcemap
+      sourcemap: isDev ? 'inline' : true,
+      minify: isProd ? 'esbuild' : false, // 仅在生产环境下启用 esbuild
       emptyOutDir: true, // 构建前清空输出目录
       outDir: "dist", // 输出目录
       cssCodeSplit: true,  // 启用 CSS 代码分割
@@ -51,6 +56,14 @@ export default defineConfig(() => {
           ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
+          manualChunks: {
+            // 框架核心
+            'lit-core': ['lit'],
+            // 公共工具
+            'utils': ['./src/utils/common.ts', './src/utils/elements.ts'],
+            // 国际化相关
+            'i18n': ['./src/i18n/index.ts'],
+          },
           entryFileNames: (chunkInfo) => {
             return chunkInfo.facadeModuleId?.startsWith('components/')
               ? `components/${chunkInfo.name}.js`
@@ -79,7 +92,8 @@ export default defineConfig(() => {
       },
     },
     plugins: [
-      viteCompression({
+      // 生产环境插件
+      ...(isProd ? [viteCompression({
         verbose: true,
         disable: false,
         threshold: 1024, // 降低阈值到1KB，确保小文件也能被压缩
@@ -89,6 +103,13 @@ export default defineConfig(() => {
         compressionOptions: {
           level: 6, // 平衡压缩率和速度
         },
+      })] : []),
+      visualizer({
+        open: isDev,     // 仅在开发环境下自动打开报告
+        filename: "dist/stats.html", // 输出文件名
+        gzipSize: true, // 显示 gzip 压缩大小
+        brotliSize: true, // 显示 brotli 压缩大小
+        template: "treemap", // 视图类型（可选 treemap/sunburst/network/list 等）
       }),
     ],
     css: {
