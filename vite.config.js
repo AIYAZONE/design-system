@@ -51,6 +51,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           index: "./src/index.ts", // 主入口文件
+          "internal": "./src/styles/internal.css", // 仅自定义组件内部使用通用样式文件
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
@@ -87,9 +88,13 @@ export default defineConfig(({ mode }) => {
       viteCompression({
         verbose: true,
         disable: false,
-        threshold: 10240,
+        threshold: 1024, // 降低阈值到1KB，确保小文件也能被压缩
         algorithm: 'gzip',
         ext: '.gz',
+        filter: /\.(js|mjs|json|css|html)$/i, // 明确指定要压缩的文件类型
+        compressionOptions: {
+          level: 6, // 平衡压缩率和速度
+        },
       }),
     ],
     css: {
