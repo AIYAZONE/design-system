@@ -1,20 +1,7 @@
 import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import viteCompression from "vite-plugin-compression";
-
-// 基础构建配置
-const baseBuildConfig = {
-  lib: {
-    entry: "./src/index.ts", // 主入口文件
-    name: "@jackery/design-system",
-    fileName: (format) => `index.${format}.js`,
-    formats: ["cjs", "es"], // 支持 CommonJS 和 ES 模块
-  },
-  sourcemap: true, // 生成 sourcemap
-  emptyOutDir: true, // 构建前清空输出目录
-};
 
 // 获取指定目录下的文件入口
 const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
@@ -45,7 +32,8 @@ export default defineConfig(({ mode }) => {
       open: true, // 自动打开浏览器
     },
     build: {
-      ...baseBuildConfig,
+      sourcemap: true, // 生成 sourcemap
+      emptyOutDir: true, // 构建前清空输出目录
       outDir: "dist", // 输出目录
       cssCodeSplit: true,  // 启用 CSS 代码分割
       rollupOptions: {
