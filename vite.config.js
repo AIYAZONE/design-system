@@ -89,6 +89,14 @@ export default defineConfig((configEnv) => {
             }
           },
         },
+        treeshake: {
+          // 使用推荐的 tree-shaking 预设配置，可以更激进地进行代码优化
+          preset: 'recommended',
+          moduleSideEffects: (id) => {
+            // 只对样式文件保留副作用
+            return /\.(css|less)$/.test(id);
+          }
+        }
       },
     },
     plugins: [
