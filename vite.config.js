@@ -61,6 +61,8 @@ export default defineConfig((configEnv) => {
             'lit-core': ['lit'],
             // 公共工具
             'utils': ['./src/utils/common.ts', './src/utils/elements.ts'],
+            // 图标组件
+            'icons': ['@jackery/icons'],
             // 国际化相关
             'i18n': ['./src/i18n/index.ts'],
           },
@@ -93,8 +95,8 @@ export default defineConfig((configEnv) => {
           // 使用推荐的 tree-shaking 预设配置，可以更激进地进行代码优化
           preset: 'recommended',
           moduleSideEffects: (id) => {
-            // 只对样式文件保留副作用
-            return /\.(css|less)$/.test(id);
+            // 对样式文件和 @jackery/icons 包保留副作用
+            return /\.(css|less)$/.test(id) || id.includes('@jackery/icons');
           }
         }
       },
