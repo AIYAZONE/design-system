@@ -5,25 +5,32 @@ import viteCompression from "vite-plugin-compression";
 
 // 获取指定目录下的文件入口
 const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
-  const absolutePath = path.resolve(__dirname, dirPath);
-  return fs.readdirSync(absolutePath).reduce((entries, file) => {
-    const fullPath = path.join(absolutePath, file);
-    const isDir = fs.statSync(fullPath).isDirectory();
-    if (
-      (isDirectory && isDir) ||
-      (!isDirectory && file.endsWith(fileExtension))
-    ) {
-      const entryKey = isDirectory ? `components/${file}` : file;
-      const entryValue = isDirectory
-        ? path.join(fullPath, "index.ts")
-        : fullPath;
-      entries[entryKey] = entryValue;
+  try {
+    const absolutePath = path.resolve(__dirname, dirPath);
+    if (!fs.existsSync(absolutePath)) {
+      console.warn(`Directory not found: ${absolutePath}`);
+      return {};
     }
+
+    const entries = {};
+    fs.readdirSync(absolutePath).forEach(file => {
+      const fullPath = path.join(absolutePath, file);
+      const isDir = fs.statSync(fullPath).isDirectory();
+
+      if ((isDirectory && isDir) || (!isDirectory && file.endsWith(fileExtension))) {
+        const entryKey = isDirectory ? `components/${file}` : file;
+        entries[entryKey] = isDirectory ? path.join(fullPath, "index.ts") : fullPath;
+      }
+    });
+
     return entries;
-  }, {});
+  } catch (error) {
+    console.error(`Error reading directory ${dirPath}:`, error);
+    return {};
+  }
 };
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   return {
     base: './', // 使用相对路径
     server: {
