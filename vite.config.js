@@ -52,10 +52,9 @@ export default defineConfig(() => {
         },
         output: {
           entryFileNames: (chunkInfo) => {
-            if (chunkInfo.facadeModuleId.startsWith("components/")) {
-              return `components/${chunkInfo.name}.js`;
-            }
-            return `${chunkInfo.name}.js`;
+            return chunkInfo.facadeModuleId?.startsWith('components/')
+              ? `components/${chunkInfo.name}.js`
+              : `${chunkInfo.name}.js`;
           },
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
