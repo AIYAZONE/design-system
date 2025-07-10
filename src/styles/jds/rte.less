@@ -5,12 +5,14 @@
 }
 
 // 日站适配
-:root[lang="ja"]{
+:root[lang="ja"] {
   --jds-list-padding: var(--jds-size-24);
 }
 
 .jds-rte {
-  word-wrap: break-word;
+  word-wrap: break-word;    /* 兼容旧浏览器 */
+  overflow-wrap: break-word; /* 标准写法 */
+  word-break: keep-all;     /* 中文不换行，英文按空格换行 */
 
   // 默认Medium字重
   .jds-b1-style();
@@ -74,6 +76,7 @@
   }
 
   @media screen and (min-width: 1024px) {
+
     ul,
     ol {
       padding-inline-start: var(--jds-list-padding);
@@ -100,4 +103,3 @@
   }
 
 }
-
