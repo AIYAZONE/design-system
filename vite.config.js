@@ -51,7 +51,6 @@ export default defineConfig((configEnv) => {
       rollupOptions: {
         input: {
           index: "./src/index.ts", // 主入口文件
-          "internal": "./src/styles/internal.css", // 仅自定义组件内部使用通用样式文件
           ...getEntriesInDir("src/styles", ".less"),
           ...getEntriesInDir("src/components", ".ts", true),
         },
