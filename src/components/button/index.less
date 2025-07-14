@@ -100,6 +100,14 @@
 
 :host([kind="custom"]) .button {
   --main-color: var(--jds-button-custom-color, #FD5000);
+  /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
+  --jds-color-custom-highlight: color-mix(in srgb, white 15%, var(--main-color));
+  --main-hover-color: var(--jds-color-custom-highlight);
+}
+
+// ios真机浏览器 低于16.2版本 无悬浮色交互
+:host([kind="custom"]) .button.ios-below-16_2 {
+  --main-color: var(--jds-button-custom-color, #FD5000);
   --main-hover-color: var(--main-color);
 }
 
