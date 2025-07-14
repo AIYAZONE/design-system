@@ -127,6 +127,22 @@ export default class JdsButton extends LitElement {
     super.connectedCallback();
   }
 
+  // 判断是否iOS版本低于指定版本
+  private isIOSVersionBelow(major: number, minor: number) {
+    const userAgent = navigator.userAgent;
+    const match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+
+    if (match) {
+      const majorVersion = parseInt(match[1], 10);
+      const minorVersion = parseInt(match[2], 10);
+
+      // 比较主版本和次版本
+      return majorVersion < major ||
+        (majorVersion === major && minorVersion < minor);
+    }
+    return false; // 非iOS设备或无法解析版本
+  }
+
   // 处理按钮点击事件
   private _handleClick() {
     if (this.type === "submit") {
@@ -201,6 +217,7 @@ export default class JdsButton extends LitElement {
     `;
     const classes = classMap({
       button: true,
+      "ios-below-16_2": this.isIOSVersionBelow(16, 2), // 判断是否iOS版本低于16.2
       "has-icon": this.icon || this._hasIconSlot,
       "has-content": this._hasDefaultSlot,
       active: !isAnchor && this._isActive,
