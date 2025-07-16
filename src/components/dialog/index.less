@@ -50,8 +50,9 @@
   }
 
   .content {
-    margin: var(--jds-size-24) var(--jds-size-6) var(--jds-size-24) 0;
-    padding: 0 calc(var(--jds-size-64) - var(--jds-size-6)) 0 var(--jds-size-64);
+    margin-right: 6px;
+    padding-left: 0;
+    padding-bottom: 0;
     height: 100%;
     overflow-y: auto;
   }
@@ -75,13 +76,20 @@
     min-width: 480 * @rem;
     max-height: calc(100vh - var(--jds-size-64) * 2);
     border-radius: var(--jds-border-radius-12);
+
+    .content {
+      margin-top: var(--jds-size-48);
+      margin-bottom: var(--jds-size-48);
+      padding-left: var(--jds-size-64);
+      padding-right: calc(var(--jds-size-64) - var(--jds-size-6));
+    }
   }
 
   :host([size='large']) .container {
     width: var(--jds-dialog-width, 640px);
     min-height: 240 * @rem;
 
-    .content{
+    .content {
       min-height: 192 * @rem;
     }
   }
@@ -107,6 +115,13 @@
 
     jds-icon.close {
       font-size: var(--jds-size-48);
+    }
+
+    .content {
+      margin-top: var(--jds-size-72);
+      margin-bottom: var(--jds-size-32);
+      padding-left: var(--jds-size-32);
+      padding-right: calc(var(--jds-size-32) - var(--jds-size-6));
     }
   }
 
