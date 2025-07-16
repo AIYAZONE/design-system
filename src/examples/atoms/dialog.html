@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../styles/index.less" />
   <link rel="stylesheet" href="../styles/public.less" />
   <link rel="stylesheet" href="../styles/index.less" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -31,10 +32,15 @@
         <jds-button class="btn-large" variant="secondary">打开标准 - 最大弹窗</jds-button>
         <jds-button class="btn-xL" variant="secondary">打开特大弹窗</jds-button>
       </p>
-      <jds-dialog class="dialog-noClose" caption="Use location service?" noClose="true" style="--jds-dialog-index:10000;">
-        <div class="jds-rte">
+      <jds-dialog class="dialog-noClose" caption="Use location service?" noClose="true"
+        style="--jds-dialog-index:10000;">
+        <div class="jds-rte font-regular">
           Let us help determine location. This means sending anonymous location data to us.
           Let us help determine location. This means sending anonymous location data to us.
+        </div>
+        <div class="flex justify-center items-center gap-[var(--jds-size-20)] mt-[var(--jds-size-32)]">
+          <jds-button class="btn-cancel" variant="secondary">Cancel</jds-button>
+          <jds-button class="login">Log in</jds-button>
         </div>
       </jds-dialog>
 
@@ -46,7 +52,7 @@
       </jds-dialog>
 
       <jds-dialog class="dialog-large" caption="Use location service?">
-        <div class="jds-rte">
+        <div class="jds-rte font-regular">
           <ol>
             <li>123123</li>
             <li>123123</li>
@@ -85,7 +91,7 @@
       </jds-dialog>
 
       <jds-dialog class="dialog-xL" caption="Use location service?" size="extra">
-        <div class="jds-rte">
+        <div class="jds-rte font-regular">
           <ol>
             <li>123123</li>
             <li>123123</li>
