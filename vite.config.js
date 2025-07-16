@@ -1,46 +1,51 @@
 import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import viteCompression from "vite-plugin-compression";
-
-// 基础构建配置
-const baseBuildConfig = {
-  lib: {
-    entry: "./src/index.ts", // 主入口文件
-    name: "@jackery/design-system",
-    fileName: (format) => `index.${format}.js`,
-    formats: ["cjs", "es"], // 支持 CommonJS 和 ES 模块
-  },
-  sourcemap: true, // 生成 sourcemap
-  emptyOutDir: true, // 构建前清空输出目录
-};
+import { visualizer } from "rollup-plugin-visualizer";
 
 // 获取指定目录下的文件入口
 const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
-  const absolutePath = path.resolve(__dirname, dirPath);
-  return fs.readdirSync(absolutePath).reduce((entries, file) => {
-    const fullPath = path.join(absolutePath, file);
-    const isDir = fs.statSync(fullPath).isDirectory();
-    if (
-      (isDirectory && isDir) ||
-      (!isDirectory && file.endsWith(fileExtension))
-    ) {
-      const entryKey = isDirectory ? `components/${file}` : file;
-      const entryValue = isDirectory
-        ? path.join(fullPath, "index.ts")
-        : fullPath;
-      entries[entryKey] = entryValue;
+  try {
+    const absolutePath = path.resolve(__dirname, dirPath);
+    if (!fs.existsSync(absolutePath)) {
+      console.warn(`Directory not found: ${absolutePath}`);
+      return {};
     }
+
+    const entries = {};
+    fs.readdirSync(absolutePath).forEach(file => {
+      const fullPath = path.join(absolutePath, file);
+      const isDir = fs.statSync(fullPath).isDirectory();
+
+      if ((isDirectory && isDir) || (!isDirectory && file.endsWith(fileExtension))) {
+        const entryKey = isDirectory ? `components/${file}` : file;
+        entries[entryKey] = isDirectory ? path.join(fullPath, "index.ts") : fullPath;
+      }
+    });
+
     return entries;
-  }, {});
+  } catch (error) {
+    console.error(`Error reading directory ${dirPath}:`, error);
+    return {};
+  }
 };
 
-export default defineConfig(({ mode }) => {
+export default defineConfig((configEnv) => {
+  const isDev = configEnv.mode === 'development';
+  const isProd = configEnv.mode === 'production';
+
   return {
     base: './', // 使用相对路径
+    server: {
+      host: '0.0.0.0', // 允许外部访问
+      port: 5173, // 指定端口
+      open: true, // 自动打开浏览器
+    },
     build: {
-      ...baseBuildConfig,
+      sourcemap: isDev ? 'inline' : true,
+      minify: isProd ? 'esbuild' : false, // 仅在生产环境下启用 esbuild
+      emptyOutDir: true, // 构建前清空输出目录
       outDir: "dist", // 输出目录
       cssCodeSplit: true,  // 启用 CSS 代码分割
       rollupOptions: {
@@ -50,11 +55,20 @@ export default defineConfig(({ mode }) => {
           ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
+          manualChunks: {
+            // 框架核心
+            'lit-core': ['lit'],
+            // 公共工具
+            'utils': ['./src/utils/common.ts', './src/utils/elements.ts'],
+            // 图标组件
+            'icons': ['@jackery/icons'],
+            // 国际化相关
+            'i18n': ['./src/i18n/index.ts'],
+          },
           entryFileNames: (chunkInfo) => {
-            if (chunkInfo.facadeModuleId.startsWith("components/")) {
-              return `components/${chunkInfo.name}.js`;
-            }
-            return `${chunkInfo.name}.js`;
+            return chunkInfo.facadeModuleId?.startsWith('components/')
+              ? `components/${chunkInfo.name}.js`
+              : `${chunkInfo.name}.js`;
           },
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
@@ -76,21 +90,42 @@ export default defineConfig(({ mode }) => {
             }
           },
         },
+        treeshake: {
+          // 使用推荐的 tree-shaking 预设配置，可以更激进地进行代码优化
+          preset: 'recommended',
+          moduleSideEffects: (id) => {
+            // 对样式文件和 @jackery/icons 包保留副作用
+            return /\.(css|less)$/.test(id) || id.includes('@jackery/icons');
+          }
+        }
       },
     },
     plugins: [
-      viteCompression({
+      // 生产环境插件
+      ...(isProd ? [viteCompression({
         verbose: true,
         disable: false,
-        threshold: 10240,
+        threshold: 1024, // 降低阈值到1KB，确保小文件也能被压缩
         algorithm: 'gzip',
         ext: '.gz',
+        filter: /\.(js|mjs|json|css|html)$/i, // 明确指定要压缩的文件类型
+        compressionOptions: {
+          level: 6, // 平衡压缩率和速度
+        },
+      })] : []),
+      visualizer({
+        open: isDev,     // 仅在开发环境下自动打开报告
+        filename: "dist/stats.html", // 输出文件名
+        gzipSize: true, // 显示 gzip 压缩大小
+        brotliSize: true, // 显示 brotli 压缩大小
+        template: "treemap", // 视图类型（可选 treemap/sunburst/network/list 等）
       }),
     ],
     css: {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
+          charset: false, // 禁用Less自动添加@charset，避免编码冲突
         },
       },
     },

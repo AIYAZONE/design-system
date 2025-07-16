@@ -10,8 +10,8 @@ export type BadgeSize = "small" | "medium" | "large";
  * @tag jds-badge
  * @summary Jackery 徽章组件
  *
- * @cssproperty [--jds-badge-bg-color=--jds-color-primary-contrast] 设置徽章的背景颜色
- * @cssproperty [--jds-badge-color=--jds-color-primary] 设置徽章的文字颜色
+ * @cssproperty [--jds-badge-bg-color:var(--jds-color-primary-contrast)] 设置徽章的背景颜色
+ * @cssproperty [--jds-badge-color:var(--jds-color-primary)] 设置徽章的文字颜色
  */
 @customElement("jds-badge")
 export default class JdsBadge extends LitElement {
