@@ -23,6 +23,7 @@ export type TargetType = "_blank" | "_parent" | "_self" | "_top";
  *
  * @cssproperty [--jds-button-display=inline-block] 设置按钮的显示属性
  * @cssproperty [--jds-button-custom-color=var(--jds-color-primary)] 设置自定义按钮的颜色（需设置`kind`为`custom`）
+ * @cssproperty --jds-button-primary-custom-text-color 设置主类型自定义按钮的文字颜色（需设置`kind`为`custom`和`variant`为`primary`）
  *
  */
 @customElement("jds-button")
