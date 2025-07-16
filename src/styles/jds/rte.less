@@ -10,18 +10,22 @@
 }
 
 .jds-rte {
-  word-wrap: break-word;    /* 兼容旧浏览器 */
-  overflow-wrap: break-word; /* 标准写法 */
-  word-break: keep-all;     /* 中文不换行，英文按空格换行 */
+  /* 兼容旧浏览器 */
+  word-wrap: break-word;
+  /* 标准写法 */
+  overflow-wrap: break-word;
+  /* 中文不换行，英文按空格换行 */
+  word-break: keep-all;
 
   // 默认Medium字重
   .jds-b1-style();
 
-  ul,
-  ol {
-    li {
-      list-style: inherit;
-    }
+  ul li {
+    list-style: disc;
+  }
+
+  ol li {
+    list-style: decimal;
   }
 
   h1 {
