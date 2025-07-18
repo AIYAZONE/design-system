@@ -39,24 +39,53 @@
         overflow: visible;
       }
 
-      &:hover::part(button) {
-        --bg-color: var(--jds-color-primary);
-        padding-right: var(--jds-size-16);
-        padding-left: var(--jds-size-16);
+      // 特大按钮、大按钮
+      &[size="extra"],
+      &[size="large"] {
+        &:hover::part(button) {
+          --content-color: var(--jds-color-white);
+          --bg-color: var(--jds-color-primary);
+          padding-right: var(--jds-size-16);
+          padding-left: var(--jds-size-16);
+        }
+        jds-button.only-icon {
+          margin-left: var(--jds-size-4);
+          transition: all .3s cubic-bezier(.8, 0, .2, 1);
+
+          &::part(button) {
+            --height: var(--jds-size-32);
+            --bg-color: var(--main-hover-color);
+          }
+
+          &::part(icon) {
+            --icon-size: var(--jds-size-16);
+            transition: transform .4s cubic-bezier(.8, 0, .2, 1);
+          }
+        }
       }
 
-      jds-button.only-icon {
-        margin-left: var(--jds-size-4);
-        transition: all .3s cubic-bezier(.8, 0, .2, 1);
-
-        &::part(button) {
-          --height: var(--jds-size-32);
-          --bg-color: var(--main-hover-color);
+      // 中按钮
+      &[size="medium"] {
+        &:hover::part(button) {
+          --content-color: var(--jds-color-white);
+          --bg-color: var(--jds-color-primary);
+          padding-right: var(--jds-size-12);
+          padding-left: var(--jds-size-12);
         }
 
-        &::part(icon) {
-          --icon-size: var(--jds-size-16);
-          transition: transform .4s cubic-bezier(.8, 0, .2, 1);
+        jds-button.only-icon {
+          margin-left: var(--jds-size-4);
+          transition: all .3s cubic-bezier(.8, 0, .2, 1);
+
+          &::part(button) {
+            --height: var(--jds-size-24);
+            --bg-color: var(--main-hover-color);
+          }
+
+          &::part(icon) {
+            --icon-size: var(--jds-size-12);
+            transition: transform .4s cubic-bezier(.8, 0, .2, 1);
+          }
         }
       }
     }
@@ -80,3 +109,4 @@
 
   }
 }
+
