@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2025-07-21 20:09:57
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-07-21 20:10:05
+ * @LastEditTime: 2025-07-21 20:23:31
  * @FilePath: \jackery-design-system\remove-jackery-package.cjs
  * @Description:这是一个用于从 package-lock.json 中删除指定包及其相关依赖的脚本。
  *              它会遍历 package-lock.json 文件，删除 packages 字段中对应的包条目，
@@ -93,7 +93,7 @@ async function main() {
     }
 
     if (packageNames.length === 0) {
-        log.tip('用法: node remove-specific-package.cjs <package1> [package2 ...]');
+        log.tip('用法: node remove-jackery-package.cjs <package1> [package2 ...]');
         return;
     }
 
