@@ -21,9 +21,9 @@
   },
   "scripts": {
     "prestart": "npm install && npm audit fix",
-    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
+    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm run upd-jky-pkg && npm run build",
     "dev": "vite",
-    "build": "npm run upd-jky-pkg && tsc && vite build --mode production",
+    "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
     "storybook": "npm run build && storybook dev -p 6006",
