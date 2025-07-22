@@ -32,7 +32,7 @@
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
     "i18n:to-json": "node src/i18n/scripts/excel-to-json.js",
-    "rm-jky-pkg": "node .\\remove-jackery-package.cjs",
+    "rm-jky-pkg": "node remove-jackery-package.cjs",
     "upd-jky-pkg": "npm run rm-jky-pkg @jackery/icons && npm i"
   },
   "keywords": [
