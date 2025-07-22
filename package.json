@@ -23,7 +23,7 @@
     "prestart": "npm install && npm audit fix",
     "prepublish:check": "echo '开始装载对应环境的组件库包...' && npm run upd-jky-pkg",
     "prepublish:stash": "echo '搁置lock文件，防止更新冲突...' && git stash push -m \"更新 lock 文件\" -- package-lock.json",
-    "prepublishOnly": "npm run prepublish:check && npm run build",
+    "prepublishOnly": "npm run prepublish:check && npm run prepublish:stash && npm run build",
     "dev": "vite",
     "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
