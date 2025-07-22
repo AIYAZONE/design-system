@@ -2,7 +2,7 @@
  * @Author: HB-BruceWang
  * @Date: 2025-07-21 20:09:57
  * @LastEditors: HB-BruceWang
- * @LastEditTime: 2025-07-21 20:23:31
+ * @LastEditTime: 2025-07-22 10:17:22
  * @FilePath: \jackery-design-system\remove-jackery-package.cjs
  * @Description:这是一个用于从 package-lock.json 中删除指定包及其相关依赖的脚本。
  *              它会遍历 package-lock.json 文件，删除 packages 字段中对应的包条目，
@@ -74,7 +74,7 @@ async function removePackage(packageName) {
         try {
             fs.writeFileSync(packageLockPath, JSON.stringify(packageLockContent, null, 2), 'utf8');
             log.success(`package-lock.json 已更新。`);
-            log.tip('请运行 `npm install` 重新安装依赖以确保项目依赖的正确性。');
+            log.tip('运行 `npm install` 重新安装依赖以确保项目依赖的正确性。');
         } catch (error) {
             log.error(`写入 package-lock.json 失败: ${error.message}`);
         }
