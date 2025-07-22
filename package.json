@@ -21,9 +21,11 @@
   },
   "scripts": {
     "prestart": "npm install && npm audit fix",
-    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
+    "prepublish:check": "echo '开始装载对应环境的组件库包...' && npm run upd-jky-pkg",
+    "prepublish:stash": "echo '搁置lock文件，防止更新冲突...' && git stash push -m \"更新 lock 文件\" -- package-lock.json",
+    "prepublishOnly": "npm run prepublish:check && npm run build",
     "dev": "vite",
-    "build": "npm run upd-jky-pkg && tsc && vite build --mode production",
+    "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
     "storybook": "npm run build && storybook dev -p 6006",
@@ -32,7 +34,7 @@
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
     "i18n:to-json": "node src/i18n/scripts/excel-to-json.js",
-    "rm-jky-pkg": "node .\\remove-jackery-package.cjs",
+    "rm-jky-pkg": "node remove-jackery-package.cjs",
     "upd-jky-pkg": "npm run rm-jky-pkg @jackery/icons && npm i"
   },
   "keywords": [
