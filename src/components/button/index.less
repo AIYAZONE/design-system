@@ -15,9 +15,9 @@
   --padding-horizontal: var(--jds-size-16);
   --margin-icon: var(--jds-size-8);
   --icon-size: var(--jds-size-12);
-  --font: var(--jds-font-h6-medium);
+  --font: var(--jds-font-h6-semibold);
   --height: var(--jds-size-48);
-  --border-radius: var(--jds-border-radius-pill);
+  --border-radius: var(--jds-rounded-pill);
 
   display: inline-flex;
   gap: var(--margin-icon);
@@ -98,10 +98,21 @@
   --main-hover-color: var(--jds-color-danger-highlight);
 }
 
-:host([kind="custom"]) .button {
+:host([kind="custom"]) .button:not(.ios-below-16_2) {
   --main-color: var(--jds-button-custom-color, #FD5000);
+  /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
+  --jds-color-custom-highlight: color-mix(in srgb, white 15%, var(--main-color));
+  --main-hover-color: var(--jds-color-custom-highlight);
+}
 
+// ios真机浏览器 低于16.2版本 无悬浮色交互
+:host([kind="custom"]) .button.ios-below-16_2 {
+  --main-color: var(--jds-button-custom-color, #FD5000);
   --main-hover-color: var(--main-color);
+}
+
+:host([kind="custom"][variant="primary"]) .button {
+  --content-color: var(--jds-button-primary-custom-text-color, #FFFFFF);
 }
 
 // 不同尺寸按钮
@@ -110,8 +121,8 @@
   --padding-vertical: var(--jds-size-16);
   --padding-horizontal: var(--jds-size-32);
   --margin-icon: var(--jds-size-4);
-  @lineHeight: calc(var(--jds-font-size-22) + var(--jds-size-8));
-  --font: var(--jds-font-weight-semibold) var(--jds-font-size-22) /@lineHeight var(--jds-font-family);
+  @lineHeight: calc(var(--jds-size-22) + var(--jds-size-8));
+  --font: var(--jds-font-semibold) var(--jds-size-22) /@lineHeight var(--jds-font-family);
 }
 
 :host([size="large"]) .button {

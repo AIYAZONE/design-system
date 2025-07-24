@@ -23,6 +23,7 @@ export type TargetType = "_blank" | "_parent" | "_self" | "_top";
  *
  * @cssproperty [--jds-button-display=inline-block] 设置按钮的显示属性
  * @cssproperty [--jds-button-custom-color=var(--jds-color-primary)] 设置自定义按钮的颜色（需设置`kind`为`custom`）
+ * @cssproperty --jds-button-primary-custom-text-color 设置主类型自定义按钮的文字颜色（需设置`kind`为`custom`和`variant`为`primary`）
  *
  */
 @customElement("jds-button")
@@ -127,6 +128,22 @@ export default class JdsButton extends LitElement {
     super.connectedCallback();
   }
 
+  // 判断是否iOS版本低于指定版本
+  private isIOSVersionBelow(major: number, minor: number) {
+    const userAgent = navigator.userAgent;
+    const match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+
+    if (match) {
+      const majorVersion = parseInt(match[1], 10);
+      const minorVersion = parseInt(match[2], 10);
+
+      // 比较主版本和次版本
+      return majorVersion < major ||
+        (majorVersion === major && minorVersion < minor);
+    }
+    return false; // 非iOS设备或无法解析版本
+  }
+
   // 处理按钮点击事件
   private _handleClick() {
     if (this.type === "submit") {
@@ -191,7 +208,7 @@ export default class JdsButton extends LitElement {
       <jds-spinner
         class="loading-spinner"
         ?disabled="${isDisabled}"
-        size="var(--jds-font-size-2xl)"
+        size="var(--jds-font-size-24)"
         color="var(--jds-color-white)"
       ></jds-spinner>
     `;
@@ -201,6 +218,7 @@ export default class JdsButton extends LitElement {
     `;
     const classes = classMap({
       button: true,
+      "ios-below-16_2": this.isIOSVersionBelow(16, 2), // 判断是否iOS版本低于16.2
       "has-icon": this.icon || this._hasIconSlot,
       "has-content": this._hasDefaultSlot,
       active: !isAnchor && this._isActive,

@@ -76,6 +76,7 @@ summary {
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: var(--jds-font-family);
 }
 
 /* 对于表格元素的重置 */
@@ -117,10 +118,30 @@ select {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   /* 使用边框盒模型 */
+  box-sizing: border-box;
 }
 
-html {
-  font-size: 16px;
+/* PC端（>=1024px) */
+@media screen and (min-width: 1024px) {
+  html {
+    /* 使用clamp()函数设置字体大小:
+     * 最小值: 12px
+     * 首选值: 1.111111vw (视窗宽度的1.111111%)
+     * 最大值: 16px
+     */
+    font-size: clamp(12px, 1.111111vw, 16px);
+  }
+}
+
+/* 移动端（<1024px） */
+@media screen and (max-width: 1023.98px) {
+  html {
+    /* 使用clamp()函数设置字体大小:
+     * 最小值: 16px
+     * 首选值: 4.266666vw (视窗宽度的4.266666%)
+     * 最大值: 32px
+     */
+    font-size: clamp(16px, 4.266666vw, 32px);
+  }
 }

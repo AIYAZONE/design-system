@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Jackery Design System (JDS)",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -14,21 +14,28 @@
     "LICENSE",
     "README.md"
   ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "http://192.168.30.241/global-website/jackery-design-system.git"
   },
   "scripts": {
-    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
+    "prestart": "npm install && npm audit fix",
+    "prepublish:check": "echo '开始装载对应环境的组件库包...' && npm run upd-jky-pkg",
+    "prepublish:stash": "echo '搁置lock文件，防止更新冲突...' && git stash push -m \"更新 lock 文件\" -- package-lock.json",
+    "prepublishOnly": "npm run prepublish:check && npm run prepublish:stash && npm run build",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --mode production",
+    "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
     "storybook": "npm run build && storybook dev -p 6006",
     "build-storybook": "npm run build && storybook build",
     "preview-storybook": "storybook build && serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
-    "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
+    "i18n:to-json": "node src/i18n/scripts/excel-to-json.js",
+    "rm-jky-pkg": "node remove-jackery-package.cjs",
+    "upd-jky-pkg": "npm run rm-jky-pkg @jackery/icons && npm i"
   },
   "keywords": [
     "web-components",
@@ -39,43 +46,44 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.12",
-    "@jackery/icons": "^0.0.5",
+    "@floating-ui/dom": "^1.7.1",
+    "@jackery/icons": "0.0.5",
     "@open-wc/form-control": "^1.0.0",
     "@open-wc/form-helpers": "^1.0.0",
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.2",
-    "@storybook/addon-a11y": "8.4.5",
-    "@storybook/addon-actions": "8.4.5",
-    "@storybook/addon-docs": "8.4.5",
-    "@storybook/addon-essentials": "8.4.5",
-    "@storybook/addon-interactions": "8.4.5",
-    "@storybook/addon-links": "8.4.5",
-    "@storybook/addon-viewport": "8.4.5",
-    "@storybook/blocks": "8.4.5",
-    "@storybook/manager-api": "8.4.5",
-    "@storybook/test": "8.4.5",
-    "@storybook/theming": "8.4.5",
-    "@storybook/web-components": "8.4.5",
-    "@storybook/web-components-vite": "8.4.5",
-    "@vitest/browser": "^2.1.5",
-    "chromatic": "^11.18.1",
+    "@chromatic-com/storybook": "^3.2.6",
+    "@storybook/addon-a11y": "8.6.14",
+    "@storybook/addon-actions": "8.6.14",
+    "@storybook/addon-docs": "8.6.14",
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/addon-interactions": "8.6.14",
+    "@storybook/addon-links": "8.6.14",
+    "@storybook/addon-viewport": "8.6.14",
+    "@storybook/blocks": "8.6.14",
+    "@storybook/manager-api": "8.6.14",
+    "@storybook/test": "8.6.14",
+    "@storybook/theming": "8.6.14",
+    "@storybook/web-components": "8.6.14",
+    "@storybook/web-components-vite": "8.6.14",
+    "@vitest/browser": "^3.2.4",
+    "chromatic": "^13.0.1",
     "exceljs": "^4.4.0",
-    "less": "^4.2.0",
+    "less": "^4.3.0",
+    "rollup-plugin-visualizer": "^6.0.3",
     "serve": "^14.2.4",
-    "storybook": "8.4.5",
-    "typescript": "~5.6.3",
-    "vite": "^5.4.11",
+    "storybook": "8.6.14",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-static-copy": "^2.1.0",
-    "vitest": "^2.1.5"
+    "vite-plugin-static-copy": "^3.0.2",
+    "vitest": "^3.2.4"
   },
   "optionalDependencies": {
-    "@esbuild/linux-x64": "^0.25.0",
-    "@esbuild/win32-x64": "^0.25.0",
-    "@rollup/rollup-linux-x64-gnu": "^4.27.4",
-    "@rollup/rollup-win32-x64-msvc": "^4.27.4"
+    "@esbuild/linux-x64": "^0.25.5",
+    "@esbuild/win32-x64": "^0.25.5",
+    "@rollup/rollup-linux-x64-gnu": "^4.44.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.44.0"
   }
 }

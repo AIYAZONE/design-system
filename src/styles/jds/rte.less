@@ -5,19 +5,27 @@
 }
 
 // 日站适配
-:root[lang="ja"]{
+:root[lang="ja"] {
   --jds-list-padding: var(--jds-size-24);
 }
 
 .jds-rte {
+  /* 兼容旧浏览器 */
+  word-wrap: break-word;
+  /* 标准写法 */
+  overflow-wrap: break-word;
+  /* 中文不换行，英文按空格换行 */
+  word-break: keep-all;
+
   // 默认Medium字重
   .jds-b1-style();
 
-  ul,
-  ol {
-    li {
-      list-style: inherit;
-    }
+  ul li {
+    list-style: disc;
+  }
+
+  ol li {
+    list-style: decimal;
   }
 
   h1 {
@@ -46,6 +54,11 @@
 
   p {
     .jds-b1-style();
+    margin-bottom: var(--jds-size-16);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   strong,
@@ -72,6 +85,7 @@
   }
 
   @media screen and (min-width: 1024px) {
+
     ul,
     ol {
       padding-inline-start: var(--jds-list-padding);
@@ -98,4 +112,3 @@
   }
 
 }
-
