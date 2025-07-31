@@ -9,7 +9,7 @@ interface DialogProps {
   caption?: string;
   open: boolean;
   critical: boolean;
-  noClose: boolean;
+  'no-close': boolean;
   style: any;
   content: any;
 }
@@ -23,7 +23,7 @@ const meta: Meta = {
     caption: '默认对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   parameters: {
     docs: {
@@ -66,7 +66,7 @@ const meta: Meta = {
         defaultValue: { summary: "false" },
       },
     },
-    noClose: {
+    'no-close': {
       description: "确定对话框是否隐藏关闭按钮",
       control: "boolean",
       table: {
@@ -90,8 +90,9 @@ const meta: Meta = {
 
 export default meta;
 
-const DialogTemplate = (args: DialogProps) =>
-  html`<div style="position: relative; height: 300px; overflow: hidden;">
+const DialogTemplate = (args: DialogProps) => {
+  return html`
+  <div style="position: relative; height: 300px; overflow: hidden;">
     <jds-button
       @click=${() => {
       const dialog = document.querySelector(`jds-dialog.${args.class}`);
@@ -106,12 +107,13 @@ const DialogTemplate = (args: DialogProps) =>
       caption=${ifDefined(args.caption)}
       ?open=${args.open}
       ?critical=${args.critical}
-      ?noClose=${args.noClose}
+      ?no-close=${args['no-close']}
       style="${ifDefined(args.style)}"
     >
       ${unsafeHTML(args.content)}
     </jds-dialog>
   </div>`;
+};
 
 export const Default = {
   args: {
@@ -119,7 +121,7 @@ export const Default = {
     caption: '默认对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -140,7 +142,7 @@ export const Sizes = {
     caption: '特大对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -162,7 +164,7 @@ export const WithoutTitle = {
     size: 'large',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -185,7 +187,7 @@ export const WithoutCloseIcon = {
     caption: '没有关闭Icon的对话框',
     open: false,
     critical: false,
-    noClose: true,
+    'no-close': true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -206,7 +208,7 @@ export const CriticalDialog = {
     caption: '关键对话框',
     open: false,
     critical: true,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -227,7 +229,7 @@ export const ContentOnlyDialog = {
     caption: '纯内容对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -248,7 +250,7 @@ export const RichContentDialog = {
     caption: '富文本内容对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -275,7 +277,7 @@ export const CustomStyleDialog = {
     caption: '自定义样式对话框',
     open: false,
     critical: false,
-    noClose: false,
+    'no-close': false,
     style: '--jds-dialog-width: 800px; --jds-dialog-title-align: center;',
   },
   render: (args: DialogProps) =>
