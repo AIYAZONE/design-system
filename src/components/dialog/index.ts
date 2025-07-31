@@ -69,7 +69,7 @@ export default class JdsDialog extends LitElement {
   /**
    * 确定对话框是否隐藏关闭按钮Icon。
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ attribute: 'no-close', type: Boolean, reflect: true, useDefault:false })
   noClose = false;
 
   // 查询选择器，获取对话框相关元素
