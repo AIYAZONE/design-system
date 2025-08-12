@@ -107,6 +107,7 @@
 
   :host {
     --jds-size-128: min(128px, max(0, 128 * @rem));
+    --jds-size-160: min(160px, max(0, 160 * @rem));
   }
 
   .container {
@@ -143,6 +144,13 @@
     max-height: calc(100vh - var(--jds-size-64));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  // ios真机 浏览器特定适配，适配底部安全区域
+  @supports (-webkit-touch-callout: none) {
+    :host([size='extra']) .container {
+      max-height: calc(100vh - var(--jds-size-160));
+    }
   }
 
   :host([size='extra'][open]) .container {
