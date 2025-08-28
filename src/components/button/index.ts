@@ -179,24 +179,16 @@ export default class JdsButton extends LitElement {
 
   // 获取是否有默认插槽
   get _hasDefaultSlot() {
-    const childNodes = [...this.childNodes];
-
-    return childNodes.some((node) => {
-      const nodeType = node.nodeType;
-
-      // 只有文本节点
-      if (nodeType === node.TEXT_NODE && node.textContent?.trim() !== "") {
-        return true;
-      }
-      // 有元素节点，且不应有slot属性
-      if (nodeType === node.ELEMENT_NODE) {
-        if (!(node as HTMLElement).hasAttribute("slot")) {
-          return true;
-        }
-      }
-      return false;
-    });
+  // 直接检查是否有非slot元素或非空文本
+  for (const node of this.childNodes) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (node.textContent?.trim()) return true;
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      if (!(node as HTMLElement).hasAttribute('slot')) return true;
+    }
   }
+  return false;
+}
 
   // 渲染组件的HTML模板
   render(): TemplateResult {
