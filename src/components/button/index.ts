@@ -123,9 +123,42 @@ export default class JdsButton extends LitElement {
     return this.active;
   }
 
+  // MutationObserver 实例
+  private _slotObserver?: MutationObserver;
+
   // 组件连接到文档DOM时的回调
   connectedCallback() {
     super.connectedCallback();
+    this._setupSlotObserver();
+  }
+
+  // 组件从文档DOM断开时的回调
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._cleanupSlotObserver();
+  }
+
+  // 设置插槽内容变化监听器
+  private _setupSlotObserver() {
+    this._slotObserver = new MutationObserver(() => {
+      this._hasDefaultSlotCache = null;
+      this.requestUpdate();
+    });
+
+    this._slotObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  }
+
+  // 清理插槽内容监听器
+  private _cleanupSlotObserver() {
+    if (this._slotObserver) {
+      this._slotObserver.disconnect();
+      this._slotObserver = undefined;
+    }
+    this._hasDefaultSlotCache = null;
   }
 
   // 判断是否iOS版本低于指定版本
@@ -178,17 +211,41 @@ export default class JdsButton extends LitElement {
   }
 
   // 获取是否有默认插槽
+  // 缓存默认插槽状态
+  private _hasDefaultSlotCache: boolean | null = null;
+  private _lastChildNodesVersion = 0;
+
   get _hasDefaultSlot() {
-  // 直接检查是否有非slot元素或非空文本
-  for (const node of this.childNodes) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      if (node.textContent?.trim()) return true;
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      if (!(node as HTMLElement).hasAttribute('slot')) return true;
+    // 检查子节点是否发生变化
+    const currentVersion = this.childNodes.length;
+    if (this._lastChildNodesVersion !== currentVersion) {
+      this._hasDefaultSlotCache = null;
+      this._lastChildNodesVersion = currentVersion;
     }
+
+    // 如果缓存无效，重新计算
+    if (this._hasDefaultSlotCache === null) {
+      this._hasDefaultSlotCache = this._computeHasDefaultSlot();
+    }
+
+    return this._hasDefaultSlotCache;
   }
-  return false;
-}
+
+  // 计算是否有默认插槽内容
+  private _computeHasDefaultSlot(): boolean {
+    // 使用 querySelector 快速检查是否有非 slot 元素
+    const hasNonSlotElements = this.querySelector(':scope > :not([slot])') !== null;
+    if (hasNonSlotElements) return true;
+
+    // 检查文本节点（只在没有非slot元素时检查，避免不必要的遍历）
+    for (const node of this.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 
   // 渲染组件的HTML模板
   render(): TemplateResult {
@@ -208,6 +265,7 @@ export default class JdsButton extends LitElement {
       <span class="label" part="label">${label}</span>
       <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
     `;
+    console.info('this._hasDefaultSlot', this._hasDefaultSlot)
     const classes = classMap({
       button: true,
       "ios-below-16_2": this.isIOSVersionBelow(16, 2), // 判断是否iOS版本低于16.2
