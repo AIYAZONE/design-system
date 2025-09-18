@@ -101,7 +101,7 @@ export default class JdsButton extends LitElement {
    * 设置按钮关联的表单，当`type`设置为`submit`且按钮不在目标表单内时使用
    */
   @property({ type: String })
-  form!: HTMLFormElement | string;
+  form?: HTMLFormElement | string;
 
   /**
    * 激活状态
@@ -123,13 +123,59 @@ export default class JdsButton extends LitElement {
     return this.active;
   }
 
+  // MutationObserver 实例
+  private _slotObserver?: MutationObserver;
+
   // 组件连接到文档DOM时的回调
   connectedCallback() {
     super.connectedCallback();
+    this._setupSlotObserver();
   }
 
-  // 判断是否iOS版本低于指定版本
-  private isIOSVersionBelow(major: number, minor: number) {
+  // 组件从文档DOM断开时的回调
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._cleanupSlotObserver();
+  }
+
+  // 设置插槽内容变化监听器（优化：防抖处理）
+  private _setupSlotObserver() {
+    let timeoutId: number;
+
+    this._slotObserver = new MutationObserver(() => {
+      // 防抖处理，避免频繁更新
+      clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => {
+        this._hasDefaultSlotCache = null;
+        this.requestUpdate();
+      }, 16); // 约1帧的延迟
+    });
+
+    this._slotObserver.observe(this, {
+      childList: true,
+      subtree: false, // 优化：只监听直接子节点
+      characterData: true
+    });
+  }
+
+  // 清理插槽内容监听器
+  private _cleanupSlotObserver() {
+    if (this._slotObserver) {
+      this._slotObserver.disconnect();
+      this._slotObserver = undefined;
+    }
+    this._hasDefaultSlotCache = null;
+  }
+
+  // 缓存iOS版本检测结果
+  private _iosVersionCache: boolean | null = null;
+
+  // 判断是否iOS版本低于指定版本（优化：添加缓存）
+  private isIOSVersionBelow(major: number, minor: number): boolean {
+    if (this._iosVersionCache !== null) {
+      return this._iosVersionCache;
+    }
+
     const userAgent = navigator.userAgent;
     const match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
 
@@ -138,33 +184,62 @@ export default class JdsButton extends LitElement {
       const minorVersion = parseInt(match[2], 10);
 
       // 比较主版本和次版本
-      return majorVersion < major ||
+      this._iosVersionCache = majorVersion < major ||
         (majorVersion === major && minorVersion < minor);
+    } else {
+      this._iosVersionCache = false; // 非iOS设备
     }
-    return false; // 非iOS设备或无法解析版本
+
+    return this._iosVersionCache;
   }
 
   // 处理按钮点击事件
-  private _handleClick() {
+  private _handleClick(event: Event) {
+    // 如果按钮被禁用，阻止事件传播
+    if (this.loading || this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     if (this.type === "submit") {
-      let targetForm: HTMLFormElement;
+      this._handleFormSubmit();
+    }
 
-      // 根据form属性获取目标表单
-      if (this.form instanceof HTMLFormElement) {
-        targetForm = this.form;
-      } else if (typeof this.form === "string") {
-        targetForm = document.getElementById(this.form) as HTMLFormElement;
-      } else {
-        targetForm = this.closest("form") as HTMLFormElement;
-      }
+    // 触发自定义点击事件
+    this.onClick("Click event fired!");
+  }
 
-      // 提交表单
-      if (targetForm) {
+  // 处理表单提交逻辑
+  private _handleFormSubmit() {
+    let targetForm: HTMLFormElement | null = null;
+
+    // 根据form属性获取目标表单
+    if (this.form instanceof HTMLFormElement) {
+      targetForm = this.form;
+    } else if (typeof this.form === "string" && this.form.trim()) {
+      targetForm = document.getElementById(this.form) as HTMLFormElement;
+    } else {
+      targetForm = this.closest("form") as HTMLFormElement;
+    }
+
+    // 提交表单（增加安全检查）
+    if (targetForm && targetForm.tagName === 'FORM') {
+      try {
         submit(targetForm);
+      } catch (error) {
+        console.error('Form submission failed:', error);
       }
     }
-    // 触发点击事件
-    this.onClick("Click event fired!");
+  }
+
+  // 处理键盘事件（无障碍访问）
+  private _handleKeydown(event: KeyboardEvent) {
+    // 空格键或回车键触发点击
+    if (event.code === 'Space' || event.code === 'Enter') {
+      event.preventDefault();
+      this._handleClick(event);
+    }
   }
 
   // 使按钮获取焦点
@@ -178,24 +253,44 @@ export default class JdsButton extends LitElement {
   }
 
   // 获取是否有默认插槽
+  // 缓存默认插槽状态
+  private _hasDefaultSlotCache: boolean | null = null;
+  private _lastChildNodesVersion = 0;
+
   get _hasDefaultSlot() {
-    const childNodes = [...this.childNodes];
+    // 检查子节点是否发生变化
+    const currentVersion = this.childNodes.length;
+    if (this._lastChildNodesVersion !== currentVersion) {
+      this._hasDefaultSlotCache = null;
+      this._lastChildNodesVersion = currentVersion;
+    }
 
-    return childNodes.some((node) => {
-      const nodeType = node.nodeType;
+    // 如果缓存无效，重新计算
+    if (this._hasDefaultSlotCache === null) {
+      this._hasDefaultSlotCache = this._computeHasDefaultSlot();
+    }
 
-      // 只有文本节点
-      if (nodeType === node.TEXT_NODE && node.textContent?.trim() !== "") {
-        return true;
-      }
-      // 有元素节点，且不应有slot属性
-      if (nodeType === node.ELEMENT_NODE) {
-        if (!(node as HTMLElement).hasAttribute("slot")) {
+    return this._hasDefaultSlotCache;
+  }
+
+  // 计算是否有默认插槽内容（优化：更精确的检测）
+  private _computeHasDefaultSlot(): boolean {
+    // 使用 querySelector 快速检查是否有非 slot 元素
+    const hasNonSlotElements = this.querySelector(':scope > :not([slot])') !== null;
+    if (hasNonSlotElements) return true;
+
+    // 检查文本节点（只在没有非slot元素时检查）
+    for (const node of this.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const textContent = node.textContent;
+        // 更严格的文本内容检查
+        if (textContent && textContent.trim().length > 0) {
           return true;
         }
       }
-      return false;
-    });
+    }
+
+    return false;
   }
 
   // 渲染组件的HTML模板
@@ -235,6 +330,7 @@ export default class JdsButton extends LitElement {
             aria-label="${ifDefined(this.label)}"
             href=${ifDefined(this.href)}
             target=${ifDefined(this.target)}
+            rel=${ifDefined(this.target === '_blank' ? 'noopener noreferrer' : undefined)}
             role="button"
           >
             ${slots}
@@ -249,6 +345,7 @@ export default class JdsButton extends LitElement {
             aria-label="${ifDefined(this.label)}"
             ?disabled=${isDisabled}
             @click="${this._handleClick}"
+            @keydown="${this._handleKeydown}"
           >
             ${slots}
           </button>
