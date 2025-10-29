@@ -5,12 +5,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "dev": "storybook dev -p 6006 -c ../../.storybook",
+    "build": "storybook build -c ../../.storybook",
     "preview": "serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
-    "lint": "eslint .storybook --ext .ts,.js",
-    "lint:fix": "eslint .storybook --ext .ts,.js --fix",
+    "lint": "eslint ../../.storybook --ext .ts,.js",
+    "lint:fix": "eslint ../../.storybook --ext .ts,.js --fix",
     "type-check": "tsc --noEmit",
     "clean": "rimraf storybook-static"
   },

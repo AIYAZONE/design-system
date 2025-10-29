@@ -5,7 +5,7 @@
 
 - **全称：** Jackery Design System - Jackery设计系统
 - **简写：** JDS
-- **介绍：** 作为全球官网中心前端设计系统，按照前端规范，基于Web Components + Vite + Lit + Storybook设计实现跨技术栈的Web端基础库。
+- **介绍：** 作为全球官网中心前端设计系统，按照前端规范，基于Web Components + Vite + Lit + Storybook设计实现跨技术栈的Web端基础库。采用 Monorepo 架构，包含核心组件、图标库、国际化和工具函数四个独立包。
 - **目标：** Shoelace/Spectrum/Baklava
 - **仓库：** [http://192.168.30.241/global-website/jackery-design-system](http://192.168.30.241/global-website/jackery-design-system)
 - **设计：**
@@ -29,9 +29,34 @@
 - 公司内网npm私仓：`https://nexus.hijackery.cn/repository/npm-private/`
 - 名称： `@jackery/design-system`
 
-## 4. 使用
+## 4. 包结构
 
-### 4.1 依赖引用
+JDS 采用 Monorepo 架构，包含以下独立包：
+
+### 📦 @jackery/core
+- **用途**: 核心 Web Components 组件
+- **包含**: Button, Badge, Dialog, Popover, Spinner, Toast, Tooltip
+- **安装**: `npm install @jackery/core`
+
+### 🎨 @jackery/icons
+- **用途**: 图标库，提供 87+ 个 SVG 图标
+- **特性**: 支持按需导入、Tree-shaking、多种尺寸和颜色
+- **安装**: `npm install @jackery/icons`
+- **使用**: `import { ArrowRight, AlertFill } from '@jackery/icons'`
+
+### 🌍 @jackery/i18n
+- **用途**: 国际化功能
+- **包含**: 核心 i18n 功能、装饰器、语言包
+- **安装**: `npm install @jackery/i18n`
+
+### 🔧 @jackery/utils
+- **用途**: 通用工具函数
+- **包含**: DOM 操作、事件处理、表单控制、通用工具
+- **安装**: `npm install @jackery/utils`
+
+## 5. 使用
+
+### 5.1 依赖引用
 
 1. 系统目录`C:\Users\本机名\.npmrc` 或前端项目根目录新增 `.npmrc` 文件，内容如下：
 
@@ -57,7 +82,7 @@
   npm i @jackery/design-system --save
   ```
 
-### 4.2 CDN引用
+### 5.2 CDN引用
 
 1. 最新版本：
 
@@ -73,7 +98,7 @@
   <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/0.0.1/dist/index.js"></script>
   ```
 
-## 5. 业界优秀实践
+## 6. 业界优秀实践
 
 站在巨人的肩膀上看世界，业界优秀实践参考：
 

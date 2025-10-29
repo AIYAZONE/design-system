@@ -1350,44 +1350,65 @@ const alertConfig = {
 
 ### 10.1 架构与能力对比
 
-- 组件模型：Element Plus 基于 Vue 组件；JDS 基于 Web Components + Lit，更框架无关，跨框架可复用。
-- 主题系统：Element Plus 提供完整主题变量；JDS 提供 CSS Custom Properties 与主题包，并计划提供与 Element Plus 的映射脚本。
-- 文档体系：Element Plus 拥有完善的文档与示例；JDS 将在 Storybook 中对齐模板与交互演示，提升一致性与可迁移性。
-- 构建与按需加载：Element Plus 支持按需导入；JDS 通过组件独立入口与 ESM/CJS 双产物实现等价能力。
-- 可访问性：Element Plus 提供 a11y 基线；JDS 明确 a11y 要求（ARIA、键盘导航、焦点管理）并在 story 中进行自动化检查。
+* 组件模型：Element Plus 基于 Vue 组件；JDS 基于 Web Components + Lit，更框架无关，跨框架可复用。
+
+* 主题系统：Element Plus 提供完整主题变量；JDS 提供 CSS Custom Properties 与主题包，并计划提供与 Element Plus 的映射脚本。
+
+* 文档体系：Element Plus 拥有完善的文档与示例；JDS 将在 Storybook 中对齐模板与交互演示，提升一致性与可迁移性。
+
+* 构建与按需加载：Element Plus 支持按需导入；JDS 通过组件独立入口与 ESM/CJS 双产物实现等价能力。
+
+* 可访问性：Element Plus 提供 a11y 基线；JDS 明确 a11y 要求（ARIA、键盘导航、焦点管理）并在 story 中进行自动化检查。
 
 ### 10.2 组件覆盖对齐计划
 
-- P0（高频）：Button、Input、Select、Checkbox、Radio、Switch、Dialog、Tooltip、Message、Notification。
-- P1（中频）：Pagination、Breadcrumb、Tabs、Tag、Progress、Card、Collapse、Descriptions、Avatar、Empty。
-- P2（复杂）：Table、Tree、DatePicker、TimePicker、Cascader。
+* P0（高频）：Button、Input、Select、Checkbox、Radio、Switch、Dialog、Tooltip、Message、Notification。
+
+* P1（中频）：Pagination、Breadcrumb、Tabs、Tag、Progress、Card、Collapse、Descriptions、Avatar、Empty。
+
+* P2（复杂）：Table、Tree、DatePicker、TimePicker、Cascader。
 
 ### 10.3 API 与主题变量映射
 
-- 属性映射：`type|variant`、`size`、`disabled`、`loading`、`plain`、`round`、`circle`、`icon`、`text`。
-- 事件映射：`click`、`input`、`change`、`focus`、`blur`。
-- 主题变量映射：
-  - 颜色：`--el-color-primary` ↔ `--jds-color-primary`
-  - 文本色：`--el-text-color-primary` ↔ `--jds-text-primary`
-  - 尺寸：`--el-component-size-small` ↔ `--jds-size-sm`
-  - 圆角：`--el-border-radius-base` ↔ `--jds-radius-md`
-  - 阴影：`--el-box-shadow` ↔ `--jds-shadow-md`
+* 属性映射：`type|variant`、`size`、`disabled`、`loading`、`plain`、`round`、`circle`、`icon`、`text`。
+
+* 事件映射：`click`、`input`、`change`、`focus`、`blur`。
+
+* 主题变量映射：
+
+  * 颜色：`--el-color-primary` ↔ `--jds-color-primary`
+
+  * 文本色：`--el-text-color-primary` ↔ `--jds-text-primary`
+
+  * 尺寸：`--el-component-size-small` ↔ `--jds-size-sm`
+
+  * 圆角：`--el-border-radius-base` ↔ `--jds-radius-md`
+
+  * 阴影：`--el-box-shadow` ↔ `--jds-shadow-md`
 
 ### 10.4 迁移策略与工具
 
-- 渐进式迁移：从页面局部开始替换高频组件，避免一次性大改。
-- 包装层（可选）：提供 Vue 适配层以平滑插槽与事件命名差异。
-- 自动化脚本：提供属性/事件/样式变量的映射替换脚本与校验工具。
-- 文档对照：每个组件提供 Element Plus ↔ JDS 的使用对照与常见坑位指南。
+* 渐进式迁移：从页面局部开始替换高频组件，避免一次性大改。
+
+* 包装层（可选）：提供 Vue 适配层以平滑插槽与事件命名差异。
+
+* 自动化脚本：提供属性/事件/样式变量的映射替换脚本与校验工具。
+
+* 文档对照：每个组件提供 Element Plus ↔ JDS 的使用对照与常见坑位指南。
 
 ### 10.5 风险与缓解
 
-- 风险：复杂组件行为差异（如 Table/Tree），短期内难完全对齐；缓解：优先保核心功能，迭代补齐高级功能。
-- 风险：样式变量不完全等价；缓解：提供主题变量扩展与覆盖策略，保留自定义扩展口。
-- 风险：团队使用习惯差异；缓解：培训与示例库，提供 API 一致性指南。
+* 风险：复杂组件行为差异（如 Table/Tree），短期内难完全对齐；缓解：优先保核心功能，迭代补齐高级功能。
+
+* 风险：样式变量不完全等价；缓解：提供主题变量扩展与覆盖策略，保留自定义扩展口。
+
+* 风险：团队使用习惯差异；缓解：培训与示例库，提供 API 一致性指南。
 
 ### 10.6 成功指标
 
-- 组件对齐度 ≥ 85%，示例覆盖 ≥ 90%。
-- 至少 3 个项目完成部分组件迁移并稳定运行。
-- 迁移脚本覆盖 ≥ 80% 的常见属性/事件/变量映射。
+* 组件对齐度 ≥ 85%，示例覆盖 ≥ 90%。
+
+* 至少 3 个项目完成部分组件迁移并稳定运行。
+
+* 迁移脚本覆盖 ≥ 80% 的常见属性/事件/变量映射。
+

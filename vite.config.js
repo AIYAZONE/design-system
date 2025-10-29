@@ -63,7 +63,7 @@ export default defineConfig((configEnv) => {
             // 图标组件
             'icons': ['@jackery/icons'],
             // 国际化相关
-            'i18n': ['./src/i18n/index.ts'],
+            'i18n': ['@jackery/i18n'],
           },
           entryFileNames: (chunkInfo) => {
             return chunkInfo.facadeModuleId?.startsWith('components/')

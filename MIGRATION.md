@@ -43,7 +43,16 @@ cp -r src/utils/* packages/utils/src/
 cp -r src/i18n/* packages/i18n/src/
 ```
 
-#### 2.4 迁移 Storybook 配置
+#### 2.4 迁移图标到 packages/icons
+
+```bash
+# 将图标相关代码迁移到 icons 包
+cp -r src/icons/* packages/icons/src/
+# 或者从现有的 @jackery/icons 包迁移
+# 确保 package.json 中的包名为 @jackery/icons
+```
+
+#### 2.5 迁移 Storybook 配置
 
 ```bash
 # 将 Storybook 配置迁移到 apps/storybook
@@ -59,10 +68,12 @@ cp -r src/examples apps/storybook/stories
 // 旧的导入方式
 import { JackeryButton } from '../components/button';
 import { formatDate } from '../utils/common';
+import { IconArrow } from '../icons/arrow';
 
 // 新的导入方式
 import { JackeryButton } from '@jackery/core/button';
 import { formatDate } from '@jackery/utils/common';
+import { ArrowRight, AlertFill } from '@jackery/icons';
 ```
 
 ### 4. 构建和测试
@@ -109,8 +120,10 @@ pnpm release
 - **样式**: 包含所有组件样式和主题令牌
 
 ### @jackery/icons
-- **用途**: 图标库
-- **导出**: SVG 图标、图标组件、字体文件
+- **用途**: 图标库，提供 87+ 个 SVG 图标
+- **导出**: React/Vue 图标组件、SVG 文件、TypeScript 类型定义
+- **特性**: 支持按需导入、Tree-shaking、多种尺寸和颜色
+- **使用**: `import { ArrowRight, AlertFill } from '@jackery/icons'`
 
 ### @jackery/i18n
 - **用途**: 国际化功能

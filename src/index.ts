@@ -29,7 +29,7 @@ import {
   t,
   I18nController,
   type I18nInstance
-} from './i18n/index.js';
+} from '@jackery/i18n';
 
 // 初始化 i18n
 initialize();

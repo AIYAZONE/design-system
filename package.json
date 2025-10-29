@@ -6,6 +6,7 @@
   "type": "module",
   "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@8.15.6",
   "repository": {
     "type": "git",
     "url": "http://192.168.30.241/global-website/jackery-design-system.git"
@@ -32,8 +33,8 @@
     "changeset:status": "changeset status",
     "release": "pnpm run build && pnpm run changeset:publish",
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
-    "i18n:to-excel": "node src/i18n/scripts/convert-to-excel.js",
-    "i18n:to-json": "node src/i18n/scripts/excel-to-json.js"
+    "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
+    "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js"
   },
   "keywords": [
     "web-components",

@@ -10,8 +10,7 @@
  */
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { i18n } from '../../i18n/decorators';
-import { SUPPORTED_LANGUAGES, Language } from '../../i18n/types/languages';
+import { i18n, SUPPORTED_LANGUAGES, type Language } from '@jackery/i18n';
 
 @customElement('jds-i18n-example')
 export default class JdsI18nExample extends LitElement {

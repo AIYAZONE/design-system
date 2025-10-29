@@ -688,6 +688,13 @@ export default defineConfig({
           'lit': ['lit'],
           'icons': ['@jackery/icons'],
           'i18n': ['./src/i18n']
+        },
+        // icons 包特殊配置：按图标分割
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.name?.includes('icons/')) {
+            return 'icons/[name]-[hash].js';
+          }
+          return '[name]-[hash].js';
         }
       }
     },
@@ -1156,12 +1163,19 @@ echo "Release completed successfully!"
 ### 9.5 Monorepo 架构与工程目录（Turborepo + pnpm + Changesets）
 
 * 采用 Turborepo 管线、pnpm workspace 管理包、Changesets 进行版本与发布管理。
+
 * 顶层结构建议：`apps/`（storybook、docs）、`packages/`（core、icons、i18n、utils）、`tooling/`（eslint-config、tsconfig、scripts）、`.changeset/`、`turbo.json`、`pnpm-workspace.yaml`。
+
 * 工作流：
-  - 构建：`turbo run build`（按包依赖拓扑执行，产出 `dist/**`）
-  - 测试：`turbo run test`（统一 Vitest），覆盖率上报与门禁
-  - 规范：`turbo run lint`（共享 ESLint 配置）、`prettier` 格式化
-  - 发布：`changeset version` → `changeset publish`（NPM 或私有 Registry）
+
+  * 构建：`turbo run build`（按包依赖拓扑执行，产出 `dist/**`）
+
+  * 测试：`turbo run test`（统一 Vitest），覆盖率上报与门禁
+
+  * 规范：`turbo run lint`（共享 ESLint 配置）、`prettier` 格式化
+
+  * 发布：`changeset version` → `changeset publish`（NPM 或私有 Registry）
+
 * 配置示例（节选）：
 
 ```yaml
@@ -1196,10 +1210,15 @@ packages:
 ```
 
 * 包职责：
-  - `@jackery/core (core)`：基础组件与样式基座、设计令牌。
-- `@jackery/icons (icons)`：图标集与图标组件导出。
+
+  * `@jackery/core (core)`：基础组件与样式基座、设计令牌。
+
+- `@jackery/icons (icons)`：图标集与图标组件导出，包含 87+ SVG 图标，支持按需导入、Tree-shaking、多尺寸和颜色配置。
+
 - `@jackery/i18n (i18n)`：国际化核心、事件、缓存、语言包。
+
 - `@jackery/utils (utils)`：通用工具抽象与跨包共享。
+
 * CI/CD：在 GitHub Actions/Jenkins 上对接 `pnpm install` → `turbo run lint build test` → `changeset version/publish`，配合私服（Nexus）或公有 NPM。
 
 ### 9.1 插件系统设计
@@ -1349,3 +1368,4 @@ function complexFunction() {
   ]
 }
 ```
+
