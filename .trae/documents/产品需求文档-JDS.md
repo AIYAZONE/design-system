@@ -857,3 +857,65 @@ graph TD
 
 * **多媒体替代**：图片 alt 文本，视频字幕支持
 
+## 8. 对齐 Element Plus 的策略与路线图
+
+### 8.1 对齐目标与原则
+
+- 一致的信息架构：组件分类、命名、文档结构与 Element Plus 保持一致，降低跨框架认知成本。
+- 完备的组件覆盖：对齐 Element Plus 的核心组件矩阵（基础、表单、数据展示、导航、反馈、布局）。
+- API 设计对齐：在语义、属性命名、事件命名、插槽/内容投影等保持高一致性，同时保留 Web Components 的原生优势。
+- 主题与设计令牌映射：建立与 Element Plus 主题变量的映射关系，确保品牌主题和暗黑模式的等价能力。
+- 文档交互体验对齐：示例、代码片段、属性表、交互演示与可访问性说明对齐最佳实践。
+
+### 8.2 组件覆盖与优先级矩阵
+
+- 基础组件（P0）：`Button`、`Icon`、`Badge`、`Divider`、`Scrollbar`
+- 表单组件（P0）：`Input`、`Select`、`Checkbox`、`Radio`、`Switch`、`Textarea`
+- 反馈组件（P0）：`Dialog`、`Message`、`Notification`、`Loading`、`Tooltip`
+- 导航与数据（P1）：`Pagination`、`Breadcrumb`、`Tabs`、`Tag`、`Progress`
+- 布局与展示（P1）：`Card`、`Collapse`、`Descriptions`、`Avatar`、`Empty`
+- 高阶组件（P2）：`Table`、`Tree`、`DatePicker`、`TimePicker`、`Cascader`
+
+说明：优先 P0 完成基础和高频使用组件，P1 完成导航与展示组件，P2 聚焦复杂交互与数据组件。
+
+### 8.3 API 对齐策略
+
+- 属性命名：遵循 `size`、`type`/`variant`、`disabled`、`loading`、`plain`、`round` 等通用命名；必要时提供别名映射。
+- 事件命名：采用 `onChange`、`onInput`、`onClick` 等标准；同时支持原生 DOM 事件冒泡。
+- 插槽/内容投影：以 `<slot name="prefix">`、`<slot name="suffix">` 对齐 `prefix`/`suffix` 插槽语义。
+- 主题变量：为每个组件提供 `--jds-<component>-<token>` 变量；提供到 Element Plus 变量的映射表与适配层。
+- 无障碍与键盘交互：按 Element Plus 的实践补齐 `aria-*`、焦点与键盘操作指南。
+
+### 8.4 设计令牌与主题映射表（示例）
+
+- 颜色：`--el-color-primary` ↔ `--jds-color-primary`; `--el-text-color-primary` ↔ `--jds-text-primary`
+- 尺寸：`--el-component-size-small` ↔ `--jds-size-sm`; `--el-border-radius-base` ↔ `--jds-radius-md`
+- 阴影：`--el-box-shadow` ↔ `--jds-shadow-md`
+- 间距：`--el-spacing` ↔ `--jds-space-{xs|sm|md|lg}`
+
+提供自动化转换脚本：读取 Element Plus 变量文件，生成 JDS 主题变量映射与文档示例。
+
+### 8.5 文档结构对齐
+
+- 组件页模板：概述 → 使用示例 → 属性 → 事件 → 插槽 → 样式变量 → 无障碍 → 常见问题。
+- 示例规范：基础用法、禁用/加载态、不同尺寸、不同风格、图标/前后缀、受控/非受控、国际化示例。
+- 交互演示：与 Storybook 的 `play` 函数结合，覆盖基本交互路径与可访问性检查。
+
+### 8.6 迁移与互操作策略
+
+- 互操作：为 Vue 用户提供包装层（可选），但优先保证 Web Components 直用体验。
+- 迁移指引：从 Element Plus 到 JDS 的属性/事件/样式变量映射表与示例对照。
+- 渐进替换：支持在同一页面按区域替换组件，减少一次性迁移风险。
+
+### 8.7 路线图（对齐 Element Plus）
+
+- Q1：完成 P0 组件、API 对齐、主题映射初版、文档模板统一。
+- Q2：完成 P1 组件、性能与可访问性优化、国际化与 RTL 全面对齐。
+- Q3：攻克 P2 复杂组件（`Table`、`Tree`、`DatePicker`）、形成稳定的互操作层与最佳实践白皮书。
+
+### 8.8 成功度量指标（Element Plus 对齐）
+
+- 组件对齐度 ≥ 85%（以属性/事件/插槽一致性衡量）。
+- 文档结构一致率 ≥ 90%（以模板与示例覆盖衡量）。
+- 主题变量映射完整度 ≥ 90%（按映射表条目覆盖衡量）。
+- 迁移成功率 ≥ 95%（不少于 3 个实际项目试点统计）。

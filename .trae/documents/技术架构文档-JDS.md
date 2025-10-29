@@ -1125,6 +1125,34 @@ echo "Release completed successfully!"
 
 ## 9. 扩展性与维护性设计
 
+### 9.4 对齐 Element Plus 的架构设计
+
+* 组件命名与语义：对齐 `el-*` 的语义结构，采用 `jds-*`，统一中横线命名与直观属性含义。
+
+* 包结构层次：
+
+  * `@jackery/jds-core`：基础能力（基类、事件、i18n、主题令牌）。
+
+  * `@jackery/jds-components`：标准组件集合与索引导出，支持按需导入。
+
+  * `@jackery/jds-icons`：图标与图标组件。
+
+  * `@jackery/jds-theme-*`：主题包（默认、暗黑、品牌）。
+
+  * `@jackery/jds-plugins`：扩展能力（滚动条、拖拽等）。
+
+* API 与属性：统一 `size`、`type|variant`、`disabled`、`loading`、`plain`、`round`、`circle`、`icon`、`text`；事件对齐 `change`、`input`、`click`、`focus`、`blur`。
+
+* 插槽/内容投影：约定 `prefix`、`suffix`、`default`；以 `<slot>` 承载复用。
+
+* 主题映射：建立 Element Plus 变量到 JDS 变量的映射（颜色、尺寸、阴影、间距）；提供自动化映射脚本与文档。
+
+* 构建产物：产出 `esm`、`cjs`、`d.ts` 与组件独立样式入口；支持 Tree-Shaking 与按需加载。
+
+* 文档模板：概述 → 示例 → 属性 → 事件 → 插槽 → 样式变量 → 无障碍 → FAQ；示例维度与 Element Plus 对齐。
+
+* 迁移与互操作：可选 Vue 包装层，提供属性/事件/样式变量映射表与脚本，支持灰度迁移。
+
 ### 9.1 插件系统设计
 
 ```typescript
