@@ -857,6 +857,28 @@ graph TD
 
 * **多媒体替代**：图片 alt 文本，视频字幕支持
 
+## 8. Monorepo 架构与发布策略（Turborepo + pnpm + Changesets）
+
+### 8.1 采用动因
+- 多包协同：核心库（core、icons、i18n、utils）独立演进，降低耦合。
+- 性能与效率：构建缓存、并行任务、依赖拓扑加速；统一规范与脚本。
+- 版本与发布：Changesets 精准语义化版本、自动生成变更日志与发布。
+
+### 8.2 范围与结构
+- 顶层：`apps/`（storybook、docs）、`packages/`（核心四包）、`tooling/`（共享配置与脚本）。
+- 包清单：`@jackery/core (core)`、`@jackery/icons`、`@jackery/i18n`、`@jackery/utils`。
+
+### 8.3 工作流
+- 开发：`turbo run dev` 启动 storybook；包内热更新联动。
+- 构建：`turbo run build` 按依赖拓扑构建；产出 `esm/cjs/d.ts/style.css`。
+- 测试与规范：`turbo run test`、`turbo run lint`；覆盖率与门禁达标。
+- 发布：在 `main` 分支合入 changeset 后，执行 `changeset version` 与 `changeset publish`。
+
+### 8.4 成功指标
+- 构建时间缩短 ≥ 30%；缓存命中率 ≥ 80%。
+- 包发布自动化；变更日志与回滚可追溯。
+- 4 个核心包稳定产出并被 2+ 项目集成。
+
 ## 8. 对齐 Element Plus 的策略与路线图
 
 ### 8.1 对齐目标与原则

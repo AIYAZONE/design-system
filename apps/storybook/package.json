@@ -1,0 +1,46 @@
+{
+  "name": "@jackery/storybook",
+  "version": "0.1.0",
+  "description": "Jackery Design System - Storybook Documentation",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "preview": "serve ./storybook-static",
+    "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
+    "lint": "eslint .storybook --ext .ts,.js",
+    "lint:fix": "eslint .storybook --ext .ts,.js --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf storybook-static"
+  },
+  "dependencies": {
+    "@jackery/core": "workspace:*",
+    "@jackery/icons": "workspace:*",
+    "@jackery/i18n": "workspace:*",
+    "@jackery/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.6",
+    "@jackery/eslint-config": "workspace:*",
+    "@jackery/tsconfig": "workspace:*",
+    "@storybook/addon-a11y": "8.6.14",
+    "@storybook/addon-actions": "8.6.14",
+    "@storybook/addon-docs": "8.6.14",
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/addon-interactions": "8.6.14",
+    "@storybook/addon-links": "8.6.14",
+    "@storybook/addon-viewport": "8.6.14",
+    "@storybook/blocks": "8.6.14",
+    "@storybook/manager-api": "8.6.14",
+    "@storybook/test": "8.6.14",
+    "@storybook/theming": "8.6.14",
+    "@storybook/web-components": "8.6.14",
+    "@storybook/web-components-vite": "8.6.14",
+    "chromatic": "^13.0.1",
+    "serve": "^14.2.4",
+    "storybook": "8.6.14",
+    "typescript": "^5.0.0",
+    "vite": "^6.0.0"
+  }
+}

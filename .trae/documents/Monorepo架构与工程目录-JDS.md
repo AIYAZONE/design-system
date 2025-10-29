@@ -1,0 +1,185 @@
+# Monorepo 架构与工程目录（Turborepo + pnpm + Changesets）
+
+## 1. 目标与范围
+
+* 采用 Turborepo + pnpm workspace + Changesets 构建 JDS 的 Monorepo 架构。
+
+* 覆盖包：`@jackery/core (core)`、`@jackery/icons`、`@jackery/utils`、`@jackery/i18n`；可拓展业务组件库 `@jackery/jbc-*`。
+
+* 交付：工程目录规划、工作流配置示例、构建与发布策略、CI/CD 建议。
+
+## 2. 顶层目录结构（建议）
+
+```
+jackery-design-system/
+├── apps/
+│   ├── storybook/                  # 文档与示例应用（当前 repo 的 Storybook 迁入）
+│   └── docs/                       # 静态文档站（可选）
+├── packages/
+│   ├── core/                       # Jackery Core 基础组件库
+│   ├── icons/                      # Jackery Icons 图标库
+│   ├── i18n/                       # Jackery I18n 国际化库
+│   └── utils/                      # Jackery Utils 通用方法库
+├── tooling/
+│   ├── eslint-config/              # 团队 ESLint 配置（可选）
+│   ├── tsconfig/                   # tsconfig 基座与共享配置
+│   └── scripts/                    # 统一发布/映射脚本
+├── .changeset/                     # Changesets 版本与发布管理
+├── turbo.json                      # Turborepo pipeline 配置
+├── pnpm-workspace.yaml             # pnpm workspace 包含范围
+├── package.json                    # 顶层任务/依赖/工作流
+├── tsconfig.base.json              # 顶层 TS 配置（引用 tooling/tsconfig）
+└── README.md
+```
+
+## 3. Workspace 配置示例
+
+```yaml
+# pnpm-workspace.yaml
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'tooling/*'
+```
+
+```json
+// turbo.json
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "lib/**"],
+      "cache": true
+    },
+    "lint": { "outputs": [], "cache": true },
+    "test": { "dependsOn": ["^build"], "outputs": ["coverage/**"], "cache": true },
+    "dev": { "cache": false }
+  }
+}
+```
+
+```json
+// .changeset/config.json
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "jackery/design-system" }],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["apps/*", "tooling/*"]
+}
+```
+
+## 4. 包结构与构建规范
+
+* 输出规范：每个包产出 `esm`、`cjs`、`d.ts`、`style.css`；入口 `exports` 提供按需导入（如 `@jackery/core/button`）。
+
+* 构建工具：统一使用 Vite/tsup（任选其一），遵循同一 `tsconfig.base.json`。
+
+* 版本策略：遵循 SemVer；内部依赖版本通过 Changesets 自动提升（patch/minor/major）。
+
+* 测试与质量：Vitest 单测、ESLint/Prettier 统一规范、Chromatic（可选）视觉回归。
+
+## 5. 包命名与职责边界
+
+* `@jackery/core (packages/core)`：Web Components 基础组件、基类、样式基座与主题变量。
+
+* `@jackery/icons (packages/icons)`：图标资源与图标组件，导出 SVG/字体/Icon 组件。
+
+* `@jackery/utils (packages/utils)`：通用工具（cookie、event、form-control 等）抽离与标准化。
+
+* `@jackery/i18n (packages/i18n)`：国际化核心、语言包、LRU 缓存、事件系统、装饰器。
+
+## 6. 统一脚本与任务
+
+* 顶层 `package.json` 示例：
+
+```json
+{
+  "private": true,
+  "packageManager": "pnpm@9",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "release": "changeset publish",
+    "version": "changeset version",
+    "changeset": "changeset"
+  }
+}
+```
+
+## 7. CI/CD 与发布
+
+* 触发规则：`push`/`PR` 执行 `lint`、`build`、`test`；`changeset` 文件合入后在 `main` 上运行 `version`+`publish`。
+
+* GitHub Actions（示例）：
+
+```yaml
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm turbo run lint build test
+  release:
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm changeset version
+      - run: pnpm changeset publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+## 8. 迁移计划（从当前仓库）
+
+* 阶段 1：抽包与目录重组，将 `src/components`/`src/utils`/`src/i18n` 拆分至 `packages/*`，Storybook 迁入 `apps/storybook`。
+
+* 阶段 2：建立共享 `tsconfig.base.json` 与 `tooling` 目录；统一 ESLint/Prettier。
+
+* 阶段 3：为每包配置构建与入口导出；补充 Changesets 与发布工作流。
+
+* 阶段 4：在 `apps/storybook` 验证各包集成与示例渲染；执行试发布到私有/公有 NPM。
+
+## 9. 成功指标
+
+* 构建时间缩短 ≥ 30%；缓存命中率 ≥ 80%。
+
+* 包发布与版本提升自动化；回滚与变更记录可追溯。
+
+* 至少 4 个包稳定产出并被 2+ 项目集成使用。
+
+## 10. 附录
+
+* Nexus/Jenkins/Gitlab 私服与流水线可接入：替换发布步骤为企业内网 Registry；保持 Changesets 版本管理不变。
+
+* 与 Element Plus 对齐：包结构、API 命名、主题变量映射保持一致性，便于生态迁移与对照。
+

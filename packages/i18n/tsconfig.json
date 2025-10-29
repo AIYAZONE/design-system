@@ -1,0 +1,6 @@
+{
+  "extends": "@jackery/tsconfig/lib.json",
+  "compilerOptions": {
+    "composite": true
+  }
+}
