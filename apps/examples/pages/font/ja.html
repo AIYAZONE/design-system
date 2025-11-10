@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日语字体测试页面</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles/index.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/public.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/index.less" />
+  <link rel="stylesheet" href="./font-test.css">
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="font-test">
+    <!-- ヘッダーセクション -->
+    <header class="header-section">
+      <h1>日本語フォントテストページ</h1>
+      <p class="subtitle">Jackery Design System - 日本語対応テスト</p>
+    </header>
+
+    <!-- タイトル階層テスト -->
+    <section class="typography-section">
+      <h1 class="jds-h1">見出し1</h1>
+      <h2 class="jds-h2">見出し2</h2>
+      <h3 class="jds-h3">見出し3</h3>
+      <h4 class="jds-h4">見出し4</h4>
+      <h5 class="jds-h5">見出し5</h5>
+      <h6 class="jds-h6">見出し6</h6>
+    </section>
+
+    <!-- 本文テスト -->
+    <section class="content-section">
+      <h2>製品紹介</h2>
+      <p class="body-text">
+        Jackeryは、ポータブル電源とソーラーパネルの開発・製造を専門としています。
+        私たちの製品は、アウトドアアドベンチャー、緊急時、オフグリッド生活のための
+        信頼性の高い電源ソリューションを提供します。
+      </p>
+
+      <div class="feature-list">
+        <h3>主な特徴</h3>
+        <ul>
+          <li>高性能リチウムイオンバッテリー搭載</li>
+          <li>軽量でコンパクトなデザイン</li>
+          <li>安全性を重視した設計</li>
+          <li>多様な出力ポート</li>
+          <li>ソーラー充電対応</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- フォントウェイトテスト -->
+    <section class="font-weight-section">
+      <h3>フォントウェイトテスト</h3>
+      <p style="font-weight: 400;">レギュラー (400) - ポータブルソーラージェネレーター</p>
+      <p style="font-weight: 500;">ミディアム (500) - ポータブルソーラージェネレーター</p>
+      <p style="font-weight: 600;">セミボールド (600) - ポータブルソーラージェネレーター</p>
+      <p style="font-weight: 700;">ボールド (700) - ポータブルソーラージェネレーター</p>
+    </section>
+
+    <!-- 数字・特殊文字テスト -->
+    <section class="special-chars-section">
+      <h3>数字・特殊文字テスト</h3>
+      <p>数字: 0123456789</p>
+      <p>価格: ¥99,800 (税込)</p>
+      <p>容量: 1,002Wh / 278,400mAh</p>
+      <p>出力: AC100V/1000W (瞬間最大2000W)</p>
+      <p>Symbols: !@#$%^&*()_+-=[]{}|;':",./ >?</p>
+      <p>Currency: $€£¥₹₽₩</p>
+    </section>
+
+    <!-- コンポーネントテスト -->
+    <section class="components-section">
+      <h3>デザインシステムコンポーネント</h3>
+
+      <!-- ボタンテスト -->
+      <div class="button-group">
+        <h4>ボタン</h4>
+        <jds-button size="large">詳細を見る</jds-button>
+        <jds-button size="medium" variant="secondary">カートに追加</jds-button>
+        <jds-button size="small" variant="outline">お気に入り</jds-button>
+        <jds-button loading>読み込み中...</jds-button>
+      </div>
+
+      <!-- バッジテスト -->
+      <div class="badge-group">
+        <h4>バッジ</h4>
+        <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">進行中</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">承認済み</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">警告</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">拒否</jds-badge>
+      </div>
+
+      <!-- トーストテスト -->
+      <div class="toast-group">
+        <h4>トースト通知</h4>
+        <jds-toast variant="success" icon>成功メッセージ</jds-toast>
+        <jds-toast variant="warning" icon>警告メッセージ</jds-toast>
+        <jds-toast variant="danger" icon>エラーメッセージ</jds-toast>
+      </div>
+
+      <!-- ツールチップテスト -->
+      <div class="tooltip-group">
+        <h4>ツールチップ</h4>
+        <jds-tooltip placement="top">
+          <jds-button slot="tooltip-trigger">上部ツールチップ</jds-button>
+          この製品の詳細情報を表示します。
+        </jds-tooltip>
+
+        <jds-tooltip placement="bottom">
+          <jds-button slot="tooltip-trigger">下部ツールチップ</jds-button>
+          購入前にご確認ください。
+        </jds-tooltip>
+      </div>
+
+      <!-- ダイアログテスト -->
+      <div class="dialog-group">
+        <h4>ダイアログ</h4>
+        <jds-button id="open-dialog-btn">ダイアログを開く</jds-button>
+        <jds-dialog id="test-dialog" title="製品情報">
+          <p>Jackery Explorer 1000 Pro</p>
+          <p>高性能ポータブル電源で、アウトドアや緊急時に最適です。</p>
+          <jds-button slot="footer" variant="primary">購入する</jds-button>
+          <jds-button slot="footer" variant="secondary">キャンセル</jds-button>
+        </jds-dialog>
+      </div>
+    </section>
+
+    <!-- 製品カードセクション -->
+    <section class="product-cards-section">
+      <h3>製品ラインナップ</h3>
+      <div class="product-grid">
+        <div class="product-card">
+          <h4>Explorer 1000 Pro</h4>
+          <p class="price">¥149,800</p>
+          <p class="capacity">容量: 1,002Wh</p>
+          <p class="description">高性能バッテリー搭載、軽量でコンパクト</p>
+          <jds-button size="small">詳細を見る</jds-button>
+        </div>
+
+        <div class="product-card">
+          <h4>Explorer 2000 Pro</h4>
+          <p class="price">¥249,800</p>
+          <p class="capacity">容量: 2,160Wh</p>
+          <p class="description">大容量で長時間使用可能</p>
+          <jds-button size="small">詳細を見る</jds-button>
+        </div>
+
+        <div class="product-card">
+          <h4>SolarSaga 100W</h4>
+          <p class="price">¥34,800</p>
+          <p class="capacity">出力: 100W</p>
+          <p class="description">高効率ソーラーパネル</p>
+          <jds-button size="small">詳細を見る</jds-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- リンクテスト -->
+    <section class="link-section">
+      <h3>リンクスタイル</h3>
+      <p>
+        <a href="#">Jackery製品についてもっと詳しく</a>をご覧ください。
+        <a href="#">サポートページ</a>もご利用いただけます。
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // ダイアログの開閉処理
+    document.getElementById('open-dialog-btn')?.addEventListener('click', () => {
+      const dialog = document.getElementById('test-dialog');
+      if (dialog) dialog.open = true;
+    });
+  </script>
+</body>
+
+</html>

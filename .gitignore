@@ -33,3 +33,5 @@ chromatic.config.json
 .npmrc
 
 vite.config.js.*
+
+.turbo/*

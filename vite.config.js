@@ -52,7 +52,6 @@ export default defineConfig((configEnv) => {
         input: {
           index: "./src/index.ts", // 主入口文件
           ...getEntriesInDir("src/styles", ".less"),
-          ...getEntriesInDir("src/components", ".ts", true),
         },
         output: {
           manualChunks: {
@@ -65,11 +64,7 @@ export default defineConfig((configEnv) => {
             // 国际化相关
             'i18n': ['@jackery/i18n'],
           },
-          entryFileNames: (chunkInfo) => {
-            return chunkInfo.facadeModuleId?.startsWith('components/')
-              ? `components/${chunkInfo.name}.js`
-              : `${chunkInfo.name}.js`;
-          },
+          entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
             // 检查fileName是否为undefined，如果是则使用空字符串作为默认值
@@ -132,6 +127,15 @@ export default defineConfig((configEnv) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'), // 配置路径别名
+        // 直接指向各工作区源码，确保根站点在开发时无需依赖各包的 dist
+        '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
+        '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+        '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
+        '@jackery/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+        '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+        '@jackery/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+        '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
+        '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*'),
       },
     },
   };

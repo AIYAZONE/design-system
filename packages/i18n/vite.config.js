@@ -18,6 +18,7 @@ export default defineConfig({
     },
     rollupOptions: {
       input: 'src/index.ts',
+      external: ['lit', 'lit/decorators.js'],
       output: {
         entryFileNames: 'index.[format].js',
         chunkFileNames: 'chunks/[name].[format].js'

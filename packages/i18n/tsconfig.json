@@ -2,7 +2,7 @@
   "extends": "@jackery/tsconfig/lib.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "composite": true,
     "rootDir": "./src",
     "outDir": "./dist"

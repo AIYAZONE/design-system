@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badge - 徽章</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles/index.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/public.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/index.less" />
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Badge 徽章组件</h1>
+        <p class="subtitle">各种样式和状态的徽章展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>徽章样式</h2>
+      <p>
+        <jds-badge icon="info-fill" style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">Info</jds-badge>
+        <jds-badge icon="question-fill" style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Question</jds-badge>
+        <jds-badge icon="alert-fill" style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Tips</jds-badge>
+        <br>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Success</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Danger</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:var(--jds-color-neutral-100);--jds-badge-color:var(--jds-color-neutral-400);">Neutral</jds-badge>
+      </p>
+    </main>
+  </div>
+</body>
+
+</html>

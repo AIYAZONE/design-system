@@ -64,19 +64,21 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
     "lit": "^3.0.0"
   },
   "devDependencies": {
     "@jackery/eslint-config": "workspace:*",
     "@jackery/tsconfig": "workspace:*",
+    "less": "^4.4.2",
+    "rimraf": "^5.0.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0",
-    "vitest": "^1.0.0",
-    "rimraf": "^5.0.0"
+    "vitest": "^1.0.0"
   },
   "peerDependencies": {
-    "@jackery/utils": "workspace:*",
-    "@jackery/i18n": "workspace:*"
+    "@jackery/i18n": "workspace:*",
+    "@jackery/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "restricted"

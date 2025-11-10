@@ -102,13 +102,13 @@ graph TD
 
 ### 2.1 核心技术栈
 
-| 技术             | 版本     | 选择理由           | 替代方案                      |
-| -------------- | ------ | -------------- | ------------------------- |
-| **Lit**        | 3.3.0  | 轻量级、标准化、性能优秀   | Stencil、原生 Web Components |
-| **TypeScript** | 5.8.3  | 类型安全、开发体验、生态完善 | JavaScript、Flow           |
-| **Vite**       | 6.3.5  | 快速构建、HMR、现代化   | Webpack、Rollup、Parcel     |
-| **Less**       | 4.3.0  | 成熟稳定、功能丰富、团队熟悉 | Sass、Stylus、CSS-in-JS     |
-| **Storybook**  | 8.6.14 | 组件文档、测试、生态完善   | Docusaurus、自建文档           |
+| 技术             | 版本     | 选择理由           | 替代方案                      | 备注                    |
+| -------------- | ------ | -------------- | ------------------------- | --------------------- |
+| **Lit**        | 3.x    | 轻量级、标准化、性能优秀   | Stencil、原生 Web Components | 实际使用 3.0.0 - 3.2.1    |
+| **TypeScript** | 5.8.3  | 类型安全、开发体验、生态完善 | JavaScript、Flow           | 根目录 ~5.8.3，子包 ^5.0.0 |
+| **Vite**       | 5.x/7.x | 快速构建、HMR、现代化   | Webpack、Rollup、Parcel     | 根目录 7.2.1，子包 5.x    |
+| **Less**       | 4.4.2  | 成熟稳定、功能丰富、团队熟悉 | Sass、Stylus、CSS-in-JS     | packages/core 使用      |
+| **Storybook**  | 8.4.5  | 组件文档、测试、生态完善   | Docusaurus、自建文档           | packages/icons 使用      |
 
 ### 2.2 技术选型对比分析
 
@@ -1138,15 +1138,18 @@ echo "Release completed successfully!"
 
 * 包结构层次：
 
-  * `@jackery/jds-core`：基础能力（基类、事件、i18n、主题令牌）。
+  **当前实际包结构**：
+  * `@jackery/core`：基础组件与样式基座、设计令牌（包含 Button、Badge、Dialog 等组件）
+  * `@jackery/icons`：图标库，包含 87+ SVG 图标，支持按需导入
+  * `@jackery/i18n`：国际化核心、事件、缓存、语言包
+  * `@jackery/utils`：通用工具函数（DOM 操作、事件处理、表单控制等）
 
-  * `@jackery/jds-components`：标准组件集合与索引导出，支持按需导入。
-
-  * `@jackery/jds-icons`：图标与图标组件。
-
-  * `@jackery/jds-theme-*`：主题包（默认、暗黑、品牌）。
-
-  * `@jackery/jds-plugins`：扩展能力（滚动条、拖拽等）。
+  **未来规划的理想结构**（可选演进方向）：
+  * `@jackery/core`：基础能力层（基类、事件系统、i18n 核心、主题令牌）
+  * `@jackery/components`：标准组件集合与索引导出，支持按需导入（从 core 中拆分）
+  * `@jackery/icons`：图标与图标组件（保持现状）
+  * `@jackery/theme-*`：主题包（默认、暗黑、品牌等，可选独立包）
+  * `@jackery/plugins`：扩展能力（滚动条、拖拽等高级功能）
 
 * API 与属性：统一 `size`、`type|variant`、`disabled`、`loading`、`plain`、`round`、`circle`、`icon`、`text`；事件对齐 `change`、`input`、`click`、`focus`、`blur`。
 

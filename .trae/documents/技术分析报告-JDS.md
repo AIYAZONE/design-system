@@ -6,17 +6,17 @@
 
 ### 1.1 技术栈深度分析
 
-* **核心框架**: Lit 3.3.0 (Web Components 标准)
+* **核心框架**: Lit 3.x (Web Components 标准，实际使用 3.0.0 - 3.2.1)
 
-* **开发语言**: TypeScript 5.8.3 (严格模式)
+* **开发语言**: TypeScript 5.8.3 (严格模式，根目录 ~5.8.3，子包 ^5.0.0)
 
-* **构建工具**: Vite 6.3.5 + Rollup
+* **构建工具**: Vite 5.x/7.x + Rollup (根目录 7.2.1，子包 5.x)
 
-* **样式系统**: Less 4.3.0 + CSS Custom Properties
+* **样式系统**: Less 4.4.2 + CSS Custom Properties
 
-* **文档工具**: Storybook 8.6.14
+* **文档工具**: Storybook 8.4.5 (packages/icons 使用)
 
-* **测试框架**: Vitest 3.2.4 (配置但未完全实施)
+* **测试框架**: Vitest 1.x (配置但未完全实施)
 
 * **代码质量**: ESLint + Prettier + Husky (部分配置)
 
@@ -30,7 +30,7 @@
 
 * **文档页面**: 20+ 个 Storybook 页面
 
-* **支持语言**: 4 种 (中文、英文、德文、日文)
+* **支持语言**: 10 种 (中文简体、中文繁体、英文、德文、西班牙文、法文、意大利文、日文、韩文)
 
 * **设计令牌**: 50+ 个 CSS 自定义属性
 

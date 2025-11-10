@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Style - 通用样式技巧</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles/index.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/public.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/index.less" />
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Public Style 通用样式技巧</h1>
+        <p class="subtitle">设计系统中的通用样式使用技巧和注意事项</p>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>本项目LESS文件 变量对应值使用 @rem计算失效</h2>
+        <pre>
+        @rem: (1rem / 16);
+        .button {
+          --height: 80 * @rem;            // Error - 失效
+          --height: max(0, 80 * @rem);    // 80px等效尺寸 - 生效
+          height: 80 * @rem;              // 80px等效尺寸 - 生效
+        }
+        </pre>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

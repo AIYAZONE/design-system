@@ -101,7 +101,7 @@ packages:
 ```json
 {
   "private": true,
-  "packageManager": "pnpm@9",
+  "packageManager": "pnpm@8.15.6",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -133,7 +133,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
-        with: { version: 9 }
+        with: { version: 8.15.6 }
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -147,7 +147,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
-        with: { version: 9 }
+        with: { version: 8.15.6 }
       - uses: actions/setup-node@v4
         with:
           node-version: 20

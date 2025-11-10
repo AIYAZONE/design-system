@@ -9,48 +9,17 @@
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
 
-import { JdsIcon } from "@jackery/icons";
-
-import JdsBadge from "./components/badge/index.js";
-import JdsSpinner from "./components/spinner/index.js";
-import JdsButton from "./components/button/index.js";
-import JdsDialog from "./components/dialog/index.js";
-import JdsToast from "./components/toast/index.js";
-import JdsPopover from "./components/popover/index.js";
-import JdsTooltip from "./components/tooltip/index.js";
-import JdsI18n from "./components/i18n/index.js";
-
-// i18n
-import {
+// 统一入口改为导出 @jackery/core 基础组件
+export * from '@jackery/core';
+export { JdsIcon } from '@jackery/icons';
+// i18n 功能导出（保持纯导出，不做运行时初始化）
+export {
+  JdsI18n,
   initialize,
   initI18nDom,
+  t,
   setCurrLanguage,
   getCurrLanguage,
-  t,
   I18nController,
   type I18nInstance
 } from '@jackery/i18n';
-
-// 初始化 i18n
-initialize();
-initI18nDom();
-
-export {
-  JdsIcon,
-  JdsBadge,
-  JdsSpinner,
-  JdsButton,
-  JdsDialog,
-  JdsToast,
-  JdsPopover,
-  JdsTooltip,
-  JdsI18n,
-  // i18n 相关功能导出
-  initialize,
-  initI18nDom,
-  t,
-  setCurrLanguage,
-  getCurrLanguage,
-  I18nController,
-  type I18nInstance
-};

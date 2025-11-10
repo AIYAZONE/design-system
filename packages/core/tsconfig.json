@@ -3,11 +3,24 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
+    "rootDir": "./src",
+    "emitDeclarationOnly": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "types": ["vite/client"],
     "paths": {
       "@jackery/utils": ["../utils/src"],
       "@jackery/i18n": ["../i18n/src"]
     }
   },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.stories.ts",
+    "src/**/*.stories.js",
+    "src/**/*.mdx"
+  ],
   "references": [
     {
       "path": "../utils"

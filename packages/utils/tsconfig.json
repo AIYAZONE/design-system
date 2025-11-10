@@ -1,6 +1,18 @@
 {
   "extends": "@jackery/tsconfig/lib.json",
   "compilerOptions": {
-    "composite": true
-  }
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

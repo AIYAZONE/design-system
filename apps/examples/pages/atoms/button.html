@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button - 按钮</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles/index.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/public.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/index.less" />
+  <script type="module" src="/main.ts"></script>
+  <style>
+    .card {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 4px;
+      margin: 20px;
+      cursor: pointer;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Button 按钮组件</h1>
+        <p class="subtitle">各种样式和状态的按钮展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>按钮变体 - variant</h2>
+      <p>
+        <jds-button>Primary Button</jds-button>
+        <jds-button variant="secondary">Secondary Button</jds-button>
+        <jds-button variant="text">Text Button</jds-button>
+        <jds-button variant="text">文本按钮</jds-button>
+      </p>
+
+      <h2>按钮种类 - kind - 暂未设计，先参考业界实现</h2>
+      <p>
+        <jds-button kind="default">Default Button</jds-button>
+        <jds-button kind="neutral">Neutral Button</jds-button>
+        <jds-button kind="success">Success Button</jds-button>
+        <jds-button kind="danger">Danger Button</jds-button>
+        <jds-button kind="custom" style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
+      </p>
+
+      <p>
+        <jds-button variant="secondary">Primary Button</jds-button>
+        <jds-button variant="secondary" kind="neutral">Secondary Button</jds-button>
+        <jds-button variant="secondary" kind="success">Text Button</jds-button>
+        <jds-button variant="secondary" kind="danger">Text Button</jds-button>
+        <jds-button variant="secondary" kind="custom" style="--jds-button-custom-color:blue;">Custom Color
+          Button</jds-button>
+
+      </p>
+
+      <p>
+        <jds-button variant="text">Primary Button</jds-button>
+        <jds-button variant="text" kind="neutral">Secondary Button</jds-button>
+        <jds-button variant="text" kind="success">Text Button</jds-button>
+        <jds-button variant="text" kind="danger">Text Button</jds-button>
+        <jds-button variant="text" kind="custom" style="--jds-button-custom-color:blue;">Custom Color
+          Button</jds-button>
+
+      </p>
+
+      <h2>按钮大小 - size</h2>
+      <p>
+        <jds-button size="extra">Extra Button</jds-button>
+        <jds-button size="large">Large Button</jds-button>
+        <jds-button size="medium">Medium Button</jds-button>
+        <jds-button size="small">Small Button</jds-button>
+      </p>
+      <h3>样式配置：style="--jds-button-display:block;"</h3>
+      <div class="card">
+        <jds-button style="--jds-button-display: block">Confirm</jds-button>
+        <br />
+        <jds-button size="medium" style="--jds-button-display: block">Confirm</jds-button>
+      </div>
+      <h3>样式配置：style="--jds-button-custom-color:pink;"</h3>
+      <jds-button kind="custom" style="--jds-button-custom-color:pink;" title="A very long text content">A very long text content</jds-button>
+      <h3>样式配置：style="--jds-button-text-custom-color:blue;"</h3>
+      <jds-button kind="custom" style="--jds-button-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
+      <h3>样式配置：style="--jds-button-custom-color:pink; --jds-button-text-custom-color:blue;"</h3>
+      <jds-button kind="custom" style="--jds-button-custom-color:pink; --jds-button-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
+
+      <h2>不同尺寸图标按钮</h2>
+      <p>
+        <jds-button icon="arrow-right" size="extra">Primary + Icon Button page VIEW</jds-button>
+        <jds-button variant="secondary" icon="arrow-right" size="extra">Secondary + Icon Button VIEW</jds-button>
+        <jds-button variant="text" icon="arrow-right" size="extra">Text + Icon Button VIEW</jds-button>
+      </p>
+      <p>
+        <jds-button icon="arrow-right">Primary + Icon Button page VIEW</jds-button>
+        <jds-button variant="secondary" icon="arrow-right">Secondary + Icon Button VIEW</jds-button>
+        <jds-button variant="text" icon="arrow-right">Text + Icon Button VIEW</jds-button>
+      </p>
+      <p>
+        <jds-button icon="arrow-right" size="medium">Primary + Icon Button page VIEW</jds-button>
+        <jds-button variant="secondary" icon="arrow-right" size="medium">Secondary + Icon Button VIEW</jds-button>
+        <jds-button variant="text" icon="arrow-right" size="medium">Text + Icon Button VIEW</jds-button>
+      </p>
+
+      <p>
+        <jds-button icon="arrow-right" size="small">Primary + Icon Button page VIEW</jds-button>
+        <jds-button variant="secondary" icon="arrow-right" size="small">Secondary + Icon Button VIEW</jds-button>
+        <jds-button variant="text" icon="arrow-right" size="small">Text + Icon Button VIEW</jds-button>
+      </p>
+
+      <h2>禁用状态</h2>
+      <p>
+        <jds-button disabled>Primary Button</jds-button>
+        <jds-button variant="secondary" disabled>Secondary Button</jds-button>
+        <jds-button variant="text" disabled>Text Button</jds-button>
+      </p>
+
+      <h2>加载状态</h2>
+      <p>
+        Primary Button：<jds-button loading>Primary Button</jds-button>
+        Secondary Button：<jds-button variant="secondary" loading>Secondary Button</jds-button>
+        文本按钮无加载状态
+      </p>
+
+      <h2>纯图标按钮</h2>
+      <jds-button icon="arrow-left" size="small"></jds-button>
+      <jds-button icon="arrow-right" size="small"></jds-button>
+      <jds-button icon="info-fill" size="small"></jds-button>
+      <jds-button icon="info-fill"></jds-button>
+      <jds-button icon="arrow-right"></jds-button>
+      <jds-button icon="arrow-right">普通图标按钮</jds-button>
+      <jds-button icon="arrow-right-long"></jds-button>
+      <jds-button icon="arrow-up-long"></jds-button>
+      <jds-button icon="arrow-right" size="extra" variant="secondary"></jds-button>
+
+      <h2>超链接按钮</h2>
+      <p>
+        <jds-button icon="info-fill" href="https://www.jackery.com"></jds-button>
+        <jds-button icon="arrow-right-long" href="https://www.jackery.com"></jds-button>
+        <jds-button href="https://www.jackery.com">Jackery Home Page</jds-button>
+        <br>
+        <jds-button href="https://www.jackery.com" target="_self">Jackery Home Page</jds-button>
+        <jds-button icon="arrow-right-long" href="https://www.jackery.com">Jackery Home Page</jds-button>
+      </p>
+
+      <h2>实心胶囊动效按钮</h2>
+      <jds-button class="jds-animate" size="extra">
+        SHOP NOW
+        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
+      </jds-button>
+      <jds-button class="jds-animate" size="large">
+        SHOP NOW
+        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
+      </jds-button>
+      <jds-button class="jds-animate" size="medium">
+        SHOP NOW
+        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
+      </jds-button>
+      <jds-button class="jds-animate" size="small">
+        SHOP NOW
+        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
+      </jds-button>
+
+      <h2>纯图标动效按钮</h2>
+      <div class="card jds-animate">
+        <p>鼠标悬浮到卡片上方查看效果</p>
+        <jds-button class="only-icon" icon="arrow-right-long"></jds-button>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

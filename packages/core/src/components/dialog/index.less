@@ -1,0 +1,159 @@
+@import url(../../styles/internal.less);
+
+:host {
+  /* 使宿主元素不影响布局 */
+  display: contents;
+  width: max-content;
+  text-align: left;
+}
+
+.dialog-polyfill {
+  inset-inline-start: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--jds-dialog-index, 500);
+  background-color: var(--jds-color-overlay-70);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  z-index: var(--jds-index-dialog);
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  background: var(--jds-color-white);
+  transition: transform 0.3s ease-out 0.1s;
+
+  jds-icon.close {
+    position: absolute;
+    top: var(--jds-size-16);
+    right: var(--jds-size-16);
+    z-index: 1;
+    font-size: var(--jds-size-32);
+    color: var(--jds-color-text-l3);
+    cursor: pointer;
+  }
+
+  #dialogCaption {
+    margin-bottom: var(--jds-size-16);
+    text-align: var(--jds-dialog-title-align, left);
+  }
+
+  .content {
+    margin-right: 6px;
+    padding-left: 0;
+    padding-bottom: 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+:host([size='large']) .container {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+:host([open]) .dialog-polyfill {
+  /* 打开对话框时显示遮罩 */
+  opacity: 1;
+  visibility: visible;
+}
+
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);
+
+  .container {
+    min-width: 480 * @rem;
+    max-height: calc(100vh - var(--jds-size-64) * 2);
+    border-radius: var(--jds-rounded-12);
+
+    .content {
+      margin-top: var(--jds-size-48);
+      margin-bottom: var(--jds-size-48);
+      padding-left: var(--jds-size-64);
+      padding-right: calc(var(--jds-size-64) - var(--jds-size-6));
+    }
+  }
+
+  :host([size='large']) .container {
+    width: var(--jds-dialog-width, 640px);
+    min-height: 240 * @rem;
+
+    .content {
+      min-height: 192 * @rem;
+    }
+  }
+
+  :host([size='extra']) .container {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: var(--jds-dialog-width, 1200px);
+    min-height: 400 * @rem;
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  @rem: (1rem / 32);
+
+  :host {
+    --jds-size-128: min(128px, max(0, 128 * @rem));
+    --jds-size-160: min(160px, max(0, 160 * @rem));
+  }
+
+  .container {
+    min-width: 560 * @rem;
+    border-radius: var(--jds-rounded-24);
+
+    jds-icon.close {
+      font-size: var(--jds-size-48);
+    }
+
+    .content {
+      margin-top: var(--jds-size-72);
+      margin-bottom: var(--jds-size-32);
+      padding-left: var(--jds-size-32);
+      padding-right: calc(var(--jds-size-32) - var(--jds-size-6));
+    }
+  }
+
+  :host([size='large']) .container {
+    width: calc(100vw - var(--jds-size-48) * 2);
+    min-height: 320 * @rem;
+    max-height: calc(100vh - var(--jds-size-128) * 2);
+  }
+
+  :host([size='extra']) .dialog-polyfill {
+    align-items: flex-end;
+  }
+
+  :host([size='extra']) .container {
+    bottom: 0;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    min-height: 400 * @rem;
+    max-height: calc(100vh - var(--jds-size-64));
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  // ios真机 浏览器特定适配，适配底部安全区域
+  @supports (-webkit-touch-callout: none) {
+    :host([size='extra']) .container {
+      max-height: calc(100vh - var(--jds-size-160));
+    }
+  }
+
+  :host([size='extra'][open]) .container {
+    transform: translateX(-50%) translateY(0);
+  }
+}

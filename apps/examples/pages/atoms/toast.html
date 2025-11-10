@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toast - 轻提示</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/styles/index.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/public.less" />
+  <link rel="stylesheet" href="/apps/examples/styles/index.less" />
+  <!-- 统一使用示例站主入口脚本，集中引入样式与组件注册 -->
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="Jackery Logo" />
+      </a>
+      <div class="content">
+        <h1>Toast 轻提示组件</h1>
+        <p class="subtitle">各种样式和状态的轻提示展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>轻提示样式</h2>
+      <p>
+        <jds-toast icon>Info Variant</jds-toast>
+        <jds-toast variant="warning" icon>Warning Variant</jds-toast>
+        <jds-toast variant="success" icon>Success Variant</jds-toast>
+        <jds-toast variant="success" countdownTime="5" icon>Success Variant</jds-toast>
+        <jds-toast variant="danger" icon>Danger Variant</jds-toast>
+        <jds-toast variant="danger">Danger Text
+          <jds-button slot="action">Action Link</jds-button>
+          <jds-button slot="action-secondary">Action Link</jds-button>
+        </jds-toast>
+      </p>
+    </main>
+  </div>
+</body>
+
+</html>

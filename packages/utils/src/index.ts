@@ -6,3 +6,4 @@ export * from './elements';
 export * from './event';
 export * from './form-control';
 export * from './string-boolean.converter';
+export * from './submit';
