@@ -14,4 +14,3 @@ export * from './base';
 export * from './types';
 
 // 导出样式
-import './styles/index.css';

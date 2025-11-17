@@ -1,5 +1,7 @@
 /* Font Test Pages Styles */
-
+body{
+  background-color: #fff !important;
+}
 /* Common Styles */
 .font-test {
   max-width: 1312px;

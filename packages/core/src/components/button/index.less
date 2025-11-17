@@ -99,7 +99,7 @@
 }
 
 :host([kind="custom"]) .button:not(.ios-below-16_2) {
-  --main-color: var(--jds-button-custom-color, #FD5000);
+  --main-color: var(--jds-button-custom-color, var(--jds-color-primary));
   /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
   --jds-color-custom-highlight: color-mix(in srgb, white 15%, var(--main-color));
   --main-hover-color: var(--jds-color-custom-highlight);
@@ -107,12 +107,12 @@
 
 // ios真机浏览器 低于16.2版本 无悬浮色交互
 :host([kind="custom"]) .button.ios-below-16_2 {
-  --main-color: var(--jds-button-custom-color, #FD5000);
+  --main-color: var(--jds-button-custom-color, var(--jds-color-primary));
   --main-hover-color: var(--main-color);
 }
 
 :host([kind="custom"][variant="primary"]) .button {
-  --content-color: var(--jds-button-primary-custom-text-color, #FFFFFF);
+  --content-color: var(--jds-button-primary-custom-text-color, var(--jds-color-white));
 }
 
 // 不同尺寸按钮
@@ -186,9 +186,7 @@
 
 // 禁用状态
 :host .button[aria-disabled="true"] {
-  // 不透明度30%
-  @jds-color-primary: #FD5000;
-  --main-color: mix(transparent, @jds-color-primary, 70%);
+  --main-color: color-mix(in srgb, transparent 70%, var(--jds-color-primary));
   --main-hover-color: var(--main-color);
   pointer-events: none;
   text-decoration: none;

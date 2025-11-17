@@ -26,8 +26,9 @@ pnpm install
 ```bash
 # 将现有组件迁移到 core 包
 cp -r src/components/* packages/core/src/components/
-cp -r src/styles/* packages/core/src/styles/
 ```
+
+> 注意：全局样式不再存放于 `packages/core/src/styles`，统一由根目录 `src/styles` 管理并在应用入口显式引入。
 
 #### 2.2 迁移工具函数到 packages/utils
 
@@ -60,7 +61,7 @@ cp -r .storybook apps/storybook/
 cp -r src/examples apps/storybook/stories
 ```
 
-### 3. 更新导入路径
+### 3. 更新导入路径与样式策略
 
 在迁移后，需要更新所有的导入路径：
 
@@ -74,6 +75,9 @@ import { IconArrow } from '../icons/arrow';
 import { JackeryButton } from '@jackery/core/button';
 import { formatDate } from '@jackery/utils/common';
 import { ArrowRight, AlertFill } from '@jackery/icons';
+
+// 全局样式在应用入口引入（示例）
+import '@styles/index.less';
 ```
 
 ### 4. 构建和测试
@@ -88,6 +92,13 @@ pnpm test
 # 启动 Storybook
 pnpm storybook
 ```
+
+### 4. 样式与主题迁移
+
+- **全局样式唯一来源**：将项目的全局样式合并到根目录 `src/styles`，入口统一 `import '@styles/index.less'`。
+- **组件样式改造**：组件内样式使用 `index.less?inline` 注入，仅引用 `:root` 的 CSS 变量，不在组件内 `@import` 全局文件。
+- **移除重复来源**：删除 `packages/core/src/styles/index.css` 与 `internal.less`，避免与 `src/styles` 冲突。
+- **Vite 路径别名**：在根站点与示例站 `vite.config` 添加 `@styles -> src/styles`，便于统一引用。
 
 ### 5. 发布流程
 
@@ -117,7 +128,7 @@ pnpm release
 ### @jackery/core
 - **用途**: 核心 Web Components 组件
 - **导出**: Button, Badge, Dialog, Popover, Spinner, Toast, Tooltip
-- **样式**: 包含所有组件样式和主题令牌
+- **样式**: 组件样式以内联方式注入；全局主题令牌与样式由根目录 `src/styles` 管理
 
 ### @jackery/icons
 - **用途**: 图标库，提供 87+ 个 SVG 图标
@@ -149,8 +160,9 @@ pnpm storybook
 
 1. 在 `packages/core/src/components/` 中创建新组件
 2. 在 `packages/core/src/index.ts` 中导出
-3. 在 `apps/storybook/stories/` 中添加 Story
-4. 运行测试确保一切正常
+3. 组件样式以 `index.less?inline` 注入，并仅使用 `:root` 变量
+4. 在 `apps/storybook/stories/` 中添加 Story
+5. 运行测试确保一切正常
 
 ### 发布新版本
 

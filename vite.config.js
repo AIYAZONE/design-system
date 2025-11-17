@@ -127,6 +127,7 @@ export default defineConfig((configEnv) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'), // 配置路径别名
+        '@styles': path.resolve(__dirname, 'src/styles'),
         // 直接指向各工作区源码，确保根站点在开发时无需依赖各包的 dist
         '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
         '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),

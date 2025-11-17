@@ -24,6 +24,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '../../src'),
+      '@styles': path.resolve(__dirname, '../../src/styles'),
       '@jackery/core': path.resolve(__dirname, '../../packages/core/src'),
       '@jackery/core/*': path.resolve(__dirname, '../../packages/core/src/*'),
       '@jackery/icons': path.resolve(__dirname, '../../packages/icons/src'),

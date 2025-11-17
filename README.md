@@ -37,6 +37,7 @@ JDS 采用 Monorepo 架构，包含以下独立包：
 - **用途**: 核心 Web Components 组件
 - **包含**: Button, Badge, Dialog, Popover, Spinner, Toast, Tooltip
 - **安装**: `npm install @jackery/core`
+ - **样式策略**: 组件样式以内联方式注入（`index.less?inline`）；不再自动注入核心包的全局样式，项目需在入口显式引入设计系统样式（见下文）。
 
 ### 🎨 @jackery/icons
 - **用途**: 图标库，提供 87+ 个 SVG 图标
@@ -97,6 +98,56 @@ JDS 采用 Monorepo 架构，包含以下独立包：
   <link rel="stylesheet" crossorigin href="https://f2e-cdn.jackery.com/@jackery/design-system/0.0.1/dist/index.css">
   <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/0.0.1/dist/index.js"></script>
   ```
+
+### 5.3 样式使用规范（最新）
+
+- **全局样式唯一来源**: 在项目入口显式引入 `src/styles/index.less`，统一加载字体、设计令牌、重置、公共样式与动效。
+  - 示例：`apps/examples/main.ts:3` `import '../../src/styles/index.less';`
+- **组件样式**: 组件内仅以 `index.less?inline` 注入结构样式，使用 `:root` 的 CSS 变量（由全局样式注入）进行主题化，无需在组件内再 `@import` 全局文件。
+- **核心包不再自动注入全局样式**: `@jackery/core` 的入口不再引入 `packages/core/src/styles/index.css`，避免与 `src/styles` 的重复与冲突。
+- **路径别名**: 推荐在 Vite 配置中添加 `@styles -> src/styles`，统一引用全局样式。
+
+### 5.4 开发环境 Vite 别名
+
+在根站点与示例站的 `vite.config` 中添加：
+
+```js
+// 根站点 vite.config.js
+resolve: {
+  alias: {
+    '@': path.resolve(__dirname, 'src'),
+    '@styles': path.resolve(__dirname, 'src/styles'),
+    '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
+    '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
+    '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+    '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
+  }
+}
+```
+
+```js
+// 示例站 apps/examples/vite.config.js
+resolve: {
+  alias: {
+    '@': path.resolve(__dirname, '../../src'),
+    '@styles': path.resolve(__dirname, '../../src/styles'),
+    '@jackery/core': path.resolve(__dirname, '../../packages/core/src'),
+    '@jackery/icons': path.resolve(__dirname, '../../packages/icons/src'),
+    '@jackery/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
+    '@jackery/utils': path.resolve(__dirname, '../../packages/utils/src'),
+  }
+}
+```
+
+入口示例：
+
+```ts
+// 统一加载全局样式
+import '@styles/index.less';
+// 加载组件与图标
+import '@jackery/core';
+import '@jackery/icons';
+```
 
 ## 6. 业界优秀实践
 
