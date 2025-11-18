@@ -1,3 +1,12 @@
+---
+title: JDS 样式使用规范（最新版）
+slug: styles-guidelines
+category: docs
+tags: [styles, design-system, tokens, variables, vite]
+updated: 2025-11-18
+summary: 统一样式来源、组件内联样式、Vite 别名与迁移要点。
+---
+
 # JDS 样式使用规范（最新版）
 
 ## 全局样式唯一来源
