@@ -78,6 +78,8 @@ const config: StorybookConfig = {
         '@jackery/utils',
       ],
     } as ViteConfig['optimizeDeps'];
+    // 移除压缩插件以避免在 Storybook 预览构建阶段的 ENOENT 报错
+    config.plugins = (config.plugins ?? []).filter((p: any) => p?.name !== 'vite:compression');
     // 移除将 storybook/internal 标记为 external 的错误设置，避免无法解析虚拟模块
     return config;
   },
