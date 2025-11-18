@@ -69,6 +69,7 @@ export default defineConfig((configEnv) => {
   const isProd = configEnv.mode === 'production';
   const isLibrary = configEnv.mode === 'library';
   const isLibrarySingle = configEnv.mode === 'library-single';
+  const isThemes = configEnv.mode === 'themes';
 
   if (isLibrary) {
     return {
@@ -87,6 +88,11 @@ export default defineConfig((configEnv) => {
         rollupOptions: {
           external: [],
           output: {
+            chunkFileNames: (chunkInfo) => {
+              const modules = chunkInfo.modules ? Object.keys(chunkInfo.modules) : [];
+              const isIcons = modules.some((id) => id.includes(`${path.sep}packages${path.sep}icons${path.sep}`) || id.includes('@jackery/icons'));
+              return isIcons ? 'icons/[name]-[hash]' : 'chunks/[name]-[hash]';
+            },
             assetFileNames: (assetInfo) => {
               const fileName = assetInfo.name || '';
               const ext = path.extname(fileName);
@@ -227,6 +233,63 @@ export default defineConfig((configEnv) => {
           '@jackery/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
           '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
           '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+        }
+      }
+    };
+  }
+
+  if (isThemes) {
+    return {
+      base: './',
+      build: {
+        sourcemap: true,
+        minify: 'esbuild',
+        emptyOutDir: false,
+        outDir: 'dist',
+        rollupOptions: {
+          input: {
+            'index': path.resolve(__dirname, 'src/styles/index.less'),
+            'index-v1': path.resolve(__dirname, 'src/styles/themes/v1/index.less'),
+            'index-v2': path.resolve(__dirname, 'src/styles/themes/v2/index.less')
+          },
+          output: {
+            entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
+            assetFileNames: (assetInfo) => {
+              const name = assetInfo.name || '';
+              if (name.endsWith('.css')) return `${name}`;
+              const ext = path.extname(name);
+              switch (ext) {
+                case '.woff':
+                case '.woff2':
+                  return 'fonts/[name][ext]';
+                case '.svg':
+                case '.png':
+                case '.jpg':
+                case '.gif':
+                  return 'assets/[name][ext]';
+                default:
+                  return '[name].[ext]';
+              }
+            }
+          }
+        }
+      },
+      css: {
+        preprocessorOptions: {
+          less: {
+            javascriptEnabled: true,
+            charset: false
+          }
+        }
+      },
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+          '@styles': path.resolve(__dirname, 'src/styles'),
+          '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
+          '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@jackery/utils': path.resolve(__dirname, 'packages/utils/src')
         }
       }
     };

@@ -24,6 +24,7 @@
     "site:preview": "vite preview",
     "design:build:lib": "vite build --mode library",
     "design:build:single": "vite build --mode library-single",
+    "design:build:themes": "vite build --mode themes",
     "examples:dev": "pnpm -w --filter @jackery/examples dev",
     "examples:build": "pnpm -w --filter @jackery/examples build",
     "examples:preview": "pnpm -w --filter @jackery/examples preview",
