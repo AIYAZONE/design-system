@@ -100,16 +100,6 @@
     <jds-popover target="button-24" id="popover-24" placement="right-end" style="--jds-popover-arrow-display: block;">
       Popover Content
     </jds-popover>
-
-      <script>
-        // 添加事件监听器
-        document.querySelectorAll('jds-button[id^="button-"]').forEach(button => {
-          const placement = button.id.split('-')[1];
-          button.addEventListener('jds-click', () => {
-            document.querySelector(`#popover-${placement}`).show();
-          });
-        });
-      </script>
     </main>
   </div>
 </body>

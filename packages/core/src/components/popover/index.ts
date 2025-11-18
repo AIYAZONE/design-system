@@ -1,6 +1,6 @@
 import { html, LitElement, CSSResultGroup, unsafeCSS } from "lit";
 import { customElement, property, query, state } from '../../decorators';
-import { autoUpdate, computePosition, flip, offset, Placement } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip, offset, shift, arrow as flArrow, Placement } from '@floating-ui/dom';
 
 import styles from './index.less?inline';
 
@@ -67,26 +67,12 @@ export class JdsPopover extends LitElement {
   private getMiddleware() {
     const middleware = [
       offset(this.offset),
-      flip()
+      flip(),
+      shift(),
     ];
 
     if (this._arrowEl) {
-      middleware.push({
-        name: 'arrow',
-        options: {
-          element: this._arrowEl,
-        },
-        fn: ({ middlewareData }) => {
-          if (middlewareData.arrow) {
-            const { x, y } = middlewareData.arrow;
-            Object.assign(this._arrowEl.style, {
-              left: x != null ? `${x}px` : '',
-              top: y != null ? `${y}px` : '',
-            });
-          }
-          return {};
-        }
-      });
+      middleware.push(flArrow({ element: this._arrowEl }));
     }
 
     return middleware;
@@ -108,6 +94,7 @@ export class JdsPopover extends LitElement {
   };
 
   show() {
+    console.info('show popover');
     if (this._visible || !this._targetEl) return;
 
     this._visible = true;
@@ -145,7 +132,8 @@ export class JdsPopover extends LitElement {
       computePosition(this._targetEl, this._popoverEl, {
         placement: this.placement,
         middleware: this.getMiddleware(),
-      }).then(({ x, y, placement }) => {
+        strategy: 'fixed',
+      }).then(({ x, y, placement, middlewareData }) => {
         if (!this._popoverEl) return;
 
         Object.assign(this._popoverEl.style, {
@@ -154,6 +142,14 @@ export class JdsPopover extends LitElement {
         });
 
         this._popoverEl.setAttribute('data-placement', placement);
+
+        if (this._arrowEl && middlewareData?.arrow) {
+          const { x: ax, y: ay } = middlewareData.arrow as { x?: number; y?: number };
+          Object.assign(this._arrowEl.style, {
+            left: ax != null ? `${ax}px` : '',
+            top: ay != null ? `${ay}px` : '',
+          });
+        }
       });
     });
   }
