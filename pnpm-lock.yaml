@@ -30,6 +30,9 @@ importers:
       '@jackery/tsconfig':
         specifier: workspace:*
         version: link:tooling/tsconfig
+      '@open-wc/form-control':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@storybook/manager-api':
         specifier: 8.6.14
         version: 8.6.14(storybook@8.6.14)
@@ -51,6 +54,9 @@ importers:
       less:
         specifier: ^4.4.2
         version: 4.4.2
+      lit:
+        specifier: ^3.3.1
+        version: 3.3.1
       prettier:
         specifier: ^3.0.0
         version: 3.6.2
@@ -75,6 +81,18 @@ importers:
       vite-plugin-compression:
         specifier: ^0.5.1
         version: 0.5.1(vite@5.4.21)
+      vite-plugin-dts:
+        specifier: ^3.7.3
+        version: 3.9.1(@types/node@24.10.0)(typescript@5.8.3)(vite@5.4.21)
+
+  apps/examples:
+    devDependencies:
+      less:
+        specifier: ^4.2.0
+        version: 4.4.2
+      vite:
+        specifier: ^5.4.21
+        version: 5.4.21(@types/node@24.10.0)(less@4.4.2)
 
   apps/storybook:
     dependencies:
@@ -1764,7 +1782,6 @@ packages:
 
   /@open-wc/form-control@1.0.0:
     resolution: {integrity: sha512-4QW7FZcq1r7vKzs+ULAqc8vcjs+15kiGksoLiNMi1lbHX52MC+jonveEhvzX1rs0QUXv57V7F6rGt/q+UZh61Q==, tarball: https://registry.npmjs.org/@open-wc/form-control/-/form-control-1.0.0.tgz}
-    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==, tarball: https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz}

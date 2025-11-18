@@ -23,3 +23,4 @@ export {
   I18nController,
   type I18nInstance
 } from '@jackery/i18n';
+import '@styles/index.less';

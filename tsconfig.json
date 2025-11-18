@@ -6,6 +6,8 @@
     "useDefineForClassFields": false,
     "module": "ESNext",
     "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmitOnError": true,
     "noEmit": true,

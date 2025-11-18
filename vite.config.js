@@ -3,6 +3,39 @@ import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
+import dts from "vite-plugin-dts";
+
+const renameCssPlugin = (fileName = 'index.css') => ({
+  name: 'rename-css-asset',
+  apply: 'build',
+  writeBundle(options) {
+    const outDir = options.dir || (options.file ? path.dirname(options.file) : 'dist');
+    const src = path.join(outDir, 'style.css');
+    const srcMap = path.join(outDir, 'style.css.map');
+    const dest = path.join(outDir, fileName);
+    const destMap = path.join(outDir, `${fileName}.map`);
+    try {
+      if (fs.existsSync(src)) {
+        fs.copyFileSync(src, dest);
+        fs.unlinkSync(src);
+      }
+      if (fs.existsSync(srcMap)) {
+        fs.copyFileSync(srcMap, destMap);
+        fs.unlinkSync(srcMap);
+      }
+    } catch {}
+  }
+  ,
+  closeBundle() {
+    const outDir = 'dist';
+    const src = path.join(outDir, 'style.css');
+    const srcMap = path.join(outDir, 'style.css.map');
+    try {
+      if (fs.existsSync(src)) fs.unlinkSync(src);
+      if (fs.existsSync(srcMap)) fs.unlinkSync(srcMap);
+    } catch {}
+  }
+});
 
 // 获取指定目录下的文件入口
 const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
@@ -34,101 +67,253 @@ const getEntriesInDir = (dirPath, fileExtension, isDirectory = false) => {
 export default defineConfig((configEnv) => {
   const isDev = configEnv.mode === 'development';
   const isProd = configEnv.mode === 'production';
+  const isLibrary = configEnv.mode === 'library';
+  const isLibrarySingle = configEnv.mode === 'library-single';
+
+  if (isLibrary) {
+    return {
+      base: './',
+      build: {
+        sourcemap: true,
+        minify: 'esbuild',
+        emptyOutDir: true,
+        outDir: 'dist',
+        lib: {
+          entry: './src/index.ts',
+          fileName: (format) => (format === 'es' ? 'index' : 'index.cjs'),
+          formats: ['es', 'cjs'],
+          name: 'JackeryDesignSystem'
+        },
+        rollupOptions: {
+          external: [],
+          output: {
+            assetFileNames: (assetInfo) => {
+              const fileName = assetInfo.name || '';
+              const ext = path.extname(fileName);
+              switch (ext) {
+                case '.woff':
+                case '.woff2':
+                  return 'fonts/[name][ext]';
+                case '.svg':
+                case '.png':
+                case '.jpg':
+                case '.gif':
+                  return 'assets/[name][ext]';
+                default:
+                  return '[name].[ext]';
+              }
+            }
+          },
+          treeshake: {
+            preset: 'recommended',
+            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
+          }
+        }
+      },
+      plugins: [
+        dts({
+          entryRoot: './src',
+          outDir: './dist',
+          insertTypesEntry: true,
+          exclude: ['**/.storybook/**', 'apps/**']
+        }),
+        renameCssPlugin('index.css'),
+        visualizer({
+          open: false,
+          filename: 'dist/stats.html',
+          gzipSize: true,
+          brotliSize: true,
+          template: 'treemap'
+        })
+      ],
+      css: {
+        preprocessorOptions: {
+          less: {
+            javascriptEnabled: true,
+            charset: false
+          }
+        }
+      },
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+          '@styles': path.resolve(__dirname, 'src/styles'),
+          '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
+          '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+          '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@jackery/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+          '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@jackery/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+          '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
+          '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+        }
+      }
+    };
+  }
+
+  if (isLibrarySingle) {
+    return {
+      base: './',
+      build: {
+        sourcemap: true,
+        minify: 'esbuild',
+        emptyOutDir: true,
+        outDir: 'dist',
+        lib: {
+          entry: './src/index.ts',
+          fileName: (format) => (format === 'es' ? 'index.single' : 'index.single.cjs'),
+          formats: ['es', 'cjs'],
+          name: 'JackeryDesignSystem'
+        },
+        rollupOptions: {
+          output: {
+            inlineDynamicImports: true,
+            assetFileNames: (assetInfo) => {
+              const fileName = assetInfo.name || '';
+              const ext = path.extname(fileName);
+              switch (ext) {
+                case '.woff':
+                case '.woff2':
+                  return 'fonts/[name][ext]';
+                case '.svg':
+                case '.png':
+                case '.jpg':
+                case '.gif':
+                  return 'assets/[name][ext]';
+                default:
+                  return '[name].[ext]';
+              }
+            }
+          },
+          treeshake: {
+            preset: 'recommended',
+            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
+          }
+        }
+      },
+      plugins: [
+        dts({
+          entryRoot: './src',
+          outDir: './dist',
+          insertTypesEntry: true,
+          exclude: ['**/.storybook/**', 'apps/**']
+        }),
+        renameCssPlugin('index.single.css'),
+        visualizer({
+          open: false,
+          filename: 'dist/stats.single.html',
+          gzipSize: true,
+          brotliSize: true,
+          template: 'treemap'
+        })
+      ],
+      css: {
+        preprocessorOptions: {
+          less: {
+            javascriptEnabled: true,
+            charset: false
+          }
+        }
+      },
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+          '@styles': path.resolve(__dirname, 'src/styles'),
+          '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
+          '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+          '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@jackery/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+          '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@jackery/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+          '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
+          '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+        }
+      }
+    };
+  }
 
   return {
-    base: './', // 使用相对路径
+    base: './',
     server: {
-      host: '0.0.0.0', // 允许外部访问
-      port: 5173, // 指定端口
-      open: true, // 自动打开浏览器
+      host: '0.0.0.0',
+      port: 5173,
+      open: true
     },
     build: {
       sourcemap: isDev ? 'inline' : true,
-      minify: isProd ? 'esbuild' : false, // 仅在生产环境下启用 esbuild
-      emptyOutDir: true, // 构建前清空输出目录
-      outDir: "dist", // 输出目录
-      cssCodeSplit: true,  // 启用 CSS 代码分割
+      minify: isProd ? 'esbuild' : false,
+      emptyOutDir: true,
+      outDir: 'dist',
+      cssCodeSplit: true,
       rollupOptions: {
         input: {
-          index: "./src/index.ts", // 主入口文件
-          ...getEntriesInDir("src/styles", ".less"),
+          index: './src/index.ts',
+          ...getEntriesInDir('src/styles', '.less')
         },
         output: {
           manualChunks: {
-            // 框架核心
             'lit-core': ['lit'],
-            // 公共工具
             'utils': ['./src/utils/common.ts', './src/utils/elements.ts'],
-            // 图标组件
             'icons': ['@jackery/icons'],
-            // 国际化相关
-            'i18n': ['@jackery/i18n'],
+            'i18n': ['@jackery/i18n']
           },
           entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
           assetFileNames: (assetInfo) => {
-            // 检查fileName是否为undefined，如果是则使用空字符串作为默认值
             const fileName = assetInfo.name || '';
             const ext = path.extname(fileName);
             switch (ext) {
-              case ".woff":
-              case ".woff2":
-                // 字体文件输出到fonts目录
-                return "fonts/[name][ext]";
-              case ".svg":
-              case ".png":
-              case ".jpg":
-              case ".gif":
-                return "assets/[name][ext]";
+              case '.woff':
+              case '.woff2':
+                return 'fonts/[name][ext]';
+              case '.svg':
+              case '.png':
+              case '.jpg':
+              case '.gif':
+                return 'assets/[name][ext]';
               default:
-                return "[name].[ext]";
+                return '[name].[ext]';
             }
-          },
+          }
         },
         treeshake: {
-          // 使用推荐的 tree-shaking 预设配置，可以更激进地进行代码优化
           preset: 'recommended',
-          moduleSideEffects: (id) => {
-            // 对样式文件和 @jackery/icons 包保留副作用
-            return /\.(css|less)$/.test(id) || id.includes('@jackery/icons');
-          }
+          moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
         }
-      },
+      }
     },
     plugins: [
-      // 生产环境插件
       ...(isProd ? [viteCompression({
         verbose: true,
         disable: false,
-        threshold: 1024, // 降低阈值到1KB，确保小文件也能被压缩
+        threshold: 1024,
         algorithm: 'gzip',
         ext: '.gz',
-        filter: /\.(js|mjs|json|css|html)$/i, // 明确指定要压缩的文件类型
+        filter: /\.(js|mjs|json|css|html)$/i,
         compressionOptions: {
-          level: 6, // 平衡压缩率和速度
-        },
+          level: 6
+        }
       })] : []),
       visualizer({
-        open: isDev,     // 仅在开发环境下自动打开报告
-        filename: "dist/stats.html", // 输出文件名
-        gzipSize: true, // 显示 gzip 压缩大小
-        brotliSize: true, // 显示 brotli 压缩大小
-        template: "treemap", // 视图类型（可选 treemap/sunburst/network/list 等）
-      }),
+        open: isDev,
+        filename: 'dist/stats.html',
+        gzipSize: true,
+        brotliSize: true,
+        template: 'treemap'
+      })
     ],
     css: {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
-          charset: false, // 禁用Less自动添加@charset，避免编码冲突
-        },
-      },
+          charset: false
+        }
+      }
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src'), // 配置路径别名
+        '@': path.resolve(__dirname, 'src'),
         '@styles': path.resolve(__dirname, 'src/styles'),
-        // 直接指向各工作区源码，确保根站点在开发时无需依赖各包的 dist
         '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
         '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),
         '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
@@ -136,8 +321,8 @@ export default defineConfig((configEnv) => {
         '@jackery/i18n': path.resolve(__dirname, 'packages/i18n/src'),
         '@jackery/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
         '@jackery/utils': path.resolve(__dirname, 'packages/utils/src'),
-        '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*'),
-      },
-    },
+        '@jackery/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+      }
+    }
   };
 });
