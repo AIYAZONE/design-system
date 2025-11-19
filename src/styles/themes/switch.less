@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// 运行时切换：当 html/body 设置 data-jds-theme-version="v2" 时，应用 v2 变量
+@rootSel: :root[data-jds-theme-version="v2"];
+
+// v2 字体（Inter/Noto Sans JP）
+@import "./v2/font.css";
+
+// v2 变量（在 @rootSel 作用域下生成）
+@import "./v2/tokens.less";

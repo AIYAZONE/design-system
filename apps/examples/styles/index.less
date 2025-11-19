@@ -283,3 +283,16 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* Sticky interaction for top card */
+.sticky-card {
+  position: sticky;
+  top: var(--jds-size-8);
+  z-index: var(--jds-index-sticky);
+  background: var(--jds-color-white);
+  border-radius: var(--jds-rounded-12);
+  box-shadow: 0 0 0 1px var(--jds-color-hr);
+}
+
+.sticky-card.is-stuck {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px var(--jds-color-hr);
+}
