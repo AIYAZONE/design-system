@@ -235,13 +235,6 @@
 
       <script>
         // 添加事件监听器
-        document.querySelectorAll('jds-button[id^="button-"]').forEach(button => {
-          const placement = button.id.split('-')[1];
-          button.addEventListener('jds-click', () => {
-            document.querySelector(`#popover-${placement}`).show();
-          });
-        });
-
         document.getElementById('open-dialog-button').addEventListener('click', () => {
           const dialog = document.querySelector('#dl-basic');
           dialog.setAttribute('open', true);
