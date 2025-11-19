@@ -3,6 +3,8 @@ import { customElement, property, query } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
 import { event, EventDispatcher } from "@jackery/utils";
 import styles from "./index.less?inline";
+import { adoptInternalStyles } from "../../styles/internal-shared";
+
 import "../button";
 
 export type DialogSize = "extra" | "large";
@@ -17,7 +19,11 @@ export type DialogSize = "extra" | "large";
  */
 @customElement("jds-dialog")
 export class JdsDialog extends LitElement {
-  static styles = unsafeCSS(styles) as CSSResultGroup;
+  static styles =  [unsafeCSS(styles)] as CSSResultGroup;
+
+  protected firstUpdated(): void {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
 
   /**
    * 对话框尺寸

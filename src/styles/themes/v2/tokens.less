@@ -93,15 +93,18 @@
   // 标题
   .loop(@i: 1) when (@i <= 6) {
     @size: extract(@h-sizes, @i);
-    --jds-font-h@{i}-semibold: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h@{i}: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-h-line-height var(--jds-font-family);
     .loop(@i + 1);
   }
   .loop();
 
   // 正文
-  --jds-font-b1-regular: @jds-font-regular var(--jds-font-size-@{extract(@b-sizes, 1)}) / @jds-b-line-height var(--jds-font-family);
-  --jds-font-b2-regular: @jds-font-regular var(--jds-font-size-@{extract(@b-sizes, 2)}) / @jds-b-line-height var(--jds-font-family);
-  --jds-font-b3-regular: @jds-font-regular var(--jds-font-size-@{extract(@b-sizes, 3)}) / @jds-b-line-height var(--jds-font-family);
+  @b1: extract(@b-sizes, 1);
+  @b2: extract(@b-sizes, 2);
+  @b3: extract(@b-sizes, 3);
+  --jds-font-b1: @jds-font-regular var(--jds-font-size-@{b1}) / @jds-b-line-height var(--jds-font-family);
+  --jds-font-b2: @jds-font-regular var(--jds-font-size-@{b2}) / @jds-b-line-height var(--jds-font-family);
+  --jds-font-b3: @jds-font-regular var(--jds-font-size-@{b3}) / @jds-b-line-height var(--jds-font-family);
 
   // 辅助
   --jds-font-c1: @jds-font-regular var(--jds-font-size-@{c-size}) / @jds-c-line-height var(--jds-font-family);

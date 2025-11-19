@@ -1,6 +1,7 @@
 import { html, LitElement, CSSResultGroup, unsafeCSS, TemplateResult } from "lit";
 import { customElement, property } from "../../decorators";
 import styles from "./index.less?inline";
+import { adoptInternalStyles } from "../../styles/internal-shared";
 
 /**
  * @tag jds-spinner
@@ -11,6 +12,10 @@ import styles from "./index.less?inline";
 export default class JdsSpinner extends LitElement {
   // 定义组件的CSS样式
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+
+  protected firstUpdated(): void {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
 
   /**
    * 设置加载指示器的大小

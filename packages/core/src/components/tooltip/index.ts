@@ -3,6 +3,7 @@ import { customElement, property, query, state } from "../../decorators";
 import { ifDefined } from "lit/directives/if-defined.js";
 import type { Placement } from "../popover";
 import styles from "./index.less?inline";
+import { adoptInternalStyles } from "../../styles/internal-shared";
 
 /**
  * @tag jds-tooltip
@@ -14,6 +15,10 @@ import styles from "./index.less?inline";
 @customElement("jds-tooltip")
 export default class JdsTooltip extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+
+  protected firstUpdated(): void {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
 
   @query(".trigger") private trigger!: HTMLElement;
   @query("jds-popover") private _popover!: any;

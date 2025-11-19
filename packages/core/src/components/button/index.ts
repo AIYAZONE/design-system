@@ -6,6 +6,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { submit } from "@jackery/utils";
 
 import styles from "./index.less?inline";
+import { adoptInternalStyles } from "../../styles/internal-shared";
 
 export type ButtonVariant = "primary" | "secondary" | "text";
 export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
@@ -18,6 +19,10 @@ export type ButtonSize = "extra" | "large" | "medium" | "small";
 @customElement("jds-button")
 export class JdsButton extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+
+  protected firstUpdated(): void {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
 
   /**
    * 按钮变体

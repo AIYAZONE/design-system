@@ -1,6 +1,7 @@
 // 保证全局设计令牌优先加载，再加载示例站样式覆盖
 // 在开发环境下直接由入口导入 less，确保 Vite 编译生效
 import '../../src/styles/index.less';
+
 import './styles/public.less';
 import './styles/index.less';
 

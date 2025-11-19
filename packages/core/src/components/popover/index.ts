@@ -3,10 +3,15 @@ import { customElement, property, query, state } from '../../decorators';
 import { autoUpdate, computePosition, flip, offset, shift, arrow as flArrow, Placement } from '@floating-ui/dom';
 
 import styles from './index.less?inline';
+import { adoptInternalStyles } from '../../styles/internal-shared';
 
 @customElement('jds-popover')
 export class JdsPopover extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+
+  protected firstUpdated(): void {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
 
   @property({ type: String })
   placement: Placement = 'bottom';
