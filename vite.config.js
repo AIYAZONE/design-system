@@ -74,6 +74,7 @@ export default defineConfig((configEnv) => {
   if (isLibrary) {
     return {
       base: './',
+      publicDir: false,
       build: {
         sourcemap: true,
         minify: 'esbuild',
@@ -81,7 +82,7 @@ export default defineConfig((configEnv) => {
         outDir: 'dist',
         lib: {
           entry: './src/index.ts',
-          fileName: (format) => (format === 'es' ? 'index' : 'index.cjs'),
+          fileName: (format) => (format === 'es' ? 'index.esm.js' : 'index.cjs'),
           formats: ['es', 'cjs'],
           name: 'JackeryDesignSystem'
         },
@@ -91,7 +92,7 @@ export default defineConfig((configEnv) => {
             chunkFileNames: (chunkInfo) => {
               const modules = chunkInfo.modules ? Object.keys(chunkInfo.modules) : [];
               const isIcons = modules.some((id) => id.includes(`${path.sep}packages${path.sep}icons${path.sep}`) || id.includes('@jackery/icons'));
-              return isIcons ? 'icons/[name]-[hash]' : 'chunks/[name]-[hash]';
+              return isIcons ? 'icons/[name]-[hash].js' : 'chunks/[name]-[hash].js';
             },
             assetFileNames: (assetInfo) => {
               const fileName = assetInfo.name || '';
@@ -112,17 +113,11 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
+            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
           }
         }
       },
       plugins: [
-        dts({
-          entryRoot: './src',
-          outDir: './dist',
-          insertTypesEntry: true,
-          exclude: ['**/.storybook/**', 'apps/**']
-        }),
         renameCssPlugin('index.css'),
         visualizer({
           open: false,
@@ -160,6 +155,7 @@ export default defineConfig((configEnv) => {
   if (isLibrarySingle) {
     return {
       base: './',
+      publicDir: false,
       build: {
         sourcemap: true,
         minify: 'esbuild',
@@ -167,7 +163,7 @@ export default defineConfig((configEnv) => {
         outDir: 'dist',
         lib: {
           entry: './src/index.ts',
-          fileName: (format) => (format === 'es' ? 'index.single' : 'index.single.cjs'),
+          fileName: (format) => (format === 'es' ? 'index.single.js' : 'index.single.cjs'),
           formats: ['es', 'cjs'],
           name: 'JackeryDesignSystem'
         },
@@ -193,17 +189,11 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
+            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
           }
         }
       },
       plugins: [
-        dts({
-          entryRoot: './src',
-          outDir: './dist',
-          insertTypesEntry: true,
-          exclude: ['**/.storybook/**', 'apps/**']
-        }),
         renameCssPlugin('index.single.css'),
         visualizer({
           open: false,
@@ -342,7 +332,7 @@ export default defineConfig((configEnv) => {
         },
         treeshake: {
           preset: 'recommended',
-          moduleSideEffects: (id) => /\.(css|less)$/.test(id) || id.includes('@jackery/icons')
+          moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
         }
       }
     },

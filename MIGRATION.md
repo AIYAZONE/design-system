@@ -123,6 +123,11 @@ pnpm changeset:version
 pnpm release
 ```
 
+```bash
+# 发布根包到 NPM 公网（确保 .npmrc 指向 registry.npmjs.com）
+pnpm run publish:design-system
+```
+
 ## 包结构说明
 
 ### @jackery/core

@@ -26,8 +26,12 @@
 
 ## 3. 部署
 
-- 公司内网npm私仓：`https://nexus.hijackery.cn/repository/npm-private/`
-- 名称： `@jackery/design-system`
+- 公司内网 npm 仓库（作用域 `@jackery`）：
+  - 生产：`https://nexus.hijackery.cn/repository/npm-private/`
+  - UAT：`https://nexus.hijackery.cn/repository/npm-private-stage/`
+  - 开发：`https://nexus.hijackery.cn/repository/npm-private-dev/`
+  - 测试：`https://nexus.hijackery.cn/repository/npm-private-test/`
+  - 包名：`@jackery/design-system`
 
 ## 4. 包结构
 
@@ -89,14 +93,14 @@ JDS 采用 Monorepo 架构，包含以下独立包：
 
   ```html
   <link rel="stylesheet" crossorigin href="https://f2e-cdn.jackery.com/@jackery/design-system/latest/dist/index.css">
-  <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/latest/dist/index.js"></script>
+  <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/latest/dist/index.esm.js"></script>
   ```
 
 2. 特定版本：
 
   ```html
-  <link rel="stylesheet" crossorigin href="https://f2e-cdn.jackery.com/@jackery/design-system/0.0.1/dist/index.css">
-  <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/0.0.1/dist/index.js"></script>
+  <link rel="stylesheet" crossorigin href="https://f2e-cdn.jackery.com/@jackery/design-system/0.1.0/dist/index.css">
+  <script type="module" crossorigin src="https://f2e-cdn.jackery.com/@jackery/design-system/0.1.0/dist/index.esm.js"></script>
   ```
 
 ### 5.3 样式使用规范（最新）
@@ -154,3 +158,118 @@ import '@jackery/icons';
 站在巨人的肩膀上看世界，业界优秀实践参考：
 
 ![优秀实践参考](./public/design-system.png)
+
+## 7. 构建与预览
+
+- 构建库产物：`pnpm run design:build:lib`
+- 构建主题样式：`pnpm run design:build:themes`
+- 预览构建目录：`pnpm run site:preview -- --port 5175`
+- 验证页：`dist/index.html`，支持 `?theme=v1|v2` 切换，示例地址 `http://localhost:5175/index.html?theme=v2`
+
+### 打包格式
+- `dist/index.esm.js`：ES Modules，适合浏览器与现代打包器（推荐）
+- `dist/index.cjs`：CommonJS，适合 Node/老旧打包器
+- 类型声明：`dist/index.d.ts`、`dist/index.esm.d.ts`
+
+### 按需引入组件
+- 在应用中仅导入需要的组件入口（打包器会按需包含）：
+  - `import '@jackery/core/components/button'`
+  - `import '@jackery/core/components/dialog'`
+  - 其它：`badge`、`popover`、`spinner`、`toast`、`tooltip`
+- 图标库副作用注册：`import '@jackery/icons'`，图标按需通过懒加载 chunk 引入
+
+## 8. 发布到私仓
+
+### 作用域仓库配置
+- 在用户级 `C:\Users\<你的用户名>\.npmrc` 维护作用域仓库：
+  ```ini
+  registry=https://registry.npmjs.com/
+  @jackery:registry=https://nexus.hijackery.cn/repository/npm-private-test/
+  //nexus.hijackery.cn/repository/npm-private-test/:_authToken=<你的token>
+  always-auth=true
+  ```
+- 项目不固定仓库地址，发布时自动读取用户 `.npmrc` 的 `@jackery:registry` 映射。
+
+### 发布根包 @jackery/design-system
+ - 首次登录：`npm adduser --registry https://nexus.hijackery.cn/repository/npm-private-test/`
+ - 发布：`npm publish --access public`
+ - 版本已存在时：
+   - `npm version patch --no-git-tag-version`
+   - `npm publish --access public`
+
+### 公开 NPM 发布（根包）
+ - 确认使用公网仓库：在用户级 `.npmrc` 注释或移除 `@jackery:registry` 的私仓映射，确保 `registry=https://registry.npmjs.com/`
+ - 一键构建并发布：`pnpm run publish:design-system`
+ - 版本冲突（`EPUBLISHCONFLICT`）时：`npm version patch --no-git-tag-version` → `pnpm run publish:design-system`
+ - 说明：脚本等价于 `pnpm run design:build && npm publish --access public`
+
+### 发布子包（两种方式）
+- 变更集（推荐）：
+  - `pnpm run build`
+  - `pnpm run changeset:status`
+  - `pnpm run version-packages`
+  - `pnpm run release`
+- 工作区逐个发布：
+  - `npm publish --workspace @jackery/core --access restricted`
+  - `npm publish --workspace @jackery/utils --access restricted`
+  - `npm publish --workspace @jackery/i18n --access restricted`
+  - `npm publish --workspace @jackery/icons --access public`
+
+### 环境与发布命令清单
+
+#### `.npmrc` 作用域与环境映射
+
+```ini
+registry=https://registry.npmjs.com/
+
+# 生产
+#@jackery:registry=https://nexus.hijackery.cn/repository/npm-private/
+
+# UAT
+#@jackery:registry=https://nexus.hijackery.cn/repository/npm-private-stage/
+
+# 开发
+@jackery:registry=https://nexus.hijackery.cn/repository/npm-private-dev/
+
+# 测试
+@jackery:registry=https://nexus.hijackery.cn/repository/npm-private-test/
+
+# 可选：
+#always-auth=true
+#//nexus.hijackery.cn/repository/npm-private-test/:_authToken=<你的token>
+```
+
+说明：命令不带 `--registry`，按用户级 `.npmrc` 自动选择环境。
+
+#### Test/Dev（支持同版本覆盖）
+- 根包：
+  - 登录：`npm adduser --registry https://nexus.hijackery.cn/repository/npm-private-test/` 或在 `.npmrc` 写入 token
+  - 发布：`npm publish --access public`
+- 子包逐个：
+  - `npm publish --workspace @jackery/core --access restricted`
+  - `npm publish --workspace @jackery/utils --access restricted`
+  - `npm publish --workspace @jackery/i18n --access restricted`
+  - `npm publish --workspace @jackery/icons --access public`
+- 批量（Changesets）：
+  - `pnpm run build` → `pnpm run changeset:status` → `pnpm run version-packages` → `pnpm run release`
+
+#### 生产（建议升版发布）
+- 切换 `.npmrc` 到生产地址
+- 根包：
+  - `npm adduser --registry https://nexus.hijackery.cn/repository/npm-private/`
+  - `npm version patch --no-git-tag-version`
+  - `npm publish --access public`
+- 子包逐个：
+  - `npm version patch --workspace @jackery/core --no-git-tag-version` → `npm publish --workspace @jackery/core --access restricted`
+  - `npm version patch --workspace @jackery/utils --no-git-tag-version` → `npm publish --workspace @jackery/utils --access restricted`
+  - `npm version patch --workspace @jackery/i18n --no-git-tag-version` → `npm publish --workspace @jackery/i18n --access restricted`
+  - `npm version patch --workspace @jackery/icons --no-git-tag-version` → `npm publish --workspace @jackery/icons --access public`
+- 批量（Changesets）：同上
+
+#### 快速排查
+- 当前作用域仓库：`npm config get @jackery:registry`
+- 登录校验：`npm publish` 如报 `ENEEDAUTH` 则需登录或配置 token
+- 冲突处理：`EPUBLISHCONFLICT` 时先升版再发布
+
+#### 整包 vs 子包说明
+- 依赖 `@jackery/design-system` 整包时通常不需要单独发布子包；子包仅在你直接按包名引入时需要发布。
