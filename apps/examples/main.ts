@@ -12,11 +12,12 @@ if (theme === 'v2') {
 await import('../../src/styles/themes/switch.less');
 
 await import('./styles/public.less');
-await import('./styles/index.less');
 
 // 注册并加载所有核心 Web Components 与图标
-import '@jackery/core';
-import '@jackery/icons';
+import '@jackery/design-system';
+import { initialize, initI18nDom } from '@jackery/design-system';
+initialize();
+initI18nDom();
 
 // 主入口仅用于引入样式与后续交互脚本
 // 如需页面交互，可在此补充 JS 逻辑

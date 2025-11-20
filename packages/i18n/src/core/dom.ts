@@ -8,8 +8,17 @@ const PARAMS_ATTR = 'data-i18n-params';
 // 匹配 ${window.i18n.t('key', params)} 的正则表达式
 const I18N_PATTERN = /\$\{window\.i18n\.t\(['"](.*?)['"](?:,\s*([^)]+))?\)\}/g;
 
-// 处理文本节点
+// 处理文本节点（跳过 <pre>/<code> 内部）
 function processTextNode(node: Text): void {
+  let p: Node | null = node.parentNode;
+  while (p) {
+    if (p.nodeType === Node.ELEMENT_NODE) {
+      const tag = (p as Element).tagName;
+      if (tag === 'PRE' || tag === 'CODE') return;
+    }
+    p = p.parentNode;
+  }
+
   const text = node.textContent;
   if (!text || !text.includes('${window.i18n.t(')) return;
 

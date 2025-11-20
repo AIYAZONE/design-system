@@ -91,7 +91,11 @@ export default defineConfig((configEnv) => {
           output: {
             chunkFileNames: (chunkInfo) => {
               const modules = chunkInfo.modules ? Object.keys(chunkInfo.modules) : [];
-              const isIcons = modules.some((id) => id.includes(`${path.sep}packages${path.sep}icons${path.sep}`) || id.includes('@jackery/icons'));
+              const facade = (chunkInfo.facadeModuleId || '').replace(/\\/g, '/');
+              const isIcons = modules.some((id) => {
+                const p = id.replace(/\\/g, '/');
+                return p.includes('/packages/icons/') || p.includes('@jackery/icons');
+              }) || facade.includes('/packages/icons/') || facade.includes('@jackery/icons');
               return isIcons ? 'icons/[name]-[hash].js' : 'chunks/[name]-[hash].js';
             },
             assetFileNames: (assetInfo) => {
@@ -139,6 +143,7 @@ export default defineConfig((configEnv) => {
         alias: {
           '@': path.resolve(__dirname, 'src'),
           '@styles': path.resolve(__dirname, 'src/styles'),
+          '@jackery/design-system': path.resolve(__dirname, 'src/index.ts'),
           '@jackery/core': path.resolve(__dirname, 'packages/core/src'),
           '@jackery/core/*': path.resolve(__dirname, 'packages/core/src/*'),
           '@jackery/icons': path.resolve(__dirname, 'packages/icons/src'),
@@ -302,7 +307,8 @@ export default defineConfig((configEnv) => {
       rollupOptions: {
         input: {
           index: './src/index.ts',
-          ...getEntriesInDir('src/styles', '.less')
+          ...getEntriesInDir('src/styles', '.less'),
+          'examples-index': './apps/examples/styles/index.less'
         },
         output: {
           manualChunks: {

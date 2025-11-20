@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>国际化使用示例</title>
-  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script type="module" src="/main.ts"></script>
-  <script type="module" src="/apps/examples/pages/i18n/index.ts"></script>
+  <!-- 使用真实 i18n 包初始化于 main.ts，示例组件从 test 目录引入 -->
+  <script type="module" src="/pages/i18n/index.ts"></script>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <a href="/" class="logo">
-        <img src="/favicon.svg" alt="Jackery Logo" />
+        <img src="/assets/favicon.svg" alt="Jackery Logo" />
       </a>
       <div class="content">
         <h1>国际化使用示例</h1>
@@ -20,18 +21,28 @@
       </div>
     </header>
     <main>
+      语言切换：<jds-i18n-change></jds-i18n-change>
+
       <h3>1. 自定义i18n组件：jds-i18n —— html或Lit组件内均可使用，推荐使用</h3>
       <jds-i18n key="common.ok"></jds-i18n>
+      <pre>&lt;jds-i18n key="common.ok"&gt;&lt;/jds-i18n&gt;</pre>
+
       <jds-i18n key="common.welcome" params='{"name":"World"}'></jds-i18n>
+      <pre>&lt;jds-i18n key="common.welcome" params='{"name":"World"}'&gt;&lt;/jds-i18n&gt;</pre>
 
       <h3>2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用</h3>
       <p>common.yes: <span data-i18n-key="common.yes"></span></p>
+      <pre>&lt;span data-i18n-key="common.yes"&gt;&lt;/span&gt;</pre>
+
       <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
+      <pre>&lt;p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'&gt;&lt;/p&gt;</pre>
 
       <h3>3. 模板字符串形式 —— html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新</h3>
-      <p title="${window.i18n?.t('common.ok')}">common.ok:${window.i18n?.t('common.ok')}</p>
+      <p title="${window.i18n.t('common.ok')}">common.ok:${window.i18n.t('common.ok')}</p>
+      <pre>&lt;p title="${window.i18n.t('common.ok')}"&gt;common.ok:${window.i18n.t('common.ok')}&lt;/p&gt;</pre>
 
       <jds-i18n-example title="i18n:common.ok" message="i18n:common.yes"></jds-i18n-example>
+      <pre>&lt;jds-i18n-example title="i18n:common.ok" message="i18n:common.yes"&gt;&lt;/jds-i18n-example&gt;</pre>
     </main>
   </div>
 </body>

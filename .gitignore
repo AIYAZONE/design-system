@@ -35,3 +35,4 @@ chromatic.config.json
 vite.config.js.*
 
 .turbo/*
+*.tsbuildinfo

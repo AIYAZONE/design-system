@@ -55,12 +55,11 @@ export default defineConfig({
       rollupTypes: true,
       insertTypesEntry: true
     }),
-    // 复制SVG文件到dist/icons目录
     viteStaticCopy({
       targets: [
         {
-          src: ["src/icons/**/*.svg"], // 源目录，只复制SVG文件
-          dest: "icons", // 目标目录
+          src: ["src/icons/**/*.svg"],
+          dest: "icons",
         },
       ],
     }),
