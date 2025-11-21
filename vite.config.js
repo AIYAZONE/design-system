@@ -90,13 +90,7 @@ export default defineConfig((configEnv) => {
           external: [],
           output: {
             chunkFileNames: (chunkInfo) => {
-              const modules = chunkInfo.modules ? Object.keys(chunkInfo.modules) : [];
-              const facade = (chunkInfo.facadeModuleId || '').replace(/\\/g, '/');
-              const isIcons = modules.some((id) => {
-                const p = id.replace(/\\/g, '/');
-                return p.includes('/packages/icons/') || p.includes('@jackery/icons');
-              }) || facade.includes('/packages/icons/') || facade.includes('@jackery/icons');
-              return isIcons ? 'icons/[name]-[hash].js' : 'chunks/[name]-[hash].js';
+              return 'chunks/[name]-[hash].js';
             },
             assetFileNames: (assetInfo) => {
               const fileName = assetInfo.name || '';
