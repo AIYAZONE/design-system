@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // 继承根 tsconfig 的 baseUrl 与 paths 映射，避免相对路径失效
+    "types": ["vite/client"]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.d.ts"
+  ]
+}

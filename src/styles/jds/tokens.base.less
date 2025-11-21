@@ -1,0 +1,87 @@
+/* Base tokens and mixins (shared across theme versions) */
+
+@jds-color-white: #FFFFFF;
+@jds-color-grey: #F5F5F5;
+@jds-color-primary: #FD5000;
+@jds-color-success: #52C41A;
+@jds-color-danger: #FF3B30;
+@jds-color-warning: #FAAD14;
+@jds-color-info: #5794FF;
+
+@jds-color-primary-contrast: #FEF2E8;
+@jds-color-success-contrast: #E7F9EF;
+@jds-color-danger-contrast: #FFEEEC;
+@jds-color-warning-contrast: #FFF8E6;
+@jds-color-info-contrast: #EEF4FF;
+
+@jds-font-regular: 400;
+@jds-font-medium: 500;
+@jds-font-semibold: 600;
+@jds-font-bold: 700;
+@jds-font-extrabold: 800;
+
+.generate-sizes(@rem-base) {
+  --jds-size-2: max(0, 2 * @rem-base);
+  --jds-size-4: max(0, 4 * @rem-base);
+  --jds-size-6: max(0, 6 * @rem-base);
+  --jds-size-8: max(0, 8 * @rem-base);
+  --jds-size-10: max(0, 10 * @rem-base);
+  --jds-size-12: max(0, 12 * @rem-base);
+  --jds-size-14: max(0, 14 * @rem-base);
+  --jds-size-16: max(0, 16 * @rem-base);
+  --jds-size-18: max(0, 18 * @rem-base);
+  --jds-size-20: max(0, 20 * @rem-base);
+  --jds-size-22: max(0, 22 * @rem-base);
+  --jds-size-24: max(0, 24 * @rem-base);
+  --jds-size-28: max(0, 28 * @rem-base);
+  --jds-size-32: max(0, 32 * @rem-base);
+  --jds-size-36: max(0, 36 * @rem-base);
+  --jds-size-40: max(0, 40 * @rem-base);
+  --jds-size-48: max(0, 48 * @rem-base);
+  --jds-size-56: max(0, 56 * @rem-base);
+  --jds-size-64: max(0, 64 * @rem-base);
+  --jds-size-72: max(0, 72 * @rem-base);
+  --jds-size-80: max(0, 80 * @rem-base);
+  --jds-size-96: max(0, 96 * @rem-base);
+  --jds-size-128: max(0, 128 * @rem-base);
+}
+
+.generate-font-sizes(@rem-base) {
+  --jds-font-size-12: 12px;
+  --jds-font-size-14: max(12px, 14 * @rem-base);
+  --jds-font-size-16: max(12px, 16 * @rem-base);
+  --jds-font-size-18: max(12px, 18 * @rem-base);
+  --jds-font-size-20: max(12px, 20 * @rem-base);
+  --jds-font-size-24: max(12px, 24 * @rem-base);
+  --jds-font-size-28: max(12px, 28 * @rem-base);
+  --jds-font-size-32: max(12px, 32 * @rem-base);
+  --jds-font-size-36: max(12px, 36 * @rem-base);
+  --jds-font-size-40: max(12px, 40 * @rem-base);
+  --jds-font-size-48: max(12px, 48 * @rem-base);
+  --jds-font-size-56: max(12px, 56 * @rem-base);
+  --jds-font-size-64: max(12px, 64 * @rem-base);
+  --jds-font-size-72: max(12px, 72 * @rem-base);
+  --jds-font-size-80: max(12px, 80 * @rem-base);
+}
+
+.generate-color-common(@color-name, @base-color, @contrast-color) {
+  --jds-color-@{color-name}: @base-color;
+  --jds-color-@{color-name}-highlight: mix(#FFFFFF, @base-color, 15%);
+  --jds-color-@{color-name}-contrast: @contrast-color;
+}
+
+.generate-border-radius(@rem-base) {
+  --jds-rounded-2: max(0, 2 * @rem-base);
+  --jds-rounded-4: max(0, 4 * @rem-base);
+  --jds-rounded-8: max(0, 8 * @rem-base);
+  --jds-rounded-12: max(0, 12 * @rem-base);
+  --jds-rounded-14: max(0, 14 * @rem-base);
+  --jds-rounded-24: max(0, 24 * @rem-base);
+  --jds-rounded-pill: 999px;
+  --jds-rounded-circle: 50%;
+}
+
+:root[dir="rtl"] {
+  direction: rtl;
+  --jds-text-x-direction: -1;
+}

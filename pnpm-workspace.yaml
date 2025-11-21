@@ -1,0 +1,7 @@
+packages:
+  # 核心包：组件、图标、工具、国际化
+  - 'packages/*'
+  # 应用：Storybook、文档站点
+  - 'apps/*'
+  # 工具链：共享配置、脚本
+  - 'tooling/*'

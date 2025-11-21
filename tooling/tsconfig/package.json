@@ -1,0 +1,14 @@
+{
+  "name": "@jackery/tsconfig",
+  "version": "0.1.0",
+  "description": "Jackery Design System - Shared TypeScript Configuration",
+  "files": [
+    "base.json",
+    "lib.json",
+    "app.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
