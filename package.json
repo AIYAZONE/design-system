@@ -39,7 +39,7 @@
     "changeset:status": "changeset status",
     "release": "pnpm run build && pnpm run changeset:publish",
     "publish:design-system": "pnpm run design:build && npm publish",
-    "prepublishOnly": "pnpm run release && pnpm run publish:design-system",
+    "prepublishOnly": "pnpm install && pnpm run release && pnpm run publish:design-system",
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
     "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
     "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
