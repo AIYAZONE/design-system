@@ -1,7 +1,7 @@
 {
   "name": "@jackery/icons",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Jackery Design System 图标库",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -28,7 +28,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "echo '正在执行发布前检查与部署...' && npm install && npm run build",
+    "prepublishOnly": "pnpm run build",
     "dev": "vite",
     "build": "tsc && vite build",
     "commit": "commit",
