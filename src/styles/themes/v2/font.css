@@ -85,3 +85,8 @@
   src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff2?v=1751595535) format("woff2"),
     url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff?v=1751595538) format("woff");
 }
+
+/* Oxanium ExtraBold 字体类名 */
+.v5-font-oxm {
+  --jds-font-family: Oxanium, sans-serif;
+}
