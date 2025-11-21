@@ -186,8 +186,169 @@
 
 // 禁用状态
 :host .button[aria-disabled="true"] {
-  --main-color: color-mix(in srgb, transparent 70%, var(--jds-color-primary));
+  // 不透明度30%
+  @jds-color-primary: #FD5000;
+  --main-color: mix(transparent, @jds-color-primary, 70%);
   --main-hover-color: var(--main-color);
   pointer-events: none;
   text-decoration: none;
+}
+
+:host([variant="primary"]) .button[aria-disabled="true"] {
+  --bg-color: var(--main-color);
+  --content-color: var(--jds-color-white);
+  --border-color: transparent;
+}
+
+// 下划线样式
+.underline-style(){
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--main-color);
+}
+
+:host([variant="text"]) .button[aria-disabled="true"] .label::after {
+  .underline-style();
+}
+
+// 加载状态
+:host([loading]) {
+  cursor: wait;
+
+  .button {
+    --bg-color: var(--jds-color-primary);
+
+    .label {
+      visibility: hidden;
+    }
+
+    slot[name="icon"] jds-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+:host([variant="primary"][loading]) .button[aria-disabled="true"] {
+  --bg-color: var(--jds-color-primary);
+}
+
+:host([variant="secondary"][loading]) .button {
+  --border-color: transparent;
+}
+
+:host([loading]:hover) .button[aria-disabled="true"] {
+  --bg-color: var(--main-color);
+}
+
+// 悬浮状态
+:host([variant="text"]:hover) .button[aria-disabled="false"] .label::after {
+  .underline-style();
+}
+
+:host([variant="text"][size="small"]:hover) .button[aria-disabled="false"] .label::after {
+  height: 1px;
+}
+
+:host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
+  --main-hover-color: var(--jds-color-primary);
+}
+
+:host([variant="secondary"]:hover) .button[aria-disabled="false"] {
+  --content-color: var(--jds-color-white);
+  --bg-color: var(--main-hover-color);
+}
+
+:host([variant="text"]:hover) .button[aria-disabled="false"] {
+  --content-color: var(--main-hover-color);
+  --bg-color: transparent;
+}
+
+:host([dropdown]) .open {
+  display: none;
+}
+
+:host([dropdown]) .active .open {
+  display: inline-block;
+}
+
+:host([dropdown]) .active .close {
+  display: none;
+}
+
+:host .active.button {
+  --bg-color: var(--main-hover-color);
+  --border-color: var(--main-hover-color);
+}
+
+:host([variant="secondary"]) .active.button {
+  --content-color: var(--jds-color-white);
+  --bg-color: var(--main-hover-color);
+}
+
+:host([variant="text"]) .active.button {
+  --content-color: var(--main-color);
+  --bg-color: var(--jds-color-neutral-100);
+  --border-color: transparent;
+}
+
+@media screen and (max-width: 1023.98px) {
+  .button {
+    --height: var(--jds-size-80); // 80px
+    max-width: 686px;
+    --icon-size: var(--jds-size-16); // 16px
+  }
+
+  :host([size="extra"]) .button {
+    --height: var(--jds-size-96); // 96px
+    --padding-vertical: var(--jds-size-28); // 28px
+    --padding-horizontal: var(--jds-size-40); // 40px
+    --margin-icon: var(--jds-size-8); // 8px
+    --font: var(--jds-font-b1);
+  }
+
+  :host([size="large"]) .button {
+    --height: var(--jds-size-80); // 80
+    --padding-vertical: var(--jds-size-20); // 20px
+    --padding-horizontal: var(--jds-size-40); // 40px
+    --margin-icon: var(--jds-size-8); // 8px
+    --font: var(--jds-font-b2);
+  }
+
+  :host([size="medium"]) .button {
+    --height: var(--jds-size-64); // 64px
+    --padding-vertical: var(--jds-size-14); // 14px
+    --padding-horizontal: var(--jds-size-32); // 32px
+    --margin-icon: var(--jds-size-8); // 8px
+    --font: var(--jds-font-b2);
+  }
+
+  :host([size="small"]) .button {
+    --height: var(--jds-size-48); // 48px
+    --padding-vertical: var(--jds-size-8); // 8px
+    --padding-horizontal: var(--jds-size-24); // 24px
+    --margin-icon: var(--jds-size-4); // 4px
+    --font: var(--jds-font-b3);
+    --icon-size: var(--jds-size-12); // 12px
+  }
+
+  :host([size="extra"][variant="text"]) .button {
+    --font: var(--jds-font-b1);
+  }
+
+  :host([size="large"][variant="text"]) .button {
+    --font: var(--jds-font-b2);
+  }
+
+  :host .has-icon:not(.has-content) {
+    --margin-icon: 0;
+    --icon-size: var(--jds-size-24); // 24px
+  }
 }
