@@ -355,4 +355,14 @@
     --margin-icon: 0;
     --icon-size: var(--jds-size-24); // 24px
   }
+
+  // 点击状态
+  :host([kind="default"][variant="secondary"]:active) .button[aria-disabled="false"] {
+    --main-hover-color: var(--jds-color-primary);
+  }
+
+  :host([variant="secondary"]:active) .button[aria-disabled="false"] {
+    --content-color: var(--jds-color-white);
+    --bg-color: var(--main-hover-color);
+  }
 }
