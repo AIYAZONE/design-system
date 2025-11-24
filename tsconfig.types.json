@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@jackery/core": ["packages/core/src"],
+      "@jackery/icons": ["packages/icons/src"],
+      "@jackery/i18n": ["packages/i18n/src"],
+      "@jackery/utils": ["packages/utils/src"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "packages/core/src/**/*.ts",
+    "packages/icons/src/**/*.ts",
+    "packages/i18n/src/**/*.ts",
+    "packages/utils/src/**/*.ts"
+  ]
+}

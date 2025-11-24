@@ -1,0 +1,11 @@
+<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path
+      d="M25.51 50.961c14.09 0 25.512-11.408 25.512-25.48C51.022 11.408 39.6 0 25.51 0 11.42 0 0 11.408 0 25.48c0 14.073 11.422 25.481 25.51 25.481zm0-39.379a2.897 2.897 0 00-2.898 2.896c0 1.599 1.298 2.895 2.899 2.895a2.897 2.897 0 002.899-2.895c0-1.6-1.298-2.896-2.9-2.896m1.74 26.06c0 .96-.778 1.737-1.74 1.737-.96 0-1.738-.778-1.738-1.737V22.006a1.738 1.738 0 013.479 0v15.636z"
+      id="info-fill" />
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="currentColor" xlink:href="#info-fill" transform="translate(2 3)" />
+    <path d="M0 0h56v56H0z" />
+  </g>
+</svg>

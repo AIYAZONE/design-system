@@ -1,0 +1,92 @@
+/* V5 英文 默认字体系列 暂时上传到 现网Shopify 美站店铺 内容管理系统中 */
+/* Oxanium ExtraBold */
+@font-face {
+  font-family: "Oxanium";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Oxanium-ExtraBold.woff2?v=1762308933) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Oxanium-ExtraBold.woff?v=1762308932) format("woff");
+}
+
+/* Inter Regular */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Inter-Regular.woff2?v=1761905799) format("woff2");
+}
+
+/* Inter Medium */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Inter-Regular.woff2?v=1761905799) format("woff2");
+}
+
+/* Inter SemiBold */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Inter-SemiBold.woff2?v=1761905799) format("woff2");
+}
+
+/* Inter Bold */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://cdn.shopify.com/s/files/1/0970/9262/files/V5-Font-Inter-SemiBold.woff2?v=1761905799) format("woff2");
+}
+
+/* 日站字体文件，暂时上传到 现网Shopify 日站店铺 内容管理系统中 */
+/* noto-sans-jp-regular */
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff2?v=1751595534) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff?v=1751595537) format("woff");
+}
+
+/* noto-sans-jp-medium */
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff2?v=1751595534) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-regular.woff?v=1751595537) format("woff");
+}
+
+/* noto-sans-jp-semibold */
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff2?v=1751595535) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff?v=1751595538) format("woff");
+}
+
+/* noto-sans-jp-bold */
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff2?v=1751595535) format("woff2"),
+    url(https://cdn.shopify.com/s/files/1/0100/1537/5438/files/noto-sans-jp-bold.woff?v=1751595538) format("woff");
+}
+
+/* Oxanium ExtraBold 字体类名 */
+.jds-font-oxm {
+  --jds-font-family: Oxanium, sans-serif;
+}

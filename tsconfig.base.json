@@ -1,0 +1,33 @@
+{
+  "extends": "@jackery/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@jackery/core": ["./packages/core/src"],
+      "@jackery/core/*": ["./packages/core/src/*"],
+      "@jackery/icons": ["./packages/icons/src"],
+      "@jackery/icons/*": ["./packages/icons/src/*"],
+      "@jackery/i18n": ["./packages/i18n/src"],
+      "@jackery/i18n/*": ["./packages/i18n/src/*"],
+      "@jackery/utils": ["./packages/utils/src"],
+      "@jackery/utils/*": ["./packages/utils/src/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/icons"
+    },
+    {
+      "path": "./packages/i18n"
+    },
+    {
+      "path": "./packages/utils"
+    },
+    {
+      "path": "./apps/storybook"
+    }
+  ]
+}

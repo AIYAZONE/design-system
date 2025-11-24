@@ -17,3 +17,4 @@ declare module "*.css" {
 interface HTMLInputElement {
   showPicker: () => void;
 }
+
