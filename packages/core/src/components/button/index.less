@@ -53,11 +53,6 @@
   outline: none;
 }
 
-:host(:hover) .button {
-  --bg-color: var(--main-hover-color);
-  --border-color: var(--main-hover-color);
-}
-
 .label {
   position: relative;
   white-space: nowrap;
@@ -244,32 +239,7 @@
   --border-color: transparent;
 }
 
-:host([loading]:hover) .button[aria-disabled="true"] {
-  --bg-color: var(--main-color);
-}
 
-// 悬浮状态
-:host([variant="text"]:hover) .button[aria-disabled="false"] .label::after {
-  .underline-style();
-}
-
-:host([variant="text"][size="small"]:hover) .button[aria-disabled="false"] .label::after {
-  height: 1px;
-}
-
-:host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
-  --main-hover-color: var(--jds-color-primary);
-}
-
-:host([variant="secondary"]:hover) .button[aria-disabled="false"] {
-  --content-color: var(--jds-color-white);
-  --bg-color: var(--main-hover-color);
-}
-
-:host([variant="text"]:hover) .button[aria-disabled="false"] {
-  --content-color: var(--main-hover-color);
-  --bg-color: transparent;
-}
 
 :host([dropdown]) .open {
   display: none;
@@ -297,6 +267,40 @@
   --content-color: var(--main-color);
   --bg-color: var(--jds-color-neutral-100);
   --border-color: transparent;
+}
+@media screen and (min-width: 1024px) {
+
+  :host(:hover) .button {
+    --bg-color: var(--main-hover-color);
+    --border-color: var(--main-hover-color);
+  }
+
+  :host([loading]:hover) .button[aria-disabled="true"] {
+    --bg-color: var(--main-color);
+  }
+
+  // 悬浮状态
+  :host([variant="text"]:hover) .button[aria-disabled="false"] .label::after {
+    .underline-style();
+  }
+
+  :host([variant="text"][size="small"]:hover) .button[aria-disabled="false"] .label::after {
+    height: 1px;
+  }
+
+  :host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
+    --main-hover-color: var(--jds-color-primary);
+  }
+
+  :host([variant="secondary"]:hover) .button[aria-disabled="false"] {
+    --content-color: var(--jds-color-white);
+    --bg-color: var(--main-hover-color);
+  }
+
+  :host([variant="text"]:hover) .button[aria-disabled="false"] {
+    --content-color: var(--main-hover-color);
+    --bg-color: transparent;
+  }
 }
 
 @media screen and (max-width: 1023.98px) {
@@ -350,5 +354,15 @@
   :host .has-icon:not(.has-content) {
     --margin-icon: 0;
     --icon-size: var(--jds-size-24); // 24px
+  }
+
+  // 点击状态
+  :host([kind="default"][variant="secondary"]:active) .button[aria-disabled="false"] {
+    --main-hover-color: var(--jds-color-primary);
+  }
+
+  :host([variant="secondary"]:active) .button[aria-disabled="false"] {
+    --content-color: var(--jds-color-white);
+    --bg-color: var(--main-hover-color);
   }
 }
