@@ -17,7 +17,7 @@
     "tooling/*"
   ],
   "scripts": {
-    "build": "turbo run build --filter=!@jackery/examples",
+    "build": "turbo run build --filter=!@jackery/examples --filter=!@jackery/storybook",
     "dev": "turbo run dev",
     "site:preview": "vite preview --strictPort --port 5175",
     "design:build:lib": "vite build --mode library",
