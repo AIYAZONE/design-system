@@ -1,0 +1,29 @@
+{
+  "extends": "@jackery/tsconfig/app.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["vite/client"],
+    "moduleResolution": "bundler",
+    "paths": {
+      "@jackery/core": ["../../packages/core/src"],
+      "@jackery/core/*": ["../../packages/core/src/*"],
+      "@jackery/icons": ["../../packages/icons/src"],
+      "@jackery/icons/*": ["../../packages/icons/src/*"],
+      "@jackery/i18n": ["../../packages/i18n/src"],
+      "@jackery/i18n/*": ["../../packages/i18n/src/*"],
+      "@jackery/utils": ["../../packages/utils/src"],
+      "@jackery/utils/*": ["../../packages/utils/src/*"],
+      "@/*": ["../../packages/icons/src/*"]
+    }
+  },
+  "include": [
+    ".storybook/**/*",
+    "stories/**/*",
+    "../../packages/*/src/**/*",
+    "../../src/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "storybook-static"
+  ]
+}

@@ -3,110 +3,94 @@
 // 样式Mixin
 // 标题 1 ，使用场景：【特大标题】 用于营销Banner标题
 .jds-h1-style() {
-  // PC:500 72px / 80px ; MB: 500 80px / 96px
-  font: var(--jds-font-h1-medium);
-  // 字间距 -2%
-  letter-spacing: var(--jds-h1-letter-spacing);
+  font: var(--jds-font-h1);
+  letter-spacing: var(--jds-h1-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题
 .jds-h2-style() {
-  // PC:500 48px / 56px ; MB: 500 64px / 80px
-  font: var(--jds-font-h2-medium);
-  // 字间距 -2%
-  letter-spacing: var(--jds-h2-letter-spacing);
+  font: var(--jds-font-h2);
+  letter-spacing: var(--jds-h2-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 标题 3，使用场景：【标题】用于活动页标题
 .jds-h3-style() {
-  // PC:500 40px / 48px ; MB: 500 56px / 72px
-  font: var(--jds-font-h3-medium);
-  // 字间距 -2%
-  letter-spacing: var(--jds-h3-letter-spacing);
+  font: var(--jds-font-h3);
+  letter-spacing: var(--jds-h3-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 标题 4，使用场景：待定
 .jds-h4-style() {
-  // PC:500 32px / 40px ; MB: 500 40px / 56px
-  font: var(--jds-font-h4-medium);
-  // 字间距 -2%
-  letter-spacing: var(--jds-h4-letter-spacing);
+  font: var(--jds-font-h4);
+  letter-spacing: var(--jds-h4-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 标题 5，使用场景：待定
 .jds-h5-style() {
-  // PC:500 24px / 32px ; MB: 500 36px / 44px
-  font: var(--jds-font-h5-medium);
-  // 字间距 -1%
-  letter-spacing: var(--jds-h5-letter-spacing);
+  font: var(--jds-font-h5);
+  letter-spacing: var(--jds-h5-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 标题 6，使用场景：【标签级标题】用于首屏banner
 .jds-h6-style() {
-  // PC:600 18px / 26px ; MB: 600 32px / 48px
-  font: var(--jds-font-h6-semibold);
+  font: var(--jds-font-h6);
+  letter-spacing: var(--jds-h6-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 // 正文文本 1，使用场景：【正文】
 .jds-b1-style() {
-  // PC:500 18px / 26px ; MB: 500 32px / 48px
-  font: var(--jds-font-b1-medium);
+  font: var(--jds-font-b1);
+  letter-spacing: var(--jds-b1-letter-spacing, 0);
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 .jds-b1-regular-style() {
-  // PC:400 18px / 26px ; MB: 400 32px / 48px
-  font: var(--jds-font-b1-regular);
+  font: var(--jds-font-b1-regular, var(--jds-font-b1));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 // 正文文本 2，使用场景：【小正文】 用于拥挤情况
 .jds-b2-style() {
-  // PC:500 16px / 24px ; MB: 500 28px / 44px
-  font: var(--jds-font-b2-medium);
+  font: var(--jds-font-b2);
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 .jds-b2-regular-style() {
-  // PC:400 16px / 24px ; MB: 400 28px / 44px
-  font: var(--jds-font-b2-regular);
+  font: var(--jds-font-b2-regular, var(--jds-font-b2));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 // 正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮；
 .jds-b3-style() {
-  // PC:500 14px / 22px ; MB: 500 24px / 40px
-  font: var(--jds-font-b3-medium);
+  font: var(--jds-font-b3);
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 .jds-b3-regular-style() {
-  // PC:400 14px / 22px ; MB: 400 24px / 40px
-  font: var(--jds-font-b3-regular);
+  font: var(--jds-font-b3-regular, var(--jds-font-b3));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 // 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
 .jds-c1-style() {
-  // PC:400 12px / 16px ; MB: 400 20px / 32px
   font: var(--jds-font-c1);
   // 三级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l3));
@@ -148,7 +132,8 @@
   .jds-b1-style();
 }
 
-.jds-b1.font-regular {
+.jds-b1.font-regular ,
+.jds-b1.font-normal {
   .jds-b1-regular-style();
 }
 
@@ -157,7 +142,8 @@
   .jds-b2-style();
 }
 
-.jds-b2.font-regular {
+.jds-b2.font-regular,
+.jds-b2.font-normal {
   .jds-b2-regular-style();
 }
 
@@ -166,7 +152,8 @@
   .jds-b3-style();
 }
 
-.jds-b3.font-regular {
+.jds-b3.font-regular,
+.jds-b3.font-normal {
   .jds-b3-regular-style();
 }
 

@@ -1,0 +1,16 @@
+{
+  "name": "@jackery/examples",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Jackery Design System - Examples Site",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21",
+    "less": "^4.2.0"
+  }
+}
