@@ -3,7 +3,6 @@ import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
-import dts from "vite-plugin-dts";
 
 const renameCssPlugin = (fileName = 'index.css') => ({
   name: 'rename-css-asset',
@@ -111,7 +110,7 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+            moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
           }
         }
       },
@@ -188,7 +187,7 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+            moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
           }
         }
       },
@@ -230,6 +229,7 @@ export default defineConfig((configEnv) => {
   if (isThemes) {
     return {
       base: './',
+      publicDir: true,
       build: {
         sourcemap: true,
         minify: 'esbuild',
@@ -332,7 +332,7 @@ export default defineConfig((configEnv) => {
         },
         treeshake: {
           preset: 'recommended',
-          moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+          moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
         }
       }
     },

@@ -111,6 +111,39 @@ JDS 采用 Monorepo 架构，包含以下独立包：
 - **核心包不再自动注入全局样式**: `@jackery/core` 的入口不再引入 `packages/core/src/styles/index.css`，避免与 `src/styles` 的重复与冲突。
 - **路径别名**: 推荐在 Vite 配置中添加 `@styles -> src/styles`，统一引用全局样式。
 
+### 5.5 国际化使用指南（HTML 与脚手架通用）
+
+- 引入一次即可自动初始化并挂载到 `window.i18n`：
+
+  ```ts
+  import '@jackery/design-system';
+  // 现在可直接使用 window.i18n
+  window.i18n.t('common.ok');
+  ```
+
+- 声明式翻译（纯 HTML）：
+
+  ```html
+  <span data-i18n-key="common.yes"></span>
+  <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
+  ```
+
+- 模板字符串形式（纯文本节点内）：
+
+  ```html
+  <p title="${window.i18n.t('common.ok')}">common.ok:${window.i18n.t('common.ok')}</p>
+  ```
+
+  - 初次加载会替换为对应语言；切换语言后会自动重新扫描并更新。
+
+- 切换语言：
+
+  ```js
+  window.i18n.setCurrLanguage('ja');
+  ```
+
+说明：`@jackery/i18n` 在入口已自动执行 `initialize()` 与 `initI18nDom()`，无需手动初始化。
+
 ### 5.4 开发环境 Vite 别名
 
 在根站点与示例站的 `vite.config` 中添加：
@@ -169,7 +202,15 @@ import '@jackery/icons';
 ### 打包格式
 - `dist/index.esm.js`：ES Modules，适合浏览器与现代打包器（推荐）
 - `dist/index.cjs`：CommonJS，适合 Node/老旧打包器
-- 类型声明：`dist/index.d.ts`、`dist/index.esm.d.ts`
+- 类型声明：`dist/jds.d.ts`
+
+### 发布产物（NPM 包内文件）
+
+- JS：`dist/index.esm.js`、`dist/index.cjs`、`dist/chunks/**`
+- CSS：`dist/index.css`、`dist/index-v2.css`、`dist/themes-switch.css`
+- 资产：`dist/fonts/**`、`dist/assets/**`
+- 类型：`dist/jds.d.ts`、`dist/**/*.d.ts`
+- 说明：不包含 `public/**`、Storybook 或站点预览文件。
 
 ### 按需引入组件
 - 在应用中仅导入需要的组件入口（打包器会按需包含）：
