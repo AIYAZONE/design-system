@@ -3,7 +3,6 @@ import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
-import dts from "vite-plugin-dts";
 
 const renameCssPlugin = (fileName = 'index.css') => ({
   name: 'rename-css-asset',
