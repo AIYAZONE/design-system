@@ -148,6 +148,6 @@ export function initialize(): void {
   });
 
   if (typeof window !== 'undefined') {
-    window.i18n = globalI18n;
+    (window as any).i18n = globalI18n;
   }
 }
