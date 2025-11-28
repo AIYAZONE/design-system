@@ -92,14 +92,3 @@ export interface I18nInstance {
   setCurrLanguage: (lang: Language) => void;
 }
 
-/**
- * 扩展Window接口，添加全局i18n实例
- */
-declare global {
-  interface Window {
-    /**
-     * 全局i18n实例
-     */
-    i18n: I18nInstance;
-  }
-}

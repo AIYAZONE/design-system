@@ -1,8 +1,0 @@
-/* Storybook 预览自定义样式占位，防止资源 404 */
-:root {
-  --jds-size-16: 16px;
-}
-
-html, body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-}

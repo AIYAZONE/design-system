@@ -111,7 +111,7 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+            moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
           }
         }
       },
@@ -188,7 +188,7 @@ export default defineConfig((configEnv) => {
           },
           treeshake: {
             preset: 'recommended',
-            moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+            moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
           }
         }
       },
@@ -230,6 +230,7 @@ export default defineConfig((configEnv) => {
   if (isThemes) {
     return {
       base: './',
+      publicDir: true,
       build: {
         sourcemap: true,
         minify: 'esbuild',
@@ -332,7 +333,7 @@ export default defineConfig((configEnv) => {
         },
         treeshake: {
           preset: 'recommended',
-          moduleSideEffects: (id) => /\.(css|less)$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id)
+          moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)
         }
       }
     },

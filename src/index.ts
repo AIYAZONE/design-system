@@ -13,7 +13,8 @@ import '@jackery/core';
 export * from '@jackery/core';
 import '@jackery/icons';
 export { JdsIcon } from '@jackery/icons';
-// i18n 功能导出（保持纯导出，不做运行时初始化）
+import '@jackery/i18n';
+import { initI18nDom } from '@jackery/i18n';
 export {
   JdsI18n,
   initialize,
@@ -25,3 +26,4 @@ export {
   type I18nInstance
 } from '@jackery/i18n';
 import '@styles/index.less';
+initI18nDom();

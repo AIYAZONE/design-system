@@ -67,7 +67,16 @@
     "./themes-switch.css": "./dist/themes-switch.css"
   },
   "files": [
-    "dist/**"
+    "dist/index.esm.js",
+    "dist/index.cjs",
+    "dist/index.css",
+    "dist/index-v2.css",
+    "dist/themes-switch.css",
+    "dist/chunks/**",
+    "dist/fonts/**",
+    "dist/assets/**",
+    "dist/jds.d.ts",
+    "dist/**/*.d.ts"
   ],
   "publishConfig": {
     "access": "public"
