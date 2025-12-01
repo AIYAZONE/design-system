@@ -7,15 +7,8 @@
   <link rel="stylesheet" href="/examples-index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jackery Design System - 示例站点</title>
-  <!-- 通过 link 引入样式，避免 TS 注入造成首屏闪烁 -->
-  <!-- 入口仅用于注册组件，不再负责样式 -->
-  <script type="module" src="/main.ts"></script>
-  <script type="module">
-    import './styles/index.less'
-  </script>
-  <style>
-    /* 入口已统一导入 less，避免重复加载造成样式覆盖顺序混乱 */
-  </style>
+  <script type="module" src="/home.ts"></script>
+
 </head>
 
 <body>
