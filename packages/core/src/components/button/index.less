@@ -8,7 +8,7 @@
   --main-color: var(--jds-color-primary);
   --main-hover-color: var(--jds-color-primary-highlight);
   --text-hover-color: var(--jds-color-white);
-  --content-color: var(--jds-button-custom-text-color, var(--jds-color-white));
+  --content-color: var(--jds-color-white);
   --bg-color: var(--main-color);
   --border-color: var(--main-color);
   --padding-vertical: var(--jds-size-8);
@@ -98,6 +98,10 @@
   /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
   --jds-color-custom-highlight: color-mix(in srgb, white 15%, var(--main-color));
   --main-hover-color: var(--jds-color-custom-highlight);
+}
+
+:host([kind="custom"][variant="primary"]) .button {
+  --content-color: var(--jds-button-primary-custom-text-color, var(--jds-color-white));
 }
 
 // ios真机浏览器 低于16.2版本 无悬浮色交互
