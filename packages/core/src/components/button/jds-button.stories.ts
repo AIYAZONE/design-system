@@ -42,7 +42,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
     kind: {
       options: ["default", "neutral", "success", "danger", "custom"],
       description:
-        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color, 当按钮变体为primary时还可传入--jds-button-custom-text-color更改文字颜色）)",
+        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color, 当按钮变体为primary时还可传入--jds-button-primary-custom-text-color更改文字颜色）)",
       default: "default",
       control: { type: "select" },
       table: {
@@ -377,7 +377,7 @@ export const CustomColor: import("@storybook/web-components").StoryObj<ButtonPro
         kind: "custom",
         variant: "primary",
         style:
-          "--jds-button-custom-color: #10b981; --jds-button-custom-text-color: #000000",
+          "--jds-button-custom-color: #10b981; --jds-button-primary-custom-text-color: #000000",
       })}
     </div>
   `,
