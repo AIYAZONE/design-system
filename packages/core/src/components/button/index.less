@@ -58,10 +58,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: var(--jds-button-display, flex);
+  display: inline-block;
   align-items: center;
-  height: 100%;
-  line-height: var(--jds-button-line-height, inherit);
+  line-height: normal;
+  max-width: 100%;
 }
 
 // 不同变体的按钮
@@ -93,21 +93,21 @@
   --main-hover-color: var(--jds-color-danger-highlight);
 }
 
-:host([kind="custom"]) .button:not(.ios-below-16_2) {
+:host([kind="custom"]) .button {
   --main-color: var(--jds-button-custom-color, var(--jds-color-primary));
   /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
   --jds-color-custom-highlight: color-mix(in srgb, white 15%, var(--main-color));
   --main-hover-color: var(--jds-color-custom-highlight);
 }
 
+:host([kind="custom"][variant="primary"]) .button {
+  --content-color: var(--jds-button-primary-custom-text-color, var(--jds-color-white));
+}
+
 // ios真机浏览器 低于16.2版本 无悬浮色交互
 :host([kind="custom"]) .button.ios-below-16_2 {
   --main-color: var(--jds-button-custom-color, var(--jds-color-primary));
   --main-hover-color: var(--main-color);
-}
-
-:host([kind="custom"][variant="primary"]) .button {
-  --content-color: var(--jds-button-primary-custom-text-color, var(--jds-color-white));
 }
 
 // 不同尺寸按钮
@@ -146,8 +146,8 @@
   --padding-horizontal: var(--jds-size-12);
   --margin-icon: var(--jds-size-2);
   --icon-size: var(--jds-size-8);
-  --font: var(--jds-font-b2);
-  line-height: var(--jds-size-20);
+  --font: var(--jds-font-b3);
+  line-height: 1;
 }
 
 :host([size="small"][variant="text"]) .button {
@@ -182,17 +182,23 @@
 // 禁用状态
 :host .button[aria-disabled="true"] {
   // 不透明度30%
-  @jds-color-primary: #FD5000;
-  --main-color: mix(transparent, @jds-color-primary, 70%);
-  --main-hover-color: var(--main-color);
+  opacity: 0.3;
   pointer-events: none;
   text-decoration: none;
 }
 
-:host([variant="primary"]) .button[aria-disabled="true"] {
+:host([kind="default"][variant="primary"]) .button[aria-disabled="true"] {
+  --bg-color: var(--main-color);
+}
+:host([kind="custom"]) .button[aria-disabled="true"] {
+  --main-color: var(--jds-button-custom-color);
+  --bg-color: transparent;
+  --content-color: var(--jds-button-custom-text-color, var(--main-color));
+}
+:host([kind="custom"][variant="primary"]) .button[aria-disabled="true"]{
+  --main-color: var(--jds-button-custom-color);
   --bg-color: var(--main-color);
   --content-color: var(--jds-color-white);
-  --border-color: transparent;
 }
 
 // 下划线样式
@@ -216,7 +222,7 @@
   cursor: wait;
 
   .button {
-    --bg-color: var(--jds-color-primary);
+    --bg-color: var(--main-color);
 
     .label {
       visibility: hidden;
@@ -238,8 +244,9 @@
 :host([variant="secondary"][loading]) .button {
   --border-color: transparent;
 }
-
-
+:host([kind="custom"][loading]) .button[aria-disabled="true"] {
+  --bg-color: var(--main-color);
+}
 
 :host([dropdown]) .open {
   display: none;
@@ -280,6 +287,9 @@
   }
 
   // 悬浮状态
+  :host([variant="text"]:hover) .button{
+    --bg-color: transparent;
+  }
   :host([variant="text"]:hover) .button[aria-disabled="false"] .label::after {
     .underline-style();
   }
@@ -291,11 +301,18 @@
   :host([kind="default"][variant="secondary"]:hover) .button[aria-disabled="false"] {
     --main-hover-color: var(--jds-color-primary);
   }
+  :host([variant="secondary"]:hover) .button[aria-disabled="true"] {
+    --bg-color: transparent;
+  }
 
   :host([variant="secondary"]:hover) .button[aria-disabled="false"] {
     --content-color: var(--jds-color-white);
     --bg-color: var(--main-hover-color);
   }
+  :host([variant="secondary"]:hover[loading]) .button[aria-disabled="true"] {
+    --bg-color:  var(--main-hover-color);
+  }
+
 
   :host([variant="text"]:hover) .button[aria-disabled="false"] {
     --content-color: var(--main-hover-color);

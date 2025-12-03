@@ -36,7 +36,7 @@
       }
 
       &::part(label){
-        overflow: visible;
+        display: flex;
       }
 
       // 特大按钮、大按钮
@@ -48,6 +48,7 @@
           padding-right: var(--jds-size-8);
           padding-left: var(--jds-size-24);
         }
+
         jds-button.only-icon {
           margin-left: var(--jds-size-8);
           transition: all .3s cubic-bezier(.8, 0, .2, 1);
