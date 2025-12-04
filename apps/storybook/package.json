@@ -1,6 +1,6 @@
 {
   "name": "@jackery/storybook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Jackery Design System - Storybook Documentation",
   "type": "module",
   "private": true,
