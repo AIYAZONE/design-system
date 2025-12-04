@@ -84,18 +84,21 @@
 @{rootSel}[lang="ja"] {
   --jds-font-family: "Noto Sans JP", sans-serif;
 }
+
 @{rootSel}:not([lang="ja"]) {
   --jds-font-family: "Inter", sans-serif;
 }
 
 // 字体生成 mixin（使用列表 + extract）
 .generate-font-vars(@suffix, @h-sizes, @b-sizes, @c-size) {
+
   // 标题
-  .loop(@i: 1) when (@i <= 6) {
+  .loop(@i: 1) when (@i <=6) {
     @size: extract(@h-sizes, @i);
     --jds-font-h@{i}: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-h-line-height var(--jds-font-family);
     .loop(@i + 1);
   }
+
   .loop();
 
   // 正文
@@ -115,6 +118,7 @@
   @rem: (1rem / 16);
   @h-sizes-desktop: 72 48 32 28 24 20;
   @b-sizes-desktop: 20 16 14;
+
   @{rootSel} {
     .generate-sizes(@rem);
     .generate-font-sizes(@rem);
@@ -128,6 +132,7 @@
   @rem: (1rem / 32);
   @h-sizes-mobile: 72 56 48 40 32 28;
   @b-sizes-mobile: 32 28 24;
+
   @{rootSel} {
     .generate-sizes(@rem);
     .generate-font-sizes(@rem);
