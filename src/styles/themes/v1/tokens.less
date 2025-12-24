@@ -74,15 +74,6 @@
   --jds-text-x-direction: 1;
 }
 
-// 多语言字体
-@{rootSel}[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
-@{rootSel}:not([lang="ja"]) {
-  --jds-font-family: "Poppins", sans-serif;
-}
-
 // RTL 文本方向支持
 :root[dir="rtl"] {
   direction: rtl;

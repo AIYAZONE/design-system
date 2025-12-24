@@ -81,15 +81,6 @@
   --jds-text-x-direction: 1;
 }
 
-// 字体族
-@{rootSel}[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
-@{rootSel}:not([lang="ja"]) {
-  --jds-font-family: "Inter", sans-serif;
-}
-
 // 字体生成 mixin（使用列表 + extract）
 .generate-font-vars(@suffix, @h-sizes, @b-sizes, @c-size) {
 
