@@ -1,4 +1,3 @@
-/// <reference path="../../types/less-inline.d.ts" />
 import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup} from "lit";
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
@@ -120,12 +119,12 @@ export class JdsButton extends LitElement {
   };
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._setupSlotObserver();
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     this._cleanupSlotObserver();
   }
 
