@@ -77,7 +77,7 @@ export default class JdsTooltip extends LitElement {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._timer = null;
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
@@ -85,7 +85,7 @@ export default class JdsTooltip extends LitElement {
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     this._removeEvents(this.target);
   }
 

@@ -56,8 +56,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
+    "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
