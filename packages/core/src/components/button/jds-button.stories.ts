@@ -42,7 +42,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
     kind: {
       options: ["default", "neutral", "success", "danger", "custom"],
       description:
-        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color, 当按钮变体为primary时还可传入--jds-button-primary-custom-text-color更改文字颜色）)",
+        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-btn-custom-color, 当按钮变体为primary时还可传入--jds-btn-primary-custom-text-color更改文字颜色）)",
       default: "default",
       control: { type: "select" },
       table: {
@@ -108,7 +108,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
     },
     style: {
       description:
-        "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block;--jds-button-custom-color:blue;",
+        "设置按钮的自定义样式，支持CSS变量配置，如 --jds-btn-display: block;--jds-btn-custom-color:blue;",
       control: {
         type: "text",
       },
@@ -191,7 +191,7 @@ export const Kinds: import("@storybook/web-components").StoryObj<ButtonProps> = 
       ...args,
       content: "Custom Button",
       kind: "custom",
-      style: "--jds-button-custom-color: blue",
+      style: "--jds-btn-custom-color: blue",
     })}`,
   args: {},
 };
@@ -341,7 +341,7 @@ export const FullWidth: import("@storybook/web-components").StoryObj<ButtonProps
       ${SingleButtonTemplate({
         ...args,
         content: "Full Width Button",
-        style: "--jds-button-display: block",
+        style: "--jds-btn-display: block",
       })}
     </div>
   `,
@@ -355,21 +355,21 @@ export const CustomColor: import("@storybook/web-components").StoryObj<ButtonPro
         ...args,
         content: "Custom Color Button",
         kind: "custom",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "secondary",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "text",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
@@ -377,7 +377,7 @@ export const CustomColor: import("@storybook/web-components").StoryObj<ButtonPro
         kind: "custom",
         variant: "primary",
         style:
-          "--jds-button-custom-color: #10b981; --jds-button-primary-custom-text-color: #000000",
+          "--jds-btn-custom-color: #10b981; --jds-btn-primary-custom-text-color: #000000",
       })}
     </div>
   `,
