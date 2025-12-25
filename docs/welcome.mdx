@@ -3,4 +3,4 @@ import ReadMe from '../README.md?raw';
 
 <Meta title="介绍" />
 
-<Markdown>{ReadMe}</Markdown>
+<Markdown>{ReadMe.replaceAll('(./public/', '(/')}</Markdown>
