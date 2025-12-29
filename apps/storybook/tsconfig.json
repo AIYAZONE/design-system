@@ -19,7 +19,6 @@
   "include": [
     ".storybook/**/*",
     "stories/**/*",
-    "../../packages/*/src/**/*",
     "../../src/types/**/*.d.ts"
   ],
   "exclude": [
