@@ -17,6 +17,11 @@
       "require": "./dist/button/index.cjs",
       "types": "./dist/button/index.d.ts"
     },
+    "./checkbox": {
+      "import": "./dist/checkbox/index.js",
+      "require": "./dist/checkbox/index.cjs",
+      "types": "./dist/checkbox/index.d.ts"
+    },
     "./badge": {
       "import": "./dist/badge/index.js",
       "require": "./dist/badge/index.cjs",
