@@ -36,3 +36,5 @@ vite.config.js.*
 
 .turbo/*
 *.tsbuildinfo
+
+package-lock.json
