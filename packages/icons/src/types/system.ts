@@ -33,7 +33,16 @@ export const SYSTEM_ICON_LIST = [
   "star-fill",
   "star-line",
   "play",
-  "download"
+  "download",
+  "battery-line",
+  "cart-line",
+  "calendar-line",
+  "home-line-1",
+  "home-line-2",
+  "lamp-line",
+  "tent-line",
+  "truck-line-1",
+  "truck-line-2",
 ];
 
 export type SystemIcon = typeof SYSTEM_ICON_LIST[number];
