@@ -1,6 +1,5 @@
 import type { StorybookConfig } from "@storybook/web-components-vite";
 import type { UserConfig as ViteConfig } from "vite";
-import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
 const config: StorybookConfig = {
@@ -51,6 +50,7 @@ const config: StorybookConfig = {
       },
     };
     // 保留工作区包与样式别名，避免干扰 Storybook 的内部虚拟模块解析
+    config.root = process.cwd();
     config.resolve = {
       ...(config.resolve ?? {}),
       alias: {
