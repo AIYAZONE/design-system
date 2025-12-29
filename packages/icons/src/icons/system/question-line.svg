@@ -7,7 +7,7 @@
     <g fill="none" fill-rule="evenodd">
         <path d="M0 0h56v56H0z" />
         <g transform="translate(2 2)">
-            <mask id="question-line__b" fill="#fff">
+            <mask id="question-line__b" fill="transparent">
                 <use xlink:href="#question-line__a" />
             </mask>
             <use fill="currentColor" fill-rule="nonzero" xlink:href="#question-line__a" />
