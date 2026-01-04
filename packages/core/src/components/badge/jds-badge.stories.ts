@@ -5,56 +5,73 @@ const meta = {
   component: "jds-badge",
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "规范化徽章组件：用于轻量展示标签或计数，并可作为链接导航。提供 soft/solid/outline 变体与语义 kind，支持尺寸 size、图标与计数。最小 API 聚焦展示与导航；高级参数仅在 custom+soft 场景用于对比度调优。",
+      },
+    },
   },
   argTypes: {
     size: {
       control: { type: "select" },
       options: ["small", "medium", "large"],
       description: "尺寸：small/medium/large，用于控制高度与字体大小",
+      table: { category: "基础" },
     },
     content: {
       control: { type: "text" },
       description: "文本内容（默认插槽），用于展示标签文字",
+      table: { category: "基础" },
     },
     icon: {
       control: { type: "text" },
       description: "前置图标名称（icons 系统），如 info-fill",
+      table: { category: "基础" },
     },
     variant: {
       control: { type: "select" },
       options: ["soft", "solid", "outline"],
       description: "风格：soft（浅色）、solid（实色）、outline（描边）",
+      table: { category: "基础" },
     },
     kind: {
       control: { type: "select" },
       options: ["default", "neutral", "success", "warning", "danger", "info", "custom"],
       description: "语义类型：default/neutral/success/warning/danger/info/custom",
+      table: { category: "基础" },
     },
     count: {
       control: { type: "number" },
       description: "计数值，优先显示；大于 maxCount 显示“maxCount+”",
+      table: { category: "基础" },
     },
     maxCount: {
       control: { type: "number" },
       description: "计数显示上限，默认 99",
+      table: { category: "基础" },
     },
     href: {
       control: { type: "text" },
       description: "链接地址，设置后渲染为 <a>",
+      table: { category: "基础" },
     },
-    target: { table: { disable: true } },
-    ariaLabelText: { table: { disable: true } },
+    target: { table: { disable: true, category: "高级" } },
+    ariaLabelText: { table: { disable: true, category: "高级" } },
     customColor: {
       control: { type: "color" },
       description: "自定义主色（仅 kind=custom 生效），会用于前景与 soft 背景计算",
+      table: { category: "高级" },
     },
     customSoftBgMix: {
       control: { type: "number", min: 0, max: 100, step: 1 },
       description: "custom+soft 背景白色混合比例（0-100%），仅 kind=custom 生效，默认 65%",
+      table: { category: "高级" },
     },
     customSoftFgDarken: {
       control: { type: "number", min: 0, max: 100, step: 1 },
       description: "custom+soft 前景加深比例（混入黑色 0-100%），仅 kind=custom 生效，默认 20%",
+      table: { category: "高级" },
     },
   },
 } as const;
