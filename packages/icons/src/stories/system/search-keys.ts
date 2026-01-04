@@ -33,5 +33,14 @@ export default {
   "star-fill": "星星填充 收藏 标记 评分 等级 star filled favorite bookmark rating grade level mark important",
   "star-line": "星星线条 收藏 标记 评分 等级 star line favorite bookmark rating grade level mark important",
   "play": "播放 play",
-  "download":"下载 download"
+  "download": "下载 download",
+  "battery-line": "电池线条 电池 充电 电量 battery line charge power level",
+  "cart-line": "购物车线条 购物车 购买 商品 cart line shopping cart purchase product",
+  "calendar-line": "日历线条 日期 时间 日程 事件 calendar line date time schedule event",
+  "home-line-1": "家庭线条 房屋 房间 客厅 home house room living room",
+  "home-line-2": "家庭线条 房屋 房间 卧室 home house room bedroom",
+  "lamp-line": "灯线条 照明 light lamp light source",
+  "tent-line": "帐篷线条 帐篷 住宿 休息 旅行 tent line tent camping rest travel",
+  "truck-line-1": "卡车线条 运输 物流 配送 truck transport logistics delivery",
+  "truck-line-2": "卡车线条 运输 物流 配送 truck transport logistics delivery",
 };

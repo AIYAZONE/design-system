@@ -7,7 +7,7 @@
     <g fill="none" fill-rule="evenodd">
         <path d="M0 0h56v56H0z" />
         <g transform="translate(2 3)">
-            <mask id="info-line_b" fill="#fff">
+            <mask id="info-line_b" fill="transparent">
                 <use xlink:href="#info-line_a" />
             </mask>
             <use fill="currentColor" fill-rule="nonzero" xlink:href="#info-line_a" />
