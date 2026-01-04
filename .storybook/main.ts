@@ -1,8 +1,7 @@
-import type { StorybookConfig } from "@storybook/web-components-vite";
 import type { UserConfig as ViteConfig } from "vite";
 import { resolve } from "node:path";
 
-const config: StorybookConfig = {
+const config = {
   stories: [
     "../docs/**/*.mdx",
     // 仅包含需要在主 Storybook 展示的包，排除 @jackery/icons 的 stories
@@ -30,6 +29,7 @@ const config: StorybookConfig = {
   },
   // 允许通过非 localhost 主机访问（如 10.1.92.33）
   viteFinal: async (config: ViteConfig) => {
+    config.root = process.cwd();
     config.server = {
       ...(config.server ?? {}),
       host: "10.1.92.33",
