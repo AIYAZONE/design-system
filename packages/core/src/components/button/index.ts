@@ -240,12 +240,26 @@ export class JdsButton extends LitElement {
     const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
     const icon = this.icon ? html`<jds-icon part="icon" name=${this.icon}></jds-icon>` : "";
+    const mainColor =
+      this.kind === "custom"
+        ? "var(--jds-btn-local-custom-color, var(--jds-btn-custom-color, var(--jds-color-primary)))"
+        : this.kind === "neutral"
+        ? "var(--jds-color-neutral)"
+        : this.kind === "success"
+        ? "var(--jds-color-success)"
+        : this.kind === "danger"
+        ? "var(--jds-color-danger)"
+        : "var(--jds-color-primary)";
+    const spinnerColor =
+      this.variant === "primary" || this.variant === "secondary"
+        ? "var(--jds-color-white)"
+        : mainColor;
     const loadingIcon = html`
       <jds-spinner
         class="loading-spinner"
-        ?disabled="${isDisabled}"
+        ?disabled="${this.disabled}"
         size=${this.size === "small" ? "var(--jds-font-size-16)" : "var(--jds-font-size-24)"}
-        color="var(--jds-color-white)"
+        color="${spinnerColor}"
       ></jds-spinner>
     `;
     const slots = html`

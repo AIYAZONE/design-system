@@ -9,6 +9,10 @@
   --jds-btn-underline-height-small: 1px;
   --jds-btn-secondary-border-width: var(--jds-size-2);
   --jds-btn-custom-highlight-mix: 15%;
+  // 语义变量（默认值）
+  --jds-btn-hover-color: var(--jds-color-primary-highlight);
+  --jds-btn-active-color: var(--jds-btn-main-color, var(--jds-color-primary));
+  --jds-btn-text-underline-color: var(--jds-btn-hover-color);
 }
 
 .button {
@@ -72,50 +76,103 @@
 
 // 不同种类按钮
 :host([kind="neutral"]) .button {
+  background-color: var(--jds-color-neutral);
+  border-color: var(--jds-color-neutral);
+  // 语义变量赋值
   --jds-btn-main-color: var(--jds-color-neutral);
-  --jds-btn-main-hover-color: var(--jds-color-neutral-highlight);
-  --jds-btn-bg-color: var(--jds-btn-main-color);
-  --jds-btn-border-color: var(--jds-btn-main-color);
-  --jds-btn-bg-hover-color: var(--jds-btn-main-hover-color);
-  --jds-btn-border-hover-color: var(--jds-btn-main-hover-color);
+  --jds-btn-hover-color: var(--jds-color-neutral-highlight);
+  --jds-btn-active-color: var(--jds-color-neutral);
 }
 
 :host([kind="success"]) .button {
+  background-color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
+  // 语义变量赋值
   --jds-btn-main-color: var(--jds-color-success);
-  --jds-btn-main-hover-color: var(--jds-color-success-highlight);
-  --jds-btn-bg-color: var(--jds-btn-main-color);
-  --jds-btn-border-color: var(--jds-btn-main-color);
-  --jds-btn-bg-hover-color: var(--jds-btn-main-hover-color);
-  --jds-btn-border-hover-color: var(--jds-btn-main-hover-color);
+  --jds-btn-hover-color: var(--jds-color-success-highlight);
+  --jds-btn-active-color: var(--jds-color-success);
 }
 
 :host([kind="danger"]) .button {
+  background-color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
+  // 语义变量赋值
   --jds-btn-main-color: var(--jds-color-danger);
-  --jds-btn-main-hover-color: var(--jds-color-danger-highlight);
-  --jds-btn-bg-color: var(--jds-btn-main-color);
-  --jds-btn-border-color: var(--jds-btn-main-color);
-  --jds-btn-bg-hover-color: var(--jds-btn-main-hover-color);
-  --jds-btn-border-hover-color: var(--jds-btn-main-hover-color);
+  --jds-btn-hover-color: var(--jds-color-danger-highlight);
+  --jds-btn-active-color: var(--jds-color-danger);
 }
 
 :host([kind="custom"]) .button {
-  --jds-btn-main-color: var(--jds-btn-custom-color, var(--jds-color-primary));
+  --jds-btn-local-custom-color: var(--jds-btn-custom-color, var(--jds-color-primary));
   /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
-  --jds-color-custom-highlight: color-mix(in srgb, white var(--jds-btn-custom-highlight-mix), var(--jds-btn-main-color));
-  --jds-btn-main-hover-color: var(--jds-color-custom-highlight);
-  --jds-btn-bg-color: var(--jds-btn-main-color);
-  --jds-btn-border-color: var(--jds-btn-main-color);
-  --jds-btn-bg-hover-color: var(--jds-btn-main-hover-color);
-  --jds-btn-border-hover-color: var(--jds-btn-main-hover-color);
+  --jds-color-custom-highlight: color-mix(in srgb, white var(--jds-btn-custom-highlight-mix), var(--jds-btn-local-custom-color));
+
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
+  // 语义变量赋值
+  --jds-btn-main-color: var(--jds-btn-local-custom-color);
+  --jds-btn-hover-color: var(--jds-color-custom-highlight);
+  --jds-btn-active-color: var(--jds-btn-local-custom-color);
+}
+
+// 修复：自定义色 Secondary 加载态颜色（边框/背景透明，文字与图标使用自定义主色）
+:host([kind="custom"][variant="secondary"][loading]) .button {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--jds-btn-local-custom-color);
+}
+:host([kind="custom"][variant="secondary"][loading]) .button:hover,
+:host([kind="custom"][variant="secondary"][loading]) .button:active {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--jds-btn-local-custom-color);
 }
 
 :host([kind="custom"][variant="primary"]) .button {
   color: var(--jds-btn-primary-custom-text-color, var(--jds-color-white));
 }
 
-// ios真机浏览器 低于16.2版本 无悬浮色交互
-:host([kind="custom"]) .button.ios-below-16_2 {
-  --jds-btn-main-hover-color: var(--jds-btn-main-color);
+// 变体与种类组合：Secondary 与 Text 的基础显示（无背景填充）
+:host([kind="neutral"][variant="secondary"]) .button {
+  color: var(--jds-color-neutral);
+  border-color: var(--jds-color-neutral);
+  background-color: transparent;
+}
+:host([kind="success"][variant="secondary"]) .button {
+  color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
+  background-color: transparent;
+}
+:host([kind="danger"][variant="secondary"]) .button {
+  color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
+  background-color: transparent;
+}
+:host([kind="custom"][variant="secondary"]) .button {
+  color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
+  background-color: transparent;
+}
+
+:host([kind="neutral"][variant="text"]) .button {
+  color: var(--jds-color-neutral);
+  background-color: transparent;
+  border-color: transparent;
+}
+:host([kind="success"][variant="text"]) .button {
+  color: var(--jds-color-success);
+  background-color: transparent;
+  border-color: transparent;
+}
+:host([kind="danger"][variant="text"]) .button {
+  color: var(--jds-color-danger);
+  background-color: transparent;
+  border-color: transparent;
+}
+:host([kind="custom"][variant="text"]) .button {
+  color: var(--jds-btn-local-custom-color);
+  background-color: transparent;
+  border-color: transparent;
 }
 
 // 不同尺寸按钮
@@ -159,7 +216,7 @@
   font: var(--jds-btn-small-text-font, var(--jds-font-b3));
 }
 
-// 按钮图标
+// 按钮图标尺寸
 :host slot[name="icon"] jds-icon {
   font-size: var(--jds-btn-icon-size, var(--jds-size-12));
 }
@@ -168,7 +225,7 @@
   font-size: var(--jds-btn-small-icon-size, var(--jds-size-8));
 }
 
-// 纯图标按钮 -- 当前仅支持一个尺寸
+// 纯图标按钮（仅图标，无文字）—— 当前仅支持一个尺寸
 :host .has-icon:not(.has-content) {
   padding-left: var(--jds-btn-padding-vertical, var(--jds-size-8));
   padding-right: var(--jds-btn-padding-vertical, var(--jds-size-8));
@@ -204,7 +261,7 @@
   cursor: not-allowed;
 }
 
-// 禁用状态
+// 禁用状态样式
 :host .button[aria-disabled="true"] {
   // 不透明度30%
   opacity: var(--jds-btn-disabled-opacity);
@@ -224,7 +281,7 @@
   color: var(--jds-color-white);
 }
 
-// 下划线样式
+// 文本按钮下划线通用样式（用于 hover/禁用等状态）
 .underline-style(){
   content: "";
   position: absolute;
@@ -233,10 +290,10 @@
   display: block;
   width: 100%;
   height: var(--jds-btn-underline-height);
-  background-color: var(--jds-btn-main-color, var(--jds-color-primary));
+  background-color: var(--jds-btn-text-underline-color, var(--jds-btn-main-color, var(--jds-color-primary)));
 }
 
-// 状态样式 Mixins
+// 状态样式 Mixins（复用片段）
 .style-secondary-hover() {
   color: var(--jds-color-white);
   background-color: var(--jds-btn-main-color);
@@ -263,13 +320,11 @@
   .underline-style();
 }
 
-// 加载状态
+// 加载状态：隐藏文字、居中展示 Loading 图标
 :host([loading]) {
   cursor: wait;
 
   .button {
-    background-color: var(--jds-btn-main-color, var(--jds-color-primary));
-
     .label {
       visibility: hidden;
     }
@@ -283,15 +338,62 @@
   }
 }
 
-:host([variant="primary"][loading]) .button[aria-disabled="true"] {
+// 主按钮（Primary）加载态：按不同 kind 填充背景与边框颜色
+:host([variant="primary"][loading][kind="default"]) .button {
   background-color: var(--jds-color-primary);
+  border-color: var(--jds-color-primary);
+}
+:host([variant="primary"][loading][kind="neutral"]) .button {
+  background-color: var(--jds-color-neutral);
+  border-color: var(--jds-color-neutral);
+}
+:host([variant="primary"][loading][kind="success"]) .button {
+  background-color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
+}
+:host([variant="primary"][loading][kind="danger"]) .button {
+  background-color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
+}
+:host([variant="primary"][loading][kind="custom"]) .button {
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
 }
 
+// 次按钮（Secondary）加载态：与 Primary 一致，按不同 kind 填充背景与边框颜色
+:host([variant="secondary"][loading][kind="default"]) .button {
+  background-color: var(--jds-color-primary);
+  border-color: var(--jds-color-primary);
+}
+:host([variant="secondary"][loading][kind="neutral"]) .button {
+  background-color: var(--jds-color-neutral);
+  border-color: var(--jds-color-neutral);
+}
+:host([variant="secondary"][loading][kind="success"]) .button {
+  background-color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
+}
+:host([variant="secondary"][loading][kind="danger"]) .button {
+  background-color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
+}
+:host([variant="secondary"][loading][kind="custom"]) .button {
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
+}
 :host([variant="secondary"][loading]) .button {
   border-color: transparent;
 }
-:host([kind="custom"][loading]) .button[aria-disabled="true"] {
-  background-color: var(--jds-btn-custom-color, var(--jds-color-primary));
+// 修复：自定义色主按钮（Primary）加载态在 hover/active 时不发生颜色偏移
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button {
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
+}
+// Ensure custom loading hover/active states don't shift color
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:hover,
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:active {
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
 }
 
 :host([dropdown]) .open {
@@ -321,21 +423,19 @@
   border-color: transparent;
 }
 
-@media screen and (min-width: 1024px) {
-  :host(:hover) .button {
+@media (hover: hover) and (pointer: fine) {
+  :host(:hover):not([loading]) .button {
     background-color: var(--jds-btn-bg-hover-color, var(--jds-color-primary-highlight));
     border-color: var(--jds-btn-border-hover-color, var(--jds-color-primary-highlight));
   }
 
-  :host([loading]:hover) .button[aria-disabled="true"] {
-    background-color: var(--jds-btn-main-color, var(--jds-color-primary));
-  }
-
-  // 悬浮状态
+  // 悬浮状态：Text 不填充背景，仅绘制下划线
   :host([variant="text"]:hover) .button{
     background-color: transparent;
   }
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) .label::after {
+    // 使用统一变量渲染下划线颜色
+    --jds-btn-text-underline-color: var(--jds-btn-hover-color);
     .underline-style();
   }
 
@@ -343,30 +443,127 @@
     height: var(--jds-btn-underline-height-small);
   }
 
-  :host([variant="secondary"]:hover) .button[aria-disabled="true"] {
-    background-color: transparent;
-  }
-
   :host([variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
     .style-secondary-hover();
   }
 
-  :host([variant="secondary"]:hover[loading]) .button[aria-disabled="true"] {
-    background-color: var(--jds-btn-bg-hover-color, var(--jds-color-primary-highlight));
-    border-color: var(--jds-btn-border-hover-color, var(--jds-color-primary-highlight));
-  }
-
-
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) {
     .style-text-active();
   }
+
+  // 悬浮态重构
+  // 1）主按钮悬浮：排除 secondary/text 与 loading，使用各自高亮色
+  :host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-neutral-highlight);
+    border-color: var(--jds-color-neutral-highlight);
+  }
+  :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-success-highlight);
+    border-color: var(--jds-color-success-highlight);
+  }
+  :host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-danger-highlight);
+    border-color: var(--jds-color-danger-highlight);
+  }
+  :host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-custom-highlight);
+    border-color: var(--jds-color-custom-highlight);
+  }
+
+  // iOS 16.2 以下浏览器：不支持 color-mix，高亮回退为主色
+  :host([kind="custom"]:not([variant="secondary"]):not([variant="text"])) .button.ios-below-16_2:hover:not([aria-disabled="true"]) {
+     background-color: var(--jds-btn-local-custom-color);
+     border-color: var(--jds-btn-local-custom-color);
+  }
+
+  :host([kind="neutral"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-neutral-highlight);
+    border-color: var(--jds-color-neutral-highlight);
+    color: var(--jds-color-white);
+  }
+  :host([kind="success"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-success-highlight);
+    border-color: var(--jds-color-success-highlight);
+    color: var(--jds-color-white);
+  }
+  :host([kind="danger"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-danger-highlight);
+    border-color: var(--jds-color-danger-highlight);
+    color: var(--jds-color-white);
+  }
+  :host([kind="custom"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--jds-color-custom-highlight);
+    border-color: var(--jds-color-custom-highlight);
+    color: var(--jds-color-white);
+  }
+
+  // 2）文本按钮悬浮：仅文字与下划线使用高亮色变量，背景保持透明
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"]) {
+    color: var(--jds-btn-hover-color);
+    background-color: transparent;
+  }
 }
 
-// 点击状态
+// 文本按钮禁用态：下划线颜色与对应 kind 主色保持一致
+:host([kind="neutral"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--jds-color-neutral);
+}
+:host([kind="success"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--jds-color-success);
+}
+:host([kind="danger"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--jds-color-danger);
+}
+:host([kind="custom"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--jds-btn-custom-color, var(--jds-color-primary));
+}
+
+// 点击（Active）状态
+// 1）主按钮按下态
 :host([variant="primary"]:active) .button:not([aria-disabled="true"]) {
   .style-secondary-default-active();
 }
+// 主按钮按下态覆盖：同时支持隐式 primary（未显式声明 variant）
+:host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--jds-color-neutral);
+  border-color: var(--jds-color-neutral);
+}
+:host([kind="success"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
+}
+:host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
+}
+:host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
+}
 
+
+// 2）次按钮按下态
 :host([variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   .style-secondary-active();
+}
+// 次按钮按下态覆盖：按各自高亮色填充
+:host([kind="neutral"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--jds-color-white);
+  background-color: var(--jds-color-neutral-highlight);
+  border-color: var(--jds-color-neutral-highlight);
+}
+:host([kind="success"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--jds-color-white);
+  background-color: var(--jds-color-success-highlight);
+  border-color: var(--jds-color-success-highlight);
+}
+:host([kind="danger"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--jds-color-white);
+  background-color: var(--jds-color-danger-highlight);
+  border-color: var(--jds-color-danger-highlight);
+}
+:host([kind="custom"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--jds-color-white);
+  background-color: var(--jds-color-custom-highlight);
+  border-color: var(--jds-color-custom-highlight);
 }

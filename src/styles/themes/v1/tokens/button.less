@@ -1,4 +1,5 @@
 jds-button {
+  // V1 主题：按钮默认主色与悬浮色，供组件作为基础样式消费
   --jds-btn-main-color: var(--jds-color-primary);
   --jds-btn-main-hover-color: var(--jds-color-primary-highlight);
   --jds-btn-text-hover-color: var(--jds-color-white);
@@ -12,8 +13,19 @@ jds-button {
   --jds-btn-medium-text-font: var(--jds-font-b2);
   --jds-btn-small-font: var(--jds-font-b3);
   --jds-btn-small-text-font: var(--jds-font-b3);
+
+  // 圆角风格：V1 使用胶囊形（Pill）
+  --jds-btn-border-radius: var(--jds-rounded-pill);
+
+  /* 语义状态变量：供组件统一消费（保持现有视觉不变） */
+  --jds-btn-hover-color: var(--jds-btn-main-hover-color);
+  --jds-btn-active-color: var(--jds-btn-main-color);
+  --jds-btn-text-underline-color: var(--jds-btn-hover-color);
+  /* 自定义色高亮混合比例（用于 color-mix） */
+  --jds-btn-custom-highlight-mix: 15%;
 }
 
+// 桌面端尺寸与排版（≥1024px）
 @media screen and (min-width: 1024px) {
   jds-button {
     --jds-btn-padding-vertical: var(--jds-size-8);
@@ -56,6 +68,7 @@ jds-button {
   }
 }
 
+// 移动端尺寸与排版（<1024px）
 @media screen and (max-width: 1023.98px) {
   jds-button {
     --jds-btn-height: var(--jds-size-80);
