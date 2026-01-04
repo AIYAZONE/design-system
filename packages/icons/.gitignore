@@ -31,3 +31,4 @@ index.d.ts
 *.tgz
 
 .npmrc
+package-lock.json

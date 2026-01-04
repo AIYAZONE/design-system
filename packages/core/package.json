@@ -17,6 +17,11 @@
       "require": "./dist/button/index.cjs",
       "types": "./dist/button/index.d.ts"
     },
+    "./checkbox": {
+      "import": "./dist/checkbox/index.js",
+      "require": "./dist/checkbox/index.cjs",
+      "types": "./dist/checkbox/index.d.ts"
+    },
     "./badge": {
       "import": "./dist/badge/index.js",
       "require": "./dist/badge/index.cjs",
@@ -56,8 +61,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
+    "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
