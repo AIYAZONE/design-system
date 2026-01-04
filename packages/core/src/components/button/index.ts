@@ -72,6 +72,12 @@ export class JdsButton extends LitElement {
   icon?: string;
 
   /**
+   * 图标位置：start（文本前）/ end（文本后）
+   */
+  @property({ reflect: true })
+  iconPosition: "start" | "end" = "end";
+
+  /**
    * 链接目标
    */
   @property()
@@ -262,10 +268,12 @@ export class JdsButton extends LitElement {
         color="${spinnerColor}"
       ></jds-spinner>
     `;
-    const slots = html`
-      <span class="label" part="label">${label}</span>
-      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
-    `;
+    const iconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
+    const labelSlot = html`<span class="label" part="label">${label}</span>`;
+    const slots =
+      this.iconPosition === "start"
+        ? html`${iconSlot}${labelSlot}`
+        : html`${labelSlot}${iconSlot}`;
     const classes = classMap({
       button: true,
       "ios-below-16_2": this.isIOSVersionBelow(16, 2),
