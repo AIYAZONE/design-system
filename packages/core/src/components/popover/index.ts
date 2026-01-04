@@ -38,12 +38,12 @@ export class JdsPopover extends LitElement {
   private _cleanup?: () => void;
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._setupTarget();
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     this._cleanup?.();
   }
 

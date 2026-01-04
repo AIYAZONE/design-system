@@ -73,12 +73,12 @@ export default class JdsToast extends LitElement {
     this.closed = true; // 设置为关闭状态
   }
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.startCountdown(); // 组件连接后启动倒计时
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     this.stopCountdown(); // 组件断开时停止倒计时
   }
 

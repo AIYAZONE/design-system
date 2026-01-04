@@ -1,6 +1,6 @@
-module.exports = {
+export default {
   extends: [
-    '@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:lit/recommended',
     'plugin:wc/recommended'
   ],
@@ -22,6 +22,7 @@ module.exports = {
     'wc/guard-super-call': 'error',
     'wc/no-constructor-attributes': 'error',
     'wc/no-invalid-element-name': 'error',
+    'wc/no-self-class': 'off',
     
     // 通用规则
     'no-console': 'warn',
