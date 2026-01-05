@@ -48,6 +48,9 @@ export class JdsCheckbox extends LitElement {
   @property()
   label = "";
 
+  /**
+   * 输入变更处理：禁用态阻止；派发 change 事件（detail: { checked }）
+   */
   private _handleChange(event: Event) {
     if (this.disabled) {
       event.preventDefault();

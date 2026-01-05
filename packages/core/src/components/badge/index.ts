@@ -21,7 +21,7 @@ export default class JdsBadge extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   /**
-   * 设置徽章的大小
+   * 设置徽章的大小（影响高度/内边距/图标大小）
    */
   @property({ type: String, reflect: true })
   size: BadgeSize = "medium";
@@ -33,19 +33,19 @@ export default class JdsBadge extends LitElement {
   variant: BadgeVariant = "soft";
 
   /**
-   * 徽章的语义种类
+   * 徽章的语义种类（default/neutral/success/warning/danger/info/custom）
    */
   @property({ type: String, reflect: true })
   kind: BadgeKind = "default";
 
   /**
-   * 设置图标的名称
+   * 设置图标的名称（统一前置展示，亦可通过 icon 插槽覆盖）
    */
   @property({ type: String })
   icon: string | undefined;
 
   /**
-   * 图标位置：前置或后置
+   * 图标位置：前置或后置（已统一前置；保留属性以兼容外部引用）
    */
   @property({ type: String })
   // 移除位置控制，统一前置展示，保留属性声明以避免外部引用错误（不再使用）
@@ -57,13 +57,13 @@ export default class JdsBadge extends LitElement {
   // 移除点式徽章支持
 
   /**
-   * 计数值（优先显示，超过 maxCount 显示为 "maxCount+")
+   * 计数值（优先显示，超过 maxCount 显示为 "maxCount+"）
    */
   @property({ type: Number })
   count?: number;
 
   /**
-   * 计数显示上限
+   * 计数显示上限（默认 99）
    */
   @property({ type: Number })
   maxCount = 99;
@@ -79,7 +79,7 @@ export default class JdsBadge extends LitElement {
   // 移除非导航点击支持（仅保留 href 导航）
 
   /**
-   * 链接地址（设置后渲染为 <a>）
+   * 链接地址（设置后渲染为 <a>，自动添加 rel='noopener noreferrer'）
    */
   @property({ type: String })
   href?: string;
