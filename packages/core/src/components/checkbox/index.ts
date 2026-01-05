@@ -31,12 +31,6 @@ export class JdsCheckbox extends LitElement {
   disabled = false;
 
   /**
-   * 是否处于不确定状态
-   */
-  @property({ type: Boolean, reflect: true })
-  indeterminate = false;
-
-  /**
    * 表单值
    */
   @property()
@@ -62,7 +56,6 @@ export class JdsCheckbox extends LitElement {
     }
     const target = event.target as HTMLInputElement;
     this.checked = target.checked;
-    this.indeterminate = false;
     this.dispatchEvent(new CustomEvent("change", {
       detail: { checked: this.checked },
       bubbles: true,
@@ -75,7 +68,6 @@ export class JdsCheckbox extends LitElement {
       checkbox: true,
       "checkbox--disabled": this.disabled,
       "checkbox--checked": this.checked,
-      "checkbox--indeterminate": this.indeterminate
     });
 
     const uncheckedIcon = html`
@@ -90,8 +82,7 @@ export class JdsCheckbox extends LitElement {
       </svg>
     `;
 
-    // Use checkedIcon for indeterminate for now
-    const icon = this.checked || this.indeterminate ? checkedIcon : uncheckedIcon;
+    const icon = this.checked ? checkedIcon : uncheckedIcon;
 
     return html`
       <label class=${classes}>
@@ -100,7 +91,6 @@ export class JdsCheckbox extends LitElement {
           type="checkbox"
           .checked=${this.checked}
           ?disabled=${this.disabled}
-          .indeterminate=${this.indeterminate}
           name=${ifDefined(this.name)}
           value=${ifDefined(this.value)}
           @change=${this._handleChange}
