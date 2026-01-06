@@ -13,10 +13,11 @@
   left: 0;
   right: 0;
   z-index: var(--jds-dialog-index, 500);
-  background-color: var(--jds-color-overlay-70);
+  background-color: var(--jds-dialog-overlay-bg);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+  transition: opacity var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing),
+              visibility var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing);
 }
 
 .container {
@@ -24,13 +25,16 @@
   flex-direction: column;
   position: absolute;
   left: 50%;
-  z-index: var(--jds-index-dialog);
+  z-index: var(--jds-dialog-index);
   padding: 0;
   max-width: 100%;
   height: auto;
   border: 0;
-  background: var(--jds-color-white);
-  transition: transform 0.3s ease-out 0.1s;
+  background: var(--jds-dialog-bg);
+  color: var(--jds-dialog-fg);
+  border-radius: var(--jds-dialog-radius);
+  box-shadow: var(--jds-dialog-shadow);
+  transition: transform var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing) 0.1s;
 
   jds-icon.close {
     position: absolute;
@@ -43,7 +47,7 @@
   }
 
   #dialogCaption {
-    margin-bottom: var(--jds-size-16);
+    margin-bottom: var(--jds-dialog-gap);
     text-align: var(--jds-dialog-title-align, left);
   }
 
@@ -68,65 +72,62 @@
 }
 
 @media screen and (min-width: 1024px) {
-  @rem: (1rem / 16);
-
   .container {
-    min-width: 480 * @rem;
+    min-width: 30rem;
     max-height: calc(100vh - var(--jds-size-64) * 2);
-    border-radius: var(--jds-rounded-12);
 
     .content {
-      margin-top: var(--jds-size-48);
-      margin-bottom: var(--jds-size-48);
-      padding-left: var(--jds-size-64);
-      padding-right: calc(var(--jds-size-64) - var(--jds-size-6));
+      margin-top: var(--jds-dialog-padding-y-large);
+      margin-bottom: var(--jds-dialog-padding-y-large);
+      padding-left: var(--jds-dialog-padding-x-large);
+      padding-right: calc(var(--jds-dialog-padding-x-large) - 6px);
     }
   }
 
   :host([size='large']) .container {
-    width: var(--jds-dialog-width, 640px);
-    min-height: 240 * @rem;
-
-    .content {
-      min-height: 192 * @rem;
-    }
+    width: var(--jds-dialog-max-width-large);
+    min-height: var(--jds-dialog-min-height-large);
   }
 
   :host([size='extra']) .container {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: var(--jds-dialog-width, 1200px);
-    min-height: 400 * @rem;
+    width: var(--jds-dialog-max-width-extra);
+    min-height: var(--jds-dialog-min-height-extra);
+    
+    .content {
+      margin-top: var(--jds-dialog-padding-y-extra);
+      margin-bottom: var(--jds-dialog-padding-y-extra);
+      padding-left: var(--jds-dialog-padding-x-extra);
+      padding-right: calc(var(--jds-dialog-padding-x-extra) - 6px);
+    }
   }
 }
 
 @media screen and (max-width: 1023.98px) {
-  @rem: (1rem / 32);
-
   :host {
-    --jds-size-128: min(128px, max(0, 128 * @rem));
-    --jds-size-160: min(160px, max(0, 160 * @rem));
+    --jds-size-128: 4rem;
+    --jds-size-160: 5rem;
   }
 
   .container {
-    min-width: 560 * @rem;
-    border-radius: var(--jds-rounded-24);
+    min-width: 17.5rem;
 
     jds-icon.close {
       font-size: var(--jds-size-48);
     }
 
     .content {
-      margin-top: var(--jds-size-72);
-      margin-bottom: var(--jds-size-32);
-      padding-left: var(--jds-size-32);
-      padding-right: calc(var(--jds-size-32) - var(--jds-size-6));
+      margin-top: var(--jds-dialog-padding-y-large);
+      margin-bottom: var(--jds-dialog-padding-y-large);
+      padding-left: var(--jds-dialog-padding-x-large);
+      padding-right: calc(var(--jds-dialog-padding-x-large) - 6px);
     }
   }
 
   :host([size='large']) .container {
-    width: calc(100vw - var(--jds-size-48) * 2);
-    min-height: 320 * @rem;
+    width: var(--jds-dialog-max-width-large);
+    min-height: var(--jds-dialog-min-height-large);
     max-height: calc(100vh - var(--jds-size-128) * 2);
   }
 
@@ -137,11 +138,18 @@
   :host([size='extra']) .container {
     bottom: 0;
     transform: translateX(-50%) translateY(100%);
-    width: 100%;
-    min-height: 400 * @rem;
+    width: var(--jds-dialog-max-width-extra);
+    min-height: var(--jds-dialog-min-height-extra);
     max-height: calc(100vh - var(--jds-size-64));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
+    .content {
+      margin-top: var(--jds-dialog-padding-y-extra);
+      margin-bottom: var(--jds-dialog-padding-y-extra);
+      padding-left: var(--jds-dialog-padding-x-extra);
+      padding-right: calc(var(--jds-dialog-padding-x-extra) - 6px);
+    }
   }
 
   // ios真机 浏览器特定适配，适配底部安全区域
