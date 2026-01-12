@@ -208,26 +208,6 @@
       </div>
     </footer>
   </div>
-  <script>
-    // 动态获取版本号
-    async function loadVersion() {
-      try {
-        const response = await fetch('/package.json');
-        const packageData = await response.json();
-        const versionElement = document.getElementById('versionNumber');
-        if (versionElement && packageData.version) {
-          versionElement.textContent = `v${packageData.version}`;
-        }
-      } catch (error) {
-        console.warn('无法获取版本信息:', error);
-        const versionElement = document.getElementById('versionNumber');
-        if (versionElement) {
-          versionElement.textContent = 'v0.0.4';
-        }
-      }
-    }
-    document.addEventListener('DOMContentLoaded', loadVersion);
-  </script>
 </body>
 
 </html>
