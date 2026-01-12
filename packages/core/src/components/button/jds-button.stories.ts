@@ -13,12 +13,14 @@ interface ButtonProps {
   href: any;
   target: any;
   icon: any;
+  iconPosition?: "start" | "end";
   content: any;
   style: any;
   type?: string;
-}
+  customColor?: string;
+  }
 
-const meta: import("@storybook/web-components").Meta<ButtonProps> = {
+const meta = {
   title: "03 基础组件/jds-button",
   tags: ["autodocs"],
   component: "jds-button",
@@ -26,7 +28,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
     docs: {
       description: {
         component:
-          "这是一个按钮组件，支持多种变体和样式。支持纯图标按钮、超链接按钮和自定义CSS属性配置。",
+          "规范化按钮组件：用于交互与导航。提供 primary/secondary/text 变体、语义 kind 与尺寸 size；支持禁用、加载、表单提交与链接导航。\n\n最佳实践：导航优先使用 href，非导航交互使用 button；自定义色建议通过主题或 CSS 变量 --jds-btn-custom-color 设置；禁用与加载状态阻止交互并展示明确的视觉反馈。",
       },
     },
   },
@@ -37,16 +39,18 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       control: { type: "select" },
       table: {
         defaultValue: { summary: "primary" },
+        category: "基础",
       },
     },
     kind: {
       options: ["default", "neutral", "success", "danger", "custom"],
       description:
-        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-button-custom-color, 当按钮变体为primary时还可传入--jds-button-primary-custom-text-color更改文字颜色）)",
+        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-btn-custom-color, 当按钮变体为primary时还可传入--jds-btn-primary-custom-text颜色）",
       default: "default",
       control: { type: "select" },
       table: {
         defaultValue: { summary: "default" },
+        category: "基础",
       },
     },
     size: {
@@ -55,6 +59,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       control: { type: "select" },
       table: {
         defaultValue: { summary: "large" },
+        category: "基础",
       },
     },
     label: {
@@ -64,6 +69,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       },
       table: {
         defaultValue: { summary: "-" },
+        category: "基础",
       },
     },
     loading: {
@@ -71,6 +77,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       control: { type: "boolean" },
       table: {
         defaultValue: { summary: "false" },
+        category: "基础",
       },
     },
     disabled: {
@@ -78,6 +85,7 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       control: { type: "boolean" },
       table: {
         defaultValue: { summary: "false" },
+        category: "基础",
       },
     },
     href: {
@@ -87,34 +95,42 @@ const meta: import("@storybook/web-components").Meta<ButtonProps> = {
       description: "设置链接URL，如果设置，按钮将渲染为锚标签",
       table: {
         defaultValue: { summary: "-" },
-      },
-    },
-    target: {
-      description: "设置锚点的目标，当设置了`href`时使用",
-      options: ["_blank", "_parent", "_self", "_top"],
-      control: { type: "select" },
-      table: {
-        defaultValue: { summary: "-" },
+        category: "基础",
       },
     },
     icon: {
-      description: "设置图标名称，使用`jds-icon`组件显示图标",
-      control: {
-        type: "text",
-      },
-      table: {
-        defaultValue: { summary: "-" },
-      },
+      description: "图标名称（统一前置/后置由 iconPosition 控制）",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "-" }, category: "基础" },
     },
+    iconPosition: {
+      options: ["start", "end"],
+      description: "图标位置：start（文本前）/ end（文本后），默认 end",
+      control: { type: "select" },
+      table: { defaultValue: { summary: "end" }, category: "基础" },
+    },
+    target: { table: { disable: true, category: "高级" } },
     style: {
       description:
-        "设置按钮的自定义样式，支持CSS变量配置，如 --jds-button-display: block;--jds-button-custom-color:blue;",
-      control: {
-        type: "text",
-      },
-      table: {
-        defaultValue: { summary: "-" },
-      },
+        "高级：通过 CSS 变量配置（如 --jds-btn-custom-color），建议在主题或页面样式中使用。",
+      control: { type: "text" },
+      table: { disable: true, category: "高级" },
+    },
+    type: {
+      options: ["button", "submit", "reset"],
+      description: "按钮类型（交互动作与表单提交）",
+      control: { type: "select" },
+      table: { defaultValue: { summary: "button" }, category: "基础" },
+    },
+    form: {
+      description: "提交目标表单（id 或直接传入 HTMLFormElement）",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "-" }, category: "基础" },
+    },
+    customColor: {
+      control: { type: "color" },
+      description: "自定义主色（仅 kind=custom 生效），映射到 --jds-btn-custom-color",
+      table: { category: "高级" },
     },
   },
 };
@@ -131,15 +147,16 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     size=${ifDefined(args.size)}
     type=${ifDefined(args.type)}
     icon="${ifDefined(args.icon)}"
+    iconPosition=${ifDefined(args.iconPosition)}
     label="${ifDefined(args.label)}"
     ?disabled=${ifDefined(args.disabled)}
     ?loading=${args.loading}
-    style="${ifDefined(args.style)}"
+    style="${ifDefined(args.style)}${args.customColor ? `; --jds-btn-custom-color: ${args.customColor}` : ""}"
     >${unsafeHTML(args.content)}</jds-button
   >`;
 
-export const Default: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Default = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Primary Button",
@@ -147,8 +164,8 @@ export const Default: import("@storybook/web-components").StoryObj<ButtonProps> 
   args: {},
 };
 
-export const Variants: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Variants = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Primary Button",
@@ -166,8 +183,8 @@ export const Variants: import("@storybook/web-components").StoryObj<ButtonProps>
   args: {},
 };
 
-export const Kinds: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Kinds = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Default Button",
@@ -191,13 +208,13 @@ export const Kinds: import("@storybook/web-components").StoryObj<ButtonProps> = 
       ...args,
       content: "Custom Button",
       kind: "custom",
-      style: "--jds-button-custom-color: blue",
+      style: "--jds-btn-custom-color: blue",
     })}`,
   args: {},
 };
 
-export const Sizes: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Sizes = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Extra Large Button",
@@ -221,8 +238,8 @@ export const Sizes: import("@storybook/web-components").StoryObj<ButtonProps> = 
   args: {},
 };
 
-export const WithIcon: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const WithIcon = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Icon Button",
@@ -245,8 +262,8 @@ export const WithIcon: import("@storybook/web-components").StoryObj<ButtonProps>
   },
 };
 
-export const IconOnly: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const IconOnly = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       icon: args.icon ?? "star-fill",
@@ -266,8 +283,8 @@ export const IconOnly: import("@storybook/web-components").StoryObj<ButtonProps>
   },
 };
 
-export const Loading: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Loading = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Loading Button",
@@ -288,8 +305,8 @@ export const Loading: import("@storybook/web-components").StoryObj<ButtonProps> 
   args: {},
 };
 
-export const Disabled: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Disabled = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Disabled Button",
@@ -310,8 +327,8 @@ export const Disabled: import("@storybook/web-components").StoryObj<ButtonProps>
   args: {},
 };
 
-export const Link: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) =>
+export const Link = {
+  render: (args: any) =>
     html`${SingleButtonTemplate({
       ...args,
       content: "Link Button",
@@ -335,41 +352,41 @@ export const Link: import("@storybook/web-components").StoryObj<ButtonProps> = {
   args: {},
 };
 
-export const FullWidth: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) => html`
+export const FullWidth = {
+  render: (args: any) => html`
     <div style="width: 320px">
       ${SingleButtonTemplate({
         ...args,
         content: "Full Width Button",
-        style: "--jds-button-display: block",
+        style: "--jds-btn-display: block",
       })}
     </div>
   `,
   args: {},
 };
 
-export const CustomColor: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) => html`
+export const CustomColor = {
+  render: (args: any) => html`
     <div style="display: flex; flex-direction: column; gap: 8px">
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "secondary",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "text",
-        style: "--jds-button-custom-color: #10b981",
+        style: "--jds-btn-custom-color: #10b981",
       })}
       ${SingleButtonTemplate({
         ...args,
@@ -377,15 +394,15 @@ export const CustomColor: import("@storybook/web-components").StoryObj<ButtonPro
         kind: "custom",
         variant: "primary",
         style:
-          "--jds-button-custom-color: #10b981; --jds-button-primary-custom-text-color: #000000",
+          "--jds-btn-custom-color: #10b981; --jds-btn-primary-custom-text-color: #000000",
       })}
     </div>
   `,
   args: {},
 };
 
-export const FormSubmit: import("@storybook/web-components").StoryObj<ButtonProps> = {
-  render: (args) => html`
+export const FormSubmit = {
+  render: (args: any) => html`
     <form
       id="test-form"
       @submit="${(e: Event) => {

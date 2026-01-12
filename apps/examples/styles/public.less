@@ -53,8 +53,8 @@ body {
 }
 
 // 通用卡片样式
-main,
-.card {
+body main,
+body .card {
   background: var(--jds-color-white);
   border-radius: var(--jds-rounded-8);
   padding: var(--jds-size-32);
@@ -67,9 +67,17 @@ main {
   min-height: calc(100vh - 200px);
 
   p {
-    margin-bottom: var(--jds-size-8);
+    margin-bottom: 12px;
+
+    br {
+      margin-bottom: 12px;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
-  
+
   code {
     background-color: var(--jds-color-neutral-100);
     color: var(--jds-color-neutral-500);

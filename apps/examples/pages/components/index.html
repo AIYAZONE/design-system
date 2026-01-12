@@ -29,9 +29,6 @@
           <!-- 文件驱动：刷新到不同 query 以加载 v1/v2 样式入口 -->
           <jds-button id="file-v1">文件驱动：v1</jds-button>
           <jds-button id="file-v2">文件驱动：v2</jds-button>
-          <!-- 属性驱动：运行时标识切换，依赖 themes-switch 覆盖 -->
-          <jds-button id="attr-v2" variant="secondary">属性驱动：切到 v2</jds-button>
-          <jds-button id="attr-v1" variant="secondary">属性驱动：回到 v1</jds-button>
           <span id="theme-state" style="margin-left:var(--jds-size-8);">当前：v1（文件驱动）</span>
         </div>
       </section>
@@ -287,13 +284,6 @@
           location.href = url.toString();
         });
 
-        // 主题验证：属性驱动（依赖 themes-switch.css 覆盖 v2 变量）
-        document.getElementById('attr-v2').addEventListener('click', () => {
-          document.documentElement.dataset.jdsThemeVersion = 'v2';
-        });
-        document.getElementById('attr-v1').addEventListener('click', () => {
-          delete document.documentElement.dataset.jdsThemeVersion;
-        });
       </script>
       <script>
         // 吸顶交互：在到达吸顶位置后增强阴影

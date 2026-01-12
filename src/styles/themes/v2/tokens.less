@@ -13,6 +13,7 @@
   .generate-color-common(danger, @jds-color-danger, @jds-color-danger-contrast);
   .generate-color-common(warning, @jds-color-warning, @jds-color-warning-contrast);
   .generate-color-common(info, @jds-color-info, @jds-color-info-contrast);
+  .generate-color-common(neutral, @jds-color-neutral, @jds-color-neutral-contrast);
 
   // 文本色
   --jds-color-text-l1: #1A1A1A;
@@ -80,15 +81,6 @@
   --jds-text-x-direction: 1;
 }
 
-// 字体族
-@{rootSel}[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
-@{rootSel}:not([lang="ja"]) {
-  --jds-font-family: "Inter", sans-serif;
-}
-
 // 字体生成 mixin（使用列表 + extract）
 .generate-font-vars(@suffix, @h-sizes, @b-sizes, @c-size) {
 
@@ -140,3 +132,7 @@
     .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
   }
 }
+
+@import "./tokens/button.less";
+@import "./tokens/badge.less";
+@import "./tokens/dialog.less";

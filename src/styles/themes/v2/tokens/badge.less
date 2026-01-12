@@ -1,0 +1,65 @@
+jds-badge {
+  --jds-badge-bg-color: var(--jds-color-primary-contrast);
+  --jds-badge-color: var(--jds-color-primary);
+  --jds-badge-border-radius: 0;
+  --jds-badge-margin-icon: var(--jds-size-4);
+  --jds-badge-icon-size: var(--jds-size-14);
+  --jds-badge-height: var(--jds-size-20);
+  --jds-badge-padding-vertical: 0;
+  --jds-badge-padding-horizontal: var(--jds-size-6);
+  --jds-badge-font: var(--jds-font-h4);
+
+  /* small 覆盖 */
+  --jds-badge-small-font: var(--jds-font-c1);
+  --jds-badge-small-height: var(--jds-size-16);
+  --jds-badge-small-padding-vertical: 0;
+  --jds-badge-small-padding-horizontal: var(--jds-size-6);
+
+  /* large 覆盖 */
+  --jds-badge-large-font: var(--jds-font-b2);
+  --jds-badge-large-padding-vertical: 0;
+  --jds-badge-large-padding-horizontal: var(--jds-size-10);
+  --jds-badge-large-height: var(--jds-size-24);
+  --jds-badge-large-icon-size: var(--jds-size-16);
+
+  /* 变体派生（默认） */
+  --jds-badge-solid-bg: var(--jds-badge-color);
+  --jds-badge-solid-fg: var(--jds-color-white);
+  --jds-badge-soft-bg: var(--jds-badge-bg-color);
+  --jds-badge-soft-fg: var(--jds-badge-color);
+  --jds-badge-outline-border: var(--jds-badge-color);
+  --jds-badge-outline-fg: var(--jds-badge-color);
+}
+
+/* kind 派生：neutral/success/danger/custom（其余回退到 primary） */
+jds-badge[kind="neutral"] {
+  --jds-badge-color: var(--jds-color-neutral);
+  --jds-badge-bg-color: var(--jds-color-neutral-contrast, var(--jds-color-neutral-highlight));
+  /* soft 变体专用：更加浅的背景，提升对比度 */
+  --jds-badge-soft-bg: var(--jds-color-neutral-100);
+  --jds-badge-soft-fg: var(--jds-color-neutral);
+}
+jds-badge[kind="success"] {
+  --jds-badge-color: var(--jds-color-success);
+  --jds-badge-bg-color: var(--jds-color-success-contrast, var(--jds-color-success-highlight));
+}
+jds-badge[kind="danger"] {
+  --jds-badge-color: var(--jds-color-danger);
+  --jds-badge-bg-color: var(--jds-color-danger-contrast, var(--jds-color-danger-highlight));
+}
+jds-badge[kind="warning"] {
+  --jds-badge-color: var(--jds-color-warning);
+  --jds-badge-bg-color: var(--jds-color-warning-contrast, var(--jds-color-warning-highlight));
+}
+jds-badge[kind="info"] {
+  --jds-badge-color: var(--jds-color-info);
+  --jds-badge-bg-color: var(--jds-color-info-contrast, var(--jds-color-info-highlight));
+}
+jds-badge[kind="custom"] {
+  --jds-badge-color: var(--jds-badge-custom-color, var(--jds-color-primary));
+  --jds-badge-bg-color: color-mix(in srgb, white 15%, var(--jds-badge-custom-color, var(--jds-color-primary)));
+  --jds-badge-soft-mix: 65%;
+  --jds-badge-soft-fg-darken: 20%;
+  --jds-badge-soft-bg: color-mix(in srgb, white var(--jds-badge-soft-mix), var(--jds-badge-custom-color, var(--jds-color-primary)));
+  --jds-badge-soft-fg: color-mix(in srgb, var(--jds-badge-custom-color, var(--jds-color-primary)) calc(100% - var(--jds-badge-soft-fg-darken)), black var(--jds-badge-soft-fg-darken));
+}

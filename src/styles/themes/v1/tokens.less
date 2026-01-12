@@ -8,6 +8,7 @@
   .generate-color-common(danger, @jds-color-danger, @jds-color-danger-contrast);
   .generate-color-common(warning, @jds-color-warning, @jds-color-warning-contrast);
   .generate-color-common(info, @jds-color-info, @jds-color-info-contrast);
+  .generate-color-common(neutral, @jds-color-neutral, @jds-color-neutral-contrast);
 
   // 文本色
   --jds-color-text-l1: #1A1A1A;
@@ -71,15 +72,6 @@
 
   // 其他
   --jds-text-x-direction: 1;
-}
-
-// 多语言字体
-@{rootSel}[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
-@{rootSel}:not([lang="ja"]) {
-  --jds-font-family: "Poppins", sans-serif;
 }
 
 // RTL 文本方向支持
@@ -203,3 +195,7 @@
     --jds-font-c1: @jds-font-regular var(--jds-font-size-20)/@lh-c1 var(--jds-font-family);
   }
 }
+
+@import "./tokens/button.less";
+@import "./tokens/badge.less";
+@import "./tokens/dialog.less";

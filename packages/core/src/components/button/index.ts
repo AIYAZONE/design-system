@@ -1,4 +1,3 @@
-/// <reference path="../../types/less-inline.d.ts" />
 import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup} from "lit";
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
@@ -73,6 +72,12 @@ export class JdsButton extends LitElement {
   icon?: string;
 
   /**
+   * 图标位置：start（文本前）/ end（文本后）
+   */
+  @property({ reflect: true })
+  iconPosition: "start" | "end" = "end";
+
+  /**
    * 链接目标
    */
   @property()
@@ -120,12 +125,12 @@ export class JdsButton extends LitElement {
   };
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._setupSlotObserver();
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     this._cleanupSlotObserver();
   }
 
@@ -241,18 +246,34 @@ export class JdsButton extends LitElement {
     const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
     const icon = this.icon ? html`<jds-icon part="icon" name=${this.icon}></jds-icon>` : "";
+    const mainColor =
+      this.kind === "custom"
+        ? "var(--jds-btn-local-custom-color, var(--jds-btn-custom-color, var(--jds-color-primary)))"
+        : this.kind === "neutral"
+        ? "var(--jds-color-neutral)"
+        : this.kind === "success"
+        ? "var(--jds-color-success)"
+        : this.kind === "danger"
+        ? "var(--jds-color-danger)"
+        : "var(--jds-color-primary)";
+    const spinnerColor =
+      this.variant === "primary" || this.variant === "secondary"
+        ? "var(--jds-color-white)"
+        : mainColor;
     const loadingIcon = html`
       <jds-spinner
         class="loading-spinner"
-        ?disabled="${isDisabled}"
+        ?disabled="${this.disabled}"
         size=${this.size === "small" ? "var(--jds-font-size-16)" : "var(--jds-font-size-24)"}
-        color="var(--jds-color-white)"
+        color="${spinnerColor}"
       ></jds-spinner>
     `;
-    const slots = html`
-      <span class="label" part="label">${label}</span>
-      <slot name="icon">${this.loading ? loadingIcon : icon}</slot>
-    `;
+    const iconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
+    const labelSlot = html`<span class="label" part="label">${label}</span>`;
+    const slots =
+      this.iconPosition === "start"
+        ? html`${iconSlot}${labelSlot}`
+        : html`${labelSlot}${iconSlot}`;
     const classes = classMap({
       button: true,
       "ios-below-16_2": this.isIOSVersionBelow(16, 2),

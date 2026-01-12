@@ -8,12 +8,17 @@ interface DialogProps {
   caption?: string;
   open: boolean;
   critical: boolean;
-  'no-close': boolean;
+  showClose?: boolean;
+  closeOnEsc?: boolean;
+  closeOnOverlay?: boolean;
+  ariaLabelText?: string;
+  initialFocus?: string;
+  disableBodyScroll?: boolean;
   style: any;
   content: any;
 }
 
-const meta: import("@storybook/web-components").Meta<DialogProps> = {
+const meta = {
   title: "03 基础组件/jds-dialog",
   tags: ["autodocs"],
   component: "jds-dialog",
@@ -22,12 +27,34 @@ const meta: import("@storybook/web-components").Meta<DialogProps> = {
     caption: '默认对话框',
     open: false,
     critical: false,
-    'no-close': false,
+    showClose: true,
+    disableBodyScroll: true,
   },
   parameters: {
     docs: {
       description: {
-        component: "这是一个对话框组件，支持自定义标题、内容和操作按钮。可以通过CSS变量配置样式，如宽度、标题对齐方式和层级。",
+        component: `规范化对话框组件：用于交互确认与信息展示。提供最小 API，支持打开/关闭、关闭策略、焦点管理与可访问性；支持 header/footer 插槽与尺寸控制。
+
+推荐选择器策略（initialFocus）：
+- 优先使用语义化 class（如 .confirm-btn/.primary-action）或唯一 id（如 #name-input）
+- 选择器既可匹配插槽内容元素，也可匹配 Shadow 内部元素
+- 找不到选择器时回退到第一个可聚焦元素；无可聚焦元素时回退到容器
+
+### 主题 Tokens
+样式由主题系统控制，以下为常用 Tokens：
+
+| Token 变量名 | 说明 | 默认值 (v1) |
+| :--- | :--- | :--- |
+| --jds-dialog-bg | 背景色 | white |
+| --jds-dialog-fg | 前景色 | text-l1 |
+| --jds-dialog-overlay-bg | 遮罩背景 | overlay-70 |
+| --jds-dialog-radius | 圆角 | rounded-12 (Desktop) / 24 (Mobile) |
+| --jds-dialog-shadow | 阴影 | none |
+| --jds-dialog-width | 宽度 (Desktop) | 640px (Large) / 1200px (Extra) |
+| --jds-dialog-padding-x-large | 水平内边距 (Large) | 64px (Desktop) / 32px (Mobile) |
+| --jds-dialog-padding-y-large | 垂直内边距 (Large) | 48px (Desktop) / 32px (Mobile) |
+| --jds-dialog-transition-duration | 动画时长 | 0.3s |
+`,
       },
     },
   },
@@ -40,15 +67,17 @@ const meta: import("@storybook/web-components").Meta<DialogProps> = {
       },
       table: {
         defaultValue: { summary: "large" },
+        category: "基础",
       },
     },
     caption: {
-      description: "设置对话框的标题",
+      description: "设置对话框的标题（或使用 header 插槽覆盖）",
       control: {
         type: "text",
       },
       table: {
-        defaultValue: { summary: "默认对话框" },
+        defaultValue: { summary: "-" },
+        category: "基础",
       },
     },
     open: {
@@ -56,21 +85,38 @@ const meta: import("@storybook/web-components").Meta<DialogProps> = {
       control: "boolean",
       table: {
         defaultValue: { summary: "false" },
+        category: "基础",
       },
     },
     critical: {
-      description: "确定对话框是否为关键对话框，关键对话框无法通过键盘、遮罩层关闭",
+      description: "关键对话框（不可通过键盘或遮罩层关闭）",
       control: "boolean",
       table: {
         defaultValue: { summary: "false" },
+        category: "基础",
       },
     },
-    'no-close': {
-      description: "确定对话框是否隐藏关闭按钮",
+    showClose: {
+      description: "显示关闭按钮",
       control: "boolean",
-      table: {
-        defaultValue: { summary: "false" },
-      },
+      table: { defaultValue: { summary: "true" }, category: "基础" },
+    },
+    closeOnEsc: { table: { disable: true } },
+    closeOnOverlay: { table: { disable: true } },
+    ariaLabelText: {
+      description: "无标题时的可访问性标签",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "-" }, category: "高级" },
+    },
+    initialFocus: {
+      description: "初始聚焦选择器（打开时）",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "-" }, category: "高级" },
+    },
+    disableBodyScroll: {
+      description: "打开时禁用页面滚动",
+      control: "boolean",
+      table: { defaultValue: { summary: "true" }, category: "高级" },
     },
     style: {
       description: `设置对话框的自定义样式，支持CSS变量配置，如：
@@ -82,6 +128,7 @@ const meta: import("@storybook/web-components").Meta<DialogProps> = {
       },
       table: {
         defaultValue: { summary: "-" },
+        category: "高级",
       },
     },
   },
@@ -106,7 +153,10 @@ const DialogTemplate = (args: DialogProps) => {
       caption=${ifDefined(args.caption)}
       ?open=${args.open}
       ?critical=${args.critical}
-      ?no-close=${args['no-close']}
+      ?showClose=${args.showClose}
+      ariaLabelText=${ifDefined(args.ariaLabelText)}
+      initialFocus=${ifDefined(args.initialFocus)}
+      ?disableBodyScroll=${args.disableBodyScroll}
       style="${ifDefined(args.style)}"
     >
       ${unsafeHTML(args.content)}
@@ -120,7 +170,7 @@ export const Default = {
     caption: '默认对话框',
     open: false,
     critical: false,
-    'no-close': false,
+    showClose: true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -141,7 +191,7 @@ export const Sizes = {
     caption: '特大对话框',
     open: false,
     critical: false,
-    'no-close': false,
+    showClose: true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -163,7 +213,7 @@ export const WithoutTitle = {
     size: 'large',
     open: false,
     critical: false,
-    'no-close': false,
+    showClose: true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -186,7 +236,7 @@ export const WithoutCloseIcon = {
     caption: '没有关闭Icon的对话框',
     open: false,
     critical: false,
-    'no-close': true,
+    showClose: false,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -207,7 +257,7 @@ export const Critical = {
     caption: '关键对话框',
     open: false,
     critical: true,
-    'no-close': false,
+    showClose: true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -229,7 +279,7 @@ export const CustomStyle = {
     caption: '自定义样式对话框',
     open: false,
     critical: false,
-    'no-close': false,
+    showClose: true,
   },
   render: (args: DialogProps) =>
     html`${DialogTemplate({
@@ -244,4 +294,68 @@ export const CustomStyle = {
         </div>
       `,
     })}`,
+};
+
+export const InitialFocus = {
+  args: {
+    size: 'large',
+    caption: '初始聚焦示例',
+    open: false,
+    critical: false,
+    showClose: true,
+    initialFocus: '#focus-input',
+  },
+  render: (args: DialogProps) =>
+    html`${DialogTemplate({
+      ...args,
+      class: 'initial-focus',
+      content: `
+        <div class="jds-b1" style="display:flex; flex-direction:column; gap:12px;">
+          <input id="focus-input" type="text" placeholder="输入内容（不会首先聚焦）" />
+          <div style="display:flex; gap:8px;">
+            <jds-button class="cancel-btn" variant="secondary">取消</jds-button>
+            <jds-button class="confirm-btn" variant="primary">确定</jds-button>
+          </div>
+          <p>打开后焦点会定位到“输入内容”输入框（选择器 #focus-input）。</p>
+        </div>
+      `,
+    })}`,
+};
+
+export const ThemeComparison = {
+  render: () => html`
+    <div style="display: flex; gap: 16px; align-items: flex-start;">
+      <div>
+        <h3>v1 Theme (Rounded)</h3>
+        <p class="jds-c1" style="margin-bottom: 8px;">Radius: 12px/24px</p>
+        <jds-button @click=${() => document.getElementById('dialog-v1')?.setAttribute('open', 'true')}>
+          Open v1 Dialog
+        </jds-button>
+        <jds-dialog
+          id="dialog-v1"
+          caption="v1 Theme Dialog"
+          style="--jds-dialog-radius: var(--jds-rounded-12);"
+          showClose
+        >
+          <p>This dialog simulates v1 theme (Rounded).</p>
+        </jds-dialog>
+      </div>
+      
+      <div>
+        <h3>v2 Theme (Straight)</h3>
+        <p class="jds-c1" style="margin-bottom: 8px;">Radius: 0</p>
+        <jds-button @click=${() => document.getElementById('dialog-v2')?.setAttribute('open', 'true')}>
+          Open v2 Dialog
+        </jds-button>
+        <jds-dialog
+          id="dialog-v2"
+          caption="v2 Theme Dialog"
+          style="--jds-dialog-radius: 0;"
+          showClose
+        >
+          <p>This dialog simulates v2 theme (Straight).</p>
+        </jds-dialog>
+      </div>
+    </div>
+  `
 };

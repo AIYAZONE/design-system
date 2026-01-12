@@ -207,7 +207,7 @@ import '@jackery/icons';
 ### 发布产物（NPM 包内文件）
 
 - JS：`dist/index.esm.js`、`dist/index.cjs`、`dist/chunks/**`
-- CSS：`dist/index.css`、`dist/index-v2.css`、`dist/themes-switch.css`
+- CSS：`dist/index.css`、`dist/index-v2.css`
 - 资产：`dist/fonts/**`、`dist/assets/**`
 - 类型：`dist/jds.d.ts`、`dist/**/*.d.ts`
 - 说明：不包含 `public/**`、Storybook 或站点预览文件。

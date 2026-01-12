@@ -49,7 +49,7 @@
         <jds-button kind="neutral">Neutral Button</jds-button>
         <jds-button kind="success">Success Button</jds-button>
         <jds-button kind="danger">Danger Button</jds-button>
-        <jds-button kind="custom" style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button kind="custom" style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
       </p>
 
       <p>
@@ -57,7 +57,7 @@
         <jds-button variant="secondary" kind="neutral">Secondary Button</jds-button>
         <jds-button variant="secondary" kind="success">Text Button</jds-button>
         <jds-button variant="secondary" kind="danger">Text Button</jds-button>
-        <jds-button variant="secondary" kind="custom" style="--jds-button-custom-color:blue;">Custom Color
+        <jds-button variant="secondary" kind="custom" style="--jds-btn-custom-color:blue;">Custom Color
           Button</jds-button>
 
       </p>
@@ -67,7 +67,7 @@
         <jds-button variant="text" kind="neutral">Secondary Button</jds-button>
         <jds-button variant="text" kind="success">Text Button</jds-button>
         <jds-button variant="text" kind="danger">Text Button</jds-button>
-        <jds-button variant="text" kind="custom" style="--jds-button-custom-color:blue;">Custom Color
+        <jds-button variant="text" kind="custom" style="--jds-btn-custom-color:blue;">Custom Color
           Button</jds-button>
 
       </p>
@@ -79,20 +79,20 @@
         <jds-button size="medium">Medium Button</jds-button>
         <jds-button size="small">Small Button</jds-button>
       </p>
-      <h3>样式配置：style="--jds-button-display:block;"</h3>
+      <h3>样式配置：style="--jds-btn-display:block;"</h3>
       <div class="card">
-        <jds-button style="--jds-button-display: block">Here is a long text content Here is a long text content</jds-button>
+        <jds-button style="--jds-btn-display: block">Here is a long text content Here is a long text content</jds-button>
         <br>
-        <jds-button style="--jds-button-display: block">Confirm</jds-button>
+        <jds-button style="--jds-btn-display: block">Confirm</jds-button>
         <br />
-        <jds-button size="medium" style="--jds-button-display: block">Confirm</jds-button>
+        <jds-button size="medium" style="--jds-btn-display: block">Confirm</jds-button>
       </div>
-      <h3>样式配置：style="--jds-button-custom-color:blue;"</h3>
-      <jds-button kind="custom" style="--jds-button-custom-color:blue;" title="A very long text content">A very long text content</jds-button>
-      <h3>样式配置：style="--jds-button-primary-custom-text-color:blue;"</h3>
-      <jds-button kind="custom" style="--jds-button-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
-      <h3>样式配置：style="--jds-button-custom-color:pink; --jds-button-primary-custom-text-color:blue;"</h3>
-      <jds-button kind="custom" style="--jds-button-custom-color:pink; --jds-button-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
+      <h3>样式配置：style="--jds-btn-custom-color:blue;"</h3>
+      <jds-button kind="custom" style="--jds-btn-custom-color:blue;" title="A very long text content">A very long text content</jds-button>
+      <h3>样式配置：style="--jds-btn-primary-custom-text-color:blue;"</h3>
+      <jds-button kind="custom" style="--jds-btn-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
+      <h3>样式配置：style="--jds-btn-custom-color:pink; --jds-btn-primary-custom-text-color:blue;"</h3>
+      <jds-button kind="custom" style="--jds-btn-custom-color:pink; --jds-btn-primary-custom-text-color:blue;" title="A very long text content">A very long text content</jds-button>
 
       <h2>不同尺寸图标按钮</h2>
       <p>
@@ -118,9 +118,9 @@
       </p>
       <h2>自定义颜色按钮</h2>
       <p>
-        <jds-button kind="custom" style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
-        <jds-button variant="secondary" kind="custom" style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
-        <jds-button variant="text" kind="custom" style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button kind="custom" style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button variant="secondary" kind="custom" style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button variant="text" kind="custom" style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
       </p>
 
       <h2>禁用状态</h2>
@@ -129,22 +129,25 @@
         <jds-button variant="secondary" disabled>Secondary Button</jds-button>
         <jds-button variant="text" disabled>Text Button</jds-button>
         <br>
-        <jds-button kind="custom" disabled style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
-        <jds-button variant="secondary" kind="custom" disabled style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
-        <jds-button variant="text" kind="custom" disabled style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button kind="custom" disabled style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button variant="secondary" kind="custom" disabled style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button variant="text" kind="custom" disabled style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
       </p>
 
       <h2>加载状态</h2>
       <p>
         Primary Button：<jds-button loading>Primary Button</jds-button>
-        <br>
+      </p>
+      <p>
         Secondary Button：<jds-button variant="secondary" loading>Secondary Button</jds-button>
-        <br>
+      </p>
+      <p>
         文本按钮无加载状态
-        <br>
+      </p>
+      <p>
         自定义颜色按钮：
-        <jds-button kind="custom" loading style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
-        <jds-button variant="secondary" kind="custom" loading style="--jds-button-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button kind="custom" loading style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
+        <jds-button variant="secondary" kind="custom" loading style="--jds-btn-custom-color:blue;">Custom Color Button</jds-button>
       </p>
 
       <h2>纯图标按钮</h2>
@@ -163,28 +166,11 @@
         <jds-button icon="info-fill" href="https://www.jackery.com"></jds-button>
         <jds-button icon="arrow-right-long" href="https://www.jackery.com"></jds-button>
         <jds-button href="https://www.jackery.com">Jackery Home Page</jds-button>
-        <br>
+      </p>
+      <p>
         <jds-button href="https://www.jackery.com" target="_self">Jackery Home Page</jds-button>
         <jds-button icon="arrow-right-long" href="https://www.jackery.com">Jackery Home Page</jds-button>
       </p>
-
-      <h2>实心胶囊动效按钮</h2>
-      <jds-button class="jds-animate" size="extra">
-        SHOP NOW
-        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
-      </jds-button>
-      <jds-button class="jds-animate" size="large">
-        SHOP NOW
-        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
-      </jds-button>
-      <jds-button class="jds-animate" size="medium">
-        SHOP NOW
-        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
-      </jds-button>
-      <jds-button class="jds-animate" size="small">
-        SHOP NOW
-        <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
-      </jds-button>
 
       <h2>实心胶囊动效按钮</h2>
       <jds-button class="jds-animate" size="extra">

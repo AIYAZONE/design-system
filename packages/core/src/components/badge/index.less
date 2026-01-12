@@ -4,57 +4,93 @@
   width: max-content;
 }
 
-.badge {
-  --bg-color: var(--jds-badge-bg-color,
-      var(--jds-color-primary-contrast)); // 徽章背景颜色
-  --text-color: var(--jds-badge-color,
-      var(--jds-color-primary)); // 徽章文字颜色
-  --font: var(--jds-font-h4); // 徽章字体
-  --padding-vertical: var(--jds-size-4); // 徽章垂直内边距
-  --padding-horizontal: var(--jds-size-6); // 徽章水平内边距
-  --margin-icon: var(--jds-size-6); // 图标外边距
-  --icon-size: var(--jds-size-14); // 图标大小
-  --height: var(--jds-size-20); // 徽章高度
+.badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jds-size-4);
+}
 
+.badge {
   display: flex;
-  gap: var(--margin-icon);
+  gap: var(--jds-badge-margin-icon, var(--jds-size-6));
   justify-content: center;
   align-items: center;
 
   box-sizing: border-box;
   width: 100%;
-  border: none;
-  border-radius: var(--jds-size-4);
+  border: 1px solid transparent;
+  border-radius: var(--jds-badge-border-radius, var(--jds-size-4));
   margin: 0;
-  padding: var(--padding-vertical) var(--padding-horizontal);
-  background-color: var(--bg-color);
+  padding: var(--jds-badge-padding-vertical, var(--jds-size-4)) var(--jds-badge-padding-horizontal, var(--jds-size-6));
+  background-color: var(--jds-badge-bg-color, var(--jds-color-primary-contrast));
   color: var(--jds-badge-color, var(--jds-color-primary));
-  /* font: var(--font); */
   font-kerning: none;
-  height: var(--height);
+  height: var(--jds-badge-height, var(--jds-size-20));
+}
+
+// 变体：outline（描边）
+:host([variant="outline"]) .badge {
+  background-color: transparent;
+  border-color: var(--jds-badge-outline-border, var(--jds-badge-color, var(--jds-color-primary)));
+  color: var(--jds-badge-outline-fg, var(--jds-badge-color, var(--jds-color-primary)));
+}
+
+// 变体：solid（实色）
+:host([variant="solid"]) .badge {
+  background-color: var(--jds-badge-solid-bg, var(--jds-badge-color, var(--jds-color-primary)));
+  color: var(--jds-badge-solid-fg, var(--jds-color-white));
+}
+
+// 变体：soft（浅色）使用专用 Token，提升对比度
+:host([variant="soft"]) .badge {
+  background-color: var(--jds-badge-soft-bg, var(--jds-badge-bg-color, var(--jds-color-primary-contrast)));
+  color: var(--jds-badge-soft-fg, var(--jds-badge-color, var(--jds-color-primary)));
+}
+
+// 可点击样式
+:host([clickable]) .badge {
+  cursor: pointer;
+}
+
+// 焦点可见样式（可由主题覆盖）
+.badge:focus-visible {
+  outline: 2px solid var(--jds-badge-focus-ring-color, var(--jds-badge-color, var(--jds-color-primary)));
+  outline-offset: 2px;
 }
 
 // 小号徽章样式
 :host([size="small"]) .badge {
-  --font: var(--jds-font-c1);
-  --height: var(--jds-size-16);
+  font: var(--jds-badge-small-font, var(--jds-font-c1));
+  height: var(--jds-badge-small-height, var(--jds-size-16));
+  padding: var(--jds-badge-small-padding-vertical, var(--jds-size-4)) var(--jds-badge-small-padding-horizontal, var(--jds-size-6));
 }
 
 // 大号徽章样式
 :host([size="large"]) .badge {
-  --font: var(--jds-font-h3);
-  --padding-vertical: var(--jds-size-8);
-  --padding-horizontal: var(--jds-size-8);
-  --height: var(--jds-size-24);
-  --icon-size: var(--jds-size-16);
+  font: var(--jds-badge-large-font, var(--jds-font-h3));
+  padding: var(--jds-badge-large-padding-vertical, var(--jds-size-8)) var(--jds-badge-large-padding-horizontal, var(--jds-size-8));
+  height: var(--jds-badge-large-height, var(--jds-size-24));
+  --jds-badge-icon-size: var(--jds-badge-large-icon-size, var(--jds-size-16));
 }
 
 // 插槽中的图标样式
 :host ::slotted(jds-icon) {
-  font-size: var(--icon-size);
+  font-size: var(--jds-badge-icon-size, var(--jds-size-14));
 }
 
 // 小号徽章中不显示图标
 :host([size="small"]) jds-icon {
   display: none;
+}
+
+
+// 关闭按钮样式
+// 移除关闭按钮样式
+
+// 强制色模式兼容（描边使用 currentColor）
+@media (forced-colors: active) {
+  :host([variant="outline"]) .badge {
+    border-color: currentColor;
+    color: currentColor;
+  }
 }
