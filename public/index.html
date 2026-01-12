@@ -6,7 +6,6 @@
   <title>JDS 组件验证</title>
   <link rel="icon" href="./favicon.svg" />
   <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="./themes-switch.css" />
   <script>
     (function() {
       var params = new URLSearchParams(location.search);
@@ -49,8 +48,6 @@
         <div style="display:flex;gap:var(--jds-size-8);flex-wrap:wrap;align-items:center;">
           <jds-button id="file-v1">文件驱动：v1</jds-button>
           <jds-button id="file-v2">文件驱动：v2</jds-button>
-          <jds-button id="attr-v2" variant="secondary">属性驱动：切到 v2</jds-button>
-          <jds-button id="attr-v1" variant="secondary">属性驱动：回到 v1</jds-button>
           <span id="theme-state" style="margin-left:var(--jds-size-8);">当前：v1（文件驱动）</span>
         </div>
       </section>
@@ -159,12 +156,6 @@
           var url = new URL(location.href);
           url.searchParams.set('theme', 'v2');
           location.href = url.toString();
-        });
-        document.getElementById('attr-v2').addEventListener('click', function () {
-          document.documentElement.dataset.jdsThemeVersion = 'v2';
-        });
-        document.getElementById('attr-v1').addEventListener('click', function () {
-          delete document.documentElement.dataset.jdsThemeVersion;
         });
       </script>
       <script>
