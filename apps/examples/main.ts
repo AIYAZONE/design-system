@@ -5,15 +5,23 @@ import '@jackery/design-system';
 // 在开发环境下直接由入口导入 less，确保 Vite 编译生效
 const params = new URLSearchParams(window.location.search);
 const theme = params.get('theme');
+const resolvedTheme = theme === 'v2' || theme === 'v3' ? theme : 'v1';
 const isProd = (import.meta as any).env?.PROD === true;
 if (isProd) {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = theme === 'v2' ? '/assets/examples-theme-v2.css' : '/assets/examples-theme-v1.css';
+  link.href =
+    resolvedTheme === 'v3'
+      ? '/assets/examples-theme-v3.css'
+      : resolvedTheme === 'v2'
+        ? '/assets/examples-theme-v2.css'
+        : '/assets/examples-theme-v1.css';
   document.head.appendChild(link);
 } else {
   const injectInlineCss = async () => {
-    if (theme === 'v2') {
+    if (resolvedTheme === 'v3') {
+      await import('@styles/themes/v3/index.less');
+    } else if (resolvedTheme === 'v2') {
       await import('@styles/themes/v2/index.less');
     } else {
       await import('@styles/themes/v1/index.less');

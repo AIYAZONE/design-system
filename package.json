@@ -63,13 +63,15 @@
       "require": "./dist/index.cjs"
     },
     "./index.css": "./dist/index.css",
-    "./index-v2.css": "./dist/index-v2.css"
+    "./index-v2.css": "./dist/index-v2.css",
+    "./index-v3.css": "./dist/index-v3.css"
   },
   "files": [
     "dist/index.esm.js",
     "dist/index.cjs",
     "dist/index.css",
     "dist/index-v2.css",
+    "dist/index-v3.css",
     "dist/chunks/**",
     "dist/fonts/**",
     "dist/assets/**",

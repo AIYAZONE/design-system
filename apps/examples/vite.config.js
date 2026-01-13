@@ -69,7 +69,8 @@ export default defineConfig(({ command }) => ({
       input: {
         ...getHtmlInputs(),
         'examples-theme-v1': path.resolve(__dirname, '../../src/styles/themes/v1/index.less'),
-        'examples-theme-v2': path.resolve(__dirname, '../../src/styles/themes/v2/index.less')
+        'examples-theme-v2': path.resolve(__dirname, '../../src/styles/themes/v2/index.less'),
+        'examples-theme-v3': path.resolve(__dirname, '../../src/styles/themes/v3/index.less')
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -78,6 +79,7 @@ export default defineConfig(({ command }) => ({
             // 保持主题样式稳定文件名，其他沿用默认
             if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
             if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
+            if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
           }
           return 'assets/[name][ext]';
         }
