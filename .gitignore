@@ -40,3 +40,5 @@ vite.config.js.*
 .figma/*
 
 package-lock.json
+coverage/
+**/coverage/
