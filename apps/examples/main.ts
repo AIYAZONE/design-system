@@ -14,9 +14,9 @@ if (isProd) {
 } else {
   const injectInlineCss = async () => {
     if (theme === 'v2') {
-      await import('../../src/styles/themes/v2/index.less');
+      await import('@styles/themes/v2/index.less');
     } else {
-      await import('../../src/styles/themes/v1/index.less');
+      await import('@styles/themes/v1/index.less');
     }
   };
   injectInlineCss();

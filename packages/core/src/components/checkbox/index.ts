@@ -1,4 +1,3 @@
-/// <reference path="../../types/less-inline.d.ts" />
 import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup } from "lit";
 import { customElement, property } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
