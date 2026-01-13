@@ -65,6 +65,7 @@
     "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "clean": "rimraf dist"
   },
@@ -75,6 +76,12 @@
   "devDependencies": {
     "@jackery/eslint-config": "workspace:*",
     "@jackery/tsconfig": "workspace:*",
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.11.30",
+    "@vitest/coverage-v8": "^1.6.1",
+    "axe-core": "^4.7.0",
+    "jsdom": "^27.4.0",
     "less": "^4.4.2",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.0",

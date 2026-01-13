@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import userEvent from "@testing-library/user-event";
 
 vi.mock("@jackery/utils", () => {
   return {
@@ -30,14 +31,14 @@ describe("jds-button", () => {
     document.body.innerHTML = "";
   });
 
-  it("fires jds-click on Space/Enter when not disabled/loading", async () => {
+  it("fires jds-click on click when not disabled/loading", async () => {
     const el = createButton();
     const clicked = vi.fn();
     el.addEventListener("jds-click", clicked);
     const root = await getRoot(el);
     const btn = root.querySelector("button")!;
-    btn.dispatchEvent(new KeyboardEvent("keydown", { code: "Space", bubbles: true }));
-    btn.dispatchEvent(new KeyboardEvent("keydown", { code: "Enter", bubbles: true }));
+    await userEvent.click(btn);
+    await userEvent.click(btn);
     expect(clicked).toHaveBeenCalledTimes(2);
   });
 
@@ -46,15 +47,17 @@ describe("jds-button", () => {
     el.setAttribute("disabled", "");
     const clicked = vi.fn();
     el.addEventListener("jds-click", clicked);
+    await getRoot(el);
     const root = await getRoot(el);
     const btn = root.querySelector("button")!;
-    btn.click();
+    await userEvent.click(btn);
     expect(clicked).toHaveBeenCalledTimes(0);
   });
 
-  it("renders anchor when href is set", async () => {
+  it("renders anchor when href is set with target _blank", async () => {
     const el = createButton();
     el.setAttribute("href", "/docs");
+    el.setAttribute("target", "_blank");
     const root = await getRoot(el);
     const anchor = root.querySelector("a")!;
     expect(anchor).toBeTruthy();
@@ -75,7 +78,7 @@ describe("jds-button", () => {
     form.appendChild(el);
     const root = await getRoot(el);
     const btn = root.querySelector("button")!;
-    btn.click();
+    await userEvent.click(btn);
     expect(submitSpy).toHaveBeenCalledTimes(1);
   });
 

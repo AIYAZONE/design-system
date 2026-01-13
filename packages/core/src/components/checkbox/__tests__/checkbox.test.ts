@@ -51,8 +51,9 @@ describe("jds-checkbox", () => {
     const el = createCheckbox();
     el.textContent = "Accept Terms";
     const root = await getRoot(el);
-    const label = root.querySelector(".label")!;
-    expect(label.textContent?.trim()).toBe("Accept Terms");
+    const slot = root.querySelector(".label slot") as HTMLSlotElement;
+    const assigned = slot?.assignedNodes()?.[0] as Text | HTMLElement | undefined;
+    const text = (assigned as any)?.textContent?.trim() ?? "";
+    expect(text).toBe("Accept Terms");
   });
 });
-

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import userEvent from "@testing-library/user-event";
 import "../index";
 
 function createDialog(): HTMLElementTagNameMap["jds-dialog"] {
@@ -8,9 +9,9 @@ function createDialog(): HTMLElementTagNameMap["jds-dialog"] {
 }
 
 async function getRoot(el: HTMLElementTagNameMap["jds-dialog"]) {
-  // @ts-expect-error lit
-  if ((el as any).updateComplete) await (el as any).updateComplete;
-  return el.shadowRoot!;
+  const anyEl = el as any
+  if (anyEl.updateComplete) await anyEl.updateComplete
+  return el.shadowRoot!
 }
 
 describe("jds-dialog", () => {
@@ -27,7 +28,7 @@ describe("jds-dialog", () => {
     const root = await getRoot(el);
     const polyfill = root.querySelector(".dialog-polyfill") as HTMLElement;
     expect(polyfill).toBeTruthy();
-    window.dispatchEvent(new KeyboardEvent("keydown", { code: "Escape" }));
+    await userEvent.keyboard("{Escape}");
     const root2 = await getRoot(el);
     expect(root2.querySelector(".dialog-polyfill")).toBeTruthy();
   });
@@ -41,12 +42,12 @@ describe("jds-dialog", () => {
     expect(el.open).toBe(false);
   });
 
-  it("emits jds-open and jds-close events", async () => {
+  it("emits jds-dialog-open and jds-dialog-close events", async () => {
     const el = createDialog();
     const opened = vi.fn();
     const closed = vi.fn();
-    el.addEventListener("jds-open", opened);
-    el.addEventListener("jds-close", closed);
+    el.addEventListener("jds-dialog-open", opened);
+    el.addEventListener("jds-dialog-close", closed);
     el.open = true;
     await getRoot(el);
     el.open = false;
@@ -55,4 +56,3 @@ describe("jds-dialog", () => {
     expect(closed).toHaveBeenCalled();
   });
 });
-
