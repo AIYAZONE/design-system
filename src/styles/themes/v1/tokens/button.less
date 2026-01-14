@@ -23,6 +23,13 @@ jds-button {
   --jds-btn-text-underline-color: var(--jds-btn-hover-color);
   /* 自定义色高亮混合比例（用于 color-mix） */
   --jds-btn-custom-highlight-mix: 15%;
+
+  --jds-btn-disabled-opacity: 0.3;
+}
+
+jds-button[kind="custom"] {
+  --jds-btn-bg-color: var(--jds-btn-custom-color, var(--jds-color-primary));
+  --jds-btn-border-color: var(--jds-btn-custom-color, var(--jds-color-primary));
 }
 
 // 桌面端尺寸与排版（≥1024px）
@@ -65,6 +72,19 @@ jds-button {
     --jds-btn-icon-only-icon-size: var(--jds-size-18);
     --jds-btn-icon-only-extra-icon-size: var(--jds-size-24);
     --jds-btn-icon-only-small-icon-size: var(--jds-size-12);
+  }
+
+  jds-button[size="extra"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-extra-padding-horizontal);
+  }
+  jds-button[size="large"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-large-padding-horizontal);
+  }
+  jds-button[size="medium"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-medium-padding-horizontal);
+  }
+  jds-button[size="small"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-small-padding-horizontal);
   }
 }
 

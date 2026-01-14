@@ -45,7 +45,7 @@
           color: var(--jds-color-white);
           background-color: var(--jds-color-primary);
           padding-right: var(--jds-size-8);
-          padding-left: @padding-left;
+          padding-left: calc(var(--jds-btn-padding-horizontal, var(--jds-size-16)) - var(--jds-size-8));
         }
 
         jds-button.only-icon {
@@ -55,7 +55,7 @@
           &::part(button) {
             width: @btn-size;
             height: @btn-size;
-            background-color: var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight));
+            background-color: var(--jds-animate-only-icon-bg, var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight)));
           }
 
           &::part(icon) {
@@ -101,4 +101,3 @@
 
   }
 }
-

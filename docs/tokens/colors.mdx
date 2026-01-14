@@ -112,4 +112,17 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
     subtitle="背景色系列"
     colors={{ '500': 'var(--jds-color-bg-500)','400': 'var(--jds-color-bg-400)','300': 'var(--jds-color-bg-300)','200': 'var(--jds-color-bg-200)'}}
   />
+  <ColorItem
+    title="--jds-color-{x}"
+    subtitle="交互状态色"
+    colors={{
+      'primary-hover': 'var(--jds-color-primary-hover)',
+      'primary-active': 'var(--jds-color-primary-active)',
+      'neutral-hover': 'var(--jds-color-neutral-hover)',
+      'neutral-active': 'var(--jds-color-neutral-active)',
+      'disabled-bg': 'var(--jds-color-disabled-bg)',
+      'disabled-border': 'var(--jds-color-disabled-border)',
+      'disabled-text': 'var(--jds-color-disabled-text)',
+    }}
+  />
 </ColorPalette>

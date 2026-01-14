@@ -21,6 +21,9 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  --jds-btn-current-bg: var(--jds-btn-bg-color, var(--jds-color-primary));
+  --jds-btn-current-border: var(--jds-btn-border-color, var(--jds-color-primary));
+  --jds-btn-current-color: var(--jds-btn-content-color, var(--jds-color-white));
   width: 100%;
   max-width: var(--jds-btn-max-width, 680px);
   height: var(--jds-btn-height, var(--jds-size-48));
@@ -30,8 +33,8 @@
   vertical-align: middle;
   padding: var(--jds-btn-padding-vertical, var(--jds-size-8)) var(--jds-btn-padding-horizontal, var(--jds-size-16));
   cursor: pointer;
-  background-color: var(--jds-btn-bg-color, var(--jds-color-primary));
-  color: var(--jds-btn-content-color, var(--jds-color-white));
+  background-color: var(--jds-btn-current-bg);
+  color: var(--jds-btn-current-color);
   font: var(--jds-btn-font, var(--jds-font-h6));
   font-kerning: none;
   user-select: none;
@@ -66,12 +69,18 @@
   border: var(--jds-btn-secondary-border-width) solid var(--jds-btn-border-color, var(--jds-color-primary));
   background-color: transparent;
   color: var(--jds-btn-main-color, var(--jds-color-primary));
+  --jds-btn-current-bg: transparent;
+  --jds-btn-current-border: var(--jds-btn-border-color, var(--jds-color-primary));
+  --jds-btn-current-color: var(--jds-btn-main-color, var(--jds-color-primary));
 }
 
 :host([variant="text"]) .button {
   color: var(--jds-btn-main-color, var(--jds-color-primary));
   border-color: transparent;
   background-color: transparent;
+  --jds-btn-current-bg: transparent;
+  --jds-btn-current-border: transparent;
+  --jds-btn-current-color: var(--jds-btn-main-color, var(--jds-color-primary));
 }
 
 // 不同种类按钮
@@ -80,8 +89,8 @@
   border-color: var(--jds-color-neutral);
   // 语义变量赋值
   --jds-btn-main-color: var(--jds-color-neutral);
-  --jds-btn-hover-color: var(--jds-color-neutral-highlight);
-  --jds-btn-active-color: var(--jds-color-neutral);
+  --jds-btn-hover-color: var(--jds-color-neutral-hover, var(--jds-color-neutral-highlight));
+  --jds-btn-active-color: var(--jds-color-neutral-active, var(--jds-color-neutral));
 }
 
 :host([kind="success"]) .button {
@@ -265,20 +274,20 @@
 :host .button[aria-disabled="true"] {
   // 不透明度30%
   opacity: var(--jds-btn-disabled-opacity);
+  background-color: var(--jds-btn-disabled-bg, var(--jds-btn-current-bg));
+  border-color: var(--jds-btn-disabled-border, var(--jds-btn-current-border));
+  color: var(--jds-btn-disabled-color, var(--jds-btn-current-color));
   pointer-events: none;
   text-decoration: none;
 }
 
-:host([kind="default"][variant="primary"]) .button[aria-disabled="true"] {
-  background-color: var(--jds-btn-main-color, var(--jds-color-primary));
-}
-:host([kind="custom"]) .button[aria-disabled="true"] {
-  background-color: transparent;
-  color: var(--jds-btn-custom-text-color, var(--jds-btn-custom-color, var(--jds-color-primary)));
-}
-:host([kind="custom"][variant="primary"]) .button[aria-disabled="true"]{
-  background-color: var(--jds-btn-custom-color, var(--jds-color-primary));
-  color: var(--jds-color-white);
+:host([disabled]) .button[aria-disabled="true"] {
+  opacity: var(--jds-btn-disabled-opacity);
+  background-color: var(--jds-btn-disabled-bg, var(--jds-btn-current-bg));
+  border-color: var(--jds-btn-disabled-border, var(--jds-btn-current-border));
+  color: var(--jds-btn-disabled-color, var(--jds-btn-current-color));
+  pointer-events: none;
+  text-decoration: none;
 }
 
 // 文本按钮下划线通用样式（用于 hover/禁用等状态）
@@ -307,12 +316,12 @@
 }
 
 .style-secondary-default-active() {
-  background-color: var(--jds-btn-main-color);
-  border-color: var(--jds-btn-main-color);
+  background-color: var(--jds-btn-active-color, var(--jds-btn-main-color));
+  border-color: var(--jds-btn-active-color, var(--jds-btn-main-color));
 }
 
 .style-text-active() {
-  color: var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight));
+  color: var(--jds-btn-text-interaction-color, var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight)));
   background-color: transparent;
 }
 
@@ -435,7 +444,7 @@
   }
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) .label::after {
     // 使用统一变量渲染下划线颜色
-    --jds-btn-text-underline-color: var(--jds-btn-hover-color);
+    --jds-btn-text-underline-color: var(--jds-btn-text-interaction-color, var(--jds-btn-hover-color));
     .underline-style();
   }
 
@@ -454,8 +463,8 @@
   // 悬浮态重构
   // 1）主按钮悬浮：排除 secondary/text 与 loading，使用各自高亮色
   :host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
-    background-color: var(--jds-color-neutral-highlight);
-    border-color: var(--jds-color-neutral-highlight);
+    background-color: var(--jds-btn-hover-color, var(--jds-color-neutral-highlight));
+    border-color: var(--jds-btn-hover-color, var(--jds-color-neutral-highlight));
   }
   :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-success-highlight);
@@ -499,7 +508,7 @@
 
   // 2）文本按钮悬浮：仅文字与下划线使用高亮色变量，背景保持透明
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) {
-    color: var(--jds-btn-hover-color);
+    color: var(--jds-btn-text-interaction-color, var(--jds-btn-hover-color));
     background-color: transparent;
   }
 }
@@ -525,8 +534,8 @@
 }
 // 主按钮按下态覆盖：同时支持隐式 primary（未显式声明 variant）
 :host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
-  background-color: var(--jds-color-neutral);
-  border-color: var(--jds-color-neutral);
+  background-color: var(--jds-btn-active-color, var(--jds-color-neutral));
+  border-color: var(--jds-btn-active-color, var(--jds-color-neutral));
 }
 :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
   background-color: var(--jds-color-success);
