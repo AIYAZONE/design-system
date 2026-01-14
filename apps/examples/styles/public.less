@@ -37,6 +37,30 @@ body {
   }
 }
 
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jds-size-8);
+  margin-top: var(--jds-size-12);
+  padding: var(--jds-size-6) var(--jds-size-8);
+  border-radius: var(--jds-rounded-12);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.theme-switcher__label {
+  font-size: var(--jds-font-size-12);
+  font-weight: var(--jds-font-medium);
+  color: var(--jds-color-text-l2);
+  padding: 0 var(--jds-size-4);
+  user-select: none;
+}
+
+.index-header .theme-switcher {
+  justify-content: center;
+}
+
 // 通用Logo样式
 .logo {
   background: var(--jds-color-white);
