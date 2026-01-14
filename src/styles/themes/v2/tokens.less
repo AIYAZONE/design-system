@@ -113,6 +113,13 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(desktop, @h-sizes-desktop, @b-sizes-desktop, 12);
+
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-72) / @jds-h-line-height var(--jds-font-family);
+
+    --jds-font-size-84: max(12px, 84 * @rem);
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-84) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-24) / @jds-h-line-height var(--jds-font-family);
   }
 }
 
@@ -127,6 +134,12 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
+
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-72) / @jds-h-line-height var(--jds-font-family);
+
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-96) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-48) var(--jds-font-family);
   }
 }
 

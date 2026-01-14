@@ -46,7 +46,7 @@
   font: var(--jds-font-h6);
   letter-spacing: var(--jds-h6-letter-spacing, 0);
   // 一级文本色
-  color: var(--jds-rte-text-color, var(--jds-color-text-l1));
+  color: var(--jds-rte-text-color, var(--jds-h6-color, var(--jds-color-text-l1)));
 }
 
 // 正文文本 1，使用场景：【正文】
@@ -94,6 +94,33 @@
   font: var(--jds-font-c1);
   // 三级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l3));
+}
+
+.jds-display-1-style() {
+  font: var(--jds-font-display-1);
+  letter-spacing: var(--jds-display-1-letter-spacing, 0);
+  color: var(--jds-rte-text-color, var(--jds-color-text-l1));
+}
+
+.jds-display-2-style() {
+  font: var(--jds-font-display-2);
+  letter-spacing: var(--jds-display-2-letter-spacing, 0);
+  color: var(--jds-rte-text-color, var(--jds-color-text-l1));
+}
+
+.jds-display-3-style() {
+  font: var(--jds-font-display-3);
+  letter-spacing: var(--jds-display-3-letter-spacing, 0);
+  color: var(--jds-rte-text-color, var(--jds-color-text-l1));
+}
+
+.jds-custom-font {
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-size: var(--jds-custom-font-size, inherit);
+  line-height: var(--jds-custom-line-height, inherit);
+  font-weight: var(--jds-custom-font-weight, inherit);
+  letter-spacing: var(--jds-custom-letter-spacing, 0);
+  color: var(--jds-rte-text-color, var(--jds-custom-color, var(--jds-color-text-l1)));
 }
 
 
@@ -160,4 +187,16 @@
 // 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
 .jds-c1 {
   .jds-c1-style();
+}
+
+.jds-display-1 {
+  .jds-display-1-style();
+}
+
+.jds-display-2 {
+  .jds-display-2-style();
+}
+
+.jds-display-3 {
+  .jds-display-3-style();
 }

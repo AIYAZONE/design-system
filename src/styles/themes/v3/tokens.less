@@ -1,7 +1,7 @@
 @import '../../jds/tokens.base.less';
 
 // 基础变量 (V3 默认配置，基于 V2)
-@jds-h-line-height: 1.1;
+@jds-h-line-height: 1.0;
 @jds-b-line-height: 1.2;
 @jds-c-line-height: 1.2;
 
@@ -105,7 +105,7 @@
 // 桌面端
 @media screen and (min-width: 1024px) {
   @rem: (1rem / 16);
-  @h-sizes-desktop: 72 48 32 28 24 20;
+  @h-sizes-desktop: 48 32 32 28 24 20;
   @b-sizes-desktop: 20 16 14;
 
   @{rootSel} {
@@ -113,6 +113,11 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(desktop, @h-sizes-desktop, @b-sizes-desktop, 12);
+
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-64) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-24) / @jds-h-line-height var(--jds-font-family);
   }
 }
 
@@ -127,6 +132,11 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
+
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-96) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-72) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
   }
 }
 
