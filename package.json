@@ -22,7 +22,7 @@
     "site:preview": "vite preview --strictPort --port 5175",
     "design:build:lib": "vite build --mode library",
     "postdesign:build:lib": "pnpm run types:bundle",
-    "design:build": "pnpm run design:build:lib && pnpm run types:bundle && pnpm run design:build:themes",
+    "design:build": "pnpm run design:build:lib && pnpm run design:build:themes",
     "design:build:single": "vite build --mode library-single",
     "design:build:themes": "vite build --mode themes",
     "lint": "turbo run lint",

@@ -8,7 +8,11 @@ export default {
     file: path.resolve(process.cwd(), 'dist/jds.d.ts'),
     format: 'es'
   },
-  external: [/\.less$/],
+  external: [/\.less$/, /^lit($|\/)/, /^@lit\//, /^@floating-ui\//],
+  onwarn(warning, warn) {
+    if (typeof warning?.message === 'string' && warning.message.includes('Ambiguous external namespace resolution')) return
+    warn(warning)
+  },
   plugins: [
     alias({
       entries: [
