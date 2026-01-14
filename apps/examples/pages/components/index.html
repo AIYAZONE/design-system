@@ -255,10 +255,15 @@
 
       <script>
         // 添加事件监听器
-        document.getElementById('open-dialog-button').addEventListener('click', () => {
+        const trigger = document.getElementById('open-dialog-button');
+        const open = () => {
           const dialog = document.querySelector('#dl-basic');
-          dialog.setAttribute('open', true);
-        });
+          if (dialog) dialog.setAttribute('open', 'true');
+        };
+        if (trigger) {
+          trigger.addEventListener('click', open);
+          trigger.addEventListener('jds-click', open);
+        }
       </script>
     </main>
   </div>

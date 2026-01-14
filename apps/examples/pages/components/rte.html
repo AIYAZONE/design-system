@@ -108,8 +108,8 @@
 
           <article>
             <h3>自定义组件验证富文本样式</h3>
-            <jds-button>打开弹窗</jds-button>
-            <jds-dialog caption="自定义组件验证富文本样式" style="--jds-dialog-width: 1000px">
+            <jds-button id="open-rte-dialog">打开弹窗</jds-button>
+            <jds-dialog id="rte-dialog" caption="自定义组件验证富文本样式" style="--jds-dialog-width: 1000px">
               <div class="jds-rte">
                 <h3>标题</h3>
                 <article>
@@ -185,9 +185,15 @@
       </section>
       <script>
         document.addEventListener('DOMContentLoaded', () => {
-          document.querySelector('jds-button').addEventListener('click', function () {
-            document.querySelector('jds-dialog').open = true;
-          })
+          const trigger = document.getElementById('open-rte-dialog');
+          const dialog = document.getElementById('rte-dialog');
+          const open = () => {
+            if (dialog) (dialog).open = true;
+          };
+          if (trigger) {
+            trigger.addEventListener('click', open);
+            trigger.addEventListener('jds-click', open);
+          }
         });
       </script>
     </main>
