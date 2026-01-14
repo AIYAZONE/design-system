@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Jackery Design System (JDS) - Monorepo",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -22,7 +22,7 @@
     "site:preview": "vite preview --strictPort --port 5175",
     "design:build:lib": "vite build --mode library",
     "postdesign:build:lib": "pnpm run types:bundle",
-    "design:build": "pnpm run design:build:lib && pnpm run types:bundle && pnpm run design:build:themes",
+    "design:build": "pnpm run design:build:lib && pnpm run design:build:themes",
     "design:build:single": "vite build --mode library-single",
     "design:build:themes": "vite build --mode themes",
     "lint": "turbo run lint",
@@ -63,13 +63,15 @@
       "require": "./dist/index.cjs"
     },
     "./index.css": "./dist/index.css",
-    "./index-v2.css": "./dist/index-v2.css"
+    "./index-v2.css": "./dist/index-v2.css",
+    "./index-v3.css": "./dist/index-v3.css"
   },
   "files": [
     "dist/index.esm.js",
     "dist/index.cjs",
     "dist/index.css",
     "dist/index-v2.css",
+    "dist/index-v3.css",
     "dist/chunks/**",
     "dist/fonts/**",
     "dist/assets/**",

@@ -26,9 +26,10 @@
       <section id="theme-sticky-card" class="card sticky-card" style="margin-bottom: var(--jds-size-16);">
         <h2>主题版本验证</h2>
         <div style="display:flex;gap:var(--jds-size-8);flex-wrap:wrap;align-items:center;">
-          <!-- 文件驱动：刷新到不同 query 以加载 v1/v2 样式入口 -->
+          <!-- 文件驱动：刷新到不同 query 以加载 v1/v2/v3 样式入口 -->
           <jds-button id="file-v1">文件驱动：v1</jds-button>
           <jds-button id="file-v2">文件驱动：v2</jds-button>
+          <jds-button id="file-v3">文件驱动：v3</jds-button>
           <span id="theme-state" style="margin-left:var(--jds-size-8);">当前：v1（文件驱动）</span>
         </div>
       </section>
@@ -272,7 +273,8 @@
         // 主题验证：文件驱动
         const stateEl = document.getElementById('theme-state');
         const theme = new URLSearchParams(location.search).get('theme');
-        stateEl.textContent = `当前：${theme === 'v2' ? 'v2' : 'v1'}（文件驱动）`;
+        const resolvedTheme = theme === 'v2' || theme === 'v3' ? theme : 'v1';
+        stateEl.textContent = `当前：${resolvedTheme}（文件驱动）`;
         document.getElementById('file-v1').addEventListener('click', () => {
           const url = new URL(location.href);
           url.searchParams.set('theme', 'v1');
@@ -281,6 +283,11 @@
         document.getElementById('file-v2').addEventListener('click', () => {
           const url = new URL(location.href);
           url.searchParams.set('theme', 'v2');
+          location.href = url.toString();
+        });
+        document.getElementById('file-v3').addEventListener('click', () => {
+          const url = new URL(location.href);
+          url.searchParams.set('theme', 'v3');
           location.href = url.toString();
         });
 
