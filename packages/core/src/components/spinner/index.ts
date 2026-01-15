@@ -21,7 +21,7 @@ export default class JdsSpinner extends LitElement {
    * 设置加载指示器的大小
    */
   @property({ type: String, reflect: true })
-  size: string = "var(--jds-size-14)";
+  size: string = "var(--jds-spinner-size, var(--jds-size-14))";
 
   /**
    * 设置加载指示器的禁用状态
@@ -43,7 +43,8 @@ export default class JdsSpinner extends LitElement {
 
   // 渲染组件的HTML模板
   render(): TemplateResult {
-    return html`<jds-icon
+    return html`<jds-icon 
+      part="spinner"
       class="spinner"
       name="loading"
       style="color: ${this.disabled
