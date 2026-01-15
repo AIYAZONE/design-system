@@ -6,7 +6,6 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Components - 组件展示</title>
-  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <script type="module" src="/main.ts"></script>
 </head>
 
@@ -23,16 +22,6 @@
     </header>
 
     <main>
-      <section id="theme-sticky-card" class="card sticky-card" style="margin-bottom: var(--jds-size-16);">
-        <h2>主题版本验证</h2>
-        <div style="display:flex;gap:var(--jds-size-8);flex-wrap:wrap;align-items:center;">
-          <!-- 文件驱动：刷新到不同 query 以加载 v1/v2/v3 样式入口 -->
-          <jds-button id="file-v1">文件驱动：v1</jds-button>
-          <jds-button id="file-v2">文件驱动：v2</jds-button>
-          <jds-button id="file-v3">文件驱动：v3</jds-button>
-          <span id="theme-state" style="margin-left:var(--jds-size-8);">当前：v1（文件驱动）</span>
-        </div>
-      </section>
       <h2>组件</h2>
       <p>
         <jds-checkbox label="Checkbox"></jds-checkbox>
@@ -265,45 +254,15 @@
 
       <script>
         // 添加事件监听器
-        document.getElementById('open-dialog-button').addEventListener('click', () => {
+        const trigger = document.getElementById('open-dialog-button');
+        const open = () => {
           const dialog = document.querySelector('#dl-basic');
-          dialog.setAttribute('open', true);
-        });
-
-        // 主题验证：文件驱动
-        const stateEl = document.getElementById('theme-state');
-        const theme = new URLSearchParams(location.search).get('theme');
-        const resolvedTheme = theme === 'v2' || theme === 'v3' ? theme : 'v1';
-        stateEl.textContent = `当前：${resolvedTheme}（文件驱动）`;
-        document.getElementById('file-v1').addEventListener('click', () => {
-          const url = new URL(location.href);
-          url.searchParams.set('theme', 'v1');
-          location.href = url.toString();
-        });
-        document.getElementById('file-v2').addEventListener('click', () => {
-          const url = new URL(location.href);
-          url.searchParams.set('theme', 'v2');
-          location.href = url.toString();
-        });
-        document.getElementById('file-v3').addEventListener('click', () => {
-          const url = new URL(location.href);
-          url.searchParams.set('theme', 'v3');
-          location.href = url.toString();
-        });
-
-      </script>
-      <script>
-        // 吸顶交互：在到达吸顶位置后增强阴影
-        const stickyEl = document.getElementById('theme-sticky-card');
-        const topOffsetVar = getComputedStyle(document.documentElement).getPropertyValue('--jds-size-8').trim();
-        const topOffset = parseFloat(topOffsetVar) || 0;
-        const threshold = stickyEl.offsetTop - topOffset;
-        const onScroll = () => {
-          if (window.scrollY >= threshold) stickyEl.classList.add('is-stuck');
-          else stickyEl.classList.remove('is-stuck');
+          if (dialog) dialog.setAttribute('open', 'true');
         };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+        if (trigger) {
+          trigger.addEventListener('click', open);
+          trigger.addEventListener('jds-click', open);
+        }
       </script>
     </main>
   </div>

@@ -9,7 +9,7 @@
       "@/*": ["../../src/*"],
       "@styles": ["../../src/styles"],
       "@styles/*": ["../../src/styles/*"],
-      "@jackery/design-system": ["../../src/index.ts"],
+      "@jackery/design-system": ["../../src/register.ts"],
       "@jackery/core": ["../../packages/core/src"],
       "@jackery/core/*": ["../../packages/core/src/*"],
       "@jackery/icons": ["../../packages/icons/src"],

@@ -49,7 +49,7 @@ export default defineConfig(({ command }) => ({
     alias: {
       '@': path.resolve(__dirname, '../../src'),
       '@styles': path.resolve(__dirname, '../../src/styles'),
-      '@jackery/design-system': path.resolve(__dirname, '../../src/index.ts'),
+      '@jackery/design-system': path.resolve(__dirname, '../../src/register.ts'),
       '@jackery/core': path.resolve(__dirname, '../../packages/core/src'),
       '@jackery/core/*': path.resolve(__dirname, '../../packages/core/src/*'),
       '@jackery/icons': path.resolve(__dirname, '../../packages/icons/src'),

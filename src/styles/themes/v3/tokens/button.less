@@ -1,9 +1,10 @@
 jds-button {
   // V3 主题：按钮默认主色与悬浮色，供组件作为基础样式消费
-  --jds-btn-main-color: var(--jds-color-primary);
-  --jds-btn-main-hover-color: var(--jds-color-primary-highlight);
+  --jds-btn-main-color: var(--jds-color-primary-button);
+  --jds-btn-main-hover-color: var(--jds-color-primary-button-hover);
   --jds-btn-text-hover-color: var(--jds-color-white);
   --jds-btn-content-color: var(--jds-color-white);
+  --jds-animate-only-icon-bg: transparent;
 
   --jds-btn-bg-color: var(--jds-btn-main-color);
   --jds-btn-border-color: var(--jds-btn-main-color);
@@ -16,55 +17,125 @@ jds-button {
 
   // 直角风格：V3 默认与 V2 保持一致
   --jds-btn-border-radius: 0;
+  --jds-btn-secondary-border-width: 1px;
 
   /* 语义状态变量：供组件统一消费（保持现有视觉不变） */
   --jds-btn-hover-color: var(--jds-btn-main-hover-color);
-  --jds-btn-active-color: var(--jds-btn-main-color);
+  --jds-btn-active-color: var(--jds-color-primary-button-active);
   --jds-btn-text-underline-color: var(--jds-btn-hover-color);
   /* 自定义色高亮混合比例（用于 color-mix） */
   --jds-btn-custom-highlight-mix: 15%;
+  --jds-btn-disabled-opacity: 1;
+  --jds-btn-disabled-bg: var(--jds-color-disabled-bg);
+  --jds-btn-disabled-border: var(--jds-color-disabled-border);
+}
+
+jds-button[variant="secondary"] {
+  --jds-btn-disabled-bg: transparent;
+  --jds-btn-disabled-border: var(--jds-color-disabled-border);
+  --jds-btn-disabled-color: var(--jds-color-disabled-text);
+}
+
+jds-button[variant="text"] {
+  --jds-btn-disabled-bg: transparent;
+  --jds-btn-disabled-border: transparent;
+  --jds-btn-disabled-color: var(--jds-color-disabled-text);
+}
+
+jds-button[disabled][variant="text"] {
+  --jds-btn-underline-height: 0px;
+  --jds-btn-text-underline-color: transparent;
+}
+
+jds-button[kind="custom"][disabled][variant="secondary"] {
+  --jds-btn-disabled-bg: transparent;
+  --jds-btn-disabled-border: var(--jds-color-disabled-border);
+  --jds-btn-disabled-color: var(--jds-color-disabled-text);
+}
+
+jds-button[kind="custom"][disabled][variant="text"] {
+  --jds-btn-disabled-bg: transparent;
+  --jds-btn-disabled-border: transparent;
+  --jds-btn-disabled-color: var(--jds-color-disabled-text);
+}
+
+jds-button[variant="text"]:not([kind]),
+jds-button[kind="default"][variant="text"] {
+  --jds-btn-text-interaction-color: var(--jds-btn-main-color, var(--jds-color-primary));
+}
+
+jds-button[kind="neutral"][variant="text"] {
+  --jds-btn-text-interaction-color: var(--jds-color-neutral);
+}
+
+jds-button[kind="success"][variant="text"] {
+  --jds-btn-text-interaction-color: var(--jds-color-success);
+}
+
+jds-button[kind="danger"][variant="text"] {
+  --jds-btn-text-interaction-color: var(--jds-color-danger);
+}
+
+jds-button[kind="custom"][variant="text"] {
+  --jds-btn-text-interaction-color: var(--jds-btn-custom-color, var(--jds-color-primary));
 }
 
 // 桌面端尺寸与排版（≥1024px）
 @media screen and (min-width: 1024px) {
   jds-button {
-    --jds-btn-padding-vertical: var(--jds-size-8);
-    --jds-btn-padding-horizontal: var(--jds-size-16);
-    --jds-btn-margin-icon: var(--jds-size-8);
-    --jds-btn-icon-size: var(--jds-size-12);
-    --jds-btn-font: var(--jds-font-h6);
+    --jds-btn-padding-vertical: var(--jds-size-12);
+    --jds-btn-padding-horizontal: var(--jds-size-40);
+    --jds-btn-margin-icon: var(--jds-size-10);
+    --jds-btn-icon-size: var(--jds-size-16);
+    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-20) / calc(var(--jds-font-size-20) + var(--jds-size-4)) var(--jds-font-family);
     --jds-btn-height: var(--jds-size-48);
     --jds-btn-max-width: 680px;
 
     --jds-btn-extra-height: var(--jds-size-56);
     --jds-btn-extra-padding-vertical: var(--jds-size-16);
-    --jds-btn-extra-padding-horizontal: var(--jds-size-32);
-    --jds-btn-extra-margin-icon: var(--jds-size-4);
+    --jds-btn-extra-padding-horizontal: var(--jds-size-40);
+    --jds-btn-extra-margin-icon: var(--jds-size-10);
     --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-size-22) / calc(var(--jds-size-22) + var(--jds-size-8)) var(--jds-font-family);
     --jds-btn-extra-text-font: var(--jds-font-semibold) var(--jds-size-22) / calc(var(--jds-size-22) + var(--jds-size-8)) var(--jds-font-family);
 
     --jds-btn-large-height: var(--jds-size-48);
     --jds-btn-large-padding-vertical: var(--jds-size-12);
-    --jds-btn-large-padding-horizontal: var(--jds-size-32);
-    --jds-btn-large-margin-icon: var(--jds-size-4);
-    --jds-btn-large-font: var(--jds-font-b1);
-    --jds-btn-large-text-font: var(--jds-font-b1);
+    --jds-btn-large-padding-horizontal: var(--jds-size-40);
+    --jds-btn-large-margin-icon: var(--jds-size-10);
+    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-20) / calc(var(--jds-font-size-20) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-large-text-font: var(--jds-font-semibold) var(--jds-font-size-20) / calc(var(--jds-font-size-20) + var(--jds-size-4)) var(--jds-font-family);
 
     --jds-btn-medium-height: var(--jds-size-36);
     --jds-btn-medium-padding-vertical: var(--jds-size-8);
     --jds-btn-medium-padding-horizontal: var(--jds-size-24);
-    --jds-btn-medium-margin-icon: var(--jds-size-4);
-    --jds-btn-medium-font: var(--jds-font-b3);
+    --jds-btn-medium-margin-icon: var(--jds-size-8);
+    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
 
     --jds-btn-small-height: var(--jds-size-24);
-    --jds-btn-small-padding-vertical: var(--jds-size-2);
+    --jds-btn-small-padding-vertical: var(--jds-size-4);
     --jds-btn-small-padding-horizontal: var(--jds-size-12);
-    --jds-btn-small-margin-icon: var(--jds-size-2);
-    --jds-btn-small-icon-size: var(--jds-size-8);
+    --jds-btn-small-margin-icon: var(--jds-size-4);
+    --jds-btn-small-icon-size: var(--jds-size-12);
 
-    --jds-btn-icon-only-icon-size: var(--jds-size-18);
+    --jds-btn-icon-only-icon-size: var(--jds-size-24);
     --jds-btn-icon-only-extra-icon-size: var(--jds-size-24);
-    --jds-btn-icon-only-small-icon-size: var(--jds-size-12);
+    --jds-btn-icon-only-small-icon-size: var(--jds-size-16);
+    --jds-btn-medium-text-font: var(--jds-font-regular) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-12) / calc(var(--jds-font-size-12) + var(--jds-size-2)) var(--jds-font-family);
+    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-12) / calc(var(--jds-font-size-12) + var(--jds-size-2)) var(--jds-font-family);
+  }
+
+  jds-button[size="extra"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-extra-padding-horizontal);
+  }
+  jds-button[size="large"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-large-padding-horizontal);
+  }
+  jds-button[size="medium"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-medium-padding-horizontal);
+  }
+  jds-button[size="small"] {
+    --jds-btn-padding-horizontal: var(--jds-btn-small-padding-horizontal);
   }
 }
 
@@ -73,36 +144,43 @@ jds-button {
   jds-button {
     --jds-btn-height: var(--jds-size-80);
     --jds-btn-icon-size: var(--jds-size-16);
+    --jds-btn-padding-vertical: var(--jds-size-24);
+    --jds-btn-padding-horizontal: var(--jds-size-36);
+    --jds-btn-margin-icon: var(--jds-size-20);
+    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
     --jds-btn-max-width: 686px;
 
     --jds-btn-extra-height: var(--jds-size-96);
-    --jds-btn-extra-padding-vertical: var(--jds-size-28);
-    --jds-btn-extra-padding-horizontal: var(--jds-size-40);
+    --jds-btn-extra-padding-vertical: var(--jds-size-32);
+    --jds-btn-extra-padding-horizontal: var(--jds-size-36);
     --jds-btn-extra-margin-icon: var(--jds-size-8);
-    --jds-btn-extra-font: var(--jds-font-b1);
-    --jds-btn-extra-text-font: var(--jds-font-b1);
+    --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-font-size-18) / calc(var(--jds-font-size-18) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-extra-text-font: var(--jds-font-semibold) var(--jds-font-size-18) / calc(var(--jds-font-size-18) + var(--jds-size-4)) var(--jds-font-family);
 
     --jds-btn-large-height: var(--jds-size-80);
-    --jds-btn-large-padding-vertical: var(--jds-size-20);
-    --jds-btn-large-padding-horizontal: var(--jds-size-40);
-    --jds-btn-large-margin-icon: var(--jds-size-8);
-    --jds-btn-large-font: var(--jds-font-b2);
-    --jds-btn-large-text-font: var(--jds-font-b2);
+    --jds-btn-large-padding-vertical: var(--jds-size-24);
+    --jds-btn-large-padding-horizontal: var(--jds-size-36);
+    --jds-btn-large-margin-icon: var(--jds-size-20);
+    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-large-text-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
 
     --jds-btn-medium-height: var(--jds-size-64);
-    --jds-btn-medium-padding-vertical: var(--jds-size-14);
-    --jds-btn-medium-padding-horizontal: var(--jds-size-32);
-    --jds-btn-medium-margin-icon: var(--jds-size-8);
-    --jds-btn-medium-font: var(--jds-font-b2);
+    --jds-btn-medium-padding-vertical: var(--jds-size-20);
+    --jds-btn-medium-padding-horizontal: var(--jds-size-36);
+    --jds-btn-medium-margin-icon: var(--jds-size-20);
+    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-14) / calc(var(--jds-font-size-14) + var(--jds-size-4)) var(--jds-font-family);
 
     --jds-btn-small-height: var(--jds-size-48);
-    --jds-btn-small-padding-vertical: var(--jds-size-8);
-    --jds-btn-small-padding-horizontal: var(--jds-size-24);
-    --jds-btn-small-margin-icon: var(--jds-size-4);
+    --jds-btn-small-padding-vertical: var(--jds-size-16);
+    --jds-btn-small-padding-horizontal: var(--jds-size-32);
+    --jds-btn-small-margin-icon: var(--jds-size-16);
     --jds-btn-small-icon-size: var(--jds-size-12);
+    --jds-btn-medium-text-font: var(--jds-font-regular) var(--jds-font-size-14) / calc(var(--jds-font-size-14) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-12) / calc(var(--jds-font-size-12) + var(--jds-size-2)) var(--jds-font-family);
+    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-12) / calc(var(--jds-font-size-12) + var(--jds-size-2)) var(--jds-font-family);
 
     --jds-btn-icon-only-icon-size: var(--jds-size-24);
     --jds-btn-icon-only-extra-icon-size: var(--jds-size-24);
-    --jds-btn-icon-only-small-icon-size: var(--jds-size-24);
+    --jds-btn-icon-only-small-icon-size: var(--jds-size-16);
   }
 }

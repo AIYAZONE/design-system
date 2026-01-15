@@ -1,9 +1,18 @@
 @import '../../jds/tokens.base.less';
 
 // 基础变量 (V3 默认配置，基于 V2)
-@jds-h-line-height: 1.1;
+@jds-h-line-height: 1.0;
 @jds-b-line-height: 1.2;
 @jds-c-line-height: 1.2;
+
+@jds-color-primary: #FD5000; // 后续版本会替换为#FF6727
+@jds-color-success: #5E8A4E;
+@jds-color-danger: #F52317;
+@jds-color-neutral: #242F20;
+@jds-color-primary-contrast: mix(#FFFFFF, @jds-color-primary, 90%);
+@jds-color-success-contrast: mix(#FFFFFF, @jds-color-success, 90%);
+@jds-color-danger-contrast: mix(#FFFFFF, @jds-color-danger, 90%);
+@jds-color-neutral-contrast: #E8E8E5;
 
 // 颜色系统
 @{rootSel} {
@@ -16,27 +25,32 @@
   .generate-color-common(neutral, @jds-color-neutral, @jds-color-neutral-contrast);
 
   // 文本色
-  --jds-color-text-l1: #1A1A1A;
-  --jds-color-text-l2: #666666;
-  --jds-color-text-l3: #999999;
-  --jds-color-text-invalid: #B3B3B3;
+  --jds-color-text-l1: #242F20;
+  --jds-color-text-l2: #242F20;
+  --jds-color-text-l3: #000000;
+  --jds-color-text-invalid: #000000;
   --jds-color-text-highlight: @jds-color-primary;
-  --jds-color-text-link: #0A59F7;
+  --jds-color-text-link: #818181;
 
   // 图标色
-  --jds-color-icon-normal: #1A1A1A;
+  --jds-color-icon-normal: #242F20;
   --jds-color-icon-orange: @jds-color-primary;
 
   // 背景色
   --jds-color-white: @jds-color-white;
-  --jds-color-grey: @jds-color-grey;
+  --jds-color-grey: #F5F5F3;
   --jds-color-card-white: @jds-color-white;
-  --jds-color-card-grey: @jds-color-grey;
-  --jds-color-card-list: #F8F8F8;
+  --jds-color-card-grey: #F5F5F3;
+  --jds-color-card-list: #E8E8E5;
+
+  --jds-color-bg-500: #94948F;
+  --jds-color-bg-400: #C3C3BE;
+  --jds-color-bg-300: #E8E8E5;
+  --jds-color-bg-200: #F5F5F3;
 
   // 边框色
-  --jds-color-line: #D9D9D9;
-  --jds-color-hr: #EEEEEE;
+  --jds-color-line: #A9AAAC;
+  --jds-color-hr: #C6C7C8;
 
   // 遮罩色
   --jds-color-overlay-30: rgba(0, 0, 0, 0.3);
@@ -45,10 +59,10 @@
 
   // 主色梯度
   --jds-color-primary-500: @jds-color-primary;
-  --jds-color-primary-400: #FD7333;
-  --jds-color-primary-300: #FE9666;
-  --jds-color-primary-200: #FEB999;
-  --jds-color-primary-100: #FEDCCC;
+  --jds-color-primary-400: mix(#FFFFFF, @jds-color-primary, 15%);
+  --jds-color-primary-300: mix(#FFFFFF, @jds-color-primary, 35%);
+  --jds-color-primary-200: mix(#FFFFFF, @jds-color-primary, 55%);
+  --jds-color-primary-100: mix(#FFFFFF, @jds-color-primary, 75%);
 
   // 中性色梯度
   --jds-color-neutral-500: #273142;
@@ -56,6 +70,24 @@
   --jds-color-neutral-300: #95A1B5;
   --jds-color-neutral-200: #AFBBCA;
   --jds-color-neutral-100: #F1F2F7;
+
+  // 框架色
+  --jds-color-frame-700: #818181;
+  --jds-color-frame-500: #A9AAAC;
+  --jds-color-frame-300: #C6C7C8;
+  --jds-color-frame-100: #E2E3E3;
+
+  --jds-color-primary-hover: #CA4000;
+  --jds-color-primary-active: #983000;
+  --jds-color-neutral-hover: #1D261A;
+  --jds-color-neutral-active: #161C13;
+  --jds-color-disabled-bg: #0000004D;
+  --jds-color-disabled-border: #0000004D;
+  --jds-color-disabled-text: #0000004D;
+
+  --jds-color-primary-button: #FD5000;
+  --jds-color-primary-button-hover: var(--jds-color-primary-hover);
+  --jds-color-primary-button-active: var(--jds-color-primary-active);
 
   // 层级
   --jds-index-deep: -1;
@@ -105,7 +137,7 @@
 // 桌面端
 @media screen and (min-width: 1024px) {
   @rem: (1rem / 16);
-  @h-sizes-desktop: 72 48 32 28 24 20;
+  @h-sizes-desktop: 48 32 32 28 24 20;
   @b-sizes-desktop: 20 16 14;
 
   @{rootSel} {
@@ -113,6 +145,11 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(desktop, @h-sizes-desktop, @b-sizes-desktop, 12);
+
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-64) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-24) / @jds-h-line-height var(--jds-font-family);
   }
 }
 
@@ -127,6 +164,11 @@
     .generate-font-sizes(@rem);
     .generate-border-radius(@rem);
     .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
+
+    --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-96) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1: @jds-font-extrabold var(--jds-font-size-72) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
   }
 }
 
