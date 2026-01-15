@@ -264,7 +264,7 @@ export class JdsButton extends LitElement {
       <jds-spinner
         class="loading-spinner"
         ?disabled="${this.disabled}"
-        size=${this.size === "small" ? "var(--jds-font-size-16)" : "var(--jds-font-size-24)"}
+        size=${this.size === "small" ? "var(--jds-btn-icon-only-small-icon-size, var(--jds-size-16))" : "var(--jds-btn-icon-only-extra-icon-size, var(--jds-size-24))"}
         color="${spinnerColor}"
       ></jds-spinner>
     `;

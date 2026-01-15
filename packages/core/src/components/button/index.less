@@ -2,7 +2,7 @@
   display: var(--jds-btn-display, inline-block);
   max-width: 100%;
   position: relative;
-  
+
   // 公共变量提取
   --jds-btn-disabled-opacity: 0.3;
   --jds-btn-underline-height: 1.5px;
@@ -130,6 +130,7 @@
   background-color: transparent;
   color: var(--jds-btn-local-custom-color);
 }
+
 :host([kind="custom"][variant="secondary"][loading]) .button:hover,
 :host([kind="custom"][variant="secondary"][loading]) .button:active {
   background-color: transparent;
@@ -147,16 +148,19 @@
   border-color: var(--jds-color-neutral);
   background-color: transparent;
 }
+
 :host([kind="success"][variant="secondary"]) .button {
   color: var(--jds-color-success);
   border-color: var(--jds-color-success);
   background-color: transparent;
 }
+
 :host([kind="danger"][variant="secondary"]) .button {
   color: var(--jds-color-danger);
   border-color: var(--jds-color-danger);
   background-color: transparent;
 }
+
 :host([kind="custom"][variant="secondary"]) .button {
   color: var(--jds-btn-local-custom-color);
   border-color: var(--jds-btn-local-custom-color);
@@ -168,16 +172,19 @@
   background-color: transparent;
   border-color: transparent;
 }
+
 :host([kind="success"][variant="text"]) .button {
   color: var(--jds-color-success);
   background-color: transparent;
   border-color: transparent;
 }
+
 :host([kind="danger"][variant="text"]) .button {
   color: var(--jds-color-danger);
   background-color: transparent;
   border-color: transparent;
 }
+
 :host([kind="custom"][variant="text"]) .button {
   color: var(--jds-btn-local-custom-color);
   background-color: transparent;
@@ -189,10 +196,8 @@
   height: var(--jds-btn-extra-height, var(--jds-size-56));
   padding: var(--jds-btn-extra-padding-vertical, var(--jds-size-16)) var(--jds-btn-extra-padding-horizontal, var(--jds-size-32));
   gap: var(--jds-btn-extra-margin-icon, var(--jds-size-4));
-  font: var(
-    --jds-btn-extra-font,
-    var(--jds-font-semibold) var(--jds-size-22) / calc(var(--jds-size-22) + var(--jds-size-8)) var(--jds-font-family)
-  );
+  font: var(--jds-btn-extra-font,
+      var(--jds-font-semibold) var(--jds-size-22) / calc(var(--jds-size-22) + var(--jds-size-8)) var(--jds-font-family));
 }
 
 :host([size="large"]) .button {
@@ -207,10 +212,6 @@
   padding: var(--jds-btn-medium-padding-vertical, var(--jds-size-8)) var(--jds-btn-medium-padding-horizontal, var(--jds-size-24));
   gap: var(--jds-btn-medium-margin-icon, var(--jds-size-4));
   font: var(--jds-btn-medium-font, var(--jds-font-b3));
-}
-
-:host([size="medium"][variant="text"]) .button {
-  font: var(--jds-btn-medium-text-font, var(--jds-font-b2));
 }
 
 :host([size="small"]) .button {
@@ -230,8 +231,12 @@
   font-size: var(--jds-btn-icon-size, var(--jds-size-12));
 }
 
+:host([size="extra"]) slot[name="icon"] jds-icon {
+  font-size: var(--jds-btn-extra-icon-size, var(--jds-btn-icon-size));
+}
+
 :host([size="small"]) slot[name="icon"] jds-icon {
-  font-size: var(--jds-btn-small-icon-size, var(--jds-size-8));
+  font-size: var(--jds-btn-small-icon-size, var(--jds-btn-icon-size));
 }
 
 // 纯图标按钮（仅图标，无文字）—— 当前仅支持一个尺寸
@@ -291,7 +296,7 @@
 }
 
 // 文本按钮下划线通用样式（用于 hover/禁用等状态）
-.underline-style(){
+.underline-style() {
   content: "";
   position: absolute;
   bottom: 0;
@@ -352,18 +357,22 @@
   background-color: var(--jds-color-primary);
   border-color: var(--jds-color-primary);
 }
+
 :host([variant="primary"][loading][kind="neutral"]) .button {
   background-color: var(--jds-color-neutral);
   border-color: var(--jds-color-neutral);
 }
+
 :host([variant="primary"][loading][kind="success"]) .button {
   background-color: var(--jds-color-success);
   border-color: var(--jds-color-success);
 }
+
 :host([variant="primary"][loading][kind="danger"]) .button {
   background-color: var(--jds-color-danger);
   border-color: var(--jds-color-danger);
 }
+
 :host([variant="primary"][loading][kind="custom"]) .button {
   background-color: var(--jds-btn-local-custom-color);
   border-color: var(--jds-btn-local-custom-color);
@@ -374,30 +383,37 @@
   background-color: var(--jds-color-primary);
   border-color: var(--jds-color-primary);
 }
+
 :host([variant="secondary"][loading][kind="neutral"]) .button {
   background-color: var(--jds-color-neutral);
   border-color: var(--jds-color-neutral);
 }
+
 :host([variant="secondary"][loading][kind="success"]) .button {
   background-color: var(--jds-color-success);
   border-color: var(--jds-color-success);
 }
+
 :host([variant="secondary"][loading][kind="danger"]) .button {
   background-color: var(--jds-color-danger);
   border-color: var(--jds-color-danger);
 }
+
 :host([variant="secondary"][loading][kind="custom"]) .button {
   background-color: var(--jds-btn-local-custom-color);
   border-color: var(--jds-btn-local-custom-color);
 }
+
 :host([variant="secondary"][loading]) .button {
   border-color: transparent;
 }
+
 // 修复：自定义色主按钮（Primary）加载态在 hover/active 时不发生颜色偏移
 :host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button {
   background-color: var(--jds-btn-local-custom-color);
   border-color: var(--jds-btn-local-custom-color);
 }
+
 // Ensure custom loading hover/active states don't shift color
 :host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:hover,
 :host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:active {
@@ -439,9 +455,10 @@
   }
 
   // 悬浮状态：Text 不填充背景，仅绘制下划线
-  :host([variant="text"]:hover) .button{
+  :host([variant="text"]:hover) .button {
     background-color: transparent;
   }
+
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) .label::after {
     // 使用统一变量渲染下划线颜色
     --jds-btn-text-underline-color: var(--jds-btn-text-interaction-color, var(--jds-btn-hover-color));
@@ -466,14 +483,17 @@
     background-color: var(--jds-btn-hover-color, var(--jds-color-neutral-highlight));
     border-color: var(--jds-btn-hover-color, var(--jds-color-neutral-highlight));
   }
+
   :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-success-highlight);
     border-color: var(--jds-color-success-highlight);
   }
+
   :host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-danger-highlight);
     border-color: var(--jds-color-danger-highlight);
   }
+
   :host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-custom-highlight);
     border-color: var(--jds-color-custom-highlight);
@@ -481,8 +501,8 @@
 
   // iOS 16.2 以下浏览器：不支持 color-mix，高亮回退为主色
   :host([kind="custom"]:not([variant="secondary"]):not([variant="text"])) .button.ios-below-16_2:hover:not([aria-disabled="true"]) {
-     background-color: var(--jds-btn-local-custom-color);
-     border-color: var(--jds-btn-local-custom-color);
+    background-color: var(--jds-btn-local-custom-color);
+    border-color: var(--jds-btn-local-custom-color);
   }
 
   :host([kind="neutral"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
@@ -490,16 +510,19 @@
     border-color: var(--jds-color-neutral-highlight);
     color: var(--jds-color-white);
   }
+
   :host([kind="success"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-success-highlight);
     border-color: var(--jds-color-success-highlight);
     color: var(--jds-color-white);
   }
+
   :host([kind="danger"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-danger-highlight);
     border-color: var(--jds-color-danger-highlight);
     color: var(--jds-color-white);
   }
+
   :host([kind="custom"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
     background-color: var(--jds-color-custom-highlight);
     border-color: var(--jds-color-custom-highlight);
@@ -517,12 +540,15 @@
 :host([kind="neutral"][variant="text"]) .button[aria-disabled="true"] .label::after {
   background-color: var(--jds-color-neutral);
 }
+
 :host([kind="success"][variant="text"]) .button[aria-disabled="true"] .label::after {
   background-color: var(--jds-color-success);
 }
+
 :host([kind="danger"][variant="text"]) .button[aria-disabled="true"] .label::after {
   background-color: var(--jds-color-danger);
 }
+
 :host([kind="custom"][variant="text"]) .button[aria-disabled="true"] .label::after {
   background-color: var(--jds-btn-custom-color, var(--jds-color-primary));
 }
@@ -532,19 +558,23 @@
 :host([variant="primary"]:active) .button:not([aria-disabled="true"]) {
   .style-secondary-default-active();
 }
+
 // 主按钮按下态覆盖：同时支持隐式 primary（未显式声明 variant）
 :host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
   background-color: var(--jds-btn-active-color, var(--jds-color-neutral));
   border-color: var(--jds-btn-active-color, var(--jds-color-neutral));
 }
+
 :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
   background-color: var(--jds-color-success);
   border-color: var(--jds-color-success);
 }
+
 :host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
   background-color: var(--jds-color-danger);
   border-color: var(--jds-color-danger);
 }
+
 :host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
   background-color: var(--jds-btn-local-custom-color);
   border-color: var(--jds-btn-local-custom-color);
@@ -555,22 +585,26 @@
 :host([variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   .style-secondary-active();
 }
+
 // 次按钮按下态覆盖：按各自高亮色填充
 :host([kind="neutral"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
   background-color: var(--jds-color-neutral-highlight);
   border-color: var(--jds-color-neutral-highlight);
 }
+
 :host([kind="success"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
   background-color: var(--jds-color-success-highlight);
   border-color: var(--jds-color-success-highlight);
 }
+
 :host([kind="danger"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
   background-color: var(--jds-color-danger-highlight);
   border-color: var(--jds-color-danger-highlight);
 }
+
 :host([kind="custom"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
   background-color: var(--jds-color-custom-highlight);
