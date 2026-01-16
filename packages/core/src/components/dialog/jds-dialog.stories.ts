@@ -14,6 +14,7 @@ interface DialogProps {
   ariaLabelText?: string;
   initialFocus?: string;
   disableBodyScroll?: boolean;
+  closeIcon?: string;
   style: any;
   content: any;
 }
@@ -118,6 +119,11 @@ const meta = {
       control: "boolean",
       table: { defaultValue: { summary: "true" }, category: "高级" },
     },
+    closeIcon: {
+      description: "自定义关闭图标",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "close-fill" }, category: "高级" },
+    },
     style: {
       description: `设置对话框的自定义样式，支持CSS变量配置，如：
       --jds-dialog-width: 800px;
@@ -155,6 +161,7 @@ const DialogTemplate = (args: DialogProps) => {
       ?critical=${args.critical}
       ?showClose=${args.showClose}
       ariaLabelText=${ifDefined(args.ariaLabelText)}
+      closeIcon=${ifDefined(args.closeIcon)}
       initialFocus=${ifDefined(args.initialFocus)}
       ?disableBodyScroll=${args.disableBodyScroll}
       style="${ifDefined(args.style)}"
@@ -176,6 +183,29 @@ export const Default = {
     html`${DialogTemplate({
       ...args,
       class: 'default',
+      content: `
+        <div>
+          <p>这是一个默认的对话框示例，包含标题和内容。</p>
+          <p>点击右上角的关闭按钮、按下ESC键或点击遮罩层均可以关闭对话框。</p>
+        </div>
+      `,
+    })}`,
+};
+
+
+export const CustomCloseIcon = {
+  args: {
+    size: "large",
+    caption: "自定义关闭图标的对话框",
+    closeIcon: "close",
+    open: false,
+    critical: false,
+    showClose: true,
+  },
+  render: (args: DialogProps) =>
+    html`${DialogTemplate({
+      ...args,
+      class: "close-icon",
       content: `
         <div>
           <p>这是一个默认的对话框示例，包含标题和内容。</p>
@@ -340,7 +370,7 @@ export const ThemeComparison = {
           <p>This dialog simulates v1 theme (Rounded).</p>
         </jds-dialog>
       </div>
-      
+
       <div>
         <h3>v2 Theme (Straight)</h3>
         <p class="jds-c1" style="margin-bottom: 8px;">Radius: 0</p>
