@@ -16,7 +16,7 @@ export type BadgeKind = "default" | "neutral" | "success" | "warning" | "danger"
  * @cssproperty [--jds-badge-color:var(--jds-color-primary)] 设置徽章的文字颜色
  */
 @customElement("jds-badge")
-export default class JdsBadge extends LitElement {
+export class JdsBadge extends LitElement {
   // 组件的样式
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
@@ -143,6 +143,8 @@ export default class JdsBadge extends LitElement {
     </span>`;
   }
 }
+
+export default JdsBadge;
 
 // 扩展HTMLElementTagNameMap接口，添加jds-badge元素类型定义
 declare global {

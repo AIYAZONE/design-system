@@ -9,7 +9,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * @description 用于显示加载状态的旋转图标组件
  */
 @customElement("jds-spinner")
-export default class JdsSpinner extends LitElement {
+export class JdsSpinner extends LitElement {
   // 定义组件的CSS样式
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
@@ -53,6 +53,8 @@ export default class JdsSpinner extends LitElement {
     ></jds-icon>`;
   }
 }
+
+export default JdsSpinner;
 
 // 扩展HTMLElementTagNameMap接口，以便在TypeScript中识别自定义元素
 declare global {

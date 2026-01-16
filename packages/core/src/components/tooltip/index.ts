@@ -13,7 +13,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * @cssproperty [--jds-tooltip-trigger-display=inline-flex] 设置工具提示触发器的显示方式。
  */
 @customElement("jds-tooltip")
-export default class JdsTooltip extends LitElement {
+export class JdsTooltip extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   protected firstUpdated(): void {
@@ -156,6 +156,8 @@ export default class JdsTooltip extends LitElement {
     `;
   }
 }
+
+export default JdsTooltip;
 
 declare global {
   interface HTMLElementTagNameMap {
