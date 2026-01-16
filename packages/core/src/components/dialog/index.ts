@@ -94,6 +94,11 @@ export class JdsDialog extends LitElement {
    */
   @property({ type: String })
   initialFocus?: string;
+  /**
+   * 关闭图标
+   */
+  @property({ type: String })
+  closeIcon = "close-fill";
 
   @query(".container")
   private container!: HTMLElement;
@@ -232,7 +237,7 @@ export class JdsDialog extends LitElement {
           part="dialog-close"
           class="close"
           @click="${() => this.closeDialog("close-button")}"
-          name="close-fill"
+          name="${this.closeIcon}"
           label="close"
         ></jds-icon>`
       : null;
