@@ -31,6 +31,10 @@
     .sticky-card.is-stuck { box-shadow: var(--jds-shadow-md, 0 2px 8px rgba(0,0,0,0.12)); }
     h1, h2 { margin: var(--gap) 0; }
     main { display: block; }
+    main p,main section{
+      display: flex;
+      gap: 6px;
+    }
   </style>
 </head>
 <body>
@@ -53,28 +57,51 @@
       </section>
 
       <h2>组件</h2>
-      <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In Progress</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:var(--jds-color-neutral-100);--jds-badge-color:var(--jds-color-neutral-400);">Neutral</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Offer</jds-badge>
-      <jds-badge style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Winner</jds-badge>
+      <p>
+        <jds-checkbox label="Checkbox"></jds-checkbox>
+        <jds-checkbox checked label="Checkbox"></jds-checkbox>
+      </p>
+      <p>
+        <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In
+          Progress</jds-badge>
+        <jds-badge
+          style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
+        <jds-badge
+          style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
+        <jds-badge
+          style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
+        <jds-badge
+          style="--jds-badge-bg-color:var(--jds-color-neutral-100);--jds-badge-color:var(--jds-color-neutral-400);">Neutral</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Offer</jds-badge>
+        <jds-badge style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Winner</jds-badge>
+      </p>
 
-      <jds-icon name="close"></jds-icon>
-      <jds-button>Primary Button</jds-button>
-      <jds-button variant="secondary">Secondary Button</jds-button>
-      <jds-button variant="tertiary">Tertiary Button</jds-button>
+      <p>
+        <jds-icon name="close"></jds-icon>
+      </p>
 
-      <jds-button size="large">Button</jds-button>
-      <jds-button size="medium">Button</jds-button>
+      <p>
+        <jds-button>Primary Button</jds-button>
+        <jds-button variant="secondary">Secondary Button</jds-button>
+        <jds-button variant="tertiary">Tertiary Button</jds-button>
+      </p>
+
+      <p>
+        <jds-button size="large">Button</jds-button>
+        <jds-button size="medium">Button</jds-button>
+      </p>
+
       <jds-button size="large" icon="alert-fill">Primary Button</jds-button>
       <jds-button size="medium" icon="alert-line">Primary Button</jds-button>
       <jds-button size="small" icon="facebook">Primary Button</jds-button>
 
-      <jds-spinner></jds-spinner>
-      <jds-button variant="secondary" id="open-dialog-button">打开弹窗</jds-button>
+      <p>
+        <jds-spinner></jds-spinner>
+      </p>
 
+      <p>
+        <jds-button variant="secondary" id="open-dialog-button">打开弹窗</jds-button>
+      </p>
       <jds-dialog id="dl-basic" caption="Use location service?">
         <div>
           Let us help determine location. This means sending anonymous location data to us.
@@ -89,55 +116,180 @@
         <jds-button variant="primary" size="large">Agree</jds-button>
       </jds-dialog>
 
-      <jds-toast icon>Info Variant</jds-toast>
-      <jds-toast variant="warning" icon>Warning Variant</jds-toast>
-      <jds-toast variant="success" icon>Success Variant</jds-toast>
-      <jds-toast variant="success" countdownTime="5" icon>Success Variant</jds-toast>
-      <jds-toast variant="danger" icon>Danger Variant</jds-toast>
-      <jds-toast variant="danger">Danger Text
-        <jds-button slot="action">Action Link</jds-button>
-        <jds-button slot="action-secondary">Action Link</jds-button>
-      </jds-toast>
+      <h2>Toast</h2>
+      <section>
+        <jds-toast icon>Info Variant</jds-toast>
+        <jds-toast variant="warning" icon>Warning Variant</jds-toast>
+        <jds-toast variant="success" icon>Success Variant</jds-toast>
+        <jds-toast variant="success" countdownTime="5" icon>Success Variant</jds-toast>
+        <jds-toast variant="danger" icon>Danger Variant</jds-toast>
+        <jds-toast variant="danger">Danger Text
+          <jds-button slot="action">Action Link</jds-button>
+          <jds-button slot="action-secondary">Action Link</jds-button>
+        </jds-toast>
+      </section>
 
       <h2>Tooltip</h2>
-      <jds-tooltip placement="top-start"><jds-button slot="tooltip-trigger">top-start</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="top"><jds-button slot="tooltip-trigger">top</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="top-end"><jds-button slot="tooltip-trigger">top-end</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="bottom-start"><jds-button slot="tooltip-trigger">bottom-start</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="bottom"><jds-button slot="tooltip-trigger">bottom</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="bottom-end"><jds-button slot="tooltip-trigger">bottom-end</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="left-start"><jds-button slot="tooltip-trigger">left-start</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="left"><jds-button slot="tooltip-trigger">left</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="left-end"><jds-button slot="tooltip-trigger">left-end</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="right-start"><jds-button slot="tooltip-trigger">right-start</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="right"><jds-button slot="tooltip-trigger">right</jds-button> You can use this section to cancel your order.</jds-tooltip>
-      <jds-tooltip placement="right-end"><jds-button slot="tooltip-trigger">right-end</jds-button> <div><h2 style="color:red;">You can use this section to cancel your order.</h2></div></jds-tooltip>
+      <section>
+        <jds-tooltip placement="top-start">
+          <jds-button slot="tooltip-trigger">top-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="top">
+          <jds-button slot="tooltip-trigger">top</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+        <jds-tooltip placement="top-end">
+          <jds-button slot="tooltip-trigger">top-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="bottom-start">
+          <jds-button slot="tooltip-trigger">bottom-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="bottom">
+          <jds-button slot="tooltip-trigger">bottom</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="bottom-end">
+          <jds-button slot="tooltip-trigger">bottom-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="left-start">
+          <jds-button slot="tooltip-trigger">left-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="left">
+          <jds-button slot="tooltip-trigger">left</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="left-end">
+          <jds-button slot="tooltip-trigger">left-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="right-start">
+          <jds-button slot="tooltip-trigger">right-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="right">
+          <jds-button slot="tooltip-trigger">right</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+
+        <jds-tooltip placement="right-end">
+          <jds-button slot="tooltip-trigger">right-end</jds-button>
+          <h5 style="color: var(--jds-color-warning);">You can use this section to cancel your order.</h5>
+        </jds-tooltip>
+      </section>
 
       <h2>Tooltip + Popover</h2>
-      <jds-button id="button-13">top-start</jds-button>
-      <jds-popover target="button-13" id="popover-13" placement="top-start" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-14">top</jds-button>
-      <jds-popover target="button-14" id="popover-14" placement="top" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-15">top-end</jds-button>
-      <jds-popover target="button-15" id="popover-15" placement="top-end" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-16">bottom-start</jds-button>
-      <jds-popover target="button-16" id="popover-16" placement="bottom-start" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-17">bottom</jds-button>
-      <jds-popover target="button-17" id="popover-17" placement="bottom" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-18">bottom-end</jds-button>
-      <jds-popover target="button-18" id="popover-18" placement="bottom-end" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-19">left-start</jds-button>
-      <jds-popover target="button-19" id="popover-19" placement="left-start" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-20">left</jds-button>
-      <jds-popover target="button-20" id="popover-20" placement="left" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-21">left-end</jds-button>
-      <jds-popover target="button-21" id="popover-21" placement="left-end" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-22">right-start</jds-button>
-      <jds-popover target="button-22" id="popover-22" placement="right-start" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-23">right</jds-button>
-      <jds-popover target="button-23" id="popover-23" placement="right" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
-      <jds-button id="button-24">right-end</jds-button>
-      <jds-popover target="button-24" id="popover-24" placement="right-end" style="--jds-popover-arrow-display: block;">Popover Content</jds-popover>
+      <section>
+
+        <jds-button id="button-13">top-start</jds-button>
+
+        <jds-popover target="button-13" id="popover-13" placement="top-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-14">top</jds-button>
+
+        <jds-popover target="button-14" id="popover-14" placement="top" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-15">top-end</jds-button>
+
+        <jds-popover target="button-15" id="popover-15" placement="top-end" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-16">bottom-start</jds-button>
+
+        <jds-popover target="button-16" id="popover-16" placement="bottom-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-17">bottom</jds-button>
+
+        <jds-popover target="button-17" id="popover-17" placement="bottom" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-18">bottom-end</jds-button>
+
+        <jds-popover target="button-18" id="popover-18" placement="bottom-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-19">left-start</jds-button>
+
+        <jds-popover target="button-19" id="popover-19" placement="left-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-20">left</jds-button>
+
+        <jds-popover target="button-20" id="popover-20" placement="left" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-21">left-end</jds-button>
+
+        <jds-popover target="button-21" id="popover-21" placement="left-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-22">right-start</jds-button>
+
+        <jds-popover target="button-22" id="popover-22" placement="right-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-23">right</jds-button>
+
+        <jds-popover target="button-23" id="popover-23" placement="right" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-24">right-end</jds-button>
+
+        <jds-popover target="button-24" id="popover-24" placement="right-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+      </section>
 
       <script>
         document.getElementById('open-dialog-button').addEventListener('click', function () {
