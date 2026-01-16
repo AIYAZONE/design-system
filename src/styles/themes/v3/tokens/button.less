@@ -1,5 +1,6 @@
 jds-button {
   // V3 主题：按钮默认主色与悬浮色，供组件作为基础样式消费
+  --jds-btn-line-height: 1;
   --jds-btn-main-color: var(--jds-color-primary-button);
   --jds-btn-main-hover-color: var(--jds-color-primary-button-hover);
   --jds-btn-text-hover-color: var(--jds-color-white);
@@ -86,7 +87,7 @@ jds-button[kind="custom"][variant="text"] {
     --jds-btn-padding-horizontal: var(--jds-size-40);
     --jds-btn-margin-icon: var(--jds-size-8);
     --jds-btn-icon-size: var(--jds-size-16);
-    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-20) / calc(var(--jds-font-size-20) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-20) / var(--jds-btn-line-height) var(--jds-font-family);
     --jds-btn-height: var(--jds-size-48);
     --jds-btn-max-width: 680px;
 
@@ -94,19 +95,19 @@ jds-button[kind="custom"][variant="text"] {
     --jds-btn-extra-padding-vertical: var(--jds-size-16);
     --jds-btn-extra-padding-horizontal: var(--jds-size-40);
     --jds-btn-extra-margin-icon: var(--jds-size-8);
-    --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-size-22) / calc(var(--jds-size-22) + var(--jds-size-8)) var(--jds-font-family);
+    --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-size-22) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-large-height: var(--jds-size-48);
     --jds-btn-large-padding-vertical: var(--jds-size-12);
     --jds-btn-large-padding-horizontal: var(--jds-size-40);
     --jds-btn-large-margin-icon: var(--jds-size-8);
-    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-20) / calc(var(--jds-font-size-20) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-20) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-medium-height: var(--jds-size-36);
     --jds-btn-medium-padding-vertical: var(--jds-size-8);
     --jds-btn-medium-padding-horizontal: var(--jds-size-24);
     --jds-btn-medium-margin-icon: var(--jds-size-8);
-    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-16) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-small-height: var(--jds-size-24);
     --jds-btn-small-padding-vertical: var(--jds-size-4);
@@ -117,8 +118,8 @@ jds-button[kind="custom"][variant="text"] {
     --jds-btn-icon-only-icon-size: var(--jds-size-24);
     --jds-btn-icon-only-extra-icon-size: var(--jds-size-24);
     --jds-btn-icon-only-small-icon-size: var(--jds-size-16);
-    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
-    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-14) / calc(var(--jds-font-size-14) + var(--jds-size-2)) var(--jds-font-family);
+    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-16) / var(--jds-btn-line-height) var(--jds-font-family);
+    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-14) / var(--jds-btn-line-height) var(--jds-font-family);
   }
 
   jds-button[size="extra"] {
@@ -143,7 +144,7 @@ jds-button[kind="custom"][variant="text"] {
     --jds-btn-padding-vertical: var(--jds-size-24);
     --jds-btn-padding-horizontal: var(--jds-size-36);
     --jds-btn-margin-icon: var(--jds-size-16);
-    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-32) / calc(var(--jds-font-size-32) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-font: var(--jds-font-semibold) var(--jds-font-size-32) / var(--jds-btn-line-height) var(--jds-font-family);
     --jds-btn-max-width: 686px;
 
     --jds-btn-extra-height: var(--jds-size-94);
@@ -151,27 +152,27 @@ jds-button[kind="custom"][variant="text"] {
     --jds-btn-extra-padding-vertical: var(--jds-size-32);
     --jds-btn-extra-padding-horizontal: var(--jds-size-36);
     --jds-btn-extra-margin-icon: var(--jds-size-16);
-    --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-font-size-40) / calc(var(--jds-font-size-40) + var(--jds-size-8)) var(--jds-font-family);
+    --jds-btn-extra-font: var(--jds-font-semibold) var(--jds-font-size-40) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-large-height: var(--jds-size-80);
     --jds-btn-large-padding-vertical: var(--jds-size-24);
     --jds-btn-large-padding-horizontal: var(--jds-size-36);
     --jds-btn-large-margin-icon: var(--jds-size-8);
-    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-16) / calc(var(--jds-font-size-16) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-large-font: var(--jds-font-semibold) var(--jds-font-size-16) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-medium-height: var(--jds-size-68);
     --jds-btn-medium-padding-vertical: var(--jds-size-20);
     --jds-btn-medium-padding-horizontal: var(--jds-size-36);
     --jds-btn-medium-margin-icon: var(--jds-size-8);
-    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-14) / calc(var(--jds-font-size-14) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-medium-font: var(--jds-font-semibold) var(--jds-font-size-14) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-small-height: var(--jds-size-50);
     --jds-btn-small-padding-vertical: var(--jds-size-16);
     --jds-btn-small-padding-horizontal: var(--jds-size-32);
     --jds-btn-small-margin-icon: var(--jds-size-8);
     --jds-btn-small-icon-size: var(--jds-size-28);
-    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-24) / calc(var(--jds-font-size-24) + var(--jds-size-4)) var(--jds-font-family);
-    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-24) / calc(var(--jds-font-size-24) + var(--jds-size-4)) var(--jds-font-family);
+    --jds-btn-small-font: var(--jds-font-semibold) var(--jds-font-size-24) / var(--jds-btn-line-height) var(--jds-font-family);
+    --jds-btn-small-text-font: var(--jds-font-regular) var(--jds-font-size-24) / var(--jds-btn-line-height) var(--jds-font-family);
 
     --jds-btn-icon-only-icon-size: var(--jds-size-48);
     --jds-btn-icon-only-extra-icon-size: var(--jds-size-48);
