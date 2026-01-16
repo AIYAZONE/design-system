@@ -12,7 +12,7 @@ export type ToastVariant = "info" | "warning" | "success" | "danger";
  */
 
 @customElement("jds-toast")
-export default class JdsToast extends LitElement {
+export class JdsToast extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   /**
@@ -230,6 +230,8 @@ export default class JdsToast extends LitElement {
     `;
   }
 }
+
+export default JdsToast;
 
 declare global {
   interface HTMLElementTagNameMap {
