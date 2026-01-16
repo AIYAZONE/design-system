@@ -2,6 +2,7 @@ export default {
   "close": "关闭 取消 退出 结束 终止 完成 停止 中止 叉号 cross shut end terminate conclude finish complete cease suspend halt close down close up cancel x dismiss exit",
   "close-fill": "关闭 取消 退出 结束 终止 完成 停止 中止 叉号填充 cross filled shut end terminate conclude finish complete cease suspend halt dismiss exit",
   "close-line": "关闭 取消 退出 结束 终止 完成 停止 中止 叉号线条 cross line shut end terminate conclude finish complete cease suspend halt dismiss exit",
+  "close-square": "关闭 取消 退出 结束 终止 完成 停止 中止 叉号线条 方形 cross line shut end terminate conclude finish complete cease suspend halt dismiss exit square",
   "check": "勾选 确认 验证 检查 对勾 复选框 审核 检验 核实 tick mark confirm check symbol checkbox verification validation examination inspection approve accept success done",
   "check-fill": "勾选 确认 验证 检查 对勾填充 复选框 审核 检验 核实 tick mark filled confirm check box verification validation examination inspection approve accept success done",
   "check-line": "勾选 确认 验证 检查 对勾线条 复选框 审核 检验 核实 tick mark line confirm check box verification validation examination inspection approve accept success done",
