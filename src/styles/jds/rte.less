@@ -16,6 +16,7 @@
   overflow-wrap: break-word;
   /* 中文不换行，英文按空格换行 */
   word-break: keep-all;
+  line-height: normal;
 
   // 默认Medium字重
   .jds-b1-style();
@@ -73,6 +74,10 @@
   em,
   i {
     font-style: normal;
+  }
+
+  *:last-child {
+    line-height: normal;
   }
 
   // 可选，Regular标准字重
