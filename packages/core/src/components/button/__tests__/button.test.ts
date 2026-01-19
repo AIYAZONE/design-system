@@ -82,10 +82,10 @@ describe("jds-button", () => {
     expect(submitSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("orders icon before text when iconPosition=start", async () => {
+  it("orders icon before text when iconPosition=prev", async () => {
     const el = createButton();
     el.setAttribute("icon", "star-fill");
-    el.setAttribute("iconPosition", "start");
+    el.setAttribute("iconPosition", "prev");
     el.textContent = "Label";
     const root = await getRoot(el);
     const button = root.querySelector("button") || root.querySelector("a")!;

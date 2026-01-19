@@ -72,10 +72,10 @@ export class JdsButton extends LitElement {
   icon?: string;
 
   /**
-   * 图标位置：start（文本前）/ end（文本后）
+   * 图标位置：prev（文本前）/ next（文本后）
    */
   @property({ reflect: true })
-  iconPosition: "start" | "end" = "end";
+  iconPosition: "prev" | "next" = "next";
 
   /**
    * 链接目标
@@ -271,7 +271,7 @@ export class JdsButton extends LitElement {
     const iconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
     const labelSlot = html`<span class="label" part="label">${label}</span>`;
     const slots =
-      this.iconPosition === "start"
+      this.iconPosition === "prev"
         ? html`${iconSlot}${labelSlot}`
         : html`${labelSlot}${iconSlot}`;
     const classes = classMap({
