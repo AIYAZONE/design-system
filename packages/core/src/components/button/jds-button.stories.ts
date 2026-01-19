@@ -13,7 +13,7 @@ interface ButtonProps {
   href: any;
   target: any;
   icon: any;
-  iconPosition?: "start" | "end";
+  iconPosition?: "prev" | "next";
   content: any;
   style: any;
   type?: string;
@@ -104,10 +104,10 @@ const meta = {
       table: { defaultValue: { summary: "-" }, category: "基础" },
     },
     iconPosition: {
-      options: ["start", "end"],
-      description: "图标位置：start（文本前）/ end（文本后），默认 end",
+      options: ["prev", "next"],
+      description: "图标位置：prev（文本前）/ next（文本后），默认 next",
       control: { type: "select" },
-      table: { defaultValue: { summary: "end" }, category: "基础" },
+      table: { defaultValue: { summary: "next" }, category: "基础" },
     },
     target: { table: { disable: true, category: "高级" } },
     style: {
