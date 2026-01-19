@@ -45,7 +45,7 @@ const meta = {
     kind: {
       options: ["default", "neutral", "success", "danger", "custom"],
       description:
-        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-btn-custom-color, 当按钮变体为primary时还可传入--jds-btn-primary-custom-text颜色）",
+        "设置按钮的种类，当设置为custom时，使用自定义颜色样式（--jds-btn-custom-color, 当按钮变体为primary时还可传入--jds-btn-primary-custom-text-color）",
       default: "default",
       control: { type: "select" },
       table: {
