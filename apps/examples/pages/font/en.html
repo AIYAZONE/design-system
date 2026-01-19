@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="./font-test.css">
   <script type="module" src="/main.ts"></script>
 </head>
+
 <body>
   <div class="container">
     <header class="header">
@@ -23,253 +25,267 @@
     <main class="font-test">
       <!-- Typography Hierarchy Test -->
       <section class="typography-section">
-      <h1 class="jds-h1">Heading 1</h1>
-      <h2 class="jds-h2">Heading 2</h2>
-      <h3 class="jds-h3">Heading 3</h3>
-      <h4 class="jds-h4">Heading 4</h4>
-      <h5 class="jds-h5">Heading 5</h5>
-      <h6 class="jds-h6">Heading 6</h6>
-    </section>
+        <h1 class="jds-h1">Heading 1</h1>
+        <h2 class="jds-h2">Heading 2</h2>
+        <h3 class="jds-h3">Heading 3</h3>
+        <h4 class="jds-h4">Heading 4</h4>
+        <h5 class="jds-h5">Heading 5</h5>
+        <h6 class="jds-h6">Heading 6</h6>
+      </section>
 
-    <!-- Content Section -->
-    <section class="content-section">
-      <h2>Product Introduction</h2>
-      <p class="body-text">
-        Jackery specializes in developing and manufacturing portable power stations and solar panels.
-        Our products provide reliable power solutions for outdoor adventures, emergency situations,
-        and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
-        you to explore the world with confidence.
-      </p>
+      <section class="typography-section">
+        <h1 class="jds-h1 lg:jds-h1">Heading 1</h1>
+        <h2 class="jds-h3 lg:jds-h2">Heading 2</h2>
+        <h3 class="jds-h4 lg:jds-h3">Heading 3</h3>
+        <h4 class="jds-h4 lg:jds-h4">Heading 4</h4>
+        <h5 class="jds-h6 lg:jds-h5">Heading 5</h5>
+        <h6 class="jds-h1 lg:jds-h6">Heading 6</h6>
+      </section>
 
-      <div class="feature-list">
-        <h3>Key Features</h3>
-        <ul>
-          <li>High-performance lithium-ion battery technology</li>
-          <li>Lightweight and compact design</li>
-          <li>Safety-focused engineering</li>
-          <li>Multiple output ports for versatility</li>
-          <li>Solar charging compatibility</li>
-          <li>Fast charging capabilities</li>
-          <li>Quiet operation</li>
-        </ul>
-      </div>
-    </section>
+      <!-- Content Section -->
+      <section class="content-section">
+        <h2>Product Introduction</h2>
+        <p class="body-text">
+          Jackery specializes in developing and manufacturing portable power stations and solar panels.
+          Our products provide reliable power solutions for outdoor adventures, emergency situations,
+          and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
+          you to explore the world with confidence.
+        </p>
 
-    <!-- Font Weight Test -->
-    <section class="font-weight-section">
-      <h3>Font Weight Test</h3>
-      <p style="font-weight: 400;">Regular (400) - Portable Solar Generator</p>
-      <p style="font-weight: 500;">Medium (500) - Portable Solar Generator</p>
-      <p style="font-weight: 600;">SemiBold (600) - Portable Solar Generator</p>
-      <p style="font-weight: 700;">Bold (700) - Portable Solar Generator</p>
-    </section>
-
-    <!-- Special Characters Test -->
-    <section class="special-chars-section">
-      <h3>Numbers & Special Characters Test</h3>
-      <p>Numbers: 0123456789</p>
-      <p>Price: $999.99 (USD)</p>
-      <p>Capacity: 1,002Wh / 278,400mAh</p>
-      <p>Output: AC110V/1000W (Peak 2000W)</p>
-      <p>Symbols: !@#$%^&*()_+-=[]{}|;':",./ >?</p>
-      <p>Currency: $€£¥₹₽₩</p>
-    </section>
-
-    <!-- Components Test -->
-    <section class="components-section">
-      <h3>Design System Components</h3>
-
-      <!-- Button Test -->
-      <div class="button-group">
-        <h4>Buttons</h4>
-        <jds-button size="large">View Details</jds-button>
-        <jds-button size="medium" variant="secondary">Add to Cart</jds-button>
-        <jds-button size="small" variant="outline">Add to Wishlist</jds-button>
-        <jds-button loading>Loading...</jds-button>
-        <jds-button disabled>Disabled</jds-button>
-      </div>
-
-      <!-- Badge Test -->
-      <div class="badge-group">
-        <h4>Badges</h4>
-        <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In Progress</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-info-contrast);--jds-badge-color:var(--jds-color-info);">New</jds-badge>
-      </div>
-
-      <!-- Toast Test -->
-      <div class="toast-group">
-        <h4>Toast Notifications</h4>
-        <jds-toast variant="success" icon>Success Message</jds-toast>
-        <jds-toast variant="warning" icon>Warning Message</jds-toast>
-        <jds-toast variant="danger" icon>Error Message</jds-toast>
-        <jds-toast variant="info" icon>Information Message</jds-toast>
-      </div>
-
-      <!-- Tooltip Test -->
-      <div class="tooltip-group">
-        <h4>Tooltips</h4>
-        <jds-tooltip placement="top">
-          <jds-button slot="tooltip-trigger">Top Tooltip</jds-button>
-          This will show detailed product information.
-        </jds-tooltip>
-
-        <jds-tooltip placement="bottom">
-          <jds-button slot="tooltip-trigger">Bottom Tooltip</jds-button>
-          Please review before purchasing.
-        </jds-tooltip>
-
-        <jds-tooltip placement="left">
-          <jds-button slot="tooltip-trigger">Left Tooltip</jds-button>
-          Additional specifications available.
-        </jds-tooltip>
-
-        <jds-tooltip placement="right">
-          <jds-button slot="tooltip-trigger">Right Tooltip</jds-button>
-          Contact support for assistance.
-        </jds-tooltip>
-      </div>
-
-      <!-- Dialog Test -->
-      <div class="dialog-group">
-        <h4>Dialog</h4>
-        <jds-button id="open-dialog-btn-en">Open Dialog</jds-button>
-        <jds-dialog id="test-dialog-en" title="Product Information">
-          <h4>Jackery Explorer 1000 Pro</h4>
-          <p>High-performance portable power station perfect for outdoor adventures and emergency backup.</p>
+        <div class="feature-list">
+          <h3>Key Features</h3>
           <ul>
-            <li>1002Wh Capacity</li>
-            <li>1000W AC Output</li>
-            <li>Multiple Charging Options</li>
-            <li>LCD Display</li>
+            <li>High-performance lithium-ion battery technology</li>
+            <li>Lightweight and compact design</li>
+            <li>Safety-focused engineering</li>
+            <li>Multiple output ports for versatility</li>
+            <li>Solar charging compatibility</li>
+            <li>Fast charging capabilities</li>
+            <li>Quiet operation</li>
           </ul>
-          <jds-button slot="footer" variant="primary">Purchase Now</jds-button>
-          <jds-button slot="footer" variant="secondary">Cancel</jds-button>
-        </jds-dialog>
-      </div>
+        </div>
+      </section>
 
-      <!-- Spinner Test -->
-      <div class="spinner-group">
-        <h4>Loading Spinners</h4>
-        <jds-spinner></jds-spinner>
-        <jds-spinner size="24px"></jds-spinner>
-        <jds-spinner size="32px"></jds-spinner>
-      </div>
-    </section>
+      <!-- Font Weight Test -->
+      <section class="font-weight-section">
+        <h3>Font Weight Test</h3>
+        <p style="font-weight: 400;">Regular (400) - Portable Solar Generator</p>
+        <p style="font-weight: 500;">Medium (500) - Portable Solar Generator</p>
+        <p style="font-weight: 600;">SemiBold (600) - Portable Solar Generator</p>
+        <p style="font-weight: 700;">Bold (700) - Portable Solar Generator</p>
+      </section>
 
-    <!-- Product Cards Section -->
-    <section class="product-cards-section">
-      <h3>Product Lineup</h3>
-      <div class="product-grid">
-        <div class="product-card">
-          <h4>Explorer 1000 Pro</h4>
-          <p class="price">$999.99</p>
-          <p class="capacity">Capacity: 1,002Wh</p>
-          <p class="description">High-performance battery, lightweight and compact design</p>
-          <div class="card-actions">
-            <jds-button size="small">View Details</jds-button>
-            <jds-button size="small" variant="outline">Compare</jds-button>
+      <!-- Special Characters Test -->
+      <section class="special-chars-section">
+        <h3>Numbers & Special Characters Test</h3>
+        <p>Numbers: 0123456789</p>
+        <p>Price: $999.99 (USD)</p>
+        <p>Capacity: 1,002Wh / 278,400mAh</p>
+        <p>Output: AC110V/1000W (Peak 2000W)</p>
+        <p>Symbols: !@#$%^&*()_+-=[]{}|;':",./ >?</p>
+        <p>Currency: $€£¥₹₽₩</p>
+      </section>
+
+      <!-- Components Test -->
+      <section class="components-section">
+        <h3>Design System Components</h3>
+
+        <!-- Button Test -->
+        <div class="button-group">
+          <h4>Buttons</h4>
+          <jds-button size="large">View Details</jds-button>
+          <jds-button size="medium" variant="secondary">Add to Cart</jds-button>
+          <jds-button size="small" variant="outline">Add to Wishlist</jds-button>
+          <jds-button loading>Loading...</jds-button>
+          <jds-button disabled>Disabled</jds-button>
+        </div>
+
+        <!-- Badge Test -->
+        <div class="badge-group">
+          <h4>Badges</h4>
+          <jds-badge style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">In
+            Progress</jds-badge>
+          <jds-badge
+            style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Approved</jds-badge>
+          <jds-badge
+            style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
+          <jds-badge
+            style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Denied</jds-badge>
+          <jds-badge
+            style="--jds-badge-bg-color:var(--jds-color-info-contrast);--jds-badge-color:var(--jds-color-info);">New</jds-badge>
+        </div>
+
+        <!-- Toast Test -->
+        <div class="toast-group">
+          <h4>Toast Notifications</h4>
+          <jds-toast variant="success" icon>Success Message</jds-toast>
+          <jds-toast variant="warning" icon>Warning Message</jds-toast>
+          <jds-toast variant="danger" icon>Error Message</jds-toast>
+          <jds-toast variant="info" icon>Information Message</jds-toast>
+        </div>
+
+        <!-- Tooltip Test -->
+        <div class="tooltip-group">
+          <h4>Tooltips</h4>
+          <jds-tooltip placement="top">
+            <jds-button slot="tooltip-trigger">Top Tooltip</jds-button>
+            This will show detailed product information.
+          </jds-tooltip>
+
+          <jds-tooltip placement="bottom">
+            <jds-button slot="tooltip-trigger">Bottom Tooltip</jds-button>
+            Please review before purchasing.
+          </jds-tooltip>
+
+          <jds-tooltip placement="left">
+            <jds-button slot="tooltip-trigger">Left Tooltip</jds-button>
+            Additional specifications available.
+          </jds-tooltip>
+
+          <jds-tooltip placement="right">
+            <jds-button slot="tooltip-trigger">Right Tooltip</jds-button>
+            Contact support for assistance.
+          </jds-tooltip>
+        </div>
+
+        <!-- Dialog Test -->
+        <div class="dialog-group">
+          <h4>Dialog</h4>
+          <jds-button id="open-dialog-btn-en">Open Dialog</jds-button>
+          <jds-dialog id="test-dialog-en" title="Product Information">
+            <h4>Jackery Explorer 1000 Pro</h4>
+            <p>High-performance portable power station perfect for outdoor adventures and emergency backup.</p>
+            <ul>
+              <li>1002Wh Capacity</li>
+              <li>1000W AC Output</li>
+              <li>Multiple Charging Options</li>
+              <li>LCD Display</li>
+            </ul>
+            <jds-button slot="footer" variant="primary">Purchase Now</jds-button>
+            <jds-button slot="footer" variant="secondary">Cancel</jds-button>
+          </jds-dialog>
+        </div>
+
+        <!-- Spinner Test -->
+        <div class="spinner-group">
+          <h4>Loading Spinners</h4>
+          <jds-spinner></jds-spinner>
+          <jds-spinner size="24px"></jds-spinner>
+          <jds-spinner size="32px"></jds-spinner>
+        </div>
+      </section>
+
+      <!-- Product Cards Section -->
+      <section class="product-cards-section">
+        <h3>Product Lineup</h3>
+        <div class="product-grid">
+          <div class="product-card">
+            <h4>Explorer 1000 Pro</h4>
+            <p class="price">$999.99</p>
+            <p class="capacity">Capacity: 1,002Wh</p>
+            <p class="description">High-performance battery, lightweight and compact design</p>
+            <div class="card-actions">
+              <jds-button size="small">View Details</jds-button>
+              <jds-button size="small" variant="outline">Compare</jds-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>Explorer 2000 Pro</h4>
+            <p class="price">$1,999.99</p>
+            <p class="capacity">Capacity: 2,160Wh</p>
+            <p class="description">Large capacity for extended usage</p>
+            <div class="card-actions">
+              <jds-button size="small">View Details</jds-button>
+              <jds-button size="small" variant="outline">Compare</jds-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>SolarSaga 100W</h4>
+            <p class="price">$299.99</p>
+            <p class="capacity">Output: 100W</p>
+            <p class="description">High-efficiency solar panel</p>
+            <div class="card-actions">
+              <jds-button size="small">View Details</jds-button>
+              <jds-button size="small" variant="outline">Compare</jds-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>Explorer 300 Plus</h4>
+            <p class="price">$349.99</p>
+            <p class="capacity">Capacity: 288Wh</p>
+            <p class="description">Compact and portable for everyday use</p>
+            <div class="card-actions">
+              <jds-button size="small">View Details</jds-button>
+              <jds-button size="small" variant="outline">Compare</jds-button>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="product-card">
-          <h4>Explorer 2000 Pro</h4>
-          <p class="price">$1,999.99</p>
-          <p class="capacity">Capacity: 2,160Wh</p>
-          <p class="description">Large capacity for extended usage</p>
-          <div class="card-actions">
-            <jds-button size="small">View Details</jds-button>
-            <jds-button size="small" variant="outline">Compare</jds-button>
+      <!-- Text Styles Section -->
+      <section class="text-styles-section">
+        <h3>Text Styles & Formatting</h3>
+        <div class="text-samples">
+          <p><strong>Bold text:</strong> This is important information about our products.</p>
+          <p><em>Italic text:</em> Emphasis on key features and benefits.</p>
+          <p><u>Underlined text:</u> Special offers and promotions.</p>
+          <p><code>Code text:</code> Technical specifications and model numbers.</p>
+          <p><small>Small text:</small> Additional terms and conditions apply.</p>
+        </div>
+
+        <blockquote>
+          "Jackery has revolutionized portable power with their innovative design and reliable performance.
+          Perfect for camping, RV trips, and emergency preparedness."
+          <cite>- Customer Review</cite>
+        </blockquote>
+      </section>
+
+      <!-- Link Styles Test -->
+      <section class="link-section">
+        <h3>Link Styles</h3>
+        <p>
+          <a href="#">Learn more about Jackery products</a> and explore our
+          <a href="#">support resources</a>. Visit our <a href="#">online store</a>
+          for the latest deals and <a href="#">customer testimonials</a>.
+        </p>
+
+        <div class="link-variations">
+          <a href="#" class="primary-link">Primary Link</a>
+          <a href="#" class="secondary-link">Secondary Link</a>
+          <a href="#" class="external-link">External Link ↗</a>
+        </div>
+      </section>
+
+      <!-- Form Elements Test -->
+      <section class="form-section">
+        <h3>Form Elements (Typography Test)</h3>
+        <form class="test-form">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" placeholder="Enter your full name">
+
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" placeholder="your.email@example.com">
+
+          <label for="product">Product Interest:</label>
+          <select id="product">
+            <option>Select a product</option>
+            <option>Explorer 1000 Pro</option>
+            <option>Explorer 2000 Pro</option>
+            <option>SolarSaga 100W</option>
+          </select>
+
+          <label for="message">Message:</label>
+          <textarea id="message" placeholder="Tell us about your power needs..."></textarea>
+
+          <div class="form-actions">
+            <jds-button type="submit">Submit Inquiry</jds-button>
+            <jds-button variant="secondary" type="reset">Reset Form</jds-button>
           </div>
-        </div>
-
-        <div class="product-card">
-          <h4>SolarSaga 100W</h4>
-          <p class="price">$299.99</p>
-          <p class="capacity">Output: 100W</p>
-          <p class="description">High-efficiency solar panel</p>
-          <div class="card-actions">
-            <jds-button size="small">View Details</jds-button>
-            <jds-button size="small" variant="outline">Compare</jds-button>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <h4>Explorer 300 Plus</h4>
-          <p class="price">$349.99</p>
-          <p class="capacity">Capacity: 288Wh</p>
-          <p class="description">Compact and portable for everyday use</p>
-          <div class="card-actions">
-            <jds-button size="small">View Details</jds-button>
-            <jds-button size="small" variant="outline">Compare</jds-button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Text Styles Section -->
-    <section class="text-styles-section">
-      <h3>Text Styles & Formatting</h3>
-      <div class="text-samples">
-        <p><strong>Bold text:</strong> This is important information about our products.</p>
-        <p><em>Italic text:</em> Emphasis on key features and benefits.</p>
-        <p><u>Underlined text:</u> Special offers and promotions.</p>
-        <p><code>Code text:</code> Technical specifications and model numbers.</p>
-        <p><small>Small text:</small> Additional terms and conditions apply.</p>
-      </div>
-
-      <blockquote>
-        "Jackery has revolutionized portable power with their innovative design and reliable performance.
-        Perfect for camping, RV trips, and emergency preparedness."
-        <cite>- Customer Review</cite>
-      </blockquote>
-    </section>
-
-    <!-- Link Styles Test -->
-    <section class="link-section">
-      <h3>Link Styles</h3>
-      <p>
-        <a href="#">Learn more about Jackery products</a> and explore our
-        <a href="#">support resources</a>. Visit our <a href="#">online store</a>
-        for the latest deals and <a href="#">customer testimonials</a>.
-      </p>
-
-      <div class="link-variations">
-        <a href="#" class="primary-link">Primary Link</a>
-        <a href="#" class="secondary-link">Secondary Link</a>
-        <a href="#" class="external-link">External Link ↗</a>
-      </div>
-    </section>
-
-    <!-- Form Elements Test -->
-    <section class="form-section">
-      <h3>Form Elements (Typography Test)</h3>
-      <form class="test-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" placeholder="Enter your full name">
-
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" placeholder="your.email@example.com">
-
-        <label for="product">Product Interest:</label>
-        <select id="product">
-          <option>Select a product</option>
-          <option>Explorer 1000 Pro</option>
-          <option>Explorer 2000 Pro</option>
-          <option>SolarSaga 100W</option>
-        </select>
-
-        <label for="message">Message:</label>
-        <textarea id="message" placeholder="Tell us about your power needs..."></textarea>
-
-        <div class="form-actions">
-          <jds-button type="submit">Submit Inquiry</jds-button>
-          <jds-button variant="secondary" type="reset">Reset Form</jds-button>
-        </div>
-      </form>
-    </section>
+        </form>
+      </section>
     </main>
   </div>
 
@@ -281,4 +297,5 @@
     });
   </script>
 </body>
+
 </html>

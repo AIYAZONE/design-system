@@ -159,7 +159,7 @@
   .jds-b1-style();
 }
 
-.jds-b1.font-regular ,
+.jds-b1.font-regular,
 .jds-b1.font-normal {
   .jds-b1-regular-style();
 }
@@ -199,4 +199,74 @@
 
 .jds-display-3 {
   .jds-display-3-style();
+}
+
+// PC端样式，使用tailwindcss的响应式类名
+@media screen and (min-width:1024px) {
+  .lg\:jds-h1 {
+    .jds-h1-style();
+  }
+
+  .lg\:jds-h2 {
+    .jds-h2-style();
+  }
+
+  .lg\:jds-h3 {
+    .jds-h3-style();
+  }
+
+  .lg\:jds-h4 {
+    .jds-h4-style();
+  }
+
+  .lg\:jds-h5 {
+    .jds-h5-style();
+  }
+
+  .lg\:jds-h6 {
+    .jds-h6-style();
+  }
+
+  .lg\:jds-b1 {
+    .jds-b1-style();
+  }
+
+  .lg\:jds-b1.font-regular,
+  .lg\:jds-b1.font-normal {
+    .jds-b1-regular-style();
+  }
+
+  .lg\:jds-b2 {
+    .jds-b2-style();
+  }
+
+  .lg\:jds-b2.font-regular,
+  .lg\:jds-b2.font-normal {
+    .jds-b2-regular-style();
+  }
+
+  .lg\:jds-b3 {
+    .jds-b3-style();
+  }
+
+  .lg\:jds-b3.font-regular,
+  .lg\:jds-b3.font-normal {
+    .jds-b3-regular-style();
+  }
+
+  .lg\:jds-c1 {
+    .jds-c1-style();
+  }
+
+  .lg\:jds-display-1 {
+    .jds-display-1-style();
+  }
+
+  .lg\:jds-display-2 {
+    .jds-display-2-style();
+  }
+
+  .lg\:jds-display-3 {
+    .jds-display-3-style();
+  }
 }
