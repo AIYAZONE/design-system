@@ -13,7 +13,6 @@
 .font-test section {
   display: block;
   width: 100%;
-  margin-bottom: var(--jds-size-24);
   gap: 0;
 }
 
@@ -42,14 +41,6 @@
   max-width: 800px;
 }
 
-.feature-list ul {
-  list-style-type: disc;
-  padding-left: 2rem;
-}
-
-.feature-list li {
-  margin-bottom: var(--jds-size-8);
-}
 
 /* Font Weight Section */
 .font-weight-section p {
