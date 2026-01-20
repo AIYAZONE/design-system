@@ -117,6 +117,7 @@
   .loop(@i: 1) when (@i <=6) {
     @size: extract(@h-sizes, @i);
     --jds-font-h@{i}: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h@{i}-weight: @jds-font-semibold;
     .loop(@i + 1);
   }
 
@@ -127,11 +128,17 @@
   @b2: extract(@b-sizes, 2);
   @b3: extract(@b-sizes, 3);
   --jds-font-b1: @jds-font-regular var(--jds-font-size-@{b1}) / @jds-b-line-height var(--jds-font-family);
+  --jds-font-b1-weight: @jds-font-regular;
+  
   --jds-font-b2: @jds-font-regular var(--jds-font-size-@{b2}) / @jds-b-line-height var(--jds-font-family);
+  --jds-font-b2-weight: @jds-font-regular;
+  
   --jds-font-b3: @jds-font-regular var(--jds-font-size-@{b3}) / @jds-b-line-height var(--jds-font-family);
+  --jds-font-b3-weight: @jds-font-regular;
 
   // 辅助
   --jds-font-c1: @jds-font-regular var(--jds-font-size-@{c-size}) / @jds-c-line-height var(--jds-font-family);
+  --jds-font-c1-weight: @jds-font-regular;
 }
 
 // 桌面端
@@ -147,9 +154,16 @@
     .generate-font-vars(desktop, @h-sizes-desktop, @b-sizes-desktop, 12);
 
     --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-64) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-1-weight: @jds-font-extrabold;
+
     --jds-font-h1: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1-weight: @jds-font-extrabold;  
+    
     --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-2-weight: @jds-font-extrabold;
+
     --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-24) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-3-weight: @jds-font-extrabold; 
   }
 }
 
@@ -166,9 +180,16 @@
     .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
 
     --jds-font-display-1: @jds-font-extrabold var(--jds-font-size-96) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-1-weight: @jds-font-extrabold;
+
     --jds-font-h1: @jds-font-extrabold var(--jds-font-size-72) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-h1-weight: @jds-font-extrabold;
+    
     --jds-font-display-2: var(--jds-font-h1);
+    --jds-font-display-2-weight: @jds-font-extrabold;
+
     --jds-font-display-3: @jds-font-extrabold var(--jds-font-size-48) / @jds-h-line-height var(--jds-font-family);
+    --jds-font-display-3-weight: @jds-font-extrabold;
   }
 }
 

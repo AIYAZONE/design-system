@@ -18,9 +18,6 @@
   word-break: keep-all;
   line-height: normal;
 
-  // 默认Medium字重
-  .jds-b1-style();
-
   ul li {
     list-style: disc;
   }
@@ -54,8 +51,7 @@
   }
 
   p {
-    .jds-b1-style();
-    margin-bottom: var(--jds-size-16);
+    margin-bottom: var(--jds-margin-bottom, var(--jds-size-16));
 
     &:last-child {
       margin-bottom: 0;
@@ -78,16 +74,6 @@
 
   *:last-child {
     line-height: normal;
-  }
-
-  // 可选，Regular标准字重
-  &.font-regular,
-  &.font-normal {
-    .jds-b1-regular-style();
-
-    p {
-      .jds-b1-regular-style();
-    }
   }
 
   @media screen and (min-width: 1024px) {
@@ -117,4 +103,119 @@
     }
   }
 
+}
+
+.jds-rte {
+  .jds-b1-style();
+  font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+  p {
+    .jds-b1-style();
+    font-weight: var(--jds-font-weight, var(--jds-font-medium));
+  }
+
+  // 可选，Regular标准字重
+  &.font-regular,
+  &.font-normal {
+    .jds-b1-regular-style();
+
+    p {
+      .jds-b1-regular-style();
+    }
+  }
+
+  &.jds-rte-b1 {
+    .jds-b1-style();
+    font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+    p {
+      .jds-b1-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .jds-b1-regular-style();
+
+      p {
+        .jds-b1-regular-style();
+      }
+    }
+  }
+
+  &.jds-rte-b2 {
+    .jds-b2-style();
+    font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+    p {
+      .jds-b2-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .jds-b2-regular-style();
+
+      p {
+        .jds-b2-regular-style();
+      }
+    }
+  }
+
+  &.jds-rte-b3 {
+    .jds-b3-style();
+    font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+    p {
+      .jds-b3-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .jds-b3-regular-style();
+
+      p {
+        .jds-b3-regular-style();
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .jds-rte {
+
+    &.lg\:jds-rte-b1 {
+      .jds-b1-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+      p {
+        .jds-b1-style();
+        font-weight: var(--jds-font-weight, var(--jds-font-medium));
+      }
+    }
+
+    &.lg\:jds-rte-b2 {
+      .jds-b2-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+      p {
+        .jds-b2-style();
+        font-weight: var(--jds-font-weight, var(--jds-font-medium));
+      }
+    }
+
+    &.lg\:jds-rte-b3 {
+      .jds-b3-style();
+      font-weight: var(--jds-font-weight, var(--jds-font-medium));
+
+      p {
+        .jds-b3-style();
+        font-weight: var(--jds-font-weight, var(--jds-font-medium));
+      }
+    }
+  }
 }
