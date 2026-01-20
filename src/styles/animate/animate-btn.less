@@ -39,55 +39,46 @@
         display: flex;
       }
 
-      // 特大按钮、大按钮
-      &[size="extra"],
-      &[size="large"] {
+      // 动效混合宏
+      .animate-variant(@padding-left; @margin-left; @btn-size; @icon-size) {
         &:hover::part(button) {
-          --content-color: var(--jds-color-white);
-          --bg-color: var(--jds-color-primary);
+          color: var(--jds-color-white);
+          background-color: var(--jds-color-primary);
           padding-right: var(--jds-size-8);
-          padding-left: var(--jds-size-24);
+          padding-left: calc(var(--jds-btn-padding-horizontal, var(--jds-size-16)) - var(--jds-size-8));
         }
 
         jds-button.only-icon {
-          margin-left: var(--jds-size-8);
+          margin-left: @margin-left;
           transition: all .3s cubic-bezier(.8, 0, .2, 1);
 
           &::part(button) {
-            --height: var(--jds-size-32);
-            --bg-color: var(--main-hover-color);
+            width: @btn-size;
+            height: @btn-size;
+            background-color: var(--jds-animate-only-icon-bg, var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight)));
           }
 
           &::part(icon) {
-            --icon-size: var(--jds-size-16);
+            font-size: @icon-size;
             transition: transform .4s cubic-bezier(.8, 0, .2, 1);
           }
         }
       }
 
+      // 特大按钮、大按钮
+      &[size="extra"],
+      &[size="large"] {
+        .animate-variant(var(--jds-size-24), var(--jds-size-8), var(--jds-size-32), var(--jds-size-16));
+      }
+
       // 中按钮
       &[size="medium"] {
-        &:hover::part(button) {
-          --content-color: var(--jds-color-white);
-          --bg-color: var(--jds-color-primary);
-          padding-right: var(--jds-size-8);
-          padding-left: var(--jds-size-16);
-        }
+        .animate-variant(var(--jds-size-16), var(--jds-size-4), var(--jds-size-24), var(--jds-size-12));
+      }
 
-        jds-button.only-icon {
-          margin-left: var(--jds-size-4);
-          transition: all .3s cubic-bezier(.8, 0, .2, 1);
-
-          &::part(button) {
-            --height: var(--jds-size-24);
-            --bg-color: var(--main-hover-color);
-          }
-
-          &::part(icon) {
-            --icon-size: var(--jds-size-12);
-            transition: transform .4s cubic-bezier(.8, 0, .2, 1);
-          }
-        }
+      // 小按钮
+      &[size="small"] {
+        .animate-variant(var(--jds-size-8), var(--jds-size-2), var(--jds-size-12), var(--jds-size-12));
       }
     }
   }
@@ -98,7 +89,7 @@
 
     // 纯图标按钮
     jds-button.only-icon::part(button) {
-      --icon-size: var(--jds-size-24);
+      font-size: var(--jds-size-24);
     }
 
     // 实心胶囊按钮
@@ -110,4 +101,3 @@
 
   }
 }
-

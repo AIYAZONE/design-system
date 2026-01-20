@@ -9,7 +9,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * @description 用于显示加载状态的旋转图标组件
  */
 @customElement("jds-spinner")
-export default class JdsSpinner extends LitElement {
+export class JdsSpinner extends LitElement {
   // 定义组件的CSS样式
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
@@ -21,7 +21,7 @@ export default class JdsSpinner extends LitElement {
    * 设置加载指示器的大小
    */
   @property({ type: String, reflect: true })
-  size: string = "var(--jds-font-size-14)";
+  size: string = "var(--jds-spinner-size, var(--jds-size-14))";
 
   /**
    * 设置加载指示器的禁用状态
@@ -43,7 +43,8 @@ export default class JdsSpinner extends LitElement {
 
   // 渲染组件的HTML模板
   render(): TemplateResult {
-    return html`<jds-icon
+    return html`<jds-icon 
+      part="spinner"
       class="spinner"
       name="loading"
       style="color: ${this.disabled
@@ -52,6 +53,8 @@ export default class JdsSpinner extends LitElement {
     ></jds-icon>`;
   }
 }
+
+export default JdsSpinner;
 
 // 扩展HTMLElementTagNameMap接口，以便在TypeScript中识别自定义元素
 declare global {
