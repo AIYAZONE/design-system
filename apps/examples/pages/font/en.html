@@ -8,6 +8,16 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="./font-test.css">
   <script type="module" src="/main.ts"></script>
+  <script>
+    // 禁用 Tailwind 的预置 reset（preflight），避免覆盖设计系统基础样式
+    // 需在 CDN 脚本之前声明配置
+    // 参考：https://tailwindcss.com/docs/preflight#disabling-preflight
+    // @ts-ignore
+    window.tailwind = window.tailwind || {};
+    // @ts-ignore
+    window.tailwind.config = { corePlugins: { preflight: false } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -23,56 +33,200 @@
     </header>
 
     <main class="font-test">
-      <!-- Typography Hierarchy Test -->
-      <section class="typography-section">
-        <h1 class="jds-h1">Heading 1</h1>
-        <h2 class="jds-h2">Heading 2</h2>
-        <h3 class="jds-h3">Heading 3</h3>
-        <h4 class="jds-h4">Heading 4</h4>
-        <h5 class="jds-h5">Heading 5</h5>
-        <h6 class="jds-h6">Heading 6</h6>
-      </section>
-
-      <section class="typography-section">
-        <h1 class="jds-h1 lg:jds-h1">Heading 1</h1>
-        <h2 class="jds-h3 lg:jds-h2">Heading 2</h2>
-        <h3 class="jds-h4 lg:jds-h3">Heading 3</h3>
-        <h4 class="jds-h4 lg:jds-h4">Heading 4</h4>
-        <h5 class="jds-h6 lg:jds-h5">Heading 5</h5>
-        <h6 class="jds-h1 lg:jds-h6">Heading 6</h6>
-      </section>
-
-      <!-- Content Section -->
-      <section class="content-section">
-        <h2>Product Introduction</h2>
-        <p class="body-text">
-          Jackery specializes in developing and manufacturing portable power stations and solar panels.
-          Our products provide reliable power solutions for outdoor adventures, emergency situations,
-          and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
-          you to explore the world with confidence.
-        </p>
-
-        <div class="feature-list">
-          <h3>Key Features</h3>
-          <ul>
-            <li>High-performance lithium-ion battery technology</li>
-            <li>Lightweight and compact design</li>
-            <li>Safety-focused engineering</li>
-            <li>Multiple output ports for versatility</li>
-            <li>Solar charging compatibility</li>
-            <li>Fast charging capabilities</li>
-            <li>Quiet operation</li>
-          </ul>
+      <section>
+        <div class="flex flex-wrap gap-8 mb-6">
+          <!-- Typography Hierarchy Test -->
+          <article>
+            <h3 class="jds-h3">字体层级测试</h3>
+            <div class="mb-4 lg:mb-0">
+              <h1 class="jds-display-1">Display 1</h1>
+              <h1 class="jds-display-2">Display 2</h1>
+              <h1 class="jds-h1">Heading 1</h1>
+              <h2 class="jds-h2">Heading 2</h2>
+              <h3 class="jds-h3">Heading 3</h3>
+              <h4 class="jds-h4">Heading 4</h4>
+              <h5 class="jds-h5">Heading 5</h5>
+              <h6 class="jds-h6">Heading 6</h6>
+              <p class="jds-b1">jds-b1 Text</p>
+              <p class="jds-b2">jds-b2 Text</p>
+              <p class="jds-b3">jds-b3 Text</p>
+              <p class="jds-c1">jds-c1 Text</p>
+            </div>
+          </article>
+          <article>
+            <h3 class="jds-h3">响应式类名 jds-h1 lg:jds-h1</h3>
+            <div>
+              <h1 class="jds-display-2 lg:jds-display-1">Display 1</h1>
+              <h1 class="jds-display-1 lg:jds-display-2">Display 2</h1>
+              <h1 class="jds-h1 lg:jds-h1">Heading 1</h1>
+              <h2 class="jds-h3 lg:jds-h2">Heading 2</h2>
+              <h3 class="jds-h4 lg:jds-h3">Heading 3</h3>
+              <h4 class="jds-h4 lg:jds-h4">Heading 4</h4>
+              <h5 class="jds-h6 lg:jds-h5">Heading 5</h5>
+              <h6 class="jds-h1 lg:jds-h6">Heading 6</h6>
+              <p class="jds-b3 lg:jds-b1">jds-b1 Text</p>
+              <p class="jds-b2 lg:jds-b2">jds-b2 Text</p>
+              <p class="jds-b1 lg:jds-b3">jds-b3 Text</p>
+              <p class="jds-b1 lg:jds-c1">jds-c1 Text</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- Font Weight Test -->
-      <section class="font-weight-section">
-        <h3>Font Weight Test</h3>
-        <p style="font-weight: 400;">Regular (400) - Portable Solar Generator</p>
-        <p style="font-weight: 500;">Medium (500) - Portable Solar Generator</p>
-        <p style="font-weight: 600;">SemiBold (600) - Portable Solar Generator</p>
-        <p style="font-weight: 700;">Bold (700) - Portable Solar Generator</p>
+      <!-- Content Section -->
+      <section>
+        <div class="jds-rte mb-4">
+          <h2>富文本类名：jds-rte（默认为jds-rte-b1）</h2>
+          <p>
+            Jackery specializes in developing and manufacturing portable power stations and solar panels.
+            Our products provide reliable power solutions for outdoor adventures, emergency situations,
+            and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
+            you to explore the world with confidence.
+          </p>
+
+          <div>
+            <h1>h1</h1>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+            <ul>
+              <li>High-performance lithium-ion battery technology</li>
+              <li>Lightweight and compact design</li>
+              <li>Safety-focused engineering</li>
+              <li>Multiple output ports for versatility</li>
+              <li>Solar charging compatibility</li>
+              <li>Fast charging capabilities</li>
+              <li>Quiet operation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mb-4">
+          <article class="content-section jds-rte jds-rte-b1">
+            <h3>类名叠加：.jds-rte-b1</h3>
+            <p>
+              Jackery specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="content-section jds-rte jds-rte-b2">
+            <h3>类名叠加：.jds-rte-b2</h3>
+            <p>
+              Jackery specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="content-section jds-rte jds-rte-b3">
+            <h3>类名叠加：.jds-rte-b3</h3>
+            <p>
+              Jackery specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, Jackery empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Font Weight Test -->
+        <h3 class="jds-h3 mb-4">jds-rte使用“--jds-font-weight”属性设置字体重量</h3>
+        <div class="flex flex-wrap gap-4">
+          <article>
+            <article class="jds-rte mb-2" style="--jds-font-weight:400;">
+              <ul>
+                <li>Regular (400) - li style test</li>
+              </ul>
+              <p>Regular (400) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte mb-2" style="--jds-font-weight:500;">
+              <ul>
+                <li>Medium (500) - li style test</li>
+              </ul>
+              <p>Medium (500) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte mb-2" style="--jds-font-weight:600;">
+              <ul>
+                <li>SemiBold (600) - li style test</li>
+              </ul>
+              <p>SemiBold (600) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte mb-2" style="--jds-font-weight:700;">
+              <ul>
+                <li>Bold (700) - li style test</li>
+              </ul>
+              <p>Bold (700) - Portable Solar Generator</p>
+            </article>
+          </article>
+          <article>
+            <article class="jds-rte jds-rte-b3 mb-2" style="--jds-font-weight:400;">
+              <ul>
+                <li>Regular (400) - li style test</li>
+              </ul>
+              <p>Regular (400) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte jds-rte-b2 mb-2" style="--jds-font-weight:500;">
+              <ul>
+                <li>Medium (500) - li style test</li>
+              </ul>
+              <p>Medium (500) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte jds-rte-b2 mb-2" style="--jds-font-weight:600;">
+              <ul>
+                <li>SemiBold (600) - li style test</li>
+              </ul>
+              <p>SemiBold (600) - Portable Solar Generator</p>
+            </article>
+            <article class="jds-rte mb-2" style="--jds-font-weight:700;">
+              <ul>
+                <li>Bold (700) - li style test</li>
+              </ul>
+              <p>Bold (700) - Portable Solar Generator</p>
+            </article>
+          </article>
+        </div>
       </section>
 
       <!-- Special Characters Test -->
