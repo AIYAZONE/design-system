@@ -5,3 +5,7 @@ packages:
   - 'apps/*'
   # 工具链：共享配置、脚本
   - 'tooling/*'
+
+ignoredBuiltDependencies:
+  - esbuild
+  - less

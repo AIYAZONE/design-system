@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 interface CheckboxProps {
   checked: boolean;
   disabled: boolean;
-  indeterminate: boolean;
   value: string;
   name: string;
   label: string;
@@ -17,7 +16,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "这是一个复选框组件，支持选中、禁用、不确定状态。",
+        component: "规范化复选框组件：用于选择/多选。支持选中与禁用状态，并与表单集成。",
       },
     },
   },
@@ -30,11 +29,6 @@ const meta = {
     disabled: {
       control: "boolean",
       description: "是否禁用",
-      table: { defaultValue: { summary: "false" } },
-    },
-    indeterminate: {
-      control: "boolean",
-      description: "是否处于不确定状态",
       table: { defaultValue: { summary: "false" } },
     },
     label: {
@@ -58,7 +52,6 @@ const Template = (args: CheckboxProps) => html`
   <jds-checkbox
     ?checked=${args.checked}
     ?disabled=${args.disabled}
-    ?indeterminate=${args.indeterminate}
     value=${ifDefined(args.value)}
     name=${ifDefined(args.name)}
     label=${ifDefined(args.label)}
@@ -94,13 +87,5 @@ export const DisabledChecked = {
     label: "Disabled Checked",
     disabled: true,
     checked: true,
-  },
-};
-
-export const Indeterminate = {
-  render: Template,
-  args: {
-    label: "Indeterminate",
-    indeterminate: true,
   },
 };

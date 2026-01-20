@@ -11,8 +11,9 @@
     "build-storybook": "pnpm run build",
     "preview": "serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
-    "lint": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js",
-    "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js --fix",
+    "lint": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js --quiet",
+    "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js",
+    "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js --fix --quiet",
     "type-check": "tsc --noEmit",
     "clean": "rimraf storybook-static"
   },

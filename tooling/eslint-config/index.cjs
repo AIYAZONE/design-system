@@ -6,6 +6,27 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'lit', 'wc'],
+  overrides: [
+    {
+      files: [
+        '**/*.d.ts'
+      ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+    },
+    {
+      files: [
+        '**/*.stories.*',
+        '**/__tests__/**',
+        '**/*.{test,spec}.*'
+      ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-console': 'off'
+      }
+    }
+  ],
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'warn',

@@ -6,24 +6,12 @@
  * @FilePath: \Jackery-F2E-Team\jackery-design-system\src\index.ts
  * @Description: Jackery Design System
  *
+ * 默认对外入口（包含默认主题 v1）
+ * - 自动引入 @styles/index.less（当前默认映射到 themes/v1）
+ * - 其余注册与导出逻辑由 entry.base.ts 统一承载
+ *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */
 
-import '@jackery/core';
-export * from '@jackery/core';
-import '@jackery/icons';
-export { JdsIcon } from '@jackery/icons';
-import '@jackery/i18n';
-import { initI18nDom } from '@jackery/i18n';
-export {
-  JdsI18n,
-  initialize,
-  initI18nDom,
-  t,
-  setCurrLanguage,
-  getCurrLanguage,
-  I18nController,
-  type I18nInstance
-} from '@jackery/i18n';
 import '@styles/index.less';
-initI18nDom();
+export * from './entry.base';

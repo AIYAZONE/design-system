@@ -12,6 +12,7 @@ export const SYSTEM_ICON_LIST = [
   "check",
   "close-fill",
   "close-line",
+  "close-square",
   "close",
   "info-fill",
   "info-line",

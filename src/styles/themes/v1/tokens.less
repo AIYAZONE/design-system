@@ -8,6 +8,7 @@
   .generate-color-common(danger, @jds-color-danger, @jds-color-danger-contrast);
   .generate-color-common(warning, @jds-color-warning, @jds-color-warning-contrast);
   .generate-color-common(info, @jds-color-info, @jds-color-info-contrast);
+  .generate-color-common(neutral, @jds-color-neutral, @jds-color-neutral-contrast);
 
   // 文本色
   --jds-color-text-l1: #1A1A1A;
@@ -53,6 +54,14 @@
   --jds-color-neutral-200: #AFBBCA;
   --jds-color-neutral-100: #F1F2F7;
 
+  --jds-color-primary-hover: var(--jds-color-primary-highlight);
+  --jds-color-primary-active: var(--jds-color-primary);
+  --jds-color-neutral-hover: var(--jds-color-neutral-highlight);
+  --jds-color-neutral-active: var(--jds-color-neutral);
+  --jds-color-disabled-bg: var(--jds-color-grey);
+  --jds-color-disabled-border: var(--jds-color-line);
+  --jds-color-disabled-text: var(--jds-color-text-invalid);
+
   // 层级
   --jds-index-deep: -1;
   --jds-index-base: 1;
@@ -68,24 +77,12 @@
   --jds-font-medium: @jds-font-medium;
   --jds-font-semibold: @jds-font-semibold;
   --jds-font-bold: @jds-font-bold;
+  --jds-font-extrabold: @jds-font-extrabold;
+
+  --jds-h6-color: var(--jds-color-primary);
 
   // 其他
   --jds-text-x-direction: 1;
-}
-
-// 多语言字体
-@{rootSel}[lang="ja"] {
-  --jds-font-family: "Noto Sans JP", sans-serif;
-}
-
-@{rootSel}:not([lang="ja"]) {
-  --jds-font-family: "Poppins", sans-serif;
-}
-
-// RTL 文本方向支持
-:root[dir="rtl"] {
-  direction: rtl;
-  --jds-text-x-direction: -1;
 }
 
 // 桌面端（≥1024px）
@@ -108,7 +105,7 @@
     @lh-b1: calc(var(--jds-font-size-18) + var(--jds-size-8));
     @lh-b2: calc(var(--jds-font-size-16) + var(--jds-size-8));
     @lh-b3: calc(var(--jds-font-size-14) + var(--jds-size-8));
-    @lh-c1: calc(var(--jds-font-size-12) + var(--jds-size-6));
+    @lh-c1: calc(var(--jds-font-size-12) + var(--jds-size-4));
 
     // 标题
     --jds-h1-letter-spacing: calc(-0.02 * var(--jds-font-size-72));
@@ -123,7 +120,7 @@
     --jds-h4-letter-spacing: calc(-0.02 * var(--jds-font-size-32));
     --jds-font-h4: @jds-font-medium var(--jds-font-size-32)/@lh-h4 var(--jds-font-family);
 
-    --jds-h5-letter-spacing: calc(-0.01 * var(--jds-font-size-24));
+    --jds-h5-letter-spacing: calc(-0.02 * var(--jds-font-size-24));
     --jds-font-h5: @jds-font-medium var(--jds-font-size-24)/@lh-h5 var(--jds-font-family);
 
     --jds-font-h6: @jds-font-semibold var(--jds-font-size-18)/@lh-h6 var(--jds-font-family);
@@ -181,7 +178,7 @@
     --jds-h4-letter-spacing: calc(-0.02 * var(--jds-font-size-40));
     --jds-font-h4: @jds-font-medium var(--jds-font-size-40)/@lh-h4 var(--jds-font-family);
 
-    --jds-h5-letter-spacing: calc(-0.01 * var(--jds-font-size-36));
+    --jds-h5-letter-spacing: calc(-0.02 * var(--jds-font-size-36));
     --jds-font-h5: @jds-font-medium var(--jds-font-size-36)/@lh-h5 var(--jds-font-family);
 
     --jds-font-h6: @jds-font-semibold var(--jds-font-size-32)/@lh-h6 var(--jds-font-family);
@@ -203,3 +200,7 @@
     --jds-font-c1: @jds-font-regular var(--jds-font-size-20)/@lh-c1 var(--jds-font-family);
   }
 }
+
+@import "./tokens/button.less";
+@import "./tokens/badge.less";
+@import "./tokens/dialog.less";

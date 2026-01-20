@@ -54,5 +54,5 @@
     "noFallthroughCasesInSwitch": true // 禁止在switch语句中出现没有break语句的贯穿情况，避免意外的逻辑错误
   },
   "include": ["src"], // 指定需要包含在编译范围内的目录，这里只包含'src'目录下的文件会被进行TypeScript编译
-  "exclude": ["src/**/__docs__", "src/**/__test__"]
+  "exclude": ["src/**/__docs__", "src/**/__test__", "src/**/__tests__"]
 }

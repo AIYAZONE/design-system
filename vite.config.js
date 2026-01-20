@@ -240,7 +240,7 @@ export default defineConfig((configEnv) => {
             'index': path.resolve(__dirname, 'src/styles/index.less'),
             'index-v1': path.resolve(__dirname, 'src/styles/themes/v1/index.less'),
             'index-v2': path.resolve(__dirname, 'src/styles/themes/v2/index.less'),
-            'themes-switch': path.resolve(__dirname, 'src/styles/themes/switch.less')
+            'index-v3': path.resolve(__dirname, 'src/styles/themes/v3/index.less')
           },
           output: {
             entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,

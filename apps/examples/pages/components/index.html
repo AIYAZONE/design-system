@@ -6,7 +6,6 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Components - 组件展示</title>
-  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
   <script type="module" src="/main.ts"></script>
 </head>
 
@@ -23,18 +22,6 @@
     </header>
 
     <main>
-      <section id="theme-sticky-card" class="card sticky-card" style="margin-bottom: var(--jds-size-16);">
-        <h2>主题版本验证</h2>
-        <div style="display:flex;gap:var(--jds-size-8);flex-wrap:wrap;align-items:center;">
-          <!-- 文件驱动：刷新到不同 query 以加载 v1/v2 样式入口 -->
-          <jds-button id="file-v1">文件驱动：v1</jds-button>
-          <jds-button id="file-v2">文件驱动：v2</jds-button>
-          <!-- 属性驱动：运行时标识切换，依赖 themes-switch 覆盖 -->
-          <jds-button id="attr-v2" variant="secondary">属性驱动：切到 v2</jds-button>
-          <jds-button id="attr-v1" variant="secondary">属性驱动：回到 v1</jds-button>
-          <span id="theme-state" style="margin-left:var(--jds-size-8);">当前：v1（文件驱动）</span>
-        </div>
-      </section>
       <h2>组件</h2>
       <p>
         <jds-checkbox label="Checkbox"></jds-checkbox>
@@ -95,7 +82,8 @@
         <jds-button variant="primary" size="large">Agree</jds-button>
       </jds-dialog>
 
-      <p>
+      <h2>Toast</h2>
+      <section>
         <jds-toast icon>Info Variant</jds-toast>
         <jds-toast variant="warning" icon>Warning Variant</jds-toast>
         <jds-toast variant="success" icon>Success Variant</jds-toast>
@@ -105,208 +93,181 @@
           <jds-button slot="action">Action Link</jds-button>
           <jds-button slot="action-secondary">Action Link</jds-button>
         </jds-toast>
-      </p>
+      </section>
 
       <h2>Tooltip</h2>
-
-      <jds-tooltip placement="top-start">
-        <jds-button slot="tooltip-trigger">top-start</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
-
-
-      <jds-tooltip placement="top">
-        <jds-button slot="tooltip-trigger">top</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+      <section>
+        <jds-tooltip placement="top-start">
+          <jds-button slot="tooltip-trigger">top-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="top-end">
-        <jds-button slot="tooltip-trigger">top-end</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="top">
+          <jds-button slot="tooltip-trigger">top</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
+
+        <jds-tooltip placement="top-end">
+          <jds-button slot="tooltip-trigger">top-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="bottom-start">
-        <jds-button slot="tooltip-trigger">bottom-start</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="bottom-start">
+          <jds-button slot="tooltip-trigger">bottom-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="bottom">
-        <jds-button slot="tooltip-trigger">bottom</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="bottom">
+          <jds-button slot="tooltip-trigger">bottom</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="bottom-end">
-        <jds-button slot="tooltip-trigger">bottom-end</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="bottom-end">
+          <jds-button slot="tooltip-trigger">bottom-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="left-start">
-        <jds-button slot="tooltip-trigger">left-start</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="left-start">
+          <jds-button slot="tooltip-trigger">left-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="left">
-        <jds-button slot="tooltip-trigger">left</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="left">
+          <jds-button slot="tooltip-trigger">left</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="left-end">
-        <jds-button slot="tooltip-trigger">left-end</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="left-end">
+          <jds-button slot="tooltip-trigger">left-end</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="right-start">
-        <jds-button slot="tooltip-trigger">right-start</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="right-start">
+          <jds-button slot="tooltip-trigger">right-start</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="right">
-        <jds-button slot="tooltip-trigger">right</jds-button>
-        You can use this section to cancel your order.
-      </jds-tooltip>
+        <jds-tooltip placement="right">
+          <jds-button slot="tooltip-trigger">right</jds-button>
+          You can use this section to cancel your order.
+        </jds-tooltip>
 
 
-      <jds-tooltip placement="right-end">
-        <jds-button slot="tooltip-trigger">right-end</jds-button>
-        <div>
-          <h2 style="color:red;">You can use this section to cancel your order.</h2>
-        </div>
-      </jds-tooltip>
+        <jds-tooltip placement="right-end">
+          <jds-button slot="tooltip-trigger">right-end</jds-button>
+          <h5 style="color: var(--jds-color-warning);">You can use this section to cancel your order.</h5>
+        </jds-tooltip>
+      </section>
 
       <h2>Tooltip + Popover</h2>
-      <jds-button id="button-13">top-start</jds-button>
+      <section>
 
-      <jds-popover target="button-13" id="popover-13" placement="top-start" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-button id="button-13">top-start</jds-button>
 
-
-      <jds-button id="button-14">top</jds-button>
-
-      <jds-popover target="button-14" id="popover-14" placement="top" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-popover target="button-13" id="popover-13" placement="top-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
 
-      <jds-button id="button-15">top-end</jds-button>
+        <jds-button id="button-14">top</jds-button>
 
-      <jds-popover target="button-15" id="popover-15" placement="top-end" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
-
-      <jds-button id="button-16">bottom-start</jds-button>
-
-      <jds-popover target="button-16" id="popover-16" placement="bottom-start"
-        style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
-
-      <jds-button id="button-17">bottom</jds-button>
-
-      <jds-popover target="button-17" id="popover-17" placement="bottom" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
-
-      <jds-button id="button-18">bottom-end</jds-button>
-
-      <jds-popover target="button-18" id="popover-18" placement="bottom-end"
-        style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-popover target="button-14" id="popover-14" placement="top" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
 
-      <jds-button id="button-19">left-start</jds-button>
+        <jds-button id="button-15">top-end</jds-button>
 
-      <jds-popover target="button-19" id="popover-19" placement="left-start"
-        style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-popover target="button-15" id="popover-15" placement="top-end" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
+        <jds-button id="button-16">bottom-start</jds-button>
 
-      <jds-button id="button-20">left</jds-button>
+        <jds-popover target="button-16" id="popover-16" placement="bottom-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
-      <jds-popover target="button-20" id="popover-20" placement="left" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-button id="button-17">bottom</jds-button>
 
+        <jds-popover target="button-17" id="popover-17" placement="bottom" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
-      <jds-button id="button-21">left-end</jds-button>
+        <jds-button id="button-18">bottom-end</jds-button>
 
-      <jds-popover target="button-21" id="popover-21" placement="left-end" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
-
-      <jds-button id="button-22">right-start</jds-button>
-
-      <jds-popover target="button-22" id="popover-22" placement="right-start"
-        style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-popover target="button-18" id="popover-18" placement="bottom-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
 
-      <jds-button id="button-23">right</jds-button>
+        <jds-button id="button-19">left-start</jds-button>
 
-      <jds-popover target="button-23" id="popover-23" placement="right" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-popover target="button-19" id="popover-19" placement="left-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
 
-      <jds-button id="button-24">right-end</jds-button>
 
-      <jds-popover target="button-24" id="popover-24" placement="right-end" style="--jds-popover-arrow-display: block;">
-        Popover Content
-      </jds-popover>
+        <jds-button id="button-20">left</jds-button>
+
+        <jds-popover target="button-20" id="popover-20" placement="left" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-21">left-end</jds-button>
+
+        <jds-popover target="button-21" id="popover-21" placement="left-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-22">right-start</jds-button>
+
+        <jds-popover target="button-22" id="popover-22" placement="right-start"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+
+        <jds-button id="button-23">right</jds-button>
+
+        <jds-popover target="button-23" id="popover-23" placement="right" style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+
+        <jds-button id="button-24">right-end</jds-button>
+
+        <jds-popover target="button-24" id="popover-24" placement="right-end"
+          style="--jds-popover-arrow-display: block;">
+          Popover Content
+        </jds-popover>
+      </section>
 
       <script>
         // 添加事件监听器
-        document.getElementById('open-dialog-button').addEventListener('click', () => {
+        const trigger = document.getElementById('open-dialog-button');
+        const open = () => {
           const dialog = document.querySelector('#dl-basic');
-          dialog.setAttribute('open', true);
-        });
-
-        // 主题验证：文件驱动
-        const stateEl = document.getElementById('theme-state');
-        const theme = new URLSearchParams(location.search).get('theme');
-        stateEl.textContent = `当前：${theme === 'v2' ? 'v2' : 'v1'}（文件驱动）`;
-        document.getElementById('file-v1').addEventListener('click', () => {
-          const url = new URL(location.href);
-          url.searchParams.set('theme', 'v1');
-          location.href = url.toString();
-        });
-        document.getElementById('file-v2').addEventListener('click', () => {
-          const url = new URL(location.href);
-          url.searchParams.set('theme', 'v2');
-          location.href = url.toString();
-        });
-
-        // 主题验证：属性驱动（依赖 themes-switch.css 覆盖 v2 变量）
-        document.getElementById('attr-v2').addEventListener('click', () => {
-          document.documentElement.dataset.jdsThemeVersion = 'v2';
-        });
-        document.getElementById('attr-v1').addEventListener('click', () => {
-          delete document.documentElement.dataset.jdsThemeVersion;
-        });
-      </script>
-      <script>
-        // 吸顶交互：在到达吸顶位置后增强阴影
-        const stickyEl = document.getElementById('theme-sticky-card');
-        const topOffsetVar = getComputedStyle(document.documentElement).getPropertyValue('--jds-size-8').trim();
-        const topOffset = parseFloat(topOffsetVar) || 0;
-        const threshold = stickyEl.offsetTop - topOffset;
-        const onScroll = () => {
-          if (window.scrollY >= threshold) stickyEl.classList.add('is-stuck');
-          else stickyEl.classList.remove('is-stuck');
+          if (dialog) dialog.setAttribute('open', 'true');
         };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+        if (trigger) {
+          trigger.addEventListener('click', open);
+          trigger.addEventListener('jds-click', open);
+        }
       </script>
     </main>
   </div>

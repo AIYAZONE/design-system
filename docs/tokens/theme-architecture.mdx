@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="02 设计变量/06 主题与 Token 架构" />
+
+# 主题与 Token 架构
+
+## 总览
+- 组件样式在 Shadow DOM 内，通过 `var(--jds-*)` 读取全局 CSS Variables。
+- 主题（v1/v2）负责在全局 `:root` 与组件标签选择器（例如 `jds-button`）上定义这些变量。
+- `src/styles/internal.less` 负责 normalize/reset/public/rte/animate 等基础样式；组件会在运行时把它注入到 ShadowRoot，保证跨站点一致性。
+
+## 入口文件
+- 全量主题入口
+  - v1：[v1/index.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/themes/v1/index.less)
+  - v2：[v2/index.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/themes/v2/index.less)
+- 基础样式入口（组件内部注入 + 全量主题复用）：[internal.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/internal.less)
+
+## Token 分层
+- 全局基础 token（跨主题版本共用的色值/字重与生成 mixin）：[tokens.base.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/jds/tokens.base.less)
+- 全局主题 token（输出 `:root { --jds-* }`）：[v1/tokens.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/themes/v1/tokens.less)、[v2/tokens.less](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/themes/v2/tokens.less)
+- 组件级 token（输出 `jds-组件 { --jds-组件-* }`）：例如 [v1 button token](file:///Users/ht-2502/Documents/HB-Code/jackery-design-system/src/styles/themes/v1/tokens/button.less)
+
+## 单主题切换方式
+- 推荐方式：替换加载的 CSS 文件（例如从 v1 切到 v2，替换 `<link rel=\"stylesheet\">` 指向的文件）。
+- 不支持也不建议“同一页面多主题并存”；主题以“全局单套生效”为原则。
+
+## 关于 TailwindCSS
+- TailwindCSS 的工具类主要作用于 Light DOM 的 class 组合；Web Components（Shadow DOM）里无法直接复用宿主的 class 工具体系。
+- 设计系统更可持续的路线是“语义 token + CSS variables”，而不是把工具类耦合进组件内部实现。
+
+## 约定（新增组件时）
+- 组件内部：优先消费 `--jds-组件-语义`，并提供合理 fallback。
+- 主题侧：优先覆盖组件级语义变量（如 `--jds-btn-*`），避免在 v1/v2 里复制粘贴大段组件样式。

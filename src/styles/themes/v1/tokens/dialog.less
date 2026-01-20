@@ -1,0 +1,69 @@
+jds-dialog {
+  // 颜色
+  --jds-dialog-bg: var(--jds-color-white);
+  --jds-dialog-fg: var(--jds-color-text-l1);
+  --jds-dialog-overlay-bg: var(--jds-color-overlay-70);
+
+  // 层级
+  --jds-dialog-index: var(--jds-index-dialog);
+
+  // 动效
+  --jds-dialog-transition-duration: 0.3s;
+  --jds-dialog-transition-easing: ease-out;
+
+  // 阴影
+  --jds-dialog-shadow: none;
+
+  // 间距
+  --jds-dialog-gap: var(--jds-size-16);
+}
+
+@media screen and (min-width: 1024px) {
+  jds-dialog {
+    // 造型
+    --jds-dialog-radius: var(--jds-rounded-12);
+
+    // 尺寸 - Large
+    --jds-dialog-max-width-large: var(--jds-dialog-width, 640px);
+    --jds-dialog-min-height-large: calc(240 / 16 * 1rem);
+
+    // 尺寸 - Extra
+    --jds-dialog-max-width-extra: var(--jds-dialog-width, 1200px);
+    --jds-dialog-min-height-extra: calc(400 / 16 * 1rem);
+
+    // Padding (Large & Extra 共享，除非有明确区分需求)
+    --jds-dialog-padding-x-large: var(--jds-size-64);
+    --jds-dialog-padding-y-large: var(--jds-size-48);
+    
+    --jds-dialog-padding-x-extra: var(--jds-size-64);
+    --jds-dialog-padding-y-extra: var(--jds-size-48);
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  jds-dialog {
+    // 造型
+    --jds-dialog-radius: var(--jds-rounded-24);
+
+    // 尺寸 - Large
+    --jds-dialog-max-width-large: calc(100vw - var(--jds-size-48) * 2);
+    --jds-dialog-min-height-large: calc(320 / 32 * 1rem);
+
+    // 尺寸 - Extra
+    --jds-dialog-max-width-extra: 100%;
+    --jds-dialog-min-height-extra: calc(400 / 32 * 1rem);
+
+    // Padding
+    --jds-dialog-padding-x-large: var(--jds-size-32);
+    --jds-dialog-padding-y-large: var(--jds-size-32);
+    
+    --jds-dialog-padding-x-extra: var(--jds-size-32);
+    --jds-dialog-padding-y-extra: var(--jds-size-32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  jds-dialog {
+    --jds-dialog-transition-duration: 0.01s;
+  }
+}
