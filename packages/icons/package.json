@@ -33,7 +33,7 @@
     "build": "tsc && vite build",
     "commit": "commit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build:storybook": "storybook build",
     "preview-storybook": "storybook build && serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_625cdc21784812f"
   },

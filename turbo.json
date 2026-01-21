@@ -43,7 +43,7 @@
       "cache": false,
       "persistent": true
     },
-    "build-storybook": {
+    "build:storybook": {
       "dependsOn": ["^build"],
       "outputs": ["storybook-static/**"],
       "cache": true

@@ -8,7 +8,7 @@
     "dev": "storybook dev -p 6006 -c ../../.storybook",
     "storybook": "pnpm run dev",
     "build": "storybook build -c ../../.storybook",
-    "build-storybook": "pnpm run build",
+    "build:storybook": "pnpm run build",
     "preview": "serve ./storybook-static",
     "chromatic": "npx chromatic --project-token=chpt_ab15977da40331a",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js --quiet",
