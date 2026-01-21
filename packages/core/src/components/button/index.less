@@ -588,24 +588,24 @@
 // 次按钮按下态覆盖：按各自高亮色填充
 :host([kind="neutral"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
-  background-color: var(--jds-color-neutral-highlight);
-  border-color: var(--jds-color-neutral-highlight);
+  background-color: var(--jds-btn-active-color, var(--jds-color-neutral-highlight));
+  border-color: var(--jds-btn-active-color, var(--jds-color-neutral-highlight));
 }
 
 :host([kind="success"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
-  background-color: var(--jds-color-success-highlight);
-  border-color: var(--jds-color-success-highlight);
+  background-color: var(--jds-color-success);
+  border-color: var(--jds-color-success);
 }
 
 :host([kind="danger"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
-  background-color: var(--jds-color-danger-highlight);
-  border-color: var(--jds-color-danger-highlight);
+  background-color: var(--jds-color-danger);
+  border-color: var(--jds-color-danger);
 }
 
 :host([kind="custom"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
   color: var(--jds-color-white);
-  background-color: var(--jds-color-custom-highlight);
-  border-color: var(--jds-color-custom-highlight);
+  background-color: var(--jds-btn-local-custom-color);
+  border-color: var(--jds-btn-local-custom-color);
 }
