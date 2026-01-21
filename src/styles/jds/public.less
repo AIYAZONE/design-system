@@ -4,6 +4,8 @@
 // 标题 1 ，使用场景：【特大标题】 用于营销Banner标题
 .jds-h1-style() {
   font: var(--jds-font-h1);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h1-weight));
   letter-spacing: var(--jds-h1-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
@@ -12,6 +14,8 @@
 // 标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题
 .jds-h2-style() {
   font: var(--jds-font-h2);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h2-weight));
   letter-spacing: var(--jds-h2-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
@@ -20,6 +24,8 @@
 // 标题 3，使用场景：【标题】用于活动页标题
 .jds-h3-style() {
   font: var(--jds-font-h3);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h3-weight));
   letter-spacing: var(--jds-h3-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
@@ -28,6 +34,8 @@
 // 标题 4，使用场景：待定
 .jds-h4-style() {
   font: var(--jds-font-h4);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h4-weight));
   letter-spacing: var(--jds-h4-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
@@ -36,6 +44,8 @@
 // 标题 5，使用场景：待定
 .jds-h5-style() {
   font: var(--jds-font-h5);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h5-weight));
   letter-spacing: var(--jds-h5-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
@@ -44,6 +54,8 @@
 // 标题 6，使用场景：【标签级标题】用于首屏banner
 .jds-h6-style() {
   font: var(--jds-font-h6);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-h6-weight));
   letter-spacing: var(--jds-h6-letter-spacing, 0);
   // 一级文本色
   color: var(--jds-rte-text-color, var(--jds-h6-color, var(--jds-color-text-l1)));
@@ -52,6 +64,8 @@
 // 正文文本 1，使用场景：【正文】
 .jds-b1-style() {
   font: var(--jds-font-b1);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b1-weight));
   letter-spacing: var(--jds-b1-letter-spacing, 0);
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
@@ -59,6 +73,8 @@
 
 .jds-b1-regular-style() {
   font: var(--jds-font-b1-regular, var(--jds-font-b1));
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b1-regular-weight));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
@@ -66,12 +82,16 @@
 // 正文文本 2，使用场景：【小正文】 用于拥挤情况
 .jds-b2-style() {
   font: var(--jds-font-b2);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b2-weight));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 .jds-b2-regular-style() {
   font: var(--jds-font-b2-regular, var(--jds-font-b2));
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b2-regular-weight));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
@@ -79,12 +99,16 @@
 // 正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮；
 .jds-b3-style() {
   font: var(--jds-font-b3);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b3-weight));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
 
 .jds-b3-regular-style() {
   font: var(--jds-font-b3-regular, var(--jds-font-b3));
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-b3-regular-weight));
   // 二级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l2));
 }
@@ -92,24 +116,32 @@
 // 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
 .jds-c1-style() {
   font: var(--jds-font-c1);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-c1-weight));
   // 三级文本色
   color: var(--jds-rte-text-color, var(--jds-color-text-l3));
 }
 
 .jds-display-1-style() {
   font: var(--jds-font-display-1);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-display-1-weight));
   letter-spacing: var(--jds-display-1-letter-spacing, 0);
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 .jds-display-2-style() {
   font: var(--jds-font-display-2);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-display-2-weight));
   letter-spacing: var(--jds-display-2-letter-spacing, 0);
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
 
 .jds-display-3-style() {
   font: var(--jds-font-display-3);
+  font-family: var(--jds-custom-font-family, var(--jds-font-family));
+  font-weight: var(--jds-font-weight, var(--jds-font-display-3-weight));
   letter-spacing: var(--jds-display-3-letter-spacing, 0);
   color: var(--jds-rte-text-color, var(--jds-color-text-l1));
 }
@@ -127,43 +159,36 @@
 // 标题 1 ，使用场景：【特大标题】 用于营销Banner标题
 .jds-h1 {
   .jds-h1-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h1-weight));
 }
 
 // 标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题
 .jds-h2 {
   .jds-h2-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h2-weight));
 }
 
 // 标题 3，使用场景：【标题】用于活动页标题
 .jds-h3 {
   .jds-h3-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h3-weight));
 }
 
 // 标题 4，使用场景：待定
 .jds-h4 {
   .jds-h4-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h4-weight));
 }
 
 // 标题 5，使用场景：待定
 .jds-h5 {
   .jds-h5-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h5-weight));
 }
 
 // 标题 6，使用场景：【标签级标题】用于首屏banner
 .jds-h6 {
   .jds-h6-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-h6-weight));
 }
 
 // 正文文本 1，使用场景：【正文】
 .jds-b1 {
   .jds-b1-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-b1-weight));
 }
 
 .jds-b1.font-regular,
@@ -174,7 +199,6 @@
 // 正文文本 2，使用场景：【小正文】 用于拥挤情况
 .jds-b2 {
   .jds-b2-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-b2-weight));
 }
 
 .jds-b2.font-regular,
@@ -185,7 +209,6 @@
 // 正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮；
 .jds-b3 {
   .jds-b3-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-b3-weight));
 }
 
 .jds-b3.font-regular,
@@ -196,59 +219,48 @@
 // 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
 .jds-c1 {
   .jds-c1-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-c1-weight));
 }
 
 .jds-display-1 {
   .jds-display-1-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-display-1-weight));
 }
 
 .jds-display-2 {
   .jds-display-2-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-display-2-weight));
 }
 
 .jds-display-3 {
   .jds-display-3-style();
-  font-weight: var(--jds-font-weight, var(--jds-font-display-3-weight));
 }
 
 // PC端样式，使用tailwindcss的响应式类名
 @media screen and (min-width:1024px) {
   .lg\:jds-h1 {
     .jds-h1-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-h1-weight));
   }
 
   .lg\:jds-h2 {
     .jds-h2-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-h2-weight));
   }
 
   .lg\:jds-h3 {
     .jds-h3-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-h3-weight));
   }
 
   .lg\:jds-h4 {
     .jds-h4-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-h4-weight));
   }
 
   .lg\:jds-h5 {
     .jds-h5-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-h5-weight));
   }
 
   .lg\:jds-h6 {
-    .jds-h6-style();  
-    font-weight: var(--jds-font-weight, var(--jds-font-h6-weight));
+    .jds-h6-style();
   }
 
   .lg\:jds-b1 {
     .jds-b1-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-b1-weight));
   }
 
   .lg\:jds-b1.font-regular,
@@ -258,7 +270,6 @@
 
   .lg\:jds-b2 {
     .jds-b2-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-b2-weight));
   }
 
   .lg\:jds-b2.font-regular,
@@ -268,7 +279,6 @@
 
   .lg\:jds-b3 {
     .jds-b3-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-b3-weight));
   }
 
   .lg\:jds-b3.font-regular,
@@ -278,21 +288,17 @@
 
   .lg\:jds-c1 {
     .jds-c1-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-c1-weight));
   }
 
   .lg\:jds-display-1 {
     .jds-display-1-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-display-1-weight));
   }
 
   .lg\:jds-display-2 {
     .jds-display-2-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-display-2-weight));
   }
 
   .lg\:jds-display-3 {
     .jds-display-3-style();
-    font-weight: var(--jds-font-weight, var(--jds-font-display-3-weight));
   }
 }
