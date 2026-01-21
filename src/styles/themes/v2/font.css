@@ -88,7 +88,7 @@
 
 /* Oxanium ExtraBold 字体类名 */
 .jds-font-oxm {
-  --jds-font-family: Oxanium, sans-serif;
+  --jds-custom-font-family: Oxanium, sans-serif;
 }
 
 /* 字体族 */
