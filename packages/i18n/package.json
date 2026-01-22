@@ -28,7 +28,10 @@
     "test:watch": "vitest",
     "clean": "rimraf dist"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/index.ts",
+    "./dist/*"
+  ],
   "peerDependencies": {
     "lit": "^3.2.1"
   },
