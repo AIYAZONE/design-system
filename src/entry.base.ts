@@ -11,7 +11,7 @@ export * from '@jackery/core';
 import '@jackery/icons';
 export { JdsIcon } from '@jackery/icons';
 import '@jackery/i18n';
-import { initI18nDom } from '@jackery/i18n';
+import { initialize, initI18nDom } from '@jackery/i18n';
 export {
   JdsI18n,
   initialize,
@@ -22,4 +22,5 @@ export {
   I18nController,
   type I18nInstance
 } from '@jackery/i18n';
+initialize();
 initI18nDom();
