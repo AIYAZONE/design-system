@@ -238,6 +238,7 @@ export default defineConfig((configEnv) => {
         rollupOptions: {
           input: {
             'index': path.resolve(__dirname, 'src/styles/index.less'),
+            'internal': path.resolve(__dirname, 'src/styles/internal.less'),
             'index-v1': path.resolve(__dirname, 'src/styles/themes/v1/index.less'),
             'index-v2': path.resolve(__dirname, 'src/styles/themes/v2/index.less'),
             'index-v3': path.resolve(__dirname, 'src/styles/themes/v3/index.less')
