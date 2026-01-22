@@ -76,7 +76,7 @@ summary {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: var(--jds-font-family);
+  font-family: var(--jds-custom-font-family,var(--jds-font-family));
 }
 
 /* 对于表格元素的重置 */
