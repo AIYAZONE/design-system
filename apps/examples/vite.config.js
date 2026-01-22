@@ -25,9 +25,30 @@ const getHtmlInputs = () => {
   return inputs;
 };
 
+// Plugin to convert absolute paths to relative paths during build
+const htmlRelativePaths = () => {
+  return {
+    name: 'html-relative-paths',
+    transformIndexHtml(html, ctx) {
+      if (ctx.server) return html; // Don't transform in dev mode
+
+      // Calculate depth from root
+      // ctx.path is like /index.html or /pages/atoms/button.html
+      const depth = ctx.path.split('/').filter(p => p).length - 1;
+      const relativePrefix = depth > 0 ? '../'.repeat(depth) : './';
+
+      return html
+        .replace(/href="\/"/g, `href="${relativePrefix}index.html"`)
+        .replace(/href="\/(\?.*?)"/g, `href="${relativePrefix}index.html$1"`) // Handle /?theme=v1
+        .replace(/href="\/pages\//g, `href="${relativePrefix}pages/`);
+    }
+  };
+};
+
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/' : './',
+  base: './',
   publicDir: path.resolve(__dirname, '../../public'),
+  plugins: [htmlRelativePaths()],
   server: {
     host: '0.0.0.0',
     port: 5174,
@@ -74,15 +95,14 @@ export default defineConfig(({ command }) => ({
       },
       output: {
         assetFileNames: (assetInfo) => {
-            const name = assetInfo.name || '';
-            if (name.endsWith('.css')) {
-              // 保持主题样式稳定文件名，其他沿用默认
-              if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
-              if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
-              if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
-            }
-            return 'assets/[name]-[hash][extname]';
+          const name = assetInfo.name || '';
+          if (name.endsWith('.css')) {
+            if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
+            if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
+            if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
           }
+          return 'assets/[name]-[hash][extname]';
+        }
       }
     }
   }
