@@ -74,15 +74,15 @@ export default defineConfig(({ command }) => ({
       },
       output: {
         assetFileNames: (assetInfo) => {
-          const name = assetInfo.name || '';
-          if (name.endsWith('.css')) {
-            // 保持主题样式稳定文件名，其他沿用默认
-            if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
-            if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
-            if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
+            const name = assetInfo.name || '';
+            if (name.endsWith('.css')) {
+              // 保持主题样式稳定文件名，其他沿用默认
+              if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
+              if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
+              if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
+            }
+            return 'assets/[name]-[hash][extname]';
           }
-          return 'assets/[name][ext]';
-        }
       }
     }
   }
