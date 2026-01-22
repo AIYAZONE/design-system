@@ -51,6 +51,11 @@
     "typescript",
     "lit"
   ],
+  "sideEffects": [
+    "./src/index.ts",
+    "./src/entry.base.ts",
+    "./dist/*"
+  ],
   "engines": {
     "node": ">=18"
   },
