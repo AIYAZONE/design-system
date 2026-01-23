@@ -8,9 +8,20 @@ const theme = params.get('theme');
 const resolvedTheme = theme === 'v2' || theme === 'v3' ? theme : 'v1';
 const isProd = (import.meta as any).env?.PROD === true;
 if (isProd) {
+  // 动态拼接文件名，避免 Vite 在构建时尝试解析这些尚不存在的文件
+  // 这些文件会由 vite.config.js 的 input 和 assetFileNames 配置生成
+  // 关键：将 import.meta.url 赋值给变量，阻断 Vite 的静态分析替换
+  const baseUrl = import.meta.url;
+  const getThemeUrl = (filename: string) => new URL(filename, baseUrl).href;
+  
+  const themeMap: Record<string, string> = {
+    v1: getThemeUrl('examples-theme-v1.css'),
+    v2: getThemeUrl('examples-theme-v2.css'),
+    v3: getThemeUrl('examples-theme-v3.css')
+  };
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = `/assets/examples-theme-${resolvedTheme}.css`;
+  link.href = themeMap[resolvedTheme] || themeMap['v1'];
   document.head.appendChild(link);
 } else {
   const injectInlineCss = async () => {
