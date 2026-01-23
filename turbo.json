@@ -45,6 +45,13 @@
     },
     "build:storybook": {
       "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../../.storybook/**",
+        "../../docs/**",
+        "../../README.md",
+        "../../public/**"
+      ],
       "outputs": ["storybook-static/**"],
       "cache": true
     }
