@@ -1,4 +1,4 @@
-jds-dialog {
+@{rootSel} {
   // 颜色
   --jds-dialog-bg: var(--jds-color-white);
   --jds-dialog-fg: var(--jds-color-text-l1);
@@ -19,16 +19,16 @@ jds-dialog {
 }
 
 @media screen and (min-width: 1024px) {
-  jds-dialog {
+  @{rootSel} {
     // 造型 - v3 直角 (V2 模板)
     --jds-dialog-radius: 0;
 
     // 尺寸 - Large
-    --jds-dialog-max-width-large: var(--jds-dialog-width, 640px);
+    --jds-dialog-max-width-large: 640px;
     --jds-dialog-min-height-large: calc(240 / 16 * 1rem);
 
     // 尺寸 - Extra
-    --jds-dialog-max-width-extra: var(--jds-dialog-width, 1200px);
+    --jds-dialog-max-width-extra: 1200px;
     --jds-dialog-min-height-extra: calc(400 / 16 * 1rem);
 
     // Padding
@@ -41,7 +41,7 @@ jds-dialog {
 }
 
 @media screen and (max-width: 1023.98px) {
-  jds-dialog {
+  @{rootSel} {
     // 造型 - v3 直角
     --jds-dialog-radius: 0;
 
@@ -63,7 +63,7 @@ jds-dialog {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  jds-dialog {
+  @{rootSel} {
     --jds-dialog-transition-duration: 0.01s;
   }
 }
