@@ -1,14 +1,4 @@
 // JDS RTE 富文本样式
-// 默认，非日站
-:root:not([lang="ja"]) {
-  --jds-list-padding: var(--jds-size-20);
-}
-
-// 日站适配
-:root[lang="ja"] {
-  --jds-list-padding: var(--jds-size-24);
-}
-
 .jds-rte {
   /* 兼容旧浏览器 */
   word-wrap: break-word;
@@ -78,27 +68,33 @@
 
   @media screen and (min-width: 1024px) {
 
-    ul,
+    ul {
+      padding-inline-start: var(--jds-ul-list-padding, var(--jds-rte-list-padding));
+    }
+
     ol {
-      padding-inline-start: var(--jds-list-padding);
+      padding-inline-start: var(--jds-ol-list-padding, var(--jds-rte-list-padding));
     }
   }
 
   @media screen and (max-width: 1023.98px) {
 
-    ul,
+    ul {
+      padding-inline-start: var(--jds-ul-list-padding, var(--jds-size-36));
+    }
+
     ol {
-      padding-inline-start: var(--jds-size-36);
+      padding-inline-start: var(--jds-ol-list-padding, var(--jds-size-36));
     }
 
     // ios真机 浏览器特定适配
     @supports (-webkit-touch-callout: none) {
       ul {
-        padding-inline-start: var(--jds-size-40);
+        padding-inline-start: var(--jds-ul-list-padding, var(--jds-size-40));
       }
 
       ol {
-        padding-inline-start: var(--jds-size-56);
+        padding-inline-start: var(--jds-ol-list-padding, var(--jds-size-56));
       }
     }
   }

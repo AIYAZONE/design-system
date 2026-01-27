@@ -1,4 +1,4 @@
-jds-button {
+@{rootSel} {
   // V2 主题：按钮默认主色与悬浮色，供组件作为基础样式消费
   --jds-btn-line-height: 1.1;
   --jds-btn-main-color: var(--jds-color-primary);
@@ -82,7 +82,7 @@ jds-button[kind="custom"][variant="text"] {
 
 // 桌面端尺寸与排版（≥1024px）
 @media screen and (min-width: 1024px) {
-  jds-button {
+  @{rootSel} {
     --jds-btn-padding-vertical: var(--jds-size-12);
     --jds-btn-padding-horizontal: var(--jds-size-40);
     --jds-btn-margin-icon: var(--jds-size-8);
@@ -138,7 +138,7 @@ jds-button[kind="custom"][variant="text"] {
 
 // 移动端尺寸与排版（<1024px）
 @media screen and (max-width: 1023.98px) {
-  jds-button {
+  @{rootSel} {
     --jds-btn-height: var(--jds-size-80);
     --jds-btn-icon-size: var(--jds-size-28);
     --jds-btn-padding-vertical: var(--jds-size-24);
