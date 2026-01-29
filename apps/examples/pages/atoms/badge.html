@@ -7,6 +7,41 @@
   <title>Badge - 徽章</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <script type="module" src="/main.ts"></script>
+  <style>
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0 24px;
+    }
+
+    .demo-card {
+      width: min(260px, 100%);
+      padding: 16px;
+      border-radius: 4px;
+      background: #f5f5f5;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    @media (max-width: 1023.98px) {
+      .demo-row {
+        gap: 8px;
+        margin: 8px 0 16px;
+        padding: 0;
+      }
+
+      .demo-card {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .demo-card > jds-badge {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -22,16 +57,134 @@
     </header>
 
     <main>
-      <h2>徽章样式</h2>
-      <p>
-        <jds-badge icon="info-fill" style="--jds-badge-bg-color:rgb(254, 242, 232);--jds-badge-color:rgb(242, 122, 26);">Info</jds-badge>
-        <jds-badge icon="question-fill" style="--jds-badge-bg-color:#eef4ff;--jds-badge-color:#5794ff;">Question</jds-badge>
-        <jds-badge icon="alert-fill" style="--jds-badge-bg-color:#f4edff;--jds-badge-color:#8c4eff;">Tips</jds-badge>
-        <br>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-success-contrast);--jds-badge-color:var(--jds-color-success);">Success</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-warning-contrast);--jds-badge-color:var(--jds-color-warning);">Warning</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-danger-contrast);--jds-badge-color:var(--jds-color-danger);">Danger</jds-badge>
-        <jds-badge style="--jds-badge-bg-color:var(--jds-color-neutral-100);--jds-badge-color:var(--jds-color-neutral-400);">Neutral</jds-badge>
+      <h2>变体 - variant</h2>
+
+      <h3>soft</h3>
+      <p class="demo-row">
+        <jds-badge variant="soft" kind="default">Default</jds-badge>
+        <jds-badge variant="soft" kind="neutral">Neutral</jds-badge>
+        <jds-badge variant="soft" kind="success">Success</jds-badge>
+        <jds-badge variant="soft" kind="warning">Warning</jds-badge>
+        <jds-badge variant="soft" kind="danger">Danger</jds-badge>
+        <jds-badge variant="soft" kind="info">Info</jds-badge>
+        <jds-badge
+          variant="soft"
+          kind="custom"
+          style="--jds-badge-color:rgb(242, 122, 26);"
+        >Custom</jds-badge>
+      </p>
+
+      <h3>solid</h3>
+      <p class="demo-row">
+        <jds-badge variant="solid" kind="default">Default</jds-badge>
+        <jds-badge variant="solid" kind="neutral">Neutral</jds-badge>
+        <jds-badge variant="solid" kind="success">Success</jds-badge>
+        <jds-badge variant="solid" kind="warning">Warning</jds-badge>
+        <jds-badge variant="solid" kind="danger">Danger</jds-badge>
+        <jds-badge variant="solid" kind="info">Info</jds-badge>
+        <jds-badge variant="solid" kind="success" style="--jds-badge-text-color:#1a1a1a;">Text Color</jds-badge>
+        <jds-badge
+          variant="solid"
+          kind="custom"
+          style="--jds-badge-color:#5794ff;"
+        >Custom</jds-badge>
+      </p>
+
+      <h3>outline</h3>
+      <p class="demo-row">
+        <jds-badge variant="outline" kind="default">Default</jds-badge>
+        <jds-badge variant="outline" kind="neutral">Neutral</jds-badge>
+        <jds-badge variant="outline" kind="success">Success</jds-badge>
+        <jds-badge variant="outline" kind="warning">Warning</jds-badge>
+        <jds-badge variant="outline" kind="danger">Danger</jds-badge>
+        <jds-badge variant="outline" kind="info">Info</jds-badge>
+        <jds-badge
+          variant="outline"
+          kind="custom"
+          style="--jds-badge-color:#8c4eff;"
+        >Custom</jds-badge>
+      </p>
+
+      <h2>尺寸 - size</h2>
+      <h3>纯文本</h3>
+      <p class="demo-row">
+        <jds-badge size="small">Small</jds-badge>
+        <jds-badge size="medium">Medium</jds-badge>
+        <jds-badge size="large">Large</jds-badge>
+      </p>
+
+      <h3>带 icon（small 会隐藏 icon）</h3>
+      <p class="demo-row">
+        <jds-badge size="small" icon="info-fill">Small</jds-badge>
+        <jds-badge size="medium" icon="info-fill">Medium</jds-badge>
+        <jds-badge size="large" icon="info-fill">Large</jds-badge>
+      </p>
+
+      <h2>图标 - icon</h2>
+      <h3>icon 属性</h3>
+      <p class="demo-row">
+        <jds-badge icon="info-fill">Info</jds-badge>
+        <jds-badge icon="star-fill">Info</jds-badge>
+        <jds-badge icon="question-fill">Question</jds-badge>
+        <jds-badge icon="alert-fill">Tips</jds-badge>
+        <jds-badge variant="outline" icon="arrow-right-long">Next</jds-badge>
+      </p>
+
+      <h3>iconPosition</h3>
+      <p class="demo-row">
+        <jds-badge icon="arrow-right-long" iconPosition="prev">Prev</jds-badge>
+        <jds-badge icon="arrow-right-long" iconPosition="next">Next</jds-badge>
+      </p>
+
+      <h3>slot="icon" 覆盖</h3>
+      <p class="demo-row">
+        <jds-badge icon="info-fill">
+          <jds-icon slot="icon" name="alert-fill"></jds-icon>
+          Slot 覆盖
+        </jds-badge>
+        <jds-badge>
+          <jds-icon slot="icon" name="question-fill"></jds-icon>
+          Slot Only
+        </jds-badge>
+      </p>
+
+      <h3>纯图标徽章</h3>
+      <p class="demo-row">
+        <jds-badge icon="info-fill"></jds-badge>
+        <jds-badge variant="solid" icon="arrow-right-long"></jds-badge>
+        <jds-badge variant="outline" icon="alert-fill"></jds-badge>
+      </p>
+
+      <h2>计数 - count / maxCount</h2>
+      <p class="demo-row">
+        <jds-badge count="0"></jds-badge>
+        <jds-badge count="1"></jds-badge>
+        <jds-badge count="8"></jds-badge>
+        <jds-badge count="99"></jds-badge>
+        <jds-badge count="100"></jds-badge>
+        <jds-badge count="12" maxCount="9"></jds-badge>
+        <jds-badge variant="solid" kind="danger" count="7"></jds-badge>
+        <jds-badge variant="outline" kind="info" icon="info-fill" count="3"></jds-badge>
+      </p>
+
+      <h2>链接 - href</h2>
+      <p class="demo-row">
+        <jds-badge href="https://www.jackery.com">Jackery Home</jds-badge>
+        <jds-badge href="https://www.jackery.com" icon="arrow-right-long">Go</jds-badge>
+        <jds-badge href="https://www.jackery.com" variant="outline" kind="info">Info Link</jds-badge>
+        <jds-badge href="https://www.jackery.com" variant="solid" kind="success" icon="arrow-right-long">Success Link</jds-badge>
+        <jds-badge href="https://www.jackery.com" count="12"></jds-badge>
+      </p>
+
+      <h2>样式变量</h2>
+      <p class="demo-row">
+        <jds-badge style="--jds-badge-bg-color:#eef4ff;--jds-badge-text-color:#5794ff;--jds-badge-color:#5794ff;">自定义背景/文字</jds-badge>
+        <jds-badge variant="solid" style="--jds-badge-color:#8c4eff;--jds-badge-text-color:#ffffff;">solid 自定义</jds-badge>
+        <jds-badge variant="outline" style="--jds-badge-color:#f27a1a;">outline 自定义</jds-badge>
+        <jds-badge style="--jds-badge-border-radius:999px;">圆角胶囊</jds-badge>
+        <jds-badge style="--jds-badge-height:32px;--jds-badge-padding-horizontal:14px;">自定义高度/内边距</jds-badge>
+        <jds-badge icon="info-fill" style="--jds-badge-margin-icon:14px;">自定义 icon 间距</jds-badge>
+        <jds-badge icon="info-fill" style="--jds-badge-icon-size:20px;">自定义 icon 大小</jds-badge>
       </p>
     </main>
   </div>
