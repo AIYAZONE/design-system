@@ -23,7 +23,8 @@
   margin: 0;
   padding: var(--jds-badge-padding-vertical, var(--jds-size-4)) var(--jds-badge-padding-horizontal, var(--jds-size-6));
   background-color: var(--jds-badge-bg-color, var(--jds-color-primary-contrast));
-  color: var(--jds-badge-color, var(--jds-color-primary));
+  color: var(--jds-badge-text-color, var(--jds-badge-color, var(--jds-color-primary)));
+  font: var(--jds-badge-font, var(--jds-font-c1));
   font-kerning: none;
   height: var(--jds-badge-height, var(--jds-size-20));
 }
@@ -32,19 +33,19 @@
 :host([variant="outline"]) .badge {
   background-color: transparent;
   border-color: var(--jds-badge-outline-border, var(--jds-badge-color, var(--jds-color-primary)));
-  color: var(--jds-badge-outline-fg, var(--jds-badge-color, var(--jds-color-primary)));
+  color: var(--jds-badge-outline-fg, var(--jds-badge-text-color, var(--jds-badge-color, var(--jds-color-primary))));
 }
 
 // 变体：solid（实色）
 :host([variant="solid"]) .badge {
   background-color: var(--jds-badge-solid-bg, var(--jds-badge-color, var(--jds-color-primary)));
-  color: var(--jds-badge-solid-fg, var(--jds-color-white));
+  color: var(--jds-badge-text-color, var(--jds-badge-solid-fg, var(--jds-color-white)));
 }
 
 // 变体：soft（浅色）使用专用 Token，提升对比度
 :host([variant="soft"]) .badge {
   background-color: var(--jds-badge-soft-bg, var(--jds-badge-bg-color, var(--jds-color-primary-contrast)));
-  color: var(--jds-badge-soft-fg, var(--jds-badge-color, var(--jds-color-primary)));
+  color: var(--jds-badge-soft-fg, var(--jds-badge-text-color, var(--jds-badge-color, var(--jds-color-primary))));
 }
 
 // 可点击样式
@@ -82,7 +83,6 @@
 :host([size="small"]) jds-icon {
   display: none;
 }
-
 
 // 关闭按钮样式
 // 移除关闭按钮样式

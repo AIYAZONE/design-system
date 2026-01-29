@@ -7,13 +7,15 @@ import styles from "./index.less?inline";
 export type BadgeSize = "small" | "medium" | "large";
 export type BadgeVariant = "soft" | "solid" | "outline";
 export type BadgeKind = "default" | "neutral" | "success" | "warning" | "danger" | "info" | "custom";
+export type BadgeIconPosition = "prev" | "next" | "start" | "end";
 
 /**
  * @tag jds-badge
  * @summary Jackery 徽章组件
  *
  * @cssproperty [--jds-badge-bg-color:var(--jds-color-primary-contrast)] 设置徽章的背景颜色
- * @cssproperty [--jds-badge-color:var(--jds-color-primary)] 设置徽章的文字颜色
+ * @cssproperty [--jds-badge-color:var(--jds-color-primary)] 设置徽章语义主色（outline 边框默认跟随该值，solid 默认背景也会使用该值）
+ * @cssproperty [--jds-badge-text-color:var(--jds-badge-color)] 设置徽章的文字颜色（所有变体通用）
  */
 @customElement("jds-badge")
 export class JdsBadge extends LitElement {
@@ -39,17 +41,16 @@ export class JdsBadge extends LitElement {
   kind: BadgeKind = "default";
 
   /**
-   * 设置图标的名称（统一前置展示，亦可通过 icon 插槽覆盖）
+   * 设置图标的名称（亦可通过 icon 插槽覆盖）
    */
   @property({ type: String })
   icon: string | undefined;
 
   /**
-   * 图标位置：前置或后置（已统一前置；保留属性以兼容外部引用）
+   * 图标位置：prev（文本前）/ next（文本后）
    */
-  @property({ type: String })
-  // 移除位置控制，统一前置展示，保留属性声明以避免外部引用错误（不再使用）
-  iconPosition?: "start" | "end";
+  @property({ type: String, reflect: true })
+  iconPosition: BadgeIconPosition = "next";
 
   /**
    * 点式徽章（仅显示圆点）
@@ -104,6 +105,7 @@ export class JdsBadge extends LitElement {
   render(): TemplateResult {
     const iconTemplate = this.icon ? html`<jds-icon name=${this.icon}></jds-icon>` : "";
     const iconSlot = html`<slot name="icon">${iconTemplate}</slot>`;
+    const resolvedIconPosition = this.iconPosition === "prev" || this.iconPosition === "start" ? "prev" : "next";
 
     const countDisplay =
       typeof this.count === "number"
@@ -124,8 +126,7 @@ export class JdsBadge extends LitElement {
       : html`<slot></slot>`;
 
     const closeBtn = "";
-
-    const content = html`${iconSlot}${textSlot}${closeBtn}`;
+    const content = resolvedIconPosition === "prev" ? html`${iconSlot}${textSlot}${closeBtn}` : html`${textSlot}${iconSlot}${closeBtn}`;
 
     if (this.href) {
       return html`<a
