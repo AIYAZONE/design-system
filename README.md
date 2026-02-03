@@ -196,6 +196,9 @@ import '@jackery/icons';
 
 - 构建库产物：`pnpm run design:build:lib`
 - 构建主题样式：`pnpm run design:build:themes`
+- 本地联调 watch（持续产出 dist）：
+  - JS：`pnpm run design:watch:lib`
+  - CSS（主题/基础样式）：`pnpm run design:watch:themes`
 - 预览构建目录：`pnpm run site:preview -- --port 5175`
 - 验证页：`dist/index.html`，支持 `?theme=v1|v2` 切换，示例地址 `http://localhost:5175/index.html?theme=v2`
 

@@ -12,12 +12,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: var(--jds-dialog-index, 500);
-  background-color: var(--jds-dialog-overlay-bg);
+  z-index: var(--jds-dialog-index, var(--jds-index-dialog, 500));
+  background-color: var(--jds-dialog-overlay-bg, var(--jds-color-overlay-70, rgba(0, 0, 0, 0.7)));
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing),
-              visibility var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing);
+  transition: opacity var(--jds-dialog-transition-duration, 0.3s) var(--jds-dialog-transition-easing, ease-out),
+              visibility var(--jds-dialog-transition-duration, 0.3s) var(--jds-dialog-transition-easing, ease-out);
 }
 
 .container {
@@ -25,16 +25,16 @@
   flex-direction: column;
   position: absolute;
   left: 50%;
-  z-index: var(--jds-dialog-index);
+  z-index: var(--jds-dialog-index, var(--jds-index-dialog, 500));
   padding: 0;
   max-width: 100%;
   height: auto;
   border: 0;
-  background: var(--jds-dialog-bg);
-  color: var(--jds-dialog-fg);
-  border-radius: var(--jds-dialog-radius);
-  box-shadow: var(--jds-dialog-shadow);
-  transition: transform var(--jds-dialog-transition-duration) var(--jds-dialog-transition-easing) 0.1s;
+  background: var(--jds-dialog-bg, var(--jds-color-white, #ffffff));
+  color: var(--jds-dialog-fg, var(--jds-color-text-l1, #1a1a1a));
+  border-radius: var(--jds-dialog-radius, var(--jds-rounded-12, 12px));
+  box-shadow: var(--jds-dialog-shadow, none);
+  transition: transform var(--jds-dialog-transition-duration, 0.3s) var(--jds-dialog-transition-easing, ease-out) 0.1s;
 
   jds-icon.close {
     position: absolute;
@@ -47,7 +47,7 @@
   }
 
   #dialogCaption {
-    margin-bottom: var(--jds-dialog-gap);
+    margin-bottom: var(--jds-dialog-gap, var(--jds-size-16, 16px));
     text-align: var(--jds-dialog-title-align, left);
   }
 
@@ -85,15 +85,15 @@
   }
 
   :host([size='large']) .container {
-    width: var(--jds-dialog-max-width-large);
-    min-height: var(--jds-dialog-min-height-large);
+    width: var(--jds-dialog-width, var(--jds-dialog-max-width-large, 640px));
+    min-height: var(--jds-dialog-min-height-large, calc(240 / 16 * 1rem));
   }
 
   :host([size='extra']) .container {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: var(--jds-dialog-max-width-extra);
-    min-height: var(--jds-dialog-min-height-extra);
+    width: var(--jds-dialog-width, var(--jds-dialog-max-width-extra, 1200px));
+    min-height: var(--jds-dialog-min-height-extra, calc(400 / 16 * 1rem));
     
     .content {
       margin-top: var(--jds-dialog-padding-y-extra);
@@ -126,8 +126,8 @@
   }
 
   :host([size='large']) .container {
-    width: var(--jds-dialog-max-width-large);
-    min-height: var(--jds-dialog-min-height-large);
+    width: var(--jds-dialog-width, var(--jds-dialog-max-width-large, calc(100vw - var(--jds-size-48) * 2)));
+    min-height: var(--jds-dialog-min-height-large, calc(320 / 32 * 1rem));
     max-height: calc(100vh - var(--jds-size-128) * 2);
   }
 
@@ -138,8 +138,8 @@
   :host([size='extra']) .container {
     bottom: 0;
     transform: translateX(-50%) translateY(100%);
-    width: var(--jds-dialog-max-width-extra);
-    min-height: var(--jds-dialog-min-height-extra);
+    width: var(--jds-dialog-width, var(--jds-dialog-max-width-extra, 100%));
+    min-height: var(--jds-dialog-min-height-extra, calc(400 / 32 * 1rem));
     max-height: calc(100vh - var(--jds-size-64));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

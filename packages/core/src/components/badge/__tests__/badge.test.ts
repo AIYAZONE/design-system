@@ -31,4 +31,47 @@ describe("jds-badge", () => {
     expect(count.textContent).toBe("99+");
   });
 
+  it("renders icon after text by default (iconPosition=next)", async () => {
+    const el = createBadge();
+    el.setAttribute("icon", "info-fill");
+    el.textContent = "Badge";
+    const root = await getBadgeRoot(el);
+    const badge = root.querySelector(".badge")!;
+    const slots = Array.from(badge.querySelectorAll("slot"));
+    expect(slots[0]?.getAttribute("name")).toBe(null);
+    expect(slots[1]?.getAttribute("name")).toBe("icon");
+  });
+
+  it("renders icon before text when iconPosition=prev", async () => {
+    const el = createBadge();
+    el.setAttribute("icon", "info-fill");
+    el.setAttribute("iconPosition", "prev");
+    el.textContent = "Badge";
+    const root = await getBadgeRoot(el);
+    const badge = root.querySelector(".badge")!;
+    const slots = Array.from(badge.querySelectorAll("slot"));
+    expect(slots[0]?.getAttribute("name")).toBe("icon");
+    expect(slots[1]?.getAttribute("name")).toBe(null);
+  });
+
+  it("maps legacy iconPosition start/end to prev/next", async () => {
+    const prevEl = createBadge();
+    prevEl.setAttribute("icon", "info-fill");
+    prevEl.setAttribute("iconPosition", "start");
+    prevEl.textContent = "Badge";
+    const prevRoot = await getBadgeRoot(prevEl);
+    const prevBadge = prevRoot.querySelector(".badge")!;
+    const prevSlots = Array.from(prevBadge.querySelectorAll("slot"));
+    expect(prevSlots[0]?.getAttribute("name")).toBe("icon");
+
+    const nextEl = createBadge();
+    nextEl.setAttribute("icon", "info-fill");
+    nextEl.setAttribute("iconPosition", "end");
+    nextEl.textContent = "Badge";
+    const nextRoot = await getBadgeRoot(nextEl);
+    const nextBadge = nextRoot.querySelector(".badge")!;
+    const nextSlots = Array.from(nextBadge.querySelectorAll("slot"));
+    expect(nextSlots[0]?.getAttribute("name")).toBe(null);
+  });
+
 });
