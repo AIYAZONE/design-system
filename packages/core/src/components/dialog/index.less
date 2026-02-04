@@ -74,7 +74,6 @@
 @media screen and (min-width: 1024px) {
   .container {
     min-width: 30rem;
-    max-height: calc(100vh - var(--jds-size-64) * 2);
 
     .content {
       margin-top: var(--jds-dialog-padding-y-large);
@@ -86,14 +85,16 @@
 
   :host([size='large']) .container {
     width: var(--jds-dialog-width, var(--jds-dialog-max-width-large, 640px));
-    min-height: var(--jds-dialog-min-height-large, calc(240 / 16 * 1rem));
+    min-height: var(--jds-dialog-min-height, var(--jds-dialog-min-height-large, calc(240 / 16 * 1rem)));
+    max-height: var(--jds-dialog-max-height, var(--jds-dialog-max-height-large, calc(100vh - var(--jds-size-64) * 2)));
   }
 
   :host([size='extra']) .container {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: var(--jds-dialog-width, var(--jds-dialog-max-width-extra, 1200px));
-    min-height: var(--jds-dialog-min-height-extra, calc(400 / 16 * 1rem));
+    min-height: var(--jds-dialog-min-height, var(--jds-dialog-min-height-extra, calc(400 / 16 * 1rem)));
+    max-height: var(--jds-dialog-max-height, var(--jds-dialog-max-height-extra, calc(100vh - var(--jds-size-64) * 2)));
     
     .content {
       margin-top: var(--jds-dialog-padding-y-extra);
@@ -127,8 +128,8 @@
 
   :host([size='large']) .container {
     width: var(--jds-dialog-width, var(--jds-dialog-max-width-large, calc(100vw - var(--jds-size-48) * 2)));
-    min-height: var(--jds-dialog-min-height-large, calc(320 / 32 * 1rem));
-    max-height: calc(100vh - var(--jds-size-128) * 2);
+    min-height: var(--jds-dialog-min-height, var(--jds-dialog-min-height-large, calc(320 / 32 * 1rem)));
+    max-height: var(--jds-dialog-max-height, var(--jds-dialog-max-height-large, calc(100vh - var(--jds-size-128) * 2)));
   }
 
   :host([size='extra']) .dialog-polyfill {
@@ -139,8 +140,8 @@
     bottom: 0;
     transform: translateX(-50%) translateY(100%);
     width: var(--jds-dialog-width, var(--jds-dialog-max-width-extra, 100%));
-    min-height: var(--jds-dialog-min-height-extra, calc(400 / 32 * 1rem));
-    max-height: calc(100vh - var(--jds-size-64));
+    min-height: var(--jds-dialog-min-height, var(--jds-dialog-min-height-extra, calc(400 / 32 * 1rem)));
+    max-height: var(--jds-dialog-max-height, var(--jds-dialog-max-height-extra, calc(100vh - var(--jds-size-64))));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
