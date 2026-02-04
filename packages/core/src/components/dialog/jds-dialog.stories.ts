@@ -52,6 +52,8 @@ const meta = {
 | --jds-dialog-radius | 圆角 | rounded-12 (Desktop) / 24 (Mobile) |
 | --jds-dialog-shadow | 阴影 | none |
 | --jds-dialog-width | 宽度 (Desktop) | 640px (Large) / 1200px (Extra) |
+| --jds-dialog-min-height | 最小高度 | 240px (Desktop) / 320px (Mobile) |
+| --jds-dialog-max-height | 最大高度 | 100vh - 128px |
 | --jds-dialog-padding-x-large | 水平内边距 (Large) | 64px (Desktop) / 32px (Mobile) |
 | --jds-dialog-padding-y-large | 垂直内边距 (Large) | 48px (Desktop) / 32px (Mobile) |
 | --jds-dialog-transition-duration | 动画时长 | 0.3s |
