@@ -295,13 +295,23 @@
 }
 
 // 文本按钮下划线通用样式（用于 hover/禁用等状态）
-.underline-style() {
+.label-underline-style() {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  display: block;
   width: 100%;
+  height: var(--jds-btn-underline-height);
+  background-color: var(--jds-btn-text-underline-color, var(--jds-btn-main-color, var(--jds-color-primary)));
+}
+
+.btn-underline-style() {
+  content: "";
+  position: absolute;
+  bottom: var(--jds-btn-underline-bottom, 0);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - var(--jds-btn-padding-horizontal)*2);
   height: var(--jds-btn-underline-height);
   background-color: var(--jds-btn-text-underline-color, var(--jds-btn-main-color, var(--jds-color-primary)));
 }
@@ -330,7 +340,8 @@
 }
 
 :host([variant="text"]) .button[aria-disabled="true"] .label::after {
-  .underline-style();
+  display: var(--jds-btn-label-underline-display, block);
+  .label-underline-style();
 }
 
 // 加载状态：隐藏文字、居中展示 Loading 图标
@@ -461,7 +472,31 @@
   :host([variant="text"]:hover) .button:not([aria-disabled="true"]) .label::after {
     // 使用统一变量渲染下划线颜色
     --jds-btn-text-underline-color: var(--jds-btn-text-interaction-color, var(--jds-btn-hover-color));
-    .underline-style();
+    display: var(--jds-btn-label-underline-display, block);
+    .label-underline-style();
+  }
+
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"])::after {
+    // 使用统一变量渲染下划线颜色
+    --jds-btn-text-underline-color: var(--jds-btn-text-interaction-color, var(--jds-btn-hover-color));
+    display: var(--jds-btn-underline-display, block);
+    .btn-underline-style();
+  }
+
+  :host([variant="text"]:hover[size="small"]) .button:not([aria-disabled="true"])::after {
+    --jds-btn-underline-bottom: calc(var(--jds-btn-small-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="medium"]) .button:not([aria-disabled="true"])::after {
+    --jds-btn-underline-bottom: calc(var(--jds-btn-medium-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="large"]) .button:not([aria-disabled="true"])::after {
+    --jds-btn-underline-bottom: calc(var(--jds-btn-large-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="extra"]) .button:not([aria-disabled="true"])::after {
+    --jds-btn-underline-bottom: calc(var(--jds-btn-extra-padding-vertical) /2);
   }
 
   :host([variant="text"][size="small"]:hover) .button:not([aria-disabled="true"]) .label::after {
