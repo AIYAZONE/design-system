@@ -7,8 +7,18 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "规范化徽章组件：用于轻量展示标签或计数，并可作为链接导航。提供 soft/solid/outline 变体与语义 kind，支持尺寸 size、图标与计数。最小 API 聚焦展示与导航；高级参数仅在 custom+soft 场景用于对比度调优。",
+        component: [
+          "规范化徽章组件：用于轻量展示标签或计数，并可作为链接导航。",
+          "提供 soft/solid/outline 变体与语义 kind，支持尺寸 size、图标与计数。",
+          "",
+          "推荐的颜色配置方式：",
+          "- 背景：--jds-badge-bg-color",
+          "- 文字：--jds-badge-text-color（不设置时回退 --jds-badge-color）",
+          "- outline 边框：默认跟随 --jds-badge-color",
+          "",
+          "solid 默认白字以保证对比度；如需自定义文字色优先使用 --jds-badge-text-color（旧变量 --jds-badge-solid-fg 仍兼容）。",
+          "kind=custom 时可直接使用 --jds-badge-color 作为主色输入；主题会基于该值推导 soft 背景/前景。",
+        ].join("\n"),
       },
     },
   },
@@ -26,8 +36,14 @@ const meta = {
     },
     icon: {
       control: { type: "text" },
-      description: "前置图标名称（icons 系统），如 info-fill",
+      description: "图标名称（icons 系统），如 info-fill",
       table: { category: "基础", defaultValue: { summary: "-" } },
+    },
+    iconPosition: {
+      control: { type: "select" },
+      options: ["prev", "next"],
+      description: "图标位置：prev（文本前）/ next（文本后），默认 next",
+      table: { category: "基础", defaultValue: { summary: "next" } },
     },
     variant: {
       control: { type: "select" },
@@ -58,21 +74,13 @@ const meta = {
     },
     target: { table: { disable: true, category: "高级", defaultValue: { summary: "-" } } },
     ariaLabelText: { table: { disable: true, category: "高级", defaultValue: { summary: "-" } } },
-    customColor: {
+    badgeColor: {
       control: { type: "color" },
-      description: "自定义主色（仅 kind=custom 生效），会用于前景与 soft 背景计算",
+      description: "通过 CSS 变量 --jds-badge-color 覆写主色（custom/outline/solid 等都会使用）。若需精确控制对比度，建议覆写 --jds-badge-soft-bg/--jds-badge-soft-fg 或统一覆写 --jds-badge-text-color。",
       table: { category: "高级", defaultValue: { summary: "-" } },
     },
-    customSoftBgMix: {
-      control: { type: "number", min: 0, max: 100, step: 1 },
-      description: "custom+soft 背景白色混合比例（0-100%），仅 kind=custom 生效，默认 65%",
-      table: { category: "高级", defaultValue: { summary: "65%" } },
-    },
-    customSoftFgDarken: {
-      control: { type: "number", min: 0, max: 100, step: 1 },
-      description: "custom+soft 前景加深比例（混入黑色 0-100%），仅 kind=custom 生效，默认 20%",
-      table: { category: "高级", defaultValue: { summary: "20%" } },
-    },
+    customSoftBgMix: { table: { disable: true } },
+    customSoftFgDarken: { table: { disable: true } },
   },
 } as const;
 
@@ -91,15 +99,13 @@ export const Default = {
     el.setAttribute("variant", args.variant ?? "soft");
     el.setAttribute("kind", args.kind ?? "default");
     if (args.icon) el.setAttribute("icon", args.icon);
-    // 统一前置图标，不再支持位置控制
+    if (args.iconPosition) el.setAttribute("iconPosition", args.iconPosition);
     if (typeof args.count === "number") el.count = args.count;
     if (typeof args.maxCount === "number") el.maxCount = args.maxCount!;
     // 移除 closable/clickable
     if (args.href) el.setAttribute("href", args.href);
     // 移除 target/ariaLabelText
-    if (args.customColor) el.style.setProperty("--jds-badge-custom-color", args.customColor);
-    if (typeof args.customSoftBgMix === "number") el.style.setProperty("--jds-badge-soft-mix", `${args.customSoftBgMix}%`);
-    if (typeof args.customSoftFgDarken === "number") el.style.setProperty("--jds-badge-soft-fg-darken", `${args.customSoftFgDarken}%`);
+    if (args.badgeColor) el.style.setProperty("--jds-badge-color", args.badgeColor);
     el.textContent = args.content;
     return el;
   },
@@ -112,7 +118,7 @@ export const WithIcon = {
     content: "New",
     variant: "soft",
     kind: "info",
-    iconPosition: "start",
+    iconPosition: "next",
   },
   render: (args: any) => {
     const el = document.createElement("jds-badge");
@@ -120,7 +126,7 @@ export const WithIcon = {
     el.setAttribute("variant", args.variant ?? "soft");
     el.setAttribute("kind", args.kind ?? "default");
     if (args.icon) el.setAttribute("icon", args.icon);
-    // 统一前置图标
+    if (args.iconPosition) el.setAttribute("iconPosition", args.iconPosition);
     el.textContent = args.content;
     return el;
   },
@@ -149,20 +155,20 @@ export const Count = {
 
 // 移除 Closable 与 Clickable 示例
 
-export const CustomColor = {
+export const Custom = {
   args: {
     size: "large",
     content: "Custom",
     variant: "soft",
     kind: "custom",
-    customColor: "#ff7a00",
+    badgeColor: "#ff7a00",
   },
   render: (args: any) => {
     const el = document.createElement("jds-badge");
     el.setAttribute("size", args.size);
     el.setAttribute("variant", args.variant);
     el.setAttribute("kind", args.kind);
-    if (args.customColor) el.style.setProperty("--jds-badge-custom-color", args.customColor);
+    if (args.badgeColor) el.style.setProperty("--jds-badge-color", args.badgeColor);
     el.textContent = args.content;
     return el;
   },
