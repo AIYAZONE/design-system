@@ -39,7 +39,7 @@ try {
   run('pnpm run build:storybook --filter=@jackery/storybook');
   
   const storybookDist = path.resolve(rootDir, 'apps/storybook/storybook-static');
-  const storybookTarget = path.join(portalDist, 'design-system');
+  const storybookTarget = path.join(portalDist, 'storybook');
   copyDir(storybookDist, storybookTarget);
 
   // 4. Build Icons
