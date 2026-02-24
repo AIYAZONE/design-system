@@ -6,14 +6,30 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jackery Design System - 开发调试中心</title>
-  <script type="module" src="/main.ts"></script>
+  <script type="module" src="/apps/examples/home.ts"></script>
 </head>
 <body>
+  <header class="portal-topbar">
+    <div class="portal-topbar__inner">
+      <a class="portal-brand" href="/index.html">
+        <span class="portal-brand__mark" aria-hidden="true">JDS</span>
+        <span class="portal-brand__text">
+          <span>Jackery</span>
+          <span class="portal-brand__accent">Design System</span>
+        </span>
+      </a>
+      <nav class="portal-nav" aria-label="主导航">
+        <a class="portal-nav__link" href="/index.html">概览</a>
+        <a class="portal-nav__link" href="/storybook/">文档</a>
+        <a class="portal-nav__link" href="/examples/">示例</a>
+        <a class="portal-nav__link" href="/icons/">图标</a>
+        <a class="portal-nav__link" href="/jbc/">业务组件</a>
+      </nav>
+      <div class="portal-actions"></div>
+    </div>
+  </header>
   <div class="container">
     <header class="index-header">
-      <div class="logo">
-        <img src="favicon.svg" alt="Jackery Logo" />
-      </div>
       <h1>Jackery Design System <sub id="versionNumber">加载中...</sub></h1>
       <p class="subtitle">官网中心 - Jackery F2E Team</p>
     </header>

@@ -53,8 +53,46 @@ const onDomReady = (fn: () => void) => {
   fn();
 };
 
+const ensureSiteHeader = async () => {
+  const existingCss = document.querySelector<HTMLLinkElement>('link[href="/shared/site-header.css"]');
+  if (!existingCss) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/shared/site-header.css';
+    document.head.appendChild(link);
+  }
+
+  if (!document.querySelector('[data-site-header]')) {
+    const slot = document.createElement('div');
+    slot.setAttribute('data-site-header', '');
+    slot.setAttribute('data-app', 'examples');
+    document.body.insertAdjacentElement('afterbegin', slot);
+  }
+
+  try {
+    const importModule = (p: string) => new Function('p', 'return import(p)')(p) as Promise<unknown>;
+    await importModule('/shared/site-header.js');
+  } catch {}
+};
+
+const ensureSiteFooter = async () => {
+  const existingCss = document.querySelector<HTMLLinkElement>('link[href="/shared/site-footer.css"]');
+  if (!existingCss) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/shared/site-footer.css';
+    document.head.appendChild(link);
+  }
+
+  try {
+    const importModule = (p: string) => new Function('p', 'return import(p)')(p) as Promise<unknown>;
+    await importModule('/shared/site-footer.js');
+  } catch {}
+};
+
 const mountThemeSwitcher = (currentTheme: ExamplesTheme) => {
   if (document.querySelector('.theme-switcher')) return;
+  if (document.querySelector('[data-site-header]')) return;
 
   const wrapper = document.createElement('div');
   wrapper.className = 'theme-switcher';
@@ -90,6 +128,12 @@ const mountThemeSwitcher = (currentTheme: ExamplesTheme) => {
     wrapper.appendChild(btn);
   });
 
+  const portalActions = document.querySelector<HTMLElement>('.portal-actions');
+  if (portalActions) {
+    portalActions.appendChild(wrapper);
+    return;
+  }
+
   const innerHeaderContent = document.querySelector<HTMLElement>('.header .content');
   if (innerHeaderContent) {
     const subtitle = innerHeaderContent.querySelector<HTMLElement>('.subtitle');
@@ -104,6 +148,44 @@ const mountThemeSwitcher = (currentTheme: ExamplesTheme) => {
     if (subtitle) subtitle.insertAdjacentElement('afterend', wrapper);
     else indexHeader.appendChild(wrapper);
   }
+};
+
+const setActivePortalNav = () => {
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.portal-nav__link'));
+  if (links.length === 0) return;
+
+  const currentPath = window.location.pathname;
+  const normalizedCurrent = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
+
+  const getActivePath = () => {
+    if (normalizedCurrent.startsWith('/storybook/')) return '/storybook/';
+    if (normalizedCurrent.startsWith('/examples/')) return '/examples/';
+    if (normalizedCurrent.startsWith('/icons/')) return '/icons/';
+    if (normalizedCurrent.startsWith('/jbc/')) return '/jbc/';
+    return '/';
+  };
+
+  const activePath = getActivePath();
+
+  links.forEach((a) => {
+    a.classList.remove('is-active');
+    a.removeAttribute('aria-current');
+
+    let linkPathname = '';
+    try {
+      const url = new URL(a.getAttribute('href') || '', window.location.href);
+      linkPathname = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
+    } catch {}
+
+    if (linkPathname === '/index.html/' || linkPathname === '/index.html') {
+      linkPathname = '/';
+    }
+
+    if (linkPathname === activePath) {
+      a.classList.add('is-active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
 };
 
 const patchInternalLinksWithTheme = (themeValue: ExamplesTheme) => {
@@ -136,6 +218,11 @@ const patchInternalLinksWithTheme = (themeValue: ExamplesTheme) => {
 
 onDomReady(() => {
   const currentTheme = resolvedTheme as ExamplesTheme;
-  mountThemeSwitcher(currentTheme);
-  patchInternalLinksWithTheme(currentTheme);
+  ensureSiteHeader().then(() => {
+    if (document.querySelector('[data-site-header]')) return;
+    mountThemeSwitcher(currentTheme);
+    patchInternalLinksWithTheme(currentTheme);
+    setActivePortalNav();
+  });
+  ensureSiteFooter();
 });
