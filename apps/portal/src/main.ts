@@ -3,11 +3,6 @@ import './style.css'
 // import '@jackery/core'; 
 
 // --- Interfaces & Data ---
-interface NavLink {
-  text: string;
-  href: string;
-}
-
 interface CardItem {
   title: string;
   description: string;
@@ -25,14 +20,6 @@ interface ArchNode {
   widthClass?: string;
   extraClasses?: string;
 }
-
-const navLinks: NavLink[] = [
-  { text: '概览', href: '#' },
-  { text: '文档', href: '/storybook/' },
-  { text: '示例', href: '/examples/' },
-  { text: '图标', href: '/icons/' },
-  { text: '业务组件', href: '/jbc/' },
-];
 
 const cards: CardItem[] = [
   {
@@ -75,21 +62,7 @@ const cards: CardItem[] = [
 
 // --- Component Renderers ---
 
-const renderHeader = () => `
-  <header class="w-full px-4 md:px-8 py-4 flex flex-col md:flex-row md:justify-between items-center border-b border-gray-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="flex items-center gap-3 mb-4 md:mb-0 w-full md:w-auto justify-center md:justify-start">
-      <div class="w-8 h-8 bg-orange-600 rounded flex items-center justify-center font-bold text-xs text-white">JDS</div>
-      <h1 class="text-xl font-bold tracking-widest uppercase text-gray-900">Jackery <span class="text-orange-600">Design System</span></h1>
-    </div>
-    <nav class="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-      <div class="flex gap-6 md:gap-10 text-sm font-medium text-gray-600 whitespace-nowrap px-2 md:px-0 justify-center md:justify-end min-w-max">
-        ${navLinks.map(link => 
-          `<a href="${link.href}" class="hover:text-orange-600 transition-colors py-1">${link.text}</a>`
-        ).join('')}
-      </div>
-    </nav>
-  </header>
-`;
+const renderSiteHeaderSlot = () => `<div data-site-header data-app="portal"></div>`;
 
 const renderHero = () => `
   <div class="text-center mb-12 md:mb-20 relative">
@@ -304,19 +277,14 @@ const renderArchitecture = () => `
   </section>
 `;
 
-const renderFooter = () => `
-  <footer class="w-full border-t border-gray-200 bg-white py-6 md:py-8 text-center text-gray-500 text-sm">
-    <p>© 2026 Jackery Inc. All rights reserved.</p>
-    <p class="mt-2 font-mono text-xs opacity-50">Powered by Jackery F2E Team</p>
-  </footer>
-`;
+const renderFooter = () => `<div data-site-footer></div>`;
 
 // --- Main App Render ---
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `
-  ${renderHeader()}
+  ${renderSiteHeaderSlot()}
   <main class="flex-1 flex flex-col items-center w-full max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16">
     ${renderHero()}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full mb-12 md:mb-24">
