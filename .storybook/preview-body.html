@@ -1,3 +1,30 @@
+<script>
+  (function() {
+    var createFooter = function() {
+      if (document.querySelector('.site-footer')) return;
+      
+      var startYear = 2024;
+      var currentYear = new Date().getFullYear();
+      var yearText = currentYear > startYear ? startYear + '–' + currentYear : String(startYear);
+      
+      var footer = document.createElement('footer');
+      footer.className = 'site-footer';
+      footer.innerHTML = 
+        '<div class="site-footer__inner">' +
+          '<p>© ' + yearText + ' Jackery Inc. All rights reserved.</p>' +
+          '<p class="site-footer__mono">Powered by Jackery F2E Team</p>' +
+        '</div>';
+      
+      document.body.appendChild(footer);
+    };
+    
+    if (document.readyState === 'complete') {
+      createFooter();
+    } else {
+      window.addEventListener('load', createFooter, { once: true });
+    }
+  })();
+</script>
 <style>
   .stacked-form {
     display: flex;

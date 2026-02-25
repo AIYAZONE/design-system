@@ -22,6 +22,8 @@ const config = {
   staticDirs: [
     // 将公共资源映射到根路径，避免 /logo.svg 等资源 404
     { from: "../public", to: "/" },
+    // 将 portal 的 shared 目录映射，支持 site-header/footer
+    { from: "../apps/portal/public/shared", to: "/shared" },
   ],
   docs: {
     autodocs: true,
