@@ -191,7 +191,11 @@ const injectStyles = () => {
   const style = document.createElement('style');
   style.setAttribute('data-portal-header', 'true');
   style.textContent = HEADER_STYLES;
-  document.head?.appendChild(style);
+  
+  const head = document.head || document.getElementsByTagName('head')[0];
+  if (head) {
+    head.appendChild(style);
+  }
 };
 
 const injectHeader = () => {
@@ -208,27 +212,28 @@ const mount = () => {
   injectHeader();
 };
 
-const waitForBody = (callback: () => void) => {
-  if (document.body) {
-    callback();
+(function init() {
+  if (document.head && document.body) {
+    mount();
     return;
   }
 
-  const observer = new MutationObserver(() => {
-    if (document.body) {
-      observer.disconnect();
-      callback();
+  let observer: MutationObserver | null = null;
+  
+  const check = () => {
+    if (document.head && document.body) {
+      if (observer) {
+        observer.disconnect();
+      }
+      mount();
     }
-  });
+  };
 
+  observer = new MutationObserver(check);
   observer.observe(document.documentElement, {
     childList: true,
     subtree: true,
   });
-};
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => waitForBody(mount), { once: true });
-} else {
-  waitForBody(mount);
-}
+  
+  check();
+})();
