@@ -212,28 +212,20 @@ const mount = () => {
   injectHeader();
 };
 
-(function init() {
+const tryMount = () => {
   if (document.head && document.body) {
     mount();
-    return;
+    return true;
   }
+  return false;
+};
 
-  let observer: MutationObserver | null = null;
-  
-  const check = () => {
-    if (document.head && document.body) {
-      if (observer) {
-        observer.disconnect();
-      }
-      mount();
+if (!tryMount()) {
+  const interval = setInterval(() => {
+    if (tryMount()) {
+      clearInterval(interval);
     }
-  };
-
-  observer = new MutationObserver(check);
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-  });
+  }, 10);
   
-  check();
-})();
+  setTimeout(() => clearInterval(interval), 5000);
+}
