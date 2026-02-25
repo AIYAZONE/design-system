@@ -24,7 +24,7 @@ interface ArchNode {
 const cards: CardItem[] = [
   {
     title: '设计系统指导文档',
-    description: '核心组件库 (Core) 的 API 文档与开发指南。',
+    description: '基于 Web Components 的跨框架组件库，含 Button、Dialog、Toast 等 7+ 核心组件，支持深浅主题与无障碍访问。',
     href: '/storybook/',
     linkText: '查看文档',
     iconColor: 'text-pink-500',
@@ -33,7 +33,7 @@ const cards: CardItem[] = [
   },
   {
     title: '设计系统示例',
-    description: '真实业务场景下的组件落地范例与 Demo。',
+    description: '组件交互演示与真实业务场景落地范例，涵盖主题切换、国际化、响应式布局等实践。',
     href: '/examples/',
     linkText: '浏览示例',
     iconColor: 'text-blue-500',
@@ -42,7 +42,7 @@ const cards: CardItem[] = [
   },
   {
     title: '图标资产',
-    description: '官方 SVG 图标库检索与使用指南。',
+    description: '87+ 精选 SVG 图标，含系统图标与社媒图标，支持按需导入与 Tree-shaking。',
     href: '/icons/',
     linkText: '搜索图标',
     iconColor: 'text-purple-500',
@@ -51,7 +51,7 @@ const cards: CardItem[] = [
   },
   {
     title: '业务组件库',
-    description: '基于 JDS 构建的业务级复用组件 (Vue/Web Components)。',
+    description: '基于 JDS 构建的业务级复用组件，含抽奖、刮刮乐等营销组件，支持多主题切换。',
     href: '/jbc/',
     linkText: '浏览组件',
     iconColor: 'text-green-500',
