@@ -51,7 +51,10 @@ const renderHeader = () => {
 };
 
 const injectStyles = () => {
+  if (document.querySelector('style[data-portal-header]')) return;
+  
   const style = document.createElement('style');
+  style.setAttribute('data-portal-header', 'true');
   style.textContent = `
     :root {
       --site-header-bg: rgba(255, 255, 255, 0.82);
@@ -72,7 +75,7 @@ const injectStyles = () => {
       height: calc(100vh - var(--portal-header-height)) !important;
     }
 
-    .css-1nolumm{
+    .css-1nolumm {
       height: 100% !important;
     }
       
@@ -194,16 +197,31 @@ const injectStyles = () => {
 const mount = () => {
   injectStyles();
 
-  if (!document.querySelector('.portal-topbar')) {
-    const header = document.createElement('header');
-    header.className = 'portal-topbar';
-    header.innerHTML = renderHeader();
+  if (document.querySelector('.portal-topbar')) return;
+
+  const header = document.createElement('header');
+  header.className = 'portal-topbar';
+  header.innerHTML = renderHeader();
+  
+  if (document.body) {
     document.body.insertAdjacentElement('afterbegin', header);
+  } else {
+    requestAnimationFrame(mount);
   }
 };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', mount, { once: true });
-} else {
-  mount();
-}
+const tryMount = () => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount, { once: true });
+  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    if (document.body) {
+      mount();
+    } else {
+      requestAnimationFrame(tryMount);
+    }
+  } else {
+    requestAnimationFrame(tryMount);
+  }
+};
+
+tryMount();
