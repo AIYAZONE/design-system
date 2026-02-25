@@ -23,10 +23,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  staticDirs: [
-    // 将 portal 的 shared 目录映射，支持 site-header/footer
-    { from: "../../../apps/portal/public/shared", to: "/shared" },
-  ],
+  staticDirs: [],
 
 viteFinal(config) {
     return mergeConfig(config, {
