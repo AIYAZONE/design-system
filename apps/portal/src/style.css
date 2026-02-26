@@ -100,14 +100,677 @@ body {
   @apply text-xs text-gray-500 mt-1;
 }
 
-/* Connector Lines (SVG) - Darker for visibility */
-.connector-line {
-  stroke: rgba(0, 0, 0, 0.1);
-  stroke-width: 2;
-  fill: none;
-  transition: stroke 0.3s;
+.arch-blueprint-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #f8fafc;
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-.arch-group:hover .connector-line {
-  stroke: rgba(255, 80, 0, 0.4);
+.arch-blueprint-bg::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.6) 45%, rgba(226, 232, 240, 0.25) 100%);
+  pointer-events: none;
+}
+
+.arch-meta-row {
+  @apply flex flex-col md:flex-row md:items-center md:justify-between gap-3;
+}
+
+.arch-meta-left {
+  @apply flex flex-wrap gap-2;
+}
+
+.arch-meta-right {
+  @apply flex flex-wrap gap-2 md:justify-end;
+}
+
+.arch-chip {
+  @apply inline-flex items-center rounded-full border bg-white/70 px-3 py-1 text-[11px] md:text-xs leading-tight;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: rgb(51 65 85);
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.arch-chip:focus-visible {
+  outline: 2px solid rgba(255, 80, 0, 0.35);
+  outline-offset: 2px;
+}
+
+.arch-chip-label {
+  @apply inline-flex items-center gap-2;
+}
+
+.arch-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(2px);
+  width: max-content;
+  max-width: 280px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 50;
+  text-align: left;
+  white-space: normal;
+}
+
+.arch-tooltip-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.arch-tooltip-desc {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.arch-chip:hover .arch-tooltip,
+.arch-chip:focus-visible .arch-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.arch-quicknav {
+  @apply mt-3 flex gap-2 overflow-x-auto pb-1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.arch-quicknav::-webkit-scrollbar {
+  display: none;
+}
+
+.arch-quickbtn {
+  @apply inline-flex items-center rounded-full border px-3 py-1 text-[11px] md:text-xs font-extrabold tracking-wide;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: rgb(30 41 59);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.arch-quickbtn:hover {
+  border-color: rgba(255, 80, 0, 0.25);
+  background: rgba(255, 80, 0, 0.06);
+  color: rgb(234 88 12);
+}
+
+.arch-quickbtn:focus-visible {
+  outline: 2px solid rgba(255, 80, 0, 0.35);
+  outline-offset: 2px;
+}
+
+.arch-chip-muted {
+  @apply bg-white/55;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: rgb(71 85 105);
+}
+
+.arch-chip-tag {
+  @apply bg-slate-50;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: rgb(30 41 59);
+}
+
+.arch-chip-success {
+  @apply border-emerald-200 bg-emerald-50;
+  color: rgb(4 120 87);
+}
+
+.arch-chip-warning {
+  @apply border-orange-200 bg-orange-50;
+  color: rgb(194 65 12);
+}
+
+.arch-chip-purple {
+  @apply border-purple-200 bg-purple-50;
+  color: rgb(109 40 217);
+}
+
+.arch-canvas {
+  @apply mt-4 flex flex-col gap-4;
+}
+
+@media (min-width: 768px) {
+  .arch-canvas {
+    display: grid;
+    grid-template-columns: minmax(160px, 0.18fr) 1fr minmax(160px, 0.18fr);
+    gap: 12px;
+    align-items: stretch;
+  }
+}
+
+.arch-axis {
+  @apply rounded-2xl border bg-white/60 backdrop-blur-sm p-3 md:p-4 shadow-sm;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-axis-title {
+  @apply text-[11px] font-extrabold tracking-widest uppercase;
+  color: rgb(71 85 105);
+}
+
+.arch-axis-list {
+  @apply mt-3 flex flex-col gap-2;
+}
+
+.arch-axis-item {
+  @apply rounded-xl border bg-white/70 px-3 py-2;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-axis-item-title {
+  @apply text-xs font-bold;
+  color: rgb(15 23 42);
+}
+
+.arch-axis-item-sub {
+  @apply mt-1 text-[10px] leading-snug;
+  color: rgb(100 116 139);
+}
+
+@media (max-width: 1279px) {
+  .arch-axis-item-sub {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .arch-axis {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100%;
+  }
+}
+
+.arch-layers {
+  @apply flex flex-col gap-3;
+}
+
+@media (min-width: 768px) {
+  .arch-layers {
+    gap: 10px;
+  }
+}
+
+.arch-layer {
+  @apply relative rounded-2xl border bg-white/70 backdrop-blur-sm shadow-sm;
+  border-color: rgba(15, 23, 42, 0.1);
+  z-index: 1;
+}
+
+.arch-layer.is-focus {
+  border-color: rgba(255, 80, 0, 0.25);
+  box-shadow: 0 18px 36px rgba(255, 80, 0, 0.08);
+}
+
+.arch-layer.is-tooltip-open {
+  z-index: 60;
+}
+
+.arch-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: rgba(var(--arch-tone, 71 85 105), 0.22);
+}
+
+.arch-layer-row {
+  @apply h-full p-3 md:p-4 flex flex-col gap-3;
+}
+
+.arch-layer-head {
+  @apply flex items-end justify-between gap-3;
+}
+
+.arch-layer-en {
+  @apply text-[10px] md:text-[11px] font-extrabold tracking-widest uppercase;
+  color: rgb(var(--arch-tone-text, 30 41 59));
+}
+
+.arch-layer-zh {
+  @apply text-xs md:text-sm font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-layer-body {
+  @apply flex flex-col gap-2 min-h-0;
+}
+
+.arch-layer-desc {
+  @apply text-[11px] md:text-xs leading-relaxed;
+  color: rgb(71 85 105);
+}
+
+.arch-layer-tags {
+  @apply flex flex-wrap gap-2;
+}
+
+.arch-modules {
+  @apply grid gap-2;
+}
+
+.arch-modules-5 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .arch-modules-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .arch-modules-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.arch-module-card {
+  @apply rounded-xl border bg-white/75 px-2 py-2 flex items-center justify-center text-center;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-module-card .arch-chip {
+  width: 100%;
+}
+
+.arch-domain-cols {
+  @apply grid gap-2;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .arch-domain-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.arch-domain-col {
+  @apply rounded-xl border bg-white/65 p-3;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-domain-title {
+  @apply text-xs font-extrabold;
+  color: rgb(30 41 59);
+}
+
+.arch-chip-row {
+  @apply mt-2 flex flex-wrap gap-2;
+}
+
+.arch-design-cols {
+  @apply grid gap-2;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .arch-design-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.arch-design-col {
+  @apply rounded-xl border bg-white/65 p-3;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-design-title {
+  @apply text-xs font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-design-sub {
+  @apply mt-1 text-[10px] font-bold;
+  color: rgb(100 116 139);
+}
+
+.arch-support-row {
+  @apply mt-3 flex flex-col md:flex-row md:items-center gap-2 md:gap-3;
+}
+
+.arch-support-label {
+  @apply text-[11px] font-extrabold tracking-widest uppercase;
+  color: rgb(71 85 105);
+  white-space: nowrap;
+}
+
+.arch-support-chips {
+  @apply flex flex-wrap gap-2;
+}
+
+.arch-layer-platform {
+  background:
+    linear-gradient(180deg, rgba(241, 245, 249, 0.75) 0%, rgba(255, 255, 255, 0.7) 55%),
+    radial-gradient(circle at 20% 0%, rgba(234, 179, 8, 0.08) 0%, transparent 60%);
+}
+
+.arch-platform-head {
+  position: relative;
+}
+
+.arch-platform-watermark {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-size: 24px;
+  color: rgba(15, 23, 42, 0.05);
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .arch-platform-watermark {
+    font-size: 32px;
+  }
+}
+
+.arch-platform-grid {
+  @apply grid gap-2;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .arch-platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.arch-platform-card {
+  @apply rounded-xl border bg-white/70 p-3;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.arch-platform-title {
+  @apply text-xs font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-platform-sub {
+  @apply mt-1 text-[10px] font-bold;
+  color: rgb(100 116 139);
+}
+
+.arch-platform-deps {
+  @apply mt-3 flex flex-wrap gap-2;
+}
+
+.arch-obs-cols {
+  @apply grid gap-2;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .arch-obs-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.arch-obs-col {
+  @apply rounded-xl border bg-white/65 p-3;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-obs-title {
+  @apply text-xs font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-obs-loop {
+  @apply mt-3 text-[11px] font-extrabold;
+  color: rgb(71 85 105);
+}
+
+.arch-maturity {
+  @apply rounded-2xl border bg-white/60 backdrop-blur-sm p-3 md:p-4 shadow-sm;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-maturity-title {
+  @apply text-[11px] font-extrabold tracking-widest uppercase;
+  color: rgb(71 85 105);
+}
+
+.arch-maturity-level {
+  @apply mt-2 text-sm font-extrabold;
+  color: rgb(15 23 42);
+  white-space: nowrap;
+}
+
+.arch-maturity-bars {
+  @apply mt-3 flex flex-col gap-3;
+}
+
+.arch-bar-top {
+  @apply flex items-center justify-between gap-2;
+}
+
+.arch-bar-label {
+  @apply text-[11px] font-bold;
+  color: rgb(30 41 59);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arch-bar-value {
+  @apply text-[11px] font-extrabold;
+  color: rgb(71 85 105);
+}
+
+.arch-bar-track {
+  @apply mt-2 rounded-full overflow-hidden;
+  height: 8px;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.arch-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 80, 0, 0.45), rgba(59, 130, 246, 0.55));
+}
+
+.arch-summary {
+  @apply mt-8;
+}
+
+.arch-summary-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-3;
+}
+
+.arch-summary-card {
+  @apply rounded-2xl border border-gray-200 bg-white/70 backdrop-blur-sm p-4 md:p-6;
+}
+
+.arch-summary-title {
+  @apply text-sm font-extrabold text-gray-900;
+}
+
+.arch-summary-list {
+  @apply mt-3 flex flex-col gap-2;
+}
+
+.arch-summary-item {
+  @apply text-sm text-gray-700;
+}
+
+.arch-panels {
+  @apply mt-6 rounded-2xl border bg-white/70 backdrop-blur-sm shadow-sm p-3 md:p-4;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-tabs {
+  @apply flex gap-2 overflow-x-auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.arch-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.arch-tab {
+  @apply px-3 py-2 rounded-xl border text-sm font-extrabold;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: rgb(30 41 59);
+  background: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+.arch-tab.is-active {
+  border-color: rgba(255, 80, 0, 0.25);
+  background: rgba(255, 80, 0, 0.06);
+  color: rgb(234 88 12);
+}
+
+.arch-panel {
+  @apply mt-3;
+}
+
+.arch-panel-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-3;
+}
+
+.arch-panel-card {
+  @apply rounded-2xl border bg-white/70 p-4 md:p-5;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-panel-title {
+  @apply text-sm font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-panel-desc {
+  @apply mt-2 text-sm leading-relaxed;
+  color: rgb(71 85 105);
+}
+
+.arch-panel-list {
+  @apply mt-3 flex flex-col gap-2;
+}
+
+.arch-panel-item {
+  @apply flex items-center justify-between gap-3;
+}
+
+.arch-panel-k {
+  @apply text-sm font-extrabold;
+  color: rgb(30 41 59);
+}
+
+.arch-panel-v {
+  @apply text-sm;
+  color: rgb(71 85 105);
+}
+
+.arch-panel-table {
+  @apply mt-3 flex flex-col gap-2;
+}
+
+.arch-panel-row {
+  @apply flex items-center justify-between gap-3 rounded-xl border bg-white/60 px-3 py-2;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-upgrade {
+  @apply flex flex-col gap-4;
+}
+
+.arch-upgrade-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-3;
+}
+
+.arch-upgrade-card {
+  @apply rounded-2xl border bg-white/70 p-4 md:p-5;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-upgrade-title {
+  @apply text-sm font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-upgrade-desc {
+  @apply mt-2 text-sm leading-relaxed;
+  color: rgb(71 85 105);
+}
+
+.arch-kpi-grid {
+  @apply grid grid-cols-2 md:grid-cols-4 gap-3;
+}
+
+.arch-kpi-card {
+  @apply rounded-2xl border bg-white/70 p-4 md:p-5;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.arch-kpi-title {
+  @apply text-[11px] font-extrabold tracking-widest uppercase;
+  color: rgb(71 85 105);
+}
+
+.arch-kpi-value {
+  @apply mt-2 text-sm font-extrabold;
+  color: rgb(15 23 42);
+}
+
+.arch-tone-blue {
+  --arch-tone: 59 130 246;
+  --arch-tone-text: 37 99 235;
+}
+
+.arch-tone-purple {
+  --arch-tone: 168 85 247;
+  --arch-tone-text: 124 58 237;
+}
+
+.arch-tone-orange {
+  --arch-tone: 249 115 22;
+  --arch-tone-text: 234 88 12;
+}
+
+.arch-tone-yellow {
+  --arch-tone: 234 179 8;
+  --arch-tone-text: 161 98 7;
+}
+
+.arch-tone-green {
+  --arch-tone: 34 197 94;
+  --arch-tone-text: 22 163 74;
+}
+
+.arch-tone-red {
+  --arch-tone: 239 68 68;
+  --arch-tone-text: 220 38 38;
 }
