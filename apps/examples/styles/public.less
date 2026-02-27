@@ -1,6 +1,13 @@
-// 通用容器样式
 body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--jds-color-text-l1);
+  margin: 0;
+  background-color: #f8f9fa;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 90%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -8,12 +15,126 @@ body {
   margin: 0 auto;
 }
 
+.portal-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.portal-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jds-size-24);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--jds-size-12) var(--jds-size-24);
+}
+
+.portal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jds-size-8);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: var(--jds-font-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--jds-color-text-l1);
+  white-space: nowrap;
+}
+
+.portal-brand__mark {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  background: #ff5000;
+  color: #fff;
+  border-radius: var(--jds-rounded-4);
+  font-weight: var(--jds-font-bold);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+.portal-brand__text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--jds-size-8);
+}
+
+.portal-brand__accent {
+  color: #ff5000;
+}
+
+.portal-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--jds-size-24);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.portal-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.portal-nav__link {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: var(--jds-font-medium);
+  color: var(--jds-color-text-l2);
+  padding: var(--jds-size-8) 0;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.portal-nav__link:hover {
+  color: #ff5000;
+}
+
+.portal-nav__link.is-active {
+  color: #ff5000;
+}
+
+.portal-nav__link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: rgba(255, 80, 0, 0.85);
+  border-radius: 2px;
+}
+
+.portal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: max-content;
+}
+
+.portal-topbar .theme-switcher {
+  margin-top: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--jds-size-32);
-  color: var(--jds-color-white);
+  color: var(--jds-color-text-l1);
 
   .content {
     flex: 1;
@@ -25,14 +146,15 @@ body {
     font-size: 2rem;
     font-weight: var(--jds-font-bold);
     margin: 0 0 var(--jds-size-8) 0;
-    text-shadow: 0 2px 4px var(--jds-color-overlay-30);
+    text-shadow: none;
   }
 
   .subtitle {
     font-size: 1rem;
-    opacity: 0.9;
-    font-weight: 300;
+    opacity: 1;
+    font-weight: var(--jds-font-regular);
     margin: 0;
+    color: var(--jds-color-text-l2);
   }
 }
 
@@ -43,9 +165,10 @@ body {
   margin-top: var(--jds-size-12);
   padding: var(--jds-size-6) var(--jds-size-8);
   border-radius: var(--jds-rounded-12);
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .theme-switcher__label {
@@ -60,7 +183,6 @@ body {
   justify-content: center;
 }
 
-// 通用Logo样式
 .logo {
   background: var(--jds-color-white);
   border-radius: var(--jds-rounded-circle);
@@ -75,13 +197,13 @@ body {
   }
 }
 
-// 通用卡片样式
 body main,
 body .card {
-  background: var(--jds-color-white);
-  border-radius: var(--jds-rounded-8);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--jds-rounded-12);
   padding: var(--jds-size-32);
-  box-shadow: 0 10px 15px -3px var(--jds-color-overlay-30), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: var(--jds-size-32);
 }
 
@@ -135,11 +257,10 @@ main {
   }
 }
 
-// 响应式样式
 @media screen and (min-width:1024px) {
   .container {
-    max-width: 1312px;
-    padding: var(--jds-size-32) 0;
+    max-width: 1280px;
+    padding: var(--jds-size-32) var(--jds-size-24);
   }
 
   .logo {
@@ -151,6 +272,24 @@ main {
 @media screen and (max-width: 1023.98px) {
   .container {
     padding: var(--jds-size-16);
+  }
+
+  .portal-topbar__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--jds-size-12) var(--jds-size-16);
+    gap: var(--jds-size-12);
+  }
+
+  .portal-nav {
+    width: 100%;
+    justify-content: center;
+    gap: var(--jds-size-16);
+  }
+
+  .portal-actions {
+    width: 100%;
+    justify-content: center;
   }
 
   .logo {

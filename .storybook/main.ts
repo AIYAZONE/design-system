@@ -20,7 +20,6 @@ const config = {
     options: {},
   },
   staticDirs: [
-    // 将公共资源映射到根路径，避免 /logo.svg 等资源 404
     { from: "../public", to: "/" },
   ],
   docs: {

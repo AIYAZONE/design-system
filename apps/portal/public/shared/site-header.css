@@ -1,0 +1,190 @@
+:root {
+  --site-header-bg: rgba(255, 255, 255, 0.82);
+  --site-header-border: rgba(0, 0, 0, 0.08);
+  --site-header-ink: #111827;
+  --site-header-muted: #4b5563;
+  --site-header-brand: #ff5000;
+  --site-header-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  margin: 0;
+}
+
+.portal-topbar {
+  /* sticky moved to [data-site-header] wrapper to fix height issue */
+  width: 100%;
+  background: var(--site-header-bg);
+  border-bottom: 1px solid var(--site-header-border);
+  backdrop-filter: blur(12px);
+}
+
+[data-site-header] {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  top: env(safe-area-inset-top);
+  z-index: 50;
+  display: block; /* Ensure it behaves as a block container */
+}
+
+.portal-topbar__inner {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; Removed to allow margin-left: auto to work */
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+
+.portal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--site-header-ink);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 1.25rem;
+}
+
+.portal-brand__mark {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 0.5rem;
+  background: var(--site-header-brand);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.portal-brand__text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.portal-brand__accent {
+  color: var(--site-header-brand);
+}
+
+.portal-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+  margin-left: auto; /* Push to right */
+}
+
+.portal-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.portal-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--site-header-muted);
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.portal-nav__link:hover {
+  color: var(--site-header-brand);
+}
+
+.portal-nav__link.is-active {
+  color: var(--site-header-brand);
+}
+
+.portal-nav__link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: rgba(255, 80, 0, 0.85);
+  border-radius: 2px;
+}
+
+.portal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* min-width: max-content; Removed to allow it to collapse when empty */
+}
+
+.portal-actions:not(:empty) {
+  min-width: max-content;
+  margin-left: 32px;
+  padding-left: 32px;
+  border-left: 1px solid var(--site-header-border);
+}
+
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--site-header-shadow);
+}
+
+.theme-switcher__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--site-header-muted);
+  user-select: none;
+}
+
+.theme-switcher__btn {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: var(--site-header-ink);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-switcher__btn:hover {
+  border-color: rgba(255, 80, 0, 0.25);
+  background: rgba(255, 80, 0, 0.06);
+  color: var(--site-header-brand);
+}
+
+.theme-switcher__btn.is-active {
+  border-color: rgba(255, 80, 0, 0.35);
+  background: rgba(255, 80, 0, 0.1);
+  color: var(--site-header-brand);
+}
+
+.theme-switcher__btn:focus-visible,
+.portal-nav__link:focus-visible {
+  outline: 3px solid rgba(255, 80, 0, 0.35);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
