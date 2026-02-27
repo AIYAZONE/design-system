@@ -16,6 +16,15 @@
 
 - **文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
 
+## 1.1 在 f2e-base 工作区中的位置
+
+- 工作区定位：设计语言与通用组件的唯一来源；业务逻辑不进入 JDS
+- 下游依赖：业务站点、`jackery-business-components`（JBC）、Atlas 前端渲染层
+- 协作规则：遵循 `f2e-team` 的工作区治理与 ADR 机制
+  - 工作区总览：[`f2e-team/00-工作区总览`](../f2e-team/00-工作区总览.md)
+  - 治理规则：[`f2e-team/05-工作区治理规则`](../f2e-team/05-工作区治理规则.md)
+  - ADR 索引：[`f2e-team/06-ADR`](../f2e-team/06-ADR/README.md)
+
 ## 2. 目标
 
 - 兼容所有框架
