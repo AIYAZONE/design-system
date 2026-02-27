@@ -181,11 +181,11 @@ const renderArchitecture = () => `
          <div class="grid grid-cols-2 gap-2 mt-2">
              <div class="p-3 rounded bg-orange-50 border border-orange-200 text-center">
                 <div class="text-xs text-orange-600 mb-1">JDS</div>
-                <div class="font-bold text-orange-700 text-sm">v0.1.5</div>
+                <div class="font-bold text-orange-700 text-sm">v0.1.7</div>
              </div>
              <div class="p-3 rounded bg-purple-50 border border-purple-200 text-center">
                 <div class="text-xs text-purple-600 mb-1">JBC</div>
-                <div class="font-bold text-purple-700 text-sm">v0.1.6</div>
+                <div class="font-bold text-purple-700 text-sm">v0.1.7</div>
              </div>
          </div>
       </div>
