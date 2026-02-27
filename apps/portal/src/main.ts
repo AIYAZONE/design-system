@@ -263,11 +263,11 @@ const renderArchitecture = () => `
            <div class="flex flex-col gap-2">
              <div class="p-3 rounded bg-orange-50 border border-orange-200">
                 <div class="text-xs text-orange-600 mb-1">JDS 版本</div>
-                <div class="font-bold text-orange-700">v0.1.5</div>
+                <div class="font-bold text-orange-700">v0.1.7</div>
              </div>
              <div class="p-3 rounded bg-purple-50 border border-purple-200">
                 <div class="text-xs text-purple-600 mb-1">JBC 版本</div>
-                <div class="font-bold text-purple-700">v0.1.6</div>
+                <div class="font-bold text-purple-700">v0.1.7</div>
              </div>
            </div>
         </div>
