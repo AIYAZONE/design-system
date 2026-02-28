@@ -54,14 +54,6 @@ const onDomReady = (fn: () => void) => {
 };
 
 const ensureSiteHeader = async () => {
-  const existingCss = document.querySelector<HTMLLinkElement>('link[href="/shared/site-header.css"]');
-  if (!existingCss) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/shared/site-header.css';
-    document.head.appendChild(link);
-  }
-
   if (!document.querySelector('[data-site-header]')) {
     const slot = document.createElement('div');
     slot.setAttribute('data-site-header', '');
@@ -70,23 +62,15 @@ const ensureSiteHeader = async () => {
   }
 
   try {
-    const importModule = (p: string) => new Function('p', 'return import(p)')(p) as Promise<unknown>;
-    await importModule('/shared/site-header.js');
+    await import('../portal/public/shared/site-header.css');
+    await import('../portal/public/shared/site-header.js');
   } catch {}
 };
 
 const ensureSiteFooter = async () => {
-  const existingCss = document.querySelector<HTMLLinkElement>('link[href="/shared/site-footer.css"]');
-  if (!existingCss) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/shared/site-footer.css';
-    document.head.appendChild(link);
-  }
-
   try {
-    const importModule = (p: string) => new Function('p', 'return import(p)')(p) as Promise<unknown>;
-    await importModule('/shared/site-footer.js');
+    await import('../portal/public/shared/site-footer.css');
+    await import('../portal/public/shared/site-footer.js');
   } catch {}
 };
 
@@ -219,7 +203,7 @@ const patchInternalLinksWithTheme = (themeValue: ExamplesTheme) => {
 onDomReady(() => {
   const currentTheme = resolvedTheme as ExamplesTheme;
   ensureSiteHeader().then(() => {
-    if (document.querySelector('[data-site-header]')) return;
+    if (document.querySelector('[data-site-header] .portal-topbar')) return;
     mountThemeSwitcher(currentTheme);
     patchInternalLinksWithTheme(currentTheme);
     setActivePortalNav();
