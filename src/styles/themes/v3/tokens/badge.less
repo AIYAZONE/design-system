@@ -86,9 +86,15 @@ jds-badge[kind="info"] {
 jds-badge[kind="custom"] {
   --jds-badge-custom-base-color: var(--jds-badge-color, var(--jds-badge-custom-color, var(--jds-color-primary)));
   --jds-badge-color: var(--jds-badge-custom-base-color);
-  --jds-badge-bg-color: color-mix(in srgb, white 15%, var(--jds-badge-custom-base-color));
-  --jds-badge-soft-bg: color-mix(in srgb, white 65%, var(--jds-badge-custom-base-color));
-  --jds-badge-soft-fg: color-mix(in srgb, var(--jds-badge-custom-base-color) 80%, black 20%);
+  --jds-badge-bg-color: var(--jds-badge-custom-base-color);
+  --jds-badge-soft-bg: var(--jds-badge-custom-base-color);
+  --jds-badge-soft-fg: var(--jds-badge-custom-base-color);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --jds-badge-bg-color: color-mix(in srgb, #FFFFFF 15%, var(--jds-badge-custom-base-color) 85%);
+    --jds-badge-soft-bg: color-mix(in srgb, #FFFFFF 65%, var(--jds-badge-custom-base-color) 35%);
+    --jds-badge-soft-fg: color-mix(in srgb, var(--jds-badge-custom-base-color) 80%, #000000 20%);
+  }
   --jds-badge-solid-bg: var(--jds-badge-color);
   --jds-badge-solid-fg: var(--jds-color-white);
   --jds-badge-outline-border: var(--jds-badge-color);

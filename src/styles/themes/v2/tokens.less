@@ -57,11 +57,18 @@
   --jds-color-overlay-70: rgba(0, 0, 0, 0.7);
 
   // 主色梯度
-  --jds-color-primary-500: @jds-color-primary;
+  --jds-color-primary-500: var(--jds-color-primary);
   --jds-color-primary-400: mix(#FFFFFF, @jds-color-primary, 15%);
   --jds-color-primary-300: mix(#FFFFFF, @jds-color-primary, 35%);
   --jds-color-primary-200: mix(#FFFFFF, @jds-color-primary, 55%);
   --jds-color-primary-100: mix(#FFFFFF, @jds-color-primary, 75%);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --jds-color-primary-400: color-mix(in srgb, #FFFFFF 15%, var(--jds-color-primary) 85%);
+    --jds-color-primary-300: color-mix(in srgb, #FFFFFF 35%, var(--jds-color-primary) 65%);
+    --jds-color-primary-200: color-mix(in srgb, #FFFFFF 55%, var(--jds-color-primary) 45%);
+    --jds-color-primary-100: color-mix(in srgb, #FFFFFF 75%, var(--jds-color-primary) 25%);
+  }
 
   // 中性色梯度
   --jds-color-neutral-500: #273142;
