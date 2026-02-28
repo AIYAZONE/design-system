@@ -4,6 +4,9 @@ import viteCompression from 'vite-plugin-compression';
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import dts from 'vite-plugin-dts';
 
+const isStorybookBuild = process.env.npm_lifecycle_event?.includes('storybook') || 
+                          process.argv.some(arg => arg.includes('storybook'));
+
 export default defineConfig({
   // 基础公共路径，设置为相对路径
   base: './',
@@ -49,32 +52,35 @@ export default defineConfig({
   },
   // 插件配置
   plugins: [
-    // 生成TypeScript声明文件
-    dts({
-      outDir: 'dist',
-      rollupTypes: true,
-      insertTypesEntry: true
-    }),
-    viteStaticCopy({
-      targets: [
-        {
-          src: ["src/icons/**/*.svg"],
-          dest: "icons",
-        },
-      ],
-    }),
-    // Gzip 压缩插件配置
-    viteCompression({
-      // 是否在控制台输出压缩结果
-      verbose: true,
-      // 是否禁用压缩
-      disable: false,
-      // 触发压缩的文件大小阈值（字节）
-      threshold: 10240,
-      // 压缩算法
-      algorithm: 'gzip',
-      // 生成的压缩包后缀
-      ext: '.gz',
-    })
+    // Storybook 构建时跳过 dts 插件，避免解析 Storybook 内部模块报错
+    ...(isStorybookBuild ? [] : [
+      // 生成TypeScript声明文件
+      dts({
+        outDir: 'dist',
+        rollupTypes: true,
+        insertTypesEntry: true
+      }),
+      viteStaticCopy({
+        targets: [
+          {
+            src: ["src/icons/**/*.svg"],
+            dest: "icons",
+          },
+        ],
+      }),
+      // Gzip 压缩插件配置
+      viteCompression({
+        // 是否在控制台输出压缩结果
+        verbose: true,
+        // 是否禁用压缩
+        disable: false,
+        // 触发压缩的文件大小阈值（字节）
+        threshold: 10240,
+        // 压缩算法
+        algorithm: 'gzip',
+        // 生成的压缩包后缀
+        ext: '.gz',
+      })
+    ])
   ]
 });
