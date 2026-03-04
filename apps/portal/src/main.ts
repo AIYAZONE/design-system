@@ -159,6 +159,20 @@ const businessTags: ArchChip[] = [
   { label: '高频营销', tooltipTitle: 'High-Frequency Marketing', tooltipDesc: '活动快速交付与复用', variant: 'tag' },
 ];
 
+const atlasTags: ArchChip[] = [
+  { label: 'Schema First', tooltipTitle: 'Schema First', tooltipDesc: '内容结构为唯一真理', variant: 'tag' },
+  { label: 'Schema 版本化', tooltipTitle: 'Versioning', tooltipDesc: 'schemaVersion 或等价机制可识别', variant: 'tag' },
+  { label: 'Registry 映射', tooltipTitle: 'Registry', tooltipDesc: '通过 type/key 映射到组件实现白名单', variant: 'tag' },
+];
+
+const atlasModules: ArchChip[] = [
+  { label: '内容建模', tooltipTitle: 'Modeling', tooltipDesc: 'Content Type / 字段与约束' },
+  { label: '可视化搭建', tooltipTitle: 'Editor', tooltipDesc: 'Section/Block 组合与配置' },
+  { label: '预览与发布', tooltipTitle: 'Preview & Publish', tooltipDesc: '多环境发布与回滚' },
+  { label: '审计与追溯', tooltipTitle: 'Audit', tooltipDesc: '变更记录与权限审计' },
+  { label: '兼容与迁移', tooltipTitle: 'Compatibility', tooltipDesc: '向后兼容优先，必要时 transform' },
+];
+
 const domainCommerce: ArchChip[] = [
   { label: '商品卡片', tooltipTitle: 'Product Card', tooltipDesc: '统一商品信息展示与交互' },
   { label: '价格系统', tooltipTitle: 'Price System', tooltipDesc: '多地区币种/税费/促销价计算' },
@@ -346,6 +360,266 @@ const renderPanelScore = () => `
   </div>
 `;
 
+const renderPanelArchitectureDiagram = () => `
+  <div class="arch-panel-grid">
+    <div class="arch-panel-card col-span-1 md:col-span-2">
+      <div class="arch-panel-title">分层架构图（C4 Container）</div>
+      <div class="arch-panel-desc">展示系统核心容器、组件及其运行时的分层关系与数据流向。</div>
+      
+      <div class="arch-c4-container">
+        <svg viewBox="0 0 1200 920" class="arch-c4-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- 定义箭头标记 -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                    refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+            </marker>
+          </defs>
+
+          <!-- 分层背景 -->
+          <g class="arch-c4-layers">
+            <!-- 接入层背景 -->
+            <rect x="0" y="40" width="1200" height="100" class="arch-c4-layer-bg arch-c4-client-bg" rx="8"/>
+            <text x="60" y="95" class="arch-c4-layer-label">接入层</text>
+            
+            <!-- 边缘层背景 -->
+            <rect x="0" y="150" width="1200" height="120" class="arch-c4-layer-bg arch-c4-edge-bg" rx="8"/>
+            <text x="60" y="205" class="arch-c4-layer-label">边缘层</text>
+            
+            <!-- 应用层背景 -->
+            <rect x="0" y="290" width="1200" height="140" class="arch-c4-layer-bg arch-c4-app-bg" rx="8"/>
+            <text x="60" y="345" class="arch-c4-layer-label">应用层</text>
+            
+            <!-- 编排层背景 -->
+            <rect x="0" y="450" width="1200" height="170" class="arch-c4-layer-bg arch-c4-orchestration-bg" rx="8"/>
+            <text x="60" y="505" class="arch-c4-layer-label">编排层</text>
+            
+            <!-- 领域层背景 -->
+            <rect x="0" y="640" width="1200" height="140" class="arch-c4-layer-bg arch-c4-domain-bg" rx="8"/>
+            <text x="60" y="695" class="arch-c4-layer-label">领域层</text>
+            
+            <!-- 基础设施层背景 -->
+            <rect x="0" y="800" width="1200" height="110" class="arch-c4-layer-bg arch-c4-infra-bg" rx="8"/>
+            <text x="60" y="855" class="arch-c4-layer-label">基础设施</text>
+          </g>
+
+          <!-- 节点定义 -->
+          <g class="arch-c4-nodes">
+            <!-- 接入层节点 -->
+            <g class="arch-c4-node arch-c4-actor" data-id="user" transform="translate(530, 60)">
+              <rect x="0" y="0" width="140" height="60" rx="30" class="arch-c4-node-shape"/>
+              <text x="70" y="23" class="arch-c4-node-title">用户设备</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--actor">
+                <rect x="40" y="36" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="70" y="45" class="arch-c4-type-badge-text">角色</text>
+              </g>
+            </g>
+
+            <!-- 边缘层节点 -->
+            <g class="arch-c4-node arch-c4-system" data-id="cdn" transform="translate(520, 170)">
+              <rect x="0" y="0" width="160" height="80" rx="4" class="arch-c4-node-shape"/>
+              <text x="80" y="30" class="arch-c4-node-title">全球 CDN</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--system">
+                <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="80" y="61" class="arch-c4-type-badge-text">外部系统</text>
+              </g>
+            </g>
+
+            <!-- 应用层节点 -->
+            <g class="arch-c4-node arch-c4-container" data-id="shopify" transform="translate(210, 310)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">Shopify 商城</text>
+              <text x="90" y="52" class="arch-c4-node-desc">电商主站与转化入口</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-container" data-id="aem" transform="translate(510, 310)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">AEM 品牌站</text>
+              <text x="90" y="52" class="arch-c4-node-desc">内容生产与多语言管理</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-container" data-id="campaign" transform="translate(810, 310)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">营销落地页</text>
+              <text x="90" y="52" class="arch-c4-node-desc">高频营销活动页</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <!-- 编排层节点 -->
+            <g class="arch-c4-node arch-c4-container" data-id="atlas" transform="translate(820, 490)">
+              <rect x="0" y="0" width="160" height="90" rx="4" class="arch-c4-node-shape"/>
+              <text x="80" y="28" class="arch-c4-node-title">Atlas 内容中台</text>
+              <text x="80" y="46" class="arch-c4-node-desc">Schema First 内容建模</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="50" y="62" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="80" y="71" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-container" data-id="renderer" transform="translate(210, 485)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">渲染核心</text>
+              <text x="90" y="52" class="arch-c4-node-desc">基于 JBC/JDS 渲染</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-component" data-id="schema-api" transform="translate(520, 495)">
+              <rect x="0" y="0" width="160" height="80" rx="8" class="arch-c4-node-shape"/>
+              <text x="80" y="22" class="arch-c4-node-title">Schema API</text>
+              <text x="80" y="42" class="arch-c4-node-desc">Schema 实例 / JSON</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--component">
+                <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="80" y="61" class="arch-c4-type-badge-text">组件</text>
+              </g>
+            </g>
+
+            <!-- 领域层节点 -->
+            <g class="arch-c4-node arch-c4-container" data-id="jbc" transform="translate(310, 660)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">JBC 业务组件</text>
+              <text x="90" y="52" class="arch-c4-node-desc">电商领域能力包</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-container" data-id="jds" transform="translate(710, 660)">
+              <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
+              <text x="90" y="32" class="arch-c4-node-title">JDS 设计系统</text>
+              <text x="90" y="52" class="arch-c4-node-desc">统一设计令牌与基础组件</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--container">
+                <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+              </g>
+            </g>
+
+            <!-- 基础设施层节点 -->
+            <g class="arch-c4-node arch-c4-system" data-id="npm" transform="translate(320, 815)">
+              <rect x="0" y="0" width="160" height="80" rx="4" class="arch-c4-node-shape"/>
+              <text x="80" y="22" class="arch-c4-node-title">NPM 制品库</text>
+              <text x="80" y="42" class="arch-c4-node-desc">组件与资产分发</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--system">
+                <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="80" y="61" class="arch-c4-type-badge-text">外部系统</text>
+              </g>
+            </g>
+
+            <g class="arch-c4-node arch-c4-system" data-id="observability" transform="translate(720, 815)">
+              <rect x="0" y="0" width="160" height="80" rx="4" class="arch-c4-node-shape"/>
+              <text x="80" y="22" class="arch-c4-node-title">可观测性平台</text>
+              <text x="80" y="42" class="arch-c4-node-desc">性能与错误监控</text>
+              <g class="arch-c4-type-badge arch-c4-type-badge--system">
+                <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
+                <text x="80" y="61" class="arch-c4-type-badge-text">外部系统</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- 连线定义 -->
+          <g class="arch-c4-flows">
+            <!-- 用户访问流向 -->
+            <path d="M 600 120 L 600 170" class="arch-c4-flow arch-c4-flow-user" marker-end="url(#arrowhead)"/>
+            <text x="610" y="145" class="arch-c4-flow-label">访问</text>
+
+            <!-- CDN 到应用层流向 -->
+            <path d="M 600 250 Q 600 290 300 310" class="arch-c4-flow arch-c4-flow-cdn" marker-end="url(#arrowhead)"/>
+            <text x="450" y="285" class="arch-c4-flow-label">分发</text>
+
+            <path d="M 600 250 L 600 310" class="arch-c4-flow arch-c4-flow-cdn" marker-end="url(#arrowhead)"/>
+            <text x="610" y="285" class="arch-c4-flow-label">分发</text>
+
+            <path d="M 600 250 Q 600 290 900 310" class="arch-c4-flow arch-c4-flow-cdn" marker-end="url(#arrowhead)"/>
+            <text x="750" y="285" class="arch-c4-flow-label">分发</text>
+
+            <!-- 应用层到编排层流向 -->
+            <path d="M 300 410 L 300 485" class="arch-c4-flow arch-c4-flow-app" marker-end="url(#arrowhead)"/>
+            <text x="310" y="445" class="arch-c4-flow-label">渲染</text>
+
+            <path d="M 600 410 L 600 440 L 300 440 L 300 485" class="arch-c4-flow arch-c4-flow-app" marker-end="url(#arrowhead)"/>
+            <text x="450" y="430" class="arch-c4-flow-label">渲染</text>
+
+            <path d="M 900 410 L 900 440 L 300 440 L 300 485" class="arch-c4-flow arch-c4-flow-app" marker-end="url(#arrowhead)"/>
+            <text x="600" y="430" class="arch-c4-flow-label">渲染</text>
+
+            <!-- 编排层内部流向 -->
+            <path d="M 820 535 L 680 535" class="arch-c4-flow arch-c4-flow-content" marker-end="url(#arrowhead)"/>
+            <text x="750" y="527" class="arch-c4-flow-label">发布</text>
+
+            <path d="M 520 535 L 390 535" class="arch-c4-flow arch-c4-flow-content" marker-end="url(#arrowhead)"/>
+            <text x="455" y="527" class="arch-c4-flow-label">JSON</text>
+
+            <!-- 编排层到领域层流向 -->
+            <path d="M 300 585 L 300 620 L 400 620 L 400 660" class="arch-c4-flow arch-c4-flow-render" marker-end="url(#arrowhead)"/>
+            <text x="350" y="612" class="arch-c4-flow-label">组件映射</text>
+
+            <path d="M 300 585 L 300 620 L 800 620 L 800 660" class="arch-c4-flow arch-c4-flow-render" marker-end="url(#arrowhead)"/>
+            <text x="550" y="612" class="arch-c4-flow-label">样式调用</text>
+
+            <!-- 领域层供给关系：JDS → JBC -->
+            <path d="M 710 710 L 490 710" class="arch-c4-flow arch-c4-flow-supply" marker-end="url(#arrowhead)"/>
+            <text x="600" y="700" class="arch-c4-flow-label">提供（Tokens/组件）</text>
+
+            <!-- 基础设施到领域层流向 -->
+            <path d="M 400 815 L 400 760" class="arch-c4-flow arch-c4-flow-asset" marker-end="url(#arrowhead)"/>
+            <text x="410" y="800" class="arch-c4-flow-label">NPM 包</text>
+
+            <path d="M 400 815 Q 600 800 800 760" class="arch-c4-flow arch-c4-flow-asset" marker-end="url(#arrowhead)"/>
+            <text x="600" y="800" class="arch-c4-flow-label">NPM 包</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="arch-legend">
+        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-actor-pill"></span> 角色</div>
+        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-container"></span> 容器</div>
+        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-component"></span> 组件</div>
+        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-system"></span> 外部系统</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-orange-500"></span> 访问</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-violet-500"></span> 分发</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-blue-500"></span> 渲染</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-cyan-500"></span> 内容流</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-emerald-500"></span> 组件/样式</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded border border-emerald-500 border-dashed"></span> 提供</div>
+        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-purple-500"></span> NPM 包</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="arch-panel-grid mt-3">
+    <div class="arch-panel-card">
+      <div class="arch-panel-title">关键流向说明</div>
+      <div class="arch-panel-list">
+        <div class="arch-panel-item"><span class="arch-panel-k">渲染流 (Render)</span><span class="arch-panel-v">用户 → CDN → 应用 → 渲染核心 → JBC/JDS</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">内容流 (Content)</span><span class="arch-panel-v">Atlas → Schema API → 渲染核心 (获取 JSON)</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">资产流 (Asset)</span><span class="arch-panel-v">NPM → JBC/JDS → 应用构建 → 组件映射</span></div>
+      </div>
+    </div>
+    <div class="arch-panel-card">
+      <div class="arch-panel-title">核心设计决策</div>
+      <div class="arch-panel-list">
+        <div class="arch-panel-item"><span class="arch-panel-k">Schema First</span><span class="arch-panel-v">Atlas 仅输出数据，不输出 HTML</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">Registry Pattern</span><span class="arch-panel-v">渲染层通过白名单映射组件，解耦实现</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">分层依赖</span><span class="arch-panel-v">基础设施对上层透明，依赖单向流动</span></div>
+      </div>
+    </div>
+  </div>
+`;
+
 const renderPanelUpgrade = () => `
   <div class="arch-upgrade">
     <div class="arch-upgrade-top">
@@ -522,11 +796,17 @@ const renderArchitecture = () => `
           <div class="mt-2 text-xs md:text-sm text-gray-500 pl-4">Engineering & Revenue Driven Architecture</div>
           <div class="arch-quicknav" aria-label="架构分层导航">
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-business">Business</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-atlas">Atlas</button>
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-domain">Domain</button>
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-design">Design</button>
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-platform">Platform</button>
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-runtime">Runtime</button>
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-observability">Observability</button>
+          </div>
+          <div class="mt-3 pl-4 flex flex-wrap gap-2">
+            ${renderChip({ label: 'SSOT：架构索引', tooltipTitle: 'SSOT', tooltipDesc: 'f2e-team/08-架构说明索引（全景图+契约+Atlas）.md', variant: 'muted' })}
+            ${renderChip({ label: 'SSOT：渲染契约', tooltipTitle: 'Contract', tooltipDesc: 'f2e-team/09-渲染契约（Atlas Registry 与 Schema 映射）.md', variant: 'muted' })}
+            ${renderChip({ label: 'ADR：Schema 与映射', tooltipTitle: 'ADR-0002', tooltipDesc: 'f2e-team/06-ADR/ADR-0002-Atlas Schema 版本化与组件映射契约.md', variant: 'muted' })}
           </div>
         </div>
         <div class="flex flex-col items-end gap-2">
@@ -549,6 +829,7 @@ const renderArchitecture = () => `
             ${renderChip({ label: '构建：Passing', tooltipTitle: 'Build Status', tooltipDesc: '构建与校验通过', variant: 'success' })}
             ${renderChip({ label: 'JDS v' + archMeta.jdsVersion, tooltipTitle: 'Design System', tooltipDesc: '设计系统版本', variant: 'warning' })}
             ${renderChip({ label: 'JBC v' + archMeta.jbcVersion, tooltipTitle: 'Business Components', tooltipDesc: '领域能力包版本', variant: 'purple' })}
+            ${renderChip({ label: 'Atlas：Schema + Registry', tooltipTitle: 'Atlas (CMS)', tooltipDesc: '内容建模/搭建/发布；输出可版本化 Schema，通过 type/key 映射到组件', variant: 'muted' })}
           </div>
           <div class="arch-meta-right">
             ${renderChip({ label: '当前成熟度：' + maturity.current.label, tooltipTitle: 'Current Maturity', tooltipDesc: maturity.current.subtitle, variant: 'muted' })}
@@ -559,7 +840,7 @@ const renderArchitecture = () => `
 
         <div class="arch-canvas">
           <aside class="arch-axis">
-            <div class="arch-axis-title">战略侧轴</div>
+            <div class="arch-axis-title">战略维度（概览）</div>
             <div class="arch-axis-list">
               ${strategicAxis
                 .map((it) => `<div class="arch-axis-item" title="${escapeAttr(it.subtitle)}" aria-label="${escapeAttr(it.subtitle)}"><div class="arch-axis-item-title">${it.title}</div><div class="arch-axis-item-sub">${it.subtitle}</div></div>`)
@@ -574,8 +855,21 @@ const renderArchitecture = () => `
                 <div class="arch-layer-body">
                   <div class="arch-layer-desc">直接面向用户的商业入口，承接转化与高频营销交付。</div>
                   <div class="arch-layer-tags">${businessTags.map(renderChip).join('')}</div>
-                  <div class="arch-modules arch-modules-5">
-                    ${businessModules.map((m) => `<div class="arch-module-card">${renderChip(m)}</div>`).join('')}
+                  <div class="arch-chip-row">
+                    ${businessModules.map(renderChip).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-layer arch-tone-cyan" id="arch-layer-atlas">
+              <div class="arch-layer-row">
+                ${layerTitle('Content Platform', '内容平台（Atlas）')}
+                <div class="arch-layer-body">
+                  <div class="arch-layer-desc">Atlas：内容建模与可视化搭建，输出可版本化 Schema 实例，通过 registry 映射到渲染组件。</div>
+                  <div class="arch-layer-tags">${atlasTags.map(renderChip).join('')}</div>
+                  <div class="arch-chip-row">
+                    ${atlasModules.map(renderChip).join('')}
                   </div>
                 </div>
               </div>
@@ -662,8 +956,8 @@ const renderArchitecture = () => `
                 ${layerTitle('Runtime Layer', '运行与交付')}
                 <div class="arch-layer-body">
                   <div class="arch-layer-desc">多区域交付与可回滚的运行体系，保障稳定上线与快速止损。</div>
-                  <div class="arch-modules arch-modules-5">
-                    ${runtimeModules.map((m) => `<div class="arch-module-card">${renderChip(m)}</div>`).join('')}
+                  <div class="arch-chip-row">
+                    ${runtimeModules.map(renderChip).join('')}
                   </div>
                 </div>
               </div>
@@ -694,27 +988,6 @@ const renderArchitecture = () => `
             </div>
           </div>
 
-          <aside class="arch-maturity">
-            <div class="arch-maturity-title">成熟度</div>
-            <div class="arch-maturity-level">${maturity.current.label} / ${maturity.current.maxLevel}</div>
-            <div class="arch-maturity-bars">
-              ${maturity.bars
-                .map(
-                  (b) => `
-                    <div class="arch-bar" title="${escapeAttr(b.tooltip)}" aria-label="${escapeAttr(b.tooltip)}">
-                      <div class="arch-bar-top">
-                        <div class="arch-bar-label">${b.label}</div>
-                        <div class="arch-bar-value">${b.value}%</div>
-                      </div>
-                      <div class="arch-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${b.value}">
-                        <div class="arch-bar-fill" style="width:${b.value}%"></div>
-                      </div>
-                    </div>
-                  `
-                )
-                .join('')}
-            </div>
-          </aside>
         </div>
 
         <div class="arch-summary">
@@ -745,11 +1018,34 @@ const renderArchitecture = () => `
             </div>
           </div>
         </div>
+        
+        <aside class="arch-maturity">
+          <div class="arch-maturity-title">成熟度</div>
+          <div class="arch-maturity-level">${maturity.current.label} / ${maturity.current.maxLevel}</div>
+          <div class="arch-maturity-bars">
+            ${maturity.bars
+              .map(
+                (b) => `
+                  <div class="arch-bar" data-tooltip-title="${escapeAttr(b.label)}" data-tooltip-desc="${escapeAttr(b.tooltip)}" aria-label="${escapeAttr(b.label)} · ${escapeAttr(b.tooltip)}" tabindex="0">
+                    <div class="arch-bar-top">
+                      <div class="arch-bar-label">${b.label}</div>
+                      <div class="arch-bar-value">${b.value}%</div>
+                    </div>
+                    <div class="arch-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${b.value}">
+                      <div class="arch-bar-fill" style="width:${b.value}%"></div>
+                    </div>
+                  </div>
+                `
+              )
+              .join('')}
+          </div>
+        </aside>
 
         <div class="arch-panels" data-arch-panels>
           <div class="arch-tabs" role="tablist" aria-label="架构说明与自评">
             <button class="arch-tab is-active" type="button" role="tab" aria-selected="true" data-arch-tab="maturity">成熟度模型说明</button>
             <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="score">架构自评打分体系</button>
+            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="arch">架构图（系统关系与链路）</button>
             <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="rubric">自评判据清单</button>
             <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="upgrade">升级方案摘要</button>
           </div>
@@ -758,6 +1054,9 @@ const renderArchitecture = () => `
           </div>
           <div class="arch-panel" role="tabpanel" data-arch-panel="score" hidden>
             ${renderPanelScore()}
+          </div>
+          <div class="arch-panel" role="tabpanel" data-arch-panel="arch" hidden>
+            ${renderPanelArchitectureDiagram()}
           </div>
           <div class="arch-panel" role="tabpanel" data-arch-panel="rubric" hidden>
             ${renderPanelRubric()}
@@ -821,14 +1120,109 @@ const setupArchPanels = () => {
 
 setupArchPanels();
 
+const setupMaturityTooltip = () => {
+  const bars = Array.from(document.querySelectorAll<HTMLElement>('.arch-maturity .arch-bar'));
+  if (!bars.length) return;
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'arch-tooltip-float';
+  tooltip.setAttribute('role', 'tooltip');
+
+  const titleEl = document.createElement('span');
+  titleEl.className = 'arch-tooltip-title';
+
+  const descEl = document.createElement('span');
+  descEl.className = 'arch-tooltip-desc';
+
+  tooltip.appendChild(titleEl);
+  tooltip.appendChild(descEl);
+  document.body.appendChild(tooltip);
+
+  let active: HTMLElement | null = null;
+
+  const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
+
+  const position = () => {
+    if (!active) return;
+
+    const title = active.dataset.tooltipTitle ?? '';
+    const desc = active.dataset.tooltipDesc ?? '';
+
+    titleEl.textContent = title;
+    descEl.textContent = desc;
+
+    tooltip.classList.add('is-measuring');
+    const width = tooltip.offsetWidth;
+    const height = tooltip.offsetHeight;
+    tooltip.classList.remove('is-measuring');
+
+    const barTop = active.querySelector<HTMLElement>('.arch-bar-top');
+    const anchor = (barTop ?? active).getBoundingClientRect();
+
+    const pad = 12;
+    const desiredLeft = anchor.left;
+    const left = clamp(desiredLeft, pad, window.innerWidth - width - pad);
+
+    const aboveTop = anchor.top - height - 10;
+    const belowTop = anchor.bottom + 10;
+    const placeBelow = aboveTop < pad && belowTop + height + pad < window.innerHeight;
+
+    const top = placeBelow ? belowTop : Math.max(pad, aboveTop);
+
+    const anchorX = clamp(anchor.left + 24 - left, 16, width - 16);
+    tooltip.style.setProperty('--tip-arrow-x', `${anchorX}px`);
+    tooltip.classList.toggle('is-below', placeBelow);
+
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  };
+
+  const show = (bar: HTMLElement) => {
+    active = bar;
+    tooltip.classList.add('is-visible');
+    position();
+  };
+
+  const hide = () => {
+    active = null;
+    tooltip.classList.remove('is-visible', 'is-below');
+  };
+
+  bars.forEach((bar) => {
+    bar.addEventListener('mouseenter', () => show(bar));
+    bar.addEventListener('mouseleave', hide);
+    bar.addEventListener('focusin', () => show(bar));
+    bar.addEventListener('focusout', hide);
+  });
+
+  window.addEventListener('scroll', position, true);
+  window.addEventListener('resize', position);
+};
+
 const setupArchQuickNav = () => {
   const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-arch-jump]'));
   if (!buttons.length) return;
+
+  const getHeaderOffset = () => {
+    const headerHost = document.querySelector<HTMLElement>('[data-site-header]');
+    const topbar = headerHost?.querySelector<HTMLElement>('.portal-topbar');
+    const height = (topbar ?? headerHost)?.getBoundingClientRect().height ?? 0;
+    return Math.ceil(height);
+  };
+
+  const applyHeaderOffsetVar = () => {
+    const height = getHeaderOffset();
+    if (!height) return;
+    document.documentElement.style.setProperty('--site-header-offset', `${height}px`);
+  };
 
   const highlight = (el: HTMLElement) => {
     el.classList.add('is-focus');
     window.setTimeout(() => el.classList.remove('is-focus'), 1200);
   };
+
+  applyHeaderOffsetVar();
+  window.addEventListener('resize', applyHeaderOffsetVar, { passive: true });
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -836,13 +1230,16 @@ const setupArchQuickNav = () => {
       if (!id) return;
       const el = document.getElementById(id);
       if (!el) return;
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offset = getHeaderOffset() + 12;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
       highlight(el);
     });
   });
 };
 
 setupArchQuickNav();
+setupMaturityTooltip();
 
 const setupArchTooltipLayerLift = () => {
   const selector = '.arch-chip[data-tooltip-title], .arch-chip[data-tooltip-desc]';
