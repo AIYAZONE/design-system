@@ -73,8 +73,13 @@
 }
 
 .generate-color-common(@color-name, @base-color, @contrast-color) {
-  --jds-color-@{color-name}: @base-color;
+  --jds-color-@{color-name}: var(--jds-custom-color-@{color-name}, @base-color);
   --jds-color-@{color-name}-highlight: mix(#FFFFFF, @base-color, 15%);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --jds-color-@{color-name}-highlight: color-mix(in srgb, #FFFFFF 15%, var(--jds-color-@{color-name}) 85%);
+  }
+
   --jds-color-@{color-name}-contrast: @contrast-color;
 }
 

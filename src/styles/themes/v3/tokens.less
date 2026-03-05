@@ -5,7 +5,7 @@
 @jds-b-line-height: 1.2;
 @jds-c-line-height: 1.2;
 
-@jds-color-primary: #FD5000; // 后续版本会替换为#FF6727
+@jds-color-primary: #FF6727;
 @jds-color-success: #5E8A4E;
 @jds-color-danger: #F52317;
 @jds-color-neutral: #242F20;
@@ -29,12 +29,12 @@
   --jds-color-text-l2: #3A4436;
   --jds-color-text-l3: #595959;
   --jds-color-text-invalid: #B2B2B2;
-  --jds-color-text-highlight: @jds-color-primary;
+  --jds-color-text-highlight: var(--jds-color-primary);
   --jds-color-text-link: #818181;
 
   // 图标色
   --jds-color-icon-normal: #242F20;
-  --jds-color-icon-orange: @jds-color-primary;
+  --jds-color-icon-orange: var(--jds-color-primary);
 
   // 背景色
   --jds-color-white: @jds-color-white;
@@ -58,11 +58,18 @@
   --jds-color-overlay-70: rgba(0, 0, 0, 0.7);
 
   // 主色梯度
-  --jds-color-primary-500: @jds-color-primary;
+  --jds-color-primary-500: var(--jds-color-primary);
   --jds-color-primary-400: mix(#FFFFFF, @jds-color-primary, 15%);
   --jds-color-primary-300: mix(#FFFFFF, @jds-color-primary, 35%);
   --jds-color-primary-200: mix(#FFFFFF, @jds-color-primary, 55%);
   --jds-color-primary-100: mix(#FFFFFF, @jds-color-primary, 75%);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --jds-color-primary-400: color-mix(in srgb, #FFFFFF 15%, var(--jds-color-primary) 85%);
+    --jds-color-primary-300: color-mix(in srgb, #FFFFFF 35%, var(--jds-color-primary) 65%);
+    --jds-color-primary-200: color-mix(in srgb, #FFFFFF 55%, var(--jds-color-primary) 45%);
+    --jds-color-primary-100: color-mix(in srgb, #FFFFFF 75%, var(--jds-color-primary) 25%);
+  }
 
   // 中性色梯度
   --jds-color-neutral-500: #273142;
@@ -85,7 +92,7 @@
   --jds-color-disabled-border: #0000004D;
   --jds-color-disabled-text: #0000004D;
 
-  --jds-color-primary-button: #FD5000;
+  --jds-color-primary-button: var(--jds-color-primary);
   --jds-color-primary-button-hover: var(--jds-color-primary-hover);
   --jds-color-primary-button-active: var(--jds-color-primary-active);
 
