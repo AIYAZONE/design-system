@@ -29,7 +29,7 @@ export class JdsTooltip extends LitElement {
   @property({ type: String })
   placement: Placement = "top";
 
-  @property() target!: string | Element;
+  @property() target!: string | HTMLElement;
   @state() private _isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   @state() private _timer!: ReturnType<typeof setTimeout> | null;
 
@@ -61,7 +61,7 @@ export class JdsTooltip extends LitElement {
     }
   }
 
-  private _removeEvents(value: string | Element) {
+  private _removeEvents(value: string | HTMLElement) {
     const target = this._getTargetFromValue(value);
     if (!target) return;
 
@@ -72,15 +72,15 @@ export class JdsTooltip extends LitElement {
     target.removeEventListener("mouseleave", this.hide);
   }
 
-  private _getTarget(): Element | null {
+  private _getTarget(): HTMLElement | null {
     return this._getTargetFromValue(this.target);
   }
 
-  private _getTargetFromValue(value: string | Element): Element | null {
+  private _getTargetFromValue(value: string | HTMLElement): HTMLElement | null {
     if (typeof value === 'string') {
-      return document.getElementById(value);
+      return document.getElementById(value) as HTMLElement || null;
     }
-    return value as Element;
+    return value as HTMLElement;
   }
 
   connectedCallback() {
@@ -94,12 +94,18 @@ export class JdsTooltip extends LitElement {
     if (this._isTouchDevice) {
       // 使用 click 监听全局，因为 touchend 在非交互元素上可能不冒泡
       window.addEventListener('click', this._handleOutsideClick);
+      // 全局监听：滑动时隐藏
+      window.addEventListener('touchmove', this.hide, { passive: true });
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
     this._removeEvents(this.target);
+    if (this._isTouchDevice) {
+      window.removeEventListener('click', this._handleOutsideClick);
+      window.removeEventListener('touchmove', this.hide);
+    }
   }
 
   /**
@@ -147,12 +153,15 @@ export class JdsTooltip extends LitElement {
    * 隐藏工具提示
    */
   hide = () => {
+    // 移动端滑动或点击外部时，建议立即隐藏 (delay = 0)
+    const delay = this._isTouchDevice ? 0 : 150;
+
     this._timer = setTimeout(() => {
       if (this._popover) {
         this._popover.hide();
       }
       this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }));
-    }, 150)
+    }, delay)
   }
 
   /**
