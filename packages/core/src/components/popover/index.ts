@@ -163,7 +163,7 @@ export class JdsPopover extends LitElement {
     return html`
       <div class="popover ${this._visible ? 'visible' : ''}">
         <slot></slot>
-        <div class="arrow"></div>
+        <div class="arrow" part="arrow"></div>
       </div>
     `;
   }
