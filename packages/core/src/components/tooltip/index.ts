@@ -52,6 +52,8 @@ export class JdsTooltip extends LitElement {
 
     if (this._isTouchDevice) {
       // 移动端：仅绑定 touchend 切换显示/隐藏
+      target.addEventListener("touchstart", this._handleTouchStart, { passive: true });
+      target.addEventListener("touchmove", this._handleTouchMove, { passive: true });
       target.addEventListener("touchend", this._handleTouch, { passive: false });
     } else {
       target.addEventListener("focus", this.show, { capture: true });
@@ -65,6 +67,8 @@ export class JdsTooltip extends LitElement {
     const target = this._getTargetFromValue(value);
     if (!target) return;
 
+    target.removeEventListener("touchstart", this._handleTouchStart);
+    target.removeEventListener("touchmove", this._handleTouchMove);
     target.removeEventListener("touchend", this._handleTouch);
     target.removeEventListener("focus", this.show, { capture: true });
     target.removeEventListener("mouseenter", this.show);
@@ -121,10 +125,23 @@ export class JdsTooltip extends LitElement {
     }
   }
 
+  private _isScrolling = false;
+
+  private _handleTouchStart = () => {
+    this._isScrolling = false;
+  }
+
+  private _handleTouchMove = () => {
+    this._isScrolling = true;
+  }
+
   /**
    * 移动端专用的触摸逻辑
    */
   private _handleTouch = (e: TouchEvent) => {
+    if (this._isScrolling) {
+      return;
+    }
     // 阻止冒泡到 document 触发 _handleOutsideClick
     e.preventDefault();
     
@@ -180,6 +197,8 @@ export class JdsTooltip extends LitElement {
       @blur=${{ handleEvent: () => this.hide(), capture: true }}
       @mouseenter=${() => this.show()}
       @mouseleave=${() => this.hide()}
+      @touchstart=${this._isTouchDevice ? this._handleTouchStart : null}
+      @touchmove=${this._isTouchDevice ? this._handleTouchMove : null}
       @touchend=${this._isTouchDevice ? this._handleTouch : null}
     >
     </slot>`;
