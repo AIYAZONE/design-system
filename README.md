@@ -16,6 +16,55 @@
 
 - **文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
 
+## 1.1 在 f2e-base 工作区中的位置
+
+- 工作区定位：设计语言与通用组件的唯一来源；业务逻辑不进入 JDS
+- 下游依赖：业务站点、`jackery-business-components`（JBC）、Atlas 前端渲染层
+- 协作规则：遵循 `f2e-team` 的工作区治理与 ADR 机制
+  - 工作区总览：[`f2e-team/00-工作区总览`](../f2e-team/00-工作区总览.md)
+  - 治理规则：[`f2e-team/05-工作区治理规则`](../f2e-team/05-工作区治理规则.md)
+  - ADR 索引：[`f2e-team/06-ADR`](../f2e-team/06-ADR/README.md)
+
+## 1.2 项目目录结构
+
+```text
+jackery-design-system/
+├─ apps/                 示例与预览工程
+│  ├─ examples/         组件演示与联调示例站
+│  ├─ portal/           站点预览（文档/演示）
+│  ├─ storybook/        Storybook 项目
+│  ├─ styles/           示例站公共样式
+│  └─ index.ts          示例入口聚合
+├─ packages/            Monorepo 子包
+│  ├─ core/             核心 Web Components 组件库
+│  ├─ icons/            SVG 图标库与 Storybook
+│  ├─ i18n/             国际化能力（window.i18n）
+│  └─ utils/            通用工具函数
+├─ src/                 设计系统根入口与样式
+│  ├─ styles/           全局样式与主题
+│  │  ├─ themes/v1,v2,v3  主题样式与 Tokens
+│  │  ├─ jds/          公共样式、重置、RTE
+│  │  └─ animate/      动效示例
+│  ├─ index.ts         根入口，导出并注册
+│  └─ register.ts      组件注册
+├─ docs/                令牌与文档（MD/MDX）
+├─ public/              预览页与静态资源
+├─ scripts/             构建辅助脚本
+├─ .storybook/          Storybook 配置
+├─ .trae/               项目文档与技能
+├─ .changeset/          版本变更集
+├─ package.json         根包配置
+├─ pnpm-workspace.yaml  工作区声明
+├─ README.md            项目说明
+└─ MIGRATION.md         迁移指南
+```
+
+- apps/examples：用于组件联调与预览，入口示例见 [main.ts](./apps/examples/main.ts) 与页面 [pages](./apps/examples/pages)。
+- packages/core：核心组件按 `components/<name>` 组织，每个组件包含 `index.ts`、`index.less`、`stories` 与 `__tests__`，如 [button](./packages/core/src/components/button)。
+- src/styles：全局样式唯一来源，入口为 [index.less](./src/styles/index.less)，主题分为 [themes/v1](./src/styles/themes/v1)、[themes/v2](./src/styles/themes/v2) 与 [themes/v3](./src/styles/themes/v3)。
+- docs：包含设计令牌与规范说明（MD/MDX），如 [tokens](./docs/tokens)。
+- .trae/.changeset：分别用于项目内文档与版本发布工作流管理。
+
 ## 2. 目标
 
 - 兼容所有框架
