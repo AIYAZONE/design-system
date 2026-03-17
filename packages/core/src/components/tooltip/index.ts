@@ -29,7 +29,8 @@ export class JdsTooltip extends LitElement {
   @property({ type: String })
   placement: Placement = "top";
 
-  @property() target!: string | Element;
+  @property() target!: string | HTMLElement;
+  @state() private _isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   @state() private _timer!: ReturnType<typeof setTimeout> | null;
 
   protected update(changedProperties: PropertyValues) {
@@ -47,7 +48,14 @@ export class JdsTooltip extends LitElement {
 
   private _addEvents() {
     const target = this._getTarget();
-    if (target) {
+    if (!target) return
+
+    if (this._isTouchDevice) {
+      // 移动端：仅绑定 touchend 切换显示/隐藏
+      target.addEventListener("touchstart", this._handleTouchStart, { passive: true });
+      target.addEventListener("touchmove", this._handleTouchMove, { passive: true });
+      target.addEventListener("touchend", this._handleTouch, { passive: false });
+    } else {
       target.addEventListener("focus", this.show, { capture: true });
       target.addEventListener("mouseenter", this.show);
       target.addEventListener("blur", this.hide, { capture: true });
@@ -55,25 +63,28 @@ export class JdsTooltip extends LitElement {
     }
   }
 
-  private _removeEvents(value: string | Element) {
+  private _removeEvents(value: string | HTMLElement) {
     const target = this._getTargetFromValue(value);
-    if (target) {
-      target.removeEventListener("focus", this.show, { capture: true });
-      target.removeEventListener("mouseenter", this.show);
-      target.removeEventListener("blur", this.hide, { capture: true });
-      target.removeEventListener("mouseleave", this.hide);
-    }
+    if (!target) return;
+
+    target.removeEventListener("touchstart", this._handleTouchStart);
+    target.removeEventListener("touchmove", this._handleTouchMove);
+    target.removeEventListener("touchend", this._handleTouch);
+    target.removeEventListener("focus", this.show, { capture: true });
+    target.removeEventListener("mouseenter", this.show);
+    target.removeEventListener("blur", this.hide, { capture: true });
+    target.removeEventListener("mouseleave", this.hide);
   }
 
-  private _getTarget(): Element | null {
+  private _getTarget(): HTMLElement | null {
     return this._getTargetFromValue(this.target);
   }
 
-  private _getTargetFromValue(value: string | Element): Element | null {
+  private _getTargetFromValue(value: string | HTMLElement): HTMLElement | null {
     if (typeof value === 'string') {
-      return document.getElementById(value);
+      return document.getElementById(value) as HTMLElement || null;
     }
-    return value as Element;
+    return value as HTMLElement;
   }
 
   connectedCallback() {
@@ -82,11 +93,63 @@ export class JdsTooltip extends LitElement {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
     this._addEvents();
+
+    // 移动端：点击全局关闭工具提示
+    if (this._isTouchDevice) {
+      // 使用 click 监听全局，因为 touchend 在非交互元素上可能不冒泡
+      window.addEventListener('click', this._handleOutsideClick);
+      // 全局监听：滑动时隐藏
+      window.addEventListener('touchmove', this.hide, { passive: true });
+    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
     this._removeEvents(this.target);
+    if (this._isTouchDevice) {
+      window.removeEventListener('click', this._handleOutsideClick);
+      window.removeEventListener('touchmove', this.hide);
+    }
+  }
+
+  /**
+   * 移动端：点击全局关闭工具提示
+   */
+  private _handleOutsideClick = (e: Event) => {
+    // 兼容性处理：如果不支持 composedPath，回退到原始 target 判断
+    const path = e.composedPath ? e.composedPath() : [];
+    
+    // 如果点击目标不在组件内部，则关闭
+    if (this.visible && !path.includes(this)) {
+      this.hide();
+    }
+  }
+
+  private _isScrolling = false;
+
+  private _handleTouchStart = () => {
+    this._isScrolling = false;
+  }
+
+  private _handleTouchMove = () => {
+    this._isScrolling = true;
+  }
+
+  /**
+   * 移动端专用的触摸逻辑
+   */
+  private _handleTouch = (e: TouchEvent) => {
+    if (this._isScrolling) {
+      return;
+    }
+    // 阻止冒泡到 document 触发 _handleOutsideClick
+    e.preventDefault();
+    
+    if (this.visible) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
   /**
@@ -107,12 +170,15 @@ export class JdsTooltip extends LitElement {
    * 隐藏工具提示
    */
   hide = () => {
+    // 移动端滑动或点击外部时，建议立即隐藏 (delay = 0)
+    const delay = this._isTouchDevice ? 0 : 150;
+
     this._timer = setTimeout(() => {
       if (this._popover) {
         this._popover.hide();
       }
       this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }));
-    }, 150)
+    }, delay)
   }
 
   /**
@@ -131,6 +197,9 @@ export class JdsTooltip extends LitElement {
       @blur=${{ handleEvent: () => this.hide(), capture: true }}
       @mouseenter=${() => this.show()}
       @mouseleave=${() => this.hide()}
+      @touchstart=${this._isTouchDevice ? this._handleTouchStart : null}
+      @touchmove=${this._isTouchDevice ? this._handleTouchMove : null}
+      @touchend=${this._isTouchDevice ? this._handleTouch : null}
     >
     </slot>`;
   }

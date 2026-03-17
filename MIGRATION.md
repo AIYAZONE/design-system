@@ -93,14 +93,14 @@ pnpm test
 pnpm storybook
 ```
 
-### 4. 样式与主题迁移
+### 5. 样式与主题迁移
 
 - **全局样式唯一来源**：将项目的全局样式合并到根目录 `src/styles`，入口统一 `import '@styles/index.less'`。
 - **组件样式改造**：组件内样式使用 `index.less?inline` 注入，仅引用 `:root` 的 CSS 变量，不在组件内 `@import` 全局文件。
-- **移除重复来源**：删除 `packages/core/src/styles/index.css` 与 `internal.less`，避免与 `src/styles` 冲突。
+- **移除重复来源**：删除旧仓库中重复的全局样式来源（如 `packages/core/src/styles/*`），避免与 `src/styles` 冲突。
 - **Vite 路径别名**：在根站点与示例站 `vite.config` 添加 `@styles -> src/styles`，便于统一引用。
 
-### 5. 发布流程
+### 6. 发布流程
 
 #### 5.1 创建变更集
 
