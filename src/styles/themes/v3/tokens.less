@@ -2,7 +2,6 @@
 
 // 基础变量 (V3 默认配置，基于 V2)
 @jds-h-line-height: 1.2;
-@jds-line-height-1_1: 1.1;
 @jds-b-line-height: 1.2;
 @jds-c-line-height: 1.2;
 
@@ -122,7 +121,7 @@
 .generate-font-vars(@suffix, @h-sizes, @b-sizes, @c-size) {
 
   // 标题
-  .loop(@i: 1) when (@i <=4) {
+  .loop(@i: 1) when (@i <=6) {
     @size: extract(@h-sizes, @i);
     --jds-font-h@{i}: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-h-line-height var(--jds-font-family);
     --jds-font-h@{i}-weight: @jds-font-semibold;
@@ -130,17 +129,6 @@
   }
 
   .loop();
-
-  .loop5_6(@i: 5) when (@i <=6) {
-    @size: extract(@h-sizes, @i);
-    --jds-font-h@{i}: @jds-font-semibold var(--jds-font-size-@{size}) / @jds-line-height-1_1 var(--jds-font-family);
-    --jds-font-h@{i}-weight: @jds-font-semibold;
-    .loop5_6(@i + 1);
-  }
-
-  .loop5_6();
-
-  
 
   // 正文
   @b1: extract(@b-sizes, 1);
