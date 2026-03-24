@@ -5,3 +5,4 @@ stories/
 .storybook
 *.mdx
 *.test.ts
+dist/**/*.map

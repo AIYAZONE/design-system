@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
@@ -69,13 +69,15 @@ export default defineConfig((configEnv) => {
   const isLibrary = configEnv.mode === 'library';
   const isLibrarySingle = configEnv.mode === 'library-single';
   const isThemes = configEnv.mode === 'themes';
+  const env = loadEnv(configEnv.mode, process.cwd(), '');
+  const enableSourcemap = env.JDS_SOURCEMAP === 'true';
 
   if (isLibrary) {
     return {
       base: './',
       publicDir: false,
       build: {
-        sourcemap: true,
+        sourcemap: enableSourcemap,
         minify: 'esbuild',
         emptyOutDir: true,
         outDir: 'dist',
@@ -155,7 +157,7 @@ export default defineConfig((configEnv) => {
       base: './',
       publicDir: false,
       build: {
-        sourcemap: true,
+        sourcemap: enableSourcemap,
         minify: 'esbuild',
         emptyOutDir: true,
         outDir: 'dist',
@@ -231,7 +233,7 @@ export default defineConfig((configEnv) => {
       base: './',
       publicDir: true,
       build: {
-        sourcemap: true,
+        sourcemap: enableSourcemap,
         minify: 'esbuild',
         emptyOutDir: false,
         outDir: 'dist',
