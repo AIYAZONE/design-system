@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Jackery Design System (JDS) - Monorepo",
   "author": "Jackery F2E Team",
   "type": "module",
@@ -78,14 +78,12 @@
   },
   "files": [
     "dist/index.esm.js",
-    "dist/index.esm.js.map",
     "dist/index.cjs",
-    "dist/index.cjs.map",
     "dist/index.css",
     "dist/internal.css",
     "dist/index-v2.css",
     "dist/index-v3.css",
-    "dist/chunks/**",
+    "dist/chunks/*.js",
     "dist/fonts/**",
     "dist/assets/**",
     "dist/jds.d.ts",
