@@ -44,6 +44,12 @@ export const SYSTEM_ICON_LIST = [
   "tent-line",
   "truck-line-1",
   "truck-line-2",
+  "radius-left-top",
+  "radius-right-bottom",
+  "share",
+  "tag",
+  "time-fill",
+  "time-line",
 ];
 
 export type SystemIcon = typeof SYSTEM_ICON_LIST[number];
