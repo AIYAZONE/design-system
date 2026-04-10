@@ -55,4 +55,5 @@ export default {
   "phone-fill": "电话填充 电话 phone filled",
   "phone-line": "电话线条 电话 phone line",
   "search": "搜索 search symbol",
+  "link": "链接 link symbol",
  };
