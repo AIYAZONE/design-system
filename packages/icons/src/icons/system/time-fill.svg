@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>编组 57</title>
-    <g id="UI-控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="UI控件-01图标库" transform="translate(-1602.000000, -2033.000000)">
-            <g id="编组-57" transform="translate(1602.000000, 2033.000000)">
-                <rect id="矩形备份-53" x="0" y="0" width="72" height="72"></rect>
-                <circle id="Oval-5" stroke="#000000" stroke-width="2.99929029" fill="#000000" cx="36" cy="36" r="31.5003549"></circle>
-                <path d="M50.9278696,47.8596875 C51.8058959,48.7394327 51.8058959,50.1657816 50.9278696,51.0455268 C50.0498432,51.9252721 48.6262812,51.9252721 47.7482548,51.0455268 L33.9403881,37.210629 C33.5187449,36.7881604 33.2818683,36.2151701 33.2818683,35.6177093 L33.2818683,16.2419623 C33.2818683,14.9978146 34.2884786,13.9892337 35.5301954,13.9892337 C36.7719122,13.9892337 37.7785226,14.9978146 37.7785226,16.2419623 L37.7785226,34.6845986 L50.9278696,47.8596875 Z" id="Path-6" fill="#FFFFFF" fill-rule="nonzero"></path>
-            </g>
-        </g>
+<svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path d="M0 0h72v72H0z" />
+        <circle stroke="currentColor" stroke-width="2.999" fill="currentColor" cx="36" cy="36" r="31.5" />
+        <path
+            d="M50.928 47.86c.878.88.878 2.306 0 3.186-.878.88-2.302.88-3.18 0L33.94 37.21a2.255 2.255 0 01-.658-1.593V16.242a2.25 2.25 0 012.248-2.253 2.25 2.25 0 012.249 2.253v18.443L50.928 47.86z"
+            fill="#FFF" fill-rule="nonzero" />
     </g>
 </svg>
