@@ -51,5 +51,7 @@ export default {
   "time-fill": "时间填充 时间 time filled",
   "time-line": "时间线条 时间 time line",
   "location": "位置 location symbol",
+  "phone-fill": "电话填充 电话 phone filled",
+  "phone-line": "电话线条 电话 phone line",
  };
 
