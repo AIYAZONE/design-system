@@ -50,5 +50,6 @@ export default {
   "tag": "标签 标记 tag label symbol",
   "time-fill": "时间填充 时间 time filled",
   "time-line": "时间线条 时间 time line",
+  "location": "位置 location symbol",
  };
 
