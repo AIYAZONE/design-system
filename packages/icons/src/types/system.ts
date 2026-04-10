@@ -50,6 +50,7 @@ export const SYSTEM_ICON_LIST = [
   "tag",
   "time-fill",
   "time-line",
+  "location",
 ];
 
 export type SystemIcon = typeof SYSTEM_ICON_LIST[number];
