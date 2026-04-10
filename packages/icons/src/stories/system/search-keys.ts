@@ -44,11 +44,11 @@ export default {
   "tent-line": "帐篷线条 帐篷 住宿 休息 旅行 tent line tent camping rest travel",
   "truck-line-1": "卡车线条 运输 物流 配送 truck transport logistics delivery",
   "truck-line-2": "卡车线条 运输 物流 配送 truck transport logistics delivery",
-  "radius-right-bottom": "圆角线条 右下角 圆角 圆角 radius right bottom corner rounded rounded",
-  "radius-left-top": "圆角线条 左上角 圆角 圆角 radius left top corner rounded rounded",
-  "share": "分享 分享 分享 分享 share share share symbol",
-  "tag": "标签 标签 标记 标签 tag tag label tag symbol",
-  "time-fill": "时间填充 时间 时间 time filled time time",
-  "time-line": "时间线条 时间 时间 time line time time",
+  "radius-right-bottom": "圆角线条 右下角 圆角 radius right bottom corner rounded",
+  "radius-left-top": "圆角线条 左上角 圆角 radius left top corner rounded",
+  "share": "分享 share symbol",
+  "tag": "标签 标记 tag label symbol",
+  "time-fill": "时间填充 时间 time filled",
+  "time-line": "时间线条 时间 time line",
  };
 
