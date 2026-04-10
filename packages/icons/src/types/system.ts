@@ -23,6 +23,7 @@ export const SYSTEM_ICON_LIST = [
   "plus",
   "plus-fill",
   "plus-line",
+  "minus",
   "arrow-left-fill",
   "arrow-right-fill",
   "arrow-up-fill",
@@ -53,6 +54,7 @@ export const SYSTEM_ICON_LIST = [
   "location",
   "phone-fill",
   "phone-line",
+  "search",
 ];
 
 export type SystemIcon = typeof SYSTEM_ICON_LIST[number];
