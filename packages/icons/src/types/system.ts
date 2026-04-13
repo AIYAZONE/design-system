@@ -55,6 +55,7 @@ export const SYSTEM_ICON_LIST = [
   "phone-fill",
   "phone-line",
   "search",
+  "pdf",
 ];
 
 export type SystemIcon = typeof SYSTEM_ICON_LIST[number];
