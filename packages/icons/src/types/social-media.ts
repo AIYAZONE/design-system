@@ -40,6 +40,7 @@ export const SOCIAL_MEDIA_ICON_LIST = [
   "email-color",
   "email-color-fill",
   "link",
+  "link-big",
   "link-fill",
   "link-color",
   "link-color-fill",
