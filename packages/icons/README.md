@@ -10,9 +10,7 @@ Jackery Design System 提供了一套完整、高性能的图标库。该库基�
 ## 图标列表分类
 
 1. [ ] 系统图标
-2. [ ] 会员系统图标
-3. [x] 社媒图标
-4. [ ] 电器图标
+2. [x] 社媒图标
 
 ## 图标命名规则
 
@@ -54,3 +52,4 @@ import '@jackery/icons';
 ```html
 <jds-icon name="alert-fill"></jds-icon>
 ```
+
