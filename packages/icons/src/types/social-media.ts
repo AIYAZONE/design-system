@@ -48,6 +48,7 @@ export const SOCIAL_MEDIA_ICON_LIST = [
   "telegram-fill",
   "telegram-color",
   "telegram-color-fill",
+  "threads",
   "refer-a-friend",
   "refer-a-friend-fill",
   "refer-a-friend-color",

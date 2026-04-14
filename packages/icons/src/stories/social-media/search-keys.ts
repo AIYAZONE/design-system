@@ -47,5 +47,6 @@ export default {
   "telegram": "telegram logo messaging chat app secure communication 电报 即时通讯 聊天 加密通讯",
   "telegram-fill": "telegram fill solid messaging chat filled icon 电报 填充 实心 即时通讯 聊天",
   "telegram-color": "telegram color blue social brand 电报 蓝色 品牌色",
-  "telegram-color-fill": "telegram color fill solid blue brand filled messaging 电报 彩色填充 蓝色品牌 实心 即时通讯"
+  "telegram-color-fill": "telegram color fill solid blue brand filled messaging 电报 彩色填充 蓝色品牌 实心 即时通讯",
+  "threads": "threads logo social media thread community discussion 电报 threads symbol"
 }
