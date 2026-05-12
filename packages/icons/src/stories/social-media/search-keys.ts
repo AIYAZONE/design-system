@@ -40,11 +40,13 @@ export default {
   "email-color": "email color blue social brand 邮件 蓝色 品牌色",
   "email-color-fill": "email color fill solid blue brand filled mail 邮件 彩色填充 蓝色品牌 实心 电子邮箱",
   "link": "link logo url website share connect 链接 网址 分享 连接",
+  "link-big": "link logo url website share connect 链接 网址 分享 连接 大图标",
   "link-fill": "link fill solid url website filled icon 链接 填充 实心 网址 分享",
   "link-color": "link color blue social brand 链接 蓝色 品牌色",
   "link-color-fill": "link color fill solid blue brand filled url 链接 彩色填充 蓝色品牌 实心 网址",
   "telegram": "telegram logo messaging chat app secure communication 电报 即时通讯 聊天 加密通讯",
   "telegram-fill": "telegram fill solid messaging chat filled icon 电报 填充 实心 即时通讯 聊天",
   "telegram-color": "telegram color blue social brand 电报 蓝色 品牌色",
-  "telegram-color-fill": "telegram color fill solid blue brand filled messaging 电报 彩色填充 蓝色品牌 实心 即时通讯"
+  "telegram-color-fill": "telegram color fill solid blue brand filled messaging 电报 彩色填充 蓝色品牌 实心 即时通讯",
+  "threads": "threads logo social media thread community discussion 电报 threads symbol"
 }
