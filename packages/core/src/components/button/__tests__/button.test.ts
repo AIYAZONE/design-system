@@ -133,6 +133,19 @@ describe("jds-button", () => {
     expect(buttonStyleSource).not.toContain("14% {");
   });
 
+  it("matches the figma shine gradient stops", () => {
+    expect(buttonStyleSource).toContain("linear-gradient(283.37deg");
+    expect(buttonStyleSource).toContain("rgba(254, 139, 45, 0) 11.45%");
+    expect(buttonStyleSource).toContain("rgba(255, 152, 70, 1) 45.8%");
+    expect(buttonStyleSource).toContain("rgba(255, 137, 44, 0) 86.76%");
+  });
+
+  it("adds a subtle halo layer without blurring the core stripe", () => {
+    expect(buttonStyleSource).toContain("--jds-btn-shine-halo-gradient");
+    expect(buttonStyleSource).toContain("rgba(255, 152, 70, 0.35) 45.8%");
+    expect(buttonStyleSource).toContain("blur(var(--jds-btn-shine-blur, 0px))");
+  });
+
   it("uses staggered shine layers to avoid any visible gap between loops", () => {
     expect(buttonStyleSource).toContain(".button::after");
     expect(buttonStyleSource).toContain(

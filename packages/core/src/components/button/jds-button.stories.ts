@@ -451,21 +451,6 @@ export const Interactions = {
       <div style="display: flex; flex-wrap: wrap; gap: 12px">
         ${SingleButtonTemplate({
           ...args,
-          content: "Neutral Sweep",
-          kind: "neutral",
-          interaction: "shine",
-        })}
-        ${SingleButtonTemplate({
-          ...args,
-          content: "Custom Sweep",
-          kind: "custom",
-          interaction: "shine",
-          style: "--jds-btn-custom-color: #10b981",
-        })}
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px">
-        ${SingleButtonTemplate({
-          ...args,
           content: "Secondary Ignores Shine",
           variant: "secondary",
           interaction: "shine",
