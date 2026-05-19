@@ -1,6 +1,6 @@
 {
   "name": "@jackery/design-system",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Jackery Design System (JDS) - Monorepo",
   "author": "Jackery F2E Team",
   "type": "module",
