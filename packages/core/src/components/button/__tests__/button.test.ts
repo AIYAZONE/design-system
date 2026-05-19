@@ -133,9 +133,33 @@ describe("jds-button", () => {
     expect(buttonStyleSource).not.toContain("14% {");
   });
 
-  it("uses a longer travel range and duration for a smoother shine", () => {
-    expect(buttonStyleSource).toContain("--jds-btn-shine-start-x: -140%");
+  it("uses staggered shine layers to avoid any visible gap between loops", () => {
+    expect(buttonStyleSource).toContain(".button::after");
+    expect(buttonStyleSource).toContain(
+      "animation-delay: calc(var(--jds-btn-shine-duration, 3.8s) / -2);",
+    );
+  });
+
+  it("starts the incoming shine inside the button for a continuous handoff", () => {
+    expect(buttonStyleSource).toContain("--jds-btn-shine-start-x: -45%");
     expect(buttonStyleSource).toContain("--jds-btn-shine-end-x: 140%");
-    expect(buttonStyleSource).toContain("var(--jds-btn-shine-duration, 2.4s)");
+    expect(buttonStyleSource).toContain("var(--jds-btn-shine-duration, 3.8s)");
+  });
+
+  it("extends the visible sweep window past 50% to guarantee a continuous loop", () => {
+    expect(buttonStyleSource).toContain("58% {");
+    expect(buttonStyleSource).toContain("72% {");
+    expect(buttonStyleSource).toContain("72.01%");
+  });
+
+  it("eases the shine in with a short fade-in ramp", () => {
+    expect(buttonStyleSource).toContain("0% {");
+    expect(buttonStyleSource).toContain("opacity: 0;");
+    expect(buttonStyleSource).toContain("12% {");
+    expect(buttonStyleSource).toContain("opacity: var(--jds-btn-shine-opacity, 0.82);");
+  });
+
+  it("avoids an abrupt speed jump when the shine fades in", () => {
+    expect(buttonStyleSource).toContain("+ 38%)");
   });
 });

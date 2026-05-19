@@ -15,7 +15,8 @@
   --jds-btn-text-underline-color: var(--jds-btn-hover-color);
   --jds-btn-shine-angle: 0deg;
   --jds-btn-shine-height: 200%;
-  --jds-btn-shine-start-x: -140%;
+  --jds-btn-shine-start-x: -45%;
+  --jds-btn-shine-handoff-shift: 0.26s;
   --jds-btn-shine-end-x: 140%;
   --jds-btn-shine-gradient: linear-gradient(283.37deg,
       rgba(254, 139, 45, 0) 11.45%,
@@ -362,18 +363,33 @@ slot[name="icon"] {
 
 @keyframes jds-button-shine {
   0% {
-    opacity: var(--jds-btn-shine-opacity, 0.82);
-    transform: translate3d(var(--jds-btn-shine-start-x, -140%), 0, 0);
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-start-x, -45%), 0, 0);
   }
 
-  100% {
+  12% {
+    opacity: var(--jds-btn-shine-opacity, 0.82);
+    transform: translate3d(calc(var(--jds-btn-shine-start-x, -45%) + 38%), 0, 0);
+  }
+
+  58% {
     opacity: var(--jds-btn-shine-opacity, 0.82);
     transform: translate3d(var(--jds-btn-shine-end-x, 140%), 0, 0);
   }
+
+  72% {
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-end-x, 140%), 0, 0);
+  }
+
+  72.01%,
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-start-x, -45%), 0, 0);
+  }
 }
 
-:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::before {
-  content: "";
+.shine-layer() {
   position: absolute;
   top: calc((var(--jds-btn-shine-height, 200%) - 100%) / -2);
   left: 0;
@@ -393,8 +409,19 @@ slot[name="icon"] {
         rgba(255, 137, 44, 0.08) 78%,
         rgba(255, 137, 44, 0) 86.76%));
   filter: blur(var(--jds-btn-shine-blur, 12px));
-  will-change: transform;
-  animation: jds-button-shine var(--jds-btn-shine-duration, 2.4s) linear infinite;
+  will-change: transform, opacity;
+  animation: jds-button-shine var(--jds-btn-shine-duration, 3.8s) linear infinite;
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::before {
+  content: "";
+  .shine-layer();
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::after {
+  content: "";
+  .shine-layer();
+  animation-delay: calc(var(--jds-btn-shine-duration, 3.8s) / -2);
 }
 
 :host([variant="text"]) .button[aria-disabled="true"] .label::after {
