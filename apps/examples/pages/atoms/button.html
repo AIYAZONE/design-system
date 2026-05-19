@@ -18,6 +18,12 @@
       margin: 20px;
       cursor: pointer;
     }
+    main p {
+      margin-bottom: 10px;
+    }
+    main p:last-child {
+      margin-bottom: 0;
+    }
   </style>
 
 </head>
@@ -82,6 +88,12 @@
         <jds-button kind="success" interaction="shine">Success Sweep</jds-button>
         <jds-button kind="danger" interaction="shine">Danger Sweep</jds-button>
         <jds-button kind="custom" interaction="shine" style="--jds-btn-custom-color:#10b981;">Custom Sweep</jds-button>
+      </p>
+      <p>
+        <jds-button class="jds-animate" size="large" interaction="shine">
+          SHOP NOW
+          <jds-button class="only-icon" icon="arrow-right-long" size="small"></jds-button>
+        </jds-button>
       </p>
       <p>
         <jds-button variant="secondary" interaction="shine">Secondary Ignores Shine</jds-button>
