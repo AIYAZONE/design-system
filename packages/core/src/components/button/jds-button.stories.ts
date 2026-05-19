@@ -14,6 +14,7 @@ interface ButtonProps {
   target: any;
   icon: any;
   iconPosition?: "prev" | "next";
+  interaction?: "default" | "shine";
   content: any;
   style: any;
   type?: string;
@@ -109,6 +110,12 @@ const meta = {
       control: { type: "select" },
       table: { defaultValue: { summary: "next" }, category: "基础" },
     },
+    interaction: {
+      options: ["default", "shine"],
+      description: "按钮交互风格；shine 仅对实心按钮生效，默认保持现有交互",
+      control: { type: "select" },
+      table: { defaultValue: { summary: "default" }, category: "基础" },
+    },
     target: { table: { disable: true, category: "高级" } },
     style: {
       description:
@@ -148,6 +155,7 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     type=${ifDefined(args.type)}
     icon="${ifDefined(args.icon)}"
     iconPosition=${ifDefined(args.iconPosition)}
+    interaction=${ifDefined(args.interaction)}
     label="${ifDefined(args.label)}"
     ?disabled=${ifDefined(args.disabled)}
     ?loading=${args.loading}
@@ -421,6 +429,55 @@ export const FormSubmit = {
         type: "submit",
       })}
     </form>
+  `,
+  args: {},
+};
+
+export const Interactions = {
+  render: (args: any) => html`
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Default Button",
+          interaction: "default",
+        })}
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Figma Sweep Shine",
+          interaction: "shine",
+        })}
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Neutral Sweep",
+          kind: "neutral",
+          interaction: "shine",
+        })}
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Custom Sweep",
+          kind: "custom",
+          interaction: "shine",
+          style: "--jds-btn-custom-color: #10b981",
+        })}
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Secondary Ignores Shine",
+          variant: "secondary",
+          interaction: "shine",
+        })}
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Text Ignores Shine",
+          variant: "text",
+          interaction: "shine",
+        })}
+      </div>
+    </div>
   `,
   args: {},
 };

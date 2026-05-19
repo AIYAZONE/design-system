@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 vi.mock("@jackery/utils", () => {
   return {
@@ -22,6 +24,8 @@ async function getRoot(el: HTMLElementTagNameMap["jds-button"]) {
   if (el.updateComplete) await (el as any).updateComplete;
   return el.shadowRoot!;
 }
+
+const buttonStyleSource = readFileSync(join(process.cwd(), "src/components/button/index.less"), "utf8");
 
 describe("jds-button", () => {
   beforeEach(() => {
@@ -95,5 +99,43 @@ describe("jds-button", () => {
     expect(iconSlotIndex).toBeGreaterThan(-1);
     expect(labelIndex).toBeGreaterThan(-1);
     expect(iconSlotIndex).toBeLessThan(labelIndex);
+  });
+
+  it("uses default interaction and reflects shine interaction", async () => {
+    const el = createButton() as any;
+    await getRoot(el);
+    expect(el.interaction).toBe("default");
+    expect(el.getAttribute("interaction")).toBe("default");
+
+    el.interaction = "shine";
+    await getRoot(el);
+    expect(el.getAttribute("interaction")).toBe("shine");
+  });
+
+  it("keeps primary button clickable when shine interaction is enabled", async () => {
+    const el = createButton();
+    el.setAttribute("interaction", "shine");
+    const clicked = vi.fn();
+    el.addEventListener("jds-click", clicked);
+    const root = await getRoot(el);
+    const btn = root.querySelector("button")!;
+    await userEvent.click(btn);
+    expect(clicked).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not rotate the shine carrier geometry anymore", () => {
+    expect(buttonStyleSource).not.toContain("rotate(var(--jds-btn-shine-angle))");
+  });
+
+  it("uses a continuous linear sweep animation for shine", () => {
+    expect(buttonStyleSource).toContain("linear infinite");
+    expect(buttonStyleSource).not.toContain("cubic-bezier");
+    expect(buttonStyleSource).not.toContain("14% {");
+  });
+
+  it("uses a longer travel range and duration for a smoother shine", () => {
+    expect(buttonStyleSource).toContain("--jds-btn-shine-start-x: -140%");
+    expect(buttonStyleSource).toContain("--jds-btn-shine-end-x: 140%");
+    expect(buttonStyleSource).toContain("var(--jds-btn-shine-duration, 2.4s)");
   });
 });
