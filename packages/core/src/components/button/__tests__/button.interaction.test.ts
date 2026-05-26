@@ -38,4 +38,24 @@ describe('jds-button interaction', () => {
     await userEvent.click(button)
     expect(submitSpy).toHaveBeenCalledTimes(1)
   })
+
+  it('keeps secondary interactive when shine interaction is set', async () => {
+    const { el } = mount('jds-button', { variant: 'secondary', interaction: 'shine' }, '提交')
+    const clicked: any = []
+    el.addEventListener('jds-click', () => clicked.push(true))
+    const root = await waitUpdate(el)
+    const button = root.querySelector('button') as HTMLButtonElement
+    await userEvent.click(button)
+    expect(clicked.length).toBe(1)
+  })
+
+  it('keeps text variant interactive when shine interaction is set', async () => {
+    const { el } = mount('jds-button', { variant: 'text', interaction: 'shine' }, '查看详情')
+    const clicked: any = []
+    el.addEventListener('jds-click', () => clicked.push(true))
+    const root = await waitUpdate(el)
+    const button = root.querySelector('button') as HTMLButtonElement
+    await userEvent.click(button)
+    expect(clicked.length).toBe(1)
+  })
 })

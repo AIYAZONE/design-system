@@ -13,6 +13,21 @@
   --jds-btn-hover-color: var(--jds-color-primary-highlight);
   --jds-btn-active-color: var(--jds-btn-main-color, var(--jds-color-primary));
   --jds-btn-text-underline-color: var(--jds-btn-hover-color);
+  --jds-btn-shine-angle: 0deg;
+  --jds-btn-shine-height: 200%;
+  --jds-btn-shine-start-x: -45%;
+  --jds-btn-shine-handoff-shift: 0s;
+  --jds-btn-shine-end-x: 140%;
+  --jds-btn-shine-gradient: linear-gradient(283.37deg,
+      rgba(254, 139, 45, 0) 11.45%,
+      rgba(255, 152, 70, 1) 45.8%,
+      rgba(255, 137, 44, 0) 86.76%);
+  --jds-btn-shine-halo-gradient: linear-gradient(283.37deg,
+      rgba(254, 139, 45, 0) 0%,
+      rgba(255, 152, 70, 0.12) 32%,
+      rgba(255, 152, 70, 0.35) 45.8%,
+      rgba(255, 152, 70, 0.12) 60%,
+      rgba(255, 137, 44, 0) 100%);
 }
 
 .button {
@@ -33,6 +48,9 @@
   vertical-align: middle;
   padding: var(--jds-btn-padding-vertical, var(--jds-size-8)) var(--jds-btn-padding-horizontal, var(--jds-size-16));
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background-color: var(--jds-btn-current-bg);
   color: var(--jds-btn-current-color);
   font: var(--jds-btn-font, var(--jds-font-h6));
@@ -55,6 +73,7 @@
 
 .label {
   position: relative;
+  z-index: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,6 +81,11 @@
   align-items: center;
   line-height: normal;
   max-width: 100%;
+}
+
+slot[name="icon"] {
+  position: relative;
+  z-index: 1;
 }
 
 // 不同变体的按钮
@@ -337,6 +361,72 @@
 .style-text-active() {
   color: var(--jds-btn-text-interaction-color, var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight)));
   background-color: transparent;
+}
+
+@keyframes jds-button-shine {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-start-x, -45%), 0, 0);
+  }
+
+  12% {
+    opacity: var(--jds-btn-shine-opacity, 0.82);
+    transform: translate3d(calc(var(--jds-btn-shine-start-x, -45%) + 38%), 0, 0);
+  }
+
+  58% {
+    opacity: var(--jds-btn-shine-opacity, 0.82);
+    transform: translate3d(var(--jds-btn-shine-end-x, 140%), 0, 0);
+  }
+
+  72% {
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-end-x, 140%), 0, 0);
+  }
+
+  72.01%,
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--jds-btn-shine-start-x, -45%), 0, 0);
+  }
+}
+
+.shine-layer() {
+  position: absolute;
+  top: calc((var(--jds-btn-shine-height, 200%) - 100%) / -2);
+  left: 0;
+  width: var(--jds-btn-shine-width, 70%);
+  height: var(--jds-btn-shine-height, 200%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--jds-btn-shine-opacity, 0.82);
+  border-radius: 0;
+  background-image: var(--jds-btn-shine-gradient,
+      linear-gradient(283.37deg,
+        rgba(254, 139, 45, 0) 11.45%,
+        rgba(255, 152, 70, 1) 45.8%,
+        rgba(255, 137, 44, 0) 86.76%)),
+    var(--jds-btn-shine-halo-gradient,
+      linear-gradient(283.37deg,
+        rgba(254, 139, 45, 0) 0%,
+        rgba(255, 152, 70, 0.12) 32%,
+        rgba(255, 152, 70, 0.35) 45.8%,
+        rgba(255, 152, 70, 0.12) 60%,
+        rgba(255, 137, 44, 0) 100%));
+  filter: blur(var(--jds-btn-shine-blur, 0px));
+  will-change: transform, opacity;
+  animation: jds-button-shine var(--jds-btn-shine-duration, 3.8s) linear infinite;
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::before {
+  content: "";
+  .shine-layer();
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::after {
+  content: "";
+  .shine-layer();
+  animation-delay: calc(var(--jds-btn-shine-duration, 3.8s) / -2);
 }
 
 :host([variant="text"]) .button[aria-disabled="true"] .label::after {
