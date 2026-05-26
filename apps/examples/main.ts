@@ -24,7 +24,7 @@ if (isProd) {
   link.href = themeMap[resolvedTheme] || themeMap['v1'];
   document.head.appendChild(link);
 } else {
-  const injectInlineCss = async () => {
+  const injectInlineStyles = async () => {
     if (resolvedTheme === 'v3') {
       await import('@styles/themes/v3/index.less');
     } else if (resolvedTheme === 'v2') {
@@ -33,7 +33,7 @@ if (isProd) {
       await import('@styles/themes/v1/index.less');
     }
   };
-  injectInlineCss();
+  injectInlineStyles();
 }
 
 import './styles/public.less';
