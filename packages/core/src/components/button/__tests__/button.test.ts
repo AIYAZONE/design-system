@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 vi.mock("@jackery/utils", () => {
   return {
@@ -22,6 +24,8 @@ async function getRoot(el: HTMLElementTagNameMap["jds-button"]) {
   if (el.updateComplete) await (el as any).updateComplete;
   return el.shadowRoot!;
 }
+
+const buttonStyleSource = readFileSync(join(process.cwd(), "src/components/button/index.less"), "utf8");
 
 describe("jds-button", () => {
   beforeEach(() => {
@@ -95,5 +99,80 @@ describe("jds-button", () => {
     expect(iconSlotIndex).toBeGreaterThan(-1);
     expect(labelIndex).toBeGreaterThan(-1);
     expect(iconSlotIndex).toBeLessThan(labelIndex);
+  });
+
+  it("uses default interaction and reflects shine interaction", async () => {
+    const el = createButton() as any;
+    await getRoot(el);
+    expect(el.interaction).toBe("default");
+    expect(el.getAttribute("interaction")).toBe("default");
+
+    el.interaction = "shine";
+    await getRoot(el);
+    expect(el.getAttribute("interaction")).toBe("shine");
+  });
+
+  it("keeps primary button clickable when shine interaction is enabled", async () => {
+    const el = createButton();
+    el.setAttribute("interaction", "shine");
+    const clicked = vi.fn();
+    el.addEventListener("jds-click", clicked);
+    const root = await getRoot(el);
+    const btn = root.querySelector("button")!;
+    await userEvent.click(btn);
+    expect(clicked).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not rotate the shine carrier geometry anymore", () => {
+    expect(buttonStyleSource).not.toContain("rotate(var(--jds-btn-shine-angle))");
+  });
+
+  it("uses a continuous linear sweep animation for shine", () => {
+    expect(buttonStyleSource).toContain("linear infinite");
+    expect(buttonStyleSource).not.toContain("cubic-bezier");
+    expect(buttonStyleSource).not.toContain("14% {");
+  });
+
+  it("matches the figma shine gradient stops", () => {
+    expect(buttonStyleSource).toContain("linear-gradient(283.37deg");
+    expect(buttonStyleSource).toContain("rgba(254, 139, 45, 0) 11.45%");
+    expect(buttonStyleSource).toContain("rgba(255, 152, 70, 1) 45.8%");
+    expect(buttonStyleSource).toContain("rgba(255, 137, 44, 0) 86.76%");
+  });
+
+  it("adds a subtle halo layer without blurring the core stripe", () => {
+    expect(buttonStyleSource).toContain("--jds-btn-shine-halo-gradient");
+    expect(buttonStyleSource).toContain("rgba(255, 152, 70, 0.35) 45.8%");
+    expect(buttonStyleSource).toContain("blur(var(--jds-btn-shine-blur, 0px))");
+  });
+
+  it("uses staggered shine layers to avoid any visible gap between loops", () => {
+    expect(buttonStyleSource).toContain(".button::after");
+    expect(buttonStyleSource).toContain(
+      "animation-delay: calc(var(--jds-btn-shine-duration, 3.8s) / -2);",
+    );
+  });
+
+  it("starts the incoming shine inside the button for a continuous handoff", () => {
+    expect(buttonStyleSource).toContain("--jds-btn-shine-start-x: -45%");
+    expect(buttonStyleSource).toContain("--jds-btn-shine-end-x: 140%");
+    expect(buttonStyleSource).toContain("var(--jds-btn-shine-duration, 3.8s)");
+  });
+
+  it("extends the visible sweep window past 50% to guarantee a continuous loop", () => {
+    expect(buttonStyleSource).toContain("58% {");
+    expect(buttonStyleSource).toContain("72% {");
+    expect(buttonStyleSource).toContain("72.01%");
+  });
+
+  it("eases the shine in with a short fade-in ramp", () => {
+    expect(buttonStyleSource).toContain("0% {");
+    expect(buttonStyleSource).toContain("opacity: 0;");
+    expect(buttonStyleSource).toContain("12% {");
+    expect(buttonStyleSource).toContain("opacity: var(--jds-btn-shine-opacity, 0.82);");
+  });
+
+  it("avoids an abrupt speed jump when the shine fades in", () => {
+    expect(buttonStyleSource).toContain("+ 38%)");
   });
 });

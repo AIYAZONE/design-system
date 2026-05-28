@@ -10,6 +10,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
 export type ButtonVariant = "primary" | "secondary" | "text";
 export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
 export type ButtonSize = "extra" | "large" | "medium" | "small";
+export type ButtonInteraction = "default" | "shine";
 
 /**
  * JDS Button 组件
@@ -40,6 +41,12 @@ export class JdsButton extends LitElement {
    */
   @property({ reflect: true })
   size: ButtonSize = "large";
+
+  /**
+   * 按钮交互风格
+   */
+  @property({ reflect: true })
+  interaction: ButtonInteraction = "default";
 
   /**
    * 按钮标签（无障碍访问）

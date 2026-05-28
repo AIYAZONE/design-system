@@ -1,11 +1,11 @@
-import internalCssText from '../../../../src/styles/internal.less?inline';
+import internalStylesText from '../../../../src/styles/internal.less?inline';
 
 let sharedSheet: CSSStyleSheet | null = null;
 
 function getSharedSheet(): CSSStyleSheet {
   if (!sharedSheet) {
     sharedSheet = new CSSStyleSheet();
-    sharedSheet.replaceSync(internalCssText);
+    sharedSheet.replaceSync(internalStylesText);
   }
   return sharedSheet;
 }
@@ -24,7 +24,7 @@ export function adoptInternalStyles(root: Element | ShadowRoot): void {
   if (!marker) {
     const styleEl = document.createElement('style');
     styleEl.setAttribute('data-jds-internal', 'true');
-    styleEl.textContent = internalCssText;
+    styleEl.textContent = internalStylesText;
     root.prepend(styleEl);
   }
 }
