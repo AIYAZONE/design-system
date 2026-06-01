@@ -35,6 +35,8 @@ export default {
   "star-fill": "星星填充 收藏 标记 评分 等级 star filled favorite bookmark rating grade level mark important",
   "star-line": "星星线条 收藏 标记 评分 等级 star line favorite bookmark rating grade level mark important",
   "play": "播放 play",
+  "play-line": "播放线条 play line",
+  "play-fill": "播放填充 play filled",
   "download": "下载 download",
   "battery-line": "电池线条 电池 充电 电量 battery line charge power level",
   "cart-line": "购物车线条 购物车 购买 商品 cart line shopping purchase product",
