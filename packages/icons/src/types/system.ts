@@ -35,6 +35,8 @@ export const SYSTEM_ICON_LIST = [
   "star-fill",
   "star-line",
   "play",
+  "play-line",
+  "play-fill",
   "download",
   "battery-line",
   "cart-line",
