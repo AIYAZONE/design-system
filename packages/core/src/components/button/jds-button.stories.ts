@@ -13,6 +13,7 @@ interface ButtonProps {
   href: any;
   target: any;
   icon: any;
+  iconMode?: "inline" | "capsule";
   iconPosition?: "prev" | "next";
   interaction?: "default" | "shine";
   content: any;
@@ -104,6 +105,12 @@ const meta = {
       control: { type: "text" },
       table: { defaultValue: { summary: "-" }, category: "基础" },
     },
+    iconMode: {
+      options: ["inline", "capsule"],
+      description: "图标呈现模式：inline 为常规图标，capsule 为非交互胶囊尾缀（需同时提供 icon 与文本）",
+      control: { type: "select" },
+      table: { defaultValue: { summary: "inline" }, category: "基础" },
+    },
     iconPosition: {
       options: ["prev", "next"],
       description: "图标位置：prev（文本前）/ next（文本后），默认 next",
@@ -154,6 +161,7 @@ const SingleButtonTemplate = (args: ButtonProps) =>
     size=${ifDefined(args.size)}
     type=${ifDefined(args.type)}
     icon="${ifDefined(args.icon)}"
+    icon-mode=${ifDefined(args.iconMode)}
     iconPosition=${ifDefined(args.iconPosition)}
     interaction=${ifDefined(args.interaction)}
     label="${ifDefined(args.label)}"
@@ -267,6 +275,29 @@ export const WithIcon = {
     })}`,
   args: {
     icon: "star-fill",
+  },
+};
+
+export const CapsuleIcon = {
+  render: (args: any) => html`
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      ${SingleButtonTemplate({
+        ...args,
+        content: "SHOP NOW",
+        icon: args.icon ?? "arrow-right-long",
+        iconMode: "capsule",
+      })}
+      ${SingleButtonTemplate({
+        ...args,
+        content: "Hover Interaction Button",
+        icon: args.icon ?? "arrow-right-long",
+        iconMode: "capsule",
+        interaction: "shine",
+      })}
+    </div>
+  `,
+  args: {
+    icon: "arrow-right-long",
   },
 };
 
@@ -446,6 +477,13 @@ export const Interactions = {
           ...args,
           content: "Figma Sweep Shine",
           interaction: "shine",
+        })}
+        ${SingleButtonTemplate({
+          ...args,
+          content: "Capsule + Shine",
+          interaction: "shine",
+          icon: "arrow-right-long",
+          iconMode: "capsule",
         })}
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 12px">

@@ -123,13 +123,71 @@ describe("jds-button", () => {
     expect(clicked).toHaveBeenCalledTimes(1);
   });
 
+  it("keeps inline icon mode by default", async () => {
+    const el = createButton() as any;
+    el.setAttribute("icon", "arrow-right-long");
+    el.textContent = "SHOP NOW";
+    const root = await getRoot(el);
+    const btn = root.querySelector("button")!;
+    expect(el.getAttribute("icon-mode")).toBe("inline");
+    expect(btn.querySelector("slot[name='icon']")).toBeTruthy();
+    expect(btn.querySelector(".capsule-icon")).toBeNull();
+  });
+
+  it("renders a decorative capsule icon internally when iconMode is capsule", async () => {
+    const el = createButton() as any;
+    el.setAttribute("icon", "arrow-right-long");
+    el.setAttribute("icon-mode", "capsule");
+    el.textContent = "SHOP NOW";
+    const root = await getRoot(el);
+    const btn = root.querySelector("button")!;
+    const capsuleIcon = btn.querySelector(".capsule-icon");
+    expect(el.getAttribute("icon-mode")).toBe("capsule");
+    expect(root.querySelectorAll("button")).toHaveLength(1);
+    expect(capsuleIcon).toBeTruthy();
+    expect(capsuleIcon?.getAttribute("aria-hidden")).toBe("true");
+    expect(btn.querySelector("slot[name='icon']")).toBeNull();
+  });
+
+  it("positions the capsule icon absolutely so hover does not expand button width", () => {
+    expect(buttonStyleSource).toContain(".capsule-icon {");
+    expect(buttonStyleSource).toContain("position: absolute;");
+    expect(buttonStyleSource).toContain("right: var(--jds-btn-capsule-end-inset, 0px);");
+    expect(buttonStyleSource).toContain("transform: translate3d(calc(100% + var(--jds-btn-capsule-gap, var(--jds-size-8))), -50%, 0) scale(0.6);");
+  });
+
+  it("shifts the label left when the capsule icon is revealed", () => {
+    expect(buttonStyleSource).toContain(".button.has-capsule-icon .label");
+    expect(buttonStyleSource).toContain("transform: translateX(calc(var(--jds-btn-capsule-shift, 0px) * -1));");
+  });
+
+  it("keeps the main button background unchanged on capsule hover", () => {
+    expect(buttonStyleSource).toContain(":host([icon-mode=\"capsule\"]:hover:not([variant=\"secondary\"]):not([variant=\"text\"]):not([loading]):not([disabled])) .button.has-capsule-icon:not([aria-disabled=\"true\"]) {");
+    expect(buttonStyleSource).toContain("background-color: var(--jds-btn-current-bg);");
+    expect(buttonStyleSource).toContain("border-color: var(--jds-btn-current-border);");
+  });
+
+  it("keeps capsule spacing aligned with the legacy margin-left values", () => {
+    expect(buttonStyleSource).toMatch(/:host\(\[size="extra"\]\) \.button \{[\s\S]*?--jds-btn-capsule-shift: var\(--jds-size-8\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="large"\]\) \.button \{[\s\S]*?--jds-btn-capsule-shift: var\(--jds-size-8\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="medium"\]\) \.button \{[\s\S]*?--jds-btn-capsule-shift: var\(--jds-size-4\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="small"\]\) \.button \{[\s\S]*?--jds-btn-capsule-shift: var\(--jds-size-2\);/);
+  });
+
+  it("keeps the capsule icon parked inside the button using per-size end insets", () => {
+    expect(buttonStyleSource).toMatch(/:host\(\[size="extra"\]\) \.button \{[\s\S]*?--jds-btn-capsule-end-inset: var\(--jds-size-8\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="large"\]\) \.button \{[\s\S]*?--jds-btn-capsule-end-inset: var\(--jds-size-8\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="medium"\]\) \.button \{[\s\S]*?--jds-btn-capsule-end-inset: var\(--jds-size-4\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="small"\]\) \.button \{[\s\S]*?--jds-btn-capsule-end-inset: var\(--jds-size-2\);/);
+  });
+
   it("does not rotate the shine carrier geometry anymore", () => {
     expect(buttonStyleSource).not.toContain("rotate(var(--jds-btn-shine-angle))");
   });
 
   it("uses a continuous linear sweep animation for shine", () => {
     expect(buttonStyleSource).toContain("linear infinite");
-    expect(buttonStyleSource).not.toContain("cubic-bezier");
+    expect(buttonStyleSource).toContain("animation: jds-button-shine var(--jds-btn-shine-duration, 3.8s) linear infinite;");
     expect(buttonStyleSource).not.toContain("14% {");
   });
 

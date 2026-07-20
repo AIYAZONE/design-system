@@ -11,6 +11,7 @@ export type ButtonVariant = "primary" | "secondary" | "text";
 export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
 export type ButtonSize = "extra" | "large" | "medium" | "small";
 export type ButtonInteraction = "default" | "shine";
+export type ButtonIconMode = "inline" | "capsule";
 
 /**
  * JDS Button 组件
@@ -83,6 +84,12 @@ export class JdsButton extends LitElement {
    */
   @property({ reflect: true })
   iconPosition: "prev" | "next" = "next";
+
+  /**
+   * 图标呈现模式：inline（常规图标）/ capsule（胶囊尾缀）
+   */
+  @property({ reflect: true, attribute: "icon-mode" })
+  iconMode: ButtonIconMode = "inline";
 
   /**
    * 链接目标
@@ -253,6 +260,15 @@ export class JdsButton extends LitElement {
     const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
     const icon = this.icon ? html`<jds-icon part="icon" name=${this.icon}></jds-icon>` : "";
+    const canRenderCapsuleIcon =
+      this.iconMode === "capsule" &&
+      this.iconPosition === "next" &&
+      this.variant !== "secondary" &&
+      this.variant !== "text" &&
+      !this.loading &&
+      !!this.icon &&
+      this._hasDefaultSlot &&
+      !this._hasIconSlot;
     const mainColor =
       this.kind === "custom"
         ? "var(--jds-btn-local-custom-color, var(--jds-btn-custom-color, var(--jds-color-primary)))"
@@ -275,17 +291,25 @@ export class JdsButton extends LitElement {
         color="${spinnerColor}"
       ></jds-spinner>
     `;
-    const iconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
     const labelSlot = html`<span class="label" part="label">${label}</span>`;
+    const inlineIconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
+    const capsuleIcon = html`
+      <span class="capsule-icon" part="capsule-icon" aria-hidden="true">
+        <jds-icon class="capsule-icon__glyph" part="capsule-icon-glyph" name=${ifDefined(this.icon)}></jds-icon>
+      </span>
+    `;
     const slots =
-      this.iconPosition === "prev"
-        ? html`${iconSlot}${labelSlot}`
-        : html`${labelSlot}${iconSlot}`;
+      canRenderCapsuleIcon
+        ? html`${labelSlot}${capsuleIcon}`
+        : this.iconPosition === "prev"
+        ? html`${inlineIconSlot}${labelSlot}`
+        : html`${labelSlot}${inlineIconSlot}`;
     const classes = classMap({
       button: true,
       "ios-below-16_2": this.isIOSVersionBelow(16, 2),
       "has-icon": this.icon || this._hasIconSlot,
       "has-content": this._hasDefaultSlot,
+      "has-capsule-icon": canRenderCapsuleIcon,
       active: !isAnchor && this._isActive,
     });
 
