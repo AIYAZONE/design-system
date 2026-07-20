@@ -58,4 +58,25 @@ describe('jds-button interaction', () => {
     await userEvent.click(button)
     expect(clicked.length).toBe(1)
   })
+
+  it('keeps capsule icon mode interactive when combined with shine', async () => {
+    const { el } = mount('jds-button', { interaction: 'shine', icon: 'arrow-right-long', 'icon-mode': 'capsule' } as any, '立即购买')
+    const clicked: any = []
+    el.addEventListener('jds-click', () => clicked.push(true))
+    const root = await waitUpdate(el)
+    const button = root.querySelector('button') as HTMLButtonElement
+    await userEvent.click(button)
+    expect(clicked.length).toBe(1)
+  })
+
+  it('falls back safely for secondary variant when capsule mode is set', async () => {
+    const { el } = mount('jds-button', { variant: 'secondary', icon: 'arrow-right-long', 'icon-mode': 'capsule' } as any, '查看详情')
+    const clicked: any = []
+    el.addEventListener('jds-click', () => clicked.push(true))
+    const root = await waitUpdate(el)
+    const button = root.querySelector('button') as HTMLButtonElement
+    expect(button.querySelector('.capsule-icon')).toBeNull()
+    await userEvent.click(button)
+    expect(clicked.length).toBe(1)
+  })
 })

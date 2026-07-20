@@ -20,4 +20,15 @@ describe('jds-button a11y', () => {
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
     expect(Array.isArray(results.violations)).toBe(true)
   })
+
+  it('capsule icon mode does not introduce nested interactive descendants', async () => {
+    const { el } = mount('jds-button', { label: '立即购买', icon: 'arrow-right-long', 'icon-mode': 'capsule', interaction: 'shine' } as any, '立即购买')
+    const root = await waitUpdate(el)
+    expect(root.querySelectorAll('button')).toHaveLength(1)
+    expect(root.querySelector('.capsule-icon')).toBeTruthy()
+    expect(root.querySelector('slot[name="icon"]')).toBeNull()
+
+    const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
+    expect(results.violations.some((violation) => violation.id === 'nested-interactive')).toBe(false)
+  })
 })
