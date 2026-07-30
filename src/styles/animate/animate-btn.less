@@ -28,59 +28,7 @@
       }
     }
 
-    // 实心胶囊按钮
-    &[variant="primary"] {
-      &::part(button) {
-        transition: all .3s cubic-bezier(0.8, 0, 0.2, 1);
-        padding-right: 0;
-      }
-
-      &::part(label){
-        display: flex;
-      }
-
-      // 动效混合宏
-      .animate-variant(@padding-left; @margin-left; @btn-size; @icon-size) {
-        &:hover::part(button) {
-          color: var(--jds-color-white);
-          background-color: var(--jds-color-primary);
-          padding-right: var(--jds-size-8);
-          padding-left: calc(var(--jds-btn-padding-horizontal, var(--jds-size-16)) - var(--jds-size-8));
-        }
-
-        jds-button.only-icon {
-          margin-left: @margin-left;
-          transition: all .3s cubic-bezier(.8, 0, .2, 1);
-
-          &::part(button) {
-            width: @btn-size;
-            height: @btn-size;
-            background-color: var(--jds-animate-only-icon-bg, var(--jds-btn-main-hover-color, var(--jds-color-primary-highlight)));
-          }
-
-          &::part(icon) {
-            font-size: @icon-size;
-            transition: transform .4s cubic-bezier(.8, 0, .2, 1);
-          }
-        }
-      }
-
-      // 特大按钮、大按钮
-      &[size="extra"],
-      &[size="large"] {
-        .animate-variant(var(--jds-size-24), var(--jds-size-8), var(--jds-size-32), var(--jds-size-16));
-      }
-
-      // 中按钮
-      &[size="medium"] {
-        .animate-variant(var(--jds-size-16), var(--jds-size-4), var(--jds-size-24), var(--jds-size-12));
-      }
-
-      // 小按钮
-      &[size="small"] {
-        .animate-variant(var(--jds-size-8), var(--jds-size-2), var(--jds-size-12), var(--jds-size-12));
-      }
-    }
+    // 实心胶囊尾缀已内聚到 jds-button 组件内部，这里只保留外部容器驱动的纯图标动效
   }
 }
 
@@ -90,13 +38,6 @@
     // 纯图标按钮
     jds-button.only-icon::part(button) {
       font-size: var(--jds-size-24);
-    }
-
-    // 实心胶囊按钮
-    &[variant="primary"] {
-      jds-button.only-icon {
-        display: none;
-      }
     }
 
   }
