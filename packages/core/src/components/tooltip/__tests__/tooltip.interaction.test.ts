@@ -75,4 +75,25 @@ describe('jds-tooltip interaction', () => {
 
     expect(showSpy).not.toHaveBeenCalled()
   })
+
+  it('should still show on mouseenter when touch points are available', async () => {
+    const { el: element, cleanup: c } = mount(
+      'div',
+      {},
+      '<button id="tooltip-target">Trigger</button><jds-tooltip target="tooltip-target">Tooltip content</jds-tooltip>'
+    )
+    cleanup = c
+    const el = element.querySelector('jds-tooltip') as JdsTooltip
+    await waitUpdate(el)
+
+    const popover = el.shadowRoot!.querySelector('jds-popover') as any
+    if (!popover.show) popover.show = () => {}
+    const showSpy = vi.spyOn(popover, 'show')
+
+    const trigger = element.querySelector('#tooltip-target') as HTMLButtonElement
+
+    fireEvent.mouseEnter(trigger)
+
+    expect(showSpy).toHaveBeenCalled()
+  })
 })
