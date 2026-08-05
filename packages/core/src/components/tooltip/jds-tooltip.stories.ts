@@ -32,7 +32,7 @@ export default meta;
 const TooltipTemplate = (args: TooltipArgs) => html`
   <div style="padding: 100px;">
     <jds-tooltip placement="${args.placement || 'top'}">
-      <jds-button slot="tooltip-trigger">Hover or tap me</jds-button>
+      <jds-button slot="tooltip-trigger">Hover me</jds-button>
       <div slot="" style="max-width: 200px;">
         This is a tooltip with helpful information.
       </div>
@@ -98,22 +98,6 @@ export const LongContent: import('@storybook/web-components').StoryObj<TooltipAr
         <jds-button slot="tooltip-trigger">Hover for long content</jds-button>
         <div slot="" style="max-width: 300px;">
           This is a tooltip with much longer content that demonstrates how the tooltip handles multiple lines of text. It should wrap appropriately and maintain good readability.
-        </div>
-      </jds-tooltip>
-    </div>
-  `,
-  args: {
-    placement: 'top',
-  },
-};
-
-export const HybridInput: import('@storybook/web-components').StoryObj<TooltipArgs> = {
-  render: (args) => html`
-    <div style="padding: 100px;">
-      <jds-tooltip placement="${args.placement || 'top'}">
-        <jds-button slot="tooltip-trigger">Hover or tap on hybrid devices</jds-button>
-        <div slot="" style="max-width: 260px;">
-          On touch-capable desktops, tooltip now supports mouse hover and touch tap together.
         </div>
       </jds-tooltip>
     </div>
