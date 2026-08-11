@@ -30,8 +30,11 @@ export class JdsTooltip extends LitElement {
   placement: Placement = "top";
 
   @property() target!: string | HTMLElement;
-  @state() private _isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   @state() private _timer!: ReturnType<typeof setTimeout> | null;
+
+  private get _isTouchDevice() {
+    return typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  }
 
   protected update(changedProperties: PropertyValues) {
     if (changedProperties.has("target")) {
