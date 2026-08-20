@@ -168,10 +168,10 @@ const DialogTemplate = (args: DialogProps) => {
       ?open=${args.open}
       ?critical=${args.critical}
       ?showClose=${args.showClose}
-      .ariaLabelText=${ifDefined(args.ariaLabelText)}
-      .closeIcon=${ifDefined(args.closeIcon)}
+      ariaLabelText=${ifDefined(args.ariaLabelText)}
+      closeIcon=${ifDefined(args.closeIcon)}
       .appendTo=${ifDefined(args.appendTo)}
-      .initialFocus=${ifDefined(args.initialFocus)}
+      initialFocus=${ifDefined(args.initialFocus)}
       ?disableBodyScroll=${args.disableBodyScroll}
       style="${ifDefined(args.style)}"
     >
