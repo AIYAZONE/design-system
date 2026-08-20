@@ -23,6 +23,8 @@ export class JdsDialog extends LitElement {
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+
+    this.appendToTarget();
   }
 
   /**
@@ -138,14 +140,6 @@ export class JdsDialog extends LitElement {
   @event("jds-dialog-close")
   private onClose!: EventDispatcher<object>;
   // 统一仅使用 jds-dialog-* 事件，移除冗余别名
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.updateComplete.then(() => {
-      this.appendToTarget();
-    });
-  }
 
   /**
    * 属性变更生命周期：当 open 变化时处理打开/关闭
