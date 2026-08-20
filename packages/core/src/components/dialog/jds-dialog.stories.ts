@@ -15,6 +15,7 @@ interface DialogProps {
   initialFocus?: string;
   disableBodyScroll?: boolean;
   closeIcon?: string;
+  appendTo?: string;
   style: any;
   content: any;
 }
@@ -126,6 +127,11 @@ const meta = {
       control: { type: "text" },
       table: { defaultValue: { summary: "close-fill" }, category: "高级" },
     },
+    appendTo: {
+      description: "自定义挂载元素",
+      control: { type: "text" },
+      table: { defaultValue: { summary: "body" }, category: "高级" },
+    },
     style: {
       description: `设置对话框的自定义样式，支持CSS变量配置，如：
       --jds-dialog-width: 800px;
@@ -162,9 +168,10 @@ const DialogTemplate = (args: DialogProps) => {
       ?open=${args.open}
       ?critical=${args.critical}
       ?showClose=${args.showClose}
-      ariaLabelText=${ifDefined(args.ariaLabelText)}
-      closeIcon=${ifDefined(args.closeIcon)}
-      initialFocus=${ifDefined(args.initialFocus)}
+      .ariaLabelText=${ifDefined(args.ariaLabelText)}
+      .closeIcon=${ifDefined(args.closeIcon)}
+      .appendTo=${ifDefined(args.appendTo)}
+      .initialFocus=${ifDefined(args.initialFocus)}
       ?disableBodyScroll=${args.disableBodyScroll}
       style="${ifDefined(args.style)}"
     >
@@ -322,6 +329,31 @@ export const CustomStyle = {
         <div class="jds-b1">
           <p>这是一个自定义样式的对话框示例。</p>
           <p>通过CSS变量可以自定义对话框的宽度、标题对齐方式和层级。</p>
+          <p>点击右上角的关闭按钮、按下ESC键或点击遮罩层均可以关闭对话框。</p>
+        </div>
+      `,
+    })}`,
+};
+
+export const CustomAppendTo = {
+  args: {
+    size: 'large',
+    caption: '自定义挂载元素对话框',
+    appendTo: 'body',
+    open: false,
+    critical: false,
+    showClose: true,
+  },
+  render: (args: DialogProps) =>
+    html`${DialogTemplate({
+      ...args,
+      class: 'custom-append-to',
+      appendTo: 'body',
+      style: '--jds-dialog-width: 800px; --jds-dialog-title-align: center; --jds-dialog-index: 1000;',
+      content: `
+        <div class="jds-b1">
+          <p>这是一个自定义挂载元素对话框示例。</p>
+          <p>通过append-to属性可以自定义对话框的挂载元素。</p>
           <p>点击右上角的关闭按钮、按下ESC键或点击遮罩层均可以关闭对话框。</p>
         </div>
       `,
