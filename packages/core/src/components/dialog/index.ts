@@ -108,11 +108,7 @@ export class JdsDialog extends LitElement {
    * - #app
    * - .modal-root
    */
-  @property({
-    attribute: "append-to",
-    type: String,
-    reflect: true,
-  })
+  @property({ attribute: "append-to", type: String, reflect: true })
   appendTo?: string;
 
   @query(".container")
