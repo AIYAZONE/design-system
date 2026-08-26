@@ -23,6 +23,8 @@ export class JdsDialog extends LitElement {
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+
+    this.appendToTarget();
   }
 
   /**
@@ -100,6 +102,17 @@ export class JdsDialog extends LitElement {
   @property({ type: String })
   closeIcon = "close-fill";
 
+  /**
+   * Dialog 挂载目标
+   *
+   * 支持 CSS Selector，例如：
+   * - body
+   * - #app
+   * - .modal-root
+   */
+  @property({ attribute: "append-to", type: String, reflect: true })
+  appendTo?: string;
+
   @query(".container")
   private container!: HTMLElement;
   /**
@@ -132,8 +145,42 @@ export class JdsDialog extends LitElement {
    * 属性变更生命周期：当 open 变化时处理打开/关闭
    */
   updated(changedProperties: PropertyValues<this>) {
+    if (changedProperties.has("appendTo")) {
+      this.appendToTarget();
+    }
+
     if (changedProperties.has("open")) {
       this.toggleDialogHandler();
+    }
+  }
+
+  /**
+   * 将 Dialog 自身移动到指定 DOM 节点
+   */
+  private appendToTarget() {
+    if (!this.appendTo) return;
+
+    let target: Element | null = null;
+
+    try {
+      target = document.querySelector(this.appendTo);
+      console.log('target', target);
+    } catch (error) {
+      console.warn(
+        `[jds-dialog] Invalid append-to selector: ${this.appendTo}`
+      );
+      return;
+    }
+
+    if (!target) {
+      console.warn(
+        `[jds-dialog] Cannot find append target: ${this.appendTo}`
+      );
+      return;
+    }
+
+    if (this.parentElement !== target) {
+      target.appendChild(this);
     }
   }
 
