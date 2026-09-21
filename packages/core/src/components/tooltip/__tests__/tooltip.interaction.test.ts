@@ -93,4 +93,14 @@ describe('jds-tooltip interaction', () => {
 
     expect(showSpy).not.toHaveBeenCalled()
   })
+
+  it('should configure a safer minimum arrow inset for tooltip popovers', async () => {
+    const { el: element, cleanup: c } = mount('jds-tooltip', {}, '<button slot="tooltip-trigger">Trigger</button>')
+    cleanup = c
+    const el = element as JdsTooltip
+    await waitUpdate(el)
+
+    const popover = el.shadowRoot!.querySelector('jds-popover') as any
+    expect(popover.arrowPadding).toBe(14)
+  })
 })

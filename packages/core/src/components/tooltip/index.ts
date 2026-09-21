@@ -15,6 +15,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
 @customElement("jds-tooltip")
 export class JdsTooltip extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+  private readonly _popoverArrowPadding = 14;
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
@@ -213,6 +214,7 @@ export class JdsTooltip extends LitElement {
       <jds-popover
         part="tooltip"
         .target="${this.target ?? this.trigger}"
+        .arrowPadding="${this._popoverArrowPadding}"
         placement="${ifDefined(this.placement)}"
         @jds-popover-hide="${() => this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }))}"
       >

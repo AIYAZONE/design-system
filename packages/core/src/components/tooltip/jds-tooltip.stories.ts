@@ -111,8 +111,9 @@ export const MobileRightEdge: import('@storybook/web-components').StoryObj<Toolt
   render: (args) => html`
     <div style="width: 320px; padding: 24px 12px 80px; background: #f5f5f5;">
       <div style="display: flex; justify-content: flex-end;">
+        <span>Members Only</span>
         <jds-tooltip placement="${args.placement || 'top'}">
-          <jds-button slot="tooltip-trigger">Members Only</jds-button>
+          <jds-icon slot="tooltip-trigger" name="alert-line"></jds-icon>
           <div slot="" style="max-width: 260px;">
             Original Price $140.00<br />
             Members exclusive discount -$14.00<br />
@@ -123,7 +124,7 @@ export const MobileRightEdge: import('@storybook/web-components').StoryObj<Toolt
     </div>
   `,
   args: {
-    placement: 'top',
+    placement: 'top-end',
   },
   parameters: {
     layout: 'centered',
