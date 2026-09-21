@@ -7,21 +7,22 @@ import { JdsTooltip } from '../index'
 
 describe('jds-tooltip interaction', () => {
   let cleanup: () => void
+  const mockMatchMedia = (matches = true) => vi.fn().mockImplementation((query: string) => ({
+    matches: query === '(pointer: coarse)' ? matches : false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  }))
 
   beforeEach(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       configurable: true,
-      value: vi.fn().mockImplementation((query: string) => ({
-        matches: query === '(pointer: coarse)',
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      }))
+      value: mockMatchMedia()
     })
 
     // Mock touch device environment
@@ -43,9 +44,11 @@ describe('jds-tooltip interaction', () => {
     try {
       delete (window as any).ontouchstart
     } catch {}
-    try {
-      delete (window as any).matchMedia
-    } catch {}
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      configurable: true,
+      value: mockMatchMedia(false)
+    })
     
     Object.defineProperty(navigator, 'maxTouchPoints', {
       writable: true,
@@ -102,5 +105,32 @@ describe('jds-tooltip interaction', () => {
 
     const popover = el.shadowRoot!.querySelector('jds-popover') as any
     expect(popover.arrowPadding).toBe(14)
+  })
+
+  it('should hide the previous tooltip when another tooltip opens on touch devices', async () => {
+    const mountedA = mount('jds-tooltip', {}, '<button slot="tooltip-trigger">Trigger A</button>')
+    const mountedB = mount('jds-tooltip', {}, '<button slot="tooltip-trigger">Trigger B</button>')
+    cleanup = () => {
+      mountedA.cleanup()
+      mountedB.cleanup()
+    }
+
+    const tooltipA = mountedA.el as JdsTooltip
+    const tooltipB = mountedB.el as JdsTooltip
+    await waitUpdate(tooltipA)
+    await waitUpdate(tooltipB)
+
+    const popoverA = tooltipA.shadowRoot!.querySelector('jds-popover') as any
+    const popoverB = tooltipB.shadowRoot!.querySelector('jds-popover') as any
+    if (!popoverA.show) popoverA.show = () => {}
+    if (!popoverA.hide) popoverA.hide = () => {}
+    if (!popoverB.show) popoverB.show = () => {}
+
+    const hideSpyA = vi.spyOn(popoverA, 'hide')
+
+    tooltipA.show()
+    tooltipB.show()
+
+    expect(hideSpyA).toHaveBeenCalled()
   })
 })
