@@ -22,6 +22,9 @@ export class JdsPopover extends LitElement {
   @property({ type: Number })
   offset = 8;
 
+  @property({ type: Number, attribute: 'arrow-padding' })
+  arrowPadding = 8;
+
   @property({ type: String })
   target?: string;
 
@@ -78,7 +81,7 @@ export class JdsPopover extends LitElement {
     ];
 
     if (this._arrowEl) {
-      middleware.push(flArrow({ element: this._arrowEl, padding: this._viewportPadding }));
+      middleware.push(flArrow({ element: this._arrowEl, padding: this.arrowPadding }));
     }
 
     return middleware;
