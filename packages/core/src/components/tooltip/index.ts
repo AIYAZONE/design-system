@@ -105,6 +105,7 @@ export class JdsTooltip extends LitElement {
       window.addEventListener('click', this._handleOutsideClick);
       // 全局监听：滑动时隐藏
       window.addEventListener('touchmove', this.hide, { passive: true });
+      window.addEventListener('scroll', this.hide, { passive: true, capture: true });
     }
   }
 
@@ -117,6 +118,7 @@ export class JdsTooltip extends LitElement {
     if (this._isTouchDevice) {
       window.removeEventListener('click', this._handleOutsideClick);
       window.removeEventListener('touchmove', this.hide);
+      window.removeEventListener('scroll', this.hide, true);
     }
   }
 
