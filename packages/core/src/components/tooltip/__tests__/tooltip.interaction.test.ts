@@ -133,4 +133,24 @@ describe('jds-tooltip interaction', () => {
 
     expect(hideSpyA).toHaveBeenCalled()
   })
+
+  it('should hide the tooltip when the page scrolls on touch devices', async () => {
+    vi.useFakeTimers()
+    const { el: element, cleanup: c } = mount('jds-tooltip', {}, '<button slot="tooltip-trigger">Trigger</button>')
+    cleanup = c
+    const el = element as JdsTooltip
+    await waitUpdate(el)
+
+    const popover = el.shadowRoot!.querySelector('jds-popover') as any
+    if (!popover.show) popover.show = () => {}
+    if (!popover.hide) popover.hide = () => {}
+    const hideSpy = vi.spyOn(popover, 'hide')
+
+    el.show()
+    fireEvent.scroll(window)
+    vi.runAllTimers()
+
+    expect(hideSpy).toHaveBeenCalled()
+    vi.useRealTimers()
+  })
 })
