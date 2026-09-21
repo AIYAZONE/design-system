@@ -36,6 +36,7 @@ export class JdsPopover extends LitElement {
 
   private _targetEl?: HTMLElement;
   private _cleanup?: () => void;
+  private readonly _viewportPadding = 8;
 
   connectedCallback() {
     super.connectedCallback?.();
@@ -72,12 +73,12 @@ export class JdsPopover extends LitElement {
   private getMiddleware() {
     const middleware = [
       offset(this.offset),
-      flip(),
-      shift(),
+      flip({ padding: this._viewportPadding }),
+      shift({ crossAxis: true, padding: this._viewportPadding }),
     ];
 
     if (this._arrowEl) {
-      middleware.push(flArrow({ element: this._arrowEl }));
+      middleware.push(flArrow({ element: this._arrowEl, padding: this._viewportPadding }));
     }
 
     return middleware;
@@ -99,7 +100,6 @@ export class JdsPopover extends LitElement {
   };
 
   show() {
-    console.info('show popover');
     if (this._visible || !this._targetEl) return;
 
     this._visible = true;

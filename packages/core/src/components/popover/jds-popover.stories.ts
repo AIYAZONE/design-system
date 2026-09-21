@@ -35,13 +35,18 @@ const meta = {
 
 export default meta;
 
+const resolveTargetId = (args: PopoverArgs, fallbackId: string) => args.target || fallbackId;
+
 const PopoverTemplate = (args: PopoverArgs) => html`
+  ${(() => {
+    const targetId = resolveTargetId(args, `popover-trigger-${args.placement || 'bottom'}-${args.offset || 8}`);
+    return html`
   <div style="padding: 100px;">
-    <jds-button id="popover-trigger">Click me</jds-button>
+    <jds-button id="${targetId}">Click me</jds-button>
     <jds-popover
       placement="${args.placement || 'bottom'}"
       offset="${args.offset || 8}"
-      target="${args.target || 'popover-trigger'}"
+      target="${targetId}"
     >
       <div style="max-width: 200px;">
         <h4>Popover Content</h4>
@@ -50,6 +55,8 @@ const PopoverTemplate = (args: PopoverArgs) => html`
       </div>
     </jds-popover>
   </div>
+`;
+  })()}
 `;
 
 export const Default = {
@@ -86,12 +93,15 @@ export const Right = {
 
 export const WithArrow = {
   render: (args) => html`
+    ${(() => {
+      const targetId = resolveTargetId(args, `popover-trigger-arrow-${args.placement || 'bottom'}-${args.offset || 8}`);
+      return html`
     <div style="padding: 100px;">
-      <jds-button id="popover-trigger-arrow">Click me</jds-button>
+      <jds-button id="${targetId}">Click me</jds-button>
       <jds-popover
         placement="${args.placement || 'bottom'}"
         offset="${args.offset || 8}"
-        target="${args.target || 'popover-trigger-arrow'}"
+        target="${targetId}"
         style="--jds-popover-arrow-display: block;"
       >
         <div style="max-width: 200px;">
@@ -100,6 +110,8 @@ export const WithArrow = {
         </div>
       </jds-popover>
     </div>
+  `;
+    })()}
   `,
   args: {
     placement: 'bottom',
@@ -109,12 +121,15 @@ export const WithArrow = {
 
 export const DifferentOffsets = {
   render: (args) => html`
+    ${(() => {
+      const targetId = resolveTargetId(args, `popover-trigger-offset-${args.placement || 'bottom'}-${args.offset || 20}`);
+      return html`
     <div style="padding: 150px;">
-      <jds-button id="popover-trigger-offset">Click me</jds-button>
+      <jds-button id="${targetId}">Click me</jds-button>
       <jds-popover
         placement="${args.placement || 'bottom'}"
         offset="${args.offset || 20}"
-        target="${args.target || 'popover-trigger-offset'}"
+        target="${targetId}"
       >
         <div style="max-width: 200px;">
           <h4>Large Offset</h4>
@@ -122,6 +137,8 @@ export const DifferentOffsets = {
         </div>
       </jds-popover>
     </div>
+  `;
+    })()}
   `,
   args: {
     placement: 'bottom',

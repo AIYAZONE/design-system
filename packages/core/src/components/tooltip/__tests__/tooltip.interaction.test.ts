@@ -9,6 +9,21 @@ describe('jds-tooltip interaction', () => {
   let cleanup: () => void
 
   beforeEach(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      configurable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: query === '(pointer: coarse)',
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      }))
+    })
+
     // Mock touch device environment
     Object.defineProperty(window, 'ontouchstart', {
       writable: true,
@@ -27,6 +42,9 @@ describe('jds-tooltip interaction', () => {
     // cleanup mocks
     try {
       delete (window as any).ontouchstart
+    } catch {}
+    try {
+      delete (window as any).matchMedia
     } catch {}
     
     Object.defineProperty(navigator, 'maxTouchPoints', {
