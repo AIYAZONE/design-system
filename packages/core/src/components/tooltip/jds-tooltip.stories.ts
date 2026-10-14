@@ -107,6 +107,33 @@ export const LongContent: import('@storybook/web-components').StoryObj<TooltipAr
   },
 };
 
+export const MobileRightEdge: import('@storybook/web-components').StoryObj<TooltipArgs> = {
+  render: (args) => html`
+    <div style="width: 320px; padding: 24px 12px 80px; background: #f5f5f5;">
+      <div style="display: flex; justify-content: flex-end;">
+        <span>Members Only</span>
+        <jds-tooltip placement="${args.placement || 'top'}">
+          <jds-icon slot="tooltip-trigger" name="alert-line"></jds-icon>
+          <div slot="" style="max-width: 260px;">
+            Original Price $140.00<br />
+            Members exclusive discount -$14.00<br />
+            Members Price $126.00
+          </div>
+        </jds-tooltip>
+      </div>
+    </div>
+  `,
+  args: {
+    placement: 'top-end',
+  },
+  parameters: {
+    layout: 'centered',
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+};
+
 export const MultipleTooltips: import('@storybook/web-components').StoryObj<TooltipArgs> = {
   render: () => html`
     <div style="padding: 100px; display: flex; gap: 20px; flex-wrap: wrap;">
