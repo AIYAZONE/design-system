@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown · Jackery Design System</title>
+    <script type="module" src="./dropdown-demo.ts"></script>
+    <style>
+      body {
+        margin: 0;
+        background: #fff;
+        color: #242f20;
+        font-family: Inter, sans-serif;
+      }
+      body main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 48px 24px;
+      }
+      body h1 {
+        font-size: 28px;
+        margin: 0 0 12px;
+      }
+      body h2 {
+        font-size: 18px;
+        margin: 0 0 24px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .intro {
+        margin-bottom: 40px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
+      }
+      section {
+        min-width: 0;
+      }
+      .tree-section {
+        min-height: 460px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .actions button {
+        background: #242f20;
+        color: #fff;
+        border: 0;
+        padding: 10px 16px;
+        cursor: pointer;
+      }
+      output {
+        display: block;
+        margin-top: 12px;
+        font-size: 14px;
+        overflow-wrap: anywhere;
+      }
+      .clipped {
+        overflow: hidden;
+        height: 100px;
+        border: 1px dashed #c6c7c8;
+        padding: 16px;
+        margin-top: 40px;
+      }
+      .reference {
+        width: 524px;
+        max-width: 100%;
+      }
+      body[data-view="pc"] main {
+        padding-top: 80px;
+      }
+      body[data-view="mb"] main {
+        padding: 40px 32px;
+      }
+      body[data-view="mb"] .reference {
+        width: 311px;
+      }
+      body[data-view] .intro,
+      body[data-view] .flat-section,
+      body[data-view] .checks-section,
+      body[data-view] .clipped,
+      body[data-view] .tree-section h2 {
+        display: none;
+      }
+      body[data-view] .grid {
+        display: block;
+      }
+      @media (max-width: 1023.98px) {
+        body main {
+          padding: 24px 20px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .tree-section {
+          min-height: 420px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="intro">
+        <a href="../../index.html">← All components</a>
+        <h1>Dropdown</h1>
+        <p>
+          Single selection, with a flat list or an expandable tree based on the
+          supplied options.
+        </p>
+      </div>
+      <div class="grid">
+        <section class="tree-section">
+          <h2>Hierarchical options</h2>
+          <div class="reference">
+            <jds-dropdown
+              id="tree"
+              label="Issue Type"
+              placeholder="Select issue type"
+              required
+            ></jds-dropdown>
+          </div>
+        </section>
+        <section class="flat-section">
+          <h2>Flat options · form</h2>
+          <form id="form">
+            <jds-dropdown
+              id="flat"
+              label="Product category"
+              name="category"
+              placeholder="Select category"
+              required
+              clearable
+            ></jds-dropdown>
+            <div class="actions">
+              <button type="submit">Submit</button
+              ><button type="reset">Reset</button
+              ><button type="button" id="toggle-disabled">
+                Toggle disabled fieldset
+              </button>
+            </div>
+            <fieldset
+              id="fieldset"
+              style="border: 0; padding: 0; margin: 24px 0 0"
+            >
+              <jds-dropdown
+                id="fieldset-dropdown"
+                label="Accessory"
+                name="accessory"
+              ></jds-dropdown>
+            </fieldset>
+            <output id="form-result" aria-live="polite"></output>
+          </form>
+        </section>
+      </div>
+      <div class="clipped">
+        <jds-dropdown
+          id="clipped"
+          label="Inside overflow: hidden"
+          placeholder="Open to check popup clipping"
+        ></jds-dropdown>
+      </div>
+      <section class="checks-section" style="margin-top: 32px">
+        <h2>5000 项长文本虚拟列表</h2>
+        <jds-dropdown
+          id="large"
+          label="Large list"
+          placeholder="选择选项以检查滚动和换行"
+        ></jds-dropdown>
+        <div class="actions">
+          <button type="button" id="open-dialog">
+            Open dialog with dropdown
+          </button>
+        </div>
+        <jds-dialog id="audit-dialog" caption="Dropdown keyboard isolation">
+          <jds-dropdown
+            id="dialog-dropdown"
+            label="Dialog dropdown"
+          ></jds-dropdown>
+        </jds-dialog>
+        <div class="actions">
+          <button type="button" id="run-checks" disabled>Run browser checks</button>
+        </div>
+        <output id="checks-result" aria-live="polite"></output>
+      </section>
+    </main>
+  </body>
+</html>
