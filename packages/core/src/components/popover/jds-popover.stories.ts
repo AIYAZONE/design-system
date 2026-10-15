@@ -7,6 +7,7 @@ type PopoverArgs = {
     'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' |
     'left-start' | 'left-end' | 'right-start' | 'right-end';
   offset?: number;
+  arrowPadding?: number;
   target?: string;
 };
 
@@ -26,6 +27,10 @@ const meta = {
       control: { type: 'number' },
       description: 'Offset from target element',
     },
+    arrowPadding: {
+      control: { type: 'number' },
+      description: 'Minimum distance between arrow and popover edge',
+    },
     target: {
       control: { type: 'text' },
       description: 'Target element ID (optional, uses previous sibling by default)',
@@ -35,13 +40,19 @@ const meta = {
 
 export default meta;
 
+const resolveTargetId = (args: PopoverArgs, fallbackId: string) => args.target || fallbackId;
+
 const PopoverTemplate = (args: PopoverArgs) => html`
+  ${(() => {
+    const targetId = resolveTargetId(args, `popover-trigger-${args.placement || 'bottom'}-${args.offset || 8}`);
+    return html`
   <div style="padding: 100px;">
-    <jds-button id="popover-trigger">Click me</jds-button>
+    <jds-button id="${targetId}">Click me</jds-button>
     <jds-popover
-      placement="${args.placement || 'bottom'}"
-      offset="${args.offset || 8}"
-      target="${args.target || 'popover-trigger'}"
+        placement="${args.placement ?? 'bottom'}"
+        offset="${args.offset ?? 8}"
+        arrow-padding="${args.arrowPadding ?? 8}"
+      target="${targetId}"
     >
       <div style="max-width: 200px;">
         <h4>Popover Content</h4>
@@ -51,12 +62,15 @@ const PopoverTemplate = (args: PopoverArgs) => html`
     </jds-popover>
   </div>
 `;
+  })()}
+`;
 
 export const Default = {
   render: PopoverTemplate,
   args: {
     placement: 'bottom',
     offset: 8,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
 
@@ -65,6 +79,7 @@ export const Top = {
   args: {
     placement: 'top',
     offset: 8,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
 
@@ -73,6 +88,7 @@ export const Left = {
   args: {
     placement: 'left',
     offset: 8,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
 
@@ -81,17 +97,22 @@ export const Right = {
   args: {
     placement: 'right',
     offset: 8,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
 
 export const WithArrow = {
-  render: (args) => html`
+  render: (args: PopoverArgs) => html`
+    ${(() => {
+        const targetId = resolveTargetId(args, `popover-trigger-arrow-${args.placement ?? 'bottom'}-${args.offset ?? 8}`);
+      return html`
     <div style="padding: 100px;">
-      <jds-button id="popover-trigger-arrow">Click me</jds-button>
+      <jds-button id="${targetId}">Click me</jds-button>
       <jds-popover
-        placement="${args.placement || 'bottom'}"
-        offset="${args.offset || 8}"
-        target="${args.target || 'popover-trigger-arrow'}"
+          placement="${args.placement ?? 'bottom'}"
+          offset="${args.offset ?? 8}"
+          arrow-padding="${args.arrowPadding ?? 8}"
+        target="${targetId}"
         style="--jds-popover-arrow-display: block;"
       >
         <div style="max-width: 200px;">
@@ -100,21 +121,28 @@ export const WithArrow = {
         </div>
       </jds-popover>
     </div>
+  `;
+    })()}
   `,
   args: {
     placement: 'bottom',
     offset: 8,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
 
 export const DifferentOffsets = {
-  render: (args) => html`
+  render: (args: PopoverArgs) => html`
+    ${(() => {
+        const targetId = resolveTargetId(args, `popover-trigger-offset-${args.placement ?? 'bottom'}-${args.offset ?? 20}`);
+      return html`
     <div style="padding: 150px;">
-      <jds-button id="popover-trigger-offset">Click me</jds-button>
+      <jds-button id="${targetId}">Click me</jds-button>
       <jds-popover
-        placement="${args.placement || 'bottom'}"
-        offset="${args.offset || 20}"
-        target="${args.target || 'popover-trigger-offset'}"
+          placement="${args.placement ?? 'bottom'}"
+          offset="${args.offset ?? 20}"
+          arrow-padding="${args.arrowPadding ?? 8}"
+        target="${targetId}"
       >
         <div style="max-width: 200px;">
           <h4>Large Offset</h4>
@@ -122,9 +150,12 @@ export const DifferentOffsets = {
         </div>
       </jds-popover>
     </div>
+  `;
+    })()}
   `,
   args: {
     placement: 'bottom',
     offset: 20,
+    arrowPadding: 8,
   },
 } satisfies StoryObj<PopoverArgs>;
