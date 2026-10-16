@@ -18,8 +18,8 @@
 ```
 
 ```ts
-import { type DropdownOption } from "./packages/core/src/components/dropdown/index";
-import "./packages/core/src/components/dropdown/index";
+import { type DropdownOption } from "@jackery/design-system";
+import "@jackery/design-system";
 import "@jackery/design-system/index.css";
 
 const dropdown = document.querySelector("jds-dropdown")!;
@@ -42,11 +42,11 @@ dropdown.addEventListener("change", (event) => {
 });
 ```
 
-## 源码入口
+## 组件库入口
 
-组件源码入口为 `packages/core/src/components/dropdown/index.ts`，需显式引入以注册 `jds-dropdown`。上面的导入路径以项目根目录为例，使用时应按文件位置调整。
+引入 `@jackery/design-system` 会自动注册 `jds-dropdown`。根包同时导出 `JdsDropdown`、`DropdownOption` 和 `DropdownChangeDetail`，其他项目安装包含此组件的新版本后即可使用。
 
-组件尚未接入根包聚合导出或新增 npm 发布入口；专属示例与 Storybook 直接引入源码，不依赖全局入口改动。
+组件源码入口为 `packages/core/src/components/dropdown/index.ts`。项目内专属示例与 Storybook 直接引入源码；发布时沿用现有根包入口，不新增独立 npm 子路径。
 
 ## 数据与选中值
 
