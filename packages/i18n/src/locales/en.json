@@ -29,6 +29,12 @@
       "loadMore": "Load More",
       "showAll": "Show All"
     },
+    "dropdown": {
+      "placeholder": "Select an option",
+      "emptyText": "No options",
+      "requiredMessage": "Please select an option.",
+      "clearLabel": "Clear selection"
+    },
     "modal": {
       "confirmContent": "Are you sure you want to perform this action?",
       "confirmTitle": "Please Confirm"

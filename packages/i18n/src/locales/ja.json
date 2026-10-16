@@ -29,6 +29,12 @@
       "loadMore": "もっと読み込む",
       "showAll": "すべて表示"
     },
+    "dropdown": {
+      "placeholder": "選択してください",
+      "emptyText": "選択肢がありません",
+      "requiredMessage": "項目を選択してください。",
+      "clearLabel": "選択をクリア"
+    },
     "modal": {
       "confirmContent": "この操作を実行してもよろしいですか？",
       "confirmTitle": "確認してください"

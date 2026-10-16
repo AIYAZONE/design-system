@@ -29,6 +29,12 @@
       "loadMore": "더 불러오기",
       "showAll": "전체 보기"
     },
+    "dropdown": {
+      "placeholder": "선택해 주세요",
+      "emptyText": "선택 항목이 없습니다",
+      "requiredMessage": "항목을 선택해 주세요.",
+      "clearLabel": "선택 지우기"
+    },
     "modal": {
       "confirmContent": "이 작업을 수행하시겠습니까?",
       "confirmTitle": "확인해 주세요"

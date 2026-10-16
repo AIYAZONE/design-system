@@ -98,6 +98,24 @@ const args: Args = {
   errorMessage: "",
 };
 export const Default = { render, args };
+export const DefaultText = {
+  name: "默认文案（不传 value）",
+  render: () =>
+    html`<div
+      style="width: min(524px, 100%); min-height: 480px; padding: 8px; box-sizing: border-box;"
+    >
+      <jds-dropdown></jds-dropdown>
+    </div>`,
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "不传入任何属性或自定义文案。初始显示默认占位提示，展开后显示默认空状态提示；默认文案优先使用预览页面的 html lang，未设置或不受支持时跟随项目 i18n 当前语言。",
+      },
+    },
+  },
+};
 export const Hierarchical = {
   render,
   args: { ...args, options: dropdownTreeOptions },

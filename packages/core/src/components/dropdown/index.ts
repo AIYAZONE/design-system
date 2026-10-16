@@ -10,6 +10,8 @@ import { styleMap } from "lit/directives/style-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import { repeat } from "lit/directives/repeat.js";
+import { I18nController } from "@jackery/i18n";
+import { dropdownText, getDropdownLanguage } from "./locale";
 import { RowHeights } from "./row-heights";
 import {
   autoUpdate,
@@ -54,17 +56,46 @@ export class JdsDropdown extends LitElement {
   @property() value = "";
   @property() name = "";
   @property() label = "";
-  @property() placeholder = "Select an option";
+  private _placeholder?: string;
+  private _emptyText?: string;
+  private _requiredMessage?: string;
+  private _clearLabel?: string;
+
+  /** 未指定文案时使用当前语言；传入空字符串时保留空字符串。 */
+  @property()
+  get placeholder(): string {
+    return this._placeholder ?? dropdownText(this.ownerDocument, "placeholder");
+  }
+  set placeholder(value: string | undefined | null) {
+    this._placeholder = value ?? undefined;
+  }
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, reflect: true }) required = false;
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ type: Boolean }) clearable = false;
   /** 默认显示所选叶子节点的名称；开启后显示完整路径。 */
   @property({ type: Boolean, attribute: "show-path" }) showPath = false;
-  @property({ attribute: "empty-text" }) emptyText = "No options";
-  @property({ attribute: "required-message" }) requiredMessage =
-    "Please select an option.";
-  @property({ attribute: "clear-label" }) clearLabel = "Clear selection";
+  @property({ attribute: "empty-text" })
+  get emptyText(): string {
+    return this._emptyText ?? dropdownText(this.ownerDocument, "emptyText");
+  }
+  set emptyText(value: string | undefined | null) {
+    this._emptyText = value ?? undefined;
+  }
+  @property({ attribute: "required-message" })
+  get requiredMessage(): string {
+    return this._requiredMessage ?? dropdownText(this.ownerDocument, "requiredMessage");
+  }
+  set requiredMessage(value: string | undefined | null) {
+    this._requiredMessage = value ?? undefined;
+  }
+  @property({ attribute: "clear-label" })
+  get clearLabel(): string {
+    return this._clearLabel ?? dropdownText(this.ownerDocument, "clearLabel");
+  }
+  set clearLabel(value: string | undefined | null) {
+    this._clearLabel = value ?? undefined;
+  }
   @property({ attribute: "error-message" }) errorMessage = "";
 
   @state() private _expanded = new Set<string>();
@@ -78,6 +109,9 @@ export class JdsDropdown extends LitElement {
   @query(".trigger") private _trigger!: HTMLButtonElement;
   @query(".panel") private _panel!: HTMLElement;
 
+  private _i18n?: I18nController;
+  private _language = getDropdownLanguage(this.ownerDocument);
+  private _languageObserver?: MutationObserver;
   private _tree = buildDropdownTree([]);
   private _internals = this.attachInternals?.();
   private _cleanup?: () => void;
@@ -174,6 +208,16 @@ export class JdsDropdown extends LitElement {
 
   connectedCallback() {
     super.connectedCallback?.();
+    this._i18n = new I18nController(this);
+    this._languageObserver = new MutationObserver(() => {
+      if (getDropdownLanguage(this.ownerDocument) !== this._language)
+        this.requestUpdate();
+    });
+    this._languageObserver.observe(this.ownerDocument.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
+    this.requestUpdate();
     this.addEventListener("invalid", this._onInvalid);
     // 已打开的组件移除后重新挂载时，需要重新绑定浮层定位和外部事件监听。
     void this.updateComplete.then(() => {
@@ -184,6 +228,10 @@ export class JdsDropdown extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
+    this._i18n?.hostDisconnected();
+    this._i18n = undefined;
+    this._languageObserver?.disconnect();
+    this._languageObserver = undefined;
     this._stopPositioning();
     this.removeEventListener("invalid", this._onInvalid);
   }
@@ -194,6 +242,12 @@ export class JdsDropdown extends LitElement {
   }
 
   protected willUpdate(changed: PropertyValues) {
+    const language = getDropdownLanguage(this.ownerDocument);
+    if (language !== this._language) {
+      this._language = language;
+      // 渲染错误提示前同步原生校验文案，避免保留上一种语言。
+      if (this.hasUpdated) this._syncForm();
+    }
     if (changed.has("options")) {
       this._measuredHeights.clear();
       this._tree = buildDropdownTree(this.options);

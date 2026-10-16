@@ -68,6 +68,28 @@ dropdown.addEventListener("change", (event) => {
 
 其他属性包括 `disabled`、`open`、`empty-text`、`clear-label`、`required-message` 和 `error-message`。业务应用可传入对应语言的文案。
 
+## 国际化
+
+未传入文案时，`placeholder`、`empty-text`、`required-message` 和 `clear-label` 使用项目 i18n 的 `components.dropdown` 翻译，支持现有的 9 种语言。
+
+组件优先读取所在页面的 `<html lang>`，无需调用语言设置方法：
+
+```html
+<html lang="zh-CN">
+```
+
+动态修改 `document.documentElement.lang` 会自动更新默认文案和必填校验提示。语言代码不区分大小写，`en-US`、`fr-CA` 等地区代码匹配对应基础语言；`zh`、`zh-Hans` 使用简体中文，`zh-Hant`、`zh-HK`、`zh-MO` 使用繁体中文。组件读取页面语言不会修改全局 i18n 状态。
+
+页面未设置语言或语言不受支持时，沿用项目 i18n 当前语言；此时可通过以下方式切换：
+
+```ts
+import { setCurrLanguage } from "@jackery/design-system";
+
+setCurrLanguage("zh-CN"); // 页面没有有效 html lang 时，组件跟随项目语言。
+```
+
+显式传入的文案优先于默认翻译，切换语言时保持原值；空字符串也视为显式值。移除对应 HTML 特性，或将对应 JavaScript 属性设为 `undefined` / `null`，可恢复默认翻译。字段 `label`、选项 `label`、`error-message` 和 `setCustomValidity()` 的业务文案由调用方翻译。
+
 `error-message` 用于控制错误信息的显示；需要参与原生表单校验的自定义错误，应使用 `setCustomValidity(message)`。
 
 公开方法：`show()`、`hide()`、`focus()`、`checkValidity()`、`reportValidity()`、`setCustomValidity()`。

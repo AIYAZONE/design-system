@@ -29,6 +29,12 @@
       "loadMore": "載入更多",
       "showAll": "顯示全部"
     },
+    "dropdown": {
+      "placeholder": "請選擇",
+      "emptyText": "暫無選項",
+      "requiredMessage": "請選擇一個選項。",
+      "clearLabel": "清空選擇"
+    },
     "modal": {
       "confirmContent": "確定要執行此操作嗎？",
       "confirmTitle": "請確認"

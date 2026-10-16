@@ -6,6 +6,10 @@ import { buildDropdownTree } from "../tree-utils";
 import type { DropdownOption } from "../types";
 import "../../dialog";
 import { RowHeights } from "../row-heights";
+import { setCurrLanguage, getCurrLanguage, t, SUPPORTED_LANGUAGES } from "@jackery/i18n";
+import { getDropdownLanguage } from "../locale";
+
+const originalHtmlLang = document.documentElement.getAttribute("lang");
 
 vi.mock("@floating-ui/dom", () => ({
   autoUpdate: vi.fn((_trigger, _panel, update) => {
@@ -76,11 +80,155 @@ async function click(el: JdsDropdown, label: string) {
 }
 afterEach(() => {
   document.body.replaceChildren();
+  if (originalHtmlLang === null) document.documentElement.removeAttribute("lang");
+  else document.documentElement.setAttribute("lang", originalHtmlLang);
+  setCurrLanguage("en");
   vi.clearAllMocks();
   vi.unstubAllGlobals();
 });
 
 describe("jds-dropdown", () => {
+  it("优先使用 html lang，动态切换同步校验文案，且不修改全局语言", async () => {
+    setCurrLanguage("ja");
+    document.documentElement.lang = "zh-CN";
+    const el = await mount([]);
+    expect(el.placeholder).toBe("请选择");
+    const internals = {
+      validationMessage: "",
+      setFormValue: vi.fn(),
+      setValidity: vi.fn((_flags, message) => { internals.validationMessage = message; }),
+    };
+    Object.defineProperty(el, "_internals", { value: internals });
+    el.required = true;
+    await el.updateComplete;
+    el.dispatchEvent(new Event("invalid"));
+    await el.updateComplete;
+    document.documentElement.lang = "en-US";
+    // 等待属性观察器通知组件，再等待 Lit 更新。
+    await Promise.resolve();
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("Select an option");
+    expect(el.shadowRoot!.querySelector("#error")!.textContent).toContain("Please select an option.");
+    expect(getCurrLanguage()).toBe("ja");
+    document.documentElement.removeAttribute("lang");
+    await Promise.resolve();
+    await el.updateComplete;
+    expect(el.placeholder).toBe("選択してください");
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("選択してください");
+  });
+
+  it.each([
+    [" ZH-cn ", "zh-CN"], ["zh", "zh-CN"], ["zh-Hans-SG", "zh-CN"],
+    ["zh-Hant", "zh-TW"], ["zh-HK", "zh-TW"], ["fr-CA", "fr"],
+    ["unsupported", "ja"], ["", "ja"], ["constructor", "ja"],
+  ])("页面语言 %s 映射为 %s", (lang, expected) => {
+    setCurrLanguage("ja");
+    document.documentElement.lang = lang;
+    expect(getDropdownLanguage(document)).toBe(expected);
+  });
+
+  it("页面语言监听在卸载时释放，重新挂载后恢复，自定义文案保持优先", async () => {
+    document.documentElement.lang = "en";
+    const el = await mount([]);
+    el.placeholder = "业务占位文案";
+    await el.updateComplete;
+    const update = vi.spyOn(el, "requestUpdate");
+    el.remove();
+    update.mockClear();
+    document.documentElement.lang = "zh-CN";
+    await Promise.resolve();
+    expect(update).not.toHaveBeenCalled();
+    document.body.append(el);
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("业务占位文案");
+    el.placeholder = undefined;
+    await el.updateComplete;
+    expect(el.placeholder).toBe("请选择");
+    document.documentElement.lang = "en";
+    await Promise.resolve();
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("Select an option");
+  });
+  it("默认文案随语言切换，并更新已显示的必填校验提示", async () => {
+    setCurrLanguage("en");
+    const el = await mount([]);
+    const internals = {
+      validationMessage: "",
+      setFormValue: vi.fn(),
+      setValidity: vi.fn((_flags, message) => {
+        internals.validationMessage = message;
+      }),
+    };
+    Object.defineProperty(el, "_internals", { value: internals });
+    el.required = true;
+    await el.updateComplete;
+    el.dispatchEvent(new Event("invalid"));
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector("#error")!.textContent).toContain(
+      "Please select an option.",
+    );
+    setCurrLanguage("zh-CN");
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("请选择");
+    expect(el.shadowRoot!.querySelector(".empty")!.textContent).toBe("暂无选项");
+    expect(el.validationMessage).toBe("请选择一个选项。");
+    expect(el.shadowRoot!.querySelector("#error")!.textContent).toContain("请选择一个选项。");
+    el.options = flat;
+    el.value = "a";
+    el.clearable = true;
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".clear")!.getAttribute("aria-label")).toBe("清空选择");
+    el.setCustomValidity("业务校验错误");
+    setCurrLanguage("fr");
+    await el.updateComplete;
+    expect(el.validationMessage).toBe("业务校验错误");
+  });
+
+  it("显式文案保持优先，移除特性或恢复 undefined 后使用翻译", async () => {
+    const el = await mount([]);
+    el.setAttribute("placeholder", "业务占位文案");
+    el.emptyText = "业务空状态";
+    el.requiredMessage = "业务必填提示";
+    el.clearLabel = "业务清空提示";
+    setCurrLanguage("zh-TW");
+    await el.updateComplete;
+    expect([el.placeholder, el.emptyText, el.requiredMessage, el.clearLabel]).toEqual([
+      "业务占位文案", "业务空状态", "业务必填提示", "业务清空提示",
+    ]);
+    el.removeAttribute("placeholder");
+    el.emptyText = undefined;
+    el.clearLabel = "";
+    await el.updateComplete;
+    expect(el.placeholder).toBe("請選擇");
+    expect(el.emptyText).toBe("暫無選項");
+    expect(el.clearLabel).toBe("");
+  });
+
+  it("卸载时释放语言监听，重新挂载时恢复当前语言和后续更新", async () => {
+    const el = await mount([]);
+    const update = vi.spyOn(el, "requestUpdate");
+    el.remove();
+    update.mockClear();
+    setCurrLanguage("zh-CN");
+    expect(update).not.toHaveBeenCalled();
+    document.body.append(el);
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("请选择");
+    setCurrLanguage("en");
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector(".value")!.textContent).toBe("Select an option");
+  });
+
+  it("所有支持语言都提供完整的 Dropdown 默认文案", () => {
+    for (const lang of SUPPORTED_LANGUAGES) {
+      setCurrLanguage(lang);
+      for (const key of ["placeholder", "emptyText", "requiredMessage", "clearLabel"]) {
+        const translationKey = `components.dropdown.${key}`;
+        expect(t(translationKey)).not.toBe(translationKey);
+        expect(t(translationKey)).not.toBe("");
+      }
+    }
+  });
   it("Escape 优先关闭当前下拉，再交由外层 Dialog 处理", async () => {
     const dialog = document.createElement("jds-dialog");
     const el = await mount();

@@ -29,6 +29,12 @@
       "loadMore": "Cargar más",
       "showAll": "Mostrar todo"
     },
+    "dropdown": {
+      "placeholder": "Selecciona una opción",
+      "emptyText": "No hay opciones",
+      "requiredMessage": "Selecciona una opción.",
+      "clearLabel": "Borrar selección"
+    },
     "modal": {
       "confirmContent": "¿Está seguro de que desea realizar esta acción?",
       "confirmTitle": "Por favor confirme"
