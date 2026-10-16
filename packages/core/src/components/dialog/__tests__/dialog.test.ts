@@ -17,9 +17,11 @@ async function getRoot(el: HTMLElementTagNameMap["jds-dialog"]) {
 describe("jds-dialog", () => {
   beforeEach(() => {
     document.body.innerHTML = "";
+    vi.spyOn(window, "scrollTo").mockImplementation(() => {});
   });
   afterEach(() => {
     document.body.innerHTML = "";
+    vi.restoreAllMocks();
   });
 
   it("renders when open=true and closes via ESC", async () => {
