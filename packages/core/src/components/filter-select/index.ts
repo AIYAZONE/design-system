@@ -19,7 +19,7 @@ import {
   shift,
   size,
 } from "@floating-ui/dom";
-import { I18nController, t } from "@jackery/i18n";
+import { I18nController, t, normalizeLanguage, type Language } from "@jackery/i18n";
 
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
@@ -75,6 +75,15 @@ export class JdsFilterSelect extends LitElement {
    */
   @property()
   label?: string;
+
+  /**
+   * 自定义语言。设置后优先于页面 `<html lang>` 与全局语言（`setCurrLanguage`）。
+   * 未设置时自动读取 `document.documentElement.lang`，
+   * 若仍为空则回退到全局当前语言。
+   * 支持任意 HTML lang 写法（如 `en-US` / `zh-Hans` / `jp`），内部会自动归一化。
+   */
+  @property({ attribute: "language" })
+  language?: string;
 
   /**
    * 可选项列表
@@ -219,10 +228,25 @@ export class JdsFilterSelect extends LitElement {
   private static readonly I18N_PREFIX = "components.filterSelect.";
 
   /**
-   * 取文案：显式设置优先，否则回退到内置多语言
+   * 解析当前生效语言：
+   * 1. 显式 `language` 属性优先
+   * 2. 否则读取页面 `<html lang>`
+   * 3. 仍为空则回退到全局当前语言（返回 undefined，由 t() 处理）
+   */
+  private _resolveLang(): Language | undefined {
+    if (this.language) return normalizeLanguage(this.language);
+    const htmlLang =
+      typeof document !== "undefined"
+        ? document.documentElement.getAttribute("lang")
+        : null;
+    return htmlLang ? normalizeLanguage(htmlLang) : undefined;
+  }
+
+  /**
+   * 取文案：显式设置优先，否则回退到内置多语言（按当前解析语言）
    */
   private _text(override: string | undefined, key: string): string {
-    return override ?? t(JdsFilterSelect.I18N_PREFIX + key);
+    return override ?? t(JdsFilterSelect.I18N_PREFIX + key, undefined, this._resolveLang());
   }
 
   private get _resolvedLabel(): string {
@@ -253,7 +277,7 @@ export class JdsFilterSelect extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback?.();
-    this._i18n = new I18nController(this);
+    this._i18n = new I18nController(this, { observeHtmlLang: true });
     this._draft = [...(this.value ?? [])];
 
     // 展开中被重新挂载（如被框架移动 DOM）时恢复监听与定位
@@ -376,17 +400,24 @@ export class JdsFilterSelect extends LitElement {
 
   /** 清空当前选中 */
   clear(): void {
+    // 仅清空草稿：面板内勾选实时回到未选状态，但已提交的 value 不变
     this._draft = [];
+
     if (!this.showConfirm) {
+      // 即时生效模式：直接提交，并派发「已提交」的 clear 事件
       this._commitDraft();
+      this.dispatchEvent(
+        new CustomEvent("jds-filter-select-clear", {
+          detail: { value: [] },
+          bubbles: true,
+          composed: true,
+        })
+      );
+      return;
     }
-    this.dispatchEvent(
-      new CustomEvent("jds-filter-select-clear", {
-        detail: { value: [] },
-        bubbles: true,
-        composed: true,
-      })
-    );
+
+    // 确认模式：清空只停留在草稿层，需点击「确认」后才会真正清空 value，
+    // 因此此处不派发 jds-filter-select-clear，避免消费方误以为已提交清空
   }
 
   private _commitDraft(): void {

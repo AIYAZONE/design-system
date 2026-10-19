@@ -224,4 +224,66 @@ describe("jds-filter-select i18n", () => {
     expect(q(root, ".clear").textContent?.trim()).toBe("Zurücksetzen");
     expect(q(root, ".confirm").textContent?.trim()).toBe("Bestätigen");
   });
+
+  describe("auto language from <html lang> / language prop", () => {
+    afterEach(() => {
+      document.documentElement.removeAttribute("lang");
+    });
+
+    it("reads language from <html lang> when no explicit prop", async () => {
+      document.documentElement.lang = "fr";
+      const { el, root } = await setup({ options: OPTIONS });
+      await open(el);
+
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Confirmer");
+      expect(q(root, ".trigger__text").textContent?.trim()).toBe("Paramètres de filtre");
+    });
+
+    it("normalizes regional / alias html lang codes", async () => {
+      document.documentElement.lang = "zh-Hans";
+      const { el, root } = await setup({ options: OPTIONS, value: ["a"] });
+      await open(el);
+
+      expect(q(root, ".confirm").textContent?.trim()).toBe("确定");
+      expect(q(root, ".trigger__text").textContent?.trim()).toBe("已选择筛选1个参数");
+    });
+
+    it("explicit language prop overrides <html lang>", async () => {
+      document.documentElement.lang = "fr";
+      const { el, root } = await setup({ options: OPTIONS, language: "de" });
+      await open(el);
+
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Bestätigen");
+    });
+
+    it("falls back to global language when neither is set", async () => {
+      setCurrLanguage("es");
+      const { el, root } = await setup({ options: OPTIONS });
+      await open(el);
+
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Confirmar");
+    });
+
+    it("re-renders when <html lang> changes", async () => {
+      const { el, root } = await setup({ options: OPTIONS });
+      await open(el);
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Confirm");
+
+      document.documentElement.lang = "nl";
+      // MutationObserver 为异步回调，先让出一帧确保 requestUpdate 已触发
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      await waitUpdate(el);
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Bevestigen");
+    });
+
+    it("re-renders when the language prop changes", async () => {
+      const { el, root } = await setup({ options: OPTIONS });
+      await open(el);
+      expect(q(root, ".confirm").textContent?.trim()).toBe("Confirm");
+
+      el.language = "ko";
+      await waitUpdate(el);
+      expect(q(root, ".confirm").textContent?.trim()).toBe("확인");
+    });
+  });
 });

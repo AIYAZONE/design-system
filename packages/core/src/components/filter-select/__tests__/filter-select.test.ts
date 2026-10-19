@@ -133,10 +133,12 @@ describe("jds-filter-select", () => {
     expect(el.value).toEqual([]);
   });
 
-  it("clears the draft on the clear button in confirm mode", async () => {
+  it("clears the draft on the clear button in confirm mode without committing", async () => {
     const { el, root } = await setup({ options: OPTIONS, value: ["a", "b"] });
     const onClear = vi.fn();
     el.addEventListener("jds-filter-select-clear", onClear);
+    const onChange = vi.fn();
+    el.addEventListener("jds-filter-select-change", onChange);
 
     await open(el);
     expect(q(root, ".counter__current").textContent).toBe("2");
@@ -144,13 +146,18 @@ describe("jds-filter-select", () => {
     q(root, ".clear").click();
     await waitUpdate(el);
 
+    // 草稿被清空，但已提交 value 不变
     expect(el._draft).toEqual([]);
     expect(el.value).toEqual(["a", "b"]);
-    expect(onClear).toHaveBeenCalledTimes(1);
+    // 确认模式下不应派发已提交的 clear / change 事件
+    expect(onClear).toHaveBeenCalledTimes(0);
+    expect(onChange).toHaveBeenCalledTimes(0);
 
+    // 点击确认后才会真正清空并派发事件
     el.confirm();
     await waitUpdate(el);
     expect(el.value).toEqual([]);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it("applies the selection immediately when show-confirm is false", async () => {

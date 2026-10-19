@@ -22,6 +22,7 @@ const DEFAULT_OPTIONS: FilterSelectOption[] = [
 
 interface FilterSelectProps {
   label?: string;
+  language?: string;
   options: FilterSelectOption[];
   value: string[];
   open: boolean;
@@ -55,6 +56,9 @@ const meta = {
           "`components.filterSelect.*`，跟随全局语言自动切换，当前支持 " +
           "en / de / jp / fr / es / nl / ko / zh-CN / zh-TW。\n\n" +
           "显式设置对应属性即可覆盖内置文案；属性值清空后重新回退到内置多语言。\n\n" +
+          "**语言来源优先级**：`language` 属性 > 页面 `<html lang>`（自动读取，支持 en-US / zh-Hans / jp 等写法）" +
+          "> 全局语言（setCurrLanguage）。切换站点时无需手动调用 setCurrLanguage，只需保证页面 `<html lang>` 正确，" +
+          "组件会自动跟随；需要单独覆盖某实例时再设置 `language` 属性。\n\n" +
           "**开关类属性**：show-confirm / show-clear / show-counter / close-on-scroll 默认值为 true。\n\n" +
           "| 使用方式 | 写法 | 是否生效 |\n" +
           "| --- | --- | --- |\n" +
@@ -69,6 +73,12 @@ const meta = {
   },
   argTypes: {
     label: { control: "text", description: "触发器文案（未设置时取内置多语言）" },
+    language: {
+      control: "text",
+      description:
+        "自定义语言（如 en / de / zh-CN / zh-Hans / en-US / jp）。设置后优先于页面 <html lang> 与全局语言；" +
+        "未设置时自动读取 document.documentElement.lang，仍为空则回退全局语言。",
+    },
     options: { control: "object", description: "可选项列表" },
     value: { control: "object", description: "已提交的选中值" },
     open: { control: "boolean", description: "面板是否展开" },
@@ -107,6 +117,7 @@ const Template = (args: FilterSelectProps) => html`
   <div style="padding: 16px 24px 360px;">
     <jds-filter-select
       label=${ifDefined(args.label)}
+      language=${ifDefined(args.language)}
       .options=${args.options}
       .value=${args.value}
       ?open=${args.open}
