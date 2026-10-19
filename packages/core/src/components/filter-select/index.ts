@@ -328,7 +328,7 @@ export class JdsFilterSelect extends LitElement {
 
     this._attachListeners();
 
-    this.dispatchEvent(new CustomEvent("jds-open", { bubbles: true, composed: true }));
+    this.dispatchEvent(new CustomEvent("jds-filter-select-open", { bubbles: true, composed: true }));
   }
 
   /** 收起面板，未确认时丢弃草稿 */
@@ -344,7 +344,7 @@ export class JdsFilterSelect extends LitElement {
     this._detachListeners();
 
     this.dispatchEvent(
-      new CustomEvent("jds-close", {
+      new CustomEvent("jds-filter-select-close", {
         detail: { confirmed },
         bubbles: true,
         composed: true,
@@ -365,7 +365,7 @@ export class JdsFilterSelect extends LitElement {
   confirm(): void {
     this._commitDraft();
     this.dispatchEvent(
-      new CustomEvent("jds-confirm", {
+      new CustomEvent("jds-filter-select-confirm", {
         detail: { value: [...this._draft] },
         bubbles: true,
         composed: true,
@@ -381,7 +381,7 @@ export class JdsFilterSelect extends LitElement {
       this._commitDraft();
     }
     this.dispatchEvent(
-      new CustomEvent("jds-clear", {
+      new CustomEvent("jds-filter-select-clear", {
         detail: { value: [] },
         bubbles: true,
         composed: true,
@@ -393,7 +393,7 @@ export class JdsFilterSelect extends LitElement {
     const next = [...this._draft];
     this.value = next;
     this.dispatchEvent(
-      new CustomEvent("jds-change", {
+      new CustomEvent("jds-filter-select-change", {
         detail: { value: next },
         bubbles: true,
         composed: true,

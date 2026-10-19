@@ -97,8 +97,8 @@ describe("jds-filter-select", () => {
     const { el, root } = await setup({ options: OPTIONS });
     const onChange = vi.fn();
     const onConfirm = vi.fn();
-    el.addEventListener("jds-change", onChange);
-    el.addEventListener("jds-confirm", onConfirm);
+    el.addEventListener("jds-filter-select-change", onChange);
+    el.addEventListener("jds-filter-select-confirm", onConfirm);
 
     await open(el);
     qa(root, ".option")[0].click();
@@ -136,7 +136,7 @@ describe("jds-filter-select", () => {
   it("clears the draft on the clear button in confirm mode", async () => {
     const { el, root } = await setup({ options: OPTIONS, value: ["a", "b"] });
     const onClear = vi.fn();
-    el.addEventListener("jds-clear", onClear);
+    el.addEventListener("jds-filter-select-clear", onClear);
 
     await open(el);
     expect(q(root, ".counter__current").textContent).toBe("2");
@@ -156,7 +156,7 @@ describe("jds-filter-select", () => {
   it("applies the selection immediately when show-confirm is false", async () => {
     const { el, root } = await setup({ options: OPTIONS, showConfirm: false });
     const onChange = vi.fn();
-    el.addEventListener("jds-change", onChange);
+    el.addEventListener("jds-filter-select-change", onChange);
 
     await open(el);
     expect(root.querySelector(".confirm")).toBeNull();

@@ -206,7 +206,7 @@
     customElements.whenDefined('jds-filter-select').then(() => {
       ids.forEach((id) => {
         const el = document.getElementById(id);
-        ['jds-confirm', 'jds-clear', 'jds-change'].forEach((type) => {
+        ['jds-filter-select-confirm', 'jds-filter-select-clear', 'jds-filter-select-change'].forEach((type) => {
           el.addEventListener(type, () => {
             log.textContent = `${id} → ${type} | value = ${JSON.stringify(el.value)}`;
           });
