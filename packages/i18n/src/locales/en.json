@@ -29,6 +29,14 @@
       "loadMore": "Load More",
       "showAll": "Show All"
     },
+    "filterSelect": {
+      "clear": "Clear",
+      "confirm": "Confirm",
+      "counter": "Selected",
+      "empty": "No Options",
+      "label": "Filter Parameters",
+      "selectedSummary": "{count} Filters Selected"
+    },
     "modal": {
       "confirmContent": "Are you sure you want to perform this action?",
       "confirmTitle": "Please Confirm"

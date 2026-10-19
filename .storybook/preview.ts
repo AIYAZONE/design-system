@@ -30,10 +30,11 @@ const preview: Preview = {
         icon: "globe",
         items: [
           { value: "en", right: "🇺🇸", title: "English" },
+          { value: "de", right: "🇩🇪", title: "Deutsch" },
+          { value: "jp", right: "🇯🇵", title: "日本語" },
           { value: "fr", right: "🇫🇷", title: "Français" },
           { value: "es", right: "🇪🇸", title: "Español" },
-          { value: "zh", right: "🇨🇳", title: "中文" },
-          { value: "kr", right: "🇰🇷", title: "한국어" },
+          { value: "nl", right: "🇳🇱", title: "Nederlands" },
         ],
       },
     },

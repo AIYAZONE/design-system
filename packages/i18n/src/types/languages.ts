@@ -16,6 +16,7 @@ import de from '../locales/de.json';
 import it from '../locales/it.json';
 import fr from '../locales/fr.json';
 import es from '../locales/es.json';
+import nl from '../locales/nl.json';
 import ko from '../locales/ko.json';
 import zhCN from '../locales/zh-CN.json';
 import zhTW from '../locales/zh-TW.json';
@@ -23,16 +24,19 @@ import { MessageSchema } from '../types';
 
 /**
  * 系统支持的语言代码列表
- * 包含英语、日语、德语、意大利语、法语、西班牙语、韩语、简体中文和繁体中文
+ * 包含英语、日语、德语、意大利语、法语、西班牙语、荷兰语、韩语、简体中文和繁体中文
  * 使用 as const 确保类型推导的准确性
+ * 注：'jp' 为 'ja'（日语）的兼容别名，两者共用同一份语言包
  */
 export const SUPPORTED_LANGUAGES = [
   'en',
   'ja',
+  'jp',
   'de',
   'it',
   'fr',
   'es',
+  'nl',
   'ko',
   'zh-CN',
   'zh-TW'
@@ -46,10 +50,13 @@ export const SUPPORTED_LANGUAGES = [
 export const messages: Record<Language, MessageSchema> = {
   en,
   ja,
+  // 'jp' 与 'ja' 共用日语语言包
+  jp: ja,
   de,
   it,
   fr,
   es,
+  nl,
   ko,
   'zh-CN': zhCN,
   'zh-TW': zhTW
@@ -69,7 +76,7 @@ export type Language = typeof SUPPORTED_LANGUAGES[number];
  * @returns {typeof SUPPORTED_LANGUAGES} 返回只读的支持语言代码数组
  * @example
  * const languages = getSupportedLanguages();
- * // languages = ['en', 'ja', 'de', 'it', 'fr', 'es', 'ko', 'zh-CN', 'zh-TW']
+ * // languages = ['en', 'ja', 'jp', 'de', 'it', 'fr', 'es', 'nl', 'ko', 'zh-CN', 'zh-TW']
  */
 export function getSupportedLanguages(): typeof SUPPORTED_LANGUAGES {
   return SUPPORTED_LANGUAGES;

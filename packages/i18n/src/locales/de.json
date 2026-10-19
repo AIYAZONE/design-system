@@ -29,6 +29,14 @@
       "loadMore": "Mehr laden",
       "showAll": "Alle anzeigen"
     },
+    "filterSelect": {
+      "clear": "Zurücksetzen",
+      "confirm": "Bestätigen",
+      "counter": "Ausgewählt",
+      "empty": "Keine Optionen",
+      "label": "Filterparameter",
+      "selectedSummary": "{count} Filter ausgewählt"
+    },
     "modal": {
       "confirmContent": "Sind Sie sicher, dass Sie diese Aktion ausführen möchten?",
       "confirmTitle": "Bitte bestätigen"
