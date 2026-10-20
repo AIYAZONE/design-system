@@ -43,7 +43,8 @@
   --option-disabled-opacity: var(--jds-filter-select-option-disabled-opacity, 0.4);
   --option-hover-color: var(--jds-filter-select-option-hover-color, #242f20);
   /* 复选框 */
-  --checkbox-size: var(--jds-filter-select-checkbox-size, var(--jds-size-16, 16px));
+  /* 注意：checkbox 为固定视觉尺寸（设计稿 16px），不随移动端 rem 基准（750 稿）缩放 */
+  --checkbox-size: var(--jds-filter-select-checkbox-size, 16px);
   --checkbox-gap: var(--jds-filter-select-checkbox-gap, var(--jds-size-8, 8px));
   --checkbox-border-color: var(--jds-filter-select-checkbox-border-color, #c6c7c8);
   --checkbox-checked-bg: var(--jds-filter-select-checkbox-checked-bg, #242f20);
