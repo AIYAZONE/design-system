@@ -27,12 +27,12 @@
   --trigger-text-color: var(--jds-filter-select-trigger-text-color, #242f20);
   --trigger-arrow-color: var(--jds-filter-select-trigger-arrow-color, #242f20);
   --trigger-arrow-opacity: var(--jds-filter-select-trigger-arrow-opacity, 0.65);
-  --font-size: var(--jds-filter-select-font-size, var(--jds-font-size-14, 14px));
+  --font-size: var(--jds-filter-select-font-size, var(--jds-font-size-16, 16px));
   /* 面板 */
   --panel-bg: var(--jds-filter-select-panel-bg, var(--jds-color-white, #ffffff));
   --panel-shadow: var(--jds-filter-select-panel-shadow, 0px 4px 16px rgba(0, 0, 0, 0.08));
   --panel-radius: var(--jds-filter-select-panel-radius, 0px);
-  --panel-padding: var(--jds-filter-select-panel-padding, var(--jds-size-12, 12px));
+  --panel-padding: var(--jds-filter-select-panel-padding, var(--jds-size-16, 16px));
   --panel-gap: var(--jds-filter-select-panel-gap, var(--jds-size-10, 10px));
   /* 分割线 */
   --divider-color: var(--jds-filter-select-divider-color, #e8e8e5);
@@ -41,7 +41,6 @@
   --option-min-height: var(--jds-filter-select-option-min-height, 28px);
   --option-line-height: var(--jds-filter-select-option-line-height, 20px);
   --option-disabled-opacity: var(--jds-filter-select-option-disabled-opacity, 0.4);
-  --option-hover-color: var(--jds-filter-select-option-hover-color, #242f20);
   /* 复选框 */
   /* 注意：checkbox 为固定视觉尺寸（设计稿 16px），不随移动端 rem 基准（750 稿）缩放 */
   --checkbox-size: var(--jds-filter-select-checkbox-size, 16px);
@@ -311,18 +310,6 @@
   transition: color 0.2s ease-in-out;
 }
 
-.option--selected .option__label {
-  color: var(--option-hover-color);
-}
-
-.option--active .option__label {
-  color: var(--option-hover-color);
-}
-
-.option:hover:not(.option--disabled) .option__label {
-  color: var(--option-hover-color);
-}
-
 .option--disabled {
   cursor: not-allowed;
   opacity: var(--option-disabled-opacity);
@@ -379,9 +366,15 @@
     max-width: 100%;
   }
 
+  .trigger {
+    padding: var(--jds-size-24, 12px);
+  }
+
   .panel {
     width: 100%;
     max-width: calc(100vw - var(--jds-size-32, 32px));
+    padding: var(--jds-size-24, 12px);
+    font-size:  var(--jds-size-28, 14px);
   }
 }
 
