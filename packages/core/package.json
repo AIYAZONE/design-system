@@ -32,6 +32,11 @@
       "require": "./dist/dialog/index.cjs",
       "types": "./dist/dialog/index.d.ts"
     },
+    "./filter-select": {
+      "import": "./dist/filter-select/index.js",
+      "require": "./dist/filter-select/index.cjs",
+      "types": "./dist/filter-select/index.d.ts"
+    },
     "./popover": {
       "import": "./dist/popover/index.js",
       "require": "./dist/popover/index.cjs",

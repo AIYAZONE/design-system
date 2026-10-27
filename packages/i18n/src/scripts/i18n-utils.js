@@ -25,7 +25,8 @@ const i18nFile = path.join(localesDir, 'i18n-translations.xlsx');
  * 支持的语言列表
  * @type {string[]}
  */
-export const languages = ['en', 'zh-CN', 'zh-TW', 'de', 'es', 'fr', 'it', 'ja', 'ko'];
+// 注意：'jp' 是 'ja' 的兼容别名（共用日语语言包），Excel 中只保留 ja 列，故不在此列��
+export const languages = ['en', 'zh-CN', 'zh-TW', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'nl'];
 
 
 /**
