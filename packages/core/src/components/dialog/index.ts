@@ -317,9 +317,19 @@ export class JdsDialog extends LitElement {
     this.restoreFocus(last);
   }
 
+  /**
+   * 恢复页面滚动位置
+   *
+   * 先同步恢复一次，确保与 body 解锁在同一帧内完成，避免解锁到滚动恢复之间出现页面闪跳；
+   * 再通过双 requestAnimationFrame 兜底校正，兼容 iOS Safari 样式变更后可能丢失滚动位置的情况
+   */
   private restoreWindowScrollPosition(x: number, y: number, onRestored?: () => void) {
+    window.scrollTo(x, y);
+
     const restore = () => {
-      window.scrollTo(x, y);
+      if (window.scrollX !== x || window.scrollY !== y) {
+        window.scrollTo(x, y);
+      }
       onRestored?.();
     };
 
