@@ -6,20 +6,12 @@ import { waitUpdate, mount } from '../../../../test/utils'
 describe('jds-dialog interaction', () => {
   beforeEach(() => {
     vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
-    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback: FrameRequestCallback) => {
-      callback(0)
-      return 1
-    })
   })
 
   afterEach(() => {
     document.body.innerHTML = ''
-    document.body.style.overflow = ''
-    document.body.style.position = ''
-    document.body.style.top = ''
-    document.body.style.left = ''
-    document.body.style.right = ''
-    document.body.style.width = ''
+    document.documentElement.style.overflow = ''
+    document.documentElement.style.paddingRight = ''
     vi.restoreAllMocks()
   })
 
@@ -38,7 +30,7 @@ describe('jds-dialog interaction', () => {
     expect(el.open).toBe(false)
   })
 
-  it('restores scroll position and focus without scrolling when closed by close icon', async () => {
+  it('locks page scroll without moving the page and restores focus when closed by close icon', async () => {
     Object.defineProperty(window, 'scrollY', {
       configurable: true,
       value: 420,
@@ -53,17 +45,16 @@ describe('jds-dialog interaction', () => {
     const { el } = mount('jds-dialog', { open: true })
     const root = await waitUpdate(el)
 
-    expect(document.body.style.position).toBe('fixed')
-    expect(document.body.style.top).toBe('-420px')
+    expect(document.documentElement.style.overflow).toBe('hidden')
+    expect(document.body.style.position).toBe('')
+    expect(scrollToSpy).not.toHaveBeenCalled()
 
     const closeIcon = root.querySelector('jds-icon.close') as HTMLElement
     await userEvent.click(closeIcon)
     await waitUpdate(el)
 
-    expect(scrollToSpy).toHaveBeenCalledWith(0, 420)
     expect(focusSpy).toHaveBeenCalledWith({ preventScroll: true })
-    expect(document.body.style.position).toBe('')
-    expect(document.body.style.top).toBe('')
+    expect(document.documentElement.style.overflow).toBe('')
 
     opener.remove()
   })
@@ -87,7 +78,7 @@ describe('jds-dialog interaction', () => {
 
     expect(focusSpy).toHaveBeenCalledWith({ preventScroll: true })
     expect(scrollToSpy).not.toHaveBeenCalled()
-    expect(document.body.style.position).toBe('')
+    expect(document.documentElement.style.overflow).toBe('')
 
     opener.remove()
   })

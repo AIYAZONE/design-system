@@ -21,9 +21,7 @@ export type DialogSize = "extra" | "large";
 export class JdsDialog extends LitElement {
   static styles =  [unsafeCSS(styles)] as CSSResultGroup;
   private static _bodyScrollLockCount = 0;
-  private static _lockedScrollX = 0;
-  private static _lockedScrollY = 0;
-  private static _bodyStyleSnapshot: Partial<CSSStyleDeclaration> | null = null;
+  private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null;
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
@@ -221,12 +219,8 @@ export class JdsDialog extends LitElement {
         }, 0);
       } else {
         this.onClose({ isOpen: false }, { bubbles: false });
-        if (this.disableBodyScroll && this._isBodyScrollLockedByThisDialog) {
-          this.unlockBodyScroll(() => this.restoreLastFocus());
-        } else {
-          this.unlockBodyScroll();
-          this.restoreLastFocus();
-        }
+        this.unlockBodyScroll();
+        this.restoreLastFocus();
         window?.removeEventListener("keydown", this.onKeydown);
         this.dispatchEvent(new Event("closed", { bubbles: true }));
       }
@@ -236,40 +230,37 @@ export class JdsDialog extends LitElement {
   }
 
   /**
-   * 锁定页面滚动（body overflow: hidden）
+   * 锁定页面滚动
+   *
+   * 仅对根元素设置 overflow: hidden，不改变 body 的定位与文档流位置，
+   * 因此不会引起页面位移或重排；文档滚动位置由浏览器原样保留
    */
   private lockBodyScroll() {
     if (this._isBodyScrollLockedByThisDialog) return;
 
     if (JdsDialog._bodyScrollLockCount === 0) {
-      // 滚动条宽度需在改动 body 样式前测量：overflow: hidden 后视口滚动条消失，差值会变为 0
-      const scrollbarWidth = Math.max(
-        0,
-        window.innerWidth - document.documentElement.clientWidth
-      );
+      const root = document.documentElement;
+      const scrollX = window.scrollX || window.pageXOffset || 0;
+      const scrollY = window.scrollY || window.pageYOffset || 0;
 
-      JdsDialog._lockedScrollX = window.scrollX || window.pageXOffset || 0;
-      JdsDialog._lockedScrollY = window.scrollY || window.pageYOffset || 0;
-      JdsDialog._bodyStyleSnapshot = {
-        overflow: document.body.style.overflow,
-        position: document.body.style.position,
-        top: document.body.style.top,
-        left: document.body.style.left,
-        right: document.body.style.right,
-        paddingRight: document.body.style.paddingRight,
+      JdsDialog._rootStyleSnapshot = {
+        overflow: root.style.overflow,
+        paddingRight: root.style.paddingRight,
       };
 
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${JdsDialog._lockedScrollY}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
-      // 不设 width: 100%，否则内容盒会包含被释放的滚动条宽度；
-      // 改用 left/right 拉伸，配合等宽的 padding-right 抵消失去的滚动条，避免页面横向抖动
+      const widthBeforeLock = root.clientWidth;
+      root.style.overflow = "hidden";
+      // 只有滚动条真正消失，视口可用宽度才会变大，据此补偿等宽内边距以消除页面横向抖动
+      const scrollbarWidth = root.clientWidth - widthBeforeLock;
       if (scrollbarWidth > 0) {
         const currentPadding =
-          parseFloat(getComputedStyle(document.body).paddingRight) || 0;
-        document.body.style.paddingRight = `${currentPadding + scrollbarWidth}px`;
+          parseFloat(getComputedStyle(root).paddingRight) || 0;
+        root.style.paddingRight = `${currentPadding + scrollbarWidth}px`;
+      }
+
+      // 兼容个别浏览器隐藏滚动条时重置滚动位置的实现（如部分 iOS Safari 版本）
+      if (window.scrollX !== scrollX || window.scrollY !== scrollY) {
+        window.scrollTo(scrollX, scrollY);
       }
     }
 
@@ -277,40 +268,19 @@ export class JdsDialog extends LitElement {
     this._isBodyScrollLockedByThisDialog = true;
   }
 
-  private unlockBodyScroll(onRestored?: () => void) {
+  private unlockBodyScroll() {
     if (!this._isBodyScrollLockedByThisDialog) return;
 
     JdsDialog._bodyScrollLockCount = Math.max(0, JdsDialog._bodyScrollLockCount - 1);
     this._isBodyScrollLockedByThisDialog = false;
 
-    if (JdsDialog._bodyScrollLockCount > 0) {
-      onRestored?.();
-      return;
-    }
+    if (JdsDialog._bodyScrollLockCount > 0) return;
 
-    const snapshot = JdsDialog._bodyStyleSnapshot;
-    if (snapshot) {
-      document.body.style.overflow = snapshot.overflow ?? "";
-      document.body.style.position = snapshot.position ?? "";
-      document.body.style.top = snapshot.top ?? "";
-      document.body.style.left = snapshot.left ?? "";
-      document.body.style.right = snapshot.right ?? "";
-      document.body.style.paddingRight = snapshot.paddingRight ?? "";
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.paddingRight = "";
-    }
-
-    const restoreX = JdsDialog._lockedScrollX;
-    const restoreY = JdsDialog._lockedScrollY;
-    JdsDialog._bodyStyleSnapshot = null;
-    JdsDialog._lockedScrollX = 0;
-    JdsDialog._lockedScrollY = 0;
-    this.restoreWindowScrollPosition(restoreX, restoreY, onRestored);
+    const root = document.documentElement;
+    const snapshot = JdsDialog._rootStyleSnapshot;
+    root.style.overflow = snapshot?.overflow ?? "";
+    root.style.paddingRight = snapshot?.paddingRight ?? "";
+    JdsDialog._rootStyleSnapshot = null;
   }
 
   private restoreFocus(target?: HTMLElement | null) {
@@ -327,30 +297,6 @@ export class JdsDialog extends LitElement {
     const last = this._lastFocus as HTMLElement | null;
     this._lastFocus = null;
     this.restoreFocus(last);
-  }
-
-  /**
-   * 恢复页面滚动位置
-   *
-   * 先同步恢复一次，确保与 body 解锁在同一帧内完成，避免解锁到滚动恢复之间出现页面闪跳；
-   * 再通过双 requestAnimationFrame 兜底校正，兼容 iOS Safari 样式变更后可能丢失滚动位置的情况
-   */
-  private restoreWindowScrollPosition(x: number, y: number, onRestored?: () => void) {
-    window.scrollTo(x, y);
-
-    const restore = () => {
-      if (window.scrollX !== x || window.scrollY !== y) {
-        window.scrollTo(x, y);
-      }
-      onRestored?.();
-    };
-
-    if (typeof requestAnimationFrame === "function") {
-      requestAnimationFrame(() => requestAnimationFrame(restore));
-      return;
-    }
-
-    setTimeout(restore, 0);
   }
 
   /**
