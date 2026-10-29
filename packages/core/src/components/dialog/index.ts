@@ -242,6 +242,12 @@ export class JdsDialog extends LitElement {
     if (this._isBodyScrollLockedByThisDialog) return;
 
     if (JdsDialog._bodyScrollLockCount === 0) {
+      // 滚动条宽度需在改动 body 样式前测量：overflow: hidden 后视口滚动条消失，差值会变为 0
+      const scrollbarWidth = Math.max(
+        0,
+        window.innerWidth - document.documentElement.clientWidth
+      );
+
       JdsDialog._lockedScrollX = window.scrollX || window.pageXOffset || 0;
       JdsDialog._lockedScrollY = window.scrollY || window.pageYOffset || 0;
       JdsDialog._bodyStyleSnapshot = {
@@ -250,7 +256,7 @@ export class JdsDialog extends LitElement {
         top: document.body.style.top,
         left: document.body.style.left,
         right: document.body.style.right,
-        width: document.body.style.width,
+        paddingRight: document.body.style.paddingRight,
       };
 
       document.body.style.overflow = "hidden";
@@ -258,7 +264,13 @@ export class JdsDialog extends LitElement {
       document.body.style.top = `-${JdsDialog._lockedScrollY}px`;
       document.body.style.left = "0";
       document.body.style.right = "0";
-      document.body.style.width = "100%";
+      // 不设 width: 100%，否则内容盒会包含被释放的滚动条宽度；
+      // 改用 left/right 拉伸，配合等宽的 padding-right 抵消失去的滚动条，避免页面横向抖动
+      if (scrollbarWidth > 0) {
+        const currentPadding =
+          parseFloat(getComputedStyle(document.body).paddingRight) || 0;
+        document.body.style.paddingRight = `${currentPadding + scrollbarWidth}px`;
+      }
     }
 
     JdsDialog._bodyScrollLockCount += 1;
@@ -283,14 +295,14 @@ export class JdsDialog extends LitElement {
       document.body.style.top = snapshot.top ?? "";
       document.body.style.left = snapshot.left ?? "";
       document.body.style.right = snapshot.right ?? "";
-      document.body.style.width = snapshot.width ?? "";
+      document.body.style.paddingRight = snapshot.paddingRight ?? "";
     } else {
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.left = "";
       document.body.style.right = "";
-      document.body.style.width = "";
+      document.body.style.paddingRight = "";
     }
 
     const restoreX = JdsDialog._lockedScrollX;
