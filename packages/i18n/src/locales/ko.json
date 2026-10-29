@@ -29,6 +29,14 @@
       "loadMore": "더 불러오기",
       "showAll": "전체 보기"
     },
+    "filterSelect": {
+      "clear": "초기화",
+      "confirm": "확인",
+      "counter": "선택됨",
+      "empty": "옵션 없음",
+      "label": "필터 조건",
+      "selectedSummary": "{count}개 필터 선택됨"
+    },
     "modal": {
       "confirmContent": "이 작업을 수행하시겠습니까?",
       "confirmTitle": "확인해 주세요"

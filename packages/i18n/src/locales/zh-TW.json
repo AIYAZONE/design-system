@@ -29,6 +29,14 @@
       "loadMore": "載入更多",
       "showAll": "顯示全部"
     },
+    "filterSelect": {
+      "clear": "清空",
+      "confirm": "確定",
+      "counter": "已選",
+      "empty": "暫無選項",
+      "label": "篩選參數",
+      "selectedSummary": "已選擇篩選{count}個參數"
+    },
     "modal": {
       "confirmContent": "確定要執行此操作嗎？",
       "confirmTitle": "請確認"

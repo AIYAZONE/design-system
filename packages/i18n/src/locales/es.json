@@ -29,6 +29,14 @@
       "loadMore": "Cargar más",
       "showAll": "Mostrar todo"
     },
+    "filterSelect": {
+      "clear": "Vaciar",
+      "confirm": "Confirmar",
+      "counter": "Seleccionado",
+      "empty": "Sin opciones",
+      "label": "Parámetros de filtro",
+      "selectedSummary": "{count} filtros seleccionados"
+    },
     "modal": {
       "confirmContent": "¿Está seguro de que desea realizar esta acción?",
       "confirmTitle": "Por favor confirme"

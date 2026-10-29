@@ -19,12 +19,14 @@ export class I18nController {
   private host: HTMLElement;
   private onLanguageChange: () => void;
   private isConnected: boolean = false;
+  private _htmlLangObserver?: MutationObserver;
 
   /**
    * 构造函数
    * @param host 宿主元素
+   * @param options.observeHtmlLang 是否监听 <html lang> 属性变化（用于自动跟随页面语言）
    */
-  constructor(host: HTMLElement) {
+  constructor(host: HTMLElement, options?: { observeHtmlLang?: boolean }) {
     this.host = host;
     this.onLanguageChange = () => {
       if (!this.isConnected) return;
@@ -33,6 +35,7 @@ export class I18nController {
       }
     };
     this.connect();
+    if (options?.observeHtmlLang) this._observeHtmlLang();
   }
 
   /**
@@ -45,12 +48,26 @@ export class I18nController {
   }
 
   /**
+   * 监听页面 <html lang> 属性变化，变化时触发宿主重渲染
+   */
+  private _observeHtmlLang(): void {
+    if (typeof MutationObserver === 'undefined' || typeof document === 'undefined') return;
+    this._htmlLangObserver = new MutationObserver(() => this.onLanguageChange());
+    this._htmlLangObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang'],
+    });
+  }
+
+  /**
    * 断开与宿主元素的连接
    */
   public hostDisconnected(): void {
     if (!this.isConnected) return;
     this.isConnected = false;
     window.removeEventListener(I18N_LANGUAGE_CHANGE, this.onLanguageChange as EventListener);
+    this._htmlLangObserver?.disconnect();
+    this._htmlLangObserver = undefined;
   }
 
   /**

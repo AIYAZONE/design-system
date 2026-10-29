@@ -18,7 +18,8 @@ export default defineConfig({
         'src/components/button/index.ts',
         'src/components/badge/index.ts',
         'src/components/checkbox/index.ts',
-        'src/components/dialog/index.ts'
+        'src/components/dialog/index.ts',
+        'src/components/filter-select/index.ts'
       ],
       exclude: [
         '**/*.stories.ts',
