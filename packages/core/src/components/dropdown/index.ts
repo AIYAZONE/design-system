@@ -777,7 +777,15 @@ export class JdsDropdown extends LitElement {
       this.errorMessage || (this._invalid ? this.validationMessage : "");
     return html`
       ${this.label
-        ? html`<label id="label" part="label" class="label" for="trigger"
+        ? html`<label
+            id="label"
+            part="label"
+            class="label"
+            for="trigger"
+            @click=${(event: MouseEvent) => {
+              // 标签仅展示字段名称，阻止默认转发点击触发按钮。
+              event.preventDefault();
+            }}
             >${this.label}${this.required
               ? html`<span class="required" aria-hidden="true">*</span>`
               : nothing}</label

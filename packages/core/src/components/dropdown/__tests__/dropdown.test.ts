@@ -88,6 +88,45 @@ afterEach(() => {
 });
 
 describe("jds-dropdown", () => {
+  it("点击字段标签及必填标记不打开面板，只有触发按钮切换面板", async () => {
+    const el = await mount();
+    el.required = true;
+    await el.updateComplete;
+    const label = el.shadowRoot!.querySelector("label")!;
+    label.click();
+    await el.updateComplete;
+    expect(el.open).toBe(false);
+    (label.querySelector(".required") as HTMLElement).click();
+    await el.updateComplete;
+    expect(el.open).toBe(false);
+    (el.shadowRoot!.querySelector(".trigger") as HTMLButtonElement).click();
+    await el.updateComplete;
+    expect(el.open).toBe(true);
+    label.click();
+    (label.querySelector(".required") as HTMLElement).click();
+    await el.updateComplete;
+    expect(el.open).toBe(true);
+    (el.shadowRoot!.querySelector(".trigger") as HTMLButtonElement).click();
+    await el.updateComplete;
+    expect(el.open).toBe(false);
+  });
+
+  it("组件禁用或由表单禁用时，点击字段标签不会打开或聚焦", async () => {
+    const el = await mount();
+    const focus = vi.spyOn(el, "focus");
+    el.disabled = true;
+    await el.updateComplete;
+    el.shadowRoot!.querySelector("label")!.click();
+    await el.updateComplete;
+    expect(el.open).toBe(false);
+    el.disabled = false;
+    el.formDisabledCallback(true);
+    await el.updateComplete;
+    el.shadowRoot!.querySelector("label")!.click();
+    await el.updateComplete;
+    expect(el.open).toBe(false);
+    expect(focus).not.toHaveBeenCalled();
+  });
   it("优先使用 html lang，动态切换同步校验文案，且不修改全局语言", async () => {
     setCurrLanguage("ja");
     document.documentElement.lang = "zh-CN";
