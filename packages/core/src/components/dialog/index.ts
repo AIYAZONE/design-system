@@ -20,11 +20,21 @@ export type DialogSize = "extra" | "large";
 @customElement("jds-dialog")
 export class JdsDialog extends LitElement {
   static styles =  [unsafeCSS(styles)] as CSSResultGroup;
+  private static _bodyScrollLockCount = 0;
+  private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null;
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
 
     this.appendToTarget();
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    window?.removeEventListener("keydown", this.onKeydown);
+    if (this._isBodyScrollLockedByThisDialog) {
+      this.unlockBodyScroll();
+    }
   }
 
   /**
@@ -119,6 +129,7 @@ export class JdsDialog extends LitElement {
    * 打开前的触发源，用于关闭后恢复焦点
    */
   private _lastFocus?: Element | null;
+  private _isBodyScrollLockedByThisDialog = false;
 
   /**
    * 对话框打开时触发（detail: { isOpen: true }）
@@ -164,7 +175,6 @@ export class JdsDialog extends LitElement {
 
     try {
       target = document.querySelector(this.appendTo);
-      console.log('target', target);
     } catch (error) {
       console.warn(
         `[jds-dialog] Invalid append-to selector: ${this.appendTo}`
@@ -192,7 +202,7 @@ export class JdsDialog extends LitElement {
       if (this.open) {
         this.onOpen({ isOpen: true });
         this._lastFocus = document.activeElement;
-        if (this.disableBodyScroll) document.body.style.overflow = "hidden";
+        if (this.disableBodyScroll) this.lockBodyScroll();
         window?.addEventListener("keydown", this.onKeydown);
         setTimeout(() => {
           const root = this.shadowRoot;
@@ -209,16 +219,84 @@ export class JdsDialog extends LitElement {
         }, 0);
       } else {
         this.onClose({ isOpen: false }, { bubbles: false });
-        document.body.style.overflow = "auto";
+        this.unlockBodyScroll();
+        this.restoreLastFocus();
         window?.removeEventListener("keydown", this.onKeydown);
         this.dispatchEvent(new Event("closed", { bubbles: true }));
-        const last = this._lastFocus as HTMLElement | null;
-        this._lastFocus = null;
-        last?.focus();
       }
     } catch (error) {
       console.error("Dialog toggle error:", error);
     }
+  }
+
+  /**
+   * 锁定页面滚动
+   *
+   * 仅对根元素设置 overflow: hidden，不改变 body 的定位与文档流位置，
+   * 因此不会引起页面位移或重排；文档滚动位置由浏览器原样保留
+   */
+  private lockBodyScroll() {
+    if (this._isBodyScrollLockedByThisDialog) return;
+
+    if (JdsDialog._bodyScrollLockCount === 0) {
+      const root = document.documentElement;
+      const scrollX = window.scrollX || window.pageXOffset || 0;
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+
+      JdsDialog._rootStyleSnapshot = {
+        overflow: root.style.overflow,
+        paddingRight: root.style.paddingRight,
+      };
+
+      const widthBeforeLock = root.clientWidth;
+      root.style.overflow = "hidden";
+      // 只有滚动条真正消失，视口可用宽度才会变大，据此补偿等宽内边距以消除页面横向抖动
+      const scrollbarWidth = root.clientWidth - widthBeforeLock;
+      if (scrollbarWidth > 0) {
+        const currentPadding =
+          parseFloat(getComputedStyle(root).paddingRight) || 0;
+        root.style.paddingRight = `${currentPadding + scrollbarWidth}px`;
+      }
+
+      // 兼容个别浏览器隐藏滚动条时重置滚动位置的实现（如部分 iOS Safari 版本）
+      if (window.scrollX !== scrollX || window.scrollY !== scrollY) {
+        window.scrollTo(scrollX, scrollY);
+      }
+    }
+
+    JdsDialog._bodyScrollLockCount += 1;
+    this._isBodyScrollLockedByThisDialog = true;
+  }
+
+  private unlockBodyScroll() {
+    if (!this._isBodyScrollLockedByThisDialog) return;
+
+    JdsDialog._bodyScrollLockCount = Math.max(0, JdsDialog._bodyScrollLockCount - 1);
+    this._isBodyScrollLockedByThisDialog = false;
+
+    if (JdsDialog._bodyScrollLockCount > 0) return;
+
+    const root = document.documentElement;
+    const snapshot = JdsDialog._rootStyleSnapshot;
+    root.style.overflow = snapshot?.overflow ?? "";
+    root.style.paddingRight = snapshot?.paddingRight ?? "";
+    JdsDialog._rootStyleSnapshot = null;
+  }
+
+  private restoreFocus(target?: HTMLElement | null) {
+    if (!target?.focus) return;
+
+    try {
+      target.focus({ preventScroll: true });
+    } catch {
+      target.focus();
+    }
+  }
+
+  private restoreLastFocus() {
+    const last = this._lastFocus as HTMLElement | null;
+    this._lastFocus = null;
+    this.restoreFocus(last);
   }
 
   /**

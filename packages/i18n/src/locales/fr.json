@@ -35,6 +35,14 @@
       "requiredMessage": "Veuillez sélectionner une option.",
       "clearLabel": "Effacer la sélection"
     },
+    "filterSelect": {
+      "clear": "Effacer",
+      "confirm": "Confirmer",
+      "counter": "Sélectionné",
+      "empty": "Aucune option",
+      "label": "Paramètres de filtre",
+      "selectedSummary": "{count} filtres sélectionnés"
+    },
     "modal": {
       "confirmContent": "Êtes-vous sûr de vouloir effectuer cette action ?",
       "confirmTitle": "Veuillez confirmer"

@@ -35,6 +35,14 @@
       "requiredMessage": "请选择一个选项。",
       "clearLabel": "清空选择"
     },
+    "filterSelect": {
+      "clear": "清空",
+      "confirm": "确定",
+      "counter": "已选",
+      "empty": "暂无选项",
+      "label": "筛选参数",
+      "selectedSummary": "已选择筛选{count}个参数"
+    },
     "modal": {
       "confirmContent": "确定要执行此操作吗？",
       "confirmTitle": "请确认"

@@ -1,6 +1,6 @@
 // 类型导入
 import { I18nInstance, I18nError } from '../types';
-import { Language, messages } from '../types/languages';
+import { Language, SUPPORTED_LANGUAGES, messages } from '../types/languages';
 
 // 配置和工具导入
 import { config, I18N_LANGUAGE_CHANGE } from './config';
@@ -51,19 +51,26 @@ export function setCurrLanguage(lang: Language): void {
  * @returns 翻译后的文本，如果翻译失败则返回键值
  * @description 支持缓存、嵌套键值、参数替换和错误处理
  */
-export function t(key: string, params?: Record<string, string | number>): string {
-  const cacheKey = params ? `${key}:${JSON.stringify(params)}` : key;
+export function t(
+  key: string,
+  params?: Record<string, string | number>,
+  lang?: Language
+): string {
+  const effectiveLang = lang ?? currentLanguage;
+  const cacheKey = params
+    ? `${key}:${JSON.stringify(params)}:${effectiveLang}`
+    : `${key}:${effectiveLang}`;
   try {
     const cachedTranslation = translationCache.get(cacheKey);
     if (cachedTranslation) return cachedTranslation;
 
     const keys = key.split('.');
-    let value: any = messages[currentLanguage];
+    let value: any = messages[effectiveLang];
 
     value = keys.reduce((obj, k) => (obj && typeof obj === 'object' ? obj[k] : undefined), value);
 
     if (typeof value !== 'string') {
-      if (currentLanguage !== config.fallbackLanguage) {
+      if (effectiveLang !== config.fallbackLanguage) {
         const fallbackValue = keys.reduce(
           (obj: any, k: string) => (obj && typeof obj === 'object' ? obj[k] : undefined),
           messages[config.fallbackLanguage || 'en']
@@ -130,6 +137,42 @@ const globalI18n: I18nInstance = {
  */
 export function useI18n(): I18nInstance {
   return globalI18n;
+}
+
+/**
+ * 将任意语言标识归一化为系统支持的语言代码
+ * @param input - 可能为 HTML `lang` 属性、地区码（en-US）、别名（jp）等
+ * @returns 系统支持的语言代码，无法识别时回退到 fallbackLanguage
+ * @description 兼容以下情况：
+ *  - 直接匹配：'en' / 'zh-CN' / 'ja' ...
+ *  - 地区后缀：'en-US' / 'zh-Hans' -> 取基础码
+ *  - 繁简中文别名：'zh-Hans' -> 'zh-CN'，'zh-Hant' / 'zh-HK' -> 'zh-TW'
+ *  - 日语别名：'jp' -> 'ja'
+ */
+const LANG_CANON = new Map<string, Language>(
+  SUPPORTED_LANGUAGES.map((lang) => [lang.toLowerCase(), lang])
+);
+
+const LANG_ALIASES: Record<string, Language> = {
+  'zh-hans': 'zh-CN',
+  'zh-cn': 'zh-CN',
+  'zh-sg': 'zh-CN',
+  'zh-hant': 'zh-TW',
+  'zh-tw': 'zh-TW',
+  'zh-hk': 'zh-TW',
+  'zh-mo': 'zh-TW',
+  jp: 'ja',
+};
+
+export function normalizeLanguage(input?: string): Language {
+  const fallback: Language = (config.fallbackLanguage as Language) || 'en';
+  if (!input) return fallback;
+  const raw = input.trim().toLowerCase();
+  if (LANG_CANON.has(raw)) return LANG_CANON.get(raw)!;
+  if (LANG_ALIASES[raw]) return LANG_ALIASES[raw];
+  const base = raw.split('-')[0];
+  if (LANG_CANON.has(base)) return LANG_CANON.get(base)!;
+  return fallback;
 }
 
 /**

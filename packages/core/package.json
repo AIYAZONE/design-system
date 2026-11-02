@@ -1,6 +1,6 @@
 {
   "name": "@jackery/core",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "Jackery Design System - Core Components",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,6 +31,11 @@
       "import": "./dist/dialog/index.js",
       "require": "./dist/dialog/index.cjs",
       "types": "./dist/dialog/index.d.ts"
+    },
+    "./filter-select": {
+      "import": "./dist/filter-select/index.js",
+      "require": "./dist/filter-select/index.cjs",
+      "types": "./dist/filter-select/index.d.ts"
     },
     "./popover": {
       "import": "./dist/popover/index.js",

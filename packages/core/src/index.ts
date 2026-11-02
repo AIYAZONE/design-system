@@ -6,6 +6,7 @@ export * from './components/button';
 export * from './components/checkbox';
 export * from './components/dialog';
 export * from './components/dropdown';
+export * from './components/filter-select';
 export * from './components/popover';
 export * from './components/spinner';
 export * from './components/toast';

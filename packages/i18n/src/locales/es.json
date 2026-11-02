@@ -35,6 +35,14 @@
       "requiredMessage": "Selecciona una opción.",
       "clearLabel": "Borrar selección"
     },
+    "filterSelect": {
+      "clear": "Vaciar",
+      "confirm": "Confirmar",
+      "counter": "Seleccionado",
+      "empty": "Sin opciones",
+      "label": "Parámetros de filtro",
+      "selectedSummary": "{count} filtros seleccionados"
+    },
     "modal": {
       "confirmContent": "¿Está seguro de que desea realizar esta acción?",
       "confirmTitle": "Por favor confirme"

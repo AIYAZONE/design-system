@@ -35,6 +35,14 @@
       "requiredMessage": "項目を選択してください。",
       "clearLabel": "選択をクリア"
     },
+    "filterSelect": {
+      "clear": "クリア",
+      "confirm": "確定",
+      "counter": "選択中",
+      "empty": "選択肢がありません",
+      "label": "絞り込み条件",
+      "selectedSummary": "{count}件の条件を選択中"
+    },
     "modal": {
       "confirmContent": "この操作を実行してもよろしいですか？",
       "confirmTitle": "確認してください"

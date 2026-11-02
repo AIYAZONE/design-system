@@ -1,4 +1,4 @@
-import { t, getCurrLanguage, setCurrLanguage, useI18n, initialize } from './core/index.js';
+import { t, getCurrLanguage, setCurrLanguage, useI18n, initialize, normalizeLanguage } from './core/index.js';
 import { initI18nDom } from './core/dom';
 import { I18nController } from './core/controller';
 import { I18nInstance } from './types/index'
@@ -33,6 +33,7 @@ export {
   initI18nDom,
   I18nController,
   i18n,
+  normalizeLanguage,
   SUPPORTED_LANGUAGES,
   getSupportedLanguages,
   isLanguageSupported,

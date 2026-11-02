@@ -15,6 +15,8 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
 @customElement("jds-tooltip")
 export class JdsTooltip extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
+  private static _activeTouchTooltip: JdsTooltip | null = null;
+  private readonly _popoverArrowPadding = 14;
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
@@ -103,15 +105,20 @@ export class JdsTooltip extends LitElement {
       window.addEventListener('click', this._handleOutsideClick);
       // 全局监听：滑动时隐藏
       window.addEventListener('touchmove', this.hide, { passive: true });
+      window.addEventListener('scroll', this.hide, { passive: true, capture: true });
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
     this._removeEvents(this.target);
+    if (JdsTooltip._activeTouchTooltip === this) {
+      JdsTooltip._activeTouchTooltip = null;
+    }
     if (this._isTouchDevice) {
       window.removeEventListener('click', this._handleOutsideClick);
       window.removeEventListener('touchmove', this.hide);
+      window.removeEventListener('scroll', this.hide, true);
     }
   }
 
@@ -159,14 +166,39 @@ export class JdsTooltip extends LitElement {
    * 显示工具提示
    */
   show = () => {
+    if (this._timer) {
+      clearTimeout(this._timer);
+      this._timer = null;
+    }
+    if (this._isTouchDevice && JdsTooltip._activeTouchTooltip && JdsTooltip._activeTouchTooltip !== this) {
+      JdsTooltip._activeTouchTooltip._hideImmediately();
+    }
     if (this._popover) {
       this._popover.target = this.target ?? this.trigger;
       this._popover.show();
     }
+    if (this._isTouchDevice) {
+      JdsTooltip._activeTouchTooltip = this;
+    }
     this.dispatchEvent(new CustomEvent('jds-tooltip-show', { detail: "" }));
+  }
+
+  private _hideImmediately() {
     if (this._timer) {
       clearTimeout(this._timer);
+      this._timer = null;
     }
+    this._hidePopover()
+  }
+
+  private _hidePopover() {
+    if (this._popover) {
+      this._popover.hide();
+    }
+    if (JdsTooltip._activeTouchTooltip === this) {
+      JdsTooltip._activeTouchTooltip = null;
+    }
+    this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }));
   }
 
   /**
@@ -176,11 +208,12 @@ export class JdsTooltip extends LitElement {
     // 移动端滑动或点击外部时，建议立即隐藏 (delay = 0)
     const delay = this._isTouchDevice ? 0 : 150;
 
+    if (this._timer) {
+      clearTimeout(this._timer);
+    }
     this._timer = setTimeout(() => {
-      if (this._popover) {
-        this._popover.hide();
-      }
-      this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }));
+      this._timer = null;
+      this._hidePopover()
     }, delay)
   }
 
@@ -213,6 +246,7 @@ export class JdsTooltip extends LitElement {
       <jds-popover
         part="tooltip"
         .target="${this.target ?? this.trigger}"
+        .arrowPadding="${this._popoverArrowPadding}"
         placement="${ifDefined(this.placement)}"
         @jds-popover-hide="${() => this.dispatchEvent(new CustomEvent('jds-tooltip-hide', { detail: "" }))}"
       >
