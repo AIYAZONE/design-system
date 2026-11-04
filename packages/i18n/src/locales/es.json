@@ -29,6 +29,12 @@
       "loadMore": "Cargar más",
       "showAll": "Mostrar todo"
     },
+    "dropdown": {
+      "placeholder": "Selecciona una opción",
+      "emptyText": "No hay opciones",
+      "requiredMessage": "Selecciona una opción.",
+      "clearLabel": "Borrar selección"
+    },
     "filterSelect": {
       "clear": "Vaciar",
       "confirm": "Confirmar",

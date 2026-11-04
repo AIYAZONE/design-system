@@ -15,6 +15,7 @@
   - [Figma - UED控件库 - v1.0](https://www.figma.com/design/xRSdg9dwrFbNMQz1zQVaaE/UED%E6%8E%A7%E4%BB%B6%E5%BA%93)
 
 - **文档：** [前端知识库 - Jackery Design System](https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5nRwgwHoanD4XgV9ekBD76)
+- **Storybook发布地址：** [prod](https://design.jackery.com/), [dev](https://demo-design.jackery.com/)
 
 ## 1.1 在 f2e-base 工作区中的位置
 
