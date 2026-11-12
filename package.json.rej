@@ -1,0 +1,9 @@
+diff a/package.json b/package.json	(rejected hunks)
+@@ -1,6 +1,6 @@
+ {
+   "name": "@aiyazone/design-system",
+-  "version": "0.3.0",
++  "version": "0.3.1",
+   "description": "AIYAZONE Design System (ZONE) - Monorepo",
+   "author": "AIYAZONE F2E Team",
+   "type": "module",
