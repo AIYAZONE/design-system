@@ -1,0 +1,14 @@
+{
+  "name": "@zone/tsconfig",
+  "version": "0.1.0",
+  "description": "AIYAZONE Design System - Shared TypeScript Configuration",
+  "files": [
+    "base.json",
+    "lib.json",
+    "app.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

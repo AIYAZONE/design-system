@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components - 组件展示</title>
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Components 组件展示</h1>
+        <p class="subtitle">设计系统中各种组件的使用示例</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>组件</h2>
+      <p>
+        <zone-checkbox label="Checkbox"></zone-checkbox>
+        <zone-checkbox checked label="Checkbox"></zone-checkbox>
+      </p>
+      <p>
+        <zone-badge style="--zone-badge-bg-color:rgb(254, 242, 232);--zone-badge-color:rgb(242, 122, 26);">In
+          Progress</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-success-contrast);--zone-badge-color:var(--zone-color-success);">Approved</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-warning-contrast);--zone-badge-color:var(--zone-color-warning);">Warning</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-danger-contrast);--zone-badge-color:var(--zone-color-danger);">Denied</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-neutral-100);--zone-badge-color:var(--zone-color-neutral-400);">Neutral</zone-badge>
+        <zone-badge style="--zone-badge-bg-color:#eef4ff;--zone-badge-color:#5794ff;">Offer</zone-badge>
+        <zone-badge style="--zone-badge-bg-color:#f4edff;--zone-badge-color:#8c4eff;">Winner</zone-badge>
+      </p>
+
+      <p>
+        <zone-icon name="close"></zone-icon>
+      </p>
+
+      <p>
+        <zone-button>Primary Button</zone-button>
+        <zone-button variant="secondary">Secondary Button</zone-button>
+        <zone-button variant="tertiary">Tertiary Button</zone-button>
+      </p>
+
+      <p>
+        <zone-button size="large">Button</zone-button>
+        <zone-button size="medium">Button</zone-button>
+      </p>
+
+      <zone-button size="large" icon="alert-fill">Primary Button</zone-button>
+      <zone-button size="medium" icon="alert-line">Primary Button</zone-button>
+      <zone-button size="small" icon="facebook">Primary Button</zone-button>
+
+      <p>
+        <zone-spinner></zone-spinner>
+      </p>
+
+      <p>
+        <zone-button variant="secondary" id="open-dialog-button">打开弹窗</zone-button>
+      </p>
+      <zone-dialog id="dl-basic" caption="Use location service?">
+        <div>
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+        </div>
+        <zone-button variant="primary" size="large">Agree</zone-button>
+      </zone-dialog>
+
+      <h2>Toast</h2>
+      <section>
+        <zone-toast icon>Info Variant</zone-toast>
+        <zone-toast variant="warning" icon>Warning Variant</zone-toast>
+        <zone-toast variant="success" icon>Success Variant</zone-toast>
+        <zone-toast variant="success" countdownTime="5" icon>Success Variant</zone-toast>
+        <zone-toast variant="danger" icon>Danger Variant</zone-toast>
+        <zone-toast variant="danger">Danger Text
+          <zone-button slot="action">Action Link</zone-button>
+          <zone-button slot="action-secondary">Action Link</zone-button>
+        </zone-toast>
+      </section>
+
+      <h2>Tooltip</h2>
+      <section>
+        <zone-tooltip placement="top-start">
+          <zone-button slot="tooltip-trigger">top-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="top">
+          <zone-button slot="tooltip-trigger">top</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+        <zone-tooltip placement="top-end">
+          <zone-button slot="tooltip-trigger">top-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom-start">
+          <zone-button slot="tooltip-trigger">bottom-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom">
+          <zone-button slot="tooltip-trigger">bottom</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom-end">
+          <zone-button slot="tooltip-trigger">bottom-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left-start">
+          <zone-button slot="tooltip-trigger">left-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left">
+          <zone-button slot="tooltip-trigger">left</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left-end">
+          <zone-button slot="tooltip-trigger">left-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right-start">
+          <zone-button slot="tooltip-trigger">right-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right">
+          <zone-button slot="tooltip-trigger">right</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right-end">
+          <zone-button slot="tooltip-trigger">right-end</zone-button>
+          <h5 style="color: var(--zone-color-warning);">You can use this section to cancel your order.</h5>
+        </zone-tooltip>
+      </section>
+
+      <h2>Tooltip + Popover</h2>
+      <section>
+
+        <zone-button id="button-13">top-start</zone-button>
+
+        <zone-popover target="button-13" id="popover-13" placement="top-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-14">top</zone-button>
+
+        <zone-popover target="button-14" id="popover-14" placement="top" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-15">top-end</zone-button>
+
+        <zone-popover target="button-15" id="popover-15" placement="top-end" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-16">bottom-start</zone-button>
+
+        <zone-popover target="button-16" id="popover-16" placement="bottom-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-17">bottom</zone-button>
+
+        <zone-popover target="button-17" id="popover-17" placement="bottom" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-18">bottom-end</zone-button>
+
+        <zone-popover target="button-18" id="popover-18" placement="bottom-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-19">left-start</zone-button>
+
+        <zone-popover target="button-19" id="popover-19" placement="left-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-20">left</zone-button>
+
+        <zone-popover target="button-20" id="popover-20" placement="left" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-21">left-end</zone-button>
+
+        <zone-popover target="button-21" id="popover-21" placement="left-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-22">right-start</zone-button>
+
+        <zone-popover target="button-22" id="popover-22" placement="right-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-23">right</zone-button>
+
+        <zone-popover target="button-23" id="popover-23" placement="right" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-24">right-end</zone-button>
+
+        <zone-popover target="button-24" id="popover-24" placement="right-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+      </section>
+
+      <script>
+        // 添加事件监听器
+        const trigger = document.getElementById('open-dialog-button');
+        const open = () => {
+          const dialog = document.querySelector('#dl-basic');
+          if (dialog) dialog.setAttribute('open', 'true');
+        };
+        if (trigger) {
+          trigger.addEventListener('click', open);
+          trigger.addEventListener('zone-click', open);
+        }
+      </script>
+    </main>
+  </div>
+</body>
+
+</html>

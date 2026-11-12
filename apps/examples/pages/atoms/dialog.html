@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dialog - 对话弹窗</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="module" src="/main.ts"></script>
+  <script>
+    // 禁用 Tailwind 的预置 reset（preflight），避免覆盖设计系统基础样式
+    // 需在 CDN 脚本之前声明配置
+    // 参考：https://tailwindcss.com/docs/preflight#disabling-preflight
+    // @ts-ignore
+    window.tailwind = window.tailwind || {};
+    // @ts-ignore
+    window.tailwind.config = { corePlugins: { preflight: false } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Dialog 对话弹窗组件</h1>
+        <p class="subtitle">各种样式和状态的对话弹窗展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>对话弹窗</h2>
+      <p>
+        <zone-button class="btn-noclose" variant="secondary">打开标准 - 无关闭Icon弹窗</zone-button>
+        <zone-button class="btn-small" variant="secondary">打开标准 - 小的弹窗</zone-button>
+        <zone-button class="btn-large" variant="secondary">打开标准 - 最大弹窗</zone-button>
+        <zone-button class="btn-xL" variant="secondary">打开特大弹窗</zone-button>
+      </p>
+      <zone-dialog class="dialog-noclose" caption="Use location service?" no-close="true"
+        style="--zone-dialog-index:10000;">
+        <div class="zone-rte font-regular">
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+        </div>
+        <div class="flex justify-center items-center gap-[var(--zone-size-20)] mt-[var(--zone-size-32)]">
+          <zone-button class="btn-cancel" variant="secondary">Cancel</zone-button>
+          <zone-button class="login">Log in</zone-button>
+        </div>
+      </zone-dialog>
+
+      <zone-dialog class="dialog-small" caption="Use location service?" style="--zone-dialog-index:10000;">
+        <div class="zone-rte">
+          <p>Let us help determine location. This means sending anonymous location data to us.</p>
+          <p>Let us help determine location. This means sending anonymous location data to us.</p>
+        </div>
+      </zone-dialog>
+
+      <zone-dialog class="dialog-large" caption="Use location service?">
+        <div class="zone-rte font-regular">
+          <ol>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+          </ol>
+          <ul>
+            <li>a124124</li>
+            <li>a124124</li>
+            <li>a124124</li>
+            <li>a124124</li>
+          </ul>
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+        </div>
+        <zone-button variant="primary" size="large">Agree</zone-button>
+      </zone-dialog>
+
+      <zone-dialog class="dialog-xL" caption="Use location service?" size="extra">
+        <div class="zone-rte font-regular">
+          <ol>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+            <li>123123</li>
+          </ol>
+          <ul>
+            <li>a124124</li>
+            <li>a124124</li>
+            <li>a124124</li>
+            <li>a124124</li>
+          </ul>
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+        </div>
+      </zone-dialog>
+      <script>
+        // 添加事件监听器
+        document.querySelectorAll('zone-button[class^="btn-"]').forEach(button => {
+          const placement = button.classList[0].split('-')[1];
+          button.addEventListener('zone-click', () => {
+            document.querySelector(`.dialog-${placement}`).setAttribute('open', true);
+          });
+        });
+      </script>
+    </main>
+  </div>
+</body>
+
+</html>

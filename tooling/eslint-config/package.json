@@ -1,0 +1,24 @@
+{
+  "name": "@zone/eslint-config",
+  "version": "0.1.0",
+  "description": "AIYAZONE Design System - Shared ESLint Configuration",
+  "type": "module",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "eslint-plugin-lit": "^1.10.0",
+    "eslint-plugin-wc": "^2.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

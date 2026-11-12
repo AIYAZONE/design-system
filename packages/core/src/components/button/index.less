@@ -1,0 +1,821 @@
+:host {
+  display: var(--zone-btn-display, inline-block);
+  max-width: 100%;
+  position: relative;
+
+  // 公共变量提取
+  --zone-btn-disabled-opacity: 0.3;
+  --zone-btn-underline-height: 1.5px;
+  --zone-btn-underline-height-small: 1px;
+  --zone-btn-secondary-border-width: var(--zone-size-2);
+  --zone-btn-custom-highlight-mix: 15%;
+  // 语义变量（默认值）
+  --zone-btn-hover-color: var(--zone-color-primary-highlight);
+  --zone-btn-active-color: var(--zone-btn-main-color, var(--zone-color-primary));
+  --zone-btn-text-underline-color: var(--zone-btn-hover-color);
+  --zone-btn-shine-angle: 0deg;
+  --zone-btn-shine-height: 200%;
+  --zone-btn-shine-start-x: -45%;
+  --zone-btn-shine-handoff-shift: 0s;
+  --zone-btn-shine-end-x: 140%;
+  --zone-btn-capsule-size: var(--zone-size-32);
+  --zone-btn-capsule-icon-size: var(--zone-size-16);
+  --zone-btn-capsule-gap: var(--zone-size-8);
+  --zone-btn-capsule-shift: var(--zone-size-16);
+  --zone-btn-capsule-end-inset: 0px;
+  --zone-btn-shine-gradient: linear-gradient(283.37deg,
+      rgba(254, 139, 45, 0) 11.45%,
+      rgba(255, 152, 70, 1) 45.8%,
+      rgba(255, 137, 44, 0) 86.76%);
+  --zone-btn-shine-halo-gradient: linear-gradient(283.37deg,
+      rgba(254, 139, 45, 0) 0%,
+      rgba(255, 152, 70, 0.12) 32%,
+      rgba(255, 152, 70, 0.35) 45.8%,
+      rgba(255, 152, 70, 0.12) 60%,
+      rgba(255, 137, 44, 0) 100%);
+}
+
+.button {
+  display: inline-flex;
+  gap: var(--zone-btn-margin-icon, var(--zone-size-8));
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  --zone-btn-current-bg: var(--zone-btn-bg-color, var(--zone-color-primary));
+  --zone-btn-current-border: var(--zone-btn-border-color, var(--zone-color-primary));
+  --zone-btn-current-color: var(--zone-btn-content-color, var(--zone-color-white));
+  width: 100%;
+  max-width: var(--zone-btn-max-width, 680px);
+  height: var(--zone-btn-height, var(--zone-size-48));
+  border: none;
+  border-radius: var(--zone-btn-border-radius, var(--zone-rounded-pill));
+  text-decoration: none;
+  vertical-align: middle;
+  padding: var(--zone-btn-padding-vertical, var(--zone-size-8)) var(--zone-btn-padding-horizontal, var(--zone-size-16));
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--zone-btn-current-bg);
+  color: var(--zone-btn-current-color);
+  font: var(--zone-btn-font, var(--zone-font-h6));
+  font-kerning: none;
+  user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    position: relative;
+    outline: none;
+  }
+}
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  align-items: center;
+  line-height: normal;
+  max-width: 100%;
+}
+
+.capsule-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  right: var(--zone-btn-capsule-end-inset, 0px);
+  width: var(--zone-btn-capsule-size, var(--zone-size-32));
+  height: var(--zone-btn-capsule-size, var(--zone-size-32));
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: var(--zone-rounded-pill);
+  background-color: var(--zone-animate-only-icon-bg, var(--zone-btn-main-hover-color, var(--zone-color-primary-highlight)));
+  z-index: 1;
+  transform: translate3d(calc(100% + var(--zone-btn-capsule-gap, var(--zone-size-8))), -50%, 0) scale(0.6);
+  transform-origin: center center;
+  transition:
+    opacity .3s cubic-bezier(.8, 0, .2, 1),
+    transform .3s cubic-bezier(.8, 0, .2, 1);
+}
+
+.capsule-icon__glyph {
+  font-size: var(--zone-btn-capsule-icon-size, var(--zone-size-16));
+  transform: translateX(calc(0px - var(--zone-btn-capsule-size, var(--zone-size-32))));
+  transition: transform .4s cubic-bezier(.8, 0, .2, 1);
+}
+
+slot[name="icon"] {
+  position: relative;
+  z-index: 1;
+}
+
+// 不同变体的按钮
+:host([variant="secondary"]) .button {
+  border: var(--zone-btn-secondary-border-width) solid var(--zone-btn-border-color, var(--zone-color-primary));
+  background-color: transparent;
+  color: var(--zone-btn-main-color, var(--zone-color-primary));
+  --zone-btn-current-bg: transparent;
+  --zone-btn-current-border: var(--zone-btn-border-color, var(--zone-color-primary));
+  --zone-btn-current-color: var(--zone-btn-main-color, var(--zone-color-primary));
+}
+
+:host([variant="text"]) .button {
+  color: var(--zone-btn-main-color, var(--zone-color-primary));
+  border-color: transparent;
+  background-color: transparent;
+  --zone-btn-current-bg: transparent;
+  --zone-btn-current-border: transparent;
+  --zone-btn-current-color: var(--zone-btn-main-color, var(--zone-color-primary));
+}
+
+// 不同种类按钮
+:host([kind="neutral"]) .button {
+  background-color: var(--zone-color-neutral);
+  border-color: var(--zone-color-neutral);
+  // 语义变量赋值
+  --zone-btn-main-color: var(--zone-color-neutral);
+  --zone-btn-hover-color: var(--zone-color-neutral-hover, var(--zone-color-neutral-highlight));
+  --zone-btn-active-color: var(--zone-color-neutral-active, var(--zone-color-neutral));
+}
+
+:host([kind="success"]) .button {
+  background-color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+  // 语义变量赋值
+  --zone-btn-main-color: var(--zone-color-success);
+  --zone-btn-hover-color: var(--zone-color-success-highlight);
+  --zone-btn-active-color: var(--zone-color-success);
+}
+
+:host([kind="danger"]) .button {
+  background-color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+  // 语义变量赋值
+  --zone-btn-main-color: var(--zone-color-danger);
+  --zone-btn-hover-color: var(--zone-color-danger-highlight);
+  --zone-btn-active-color: var(--zone-color-danger);
+}
+
+:host([kind="custom"]) .button {
+  --zone-btn-local-custom-color: var(--zone-btn-custom-color, var(--zone-color-primary));
+  /* 高亮色：基础色叠加15%的白色，用于hover状态 - ios 真机浏览器大于等于16.2版本生效 */
+  --zone-color-custom-highlight: color-mix(in srgb, white var(--zone-btn-custom-highlight-mix), var(--zone-btn-local-custom-color));
+
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+  // 语义变量赋值
+  --zone-btn-main-color: var(--zone-btn-local-custom-color);
+  --zone-btn-hover-color: var(--zone-color-custom-highlight);
+  --zone-btn-active-color: var(--zone-btn-local-custom-color);
+}
+
+// 修复：自定义色 Secondary 加载态颜色（边框/背景透明，文字与图标使用自定义主色）
+:host([kind="custom"][variant="secondary"][loading]) .button {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--zone-btn-local-custom-color);
+}
+
+:host([kind="custom"][variant="secondary"][loading]) .button:hover,
+:host([kind="custom"][variant="secondary"][loading]) .button:active {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--zone-btn-local-custom-color);
+}
+
+:host([kind="custom"][variant="primary"]) .button {
+  color: var(--zone-btn-primary-custom-text-color, var(--zone-color-white));
+}
+
+// 变体与种类组合：Secondary 与 Text 的基础显示（无背景填充）
+:host([kind="neutral"][variant="secondary"]) .button {
+  color: var(--zone-color-neutral);
+  border-color: var(--zone-color-neutral);
+  background-color: transparent;
+}
+
+:host([kind="success"][variant="secondary"]) .button {
+  color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+  background-color: transparent;
+}
+
+:host([kind="danger"][variant="secondary"]) .button {
+  color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+  background-color: transparent;
+}
+
+:host([kind="custom"][variant="secondary"]) .button {
+  color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+  background-color: transparent;
+}
+
+:host([kind="neutral"][variant="text"]) .button {
+  color: var(--zone-color-neutral);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+:host([kind="success"][variant="text"]) .button {
+  color: var(--zone-color-success);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+:host([kind="danger"][variant="text"]) .button {
+  color: var(--zone-color-danger);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+:host([kind="custom"][variant="text"]) .button {
+  color: var(--zone-btn-local-custom-color);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+// 不同尺寸按钮
+:host([size="extra"]) .button {
+  height: var(--zone-btn-extra-height, var(--zone-size-56));
+  padding: var(--zone-btn-extra-padding-vertical, var(--zone-size-16)) var(--zone-btn-extra-padding-horizontal, var(--zone-size-32));
+  gap: var(--zone-btn-extra-margin-icon, var(--zone-size-4));
+  font: var(--zone-btn-extra-font,
+      var(--zone-font-semibold) var(--zone-size-22) / calc(var(--zone-size-22) + var(--zone-size-8)) var(--zone-font-family));
+  --zone-btn-capsule-size: var(--zone-size-32);
+  --zone-btn-capsule-icon-size: var(--zone-size-16);
+  --zone-btn-capsule-gap: var(--zone-size-8);
+  --zone-btn-capsule-shift: var(--zone-size-16);
+  --zone-btn-capsule-end-inset: var(--zone-size-8);
+}
+
+:host([size="large"]) .button {
+  height: var(--zone-btn-large-height, var(--zone-size-48));
+  padding: var(--zone-btn-large-padding-vertical, var(--zone-size-12)) var(--zone-btn-large-padding-horizontal, var(--zone-size-32));
+  gap: var(--zone-btn-large-margin-icon, var(--zone-size-4));
+  font: var(--zone-btn-large-font, var(--zone-font-b1));
+  --zone-btn-capsule-size: var(--zone-size-32);
+  --zone-btn-capsule-icon-size: var(--zone-size-16);
+  --zone-btn-capsule-gap: var(--zone-size-8);
+  --zone-btn-capsule-shift: var(--zone-size-16);
+  --zone-btn-capsule-end-inset: var(--zone-size-8);
+}
+
+:host([size="medium"]) .button {
+  height: var(--zone-btn-medium-height, var(--zone-size-36));
+  padding: var(--zone-btn-medium-padding-vertical, var(--zone-size-8)) var(--zone-btn-medium-padding-horizontal, var(--zone-size-24));
+  gap: var(--zone-btn-medium-margin-icon, var(--zone-size-4));
+  font: var(--zone-btn-medium-font, var(--zone-font-b3));
+  --zone-btn-capsule-size: var(--zone-size-24);
+  --zone-btn-capsule-icon-size: var(--zone-size-12);
+  --zone-btn-capsule-gap: var(--zone-size-4);
+  --zone-btn-capsule-shift: var(--zone-size-8);
+  --zone-btn-capsule-end-inset: var(--zone-size-4);
+}
+
+:host([size="small"]) .button {
+  height: var(--zone-btn-small-height, var(--zone-size-24));
+  padding: var(--zone-btn-small-padding-vertical, var(--zone-size-2)) var(--zone-btn-small-padding-horizontal, var(--zone-size-12));
+  gap: var(--zone-btn-small-margin-icon, var(--zone-size-2));
+  font: var(--zone-btn-small-font, var(--zone-font-b3));
+  --zone-btn-capsule-size: var(--zone-size-12);
+  --zone-btn-capsule-icon-size: var(--zone-size-12);
+  --zone-btn-capsule-gap: var(--zone-size-2);
+  --zone-btn-capsule-shift: var(--zone-size-4);
+  --zone-btn-capsule-end-inset: var(--zone-size-2);
+}
+
+:host([size="small"][variant="text"]) .button {
+  font: var(--zone-btn-small-text-font, var(--zone-font-b3));
+}
+
+// 按钮图标尺寸
+:host slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-icon-size, var(--zone-size-12));
+}
+
+:host([size="extra"]) slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-extra-icon-size, var(--zone-btn-icon-size));
+}
+
+:host([size="small"]) slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-small-icon-size, var(--zone-btn-icon-size));
+}
+
+// 纯图标按钮（仅图标，无文字）—— 当前仅支持一个尺寸
+:host .has-icon:not(.has-content) {
+  padding-left: var(--zone-btn-padding-vertical, var(--zone-size-8));
+  padding-right: var(--zone-btn-padding-vertical, var(--zone-size-8));
+  gap: 0;
+  width: var(--zone-btn-height, var(--zone-size-48));
+}
+
+:host .has-icon:not(.has-content) slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-icon-only-icon-size, var(--zone-size-18));
+}
+
+:host([size="extra"]) .has-icon:not(.has-content) {
+  width: var(--zone-btn-extra-height, var(--zone-size-56));
+  padding-left: var(--zone-btn-extra-padding-vertical, var(--zone-size-16));
+  padding-right: var(--zone-btn-extra-padding-vertical, var(--zone-size-16));
+}
+
+:host([size="extra"]) .has-icon:not(.has-content) slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-icon-only-extra-icon-size, var(--zone-size-24));
+}
+
+:host([size="small"]) .has-icon:not(.has-content) {
+  width: var(--zone-btn-small-height, var(--zone-size-24));
+  padding-left: var(--zone-btn-small-padding-vertical, var(--zone-size-2));
+  padding-right: var(--zone-btn-small-padding-vertical, var(--zone-size-2));
+}
+
+:host([size="small"]) .has-icon:not(.has-content) slot[name="icon"] zone-icon {
+  font-size: var(--zone-btn-icon-only-small-icon-size, var(--zone-size-12));
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+}
+
+// 禁用状态样式
+:host .button[aria-disabled="true"] {
+  // 不透明度30%
+  opacity: var(--zone-btn-disabled-opacity);
+  background-color: var(--zone-btn-disabled-bg, var(--zone-btn-current-bg));
+  border-color: var(--zone-btn-disabled-border, var(--zone-btn-current-border));
+  color: var(--zone-btn-disabled-color, var(--zone-btn-current-color));
+  pointer-events: none;
+  text-decoration: none;
+}
+
+:host([disabled]) .button[aria-disabled="true"] {
+  opacity: var(--zone-btn-disabled-opacity);
+  background-color: var(--zone-btn-disabled-bg, var(--zone-btn-current-bg));
+  border-color: var(--zone-btn-disabled-border, var(--zone-btn-current-border));
+  color: var(--zone-btn-disabled-color, var(--zone-btn-current-color));
+  pointer-events: none;
+  text-decoration: none;
+}
+
+// 文本按钮下划线通用样式（用于 hover/禁用等状态）
+.label-underline-style() {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--zone-btn-underline-height);
+  background-color: var(--zone-btn-text-underline-color, var(--zone-btn-main-color, var(--zone-color-primary)));
+}
+
+.btn-underline-style() {
+  content: "";
+  position: absolute;
+  bottom: var(--zone-btn-underline-bottom, 0);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - var(--zone-btn-padding-horizontal)*2);
+  height: var(--zone-btn-underline-height);
+  background-color: var(--zone-btn-text-underline-color, var(--zone-btn-main-color, var(--zone-color-primary)));
+}
+
+// 状态样式 Mixins（复用片段）
+.style-secondary-hover() {
+  color: var(--zone-color-white);
+  background-color: var(--zone-btn-main-color);
+  border-color: var(--zone-btn-main-color);
+}
+
+.style-secondary-active() {
+  color: var(--zone-btn-text-hover-color, var(--zone-color-white));
+  background-color: var(--zone-btn-bg-hover-color, var(--zone-color-primary-highlight));
+  border-color: var(--zone-btn-border-hover-color, var(--zone-color-primary-highlight));
+}
+
+.style-secondary-default-active() {
+  background-color: var(--zone-btn-active-color, var(--zone-btn-main-color));
+  border-color: var(--zone-btn-active-color, var(--zone-btn-main-color));
+}
+
+.style-text-active() {
+  color: var(--zone-btn-text-interaction-color, var(--zone-btn-main-hover-color, var(--zone-color-primary-highlight)));
+  background-color: transparent;
+}
+
+@keyframes zone-button-shine {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--zone-btn-shine-start-x, -45%), 0, 0);
+  }
+
+  12% {
+    opacity: var(--zone-btn-shine-opacity, 0.82);
+    transform: translate3d(calc(var(--zone-btn-shine-start-x, -45%) + 38%), 0, 0);
+  }
+
+  58% {
+    opacity: var(--zone-btn-shine-opacity, 0.82);
+    transform: translate3d(var(--zone-btn-shine-end-x, 140%), 0, 0);
+  }
+
+  72% {
+    opacity: 0;
+    transform: translate3d(var(--zone-btn-shine-end-x, 140%), 0, 0);
+  }
+
+  72.01%,
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--zone-btn-shine-start-x, -45%), 0, 0);
+  }
+}
+
+.shine-layer() {
+  position: absolute;
+  top: calc((var(--zone-btn-shine-height, 200%) - 100%) / -2);
+  left: 0;
+  width: var(--zone-btn-shine-width, 70%);
+  height: var(--zone-btn-shine-height, 200%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--zone-btn-shine-opacity, 0.82);
+  border-radius: 0;
+  background-image: var(--zone-btn-shine-gradient,
+      linear-gradient(283.37deg,
+        rgba(254, 139, 45, 0) 11.45%,
+        rgba(255, 152, 70, 1) 45.8%,
+        rgba(255, 137, 44, 0) 86.76%)),
+    var(--zone-btn-shine-halo-gradient,
+      linear-gradient(283.37deg,
+        rgba(254, 139, 45, 0) 0%,
+        rgba(255, 152, 70, 0.12) 32%,
+        rgba(255, 152, 70, 0.35) 45.8%,
+        rgba(255, 152, 70, 0.12) 60%,
+        rgba(255, 137, 44, 0) 100%));
+  filter: blur(var(--zone-btn-shine-blur, 0px));
+  will-change: transform, opacity;
+  animation: zone-button-shine var(--zone-btn-shine-duration, 3.8s) linear infinite;
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::before {
+  content: "";
+  .shine-layer();
+}
+
+:host([interaction="shine"]:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button::after {
+  content: "";
+  .shine-layer();
+  animation-delay: calc(var(--zone-btn-shine-duration, 3.8s) / -2);
+}
+
+:host([icon-mode="capsule"]) .button.has-capsule-icon .label {
+  display: flex;
+  transition: transform .3s cubic-bezier(.8, 0, .2, 1);
+}
+
+:host([variant="text"]) .button[aria-disabled="true"] .label::after {
+  display: var(--zone-btn-label-underline-display, block);
+  .label-underline-style();
+}
+
+// 加载状态：隐藏文字、居中展示 Loading 图标
+:host([loading]) {
+  cursor: wait;
+
+  .button {
+    .label {
+      visibility: hidden;
+    }
+
+    slot[name="icon"] zone-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// 主按钮（Primary）加载态：按不同 kind 填充背景与边框颜色
+:host([variant="primary"][loading][kind="default"]) .button {
+  background-color: var(--zone-color-primary);
+  border-color: var(--zone-color-primary);
+}
+
+:host([variant="primary"][loading][kind="neutral"]) .button {
+  background-color: var(--zone-color-neutral);
+  border-color: var(--zone-color-neutral);
+}
+
+:host([variant="primary"][loading][kind="success"]) .button {
+  background-color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+}
+
+:host([variant="primary"][loading][kind="danger"]) .button {
+  background-color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+}
+
+:host([variant="primary"][loading][kind="custom"]) .button {
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}
+
+// 次按钮（Secondary）加载态：与 Primary 一致，按不同 kind 填充背景与边框颜色
+:host([variant="secondary"][loading][kind="default"]) .button {
+  background-color: var(--zone-color-primary);
+  border-color: var(--zone-color-primary);
+}
+
+:host([variant="secondary"][loading][kind="neutral"]) .button {
+  background-color: var(--zone-color-neutral);
+  border-color: var(--zone-color-neutral);
+}
+
+:host([variant="secondary"][loading][kind="success"]) .button {
+  background-color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+}
+
+:host([variant="secondary"][loading][kind="danger"]) .button {
+  background-color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+}
+
+:host([variant="secondary"][loading][kind="custom"]) .button {
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}
+
+:host([variant="secondary"][loading]) .button {
+  border-color: transparent;
+}
+
+// 修复：自定义色主按钮（Primary）加载态在 hover/active 时不发生颜色偏移
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button {
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}
+
+// Ensure custom loading hover/active states don't shift color
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:hover,
+:host([kind="custom"][loading]:not([variant="secondary"]):not([variant="text"])) .button:active {
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}
+
+:host([dropdown]) .open {
+  display: none;
+}
+
+:host([dropdown]) .active .open {
+  display: inline-block;
+}
+
+:host([dropdown]) .active .close {
+  display: none;
+}
+
+:host .active.button {
+  background-color: var(--zone-btn-bg-hover-color, var(--zone-color-primary-highlight));
+  border-color: var(--zone-btn-border-hover-color, var(--zone-color-primary-highlight));
+}
+
+:host([variant="secondary"]) .active.button {
+  .style-secondary-active();
+}
+
+:host([variant="text"]) .active.button {
+  color: var(--zone-btn-main-color, var(--zone-color-primary));
+  background-color: var(--zone-color-neutral-100);
+  border-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :host([icon-mode="capsule"]:hover:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button.has-capsule-icon:not([aria-disabled="true"]) {
+    background-color: var(--zone-btn-current-bg);
+    border-color: var(--zone-btn-current-border);
+  }
+
+  :host([icon-mode="capsule"]:hover:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button.has-capsule-icon .capsule-icon,
+  :host([icon-mode="capsule"]) .active.button.has-capsule-icon .capsule-icon {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) scale(1);
+  }
+
+  :host([icon-mode="capsule"]:hover:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button.has-capsule-icon .capsule-icon__glyph,
+  :host([icon-mode="capsule"]) .active.button.has-capsule-icon .capsule-icon__glyph {
+    transform: translateX(0);
+  }
+
+  :host([icon-mode="capsule"]:hover:not([variant="secondary"]):not([variant="text"]):not([loading]):not([disabled])) .button.has-capsule-icon .label,
+  :host([icon-mode="capsule"]) .active.button.has-capsule-icon .label {
+    transform: translateX(calc(var(--zone-btn-capsule-shift, 0px) * -1));
+  }
+
+  :host(:hover) .button {
+    background-color: var(--zone-btn-bg-hover-color, var(--zone-color-primary-highlight));
+    border-color: var(--zone-btn-border-hover-color, var(--zone-color-primary-highlight));
+  }
+
+  // 悬浮状态：Text 不填充背景，仅绘制下划线
+  :host([variant="text"]:hover) .button {
+    background-color: transparent;
+  }
+
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"]) .label::after {
+    // 使用统一变量渲染下划线颜色
+    --zone-btn-text-underline-color: var(--zone-btn-text-interaction-color, var(--zone-btn-hover-color));
+    display: var(--zone-btn-label-underline-display, block);
+    .label-underline-style();
+  }
+
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"])::after {
+    // 使用统一变量渲染下划线颜色
+    --zone-btn-text-underline-color: var(--zone-btn-text-interaction-color, var(--zone-btn-hover-color));
+    display: var(--zone-btn-underline-display, block);
+    .btn-underline-style();
+  }
+
+  :host([variant="text"]:hover[size="small"]) .button:not([aria-disabled="true"])::after {
+    --zone-btn-underline-bottom: calc(var(--zone-btn-small-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="medium"]) .button:not([aria-disabled="true"])::after {
+    --zone-btn-underline-bottom: calc(var(--zone-btn-medium-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="large"]) .button:not([aria-disabled="true"])::after {
+    --zone-btn-underline-bottom: calc(var(--zone-btn-large-padding-vertical) /2);
+  }
+
+  :host([variant="text"]:hover[size="extra"]) .button:not([aria-disabled="true"])::after {
+    --zone-btn-underline-bottom: calc(var(--zone-btn-extra-padding-vertical) /2);
+  }
+
+  :host([variant="text"][size="small"]:hover) .button:not([aria-disabled="true"]) .label::after {
+    height: var(--zone-btn-underline-height-small);
+  }
+
+  :host([variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    .style-secondary-hover();
+  }
+
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"]) {
+    .style-text-active();
+  }
+
+  // 悬浮态重构
+  // 1）主按钮悬浮：排除 secondary/text 与 loading，使用各自高亮色
+  :host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-btn-hover-color, var(--zone-color-neutral-highlight));
+    border-color: var(--zone-btn-hover-color, var(--zone-color-neutral-highlight));
+  }
+
+  :host([kind="success"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-success-highlight);
+    border-color: var(--zone-color-success-highlight);
+  }
+
+  :host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-danger-highlight);
+    border-color: var(--zone-color-danger-highlight);
+  }
+
+  :host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-custom-highlight);
+    border-color: var(--zone-color-custom-highlight);
+  }
+
+  // iOS 16.2 以下浏览器：不支持 color-mix，高亮回退为主色
+  :host([kind="custom"]:not([variant="secondary"]):not([variant="text"])) .button.ios-below-16_2:hover:not([aria-disabled="true"]) {
+    background-color: var(--zone-btn-local-custom-color);
+    border-color: var(--zone-btn-local-custom-color);
+  }
+
+  :host([kind="neutral"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-neutral-highlight);
+    border-color: var(--zone-color-neutral-highlight);
+    color: var(--zone-color-white);
+  }
+
+  :host([kind="success"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-success-highlight);
+    border-color: var(--zone-color-success-highlight);
+    color: var(--zone-color-white);
+  }
+
+  :host([kind="danger"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-danger-highlight);
+    border-color: var(--zone-color-danger-highlight);
+    color: var(--zone-color-white);
+  }
+
+  :host([kind="custom"][variant="secondary"]:hover) .button:not([aria-disabled="true"]) {
+    background-color: var(--zone-color-custom-highlight);
+    border-color: var(--zone-color-custom-highlight);
+    color: var(--zone-color-white);
+  }
+
+  // 2）文本按钮悬浮：仅文字与下划线使用高亮色变量，背景保持透明
+  :host([variant="text"]:hover) .button:not([aria-disabled="true"]) {
+    color: var(--zone-btn-text-interaction-color, var(--zone-btn-hover-color));
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  :host([icon-mode="capsule"]) .capsule-icon {
+    display: none;
+  }
+}
+
+// 文本按钮禁用态：下划线颜色与对应 kind 主色保持一致
+:host([kind="neutral"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--zone-color-neutral);
+}
+
+:host([kind="success"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--zone-color-success);
+}
+
+:host([kind="danger"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--zone-color-danger);
+}
+
+:host([kind="custom"][variant="text"]) .button[aria-disabled="true"] .label::after {
+  background-color: var(--zone-btn-custom-color, var(--zone-color-primary));
+}
+
+// 点击（Active）状态
+// 1）主按钮按下态
+:host([variant="primary"]:active) .button:not([aria-disabled="true"]) {
+  .style-secondary-default-active();
+}
+
+// 主按钮按下态覆盖：同时支持隐式 primary（未显式声明 variant）
+:host([kind="neutral"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--zone-btn-active-color, var(--zone-color-neutral));
+  border-color: var(--zone-btn-active-color, var(--zone-color-neutral));
+}
+
+:host([kind="success"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+}
+
+:host([kind="danger"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+}
+
+:host([kind="custom"]:not([variant="secondary"]):not([variant="text"]):active) .button:not([aria-disabled="true"]) {
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}
+
+
+// 2）次按钮按下态
+:host([variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  .style-secondary-active();
+}
+
+// 次按钮按下态覆盖：按各自高亮色填充
+:host([kind="neutral"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--zone-color-white);
+  background-color: var(--zone-btn-active-color, var(--zone-color-neutral-highlight));
+  border-color: var(--zone-btn-active-color, var(--zone-color-neutral-highlight));
+}
+
+:host([kind="success"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--zone-color-white);
+  background-color: var(--zone-color-success);
+  border-color: var(--zone-color-success);
+}
+
+:host([kind="danger"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--zone-color-white);
+  background-color: var(--zone-color-danger);
+  border-color: var(--zone-color-danger);
+}
+
+:host([kind="custom"][variant="secondary"]:active) .button:not([aria-disabled="true"]) {
+  color: var(--zone-color-white);
+  background-color: var(--zone-btn-local-custom-color);
+  border-color: var(--zone-btn-local-custom-color);
+}

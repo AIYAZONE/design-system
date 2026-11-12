@@ -1,0 +1,24 @@
+@media screen and (min-width: 1024px) {
+    // 默认，非日站
+    :root:not([lang="ja"]) {
+        --zone-ul-list-padding: var(--zone-size-20);
+        --zone-ol-list-padding: var(--zone-size-24);
+    }
+}
+
+@media screen and (max-width: 1023.98px) {
+    // 默认，非日站
+    :root:not([lang="ja"]) {
+        --zone-ul-list-padding: var(--zone-size-36);
+        --zone-ol-list-padding: var(--zone-size-40);
+    }
+    
+    // ios真机 浏览器特定适配
+    @supports (-webkit-touch-callout: none) {
+        :root:not([lang="ja"]) {
+            --zone-ul-list-padding: var(--zone-size-40);
+            --zone-ol-list-padding: var(--zone-size-50);
+        }
+    }
+
+}

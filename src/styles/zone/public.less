@@ -1,0 +1,304 @@
+/* 字号表 */
+
+// 样式Mixin
+// 标题 1 ，使用场景：【特大标题】 用于营销Banner标题
+.zone-h1-style() {
+  font: var(--zone-font-h1);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h1-weight));
+  letter-spacing: var(--zone-h1-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+// 标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题
+.zone-h2-style() {
+  font: var(--zone-font-h2);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h2-weight));
+  letter-spacing: var(--zone-h2-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+// 标题 3，使用场景：【标题】用于活动页标题
+.zone-h3-style() {
+  font: var(--zone-font-h3);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h3-weight));
+  letter-spacing: var(--zone-h3-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+// 标题 4，使用场景：待定
+.zone-h4-style() {
+  font: var(--zone-font-h4);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h4-weight));
+  letter-spacing: var(--zone-h4-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+// 标题 5，使用场景：待定
+.zone-h5-style() {
+  font: var(--zone-font-h5);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h5-weight));
+  letter-spacing: var(--zone-h5-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+// 标题 6，使用场景：【标签级标题】用于首屏banner
+.zone-h6-style() {
+  font: var(--zone-font-h6);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-h6-weight));
+  letter-spacing: var(--zone-h6-letter-spacing, 0);
+  // 一级文本色
+  color: var(--zone-rte-text-color, var(--zone-h6-color, var(--zone-color-text-l1)));
+}
+
+// 正文文本 1，使用场景：【正文】
+.zone-b1-style() {
+  font: var(--zone-font-b1);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b1-weight));
+  letter-spacing: var(--zone-b1-letter-spacing, 0);
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+.zone-b1-regular-style() {
+  font: var(--zone-font-b1-regular, var(--zone-font-b1));
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b1-regular-weight));
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+// 正文文本 2，使用场景：【小正文】 用于拥挤情况
+.zone-b2-style() {
+  font: var(--zone-font-b2);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b2-weight));
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+.zone-b2-regular-style() {
+  font: var(--zone-font-b2-regular, var(--zone-font-b2));
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b2-regular-weight));
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+// 正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮；
+.zone-b3-style() {
+  font: var(--zone-font-b3);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b3-weight));
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+.zone-b3-regular-style() {
+  font: var(--zone-font-b3-regular, var(--zone-font-b3));
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-b3-regular-weight));
+  // 二级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l2));
+}
+
+// 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
+.zone-c1-style() {
+  font: var(--zone-font-c1);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-c1-weight));
+  // 三级文本色
+  color: var(--zone-rte-text-color, var(--zone-color-text-l3));
+}
+
+.zone-display-1-style() {
+  font: var(--zone-font-display-1);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-display-1-weight));
+  letter-spacing: var(--zone-display-1-letter-spacing, 0);
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+.zone-display-2-style() {
+  font: var(--zone-font-display-2);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-display-2-weight));
+  letter-spacing: var(--zone-display-2-letter-spacing, 0);
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+.zone-display-3-style() {
+  font: var(--zone-font-display-3);
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-weight: var(--zone-font-weight, var(--zone-font-display-3-weight));
+  letter-spacing: var(--zone-display-3-letter-spacing, 0);
+  color: var(--zone-rte-text-color, var(--zone-color-text-l1));
+}
+
+.zone-custom-font {
+  font-family: var(--zone-custom-font-family, var(--zone-font-family));
+  font-size: var(--zone-custom-font-size, inherit);
+  line-height: var(--zone-custom-line-height, inherit);
+  font-weight: var(--zone-custom-font-weight, inherit);
+  letter-spacing: var(--zone-custom-letter-spacing, 0);
+  color: var(--zone-rte-text-color, var(--zone-custom-color, var(--zone-color-text-l1)));
+}
+
+
+// 标题 1 ，使用场景：【特大标题】 用于营销Banner标题
+.zone-h1 {
+  .zone-h1-style();
+}
+
+// 标题 2 ，使用场景：【大标题】用于一般Banner标题、产品页标题
+.zone-h2 {
+  .zone-h2-style();
+}
+
+// 标题 3，使用场景：【标题】用于活动页标题
+.zone-h3 {
+  .zone-h3-style();
+}
+
+// 标题 4，使用场景：待定
+.zone-h4 {
+  .zone-h4-style();
+}
+
+// 标题 5，使用场景：待定
+.zone-h5 {
+  .zone-h5-style();
+}
+
+// 标题 6，使用场景：【标签级标题】用于首屏banner
+.zone-h6 {
+  .zone-h6-style();
+}
+
+// 正文文本 1，使用场景：【正文】
+.zone-b1 {
+  .zone-b1-style();
+}
+
+.zone-b1.font-regular,
+.zone-b1.font-normal {
+  .zone-b1-regular-style();
+}
+
+// 正文文本 2，使用场景：【小正文】 用于拥挤情况
+.zone-b2 {
+  .zone-b2-style();
+}
+
+.zone-b2.font-regular,
+.zone-b2.font-normal {
+  .zone-b2-regular-style();
+}
+
+// 正文文本 3，使用场景：【特小正文】 用于极拥挤情况；一二级导航；小按钮；
+.zone-b3 {
+  .zone-b3-style();
+}
+
+.zone-b3.font-regular,
+.zone-b3.font-normal {
+  .zone-b3-regular-style();
+}
+
+// 说明文字，使用场景：【注释正文】标记、注释、页底活动说明
+.zone-c1 {
+  .zone-c1-style();
+}
+
+.zone-display-1 {
+  .zone-display-1-style();
+}
+
+.zone-display-2 {
+  .zone-display-2-style();
+}
+
+.zone-display-3 {
+  .zone-display-3-style();
+}
+
+// PC端样式，使用tailwindcss的响应式类名
+@media screen and (min-width:1024px) {
+  .lg\:zone-h1 {
+    .zone-h1-style();
+  }
+
+  .lg\:zone-h2 {
+    .zone-h2-style();
+  }
+
+  .lg\:zone-h3 {
+    .zone-h3-style();
+  }
+
+  .lg\:zone-h4 {
+    .zone-h4-style();
+  }
+
+  .lg\:zone-h5 {
+    .zone-h5-style();
+  }
+
+  .lg\:zone-h6 {
+    .zone-h6-style();
+  }
+
+  .lg\:zone-b1 {
+    .zone-b1-style();
+  }
+
+  .lg\:zone-b1.font-regular,
+  .lg\:zone-b1.font-normal {
+    .zone-b1-regular-style();
+  }
+
+  .lg\:zone-b2 {
+    .zone-b2-style();
+  }
+
+  .lg\:zone-b2.font-regular,
+  .lg\:zone-b2.font-normal {
+    .zone-b2-regular-style();
+  }
+
+  .lg\:zone-b3 {
+    .zone-b3-style();
+  }
+
+  .lg\:zone-b3.font-regular,
+  .lg\:zone-b3.font-normal {
+    .zone-b3-regular-style();
+  }
+
+  .lg\:zone-c1 {
+    .zone-c1-style();
+  }
+
+  .lg\:zone-display-1 {
+    .zone-display-1-style();
+  }
+
+  .lg\:zone-display-2 {
+    .zone-display-2-style();
+  }
+
+  .lg\:zone-display-3 {
+    .zone-display-3-style();
+  }
+}

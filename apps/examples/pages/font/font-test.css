@@ -1,0 +1,277 @@
+/* Font Test Pages Styles */
+
+/* Common Styles */
+.font-test {
+  line-height: 1.6;
+  color: var(--zone-color-text-primary, #333);
+  /* Ensure theme font is applied */
+  font-family: var(--zone-font-family, sans-serif);
+}
+
+/* Reset layout to override public.less aggressive flex rules */
+.font-test p,
+.font-test section {
+  display: block;
+  width: 100%;
+  gap: 0;
+}
+
+/* Section Spacing */
+.font-test section {
+  padding: var(--zone-size-24) 0;
+  border-bottom: 1px solid var(--zone-color-border-light, #e5e5e5);
+}
+
+.font-test section:last-child {
+  border-bottom: none;
+}
+
+/* Typography Section */
+.typography-section h1,
+.typography-section h2,
+.typography-section h3,
+.typography-section h4,
+.typography-section h5,
+.typography-section h6 {
+  margin: var(--zone-size-16) 0;
+}
+
+/* Content Section */
+.body-text {
+  max-width: 800px;
+}
+
+
+/* Font Weight Section */
+.font-weight-section p {
+  margin: var(--zone-size-12) 0;
+  font-size: 1.1rem;
+}
+
+/* Special Characters Section */
+.special-chars-section p {
+  margin: var(--zone-size-12) 0;
+  background: var(--zone-color-bg-secondary, #f8f9fa);
+  padding: var(--zone-size-8) var(--zone-size-16);
+  border-radius: var(--zone-rounded-4, 4px);
+  border-left: 3px solid var(--zone-color-primary, #f27a1a);
+  font-family: inherit;
+}
+
+/* Components Section */
+.components-section > div {
+  margin-bottom: var(--zone-size-32);
+  padding: var(--zone-size-24);
+  background: var(--zone-color-bg-secondary, #f8f9fa);
+  border-radius: var(--zone-rounded-8, 8px);
+  border: 1px solid var(--zone-color-border-light, #e5e5e5);
+}
+
+/* Button Group */
+.button-group zone-button {
+  margin: 0 var(--zone-size-8) var(--zone-size-8) 0;
+  display: inline-block;
+}
+
+/* Badge Group */
+.badge-group zone-badge {
+  margin: 0 var(--zone-size-8) var(--zone-size-8) 0;
+  display: inline-flex;
+}
+
+/* Toast Group */
+.toast-group zone-toast {
+  display: block;
+  margin: var(--zone-size-8) 0;
+}
+
+/* Tooltip Group */
+.tooltip-group zone-tooltip {
+  margin: 0 var(--zone-size-8) var(--zone-size-8) 0;
+  display: inline-block;
+}
+
+/* Spinner Group */
+.spinner-group {
+  display: flex;
+  align-items: center;
+  gap: var(--zone-size-16);
+}
+
+/* Product Cards Section */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--zone-size-24);
+  margin-top: var(--zone-size-24);
+}
+
+.product-card {
+  background: white;
+  border: 1px solid var(--zone-color-border-light, #e5e5e5);
+  border-radius: var(--zone-rounded-8, 8px);
+  padding: var(--zone-size-24);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-card h4 {
+  margin: 0 0 var(--zone-size-16) 0;
+  color: var(--zone-color-text-primary, #333);
+  font-size: 1.3rem;
+}
+
+.product-card .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--zone-color-primary, #f27a1a);
+  margin: var(--zone-size-8) 0;
+}
+
+.product-card .capacity {
+  font-weight: 600;
+  color: var(--zone-color-text-secondary, #666);
+  margin: var(--zone-size-8) 0;
+}
+
+.product-card .description {
+  color: var(--zone-color-text-secondary, #666);
+  margin: var(--zone-size-16) 0;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--zone-size-8);
+  margin-top: auto; /* Push to bottom */
+}
+
+/* Text Styles Section */
+.text-samples p {
+  margin: var(--zone-size-12) 0;
+}
+
+blockquote {
+  border-left: 4px solid var(--zone-color-primary, #f27a1a);
+  padding: var(--zone-size-16) var(--zone-size-24);
+  margin: var(--zone-size-24) 0;
+  background: var(--zone-color-bg-secondary, #f8f9fa);
+  font-style: italic;
+  border-radius: 0 var(--zone-rounded-4, 4px) var(--zone-rounded-4, 4px) 0;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--zone-size-8);
+  font-size: 0.9rem;
+  color: var(--zone-color-text-secondary, #666);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Link Styles */
+.link-section a {
+  color: var(--zone-color-primary, #f27a1a);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.link-section a:hover {
+  border-bottom-color: var(--zone-color-primary, #f27a1a);
+}
+
+.link-variations {
+  display: flex;
+  gap: var(--zone-size-16);
+  margin-top: var(--zone-size-16);
+}
+
+.link-variations a {
+  padding: var(--zone-size-8) var(--zone-size-16);
+  border-radius: var(--zone-rounded-4, 4px);
+  border: 1px solid var(--zone-color-border-light, #e5e5e5);
+  transition: all 0.2s ease;
+}
+
+.link-variations a:hover {
+  background: var(--zone-color-bg-secondary, #f8f9fa);
+  border-color: var(--zone-color-primary, #f27a1a);
+}
+
+/* Form Section */
+.test-form {
+  max-width: 600px;
+  background: white;
+  padding: var(--zone-size-32);
+  border-radius: var(--zone-rounded-8, 8px);
+  border: 1px solid var(--zone-color-border-light, #e5e5e5);
+}
+
+.test-form label {
+  display: block;
+  margin: var(--zone-size-16) 0 var(--zone-size-8) 0;
+  font-weight: 600;
+  color: var(--zone-color-text-primary, #333);
+}
+
+.test-form input,
+.test-form select,
+.test-form textarea {
+  width: 100%;
+  padding: var(--zone-size-12);
+  border: 1px solid var(--zone-color-border-light, #e5e5e5);
+  border-radius: var(--zone-rounded-4, 4px);
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.test-form input:focus,
+.test-form select:focus,
+.test-form textarea:focus {
+  outline: none;
+  border-color: var(--zone-color-primary, #f27a1a);
+  box-shadow: 0 0 0 2px rgba(242, 122, 26, 0.1);
+}
+
+.test-form textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--zone-size-16);
+  margin-top: var(--zone-size-24);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .font-test {
+    padding: var(--zone-size-16);
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .link-variations {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

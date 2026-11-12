@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZONE 组件验证</title>
+  <link rel="icon" href="./favicon.svg" />
+  <link rel="stylesheet" href="./index.css" />
+  <script>
+    (function() {
+      var params = new URLSearchParams(location.search);
+      var theme = params.get('theme');
+      if (theme === 'v2') {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './index-v2.css';
+        document.head.appendChild(link);
+      }
+    })();
+  </script>
+  <script type="module" src="./index.esm.js"></script>
+  <style>
+    :root { --gap: 16px; }
+    body { margin: 0; font-family: var(--zone-font-family, Inter, system-ui); background: var(--zone-color-neutral-50, #f7f7f7); }
+    .container { max-width: 1100px; margin: 0 auto; padding: var(--gap); }
+    .header { display:flex; align-items:center; gap: var(--gap); padding: var(--gap) 0; }
+    .header .logo img { width: 40px; height: 40px; }
+    .subtitle { color: var(--zone-color-neutral-500); }
+    .card { background: #fff; border: 1px solid var(--zone-color-neutral-200); border-radius: var(--zone-radius-16, 16px); padding: var(--gap); }
+    .sticky-card { position: sticky; top: var(--zone-size-8, 8px); z-index: 10; box-shadow: var(--zone-shadow-sm, 0 1px 2px rgba(0,0,0,0.06)); }
+    .sticky-card.is-stuck { box-shadow: var(--zone-shadow-md, 0 2px 8px rgba(0,0,0,0.12)); }
+    h1, h2 { margin: var(--gap) 0; }
+    main { display: block; }
+    main p,main section{
+      display: flex;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="#" class="logo"><img src="./favicon.svg" alt="AIYAZONE" /></a>
+      <div class="content">
+        <h1>Components 组件展示</h1>
+        <p class="subtitle">验证构建产物是否能正常渲染组件</p>
+      </div>
+    </header>
+    <main>
+      <section id="theme-sticky-card" class="card sticky-card" style="margin-bottom: var(--zone-size-16);">
+        <h2>主题版本验证</h2>
+        <div style="display:flex;gap:var(--zone-size-8);flex-wrap:wrap;align-items:center;">
+          <zone-button id="file-v1">文件驱动：v1</zone-button>
+          <zone-button id="file-v2">文件驱动：v2</zone-button>
+          <span id="theme-state" style="margin-left:var(--zone-size-8);">当前：v1（文件驱动）</span>
+        </div>
+      </section>
+
+      <h2>组件</h2>
+      <p>
+        <zone-checkbox label="Checkbox"></zone-checkbox>
+        <zone-checkbox checked label="Checkbox"></zone-checkbox>
+      </p>
+      <p>
+        <zone-badge style="--zone-badge-bg-color:rgb(254, 242, 232);--zone-badge-color:rgb(242, 122, 26);">In
+          Progress</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-success-contrast);--zone-badge-color:var(--zone-color-success);">Approved</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-warning-contrast);--zone-badge-color:var(--zone-color-warning);">Warning</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-danger-contrast);--zone-badge-color:var(--zone-color-danger);">Denied</zone-badge>
+        <zone-badge
+          style="--zone-badge-bg-color:var(--zone-color-neutral-100);--zone-badge-color:var(--zone-color-neutral-400);">Neutral</zone-badge>
+        <zone-badge style="--zone-badge-bg-color:#eef4ff;--zone-badge-color:#5794ff;">Offer</zone-badge>
+        <zone-badge style="--zone-badge-bg-color:#f4edff;--zone-badge-color:#8c4eff;">Winner</zone-badge>
+      </p>
+
+      <p>
+        <zone-icon name="close"></zone-icon>
+      </p>
+
+      <p>
+        <zone-button>Primary Button</zone-button>
+        <zone-button variant="secondary">Secondary Button</zone-button>
+        <zone-button variant="tertiary">Tertiary Button</zone-button>
+      </p>
+
+      <p>
+        <zone-button size="large">Button</zone-button>
+        <zone-button size="medium">Button</zone-button>
+      </p>
+
+      <zone-button size="large" icon="alert-fill">Primary Button</zone-button>
+      <zone-button size="medium" icon="alert-line">Primary Button</zone-button>
+      <zone-button size="small" icon="facebook">Primary Button</zone-button>
+
+      <p>
+        <zone-spinner></zone-spinner>
+      </p>
+
+      <p>
+        <zone-button variant="secondary" id="open-dialog-button">打开弹窗</zone-button>
+      </p>
+      <zone-dialog id="dl-basic" caption="Use location service?">
+        <div>
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+          Let us help determine location. This means sending anonymous location data to us.
+        </div>
+        <zone-button variant="primary" size="large">Agree</zone-button>
+      </zone-dialog>
+
+      <h2>Toast</h2>
+      <section>
+        <zone-toast icon>Info Variant</zone-toast>
+        <zone-toast variant="warning" icon>Warning Variant</zone-toast>
+        <zone-toast variant="success" icon>Success Variant</zone-toast>
+        <zone-toast variant="success" countdownTime="5" icon>Success Variant</zone-toast>
+        <zone-toast variant="danger" icon>Danger Variant</zone-toast>
+        <zone-toast variant="danger">Danger Text
+          <zone-button slot="action">Action Link</zone-button>
+          <zone-button slot="action-secondary">Action Link</zone-button>
+        </zone-toast>
+      </section>
+
+      <h2>Tooltip</h2>
+      <section>
+        <zone-tooltip placement="top-start">
+          <zone-button slot="tooltip-trigger">top-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="top">
+          <zone-button slot="tooltip-trigger">top</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+        <zone-tooltip placement="top-end">
+          <zone-button slot="tooltip-trigger">top-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom-start">
+          <zone-button slot="tooltip-trigger">bottom-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom">
+          <zone-button slot="tooltip-trigger">bottom</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="bottom-end">
+          <zone-button slot="tooltip-trigger">bottom-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left-start">
+          <zone-button slot="tooltip-trigger">left-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left">
+          <zone-button slot="tooltip-trigger">left</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="left-end">
+          <zone-button slot="tooltip-trigger">left-end</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right-start">
+          <zone-button slot="tooltip-trigger">right-start</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right">
+          <zone-button slot="tooltip-trigger">right</zone-button>
+          You can use this section to cancel your order.
+        </zone-tooltip>
+
+
+        <zone-tooltip placement="right-end">
+          <zone-button slot="tooltip-trigger">right-end</zone-button>
+          <h5 style="color: var(--zone-color-warning);">You can use this section to cancel your order.</h5>
+        </zone-tooltip>
+      </section>
+
+      <h2>Tooltip + Popover</h2>
+      <section>
+
+        <zone-button id="button-13">top-start</zone-button>
+
+        <zone-popover target="button-13" id="popover-13" placement="top-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-14">top</zone-button>
+
+        <zone-popover target="button-14" id="popover-14" placement="top" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-15">top-end</zone-button>
+
+        <zone-popover target="button-15" id="popover-15" placement="top-end" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-16">bottom-start</zone-button>
+
+        <zone-popover target="button-16" id="popover-16" placement="bottom-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-17">bottom</zone-button>
+
+        <zone-popover target="button-17" id="popover-17" placement="bottom" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-18">bottom-end</zone-button>
+
+        <zone-popover target="button-18" id="popover-18" placement="bottom-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-19">left-start</zone-button>
+
+        <zone-popover target="button-19" id="popover-19" placement="left-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-20">left</zone-button>
+
+        <zone-popover target="button-20" id="popover-20" placement="left" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-21">left-end</zone-button>
+
+        <zone-popover target="button-21" id="popover-21" placement="left-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-22">right-start</zone-button>
+
+        <zone-popover target="button-22" id="popover-22" placement="right-start"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+
+        <zone-button id="button-23">right</zone-button>
+
+        <zone-popover target="button-23" id="popover-23" placement="right" style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+
+        <zone-button id="button-24">right-end</zone-button>
+
+        <zone-popover target="button-24" id="popover-24" placement="right-end"
+          style="--zone-popover-arrow-display: block;">
+          Popover Content
+        </zone-popover>
+      </section>
+
+      <script>
+        document.getElementById('open-dialog-button').addEventListener('click', function () {
+          var dialog = document.querySelector('#dl-basic');
+          dialog.setAttribute('open', '');
+        });
+        var stateEl = document.getElementById('theme-state');
+        var theme = new URLSearchParams(location.search).get('theme');
+        stateEl.textContent = "当前：" + (theme === 'v2' ? 'v2' : 'v1') + '（文件驱动）';
+        document.getElementById('file-v1').addEventListener('click', function () {
+          var url = new URL(location.href);
+          url.searchParams.set('theme', 'v1');
+          location.href = url.toString();
+        });
+        document.getElementById('file-v2').addEventListener('click', function () {
+          var url = new URL(location.href);
+          url.searchParams.set('theme', 'v2');
+          location.href = url.toString();
+        });
+      </script>
+      <script>
+        var stickyEl = document.getElementById('theme-sticky-card');
+        var topOffsetVar = getComputedStyle(document.documentElement).getPropertyValue('--zone-size-8').trim();
+        var topOffset = parseFloat(topOffsetVar) || 0;
+        var threshold = stickyEl.offsetTop - topOffset;
+        var onScroll = function () {
+          if (window.scrollY >= threshold) stickyEl.classList.add('is-stuck');
+          else stickyEl.classList.remove('is-stuck');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      </script>
+    </main>
+  </div>
+</body>
+</html>

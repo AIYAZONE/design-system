@@ -1,0 +1,203 @@
+// ZONE RTE 富文本样式
+.zone-rte {
+  /* 兼容旧浏览器 */
+  word-wrap: break-word;
+  /* 标准写法 */
+  overflow-wrap: break-word;
+  /* 中文不换行，英文按空格换行 */
+  word-break: keep-all;
+  line-height: normal;
+
+  ul li {
+    list-style: disc;
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+
+  h1 {
+    .zone-h1-style();
+  }
+
+  h2 {
+    .zone-h2-style();
+  }
+
+  h3 {
+    .zone-h3-style();
+  }
+
+  h4 {
+    .zone-h4-style();
+  }
+
+  h5 {
+    .zone-h5-style();
+  }
+
+  h6 {
+    .zone-h6-style();
+  }
+
+  p {
+    margin-bottom: var(--zone-margin-bottom, var(--zone-size-16));
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong,
+  b {
+    font-weight: 600;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  em,
+  i {
+    font-style: normal;
+  }
+
+  *:last-child {
+    line-height: normal;
+  }
+
+  @media screen and (min-width: 1024px) {
+
+    ul {
+      padding-inline-start: var(--zone-ul-list-padding, var(--zone-rte-list-padding));
+    }
+
+    ol {
+      padding-inline-start: var(--zone-ol-list-padding, var(--zone-rte-list-padding));
+    }
+  }
+
+  @media screen and (max-width: 1023.98px) {
+
+    ul {
+      padding-inline-start: var(--zone-ul-list-padding, var(--zone-size-36));
+    }
+
+    ol {
+      padding-inline-start: var(--zone-ol-list-padding, var(--zone-size-36));
+    }
+
+    // ios真机 浏览器特定适配
+    @supports (-webkit-touch-callout: none) {
+      ul {
+        padding-inline-start: var(--zone-ul-list-padding, var(--zone-size-40));
+      }
+
+      ol {
+        padding-inline-start: var(--zone-ol-list-padding, var(--zone-size-56));
+      }
+    }
+  }
+
+}
+
+.zone-rte {
+  .zone-b1-style();
+
+  p {
+    .zone-b1-style();
+  }
+
+  // 可选，Regular标准字重
+  &.font-regular,
+  &.font-normal {
+    .zone-b1-regular-style();
+
+    p {
+      .zone-b1-regular-style();
+    }
+  }
+
+  &.zone-rte-b1 {
+    .zone-b1-style();
+
+    p {
+      .zone-b1-style();
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .zone-b1-regular-style();
+
+      p {
+        .zone-b1-regular-style();
+      }
+    }
+  }
+
+  &.zone-rte-b2 {
+    .zone-b2-style();
+
+    p {
+      .zone-b2-style();
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .zone-b2-regular-style();
+
+      p {
+        .zone-b2-regular-style();
+      }
+    }
+  }
+
+  &.zone-rte-b3 {
+    .zone-b3-style();
+
+    p {
+      .zone-b3-style();
+    }
+
+    // 可选，Regular标准字重
+    &.font-regular,
+    &.font-normal {
+      .zone-b3-regular-style();
+
+      p {
+        .zone-b3-regular-style();
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .zone-rte {
+
+    &.lg\:zone-rte-b1 {
+      .zone-b1-style();
+
+      p {
+        .zone-b1-style();
+      }
+    }
+
+    &.lg\:zone-rte-b2 {
+      .zone-b2-style();
+
+      p {
+        .zone-b2-style();
+      }
+    }
+
+    &.lg\:zone-rte-b3 {
+      .zone-b3-style();
+
+      p {
+        .zone-b3-style();
+      }
+    }
+  }
+}

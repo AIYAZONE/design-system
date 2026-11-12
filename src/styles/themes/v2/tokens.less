@@ -1,0 +1,201 @@
+@import '../../zone/tokens.base.less';
+
+// 基础变量
+@zone-h-line-height: 1.1;
+@zone-b-line-height: 1.2;
+@zone-c-line-height: 1.2;
+
+@zone-color-success: #5E8A4E;
+@zone-color-danger: #F52317;
+@zone-color-neutral: #242F20;
+@zone-color-primary-contrast: mix(#FFFFFF, @zone-color-primary, 90%);
+@zone-color-success-contrast: mix(#FFFFFF, @zone-color-success, 90%);
+@zone-color-danger-contrast: mix(#FFFFFF, @zone-color-danger, 90%);
+@zone-color-neutral-contrast: #E8E8E5;
+
+// 颜色系统
+@{rootSel} {
+  // 语义色
+  .generate-color-common(primary, @zone-color-primary, @zone-color-primary-contrast);
+  .generate-color-common(success, @zone-color-success, @zone-color-success-contrast);
+  .generate-color-common(danger, @zone-color-danger, @zone-color-danger-contrast);
+  .generate-color-common(warning, @zone-color-warning, @zone-color-warning-contrast);
+  .generate-color-common(info, @zone-color-info, @zone-color-info-contrast);
+  .generate-color-common(neutral, @zone-color-neutral, @zone-color-neutral-contrast);
+
+  // 文本色
+  --zone-color-text-l1: #242F20;
+  --zone-color-text-l2: #3A4436;
+  --zone-color-text-l3: #595959;
+  --zone-color-text-invalid: #B2B2B2;
+  --zone-color-text-highlight: var(--zone-color-primary);
+  --zone-color-text-link: #818181;
+
+  // 图标色
+  --zone-color-icon-normal: #242F20;
+  --zone-color-icon-orange: var(--zone-color-primary);
+
+  // 背景色
+  --zone-color-white: @zone-color-white;
+  --zone-color-grey: #F5F5F3;
+  --zone-color-card-white: @zone-color-white;
+  --zone-color-card-grey: #F5F5F3;
+  --zone-color-card-list: #E8E8E5;
+
+  --zone-color-bg-500: #94948F;
+  --zone-color-bg-400: #C3C3BE;
+  --zone-color-bg-300: #E8E8E5;
+  --zone-color-bg-200: #F5F5F3;
+
+  // 边框色
+  --zone-color-line: #A9AAAC;
+  --zone-color-hr: #C6C7C8;
+
+  // 遮罩色
+  --zone-color-overlay-30: rgba(0, 0, 0, 0.3);
+  --zone-color-overlay-50: rgba(0, 0, 0, 0.5);
+  --zone-color-overlay-70: rgba(0, 0, 0, 0.7);
+
+  // 主色梯度
+  --zone-color-primary-500: var(--zone-color-primary);
+  --zone-color-primary-400: mix(#FFFFFF, @zone-color-primary, 15%);
+  --zone-color-primary-300: mix(#FFFFFF, @zone-color-primary, 35%);
+  --zone-color-primary-200: mix(#FFFFFF, @zone-color-primary, 55%);
+  --zone-color-primary-100: mix(#FFFFFF, @zone-color-primary, 75%);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --zone-color-primary-400: color-mix(in srgb, #FFFFFF 15%, var(--zone-color-primary) 85%);
+    --zone-color-primary-300: color-mix(in srgb, #FFFFFF 35%, var(--zone-color-primary) 65%);
+    --zone-color-primary-200: color-mix(in srgb, #FFFFFF 55%, var(--zone-color-primary) 45%);
+    --zone-color-primary-100: color-mix(in srgb, #FFFFFF 75%, var(--zone-color-primary) 25%);
+  }
+
+  // 中性色梯度
+  --zone-color-neutral-500: #273142;
+  --zone-color-neutral-400: #6E7787;
+  --zone-color-neutral-300: #95A1B5;
+  --zone-color-neutral-200: #AFBBCA;
+  --zone-color-neutral-100: #F1F2F7;
+
+  // 框架色
+  --zone-color-frame-700: #818181;
+  --zone-color-frame-500: #A9AAAC;
+  --zone-color-frame-300: #C6C7C8;
+  --zone-color-frame-100: #E2E3E3;
+
+  --zone-color-primary-hover: #CA4000;
+  --zone-color-primary-active: #983000;
+  --zone-color-neutral-hover: #1D261A;
+  --zone-color-neutral-active: #161C13;
+  --zone-color-disabled-bg: #0000004D;
+  --zone-color-disabled-border: #0000004D;
+  --zone-color-disabled-text: #0000004D;
+
+  // 层级
+  --zone-index-deep: -1;
+  --zone-index-base: 1;
+  --zone-index-popover: 100;
+  --zone-index-tooltip: 200;
+  --zone-index-sticky: 300;
+  --zone-index-overlay: 400;
+  --zone-index-dialog: 500;
+  --zone-index-notification: 600;
+
+  // 字重
+  --zone-font-regular: @zone-font-regular;
+  --zone-font-medium: @zone-font-medium;
+  --zone-font-semibold: @zone-font-semibold;
+  --zone-font-bold: @zone-font-bold;
+  --zone-font-extrabold: @zone-font-extrabold;
+
+  // 其他
+  --zone-text-x-direction: 1;
+}
+
+// 字体生成 mixin（使用列表 + extract）
+.generate-font-vars(@suffix, @h-sizes, @b-sizes, @c-size) {
+
+  // 标题
+  .loop(@i: 1) when (@i <=6) {
+    @size: extract(@h-sizes, @i);
+    --zone-font-h@{i}: @zone-font-semibold var(--zone-font-size-@{size}) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-h@{i}-weight: @zone-font-semibold;
+    .loop(@i + 1);
+  }
+
+  .loop();
+
+  // 正文
+  @b1: extract(@b-sizes, 1);
+  @b2: extract(@b-sizes, 2);
+  @b3: extract(@b-sizes, 3);
+  --zone-font-b1: @zone-font-regular var(--zone-font-size-@{b1}) / @zone-b-line-height var(--zone-font-family);
+  --zone-font-b1-weight: @zone-font-regular;
+
+  --zone-font-b2: @zone-font-regular var(--zone-font-size-@{b2}) / @zone-b-line-height var(--zone-font-family);
+  --zone-font-b2-weight: @zone-font-regular;  
+
+  --zone-font-b3: @zone-font-regular var(--zone-font-size-@{b3}) / @zone-b-line-height var(--zone-font-family);
+  --zone-font-b3-weight: @zone-font-regular;
+
+  // 辅助
+  --zone-font-c1: @zone-font-regular var(--zone-font-size-@{c-size}) / @zone-c-line-height var(--zone-font-family);
+  --zone-font-c1-weight: @zone-font-regular;
+}
+
+// 桌面端
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);
+  @h-sizes-desktop: 72 48 32 28 24 20;
+  @b-sizes-desktop: 20 16 14;
+
+  @{rootSel} {
+    .generate-sizes(@rem);
+    .generate-font-sizes(@rem);
+    --zone-font-size-84: max(12px, 84 * @rem);
+    .generate-border-radius(@rem);
+    .generate-font-vars(desktop, @h-sizes-desktop, @b-sizes-desktop, 12);
+
+    --zone-font-h1: @zone-font-extrabold var(--zone-font-size-72) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-h1-weight: @zone-font-extrabold;
+
+    --zone-font-display-1: @zone-font-extrabold var(--zone-font-size-84) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-display-1-weight: @zone-font-extrabold;
+
+    --zone-font-display-2: var(--zone-font-h1);
+    --zone-font-display-2-weight: @zone-font-extrabold;
+    
+    --zone-font-display-3: @zone-font-extrabold var(--zone-font-size-24) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-display-3-weight: @zone-font-extrabold;
+  }
+}
+
+// 移动端（<1024px） 750px设计稿基准
+@media screen and (max-width: 1023.98px) {
+  @rem: (1rem / 32);
+  @h-sizes-mobile: 72 56 48 40 32 28;
+  @b-sizes-mobile: 32 28 24;
+
+  @{rootSel} {
+    .generate-sizes(@rem);
+    .generate-font-sizes(@rem);
+    .generate-border-radius(@rem);
+    .generate-font-vars(mobile, @h-sizes-mobile, @b-sizes-mobile, 24);
+
+    --zone-font-h1: @zone-font-extrabold var(--zone-font-size-72) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-h1-weight: @zone-font-extrabold;
+
+    --zone-font-display-1: @zone-font-extrabold var(--zone-font-size-96) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-display-1-weight: @zone-font-extrabold;
+
+    --zone-font-display-2: var(--zone-font-h1);
+    --zone-font-display-2-weight: @zone-font-extrabold;
+    
+    --zone-font-display-3: @zone-font-extrabold var(--zone-font-size-48) / @zone-h-line-height var(--zone-font-family);
+    --zone-font-display-3-weight: @zone-font-extrabold; 
+  }
+}
+
+@import "./tokens/button.less";
+@import "./tokens/badge.less";
+@import "./tokens/dialog.less";

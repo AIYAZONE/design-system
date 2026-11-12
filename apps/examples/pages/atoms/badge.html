@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badge - 徽章</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="module" src="/main.ts"></script>
+  <style>
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0 24px;
+    }
+
+    .demo-card {
+      width: min(260px, 100%);
+      padding: 16px;
+      border-radius: 4px;
+      background: #f5f5f5;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    @media (max-width: 1023.98px) {
+      .demo-row {
+        gap: 8px;
+        margin: 8px 0 16px;
+        padding: 0;
+      }
+
+      .demo-card {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .demo-card > zone-badge {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Badge 徽章组件</h1>
+        <p class="subtitle">各种样式和状态的徽章展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>变体 - variant</h2>
+
+      <h3>soft</h3>
+      <p class="demo-row">
+        <zone-badge variant="soft" kind="default">Default</zone-badge>
+        <zone-badge variant="soft" kind="neutral">Neutral</zone-badge>
+        <zone-badge variant="soft" kind="success">Success</zone-badge>
+        <zone-badge variant="soft" kind="warning">Warning</zone-badge>
+        <zone-badge variant="soft" kind="danger">Danger</zone-badge>
+        <zone-badge variant="soft" kind="info">Info</zone-badge>
+        <zone-badge
+          variant="soft"
+          kind="custom"
+          style="--zone-badge-color:rgb(242, 122, 26);"
+        >Custom</zone-badge>
+      </p>
+
+      <h3>solid</h3>
+      <p class="demo-row">
+        <zone-badge variant="solid" kind="default">Default</zone-badge>
+        <zone-badge variant="solid" kind="neutral">Neutral</zone-badge>
+        <zone-badge variant="solid" kind="success">Success</zone-badge>
+        <zone-badge variant="solid" kind="warning">Warning</zone-badge>
+        <zone-badge variant="solid" kind="danger">Danger</zone-badge>
+        <zone-badge variant="solid" kind="info">Info</zone-badge>
+        <zone-badge variant="solid" kind="success" style="--zone-badge-text-color:#1a1a1a;">Text Color</zone-badge>
+        <zone-badge
+          variant="solid"
+          kind="custom"
+          style="--zone-badge-color:#5794ff;"
+        >Custom</zone-badge>
+      </p>
+
+      <h3>outline</h3>
+      <p class="demo-row">
+        <zone-badge variant="outline" kind="default">Default</zone-badge>
+        <zone-badge variant="outline" kind="neutral">Neutral</zone-badge>
+        <zone-badge variant="outline" kind="success">Success</zone-badge>
+        <zone-badge variant="outline" kind="warning">Warning</zone-badge>
+        <zone-badge variant="outline" kind="danger">Danger</zone-badge>
+        <zone-badge variant="outline" kind="info">Info</zone-badge>
+        <zone-badge
+          variant="outline"
+          kind="custom"
+          style="--zone-badge-color:#8c4eff;"
+        >Custom</zone-badge>
+      </p>
+
+      <h2>尺寸 - size</h2>
+      <h3>纯文本</h3>
+      <p class="demo-row">
+        <zone-badge size="small">Small</zone-badge>
+        <zone-badge size="medium">Medium</zone-badge>
+        <zone-badge size="large">Large</zone-badge>
+      </p>
+
+      <h3>带 icon（small 会隐藏 icon）</h3>
+      <p class="demo-row">
+        <zone-badge size="small" icon="info-fill">Small</zone-badge>
+        <zone-badge size="medium" icon="info-fill">Medium</zone-badge>
+        <zone-badge size="large" icon="info-fill">Large</zone-badge>
+      </p>
+
+      <h2>图标 - icon</h2>
+      <h3>icon 属性</h3>
+      <p class="demo-row">
+        <zone-badge icon="info-fill">Info</zone-badge>
+        <zone-badge icon="star-fill">Info</zone-badge>
+        <zone-badge icon="question-fill">Question</zone-badge>
+        <zone-badge icon="alert-fill">Tips</zone-badge>
+        <zone-badge variant="outline" icon="arrow-right-long">Next</zone-badge>
+      </p>
+
+      <h3>iconPosition</h3>
+      <p class="demo-row">
+        <zone-badge icon="arrow-right-long" iconPosition="prev">Prev</zone-badge>
+        <zone-badge icon="arrow-right-long" iconPosition="next">Next</zone-badge>
+      </p>
+
+      <h3>slot="icon" 覆盖</h3>
+      <p class="demo-row">
+        <zone-badge icon="info-fill">
+          <zone-icon slot="icon" name="alert-fill"></zone-icon>
+          Slot 覆盖
+        </zone-badge>
+        <zone-badge>
+          <zone-icon slot="icon" name="question-fill"></zone-icon>
+          Slot Only
+        </zone-badge>
+      </p>
+
+      <h3>纯图标徽章</h3>
+      <p class="demo-row">
+        <zone-badge icon="info-fill"></zone-badge>
+        <zone-badge variant="solid" icon="arrow-right-long"></zone-badge>
+        <zone-badge variant="outline" icon="alert-fill"></zone-badge>
+      </p>
+
+      <h2>计数 - count / maxCount</h2>
+      <p class="demo-row">
+        <zone-badge count="0"></zone-badge>
+        <zone-badge count="1"></zone-badge>
+        <zone-badge count="8"></zone-badge>
+        <zone-badge count="99"></zone-badge>
+        <zone-badge count="100"></zone-badge>
+        <zone-badge count="12" maxCount="9"></zone-badge>
+        <zone-badge variant="solid" kind="danger" count="7"></zone-badge>
+        <zone-badge variant="outline" kind="info" icon="info-fill" count="3"></zone-badge>
+      </p>
+
+      <h2>链接 - href</h2>
+      <p class="demo-row">
+        <zone-badge href="https://www.zone.com">AIYAZONE Home</zone-badge>
+        <zone-badge href="https://www.zone.com" icon="arrow-right-long">Go</zone-badge>
+        <zone-badge href="https://www.zone.com" variant="outline" kind="info">Info Link</zone-badge>
+        <zone-badge href="https://www.zone.com" variant="solid" kind="success" icon="arrow-right-long">Success Link</zone-badge>
+        <zone-badge href="https://www.zone.com" count="12"></zone-badge>
+      </p>
+
+      <h2>样式变量</h2>
+      <p class="demo-row">
+        <zone-badge style="--zone-badge-bg-color:#eef4ff;--zone-badge-text-color:#5794ff;--zone-badge-color:#5794ff;">自定义背景/文字</zone-badge>
+        <zone-badge variant="solid" style="--zone-badge-color:#8c4eff;--zone-badge-text-color:#ffffff;">solid 自定义</zone-badge>
+        <zone-badge variant="outline" style="--zone-badge-color:#f27a1a;">outline 自定义</zone-badge>
+        <zone-badge style="--zone-badge-border-radius:999px;">圆角胶囊</zone-badge>
+        <zone-badge style="--zone-badge-height:32px;--zone-badge-padding-horizontal:14px;">自定义高度/内边距</zone-badge>
+        <zone-badge icon="info-fill" style="--zone-badge-margin-icon:14px;">自定义 icon 间距</zone-badge>
+        <zone-badge icon="info-fill" style="--zone-badge-icon-size:20px;">自定义 icon 大小</zone-badge>
+      </p>
+    </main>
+  </div>
+</body>
+
+</html>

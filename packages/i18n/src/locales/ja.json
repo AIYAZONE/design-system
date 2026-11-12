@@ -1,0 +1,116 @@
+{
+  "common": {
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "changeLanguage": "言語を変更",
+    "close": "閉じる",
+    "confirm": "確認",
+    "create": "作成",
+    "delete": "削除",
+    "edit": "編集",
+    "hello": "こんにちは",
+    "loading": "読み込み中...",
+    "more": "もっと見る",
+    "next": "次へ",
+    "no": "いいえ",
+    "ok": "よし",
+    "open": "開く",
+    "previous": "前へ",
+    "save": "保存",
+    "search": "検索",
+    "submit": "送信",
+    "update": "更新",
+    "welcome": "ようこそ {name}",
+    "yes": "はい"
+  },
+  "components": {
+    "button": {
+      "hideAll": "すべて非表示",
+      "loadMore": "もっと読み込む",
+      "showAll": "すべて表示"
+    },
+    "filterSelect": {
+      "clear": "クリア",
+      "confirm": "確定",
+      "counter": "選択中",
+      "empty": "選択肢がありません",
+      "label": "絞り込み条件",
+      "selectedSummary": "{count}件の条件を選択中"
+    },
+    "modal": {
+      "confirmContent": "この操作を実行してもよろしいですか？",
+      "confirmTitle": "確認してください"
+    },
+    "table": {
+      "noData": "データがありません",
+      "selected": "{selected} 件選択済み",
+      "total": "合計 {total} 件"
+    },
+    "upload": {
+      "dragHere": "ファイルをここにドラッグするか、クリックしてアップロード",
+      "fileTooBig": "ファイルサイズは {size}MB を超えることはできません"
+    }
+  },
+  "form": {
+    "label": {
+      "address": "住所",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "phone": "電話番号",
+      "username": "ユーザー名"
+    },
+    "placeholder": {
+      "email": "メールアドレスを入力してください",
+      "enterKeyword": "キーワードを入力",
+      "password": "パスワードを入力してください",
+      "phone": "電話番号を入力してください",
+      "search": "キーワードを入力して検索してください",
+      "username": "ユーザー名を入力してください"
+    },
+    "validation": {
+      "email": "有効なメールアドレスを入力してください",
+      "enterKeyword": "データがありません",
+      "maxLength": "最大{max}文字まで入力できます",
+      "minLength": "最低{min}文字を入力してください",
+      "number": "有効な数値を入力してください",
+      "password": "パスワードは8文字以上である必要があります",
+      "passwordConfirm": "パスワードが一致しません",
+      "phone": "有効な電話番号を入力してください",
+      "required": "この項目は必須です",
+      "termsOfService": "利用規約とプライバシーポリシーに同意してください",
+      "url": "有効なURLを入力してください"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "YYYY年M月D日",
+      "short": "YYYY/MM/DD",
+      "withTime": "YYYY/MM/DD HH:mm:ss"
+    },
+    "number": {
+      "currency": "¥",
+      "decimal": ".",
+      "thousand": ","
+    },
+    "time": {
+      "hours": "{hours}時間",
+      "minutes": "{minutes}分",
+      "seconds": "{seconds}秒"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "アクセスが拒否されました",
+      "404": "ページが見つかりません",
+      "500": "サーバーエラー",
+      "default": "エラーが発生しました。後ほどもう一度お試しください。"
+    },
+    "login": {
+      "forgotPassword": "パスワードをお忘れですか？",
+      "noAccount": "アカウントをお持ちでない方",
+      "rememberMe": "ログイン情報を保存",
+      "signUp": "新規登録",
+      "title": "ログイン"
+    }
+  }
+}

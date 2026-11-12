@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filter Select - 下拉筛选多选</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="module" src="/main.ts"></script>
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .demo-item__title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--zone-color-text-l1, #242f20);
+    }
+
+    .demo-item__desc {
+      font-size: 12px;
+      color: var(--zone-color-text-l3, #595959);
+    }
+
+    .demo-viewport {
+      padding: 16px 0 360px;
+    }
+
+    .demo-lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--zone-color-text-l1, #242f20);
+    }
+
+    .demo-lang select {
+      height: 32px;
+      padding: 0 8px;
+      border: 1px solid var(--zone-color-frame-300, #c6c7c8);
+      background: var(--zone-color-white, #fff);
+      color: inherit;
+      font-size: 14px;
+    }
+
+    .demo-log {
+      margin-top: 32px;
+      padding: 12px 16px;
+      min-height: 48px;
+      border: 1px solid var(--zone-color-hr, #e8e8e5);
+      background: var(--zone-color-white, #fff);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      color: var(--zone-color-text-l2, #3a4436);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Filter Select 下拉筛选多选组件</h1>
+        <p class="subtitle">
+          触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮）。勾选时触发器文案实时更新，确认后才提交到 value
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <h2>内置多语言</h2>
+      <p class="demo-item__desc">
+        筛选参数、已选择筛选 N 个参数、已选、清空、确定、暂无选项 等文案均取自内置多语言，切换语言即刻生效。
+      </p>
+      <div class="demo-lang">
+        <label for="lang-select">语言</label>
+        <select id="lang-select">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="jp">日本語</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="nl">Nederlands</option>
+          <option value="ko">한국어</option>
+          <option value="zh-CN">简体中文</option>
+          <option value="zh-TW">繁體中文</option>
+        </select>
+      </div>
+
+      <h2>基础用法</h2>
+      <div class="demo-viewport">
+        <zone-filter-select id="fs-basic"
+          options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sp-2","label":"Solar Panels"},{"value":"sp-3","label":"Solar Panels"},{"value":"sg-1","label":"SG1500(2*100W)SG1500(2*100W)SG1500(2*100W)SG1500(2*100W)SG1500(2*100W)"},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'></zone-filter-select>
+      </div>
+
+      <h2>各种状态</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-item__title">已选</span>
+          <span class="demo-item__desc">触发器展示已选数量</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-selected"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'
+              value="sp-1,sg-2,sg-3"></zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">自定义已选文案</span>
+          <span class="demo-item__desc">{label}（{count}）模板</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-summary" selected-summary="{label}（{count}）"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'>
+            </zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">即时生效</span>
+          <span class="demo-item__desc">关闭底部确认按钮</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-immediate" show-confirm="false"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'>
+            </zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">滚动页面不收起</span>
+          <span class="demo-item__desc">close-on-scroll="false"（跟随滚动）</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-keep-open" close-on-scroll="false"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'>
+            </zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">含禁用项</span>
+          <span class="demo-item__desc">禁用项不可勾选</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-disabled-option"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sp-2","label":"Solar Panels","disabled":true},{"value":"sg-2","label":"SG1500(2*100W)"},{"value":"sg-3","label":"SG1500(2*100W)"}]'>
+            </zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">无计数 / 无清空</span>
+          <span class="demo-item__desc">只保留选项列表与确认</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-minimal" show-counter="false" show-clear="false"
+              options='[{"value":"sp-1","label":"Solar Panels"},{"value":"sg-2","label":"SG1500(2*100W)"}]'>
+            </zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">空数据</span>
+          <span class="demo-item__desc">展示空态占位文案</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-empty" options="[]"></zone-filter-select>
+          </div>
+        </div>
+
+        <div class="demo-item">
+          <span class="demo-item__title">禁用</span>
+          <span class="demo-item__desc">整组件不可交互</span>
+          <div class="demo-viewport">
+            <zone-filter-select id="fs-disabled" disabled
+              options='[{"value":"sp-1","label":"Solar Panels"}]'></zone-filter-select>
+          </div>
+        </div>
+      </div>
+
+      <h2>事件输出</h2>
+      <p class="demo-item__desc">操作任意筛选器，下方会输出最近一次事件与当前值。</p>
+      <div class="demo-log" id="log">等待交互…</div>
+    </main>
+  </div>
+
+  <script type="module">
+    const log = document.getElementById('log');
+    const langSelect = document.getElementById('lang-select');
+    const ids = ['fs-basic', 'fs-selected', 'fs-summary', 'fs-immediate', 'fs-keep-open', 'fs-disabled-option', 'fs-minimal', 'fs-empty'];
+
+    // 语言切换：window.i18n 由 @zone/i18n 在入口自动挂载
+    langSelect.value = window.i18n?.getCurrLanguage?.() ?? 'en';
+    langSelect.addEventListener('change', () => {
+      window.i18n?.setCurrLanguage?.(langSelect.value);
+    });
+
+    customElements.whenDefined('zone-filter-select').then(() => {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        ['zone-filter-select-confirm', 'zone-filter-select-clear', 'zone-filter-select-change'].forEach((type) => {
+          el.addEventListener(type, () => {
+            log.textContent = `${id} → ${type} | value = ${JSON.stringify(el.value)}`;
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

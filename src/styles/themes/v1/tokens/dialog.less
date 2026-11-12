@@ -1,0 +1,73 @@
+@{rootSel} {
+  // 颜色
+  --zone-dialog-bg: var(--zone-color-white);
+  --zone-dialog-fg: var(--zone-color-text-l1);
+  --zone-dialog-overlay-bg: var(--zone-color-overlay-70);
+
+  // 层级
+  --zone-dialog-index: var(--zone-index-dialog);
+
+  // 动效
+  --zone-dialog-transition-duration: 0.3s;
+  --zone-dialog-transition-easing: ease-out;
+
+  // 阴影
+  --zone-dialog-shadow: none;
+
+  // 间距
+  --zone-dialog-gap: var(--zone-size-16);
+}
+
+@media screen and (min-width: 1024px) {
+  @{rootSel} {
+    // 造型
+    --zone-dialog-radius: var(--zone-rounded-12);
+
+    // 尺寸 - Large
+    --zone-dialog-max-width-large: 640px;
+    --zone-dialog-min-height-large: calc(240 / 16 * 1rem);
+    --zone-dialog-max-height-large: calc(100vh - var(--zone-size-64) * 2);
+
+    // 尺寸 - Extra
+    --zone-dialog-max-width-extra: 1200px;
+    --zone-dialog-min-height-extra: calc(400 / 16 * 1rem);
+    --zone-dialog-max-height-extra: calc(100vh - var(--zone-size-64) * 2);
+
+    // Padding (Large & Extra 共享，除非有明确区分需求)
+    --zone-dialog-padding-x-large: var(--zone-size-64);
+    --zone-dialog-padding-y-large: var(--zone-size-48);
+    
+    --zone-dialog-padding-x-extra: var(--zone-size-64);
+    --zone-dialog-padding-y-extra: var(--zone-size-48);
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  @{rootSel} {
+    // 造型
+    --zone-dialog-radius: var(--zone-rounded-24);
+
+    // 尺寸 - Large
+    --zone-dialog-max-width-large: calc(100vw - var(--zone-size-48) * 2);
+    --zone-dialog-min-height-large: calc(320 / 32 * 1rem);
+    --zone-dialog-max-height-large: calc(100vh - var(--zone-size-128) * 2);
+
+    // 尺寸 - Extra
+    --zone-dialog-max-width-extra: 100%;
+    --zone-dialog-min-height-extra: calc(400 / 32 * 1rem);
+    --zone-dialog-max-height-extra: calc(100vh - var(--zone-size-64));
+
+    // Padding
+    --zone-dialog-padding-x-large: var(--zone-size-32);
+    --zone-dialog-padding-y-large: var(--zone-size-32);
+    
+    --zone-dialog-padding-x-extra: var(--zone-size-32);
+    --zone-dialog-padding-y-extra: var(--zone-size-32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @{rootSel} {
+    --zone-dialog-transition-duration: 0.01s;
+  }
+}

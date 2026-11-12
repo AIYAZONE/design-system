@@ -1,0 +1,128 @@
+{
+  "name": "@zone/design-system",
+  "version": "0.3.0",
+  "description": "AIYAZONE Design System (ZONE) - Monorepo",
+  "author": "AIYAZONE F2E Team",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIYAZONE/design-system.git"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "build": "turbo run build --filter=!@zone/examples --filter=!@zone/storybook",
+    "dev": "turbo run dev",
+    "site:preview": "vite preview --strictPort --port 5175",
+    "design:build:lib": "vite build --mode library",
+    "postdesign:build:lib": "pnpm run types:bundle",
+    "design:build": "pnpm run design:build:lib && pnpm run design:build:themes",
+    "design:build:single": "vite build --mode library-single",
+    "design:build:themes": "vite build --mode themes",
+    "design:watch:lib": "vite build --mode library --watch",
+    "design:watch:themes": "vite build --mode themes --watch",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean",
+    "build:examples": "turbo run build --filter=@zone/examples",
+    "portal:build:all": "pnpm --filter @zone/portal run build:all",
+    "storybook": "turbo run storybook --filter=@zone/storybook",
+    "build:storybook": "turbo run build:storybook --filter=@zone/storybook",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "changeset:status": "changeset status",
+    "release": "pnpm run build && pnpm run changeset:publish",
+    "publish:design-system": "pnpm run design:build",
+    "prepublishOnly": "pnpm install && pnpm run release && pnpm run design:build",
+    "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
+    "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
+    "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
+    "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs"
+  },
+  "keywords": [
+    "web-components",
+    "typescript",
+    "lit"
+  ],
+  "sideEffects": [
+    "./src/index.ts",
+    "./src/entry.base.ts",
+    "./dist/*"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/zone.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/zone.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs"
+    },
+    "./index.css": "./dist/index.css",
+    "./internal.css": "./dist/internal.css",
+    "./index-v2.css": "./dist/index-v2.css",
+    "./index-v3.css": "./dist/index-v3.css"
+  },
+  "files": [
+    "dist/index.esm.js",
+    "dist/index.cjs",
+    "dist/index.css",
+    "dist/internal.css",
+    "dist/index-v2.css",
+    "dist/index-v3.css",
+    "dist/chunks/*.js",
+    "dist/fonts/**",
+    "dist/assets/**",
+    "dist/zone.d.ts",
+    "dist/**/*.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@zone/eslint-config": "workspace:*",
+    "@zone/tsconfig": "workspace:*",
+    "@open-wc/form-control": "^1.0.0",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@testing-library/dom": "^9.3.4",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.19.28",
+    "@vitest/coverage-v8": "^1.6.1",
+    "axe-core": "^4.11.1",
+    "eslint": "^8.57.0",
+    "exceljs": "^4.4.0",
+    "less": "^4.4.2",
+    "lit": "^3.3.1",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "rollup": "^4.52.5",
+    "rollup-plugin-dts": "^6.2.3",
+    "rollup-plugin-visualizer": "^6.0.5",
+    "tslib": "^2.8.1",
+    "turbo": "^2.6.0",
+    "typescript": "~5.8.3",
+    "vite": "^5.4.11",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "optionalDependencies": {
+    "@esbuild/linux-x64": "^0.25.5",
+    "@esbuild/win32-x64": "^0.25.5",
+    "@rollup/rollup-linux-x64-gnu": "^4.44.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.44.0"
+  }
+}

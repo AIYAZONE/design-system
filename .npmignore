@@ -1,0 +1,8 @@
+docs/
+stories/
+.github
+.husky
+.storybook
+*.mdx
+*.test.ts
+dist/**/*.map

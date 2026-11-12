@@ -1,0 +1,392 @@
+:host {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--zone-filter-select-width, 200px);
+  font-family: var(--zone-font-family, Inter, "PingFang SC", "Noto Sans JP", sans-serif);
+  font-size: var(--zone-filter-select-font-size, var(--zone-font-size-14, 14px));
+  vertical-align: middle;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.filter-select {
+  /* 触发器 */
+  --trigger-height: var(--zone-filter-select-trigger-height, 36px);
+  --trigger-bg: var(--zone-filter-select-trigger-bg, var(--zone-color-white, #ffffff));
+  --trigger-border-color: var(--zone-filter-select-trigger-border-color, #c6c7c8);
+  --trigger-border-hover-color: var(--zone-filter-select-trigger-border-hover-color, #a9aaac);
+  --trigger-radius: var(--zone-filter-select-trigger-radius, 0px);
+  --trigger-text-color: var(--zone-filter-select-trigger-text-color, #242f20);
+  --trigger-arrow-color: var(--zone-filter-select-trigger-arrow-color, #242f20);
+  --trigger-arrow-opacity: var(--zone-filter-select-trigger-arrow-opacity, 0.65);
+  --font-size: var(--zone-filter-select-font-size, var(--zone-font-size-16, 16px));
+  /* 面板 */
+  --panel-bg: var(--zone-filter-select-panel-bg, var(--zone-color-white, #ffffff));
+  --panel-shadow: var(--zone-filter-select-panel-shadow, 0px 4px 16px rgba(0, 0, 0, 0.08));
+  --panel-radius: var(--zone-filter-select-panel-radius, 0px);
+  --panel-padding: var(--zone-filter-select-panel-padding, var(--zone-size-16, 16px));
+  --panel-gap: var(--zone-filter-select-panel-gap, var(--zone-size-10, 10px));
+  /* 分割线 */
+  --divider-color: var(--zone-filter-select-divider-color, #e8e8e5);
+  /* 选项 */
+  --option-text-color: var(--zone-filter-select-option-text-color, rgba(0, 0, 0, 0.65));
+  --option-min-height: var(--zone-filter-select-option-min-height, 28px);
+  --option-line-height: var(--zone-filter-select-option-line-height, 20px);
+  --option-disabled-opacity: var(--zone-filter-select-option-disabled-opacity, 0.4);
+  /* 复选框 */
+  /* 注意：checkbox 为固定视觉尺寸（设计稿 16px），不随移动端 rem 基准（750 稿）缩放 */
+  --checkbox-size: var(--zone-filter-select-checkbox-size, 16px);
+  --checkbox-gap: var(--zone-filter-select-checkbox-gap, var(--zone-size-8, 8px));
+  --checkbox-border-color: var(--zone-filter-select-checkbox-border-color, #c6c7c8);
+  --checkbox-checked-bg: var(--zone-filter-select-checkbox-checked-bg, #242f20);
+  --checkbox-checked-color: var(--zone-filter-select-checkbox-checked-color, #ffffff);
+  /* 计数与操作 */
+  --counter-color: var(--zone-filter-select-counter-color, #242f20);
+  --counter-total-color: var(--zone-filter-select-counter-total-color, #b2b2b2);
+  --action-color: var(--zone-filter-select-action-color, #242f20);
+  --empty-color: var(--zone-filter-select-empty-color, #b2b2b2);
+  /* 确认按钮 */
+  --confirm-height: var(--zone-filter-select-confirm-height, 36px);
+  --confirm-bg: var(--zone-filter-select-confirm-bg, #242f20);
+  --confirm-color: var(--zone-filter-select-confirm-color, #ffffff);
+  --confirm-radius: var(--zone-filter-select-confirm-radius, 0px);
+  /* 选项列表最大高度 */
+  --options-max-height: var(--zone-filter-select-options-max-height, 228px);
+
+  position: relative;
+  width: 100%;
+}
+
+/* ---------- 触发器 ---------- */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: var(--zone-size-8, 8px);
+  width: 100%;
+  height: var(--trigger-height);
+  padding: 0 var(--zone-size-12, 12px);
+  border: 1px solid var(--trigger-border-color);
+  border-radius: var(--trigger-radius);
+  background: var(--trigger-bg);
+  color: var(--trigger-text-color);
+  font-family: inherit;
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--trigger-border-hover-color);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline-offset: 1px;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+.trigger__label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.trigger__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trigger__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--trigger-arrow-color);
+  opacity: var(--trigger-arrow-opacity);
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.trigger__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.trigger[aria-expanded="true"] .trigger__arrow {
+  transform: rotate(0deg);
+}
+
+/* ---------- 面板 ---------- */
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--zone-index-popover, 100);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--panel-gap);
+  width: var(--zone-filter-select-width, 200px);
+  max-width: calc(100vw - var(--zone-size-24, 24px));
+  padding: var(--panel-padding);
+  border-radius: var(--panel-radius);
+  background: var(--panel-bg);
+  box-shadow: var(--panel-shadow);
+  font-size: var(--font-size);
+  color: var(--option-text-color);
+  animation: zone-filter-select-in 0.16s ease-out;
+}
+
+.panel[data-placement^="top"] {
+  animation-name: zone-filter-select-in-up;
+}
+
+.panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  gap: var(--zone-size-8, 8px);
+  min-height: 20px;
+  line-height: 20px;
+}
+
+.panel__spacer {
+  flex: 1 1 auto;
+}
+
+.panel__divider {
+  flex: none;
+  height: 1px;
+  background: var(--divider-color);
+}
+
+@keyframes zone-filter-select-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zone-filter-select-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 计数 / 清空 ---------- */
+
+.counter {
+  /* 保持行内排版：flex 容器会忽略子项之间的空白文本节点，
+     导致「已选」与数量之间的空格无法渲染 */
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--counter-color);
+}
+
+.counter__total {
+  color: var(--counter-total-color);
+}
+
+.clear {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--action-color);
+  font-family: inherit;
+  font-size: var(--font-size);
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+.clear:focus-visible {
+  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline-offset: 2px;
+}
+
+/* ---------- 选项 ---------- */
+
+.options {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  gap: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  max-height: var(--options-max-height);
+}
+
+.options:focus-visible {
+  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline-offset: 2px;
+}
+
+.option {
+  display: flex;
+  /* 复选框与选项文案垂直居中对齐（文案换行时也会居中） */
+  align-items: center;
+  /* 选项高度由内容撑开，禁止被 flex 容器压缩，否则长文本会溢出压到相邻行 */
+  flex-shrink: 0;
+  gap: var(--checkbox-gap);
+  box-sizing: border-box;
+  min-height: var(--option-min-height);
+  padding: calc((var(--option-min-height) - var(--option-line-height)) / 2) 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+}
+
+.option__icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.option__icon-box {
+  stroke: var(--checkbox-border-color);
+}
+
+.option__icon-fill {
+  fill: var(--checkbox-checked-bg);
+}
+
+.option__icon-check {
+  stroke: var(--checkbox-checked-color);
+}
+
+.option__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: var(--option-line-height);
+  color: var(--option-text-color);
+  word-break: break-word;
+  transition: color 0.2s ease-in-out;
+}
+
+.option--disabled {
+  cursor: not-allowed;
+  opacity: var(--option-disabled-opacity);
+}
+
+.empty {
+  flex: none;
+  padding: var(--zone-size-16, 16px) 0;
+  color: var(--empty-color);
+  text-align: center;
+}
+
+/* ---------- 确认按钮 ---------- */
+
+.confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: none;
+  width: 100%;
+  height: var(--confirm-height);
+  padding: 0 var(--zone-size-12, 12px);
+  border: none;
+  border-radius: var(--confirm-radius);
+  background: var(--confirm-bg);
+  color: var(--confirm-color);
+  font-family: inherit;
+  font-size: var(--font-size);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.confirm:hover {
+  opacity: 0.85;
+}
+
+.confirm:active {
+  opacity: 0.75;
+}
+
+.confirm:focus-visible {
+  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline-offset: 2px;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media screen and (max-width: 767.98px) {
+  :host {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .trigger {
+    padding: var(--zone-size-24, 12px);
+  }
+
+  .panel {
+    width: 100%;
+    max-width: calc(100vw - var(--zone-size-32, 32px));
+    padding: var(--zone-size-24, 12px);
+    font-size:  var(--zone-size-28, 14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .trigger__arrow,
+  .option__label,
+  .confirm {
+    transition: none;
+  }
+
+  .panel {
+    animation: none;
+  }
+}

@@ -1,0 +1,121 @@
+@{rootSel} {
+  --zone-badge-bg-color: var(--zone-color-primary-contrast);
+  --zone-badge-color: var(--zone-color-primary);
+  --zone-badge-border-radius: 0;
+  --zone-badge-margin-icon: var(--zone-size-4);
+  --zone-badge-icon-size: var(--zone-size-14);
+  --zone-badge-height: var(--zone-size-28);
+  --zone-badge-padding-vertical: var(--zone-size-4);
+  --zone-badge-padding-horizontal: var(--zone-size-8);
+  --zone-badge-font: var(--zone-font-b2);
+
+  /* small 覆盖 */
+  --zone-badge-small-font: var(--zone-font-c1);
+  --zone-badge-small-height: var(--zone-size-16);
+  --zone-badge-small-padding-vertical: var(--zone-size-4);
+  --zone-badge-small-padding-horizontal: var(--zone-size-6);
+
+  /* large 覆盖 */
+  --zone-badge-large-font: var(--zone-font-h5);
+  --zone-badge-large-padding-vertical: var(--zone-size-10);
+  --zone-badge-large-padding-horizontal: var(--zone-size-12);
+  --zone-badge-large-height: var(--zone-size-42);
+  --zone-badge-large-icon-size: var(--zone-size-16);
+
+  /* 变体派生（默认） */
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-soft-bg: var(--zone-badge-bg-color);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+/* kind 派生：neutral/success/danger/custom（其余回退到 primary） */
+zone-badge[kind="neutral"] {
+  --zone-badge-color: var(--zone-color-neutral);
+  --zone-badge-bg-color: var(--zone-color-neutral-contrast, var(--zone-color-neutral-highlight));
+  /* soft 变体专用：更加浅的背景，提升对比度 */
+  --zone-badge-soft-bg: var(--zone-color-neutral-100);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+zone-badge[kind="success"] {
+  --zone-badge-color: var(--zone-color-success);
+  --zone-badge-bg-color: var(--zone-color-success-contrast, var(--zone-color-success-highlight));
+  --zone-badge-soft-bg: var(--zone-color-success-contrast);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+zone-badge[kind="danger"] {
+  --zone-badge-color: var(--zone-color-danger);
+  --zone-badge-bg-color: var(--zone-color-danger-contrast, var(--zone-color-danger-highlight));
+  --zone-badge-soft-bg: var(--zone-color-danger-contrast);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+zone-badge[kind="warning"] {
+  --zone-badge-color: var(--zone-color-warning);
+  --zone-badge-bg-color: var(--zone-color-warning-contrast, var(--zone-color-warning-highlight));
+  --zone-badge-soft-bg: var(--zone-color-warning-contrast);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+zone-badge[kind="info"] {
+  --zone-badge-color: var(--zone-color-info);
+  --zone-badge-bg-color: var(--zone-color-info-contrast, var(--zone-color-info-highlight));
+  --zone-badge-soft-bg: var(--zone-color-info-contrast);
+  --zone-badge-soft-fg: var(--zone-badge-color);
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+zone-badge[kind="custom"] {
+  --zone-badge-custom-base-color: var(--zone-badge-color, var(--zone-badge-custom-color, var(--zone-color-primary)));
+  --zone-badge-color: var(--zone-badge-custom-base-color);
+  --zone-badge-bg-color: var(--zone-badge-custom-base-color);
+  --zone-badge-soft-bg: var(--zone-badge-custom-base-color);
+  --zone-badge-soft-fg: var(--zone-badge-custom-base-color);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --zone-badge-bg-color: color-mix(in srgb, #FFFFFF 15%, var(--zone-badge-custom-base-color) 85%);
+    --zone-badge-soft-bg: color-mix(in srgb, #FFFFFF 65%, var(--zone-badge-custom-base-color) 35%);
+    --zone-badge-soft-fg: color-mix(in srgb, var(--zone-badge-custom-base-color) 80%, #000000 20%);
+  }
+  --zone-badge-solid-bg: var(--zone-badge-color);
+  --zone-badge-solid-fg: var(--zone-color-white);
+  --zone-badge-outline-border: var(--zone-badge-color);
+  --zone-badge-outline-fg: var(--zone-badge-color);
+}
+
+@media screen and (max-width: 1023.98px) {
+  @{rootSel} {
+    --zone-badge-height: var(--zone-size-56);
+    --zone-badge-padding-vertical: var(--zone-size-12);
+    --zone-badge-padding-horizontal: var(--zone-size-16);
+    --zone-badge-small-height: var(--zone-size-32);
+    --zone-badge-small-padding-vertical: var(--zone-size-8);
+    --zone-badge-small-padding-horizontal: var(--zone-size-12);
+    --zone-badge-large-height: max(0, 84 * (1rem / 32));
+    --zone-badge-large-padding-vertical: var(--zone-size-20);
+    --zone-badge-large-padding-horizontal: var(--zone-size-24);
+  }
+}

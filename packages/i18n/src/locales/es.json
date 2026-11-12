@@ -1,0 +1,116 @@
+{
+  "common": {
+    "back": "Volver",
+    "cancel": "Cancelar",
+    "changeLanguage": "Cambiar idioma",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "create": "Crear",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "hello": "Hola",
+    "loading": "Cargando...",
+    "more": "Más",
+    "next": "Siguiente",
+    "no": "No",
+    "ok": "OK",
+    "open": "Abrir",
+    "previous": "Anterior",
+    "save": "Guardar",
+    "search": "Buscar",
+    "submit": "Enviar",
+    "update": "Actualizar",
+    "welcome": "Bienvenido {name}",
+    "yes": "Sí"
+  },
+  "components": {
+    "button": {
+      "hideAll": "Ocultar todo",
+      "loadMore": "Cargar más",
+      "showAll": "Mostrar todo"
+    },
+    "filterSelect": {
+      "clear": "Vaciar",
+      "confirm": "Confirmar",
+      "counter": "Seleccionado",
+      "empty": "Sin opciones",
+      "label": "Parámetros de filtro",
+      "selectedSummary": "{count} filtros seleccionados"
+    },
+    "modal": {
+      "confirmContent": "¿Está seguro de que desea realizar esta acción?",
+      "confirmTitle": "Por favor confirme"
+    },
+    "table": {
+      "noData": "No hay datos disponibles",
+      "selected": "{selected} elementos seleccionados",
+      "total": "Total {total} elementos"
+    },
+    "upload": {
+      "dragHere": "Arrastre los archivos aquí o haga clic para cargar",
+      "fileTooBig": "El tamaño del archivo no puede exceder {size}MB"
+    }
+  },
+  "form": {
+    "label": {
+      "address": "Dirección",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "phone": "Número de teléfono",
+      "username": "Nombre de usuario"
+    },
+    "placeholder": {
+      "email": "Introduce tu dirección de correo electrónico",
+      "enterKeyword": "Introduce palabra clave",
+      "password": "Introduce tu contraseña",
+      "phone": "Introduce tu número de teléfono móvil",
+      "search": "Introduce palabras clave para buscar",
+      "username": "Introduce tu nombre de usuario"
+    },
+    "validation": {
+      "email": "Por favor, introduce una dirección de correo electrónico válida",
+      "enterKeyword": "No hay datos de búsqueda",
+      "maxLength": "Por favor, no introduzcas más de {max} caracteres",
+      "minLength": "Por favor, introduce al menos {min} caracteres",
+      "number": "Por favor, introduce un número válido",
+      "password": "La contraseña debe contener al menos 8 caracteres",
+      "passwordConfirm": "Las contraseñas no coinciden",
+      "phone": "Por favor, introduce un número de teléfono válido",
+      "required": "Este campo es obligatorio",
+      "termsOfService": "Por favor, acepta los Términos de servicio y la Política de privacidad",
+      "url": "Por favor, introduce una URL válida"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "D [de] MMMM [de] YYYY",
+      "short": "DD/MM/YYYY",
+      "withTime": "DD/MM/YYYY HH:mm:ss"
+    },
+    "number": {
+      "currency": "€",
+      "decimal": ",",
+      "thousand": "."
+    },
+    "time": {
+      "hours": "{hours} horas",
+      "minutes": "{minutes} minutos",
+      "seconds": "{seconds} segundos"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "Acceso denegado",
+      "404": "Página no encontrada",
+      "500": "Error interno del servidor",
+      "default": "Ups, algo salió mal. Por favor, inténtelo de nuevo más tarde."
+    },
+    "login": {
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes una cuenta?",
+      "rememberMe": "Recordarme",
+      "signUp": "Registrarse",
+      "title": "Iniciar sesión"
+    }
+  }
+}

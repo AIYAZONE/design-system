@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tooltip - 提示框</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="module" src="/main.ts"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Tooltip 提示框组件</h1>
+        <p class="subtitle">各种样式和状态的提示框展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>Tooltip</h2>
+
+    <zone-tooltip placement="top-start">
+      <zone-button slot="tooltip-trigger">top-start</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="top">
+      <zone-button slot="tooltip-trigger">top</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="top-end">
+      <zone-button slot="tooltip-trigger">top-end</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="bottom-start">
+      <zone-button slot="tooltip-trigger">bottom-start</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="bottom">
+      <zone-button slot="tooltip-trigger">bottom</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="bottom-end">
+      <zone-button slot="tooltip-trigger">bottom-end</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="left-start">
+      <zone-button slot="tooltip-trigger">left-start</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="left">
+      <zone-button slot="tooltip-trigger">left</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="left-end">
+      <zone-button slot="tooltip-trigger">left-end</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="right-start">
+      <zone-button slot="tooltip-trigger">right-start</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="right">
+      <zone-button slot="tooltip-trigger">right</zone-button>
+      You can use this section to cancel your order.
+    </zone-tooltip>
+
+    <zone-tooltip placement="right-end">
+      <zone-button slot="tooltip-trigger">right-end</zone-button>
+      <div>
+        <h2 style="color: red">
+          You can use this section to cancel your order.
+        </h2>
+      </div>
+    </zone-tooltip>
+    </main>
+  </div>
+</body>
+
+</html>

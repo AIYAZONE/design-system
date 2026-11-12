@@ -1,0 +1,104 @@
+{
+  "name": "@zone/core",
+  "version": "0.1.8",
+  "description": "AIYAZONE Design System - Core Components",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button/index.js",
+      "require": "./dist/button/index.cjs",
+      "types": "./dist/button/index.d.ts"
+    },
+    "./checkbox": {
+      "import": "./dist/checkbox/index.js",
+      "require": "./dist/checkbox/index.cjs",
+      "types": "./dist/checkbox/index.d.ts"
+    },
+    "./badge": {
+      "import": "./dist/badge/index.js",
+      "require": "./dist/badge/index.cjs",
+      "types": "./dist/badge/index.d.ts"
+    },
+    "./dialog": {
+      "import": "./dist/dialog/index.js",
+      "require": "./dist/dialog/index.cjs",
+      "types": "./dist/dialog/index.d.ts"
+    },
+    "./filter-select": {
+      "import": "./dist/filter-select/index.js",
+      "require": "./dist/filter-select/index.cjs",
+      "types": "./dist/filter-select/index.d.ts"
+    },
+    "./popover": {
+      "import": "./dist/popover/index.js",
+      "require": "./dist/popover/index.cjs",
+      "types": "./dist/popover/index.d.ts"
+    },
+    "./spinner": {
+      "import": "./dist/spinner/index.js",
+      "require": "./dist/spinner/index.cjs",
+      "types": "./dist/spinner/index.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast/index.js",
+      "require": "./dist/toast/index.cjs",
+      "types": "./dist/toast/index.d.ts"
+    },
+    "./tooltip": {
+      "import": "./dist/tooltip/index.js",
+      "require": "./dist/tooltip/index.cjs",
+      "types": "./dist/tooltip/index.d.ts"
+    },
+    "./styles": "./dist/styles/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --quiet",
+    "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
+    "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix --quiet",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "lit": "^3.0.0"
+  },
+  "devDependencies": {
+    "@zone/eslint-config": "workspace:*",
+    "@zone/tsconfig": "workspace:*",
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.11.30",
+    "@vitest/coverage-v8": "^1.6.1",
+    "axe-core": "^4.7.0",
+    "jsdom": "^27.4.0",
+    "less": "^4.4.2",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@zone/i18n": "workspace:*",
+    "@zone/utils": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

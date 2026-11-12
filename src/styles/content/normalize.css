@@ -1,0 +1,147 @@
+/* 重置一些基本元素 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--zone-custom-font-family,var(--zone-font-family));
+}
+
+/* 对于表格元素的重置 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 链接样式 */
+a {
+  /* 移除下划线 */
+  text-decoration: none;
+  /* 继承父元素的颜色 */
+  color: inherit;
+}
+
+/* 对于图像的处理 */
+img {
+  /* 使得图片响应式 */
+  max-width: 100%;
+  /* 维持纵横比 */
+  height: auto;
+}
+
+/* 对于输入框的重置 */
+input,
+button,
+textarea,
+select {
+  /* 继承字体 */
+  font-family: inherit;
+  /* 继承字体大小 */
+  font-size: inherit;
+  /* 继承字体颜色 */
+  color: inherit;
+}
+
+/* 统一盒模型 */
+*,
+*::before,
+*::after {
+  /* 使用边框盒模型 */
+  box-sizing: border-box;
+}
+
+/* PC端（>=1024px) */
+@media screen and (min-width: 1024px) {
+  html {
+    /* 使用clamp()函数设置字体大小:
+     * 最小值: 12px
+     * 首选值: 1.111111vw (视窗宽度的1.111111%)
+     * 最大值: 16px
+     */
+    font-size: clamp(12px, 1.111111vw, 16px);
+  }
+}
+
+/* 移动端（<1024px） */
+@media screen and (max-width: 1023.98px) {
+  html {
+    /* 使用clamp()函数设置字体大小:
+     * 最小值: 16px
+     * 首选值: 4.266666vw (视窗宽度的4.266666%)
+     * 最大值: 32px
+     */
+    font-size: clamp(16px, 4.266666vw, 32px);
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>国际化使用示例</title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>国际化使用示例</h1>
+        <p class="subtitle">各种语法应用展示</p>
+      </div>
+    </header>
+    <main>
+      <h3>1. 自定义i18n组件：zone-i18n —— html或Lit组件内均可使用，推荐使用</h3>
+      <zone-i18n key="common.ok"></zone-i18n>
+      <zone-i18n key="common.welcome" params='{"name":"World"}'></zone-i18n>
+
+      <h3>2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用</h3>
+      <p>common.yes: <span data-i18n-key="common.yes"></span></p>
+      <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
+
+      <h3>3. 模板字符串形式 —— html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新</h3>
+      <p title="${window.i18n.t('common.ok')}">common.ok:${window.i18n.t('common.ok')}</p>
+    </main>
+  </div>
+  <script type="module" src="./index.esm.js"></script>
+</body>
+</html>

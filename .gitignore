@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*storybook.log
+
+storybook-static
+chromatic.config.json
+
+*.tgz
+
+.npmrc
+
+vite.config.js.*
+vite.config.ts.timestamp-*
+
+.turbo/*
+*.tsbuildinfo
+
+.figma/*
+
+# 编辑器项目数据（含 Figma canvas 快照、会话记录）
+.codebuddy/
+
+# Figma 画布选中时自动导出的临时素材（组件图标均为内联，不读这些文件）
+assets/CodeBuddyAssets/
+
+package-lock.json
+coverage/
+**/coverage/

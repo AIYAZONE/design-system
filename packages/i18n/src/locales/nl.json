@@ -1,0 +1,116 @@
+{
+  "common": {
+    "back": "Terug",
+    "cancel": "Annuleren",
+    "changeLanguage": "Taal wijzigen",
+    "close": "Sluiten",
+    "confirm": "Bevestigen",
+    "create": "Aanmaken",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "hello": "Hallo",
+    "loading": "Laden...",
+    "more": "Meer",
+    "next": "Volgende",
+    "no": "Nee",
+    "ok": "OK",
+    "open": "Openen",
+    "previous": "Vorige",
+    "save": "Opslaan",
+    "search": "Zoeken",
+    "submit": "Verzenden",
+    "update": "Bijwerken",
+    "welcome": "Welkom {name}",
+    "yes": "Ja"
+  },
+  "components": {
+    "button": {
+      "hideAll": "Alles verbergen",
+      "loadMore": "Meer laden",
+      "showAll": "Alles weergeven"
+    },
+    "filterSelect": {
+      "clear": "Wissen",
+      "confirm": "Bevestigen",
+      "counter": "Geselecteerd",
+      "empty": "Geen opties",
+      "label": "Filterparameters",
+      "selectedSummary": "{count} filters geselecteerd"
+    },
+    "modal": {
+      "confirmContent": "Weet u zeker dat u deze actie wilt uitvoeren?",
+      "confirmTitle": "Bevestig alstublieft"
+    },
+    "table": {
+      "noData": "Geen gegevens beschikbaar",
+      "selected": "{selected} items geselecteerd",
+      "total": "Totaal {total} items"
+    },
+    "upload": {
+      "dragHere": "Sleep bestanden hierheen of klik om te uploaden",
+      "fileTooBig": "Bestandsgrootte mag niet groter zijn dan {size}MB"
+    }
+  },
+  "form": {
+    "label": {
+      "address": "Adres",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "phone": "Telefoonnummer",
+      "username": "Gebruikersnaam"
+    },
+    "placeholder": {
+      "email": "Voer uw e-mailadres in",
+      "enterKeyword": "Voer trefwoord in",
+      "password": "Voer uw wachtwoord in",
+      "phone": "Voer uw mobiele telefoonnummer in",
+      "search": "Voer trefwoorden in om te zoeken",
+      "username": "Voer uw gebruikersnaam in"
+    },
+    "validation": {
+      "email": "Voer een geldig e-mailadres in",
+      "enterKeyword": "Geen zoekresultaten",
+      "maxLength": "Voer niet meer dan {max} tekens in",
+      "minLength": "Voer minimaal {min} tekens in",
+      "number": "Voer een geldig nummer in",
+      "password": "Wachtwoord moet minimaal 8 tekens bevatten",
+      "passwordConfirm": "De twee wachtwoorden komen niet overeen",
+      "phone": "Voer een geldig telefoonnummer in",
+      "required": "Dit veld is verplicht",
+      "termsOfService": "Ga akkoord met de servicevoorwaarden en het privacybeleid.",
+      "url": "Voer een geldige URL in"
+    }
+  },
+  "format": {
+    "date": {
+      "long": "DD MMMM YYYY",
+      "short": "DD-MM-YYYY",
+      "withTime": "DD-MM-YYYY HH:mm:ss"
+    },
+    "number": {
+      "currency": "€",
+      "decimal": ",",
+      "thousand": "."
+    },
+    "time": {
+      "hours": "{hours} uur",
+      "minutes": "{minutes} minuten",
+      "seconds": "{seconds} seconden"
+    }
+  },
+  "pages": {
+    "error": {
+      "403": "Toegang geweigerd",
+      "404": "Pagina niet gevonden",
+      "500": "Interne serverfout",
+      "default": "Oeps, er is iets misgegaan. Probeer het later opnieuw."
+    },
+    "login": {
+      "forgotPassword": "Wachtwoord vergeten?",
+      "noAccount": "Heb je nog geen account?",
+      "rememberMe": "Onthoud mij",
+      "signUp": "Registreren",
+      "title": "Inloggen"
+    }
+  }
+}

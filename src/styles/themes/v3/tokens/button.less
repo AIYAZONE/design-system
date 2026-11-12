@@ -1,0 +1,197 @@
+@{rootSel} {
+  // V3 主题：按钮默认主色与悬浮色，供组件作为基础样式消费
+  --zone-btn-line-height: 1;
+  --zone-btn-main-color: var(--zone-color-primary-button);
+  --zone-btn-main-hover-color: var(--zone-color-primary-button-hover);
+  --zone-btn-text-hover-color: var(--zone-color-white);
+  --zone-btn-content-color: var(--zone-color-white);
+  --zone-animate-only-icon-bg: transparent;
+
+  --zone-btn-bg-color: var(--zone-btn-main-color);
+  --zone-btn-border-color: var(--zone-btn-main-color);
+  --zone-btn-bg-hover-color: var(--zone-btn-main-hover-color);
+  --zone-btn-border-hover-color: var(--zone-btn-main-hover-color);
+
+  --zone-btn-small-font: var(--zone-font-b3);
+  --zone-btn-small-text-font: var(--zone-font-b3);
+
+  // 直角风格：V3 默认与 V2 保持一致
+  --zone-btn-border-radius: 0;
+  --zone-btn-secondary-border-width: 1px;
+
+  /* 语义状态变量：供组件统一消费（保持现有视觉不变） */
+  --zone-btn-hover-color: var(--zone-btn-main-hover-color);
+  --zone-btn-active-color: var(--zone-color-primary-button-active);
+  --zone-btn-text-underline-color: var(--zone-btn-hover-color);
+  /* 自定义色高亮混合比例（用于 color-mix） */
+  --zone-btn-custom-highlight-mix: 15%;
+  --zone-btn-shine-duration: 3.8s;
+  --zone-btn-shine-handoff-shift: 0s;
+  --zone-btn-shine-opacity: 0.82;
+  --zone-btn-shine-width: 70%;
+  --zone-btn-shine-blur: 0px;
+  --zone-btn-shine-angle: 0deg;
+  --zone-btn-shine-height: 200%;
+  --zone-btn-shine-start-x: -45%;
+  --zone-btn-shine-end-x: 140%;
+  --zone-btn-shine-gradient: linear-gradient(283.37deg,
+      rgba(254, 139, 45, 0) 11.45%,
+      rgba(255, 152, 70, 1) 45.8%,
+      rgba(255, 137, 44, 0) 86.76%);
+  --zone-btn-disabled-opacity: 1;
+  --zone-btn-disabled-bg: var(--zone-color-disabled-bg);
+  --zone-btn-disabled-border: var(--zone-color-disabled-border);
+
+  --zone-btn-underline-display: block;
+  --zone-btn-label-underline-display: none;
+}
+
+zone-button[variant="secondary"] {
+  --zone-btn-disabled-bg: transparent;
+  --zone-btn-disabled-border: var(--zone-color-disabled-border);
+  --zone-btn-disabled-color: var(--zone-color-disabled-text);
+}
+
+zone-button[variant="text"] {
+  --zone-btn-disabled-bg: transparent;
+  --zone-btn-disabled-border: transparent;
+  --zone-btn-disabled-color: var(--zone-color-disabled-text);
+}
+
+zone-button[disabled][variant="text"] {
+  --zone-btn-underline-height: 0px;
+  --zone-btn-text-underline-color: transparent;
+}
+
+zone-button[kind="custom"][disabled][variant="secondary"] {
+  --zone-btn-disabled-bg: transparent;
+  --zone-btn-disabled-border: var(--zone-color-disabled-border);
+  --zone-btn-disabled-color: var(--zone-color-disabled-text);
+}
+
+zone-button[kind="custom"][disabled][variant="text"] {
+  --zone-btn-disabled-bg: transparent;
+  --zone-btn-disabled-border: transparent;
+  --zone-btn-disabled-color: var(--zone-color-disabled-text);
+}
+
+zone-button[variant="text"]:not([kind]),
+zone-button[kind="default"][variant="text"] {
+  --zone-btn-text-interaction-color: var(--zone-btn-main-color, var(--zone-color-primary));
+}
+
+zone-button[kind="neutral"][variant="text"] {
+  --zone-btn-text-interaction-color: var(--zone-color-neutral);
+}
+
+zone-button[kind="success"][variant="text"] {
+  --zone-btn-text-interaction-color: var(--zone-color-success);
+}
+
+zone-button[kind="danger"][variant="text"] {
+  --zone-btn-text-interaction-color: var(--zone-color-danger);
+}
+
+zone-button[kind="custom"][variant="text"] {
+  --zone-btn-text-interaction-color: var(--zone-btn-custom-color, var(--zone-color-primary));
+}
+
+// 桌面端尺寸与排版（≥1024px）
+@media screen and (min-width: 1024px) {
+  @{rootSel} {
+    --zone-btn-padding-vertical: var(--zone-size-12);
+    --zone-btn-padding-horizontal: var(--zone-size-40);
+    --zone-btn-margin-icon: var(--zone-size-8);
+    --zone-btn-icon-size: var(--zone-size-16);
+    --zone-btn-font: var(--zone-font-semibold) var(--zone-font-size-20) / var(--zone-btn-line-height) var(--zone-font-family);
+    --zone-btn-height: var(--zone-size-48);
+    --zone-btn-max-width: 680px;
+
+    --zone-btn-extra-height: var(--zone-size-56);
+    --zone-btn-extra-padding-vertical: var(--zone-size-16);
+    --zone-btn-extra-padding-horizontal: var(--zone-size-40);
+    --zone-btn-extra-margin-icon: var(--zone-size-8);
+    --zone-btn-extra-font: var(--zone-font-semibold) var(--zone-size-20) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-large-height: var(--zone-size-48);
+    --zone-btn-large-padding-vertical: var(--zone-size-12);
+    --zone-btn-large-padding-horizontal: var(--zone-size-40);
+    --zone-btn-large-margin-icon: var(--zone-size-8);
+    --zone-btn-large-font: var(--zone-font-semibold) var(--zone-font-size-20) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-medium-height: var(--zone-size-36);
+    --zone-btn-medium-padding-vertical: var(--zone-size-8);
+    --zone-btn-medium-padding-horizontal: var(--zone-size-24);
+    --zone-btn-medium-margin-icon: var(--zone-size-8);
+    --zone-btn-medium-font: var(--zone-font-semibold) var(--zone-font-size-16) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-small-height: var(--zone-size-24);
+    --zone-btn-small-padding-vertical: var(--zone-size-4);
+    --zone-btn-small-padding-horizontal: var(--zone-size-12);
+    --zone-btn-small-margin-icon: var(--zone-size-4);
+    --zone-btn-small-icon-size: var(--zone-size-12);
+
+    --zone-btn-icon-only-icon-size: var(--zone-size-24);
+    --zone-btn-icon-only-extra-icon-size: var(--zone-size-24);
+    --zone-btn-icon-only-small-icon-size: var(--zone-size-16);
+    --zone-btn-small-font: var(--zone-font-semibold) var(--zone-font-size-16) / var(--zone-btn-line-height) var(--zone-font-family);
+    --zone-btn-small-text-font: var(--zone-font-regular) var(--zone-font-size-14) / var(--zone-btn-line-height) var(--zone-font-family);
+  }
+
+  zone-button[size="extra"] {
+    --zone-btn-padding-horizontal: var(--zone-btn-extra-padding-horizontal);
+  }
+  zone-button[size="large"] {
+    --zone-btn-padding-horizontal: var(--zone-btn-large-padding-horizontal);
+  }
+  zone-button[size="medium"] {
+    --zone-btn-padding-horizontal: var(--zone-btn-medium-padding-horizontal);
+  }
+  zone-button[size="small"] {
+    --zone-btn-padding-horizontal: var(--zone-btn-small-padding-horizontal);
+  }
+}
+
+// 移动端尺寸与排版（<1024px）
+@media screen and (max-width: 1023.98px) {
+  @{rootSel} {
+    --zone-btn-height: var(--zone-size-80);
+    --zone-btn-icon-size: var(--zone-size-28);
+    --zone-btn-padding-vertical: var(--zone-size-24);
+    --zone-btn-padding-horizontal: var(--zone-size-36);
+    --zone-btn-margin-icon: var(--zone-size-16);
+    --zone-btn-font: var(--zone-font-semibold) var(--zone-font-size-32) / var(--zone-btn-line-height) var(--zone-font-family);
+    --zone-btn-max-width: 686px;
+
+    --zone-btn-extra-height: var(--zone-size-94);
+    --zone-btn-extra-icon-size: var(--zone-size-40);
+    --zone-btn-extra-padding-vertical: var(--zone-size-32);
+    --zone-btn-extra-padding-horizontal: var(--zone-size-36);
+    --zone-btn-extra-margin-icon: var(--zone-size-16);
+    --zone-btn-extra-font: var(--zone-font-semibold) var(--zone-font-size-40) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-large-height: var(--zone-size-80);
+    --zone-btn-large-padding-vertical: var(--zone-size-24);
+    --zone-btn-large-padding-horizontal: var(--zone-size-36);
+    --zone-btn-large-margin-icon: var(--zone-size-8);
+    --zone-btn-large-font: var(--zone-font-semibold) var(--zone-font-size-32) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-medium-height: var(--zone-size-68);
+    --zone-btn-medium-padding-vertical: var(--zone-size-20);
+    --zone-btn-medium-padding-horizontal: var(--zone-size-36);
+    --zone-btn-medium-margin-icon: var(--zone-size-8);
+    --zone-btn-medium-font: var(--zone-font-semibold) var(--zone-font-size-28) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-small-height: var(--zone-size-50);
+    --zone-btn-small-padding-vertical: var(--zone-size-16);
+    --zone-btn-small-padding-horizontal: var(--zone-size-32);
+    --zone-btn-small-margin-icon: var(--zone-size-8);
+    --zone-btn-small-icon-size: var(--zone-size-28);
+    --zone-btn-small-font: var(--zone-font-semibold) var(--zone-font-size-24) / var(--zone-btn-line-height) var(--zone-font-family);
+    --zone-btn-small-text-font: var(--zone-font-regular) var(--zone-font-size-24) / var(--zone-btn-line-height) var(--zone-font-family);
+
+    --zone-btn-icon-only-icon-size: var(--zone-size-48);
+    --zone-btn-icon-only-extra-icon-size: var(--zone-size-48);
+    --zone-btn-icon-only-small-icon-size: var(--zone-size-32);
+  }
+}

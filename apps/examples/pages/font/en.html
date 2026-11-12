@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英语字体测试页面</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="./font-test.css">
+  <script type="module" src="/main.ts"></script>
+  <script>
+    // 禁用 Tailwind 的预置 reset（preflight），避免覆盖设计系统基础样式
+    // 需在 CDN 脚本之前声明配置
+    // 参考：https://tailwindcss.com/docs/preflight#disabling-preflight
+    // @ts-ignore
+    window.tailwind = window.tailwind || {};
+    // @ts-ignore
+    window.tailwind.config = { corePlugins: { preflight: false } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>English Font Test Page</h1>
+        <p class="subtitle">AIYAZONE Design System - English Language Support Test</p>
+      </div>
+    </header>
+
+    <main class="font-test">
+      <section>
+        <div class="flex flex-wrap gap-8 mb-6">
+          <!-- Typography Hierarchy Test -->
+          <article>
+            <h3 class="zone-h3">字体层级测试</h3>
+            <div class="mb-4 lg:mb-0">
+              <h1 class="zone-display-1">Display 1</h1>
+              <h1 class="zone-display-2">Display 2</h1>
+              <h1 class="zone-h1">Heading 1</h1>
+              <h2 class="zone-h2">Heading 2</h2>
+              <h3 class="zone-h3">Heading 3</h3>
+              <h4 class="zone-h4">Heading 4</h4>
+              <h5 class="zone-h5">Heading 5</h5>
+              <h6 class="zone-h6">Heading 6</h6>
+              <p class="zone-b1">zone-b1 Text</p>
+              <p class="zone-b2">zone-b2 Text</p>
+              <p class="zone-b3">zone-b3 Text</p>
+              <p class="zone-c1">zone-c1 Text</p>
+            </div>
+          </article>
+          <article>
+            <h3 class="zone-h3">响应式类名 zone-h1 lg:zone-h1</h3>
+            <div>
+              <h1 class="zone-display-2 lg:zone-display-1">Display 1</h1>
+              <h1 class="zone-display-1 lg:zone-display-2">Display 2</h1>
+              <h1 class="zone-h1 lg:zone-h1">Heading 1</h1>
+              <h2 class="zone-h3 lg:zone-h2">Heading 2</h2>
+              <h3 class="zone-h4 lg:zone-h3">Heading 3</h3>
+              <h4 class="zone-h4 lg:zone-h4">Heading 4</h4>
+              <h5 class="zone-h6 lg:zone-h5">Heading 5</h5>
+              <h6 class="zone-h1 lg:zone-h6">Heading 6</h6>
+              <p class="zone-b3 lg:zone-b1">zone-b1 Text</p>
+              <p class="zone-b2 lg:zone-b2">zone-b2 Text</p>
+              <p class="zone-b1 lg:zone-b3">zone-b3 Text</p>
+              <p class="zone-b1 lg:zone-c1">zone-c1 Text</p>
+            </div>
+          </article>
+        </div>
+        <code>
+          注：v1主题无 Display
+        </code>
+      </section>
+
+      <!-- Content Section -->
+      <section>
+        <div class="zone-rte mb-4">
+          <h2>富文本类名：zone-rte（默认为zone-rte-b1）</h2>
+          <p>
+            AIYAZONE specializes in developing and manufacturing portable power stations and solar panels.
+            Our products provide reliable power solutions for outdoor adventures, emergency situations,
+            and off-grid living. With cutting-edge technology and user-friendly design, AIYAZONE empowers
+            you to explore the world with confidence.
+          </p>
+
+          <div>
+            <h1>h1</h1>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+            <ul>
+              <li>High-performance lithium-ion battery technology</li>
+              <li>Lightweight and compact design</li>
+              <li>Safety-focused engineering</li>
+              <li>Multiple output ports for versatility</li>
+              <li>Solar charging compatibility</li>
+              <li>Fast charging capabilities</li>
+              <li>Quiet operation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap lg:flex-nowrap gap-4 mb-4">
+          <article class="content-section zone-rte zone-rte-b1">
+            <h3>类名叠加：.zone-rte-b1</h3>
+            <p>
+              AIYAZONE specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, AIYAZONE empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="content-section zone-rte zone-rte-b2">
+            <h3>类名叠加：.zone-rte-b2</h3>
+            <p>
+              AIYAZONE specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, AIYAZONE empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="content-section zone-rte zone-rte-b3">
+            <h3>类名叠加：.zone-rte-b3</h3>
+            <p>
+              AIYAZONE specializes in developing and manufacturing portable power stations and solar panels.
+              Our products provide reliable power solutions for outdoor adventures, emergency situations,
+              and off-grid living. With cutting-edge technology and user-friendly design, AIYAZONE empowers
+              you to explore the world with confidence.
+            </p>
+
+            <div>
+              <ul>
+                <li>High-performance lithium-ion battery technology</li>
+                <li>Lightweight and compact design</li>
+                <li>Safety-focused engineering</li>
+                <li>Multiple output ports for versatility</li>
+                <li>Solar charging compatibility</li>
+                <li>Fast charging capabilities</li>
+                <li>Quiet operation</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Font Weight Test -->
+        <h3 class="zone-h3 mb-4">zone-rte使用“--zone-font-weight”属性设置字体重量</h3>
+        <div class="flex flex-wrap gap-4">
+          <article>
+            <article class="zone-rte mb-2" style="--zone-font-weight:400;">
+              <ul>
+                <li>Regular (400) - li style test</li>
+              </ul>
+              <p>Regular (400) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte mb-2" style="--zone-font-weight:500;">
+              <ul>
+                <li>Medium (500) - li style test</li>
+              </ul>
+              <p>Medium (500) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte mb-2" style="--zone-font-weight:600;">
+              <ul>
+                <li>SemiBold (600) - li style test</li>
+              </ul>
+              <p>SemiBold (600) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte mb-2" style="--zone-font-weight:700;">
+              <ul>
+                <li>Bold (700) - li style test</li>
+              </ul>
+              <p>Bold (700) - Portable Solar Generator</p>
+            </article>
+          </article>
+          <article>
+            <article class="zone-rte zone-rte-b3 mb-2" style="--zone-font-weight:400;">
+              <ul>
+                <li>Regular (400) - li style test</li>
+              </ul>
+              <p>Regular (400) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte zone-rte-b2 mb-2" style="--zone-font-weight:500;">
+              <ul>
+                <li>Medium (500) - li style test</li>
+              </ul>
+              <p>Medium (500) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte zone-rte-b2 mb-2" style="--zone-font-weight:600;">
+              <ul>
+                <li>SemiBold (600) - li style test</li>
+              </ul>
+              <p>SemiBold (600) - Portable Solar Generator</p>
+            </article>
+            <article class="zone-rte mb-2" style="--zone-font-weight:700;">
+              <ul>
+                <li>Bold (700) - li style test</li>
+              </ul>
+              <p>Bold (700) - Portable Solar Generator</p>
+            </article>
+          </article>
+        </div>
+      </section>
+
+      <!-- Special Characters Test -->
+      <section class="special-chars-section">
+        <h3>Numbers & Special Characters Test</h3>
+        <p>Numbers: 0123456789</p>
+        <p>Price: $999.99 (USD)</p>
+        <p>Capacity: 1,002Wh / 278,400mAh</p>
+        <p>Output: AC110V/1000W (Peak 2000W)</p>
+        <p>Symbols: !@#$%^&*()_+-=[]{}|;':",./ >?</p>
+        <p>Currency: $€£¥₹₽₩</p>
+      </section>
+
+      <!-- Components Test -->
+      <section class="components-section">
+        <h3>Design System Components</h3>
+
+        <!-- Button Test -->
+        <div class="button-group">
+          <h4>Buttons</h4>
+          <zone-button size="large">View Details</zone-button>
+          <zone-button size="medium" variant="secondary">Add to Cart</zone-button>
+          <zone-button size="small" variant="outline">Add to Wishlist</zone-button>
+          <zone-button loading>Loading...</zone-button>
+          <zone-button disabled>Disabled</zone-button>
+        </div>
+
+        <!-- Badge Test -->
+        <div class="badge-group">
+          <h4>Badges</h4>
+          <zone-badge style="--zone-badge-bg-color:rgb(254, 242, 232);--zone-badge-color:rgb(242, 122, 26);">In
+            Progress</zone-badge>
+          <zone-badge
+            style="--zone-badge-bg-color:var(--zone-color-success-contrast);--zone-badge-color:var(--zone-color-success);">Approved</zone-badge>
+          <zone-badge
+            style="--zone-badge-bg-color:var(--zone-color-warning-contrast);--zone-badge-color:var(--zone-color-warning);">Warning</zone-badge>
+          <zone-badge
+            style="--zone-badge-bg-color:var(--zone-color-danger-contrast);--zone-badge-color:var(--zone-color-danger);">Denied</zone-badge>
+          <zone-badge
+            style="--zone-badge-bg-color:var(--zone-color-info-contrast);--zone-badge-color:var(--zone-color-info);">New</zone-badge>
+        </div>
+
+        <!-- Toast Test -->
+        <div class="toast-group">
+          <h4>Toast Notifications</h4>
+          <zone-toast variant="success" icon>Success Message</zone-toast>
+          <zone-toast variant="warning" icon>Warning Message</zone-toast>
+          <zone-toast variant="danger" icon>Error Message</zone-toast>
+          <zone-toast variant="info" icon>Information Message</zone-toast>
+        </div>
+
+        <!-- Tooltip Test -->
+        <div class="tooltip-group">
+          <h4>Tooltips</h4>
+          <zone-tooltip placement="top">
+            <zone-button slot="tooltip-trigger">Top Tooltip</zone-button>
+            This will show detailed product information.
+          </zone-tooltip>
+
+          <zone-tooltip placement="bottom">
+            <zone-button slot="tooltip-trigger">Bottom Tooltip</zone-button>
+            Please review before purchasing.
+          </zone-tooltip>
+
+          <zone-tooltip placement="left">
+            <zone-button slot="tooltip-trigger">Left Tooltip</zone-button>
+            Additional specifications available.
+          </zone-tooltip>
+
+          <zone-tooltip placement="right">
+            <zone-button slot="tooltip-trigger">Right Tooltip</zone-button>
+            Contact support for assistance.
+          </zone-tooltip>
+        </div>
+
+        <!-- Dialog Test -->
+        <div class="dialog-group">
+          <h4>Dialog</h4>
+          <zone-button id="open-dialog-btn-en">Open Dialog</zone-button>
+          <zone-dialog id="test-dialog-en" title="Product Information">
+            <h4>AIYAZONE Explorer 1000 Pro</h4>
+            <p>High-performance portable power station perfect for outdoor adventures and emergency backup.</p>
+            <ul>
+              <li>1002Wh Capacity</li>
+              <li>1000W AC Output</li>
+              <li>Multiple Charging Options</li>
+              <li>LCD Display</li>
+            </ul>
+            <zone-button slot="footer" variant="primary">Purchase Now</zone-button>
+            <zone-button slot="footer" variant="secondary">Cancel</zone-button>
+          </zone-dialog>
+        </div>
+
+        <!-- Spinner Test -->
+        <div class="spinner-group">
+          <h4>Loading Spinners</h4>
+          <zone-spinner></zone-spinner>
+          <zone-spinner size="24px"></zone-spinner>
+          <zone-spinner size="32px"></zone-spinner>
+        </div>
+      </section>
+
+      <!-- Product Cards Section -->
+      <section class="product-cards-section">
+        <h3>Product Lineup</h3>
+        <div class="product-grid">
+          <div class="product-card">
+            <h4>Explorer 1000 Pro</h4>
+            <p class="price">$999.99</p>
+            <p class="capacity">Capacity: 1,002Wh</p>
+            <p class="description">High-performance battery, lightweight and compact design</p>
+            <div class="card-actions">
+              <zone-button size="small">View Details</zone-button>
+              <zone-button size="small" variant="outline">Compare</zone-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>Explorer 2000 Pro</h4>
+            <p class="price">$1,999.99</p>
+            <p class="capacity">Capacity: 2,160Wh</p>
+            <p class="description">Large capacity for extended usage</p>
+            <div class="card-actions">
+              <zone-button size="small">View Details</zone-button>
+              <zone-button size="small" variant="outline">Compare</zone-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>SolarSaga 100W</h4>
+            <p class="price">$299.99</p>
+            <p class="capacity">Output: 100W</p>
+            <p class="description">High-efficiency solar panel</p>
+            <div class="card-actions">
+              <zone-button size="small">View Details</zone-button>
+              <zone-button size="small" variant="outline">Compare</zone-button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <h4>Explorer 300 Plus</h4>
+            <p class="price">$349.99</p>
+            <p class="capacity">Capacity: 288Wh</p>
+            <p class="description">Compact and portable for everyday use</p>
+            <div class="card-actions">
+              <zone-button size="small">View Details</zone-button>
+              <zone-button size="small" variant="outline">Compare</zone-button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Text Styles Section -->
+      <section class="text-styles-section">
+        <h3>Text Styles & Formatting</h3>
+        <div class="text-samples">
+          <p><strong>Bold text:</strong> This is important information about our products.</p>
+          <p><em>Italic text:</em> Emphasis on key features and benefits.</p>
+          <p><u>Underlined text:</u> Special offers and promotions.</p>
+          <p><code>Code text:</code> Technical specifications and model numbers.</p>
+          <p><small>Small text:</small> Additional terms and conditions apply.</p>
+        </div>
+
+        <blockquote>
+          "AIYAZONE has revolutionized portable power with their innovative design and reliable performance.
+          Perfect for camping, RV trips, and emergency preparedness."
+          <cite>- Customer Review</cite>
+        </blockquote>
+      </section>
+
+      <!-- Link Styles Test -->
+      <section class="link-section">
+        <h3>Link Styles</h3>
+        <p>
+          <a href="#">Learn more about AIYAZONE products</a> and explore our
+          <a href="#">support resources</a>. Visit our <a href="#">online store</a>
+          for the latest deals and <a href="#">customer testimonials</a>.
+        </p>
+
+        <div class="link-variations">
+          <a href="#" class="primary-link">Primary Link</a>
+          <a href="#" class="secondary-link">Secondary Link</a>
+          <a href="#" class="external-link">External Link ↗</a>
+        </div>
+      </section>
+
+      <!-- Form Elements Test -->
+      <section class="form-section">
+        <h3>Form Elements (Typography Test)</h3>
+        <form class="test-form">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" placeholder="Enter your full name">
+
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" placeholder="your.email@example.com">
+
+          <label for="product">Product Interest:</label>
+          <select id="product">
+            <option>Select a product</option>
+            <option>Explorer 1000 Pro</option>
+            <option>Explorer 2000 Pro</option>
+            <option>SolarSaga 100W</option>
+          </select>
+
+          <label for="message">Message:</label>
+          <textarea id="message" placeholder="Tell us about your power needs..."></textarea>
+
+          <div class="form-actions">
+            <zone-button type="submit">Submit Inquiry</zone-button>
+            <zone-button variant="secondary" type="reset">Reset Form</zone-button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Dialog open/close handling
+    document.getElementById('open-dialog-btn-en')?.addEventListener('click', () => {
+      const dialog = document.getElementById('test-dialog-en');
+      if (dialog) dialog.open = true;
+    });
+  </script>
+</body>
+
+</html>

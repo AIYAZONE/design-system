@@ -1,0 +1,124 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="02 设计变量/03 尺寸和间距" />
+
+# 尺寸和间距 - Size and Spacing
+
+## 概述
+AIYAZONE 设计系统采用响应式的尺寸和间距方案，通过 CSS 变量和 rem 单位实现跨设备的一致性体验。
+
+在桌面端（`≥1024px`）和移动端（`<1024px`）分别采用 16px 和 32px 作为根节点字号，并基于此派生出一套完整的尺寸变量（从 2px 到 96px）。这种设计确保了界面元素在不同设备上能保持合适的比例关系，同时提供了灵活的尺寸选择空间。
+
+所有尺寸变量都以 `--zone-size-` 为前缀，后接具体的像素数值，如 `--zone-size-8` 表示 8px 的等效尺寸。在实际应用中，这些变量会根据设备的根字号自动计算出对应的 rem 值，从而实现响应式布局。
+
+## CSS 变量
+
+
+```css
+
+/**
+ * 尺寸生成Mixin
+ * @param {number} @rem-base - rem基准值，用于响应式计算
+ * @description 生成一套完整的尺寸变量，支持桌面端和移动端自适应
+ */
+.generate-sizes(@rem-base) {
+  --zone-size-2: max(0, 2 * @rem-base);    /* 2px等效尺寸 */
+  --zone-size-4: max(0, 4 * @rem-base);    /* 4px等效尺寸 */
+  --zone-size-6: max(0, 6 * @rem-base);    /* 6px等效尺寸 */
+  --zone-size-8: max(0, 8 * @rem-base);    /* 8px等效尺寸 */
+  --zone-size-10: max(0, 10 * @rem-base);  /* 10px等效尺寸 */
+  --zone-size-12: max(0, 12 * @rem-base);  /* 12px等效尺寸 */
+  --zone-size-14: max(0, 14 * @rem-base);  /* 14px等效尺寸 */
+  --zone-size-16: max(0, 16 * @rem-base);  /* 16px等效尺寸 */
+  --zone-size-18: max(0, 18 * @rem-base);  /* 18px等效尺寸 */
+  --zone-size-20: max(0, 20 * @rem-base);  /* 20px等效尺寸 */
+  --zone-size-22: max(0, 22 * @rem-base);  /* 22px等效尺寸 */
+  --zone-size-24: max(0, 24 * @rem-base);  /* 24px等效尺寸 */
+  --zone-size-28: max(0, 28 * @rem-base);  /* 28px等效尺寸 */
+  --zone-size-32: max(0, 32 * @rem-base);  /* 32px等效尺寸 */
+  --zone-size-36: max(0, 36 * @rem-base);  /* 36px等效尺寸 */
+  --zone-size-40: max(0, 40 * @rem-base);  /* 40px等效尺寸 */
+  --zone-size-48: max(0, 48 * @rem-base);  /* 48px等效尺寸 */
+  --zone-size-56: max(0, 56 * @rem-base);  /* 56px等效尺寸 */
+  --zone-size-64: max(0, 64 * @rem-base);  /* 64px等效尺寸 */
+  --zone-size-72: max(0, 72 * @rem-base);  /* 72px等效尺寸 */
+  --zone-size-80: max(0, 80 * @rem-base);  /* 80px等效尺寸 */
+  --zone-size-96: max(0, 96 * @rem-base);  /* 96px等效尺寸 */
+  --zone-size-128: max(0, 128 * @rem-base);  /* 128px等效尺寸 */
+}
+
+@media screen and (min-width: 1024px) {
+  @rem: (1rem / 16);
+  :root {
+    /* 生成桌面端尺寸变量 */
+    .generate-sizes(@rem);
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  @rem: (1rem / 32);
+  :root {
+    /* 生成移动端尺寸变量 */
+    .generate-sizes(@rem);
+  }
+}
+
+
+/* --- 编译后 --- */
+@media screen and (min-width: 1024px) {
+  :root {
+    --zone-size-2: 0.125rem;
+    --zone-size-4: 0.25rem;
+    --zone-size-6: 0.375rem;
+    --zone-size-8: 0.5rem;
+    --zone-size-10: 0.625rem;
+    --zone-size-12: 0.75rem;
+    --zone-size-14: 0.875rem;
+    --zone-size-16: 1rem;
+    --zone-size-18: 1.125rem;
+    --zone-size-20: 1.25rem;
+    --zone-size-22: 1.375rem;
+    --zone-size-24: 1.5rem;
+    --zone-size-28: 1.75rem;
+    --zone-size-32: 2rem;
+    --zone-size-36: 2.25rem;
+    --zone-size-40: 2.5rem;
+    --zone-size-48: 3rem;
+    --zone-size-56: 3.5rem;
+    --zone-size-64: 4rem;
+    --zone-size-72: 4.5rem;
+    --zone-size-80: 5rem;
+    --zone-size-96: 6rem;
+    --zone-size-128: 8rem;
+  }
+}
+@media screen and (max-width: 1023.98px) {
+  :root {
+    --zone-size-2: 0.0625rem;
+    --zone-size-4: 0.125rem;
+    --zone-size-6: 0.1875rem;
+    --zone-size-8: 0.25rem;
+    --zone-size-10: 0.3125rem;
+    --zone-size-12: 0.375rem;
+    --zone-size-14: 0.4375rem;
+    --zone-size-16: 0.5rem;
+    --zone-size-18: 0.5625rem;
+    --zone-size-20: 0.625rem;
+    --zone-size-22: 0.6875rem;
+    --zone-size-24: 0.75rem;
+    --zone-size-28: 0.875rem;
+    --zone-size-32: 1rem;
+    --zone-size-36: 1.125rem;
+    --zone-size-40: 1.25rem;
+    --zone-size-48: 1.5rem;
+    --zone-size-56: 1.75rem;
+    --zone-size-64: 2rem;
+    --zone-size-72: 2.25rem;
+    --zone-size-80: 2.5rem;
+    --zone-size-96: 3rem;
+    --zone-size-128: 4rem;
+  }
+}
+
+
+```

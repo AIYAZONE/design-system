@@ -1,0 +1,86 @@
+<script>
+  (function() {
+    var createFooter = function() {
+      if (document.querySelector('.site-footer')) return;
+      
+      var startYear = 2024;
+      var currentYear = new Date().getFullYear();
+      var yearText = currentYear > startYear ? startYear + '–' + currentYear : String(startYear);
+      
+      var footer = document.createElement('footer');
+      footer.className = 'site-footer';
+      footer.innerHTML = 
+        '<div class="site-footer__inner">' +
+          '<p>© ' + yearText + ' AIYAZONE Inc. All rights reserved.</p>' +
+          '<p class="site-footer__mono">Powered by AIYAZONE F2E Team</p>' +
+        '</div>';
+      
+      document.body.appendChild(footer);
+    };
+    
+    var tryCreateFooter = function() {
+      if (document.body) {
+        createFooter();
+      } else {
+        requestAnimationFrame(tryCreateFooter);
+      }
+    };
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', createFooter, { once: true });
+    } else if (document.readyState === 'interactive') {
+      createFooter();
+    } else {
+      tryCreateFooter();
+    }
+  })();
+</script>
+<style>
+  .stacked-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 16px;
+  }
+
+  .stacked-form * {
+    width: auto;
+  }
+
+  .sbdocs * {
+    font-family: "Rubik Variable", sans-serif;
+  }
+
+  .sbdocs > bl-alert {
+    margin: var(--bl-size-m) 0;
+  }
+
+  .sbdocs [scale] {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .site-footer {
+    background: #f9fafb;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 16px 24px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .site-footer__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-footer p {
+    margin: 4px 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .site-footer__mono {
+    font-family: monospace;
+    font-size: 0.75rem;
+  }
+</style>

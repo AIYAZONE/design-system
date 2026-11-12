@@ -1,0 +1,96 @@
+:host {
+  display: inline-block;
+  max-width: 100%;
+  width: max-content;
+}
+
+.badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zone-size-4);
+}
+
+.badge {
+  display: flex;
+  gap: var(--zone-badge-margin-icon, var(--zone-size-6));
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: var(--zone-badge-border-radius, var(--zone-size-4));
+  margin: 0;
+  padding: var(--zone-badge-padding-vertical, var(--zone-size-4)) var(--zone-badge-padding-horizontal, var(--zone-size-6));
+  background-color: var(--zone-badge-bg-color, var(--zone-color-primary-contrast));
+  color: var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary)));
+  font: var(--zone-badge-font, var(--zone-font-c1));
+  font-kerning: none;
+  height: var(--zone-badge-height, var(--zone-size-20));
+}
+
+// 变体：outline（描边）
+:host([variant="outline"]) .badge {
+  background-color: transparent;
+  border-color: var(--zone-badge-outline-border, var(--zone-badge-color, var(--zone-color-primary)));
+  color: var(--zone-badge-outline-fg, var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary))));
+}
+
+// 变体：solid（实色）
+:host([variant="solid"]) .badge {
+  background-color: var(--zone-badge-solid-bg, var(--zone-badge-color, var(--zone-color-primary)));
+  color: var(--zone-badge-text-color, var(--zone-badge-solid-fg, var(--zone-color-white)));
+}
+
+// 变体：soft（浅色）使用专用 Token，提升对比度
+:host([variant="soft"]) .badge {
+  background-color: var(--zone-badge-soft-bg, var(--zone-badge-bg-color, var(--zone-color-primary-contrast)));
+  color: var(--zone-badge-soft-fg, var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary))));
+}
+
+// 可点击样式
+:host([clickable]) .badge {
+  cursor: pointer;
+}
+
+// 焦点可见样式（可由主题覆盖）
+.badge:focus-visible {
+  outline: 2px solid var(--zone-badge-focus-ring-color, var(--zone-badge-color, var(--zone-color-primary)));
+  outline-offset: 2px;
+}
+
+// 小号徽章样式
+:host([size="small"]) .badge {
+  font: var(--zone-badge-small-font, var(--zone-font-c1));
+  height: var(--zone-badge-small-height, var(--zone-size-16));
+  padding: var(--zone-badge-small-padding-vertical, var(--zone-size-4)) var(--zone-badge-small-padding-horizontal, var(--zone-size-6));
+}
+
+// 大号徽章样式
+:host([size="large"]) .badge {
+  font: var(--zone-badge-large-font, var(--zone-font-h3));
+  padding: var(--zone-badge-large-padding-vertical, var(--zone-size-8)) var(--zone-badge-large-padding-horizontal, var(--zone-size-8));
+  height: var(--zone-badge-large-height, var(--zone-size-24));
+  --zone-badge-icon-size: var(--zone-badge-large-icon-size, var(--zone-size-16));
+}
+
+// 插槽中的图标样式
+:host ::slotted(zone-icon) {
+  font-size: var(--zone-badge-icon-size, var(--zone-size-14));
+}
+
+// 小号徽章中不显示图标
+:host([size="small"]) zone-icon {
+  display: none;
+}
+
+// 关闭按钮样式
+// 移除关闭按钮样式
+
+// 强制色模式兼容（描边使用 currentColor）
+@media (forced-colors: active) {
+  :host([variant="outline"]) .badge {
+    border-color: currentColor;
+    color: currentColor;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "extends": "@zone/tsconfig/app.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["vite/client"],
+    "moduleResolution": "bundler",
+    "paths": {
+      "@zone/core": ["../../packages/core/src"],
+      "@zone/core/*": ["../../packages/core/src/*"],
+      "@zone/icons": ["../../packages/icons/src"],
+      "@zone/icons/*": ["../../packages/icons/src/*"],
+      "@zone/i18n": ["../../packages/i18n/src"],
+      "@zone/i18n/*": ["../../packages/i18n/src/*"],
+      "@zone/utils": ["../../packages/utils/src"],
+      "@zone/utils/*": ["../../packages/utils/src/*"],
+      "@/*": ["../../packages/icons/src/*"]
+    }
+  },
+  "include": [
+    ".storybook/**/*",
+    "stories/**/*",
+    "../../src/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "storybook-static"
+  ]
+}

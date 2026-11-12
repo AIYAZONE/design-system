@@ -1,0 +1,52 @@
+import { Meta ,Markdown} from '@storybook/blocks';
+import textSize from '../markdown/text-size.md?raw';
+
+<Meta title="04 自定义样式/01 版式" />
+
+<Markdown>{textSize}</Markdown>
+
+## 自定义版式样式
+
+
+```css
+
+  /**
+  * 字号表
+  * 文件位置：src\styles\zone\public.less
+  */
+
+  /* 标题 */
+  .zone-h1 {...}
+  .zone-h2 {...}
+  .zone-h3 {...}
+  .zone-h4 {...}
+  .zone-h5 {...}
+  .zone-h6 {...}
+  .zone-display-1 {...}
+  .zone-display-2 {...}
+  .zone-display-3 {...}
+  .zone-custom-font {...}
+
+  /* 正文 */
+  .zone-b1 {...}
+  .zone-b1.font-regular,.zone-b1.font-normal {...}
+
+  .zone-b2 {...}
+  .zone-b2.font-regular,.zone-b2.font-normal {...}
+
+  .zone-b3 {...}
+  .zone-b3.font-regular,.zone-b3.font-normal {...}
+
+  .zone-c1 {...}
+
+  /**
+  * 富文本
+  * 文件位置：src\styles\zone\rte.less
+  */
+   /* 内部段落字体为 Medium 字重 */
+  .zone-rte {...}
+
+  /* 内部段落字体为 Regular 字重 */
+  .zone-rte.font-regular,.zone-rte.font-normal {...}
+
+```

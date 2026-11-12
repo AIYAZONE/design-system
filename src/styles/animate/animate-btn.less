@@ -1,0 +1,44 @@
+/*
+* PC端动效按钮
+* - 实心胶囊按钮
+* - 纯图标按钮
+*/
+
+@media screen and (min-width: 1024px) {
+  .zone-animate {
+
+    // 纯图标按钮
+    zone-button.only-icon {
+      transform: scale(0);
+      transform-origin: center center;
+      transition: all .5s cubic-bezier(.8, 0, .2, 1);
+
+      &::part(icon) {
+        transform: translateX(calc(0px - 48px));
+        transition: transform .5s cubic-bezier(.8, 0, .2, 1);
+      }
+    }
+
+    // 纯图标按钮
+    &:hover zone-button.only-icon {
+      transform: scale(1);
+
+      &::part(icon) {
+        transform: translateX(0);
+      }
+    }
+
+    // 实心胶囊尾缀已内聚到 zone-button 组件内部，这里只保留外部容器驱动的纯图标动效
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  .zone-animate {
+
+    // 纯图标按钮
+    zone-button.only-icon::part(button) {
+      font-size: var(--zone-size-24);
+    }
+
+  }
+}

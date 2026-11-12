@@ -1,0 +1,109 @@
+import { defineConfig } from 'vite';
+import path from 'path';
+import fs from 'fs';
+
+const getHtmlInputs = () => {
+  const inputs = {
+    index: path.resolve(__dirname, './index.html')
+  };
+  const pagesDir = path.resolve(__dirname, './pages');
+  if (fs.existsSync(pagesDir)) {
+    const walk = (dir) => {
+      fs.readdirSync(dir).forEach((name) => {
+        const full = path.join(dir, name);
+        const stat = fs.statSync(full);
+        if (stat.isDirectory()) walk(full);
+        else if (name.toLowerCase().endsWith('.html')) {
+          const rel = path.relative(pagesDir, full).replace(/\\/g, '/');
+          const key = `pages/${rel.replace(/\.html$/,'')}`;
+          inputs[key] = full;
+        }
+      });
+    };
+    walk(pagesDir);
+  }
+  return inputs;
+};
+
+// Plugin to convert absolute paths to relative paths during build
+const htmlRelativePaths = () => {
+  return {
+    name: 'html-relative-paths',
+    transformIndexHtml(html, ctx) {
+      if (ctx.server) return html; // Don't transform in dev mode
+
+      // Calculate depth from root
+      // ctx.path is like /index.html or /pages/atoms/button.html
+      const depth = ctx.path.split('/').filter(p => p).length - 1;
+      const relativePrefix = depth > 0 ? '../'.repeat(depth) : './';
+
+      return html
+        .replace(/href="\/"/g, `href="${relativePrefix}index.html"`)
+        .replace(/href="\/(\?.*?)"/g, `href="${relativePrefix}index.html$1"`) // Handle /?theme=v1
+        .replace(/href="\/pages\//g, `href="${relativePrefix}pages/`);
+    }
+  };
+};
+
+export default defineConfig(({ command }) => ({
+  base: './',
+  publicDir: path.resolve(__dirname, '../../public'),
+  plugins: [htmlRelativePaths()],
+  server: {
+    host: '0.0.0.0',
+    port: 5174,
+    open: true,
+    fs: {
+      strict: false,
+      allow: [path.resolve(__dirname, '../../')]
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        charset: false
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../../src'),
+      '@styles': path.resolve(__dirname, '../../src/styles'),
+      '@zone/design-system': path.resolve(__dirname, '../../src/register.ts'),
+      '@zone/core': path.resolve(__dirname, '../../packages/core/src'),
+      '@zone/core/*': path.resolve(__dirname, '../../packages/core/src/*'),
+      '@zone/icons': path.resolve(__dirname, '../../packages/icons/src'),
+      '@zone/icons/*': path.resolve(__dirname, '../../packages/icons/src/*'),
+      '@zone/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
+      '@zone/i18n/*': path.resolve(__dirname, '../../packages/i18n/src/*'),
+      '@zone/utils': path.resolve(__dirname, '../../packages/utils/src'),
+      '@zone/utils/*': path.resolve(__dirname, '../../packages/utils/src/*')
+    }
+  },
+  build: {
+    sourcemap: true,
+    minify: 'esbuild',
+    emptyOutDir: true,
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        ...getHtmlInputs(),
+        'examples-theme-v1': path.resolve(__dirname, '../../src/styles/themes/v1/index.less'),
+        'examples-theme-v2': path.resolve(__dirname, '../../src/styles/themes/v2/index.less'),
+        'examples-theme-v3': path.resolve(__dirname, '../../src/styles/themes/v3/index.less')
+      },
+      output: {
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || '';
+          if (name.endsWith('.css')) {
+            if (name.includes('examples-theme-v1')) return 'assets/examples-theme-v1.css';
+            if (name.includes('examples-theme-v2')) return 'assets/examples-theme-v2.css';
+            if (name.includes('examples-theme-v3')) return 'assets/examples-theme-v3.css';
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
+      }
+    }
+  }
+})) ;

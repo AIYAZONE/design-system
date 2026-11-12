@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button - 按钮</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="module" src="/main.ts"></script>
+  <style>
+    .card {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 4px;
+      margin: 20px;
+      cursor: pointer;
+    }
+    main p {
+      margin-bottom: 10px;
+    }
+    main p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="AIYAZONE Logo" />
+      </a>
+      <div class="content">
+        <h1>Button 按钮组件</h1>
+        <p class="subtitle">各种样式和状态的按钮展示</p>
+      </div>
+    </header>
+
+    <main>
+      <h2>按钮变体 - variant</h2>
+      <p>
+        <zone-button>Primary Button</zone-button>
+        <zone-button variant="secondary">Secondary Button</zone-button>
+        <zone-button variant="text">Text Button</zone-button>
+        <zone-button variant="text">文本按钮</zone-button>
+      </p>
+
+      <h2>按钮种类 - kind - 暂未设计，先参考业界实现</h2>
+      <p>
+        <zone-button kind="default">Default Button</zone-button>
+        <zone-button kind="neutral">Neutral Button</zone-button>
+        <zone-button kind="success">Success Button</zone-button>
+        <zone-button kind="danger">Danger Button</zone-button>
+        <zone-button kind="custom" style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+      </p>
+
+      <p>
+        <zone-button variant="secondary">Primary Button</zone-button>
+        <zone-button variant="secondary" kind="neutral">Secondary Button</zone-button>
+        <zone-button variant="secondary" kind="success">Text Button</zone-button>
+        <zone-button variant="secondary" kind="danger">Text Button</zone-button>
+        <zone-button variant="secondary" kind="custom" style="--zone-btn-custom-color:blue;">Custom Color
+          Button</zone-button>
+
+      </p>
+
+      <p>
+        <zone-button variant="text">Primary Button</zone-button>
+        <zone-button variant="text" kind="neutral">Secondary Button</zone-button>
+        <zone-button variant="text" kind="success">Text Button</zone-button>
+        <zone-button variant="text" kind="danger">Text Button</zone-button>
+        <zone-button variant="text" kind="custom" style="--zone-btn-custom-color:blue;">Custom Color
+          Button</zone-button>
+
+      </p>
+
+      <h2>组件级扫光动效 - interaction="shine"</h2>
+      <p>
+        <zone-button>Default Button</zone-button>
+        <zone-button interaction="shine">Figma Sweep Shine</zone-button>
+      </p>
+      <p>
+        <zone-button size="large" interaction="shine" icon="arrow-right-long" icon-mode="capsule">
+          Hover interaction button
+        </zone-button>
+      </p>
+      <p>
+        <zone-button variant="secondary" interaction="shine">Secondary Ignores Shine</zone-button>
+        <zone-button variant="text" interaction="shine">Text Ignores Shine</zone-button>
+      </p>
+
+      <h2>按钮大小 - size</h2>
+      <p>
+        <zone-button size="extra">Extra Button</zone-button>
+        <zone-button size="large">Large Button</zone-button>
+        <zone-button size="medium">Medium Button</zone-button>
+        <zone-button size="small">Small Button</zone-button>
+      </p>
+      <p>
+        <zone-button variant="secondary" size="extra">Extra Button</zone-button>
+        <zone-button variant="secondary" size="large">Large Button</zone-button>
+        <zone-button variant="secondary" size="medium">Medium Button</zone-button>
+        <zone-button variant="secondary" size="small">Small Button</zone-button>
+      </p>
+      <p>
+        <zone-button variant="text" size="extra">Extra Button</zone-button>
+        <zone-button variant="text" size="large">Large Button</zone-button>
+        <zone-button variant="text" size="medium">Medium Button</zone-button>
+        <zone-button variant="text" size="small">Small Button</zone-button>
+      </p>
+      <h3>样式配置：style="--zone-btn-display:block;"</h3>
+      <div class="card">
+        <zone-button style="--zone-btn-display: block">Here is a long text content Here is a long text content</zone-button>
+        <br>
+        <zone-button style="--zone-btn-display: block">Confirm</zone-button>
+        <br />
+        <zone-button size="medium" style="--zone-btn-display: block">Confirm</zone-button>
+      </div>
+      <h3>样式配置：style="--zone-btn-custom-color:blue;"</h3>
+      <zone-button kind="custom" style="--zone-btn-custom-color:blue;" title="A very long text content">A very long text content</zone-button>
+      <h3>样式配置：style="--zone-btn-primary-custom-text-color:blue;"</h3>
+      <zone-button kind="custom" style="--zone-btn-primary-custom-text-color:blue;" title="A very long text content">A very long text content</zone-button>
+      <h3>样式配置：style="--zone-btn-custom-color:pink; --zone-btn-primary-custom-text-color:blue;"</h3>
+      <zone-button kind="custom" style="--zone-btn-custom-color:pink; --zone-btn-primary-custom-text-color:blue;" title="A very long text content">A very long text content</zone-button>
+
+      <h2>不同尺寸图标按钮</h2>
+      <p>
+        <zone-button icon="arrow-right" size="extra">Primary + Icon Button page VIEW</zone-button>
+        <zone-button variant="secondary" icon="arrow-right" size="extra">Secondary + Icon Button VIEW</zone-button>
+        <zone-button variant="text" icon="arrow-right" size="extra">Text + Icon Button p VIEW</zone-button>
+      </p>
+      <p>
+        <zone-button icon="arrow-right">Primary + Icon Button page VIEW</zone-button>
+        <zone-button variant="secondary" icon="arrow-right">Secondary + Icon Button VIEW</zone-button>
+        <zone-button variant="text" icon="arrow-right">Text + Icon Button p VIEW</zone-button>
+      </p>
+      <p>
+        <zone-button icon="arrow-right" size="medium">Primary + Icon Button page VIEW</zone-button>
+        <zone-button variant="secondary" icon="arrow-right" size="medium">Secondary + Icon Button VIEW</zone-button>
+        <zone-button variant="text" icon="arrow-right" size="medium">Text + Icon Button p VIEW</zone-button>
+      </p>
+
+      <p>
+        <zone-button icon="arrow-right" size="small">Primary + Icon Button page VIEW</zone-button>
+        <zone-button variant="secondary" icon="arrow-right" size="small">Secondary + Icon Button VIEW</zone-button>
+        <zone-button variant="text" icon="arrow-right" size="small">Text + Icon Button p VIEW</zone-button>
+      </p>
+      <h2>自定义颜色按钮</h2>
+      <p>
+        <zone-button kind="custom" style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+        <zone-button variant="secondary" kind="custom" style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+        <zone-button variant="text" kind="custom" style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+      </p>
+
+      <h2>禁用状态</h2>
+      <p>
+        <zone-button disabled>Primary Button</zone-button>
+        <zone-button variant="secondary" disabled>Secondary Button</zone-button>
+        <zone-button variant="text" disabled>Text Button</zone-button>
+      </p>
+      <p>
+        <zone-button kind="custom" disabled style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+        <zone-button variant="secondary" kind="custom" disabled style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+        <zone-button variant="text" kind="custom" disabled style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+      </p>
+
+      <h2>加载状态</h2>
+      <p>
+        Primary Button：<zone-button loading>Primary Button</zone-button>
+      </p>
+      <p>
+        Secondary Button：<zone-button variant="secondary" loading>Secondary Button</zone-button>
+      </p>
+      <p>
+        文本按钮无加载状态
+      </p>
+      <p>
+        自定义颜色按钮：
+        <zone-button kind="custom" loading style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+        <zone-button variant="secondary" kind="custom" loading style="--zone-btn-custom-color:blue;">Custom Color Button</zone-button>
+      </p>
+
+      <h2>纯图标按钮</h2>
+      <zone-button icon="arrow-left" size="small"></zone-button>
+      <zone-button icon="arrow-right" size="small"></zone-button>
+      <zone-button icon="info-fill" size="small"></zone-button>
+      <zone-button icon="info-fill"></zone-button>
+      <zone-button icon="arrow-right"></zone-button>
+      <zone-button icon="arrow-right">普通图标按钮</zone-button>
+      <zone-button icon="arrow-right-long"></zone-button>
+      <zone-button icon="arrow-up-long"></zone-button>
+      <zone-button icon="arrow-right" size="extra" variant="secondary"></zone-button>
+
+      <h2>超链接按钮</h2>
+      <p>
+        <zone-button icon="info-fill" href="https://www.zone.com"></zone-button>
+        <zone-button icon="arrow-right-long" href="https://www.zone.com"></zone-button>
+        <zone-button href="https://www.zone.com">AIYAZONE Home Page</zone-button>
+      </p>
+      <p>
+        <zone-button href="https://www.zone.com" target="_self">AIYAZONE Home Page</zone-button>
+        <zone-button icon="arrow-right-long" href="https://www.zone.com">AIYAZONE Home Page</zone-button>
+      </p>
+
+      <h2>实心胶囊动效按钮</h2>
+      <zone-button size="extra" icon="arrow-right-long" icon-mode="capsule">SHOP NOW</zone-button>
+      <zone-button size="large" icon="arrow-right-long" icon-mode="capsule">SHOP NOW</zone-button>
+      <zone-button size="medium" icon="arrow-right-long" icon-mode="capsule">SHOP NOW</zone-button>
+      <zone-button size="small" icon="arrow-right-long" icon-mode="capsule">SHOP NOW</zone-button>
+
+      <h2>纯图标动效按钮</h2>
+      <div class="card zone-animate">
+        <p>鼠标悬浮到卡片上方查看效果</p>
+        <zone-button class="only-icon" icon="arrow-right-long"></zone-button>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

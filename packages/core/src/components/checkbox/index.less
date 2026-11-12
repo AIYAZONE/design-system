@@ -1,0 +1,59 @@
+:host {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: var(--zone-size-8, 8px);
+  position: relative;
+  font-family: var(--zone-font-family, Inter, "PingFang SC", sans-serif);
+  font-size: var(--zone-font-size-16, 16px);
+  color: var(--zone-color-text-primary, #242f20);
+  line-height: normal;
+}
+
+.checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.checkbox--checked .icon svg path {
+  fill: var(--zone-color-primary, #FD5000);
+}
+
+.checkbox:not(.checkbox--checked) .icon svg path {
+  fill: var(--zone-color-text-primary, #242f20);
+}
+
+.label {
+  user-select: none;
+}

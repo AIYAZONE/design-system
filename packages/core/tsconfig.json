@@ -1,0 +1,34 @@
+{
+  "extends": "@zone/tsconfig/lib.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "emitDeclarationOnly": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "types": ["vite/client", "vitest", "node"],
+    "paths": {
+      "@zone/utils": ["../utils/src"],
+      "@zone/i18n": ["../i18n/src"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    "vitest.config.ts"
+  ],
+  "exclude": [
+    "src/**/*.stories.ts",
+    "src/**/*.stories.js",
+    "src/**/*.mdx"
+  ],
+  "references": [
+    {
+      "path": "../utils"
+    },
+    {
+      "path": "../i18n"
+    }
+  ]
+}
