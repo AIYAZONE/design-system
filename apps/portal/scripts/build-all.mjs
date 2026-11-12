@@ -19,6 +19,10 @@ function copyDir(src, dest) {
 }
 
 try {
+  // 0. 构建 Monorepo 基础包（packages/* + portal），保证全新环境下子应用能拿到构建产物
+  console.log('Building Monorepo packages...');
+  run('pnpm run build');
+
   // 1. Build Portal
   console.log('Building Portal...');
   run('pnpm --filter @aiyazone/portal run build');

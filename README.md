@@ -62,8 +62,32 @@ design-system/
 
 ## 3. 发布与部署
 
-- 组件库：直接发布到 npm 公网仓库（作用域 `@zone`），包名 `@aiyazone/design-system`；CDN 引用走 jsDelivr / unpkg（见 5.2）
-- 文档站点：静态产物部署到 GitHub Pages，绑定自定义域名 `design.aiyazone.com`
+- 组件库：直接发布到 npm 公网仓库（作用域 `@aiyazone`），包名 `@aiyazone/design-system`；CDN 引用走 jsDelivr / unpkg（见 5.2）
+- 文档站点：部署到 Vercel，绑定自定义域名 `design.aiyazone.com`
+
+### 3.1 站点部署（Vercel）
+
+整站产物统一组装到 `apps/portal/dist`：
+
+| 路径 | 内容 | 来源 |
+|------|------|------|
+| `/` | 门户首页 | apps/portal |
+| `/storybook/` | 组件文档 | apps/storybook |
+| `/examples/` | 示例站 | apps/examples |
+| `/icons/` | 图标文档 | packages/icons |
+
+仓库根目录的 `vercel.json` 已配置完成（install → `pnpm install`，build → `pnpm --filter @aiyazone/portal run build:all`，输出 → `apps/portal/dist`）。
+
+1. **Git 集成（推荐）**：Vercel 控制台 Import GitHub 仓库 `AIYAZONE/design-system`，Framework Preset 选 **Other**，其余保持默认（自动读取 vercel.json），master 分支推送即自动部署；develop 分支自动出 Preview 环境。
+2. **CLI 本地部署**：
+
+```bash
+npm i -g vercel
+vercel          # 预览环境
+vercel --prod   # 生产环境
+```
+
+3. **自定义域名**：Vercel 项目 Settings → Domains 添加 `design.aiyazone.com`，按提示在 DNS 添加 CNAME 记录（`cname.vercel-dns.com`）。
 
 ## 4. 包结构
 
