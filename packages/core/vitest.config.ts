@@ -30,8 +30,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@zone/utils': resolve(__dirname, '../utils/src'),
-      '@zone/i18n': resolve(__dirname, '../i18n/src')
+      '@aiyazone/utils': resolve(__dirname, '../utils/src'),
+      '@aiyazone/i18n': resolve(__dirname, '../i18n/src')
     }
   }
 })

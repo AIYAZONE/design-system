@@ -138,15 +138,15 @@ export default defineConfig((configEnv) => {
         alias: {
           '@': path.resolve(__dirname, 'src'),
           '@styles': path.resolve(__dirname, 'src/styles'),
-          '@zone/design-system': path.resolve(__dirname, 'src/index.ts'),
-          '@zone/core': path.resolve(__dirname, 'packages/core/src'),
-          '@zone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
-          '@zone/icons': path.resolve(__dirname, 'packages/icons/src'),
-          '@zone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
-          '@zone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
-          '@zone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
-          '@zone/utils': path.resolve(__dirname, 'packages/utils/src'),
-          '@zone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+          '@aiyazone/design-system': path.resolve(__dirname, 'src/index.ts'),
+          '@aiyazone/core': path.resolve(__dirname, 'packages/core/src'),
+          '@aiyazone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+          '@aiyazone/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@aiyazone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+          '@aiyazone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@aiyazone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+          '@aiyazone/utils': path.resolve(__dirname, 'packages/utils/src'),
+          '@aiyazone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
         }
       }
     };
@@ -215,14 +215,14 @@ export default defineConfig((configEnv) => {
         alias: {
           '@': path.resolve(__dirname, 'src'),
           '@styles': path.resolve(__dirname, 'src/styles'),
-          '@zone/core': path.resolve(__dirname, 'packages/core/src'),
-          '@zone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
-          '@zone/icons': path.resolve(__dirname, 'packages/icons/src'),
-          '@zone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
-          '@zone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
-          '@zone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
-          '@zone/utils': path.resolve(__dirname, 'packages/utils/src'),
-          '@zone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+          '@aiyazone/core': path.resolve(__dirname, 'packages/core/src'),
+          '@aiyazone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+          '@aiyazone/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@aiyazone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+          '@aiyazone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@aiyazone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+          '@aiyazone/utils': path.resolve(__dirname, 'packages/utils/src'),
+          '@aiyazone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
         }
       }
     };
@@ -279,10 +279,10 @@ export default defineConfig((configEnv) => {
         alias: {
           '@': path.resolve(__dirname, 'src'),
           '@styles': path.resolve(__dirname, 'src/styles'),
-          '@zone/core': path.resolve(__dirname, 'packages/core/src'),
-          '@zone/icons': path.resolve(__dirname, 'packages/icons/src'),
-          '@zone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
-          '@zone/utils': path.resolve(__dirname, 'packages/utils/src')
+          '@aiyazone/core': path.resolve(__dirname, 'packages/core/src'),
+          '@aiyazone/icons': path.resolve(__dirname, 'packages/icons/src'),
+          '@aiyazone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+          '@aiyazone/utils': path.resolve(__dirname, 'packages/utils/src')
         }
       }
     };
@@ -311,8 +311,8 @@ export default defineConfig((configEnv) => {
           manualChunks: {
             'lit-core': ['lit'],
             'utils': ['./src/utils/common.ts', './src/utils/elements.ts'],
-            'icons': ['@zone/icons'],
-            'i18n': ['@zone/i18n']
+            'icons': ['@aiyazone/icons'],
+            'i18n': ['@aiyazone/i18n']
           },
           entryFileNames: (chunkInfo) => `${chunkInfo.name}.js`,
           chunkFileNames: (chunkInfo) => `chunks/${chunkInfo.name}.js`,
@@ -371,15 +371,15 @@ export default defineConfig((configEnv) => {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@styles': path.resolve(__dirname, 'src/styles'),
-        '@zone/design-system': path.resolve(__dirname, 'src/register.ts'),
-        '@zone/core': path.resolve(__dirname, 'packages/core/src'),
-        '@zone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
-        '@zone/icons': path.resolve(__dirname, 'packages/icons/src'),
-        '@zone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
-        '@zone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
-        '@zone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
-        '@zone/utils': path.resolve(__dirname, 'packages/utils/src'),
-        '@zone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
+        '@aiyazone/design-system': path.resolve(__dirname, 'src/register.ts'),
+        '@aiyazone/core': path.resolve(__dirname, 'packages/core/src'),
+        '@aiyazone/core/*': path.resolve(__dirname, 'packages/core/src/*'),
+        '@aiyazone/icons': path.resolve(__dirname, 'packages/icons/src'),
+        '@aiyazone/icons/*': path.resolve(__dirname, 'packages/icons/src/*'),
+        '@aiyazone/i18n': path.resolve(__dirname, 'packages/i18n/src'),
+        '@aiyazone/i18n/*': path.resolve(__dirname, 'packages/i18n/src/*'),
+        '@aiyazone/utils': path.resolve(__dirname, 'packages/utils/src'),
+        '@aiyazone/utils/*': path.resolve(__dirname, 'packages/utils/src/*')
       }
     }
   };

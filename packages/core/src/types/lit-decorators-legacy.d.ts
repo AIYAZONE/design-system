@@ -1,5 +1,5 @@
 // Shim legacy decorators for Lit to avoid TS Server interpreting them as new standard decorators
-// within the @zone/core package.
+// within the @aiyazone/core package.
 
 declare namespace LitDecoratorsLegacyShim {
   type LegacyPropertyDecorator = (protoOrDescriptor: object, name: PropertyKey) => void;

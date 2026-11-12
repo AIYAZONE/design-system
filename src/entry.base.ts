@@ -6,12 +6,12 @@
  * - 仅在此处执行一次 initI18nDom()，避免多入口重复初始化
  */
 
-import '@zone/core';
-export * from '@zone/core';
-import '@zone/icons';
-export { ZoneIcon } from '@zone/icons';
-import '@zone/i18n';
-import { initialize, initI18nDom } from '@zone/i18n';
+import '@aiyazone/core';
+export * from '@aiyazone/core';
+import '@aiyazone/icons';
+export { ZoneIcon } from '@aiyazone/icons';
+import '@aiyazone/i18n';
+import { initialize, initI18nDom } from '@aiyazone/i18n';
 export {
   ZoneI18n,
   initialize,
@@ -21,6 +21,6 @@ export {
   getCurrLanguage,
   I18nController,
   type I18nInstance
-} from '@zone/i18n';
+} from '@aiyazone/i18n';
 initialize();
 initI18nDom();

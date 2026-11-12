@@ -1,7 +1,7 @@
 import './style.css'
 import { archMeta, maturity, selfAssessment } from './architecture-data';
 // Import AIYAZONE Core components (if needed in the future)
-// import '@zone/core'; 
+// import '@aiyazone/core'; 
 
 // --- Interfaces & Data ---
 interface CardItem {

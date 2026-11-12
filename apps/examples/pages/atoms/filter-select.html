@@ -197,7 +197,7 @@
     const langSelect = document.getElementById('lang-select');
     const ids = ['fs-basic', 'fs-selected', 'fs-summary', 'fs-immediate', 'fs-keep-open', 'fs-disabled-option', 'fs-minimal', 'fs-empty'];
 
-    // 语言切换：window.i18n 由 @zone/i18n 在入口自动挂载
+    // 语言切换：window.i18n 由 @aiyazone/i18n 在入口自动挂载
     langSelect.value = window.i18n?.getCurrLanguage?.() ?? 'en';
     langSelect.addEventListener('change', () => {
       window.i18n?.setCurrLanguage?.(langSelect.value);

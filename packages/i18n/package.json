@@ -1,5 +1,5 @@
 {
-  "name": "@zone/i18n",
+  "name": "@aiyazone/i18n",
   "version": "0.1.1",
   "description": "AIYAZONE Design System - Internationalization",
   "type": "module",
@@ -36,8 +36,8 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@zone/eslint-config": "workspace:*",
-    "@zone/tsconfig": "workspace:*",
+    "@aiyazone/eslint-config": "workspace:*",
+    "@aiyazone/tsconfig": "workspace:*",
     "lit": "^3.3.1",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.0",

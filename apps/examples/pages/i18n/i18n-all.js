@@ -1,5 +1,5 @@
-import { messages, SUPPORTED_LANGUAGES } from '@zone/i18n/types/languages';
-import { getCurrLanguage } from '@zone/i18n';
+import { messages, SUPPORTED_LANGUAGES } from '@aiyazone/i18n/types/languages';
+import { getCurrLanguage } from '@aiyazone/i18n';
 
 function flattenObject(obj, prefix = '') {
   return Object.keys(obj || {}).reduce((acc, key) => {

@@ -3,7 +3,7 @@
  * 为国际化多语言表格提供增强功能
  */
 
-import { messages } from '@zone/i18n/types/languages';
+import { messages } from '@aiyazone/i18n/types/languages';
 
 document.addEventListener('DOMContentLoaded', function() {
   fetchTranslationData();

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { getCurrLanguage, setCurrLanguage } from "@zone/i18n";
+import { getCurrLanguage, setCurrLanguage } from "@aiyazone/i18n";
 
 import { waitUpdate } from "../../../../test/utils";
 import "../index";

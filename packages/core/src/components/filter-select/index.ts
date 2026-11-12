@@ -19,7 +19,7 @@ import {
   shift,
   size,
 } from "@floating-ui/dom";
-import { I18nController, t, normalizeLanguage, type Language } from "@zone/i18n";
+import { I18nController, t, normalizeLanguage, type Language } from "@aiyazone/i18n";
 
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";

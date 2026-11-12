@@ -10,12 +10,12 @@ export default defineConfig({
       formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['lit', '@zone/utils', '@zone/i18n'],
+      external: ['lit', '@aiyazone/utils', '@aiyazone/i18n'],
       output: {
         globals: {
           'lit': 'Lit',
-          '@zone/utils': 'AIYAZONEUtils',
-          '@zone/i18n': 'AIYAZONEI18n'
+          '@aiyazone/utils': 'AIYAZONEUtils',
+          '@aiyazone/i18n': 'AIYAZONEI18n'
         }
       }
     },
@@ -23,8 +23,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@zone/utils': resolve(__dirname, '../utils/src'),
-      '@zone/i18n': resolve(__dirname, '../i18n/src')
+      '@aiyazone/utils': resolve(__dirname, '../utils/src'),
+      '@aiyazone/i18n': resolve(__dirname, '../i18n/src')
     }
   }
 });

@@ -16,10 +16,10 @@ export default {
   plugins: [
     alias({
       entries: [
-        { find: '@zone/core', replacement: path.resolve(process.cwd(), 'packages/core/src/index.ts') },
-        { find: '@zone/icons', replacement: path.resolve(process.cwd(), 'packages/icons/src/index.ts') },
-        { find: '@zone/i18n', replacement: path.resolve(process.cwd(), 'packages/i18n/src/index.ts') },
-        { find: '@zone/utils', replacement: path.resolve(process.cwd(), 'packages/utils/src/index.ts') }
+        { find: '@aiyazone/core', replacement: path.resolve(process.cwd(), 'packages/core/src/index.ts') },
+        { find: '@aiyazone/icons', replacement: path.resolve(process.cwd(), 'packages/icons/src/index.ts') },
+        { find: '@aiyazone/i18n', replacement: path.resolve(process.cwd(), 'packages/i18n/src/index.ts') },
+        { find: '@aiyazone/utils', replacement: path.resolve(process.cwd(), 'packages/utils/src/index.ts') }
       ]
     }),
     dts({ tsconfig: path.resolve(process.cwd(), 'tsconfig.types.json'), respectExternal: true })

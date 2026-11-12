@@ -1,5 +1,5 @@
 {
-  "name": "@zone/storybook",
+  "name": "@aiyazone/storybook",
   "version": "0.1.1",
   "description": "AIYAZONE Design System - Storybook Documentation",
   "type": "module",
@@ -18,15 +18,15 @@
     "clean": "rimraf storybook-static"
   },
   "dependencies": {
-    "@zone/core": "workspace:*",
-    "@zone/i18n": "workspace:*",
-    "@zone/icons": "workspace:*",
-    "@zone/utils": "workspace:*"
+    "@aiyazone/core": "workspace:*",
+    "@aiyazone/i18n": "workspace:*",
+    "@aiyazone/icons": "workspace:*",
+    "@aiyazone/utils": "workspace:*"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
-    "@zone/eslint-config": "workspace:*",
-    "@zone/tsconfig": "workspace:*",
+    "@aiyazone/eslint-config": "workspace:*",
+    "@aiyazone/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "8.6.14",
     "@storybook/addon-actions": "8.6.14",
     "@storybook/addon-docs": "8.6.14",

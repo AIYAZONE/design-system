@@ -21,14 +21,14 @@ function copyDir(src, dest) {
 try {
   // 1. Build Portal
   console.log('Building Portal...');
-  run('pnpm --filter @zone/portal run build');
+  run('pnpm --filter @aiyazone/portal run build');
 
   // 2. Build Examples
   console.log('Building Examples...');
   // Note: We might need to adjust base path for examples. For now assuming it works or has relative paths.
   // Passing --base=/examples/ to vite build if supported by the script, otherwise relying on config.
   // Let's try to set base via environment variable if vite config picks it up, or just build.
-  run('pnpm --filter @zone/examples run build');
+  run('pnpm --filter @aiyazone/examples run build');
   
   const examplesDist = path.resolve(rootDir, 'apps/examples/dist');
   const examplesTarget = path.join(portalDist, 'examples');
@@ -36,7 +36,7 @@ try {
 
   // 3. Build Storybook
   console.log('Building Storybook...');
-  run('pnpm --filter @zone/storybook run build:storybook');
+  run('pnpm --filter @aiyazone/storybook run build:storybook');
   
   const storybookDist = path.resolve(rootDir, 'apps/storybook/storybook-static');
   const storybookTarget = path.join(portalDist, 'storybook');
@@ -44,7 +44,7 @@ try {
 
   // 4. Build Icons
   console.log('Building Icons Storybook...');
-  run('pnpm --filter @zone/icons run build:storybook');
+  run('pnpm --filter @aiyazone/icons run build:storybook');
   
   const iconsDist = path.resolve(rootDir, 'packages/icons/storybook-static');
   const iconsTarget = path.join(portalDist, 'icons');

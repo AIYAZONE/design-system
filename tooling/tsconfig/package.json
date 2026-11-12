@@ -1,5 +1,5 @@
 {
-  "name": "@zone/tsconfig",
+  "name": "@aiyazone/tsconfig",
   "version": "0.1.0",
   "description": "AIYAZONE Design System - Shared TypeScript Configuration",
   "files": [

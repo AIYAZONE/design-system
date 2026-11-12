@@ -68,7 +68,7 @@ src/i18n/
 ### 在 Lit 组件中使用
 
 ```typescript
-import { I18nController } from '@zone/design-system/i18n';
+import { I18nController } from '@aiyazone/design-system/i18n';
 
 @customElement('my-component')
 export class MyComponent extends LitElement {
@@ -103,7 +103,7 @@ export class MyComponent extends LitElement {
 ### 使用装饰器
 
 ```typescript
-import { i18n } from '@zone/design-system/i18n/decorators';
+import { i18n } from '@aiyazone/design-system/i18n/decorators';
 
 @customElement('my-component')
 export class MyComponent extends LitElement {
@@ -119,7 +119,7 @@ export class MyComponent extends LitElement {
 ### 全局 API
 
 ```typescript
-import { t, setCurrLanguage, getCurrLanguage } from '@zone/design-system/i18n';
+import { t, setCurrLanguage, getCurrLanguage } from '@aiyazone/design-system/i18n';
 
 // 基础翻译
 const text = t('common.title');

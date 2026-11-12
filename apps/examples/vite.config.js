@@ -70,15 +70,15 @@ export default defineConfig(({ command }) => ({
     alias: {
       '@': path.resolve(__dirname, '../../src'),
       '@styles': path.resolve(__dirname, '../../src/styles'),
-      '@zone/design-system': path.resolve(__dirname, '../../src/register.ts'),
-      '@zone/core': path.resolve(__dirname, '../../packages/core/src'),
-      '@zone/core/*': path.resolve(__dirname, '../../packages/core/src/*'),
-      '@zone/icons': path.resolve(__dirname, '../../packages/icons/src'),
-      '@zone/icons/*': path.resolve(__dirname, '../../packages/icons/src/*'),
-      '@zone/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
-      '@zone/i18n/*': path.resolve(__dirname, '../../packages/i18n/src/*'),
-      '@zone/utils': path.resolve(__dirname, '../../packages/utils/src'),
-      '@zone/utils/*': path.resolve(__dirname, '../../packages/utils/src/*')
+      '@aiyazone/design-system': path.resolve(__dirname, '../../src/register.ts'),
+      '@aiyazone/core': path.resolve(__dirname, '../../packages/core/src'),
+      '@aiyazone/core/*': path.resolve(__dirname, '../../packages/core/src/*'),
+      '@aiyazone/icons': path.resolve(__dirname, '../../packages/icons/src'),
+      '@aiyazone/icons/*': path.resolve(__dirname, '../../packages/icons/src/*'),
+      '@aiyazone/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
+      '@aiyazone/i18n/*': path.resolve(__dirname, '../../packages/i18n/src/*'),
+      '@aiyazone/utils': path.resolve(__dirname, '../../packages/utils/src'),
+      '@aiyazone/utils/*': path.resolve(__dirname, '../../packages/utils/src/*')
     }
   },
   build: {

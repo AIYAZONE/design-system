@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup} from "lit"
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { submit } from "@zone/utils";
+import { submit } from "@aiyazone/utils";
 
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";

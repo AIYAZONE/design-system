@@ -49,8 +49,8 @@ cp -r src/i18n/* packages/i18n/src/
 ```bash
 # 将图标相关代码迁移到 icons 包
 cp -r src/icons/* packages/icons/src/
-# 或者从现有的 @zone/icons 包迁移
-# 确保 package.json 中的包名为 @zone/icons
+# 或者从现有的 @aiyazone/icons 包迁移
+# 确保 package.json 中的包名为 @aiyazone/icons
 ```
 
 #### 2.5 迁移 Storybook 配置
@@ -72,9 +72,9 @@ import { formatDate } from '../utils/common';
 import { IconArrow } from '../icons/arrow';
 
 // 新的导入方式
-import { AIYAZONEButton } from '@zone/core/button';
-import { formatDate } from '@zone/utils/common';
-import { ArrowRight, AlertFill } from '@zone/icons';
+import { AIYAZONEButton } from '@aiyazone/core/button';
+import { formatDate } from '@aiyazone/utils/common';
+import { ArrowRight, AlertFill } from '@aiyazone/icons';
 
 // 全局样式在应用入口引入（示例）
 import '@styles/index.less';
@@ -130,22 +130,22 @@ pnpm run publish:design-system
 
 ## 包结构说明
 
-### @zone/core
+### @aiyazone/core
 - **用途**: 核心 Web Components 组件
 - **导出**: Button, Badge, Dialog, Popover, Spinner, Toast, Tooltip
 - **样式**: 组件样式以内联方式注入；全局主题令牌与样式由根目录 `src/styles` 管理
 
-### @zone/icons
+### @aiyazone/icons
 - **用途**: 图标库，提供 87+ 个 SVG 图标
 - **导出**: React/Vue 图标组件、SVG 文件、TypeScript 类型定义
 - **特性**: 支持按需导入、Tree-shaking、多种尺寸和颜色
-- **使用**: `import { ArrowRight, AlertFill } from '@zone/icons'`
+- **使用**: `import { ArrowRight, AlertFill } from '@aiyazone/icons'`
 
-### @zone/i18n
+### @aiyazone/i18n
 - **用途**: 国际化功能
 - **导出**: 核心 i18n 功能、装饰器、语言包
 
-### @zone/utils
+### @aiyazone/utils
 - **用途**: 通用工具函数
 - **导出**: 通用工具、DOM 操作、事件处理、表单控制
 

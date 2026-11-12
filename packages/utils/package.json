@@ -1,5 +1,5 @@
 {
-  "name": "@zone/utils",
+  "name": "@aiyazone/utils",
   "version": "0.1.0",
   "description": "AIYAZONE Design System - Utility Functions",
   "type": "module",
@@ -52,8 +52,8 @@
     "@open-wc/form-control": "^1.0.0"
   },
   "devDependencies": {
-    "@zone/eslint-config": "workspace:*",
-    "@zone/tsconfig": "workspace:*",
+    "@aiyazone/eslint-config": "workspace:*",
+    "@aiyazone/tsconfig": "workspace:*",
     "lit": "^3.0.0",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.0",

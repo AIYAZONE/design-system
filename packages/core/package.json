@@ -1,5 +1,5 @@
 {
-  "name": "@zone/core",
+  "name": "@aiyazone/core",
   "version": "0.1.8",
   "description": "AIYAZONE Design System - Core Components",
   "type": "module",
@@ -80,8 +80,8 @@
     "lit": "^3.0.0"
   },
   "devDependencies": {
-    "@zone/eslint-config": "workspace:*",
-    "@zone/tsconfig": "workspace:*",
+    "@aiyazone/eslint-config": "workspace:*",
+    "@aiyazone/tsconfig": "workspace:*",
     "@testing-library/dom": "^9.3.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.30",
@@ -95,8 +95,8 @@
     "vitest": "^1.0.0"
   },
   "peerDependencies": {
-    "@zone/i18n": "workspace:*",
-    "@zone/utils": "workspace:*"
+    "@aiyazone/i18n": "workspace:*",
+    "@aiyazone/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "restricted"

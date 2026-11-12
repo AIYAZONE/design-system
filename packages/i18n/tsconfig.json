@@ -1,5 +1,5 @@
 {
-  "extends": "@zone/tsconfig/lib.json",
+  "extends": "@aiyazone/tsconfig/lib.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true,

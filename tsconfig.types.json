@@ -9,10 +9,10 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zone/core": ["packages/core/src"],
-      "@zone/icons": ["packages/icons/src"],
-      "@zone/i18n": ["packages/i18n/src"],
-      "@zone/utils": ["packages/utils/src"]
+      "@aiyazone/core": ["packages/core/src"],
+      "@aiyazone/icons": ["packages/icons/src"],
+      "@aiyazone/i18n": ["packages/i18n/src"],
+      "@aiyazone/utils": ["packages/utils/src"]
     }
   },
   "include": [

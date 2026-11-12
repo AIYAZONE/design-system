@@ -24,7 +24,7 @@ const findUp = (startDir: string, matcher: (pkg: Record<string, unknown>) => boo
   return null;
 };
 
-const zoneRoot = findUp(process.cwd(), (pkg) => pkg.name === '@zone/design-system');
+const zoneRoot = findUp(process.cwd(), (pkg) => pkg.name === '@aiyazone/design-system');
 const zonePkg = zoneRoot?.pkg ?? null;
 
 const envZoneVersion = process.env.ZONE_VERSION;

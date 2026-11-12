@@ -1,11 +1,11 @@
 import type { Preview } from "@storybook/web-components";
 // 先引入设计系统 JS 入口，确保自定义元素注册与组件逻辑加载
-import "@zone/core";
+import "@aiyazone/core";
 // 引入图标库，确保 <zone-icon> 在 iframe 中已注册且样式生效
-import "@zone/icons";
+import "@aiyazone/icons";
 // 最后引入站点样式，使站点的 tokens 与变量覆盖核心包的默认值
 import "zone:styles";
-import { initialize, initI18nDom, setCurrLanguage } from "@zone/i18n";
+import { initialize, initI18nDom, setCurrLanguage } from "@aiyazone/i18n";
 
 const preview: Preview = {
   parameters: {

@@ -1,5 +1,5 @@
 // 注册并加载所有核心 Web Components 与图标
-import '@zone/design-system';
+import '@aiyazone/design-system';
 
 // 保证全局设计令牌优先加载，再加载示例站样式覆盖
 // 在开发环境下直接由入口导入 less，确保 Vite 编译生效
@@ -39,7 +39,7 @@ if (isProd) {
 import './styles/public.less';
 
 // @ts-ignore
-import { initialize, initI18nDom } from '@zone/design-system';
+import { initialize, initI18nDom } from '@aiyazone/design-system';
 initialize();
 initI18nDom();
 

@@ -10,7 +10,7 @@
  */
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { SUPPORTED_LANGUAGES, Language, getCurrLanguage, setCurrLanguage } from '@zone/i18n';
+import { SUPPORTED_LANGUAGES, Language, getCurrLanguage, setCurrLanguage } from '@aiyazone/i18n';
 
 @customElement('zone-i18n-change')
 export default class ZoneI18nChange extends LitElement {

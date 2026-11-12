@@ -1,5 +1,5 @@
 {
-  "extends": "@zone/tsconfig/base.json",
+  "extends": "@aiyazone/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -7,15 +7,15 @@
       "@/*": ["./src/*"],
       "@styles": ["./src/styles"],
       "@styles/*": ["./src/styles/*"],
-      "@zone/design-system": ["./src/index.ts"],
-      "@zone/core": ["./packages/core/src"],
-      "@zone/core/*": ["./packages/core/src/*"],
-      "@zone/icons": ["./packages/icons/src"],
-      "@zone/icons/*": ["./packages/icons/src/*"],
-      "@zone/i18n": ["./packages/i18n/src"],
-      "@zone/i18n/*": ["./packages/i18n/src/*"],
-      "@zone/utils": ["./packages/utils/src"],
-      "@zone/utils/*": ["./packages/utils/src/*"]
+      "@aiyazone/design-system": ["./src/index.ts"],
+      "@aiyazone/core": ["./packages/core/src"],
+      "@aiyazone/core/*": ["./packages/core/src/*"],
+      "@aiyazone/icons": ["./packages/icons/src"],
+      "@aiyazone/icons/*": ["./packages/icons/src/*"],
+      "@aiyazone/i18n": ["./packages/i18n/src"],
+      "@aiyazone/i18n/*": ["./packages/i18n/src/*"],
+      "@aiyazone/utils": ["./packages/utils/src"],
+      "@aiyazone/utils/*": ["./packages/utils/src/*"]
     }
   },
   "references": [

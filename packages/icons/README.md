@@ -26,17 +26,17 @@ AIYAZONE Design System 提供了一套完整、高性能的图标库。该库基
 使用npm安装图标库：
 
 ```bash
-npm install @zone/icons
+npm install @aiyazone/icons
 ```
 
 CDN引入：
 
 ```html
-<script src="https://cdn.aiyazone.com/@zone/icons/latest/index.umd.js"></script>
+<script src="https://cdn.aiyazone.com/@aiyazone/icons/latest/index.umd.js"></script>
 
 <!-- 或者 -->
 
-<script type="module" src="https://cdn.aiyazone.com/@zone/icons/latest/index.es.js"></script>
+<script type="module" src="https://cdn.aiyazone.com/@aiyazone/icons/latest/index.es.js"></script>
 ```
 
 ### 使用
@@ -44,7 +44,7 @@ CDN引入：
 在Lit框架中引入图标组件：
 
 ```javascript
-import '@zone/icons';
+import '@aiyazone/icons';
 ```
 
 在HTML中使用图标：

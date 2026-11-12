@@ -1,7 +1,7 @@
 <svg width="360" height="60" viewBox="0 0 360 60" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZONE Design System">
   <title>ZONE Design System</title>
   <rect x="0" y="2" width="56" height="56" rx="14" fill="#FF5000"/>
-  <path d="M17 18H39V25.5H27.5L39 37.5V46H17V38.5H28.5L17 26.5V18Z" fill="#FFFFFF"/>
+  <path d="M17 20H39L17 40H39" stroke="#FFFFFF" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
   <text x="72" y="34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3" fill="#111827">ZONE</text>
   <text x="74" y="50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="3.6" fill="#6B7280">DESIGN SYSTEM</text>
 </svg>

@@ -4,7 +4,7 @@
  * @LastEditors: HB-BruceWang
  * @LastEditTime: 2025-03-11 11:27:42
  * @FilePath: \AIYAZONE-F2E-Team\zone-design-system\src\utils\common.ts
- * @Description: 公共方法 - 后续提取到 @zone/utils 中
+ * @Description: 公共方法 - 后续提取到 @aiyazone/utils 中
  *
  * Copyright (c) 2025 by Hello Tech, All Rights Reserved.
  */

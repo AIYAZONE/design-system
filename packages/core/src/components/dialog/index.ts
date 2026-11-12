@@ -1,7 +1,7 @@
 import { html, LitElement, PropertyValues, TemplateResult, CSSResultGroup, unsafeCSS } from "lit";
 import { customElement, property, query } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
-import { event, EventDispatcher } from "@zone/utils";
+import { event, EventDispatcher } from "@aiyazone/utils";
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 

@@ -10,7 +10,7 @@
  */
 import { html, LitElement, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { i18n, t } from '@zone/i18n';
+import { i18n, t } from '@aiyazone/i18n';
 
 @customElement('zone-i18n-example')
 export default class ZoneI18nExample extends LitElement {

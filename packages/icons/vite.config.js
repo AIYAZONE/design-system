@@ -28,7 +28,7 @@ export default defineConfig({
       // 入口文件路径
       entry: resolve(__dirname, 'src/index.ts'),
       // 库的全局变量名
-      name: '@zone/icons',
+      name: '@aiyazone/icons',
       // 输出文件名格式
       fileName: (format) => `index.${format}.js`,
       // 输出格式：ES Module 和 UMD

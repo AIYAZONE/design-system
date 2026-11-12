@@ -1,5 +1,5 @@
 {
-  "name": "@zone/design-system",
+  "name": "@aiyazone/design-system",
   "version": "0.3.0",
   "description": "AIYAZONE Design System (ZONE) - Monorepo",
   "author": "AIYAZONE F2E Team",
@@ -17,7 +17,7 @@
     "tooling/*"
   ],
   "scripts": {
-    "build": "turbo run build --filter=!@zone/examples --filter=!@zone/storybook",
+    "build": "turbo run build --filter=!@aiyazone/examples --filter=!@aiyazone/storybook",
     "dev": "turbo run dev",
     "site:preview": "vite preview --strictPort --port 5175",
     "design:build:lib": "vite build --mode library",
@@ -33,10 +33,10 @@
     "test:watch": "turbo run test:watch",
     "type-check": "turbo run type-check",
     "clean": "turbo run clean",
-    "build:examples": "turbo run build --filter=@zone/examples",
-    "portal:build:all": "pnpm --filter @zone/portal run build:all",
-    "storybook": "turbo run storybook --filter=@zone/storybook",
-    "build:storybook": "turbo run build:storybook --filter=@zone/storybook",
+    "build:examples": "turbo run build --filter=@aiyazone/examples",
+    "portal:build:all": "pnpm --filter @aiyazone/portal run build:all",
+    "storybook": "turbo run storybook --filter=@aiyazone/storybook",
+    "build:storybook": "turbo run build:storybook --filter=@aiyazone/storybook",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
@@ -94,8 +94,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
-    "@zone/eslint-config": "workspace:*",
-    "@zone/tsconfig": "workspace:*",
+    "@aiyazone/eslint-config": "workspace:*",
+    "@aiyazone/tsconfig": "workspace:*",
     "@open-wc/form-control": "^1.0.0",
     "@rollup/plugin-alias": "^5.1.1",
     "@testing-library/dom": "^9.3.4",

@@ -1,5 +1,5 @@
 {
-  "name": "@zone/eslint-config",
+  "name": "@aiyazone/eslint-config",
   "version": "0.1.0",
   "description": "AIYAZONE Design System - Shared ESLint Configuration",
   "type": "module",

@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 const config = {
   stories: [
     "../docs/**/*.mdx",
-    // 仅包含需要在主 Storybook 展示的包，排除 @zone/icons 的 stories
+    // 仅包含需要在主 Storybook 展示的包，排除 @aiyazone/icons 的 stories
     "../packages/core/src/**/*.stories.@(js|ts|mdx)",
     "../packages/i18n/src/**/*.stories.@(js|ts|mdx)",
     "../packages/utils/src/**/*.stories.@(js|ts|mdx)",
@@ -55,10 +55,10 @@ const config = {
       alias: {
         ...(config.resolve?.alias ?? {}),
         // 将工作区包映射到源码，避免依赖 dist 构建
-        '@zone/i18n': resolve(process.cwd(), '../../packages/i18n/src/index.ts'),
-        '@zone/core': resolve(process.cwd(), '../../packages/core/src/index.ts'),
-        '@zone/icons': resolve(process.cwd(), '../../packages/icons/src/index.ts'),
-        '@zone/utils': resolve(process.cwd(), '../../packages/utils/src/index.ts'),
+        '@aiyazone/i18n': resolve(process.cwd(), '../../packages/i18n/src/index.ts'),
+        '@aiyazone/core': resolve(process.cwd(), '../../packages/core/src/index.ts'),
+        '@aiyazone/icons': resolve(process.cwd(), '../../packages/icons/src/index.ts'),
+        '@aiyazone/utils': resolve(process.cwd(), '../../packages/utils/src/index.ts'),
         // 全局样式别名，指向绝对路径以触发 /@fs 解析
         'zone:styles': resolve(process.cwd(), '../../src/styles/index.less'),
         // 修正 Storybook 在非仓库根作为 dev root 时对 preview.ts 的动态导入
@@ -71,10 +71,10 @@ const config = {
       ...(config.optimizeDeps ?? {}),
       exclude: [
         ...((config.optimizeDeps?.exclude ?? []) as string[]),
-        '@zone/i18n',
-        '@zone/core',
-        '@zone/icons',
-        '@zone/utils',
+        '@aiyazone/i18n',
+        '@aiyazone/core',
+        '@aiyazone/icons',
+        '@aiyazone/utils',
       ],
     } as ViteConfig['optimizeDeps'];
     // 移除压缩插件以避免在 Storybook 预览构建阶段的 ENOENT 报错
