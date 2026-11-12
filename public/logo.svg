@@ -1,7 +1,43 @@
-<svg width="360" height="60" viewBox="0 0 360 60" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZONE Design System">
-  <title>ZONE Design System</title>
-  <rect x="0" y="2" width="56" height="56" rx="14" fill="#FF5000"/>
-  <path d="M17 20H39L17 40H39" stroke="#FFFFFF" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
-  <text x="72" y="34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3" fill="#111827">ZONE</text>
-  <text x="74" y="50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="3.6" fill="#6B7280">DESIGN SYSTEM</text>
+<svg width="470" height="120" viewBox="0 0 470 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIYAZONE Design System">
+  <title>AIYAZONE Design System</title>
+  <defs>
+    <linearGradient id="zone-mark-bg" x1="12" y1="12" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6A2B"/>
+      <stop offset="1" stop-color="#F04A00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 徽标：圆角方块 + 单线 Z -->
+  <rect x="12" y="12" width="96" height="96" rx="26" fill="url(#zone-mark-bg)"/>
+  <path d="M38 35H82L38 85H82" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- 字标 AIYAZONE（单线几何字，AIYA 深色 / ZONE 品牌橙） -->
+  <g stroke="#111827" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- A -->
+    <path d="M136 68L153 28L170 68"/>
+    <path d="M144 53H162"/>
+    <!-- I -->
+    <path d="M188 28V68"/>
+    <!-- Y -->
+    <path d="M206 28L221 48"/>
+    <path d="M236 28L221 48"/>
+    <path d="M221 48V68"/>
+    <!-- A -->
+    <path d="M248 68L265 28L282 68"/>
+    <path d="M256 53H274"/>
+  </g>
+  <g stroke="#FF5000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Z -->
+    <path d="M294 28H324L294 68H324"/>
+    <!-- O -->
+    <rect x="336" y="28" width="32" height="40" rx="16"/>
+    <!-- N -->
+    <path d="M380 68V28L412 68V28"/>
+    <!-- E -->
+    <path d="M454 28H426V68H454"/>
+    <path d="M426 48H448"/>
+  </g>
+
+  <!-- 副标 -->
+  <text x="140" y="98" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="600" letter-spacing="6" fill="#64748B">DESIGN SYSTEM</text>
 </svg>
