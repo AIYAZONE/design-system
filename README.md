@@ -21,7 +21,7 @@
 design-system/
 ├─ apps/                 示例与预览工程
 │  ├─ examples/         组件演示与联调示例站
-│  ├─ portal/           站点预览（文档/演示）
+│  ├─ portal/           门户首页（导航入口）
 │  ├─ storybook/        Storybook 项目
 │  ├─ styles/           示例站公共样式
 │  └─ index.ts          示例入口聚合
