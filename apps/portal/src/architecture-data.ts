@@ -47,8 +47,8 @@ export const archNodes: ArchNode[] = [
   { id: 'cdn', label: '全球 CDN', type: 'system', layer: 'edge', desc: 'AWS CloudFront 加速' },
   
   // App Layer
-  { id: 'shopify', label: 'Shopify 商城', type: 'container', layer: 'app', desc: 'Liquid 模板 + Islands' },
-  { id: 'aem', label: 'AEM 品牌站', type: 'container', layer: 'app', desc: '内容片段渲染' },
+  { id: 'multisite', label: '多端站点', type: 'container', layer: 'app', desc: '主站与转化入口' },
+  { id: 'contentsite', label: '内容化站点', type: 'container', layer: 'app', desc: '内容片段渲染' },
   { id: 'lp', label: '营销落地页', type: 'container', layer: 'app', desc: '独立 SPA 应用' },
 
   // Orchestration Layer (Atlas)
@@ -66,11 +66,11 @@ export const archNodes: ArchNode[] = [
 
 export const archFlows = [
   { from: 'user', to: 'cdn', label: '访问' },
-  { from: 'cdn', to: 'shopify', label: '路由' },
-  { from: 'cdn', to: 'aem', label: '路由' },
+  { from: 'cdn', to: 'multisite', label: '路由' },
+  { from: 'cdn', to: 'contentsite', label: '路由' },
   { from: 'cdn', to: 'lp', label: '路由' },
   
-  { from: 'shopify', to: 'renderer', label: '注水' },
+  { from: 'multisite', to: 'renderer', label: '注水' },
   { from: 'lp', to: 'renderer', label: '渲染' },
   
   { from: 'atlas', to: 'schema-api', label: '发布' },

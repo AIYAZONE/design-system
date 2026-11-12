@@ -279,8 +279,8 @@ const observabilityErrors: ArchChip[] = [
 ];
 
 const observabilityData: ArchChip[] = [
-  { label: '转化漏斗', tooltipTitle: 'Funnel', tooltipDesc: '关键路径转化分析' },
-  { label: '转化率', tooltipTitle: 'Conversion Rate', tooltipDesc: '核心指标监控与归因' },
+  { label: '体验漏斗', tooltipTitle: 'Funnel', tooltipDesc: '关键路径转化分析' },
+  { label: '核心指标', tooltipTitle: 'Conversion Rate', tooltipDesc: '核心指标监控与归因' },
   { label: 'A/B 实验', tooltipTitle: 'A/B Test', tooltipDesc: '实验驱动增长与验证' },
 ];
 
@@ -404,7 +404,7 @@ const renderPanelArchitectureDiagram = () => `
             </g>
 
             <!-- 应用层节点 -->
-            <g class="arch-c4-node arch-c4-container" data-id="shopify" transform="translate(210, 310)">
+            <g class="arch-c4-node arch-c4-container" data-id="multisite" transform="translate(210, 310)">
               <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
               <text x="90" y="32" class="arch-c4-node-title">多端站点</text>
               <text x="90" y="52" class="arch-c4-node-desc">主站与转化入口</text>
@@ -414,7 +414,7 @@ const renderPanelArchitectureDiagram = () => `
               </g>
             </g>
 
-            <g class="arch-c4-node arch-c4-container" data-id="aem" transform="translate(510, 310)">
+            <g class="arch-c4-node arch-c4-container" data-id="contentsite" transform="translate(510, 310)">
               <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
               <text x="90" y="32" class="arch-c4-node-title">内容化站点</text>
               <text x="90" y="52" class="arch-c4-node-desc">内容生产与多语言管理</text>
@@ -917,7 +917,7 @@ const renderArchitecture = () => `
               <div class="arch-layer-row">
                 ${layerTitle('Observability', '可观测性与数据闭环')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">性能 → 转化 → 收入闭环，用数据驱动性能与业务增长。</div>
+                  <div class="arch-layer-desc">性能 → 稳定性 → 交付效率闭环，用数据驱动体验与工程改进。</div>
                   <div class="arch-obs-cols">
                     <div class="arch-obs-col">
                       <div class="arch-obs-title">Performance</div>
@@ -928,11 +928,11 @@ const renderArchitecture = () => `
                       <div class="arch-chip-row">${observabilityErrors.map(renderChip).join('')}</div>
                     </div>
                     <div class="arch-obs-col">
-                      <div class="arch-obs-title">Data & Conversion</div>
+                      <div class="arch-obs-title">Data & Insights</div>
                       <div class="arch-chip-row">${observabilityData.map(renderChip).join('')}</div>
                     </div>
                   </div>
-                  <div class="arch-obs-loop">Performance → Conversion → Revenue Loop</div>
+                  <div class="arch-obs-loop">Performance → Stability → Delivery Loop</div>
                 </div>
               </div>
             </div>
@@ -945,8 +945,8 @@ const renderArchitecture = () => `
             <div class="arch-summary-card">
               <div class="arch-summary-title">核心价值</div>
               <div class="arch-summary-list">
-                <div class="arch-summary-item">提升转化率</div>
-                <div class="arch-summary-item">支持高频营销</div>
+                <div class="arch-summary-item">提升交付效率</div>
+                <div class="arch-summary-item">营销活动快速交付</div>
                 <div class="arch-summary-item">支持多区域站点</div>
               </div>
             </div>
