@@ -194,7 +194,6 @@ const designColumns = [
 const designTags: ArchChip[] = [
   { label: '多主题', tooltipTitle: 'Multi-Theme', tooltipDesc: '按区域/站点覆盖主题', variant: 'tag' },
   { label: 'Token → CSS Variables', tooltipTitle: 'Token to CSS Variables', tooltipDesc: '设计令牌到 CSS 变量', variant: 'tag' },
-  { label: 'Figma 同步', tooltipTitle: 'Figma Sync', tooltipDesc: '设计资产同步机制', variant: 'tag' },
 ];
 
 const designSupport: ArchChip[] = [

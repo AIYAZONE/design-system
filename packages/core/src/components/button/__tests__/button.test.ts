@@ -191,7 +191,7 @@ describe("zone-button", () => {
     expect(buttonStyleSource).not.toContain("14% {");
   });
 
-  it("matches the figma shine gradient stops", () => {
+  it("matches the shine gradient stops", () => {
     expect(buttonStyleSource).toContain("linear-gradient(283.37deg");
     expect(buttonStyleSource).toContain("rgba(254, 139, 45, 0) 11.45%");
     expect(buttonStyleSource).toContain("rgba(255, 152, 70, 1) 45.8%");

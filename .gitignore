@@ -38,13 +38,8 @@ vite.config.ts.timestamp-*
 .turbo/*
 *.tsbuildinfo
 
-.figma/*
-
-# 编辑器项目数据（含 Figma canvas 快照、会话记录）
+# 编辑器项目数据
 .codebuddy/
-
-# Figma 画布选中时自动导出的临时素材（组件图标均为内联，不读这些文件）
-assets/CodeBuddyAssets/
 
 package-lock.json
 coverage/

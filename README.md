@@ -60,10 +60,10 @@ design-system/
 - 包含深浅两个主题
 - 无障碍优先
 
-## 3. 发布
+## 3. 发布与部署
 
-- 直接发布到 npm 公网仓库（作用域 `@zone`）
-- 包名：`@zone/design-system`
+- 组件库：直接发布到 npm 公网仓库（作用域 `@zone`），包名 `@zone/design-system`；CDN 引用走 jsDelivr / unpkg（见 5.2）
+- 文档站点：静态产物部署到 GitHub Pages，绑定自定义域名 `design.aiyazone.com`
 
 ## 4. 包结构
 
@@ -101,21 +101,25 @@ ZDS 采用 Monorepo 架构，包含以下独立包：
 npm i @zone/design-system --save
 ```
 
-### 5.2 CDN 引用
+### 5.2 CDN 引用（基于 npm 公网包）
 
-1. 最新版本：
+本项目不维护自有 CDN。包发布到 npm 公网仓库后，可直接使用 jsDelivr 或 unpkg 提供的免费 CDN 链接：
 
-```html
-<link rel="stylesheet" crossorigin href="https://cdn.aiyazone.com/@zone/design-system/latest/dist/index.css">
-<script type="module" crossorigin src="https://cdn.aiyazone.com/@zone/design-system/latest/dist/index.esm.js"></script>
-```
-
-2. 特定版本：
+1. 最新版本（jsDelivr）：
 
 ```html
-<link rel="stylesheet" crossorigin href="https://cdn.aiyazone.com/@zone/design-system/0.1.0/dist/index.css">
-<script type="module" crossorigin src="https://cdn.aiyazone.com/@zone/design-system/0.1.0/dist/index.esm.js"></script>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@zone/design-system@latest/dist/index.css">
+<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@zone/design-system@latest/dist/index.esm.js"></script>
 ```
+
+2. 锁定特定版本（unpkg）：
+
+```html
+<link rel="stylesheet" crossorigin href="https://unpkg.com/@zone/design-system@0.1.0/dist/index.css">
+<script type="module" crossorigin src="https://unpkg.com/@zone/design-system@0.1.0/dist/index.esm.js"></script>
+```
+
+> 说明：版本号需与 npm 上实际发布的版本一致；生产环境建议锁定明确版本而非 `@latest`。
 
 ### 5.3 样式使用规范（最新）
 

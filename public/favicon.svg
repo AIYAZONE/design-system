@@ -1,1 +1,5 @@
-<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd"><text fill="#fd5000" y="46" font-size="32" font-weight="bold">ZONE</text></svg>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZONE">
+  <title>ZONE</title>
+  <rect width="64" height="64" rx="16" fill="#FF5000"/>
+  <path d="M19 20H45V28.5H31.5L45 43V52H19V43.5H32.5L19 29V20Z" fill="#FFFFFF"/>
+</svg>

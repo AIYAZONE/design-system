@@ -1,7 +1,7 @@
-<svg width="460" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1" clip-rule="evenodd">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <text transform="matrix(1 0 0 1 0 0)" fill="#fd5000" x="12.5625" y="45" id="svg_2" font-size="38" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" font-weight="bold" stroke="#000" stroke-width="0.5">AIYAZONE Design System</text>
- </g>
-
+<svg width="360" height="60" viewBox="0 0 360 60" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZONE Design System">
+  <title>ZONE Design System</title>
+  <rect x="0" y="2" width="56" height="56" rx="14" fill="#FF5000"/>
+  <path d="M17 18H39V25.5H27.5L39 37.5V46H17V38.5H28.5L17 26.5V18Z" fill="#FFFFFF"/>
+  <text x="72" y="34" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3" fill="#111827">ZONE</text>
+  <text x="74" y="50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="3.6" fill="#6B7280">DESIGN SYSTEM</text>
 </svg>

@@ -475,7 +475,7 @@ export const Interactions = {
         })}
         ${SingleButtonTemplate({
           ...args,
-          content: "Figma Sweep Shine",
+          content: "Sweep Shine",
           interaction: "shine",
         })}
         ${SingleButtonTemplate({
