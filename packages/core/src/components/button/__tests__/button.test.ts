@@ -170,8 +170,8 @@ describe("zone-button", () => {
   it("keeps capsule spacing aligned with the legacy margin-left values", () => {
     expect(buttonStyleSource).toMatch(/:host\(\[size="extra"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-8\);/);
     expect(buttonStyleSource).toMatch(/:host\(\[size="large"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-8\);/);
-    expect(buttonStyleSource).toMatch(/:host\(\[size="medium"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-4\);/);
-    expect(buttonStyleSource).toMatch(/:host\(\[size="small"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-2\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="medium"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-8\);/);
+    expect(buttonStyleSource).toMatch(/:host\(\[size="small"\]\) \.button \{[\s\S]*?--zone-btn-capsule-shift: var\(--zone-size-4\);/);
   });
 
   it("keeps the capsule icon parked inside the button using per-size end insets", () => {

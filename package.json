@@ -1,7 +1,7 @@
 {
   "name": "@aiyazone/design-system",
   "version": "0.3.0",
-  "description": "AIYAZONE Design System (ZONE) - Monorepo",
+  "description": "AIYAZONE Design System (ZDS) - Monorepo",
   "author": "AIYAZONE F2E Team",
   "type": "module",
   "private": false,
