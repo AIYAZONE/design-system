@@ -35,7 +35,7 @@ const renderHeader = () => {
   return `
     <div class="portal-topbar__inner">
       <a href="/index.html" class="portal-brand">
-        <span class="portal-brand__mark">ZONE</span>
+        <span class="portal-brand__mark"><svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#FF5000"/><path d="M10 11H22L10 21H22" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="portal-brand__text">
           <span>AIYAZONE</span>
           <span class="portal-brand__accent">Design System</span>
