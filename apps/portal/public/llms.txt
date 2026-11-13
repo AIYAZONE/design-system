@@ -1,0 +1,67 @@
+# AIYAZONE Design System (ZDS)
+
+> ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。
+> 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。
+
+## 使用规则（必须遵守）
+
+1. 颜色、字号、间距、圆角、层级一律使用 `--zone-*` 令牌，禁止硬编码色值与像素魔法数值；
+2. 页面结构优先用 ZDS 基础组件组合，不得用 `div` 模拟按钮、弹窗、下拉等交互元素；
+3. 组件样式定制只通过 `--zone-*` CSS 变量或公开属性，禁止覆盖 shadow DOM 内部类名；
+4. 交互必须保留键盘可达性与 ARIA 语义；
+5. 响应式断点：桌面 ≥1024px、移动 <1024px（750 设计稿基准），字号/间距令牌已按断点自动缩放。
+
+## 安装
+
+```bash
+pnpm add @aiyazone/core @aiyazone/tokens
+```
+
+```js
+import '@aiyazone/core';   // 注册全部 zone-* 自定义元素
+```
+
+```html
+<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+```
+
+## 组件索引
+
+| 标签 | 说明 | 文档 |
+|------|------|------|
+| `<zone-badge>` | AIYAZONE 徽章组件 | [zone-badge.md](./docs/api/zone-badge.md) |
+| `<zone-button>` | ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 | [zone-button.md](./docs/api/zone-button.md) |
+| `<zone-checkbox>` | ZONE Checkbox 组件 | [zone-checkbox.md](./docs/api/zone-checkbox.md) |
+| `<zone-dialog>` | AIYAZONE 对话框组件 | [zone-dialog.md](./docs/api/zone-dialog.md) |
+| `<zone-dropdown>` | 单选下拉框；数据包含子节点时自动启用树形列表。 | [zone-dropdown.md](./docs/api/zone-dropdown.md) |
+| `<zone-filter-select>` | ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计… | [zone-filter-select.md](./docs/api/zone-filter-select.md) |
+| `<zone-popover>` | AIYAZONE 气泡卡片组件 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定… | [zone-popover.md](./docs/api/zone-popover.md) |
+| `<zone-spinner>` | AIYAZONE 加载指示器组件 | [zone-spinner.md](./docs/api/zone-spinner.md) |
+| `<zone-toast>` | AIYAZONE 轻提示组件 | [zone-toast.md](./docs/api/zone-toast.md) |
+| `<zone-tooltip>` | AIYAZONE Tooltip 组件 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
+
+## 设计令牌摘要
+
+```css
+:root {
+  --zone-color-white: #FFFFFF;
+  --zone-color-grey: #F5F5F5;
+  --zone-color-primary: #FF6727;
+  --zone-color-success: #5E8A4E;
+  --zone-color-danger: #F52317;
+  --zone-color-warning: #FAAD14;
+  --zone-color-info: #5794FF;
+  --zone-color-neutral: #242F20;
+  --zone-size-16: 1rem;                    /* 4 的倍数，2..128 */
+  --zone-font-size-14: 0.875rem;           /* 12..96，最小 12px */
+  --zone-rounded-8: 0.5rem;                /* 2/4/8/12/14/24 + pill/circle */
+}
+```
+
+令牌全量表：`@aiyazone/tokens/dist/tokens.css`（8 色板 + 尺寸/字号/圆角/层级）；真源 `packages/tokens/tokens.json`。
+
+## 全量文档
+
+- [llms-full.txt](./llms-full.txt)：全部组件 API 规格拼接（单文件喂给模型）
+- [AI 使用规范](./ai-usage.html)：生成页面时的提示词要点与验收清单
+- Storybook：/storybook/ · 示例站：/examples/ · 图标库：/icons/

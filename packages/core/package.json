@@ -66,6 +66,9 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
+    "manifest": "cem analyze --globs \"src/components/**/*.ts\" --exclude \"**/__tests__/**\" \"**/*.stories.ts\" --outdir .",
+    "docs:gen": "node scripts/build-ai-docs.mjs",
+    "docs:check": "pnpm run manifest && pnpm run docs:gen && git diff --exit-code -- custom-elements.json zone-manifest.json ../../docs/api ../../apps/portal/public/llms.txt ../../apps/portal/public/llms-full.txt ../../apps/portal/public/ai-usage.html",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --quiet",
     "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
     "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix --quiet",
@@ -82,6 +85,7 @@
   "devDependencies": {
     "@aiyazone/eslint-config": "workspace:*",
     "@aiyazone/tsconfig": "workspace:*",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@testing-library/dom": "^9.3.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.30",
@@ -100,5 +104,6 @@
   },
   "publishConfig": {
     "access": "restricted"
-  }
+  },
+  "customElements": "custom-elements.json"
 }

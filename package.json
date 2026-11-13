@@ -55,7 +55,9 @@
     "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs",
     "tokens:build": "pnpm --filter @aiyazone/tokens run build",
     "tokens:check": "pnpm --filter @aiyazone/tokens run check",
-    "tokens:lint": "pnpm --filter @aiyazone/tokens run lint"
+    "tokens:lint": "pnpm --filter @aiyazone/tokens run lint",
+    "docs:gen": "pnpm --filter @aiyazone/core run docs:gen",
+    "docs:check": "pnpm --filter @aiyazone/core run docs:check"
   },
   "keywords": [
     "web-components",

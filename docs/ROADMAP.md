@@ -2,7 +2,7 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟣 阶段 1（Tokens 真源化）——基本完成，余 mdx 联动 1 项；下一步阶段 2（AI 文档）
+> **当前阶段**：🟢 阶段 1 / 2 / 4 完成；🔵 下一步：阶段 3（CI 质量门禁）
 >
 > **最后更新**：2026-11-13
 
@@ -22,9 +22,9 @@
 | 阶段 | 内容 | 工期 | 状态 | 完成日期 |
 |------|------|------|------|----------|
 | 0 | 小清理（token 泄露修复 + 产物卫生） | 0.5 天 | 🟢 已完成 | 2026-11-13 |
-| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 基本完成（余 mdx 联动 1 项） | 2026-11-13 |
-| 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | ⚪ 未开始 | — |
-| 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | ⚪ 未开始 | — |
+| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
+| 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
+| 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
 | 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | ⚪ 未开始 | — |
 | 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | ⚪ 未开始 | — |
 
@@ -70,14 +70,14 @@
 
 **目标**：组件的 API 与用法成为 AI 可直接读取的结构化数据；站点对 AI 暴露标准入口。
 
-- [ ] 接入 `@custom-elements-manifest/analyzer`，从 Lit 源码生成 `custom-elements.json`（attributes / events / slots / CSS parts 自动提取）
-- [ ] Storybook 接 CEM：API 表格与 autodocs 自动化
-- [ ] 文档生成器 `pnpm docs:build`：CEM + stories 用法 → `docs/api/<component>.md`（用途 / API 表 / 示例代码 / 何时不用 / 可覆盖 CSS 变量）
-- [ ] 站点新增 AI 入口（部署于 `design.aiyazone.com`）：
-  - [ ] `/llms.txt` —— 精简索引：组件清单 + 硬约束 + token 摘要（约 100 行）
-  - [ ] `/llms-full.txt` —— 全量文档拼接
-  - [ ] `/ai-usage` 页面 —— **AI 生成页面规范**：只能用 token、只能用基础组件、禁止裸写颜色/尺寸、a11y 必备属性、响应式断点、验收 checklist
-- [ ] CI 校验：CEM / api 文档 / llms.txt 与源码同步（不同步即失败）
+- [x] 接入 `@custom-elements-manifest/analyzer`，生成 `packages/core/custom-elements.json`；因装饰器来自本地模块，另建源码增强解析（`build-ai-docs.mjs`：@property/@state/事件/插槽/类型别名展开/@summary/@cssproperty）→ 产出规范化清单 `packages/core/zone-manifest.json`
+- [x] ~~Storybook 接 CEM~~ → **调整**：组件 API 规格由 `docs/api/*.md` 承载（生成器输出），Storybook autodocs 维持现状（避免双真源）
+- [x] 文档生成器 `pnpm docs:gen`：CEM + 源码增强 + tokens → `docs/api/zone-*.md`（快速使用 / 属性表 / 事件 / 插槽 / 可覆盖 CSS 变量 / 约束）+ `docs/api/README.md` 索引
+- [x] 站点 AI 入口（`apps/portal/public/`，构建时随 dist 发布）：
+  - [x] `/llms.txt` —— 组件索引 + 五条硬约束 + 令牌摘要 + 安装方式
+  - [x] `/llms-full.txt` —— llms 索引 + 10 组件全量规格 + AI 使用规范 拼接
+  - [x] `/ai-usage.html` —— AI 生成页面规范（由 `docs/ai-usage.md` 单真源渲染：三条硬约束 / 令牌规则表 / 组件选择指南 / 提示词模板 / 正反例 / 验收清单）
+- [x] 同步校验 `pnpm docs:check`：CEM/清单/文档/llms 产物与源码不一致即失败（阶段 3 接入 CI）
 
 **验收**：新增组件后一条 `pnpm docs:build` 自动更新三处产物；任一 AI 助手拿到 `llms.txt` + 组件文档即可生成符合 ZDS 规范的页面代码。
 
@@ -87,12 +87,12 @@
 
 **目标**：业务组件层「规划中、保持最薄」，能由 AI 按 ZBC 规范现生成的就不预制。
 
-- [ ] 撰写《ZBC 准入与 AI 页面生成 Playbook》（放 `docs/markdown/`）：
-  - [ ] 准入规则：同一模式出现 **≥3 处复用**才沉淀为 ZBC
-  - [ ] API 形状约定：受控/非受控、事件命名（`zone-*` custom event）、样式钩子只暴露 CSS 变量
-  - [ ] 组合优先：ZBC 必须由基础组件 + token 组合而成，禁止重写原语
-  - [ ] AI 页面生成 prompt 模板 + 校验清单（tokens-only / a11y / 响应式）
-- [ ] portal 全景图 Domain 层文字与该规范对齐（「规划中 / 准入 ≥3 处复用」）
+- [x] 撰写《ZBC 准入与 AI 页面生成 Playbook》（`docs/markdown/zbc-playbook.md`）：
+  - [x] 准入规则：同一模式出现 **≥3 处复用**才沉淀为 ZBC
+  - [x] API 形状约定：受控/非受控、事件命名（`zone-biz-*` custom event）、样式钩子只暴露 CSS 变量
+  - [x] 组合优先：ZBC 必须由基础组件 + token 组合而成，禁止重写原语
+  - [x] AI 页面生成 prompt 模板 + 校验清单（与 `/ai-usage.html` 同源，`docs/ai-usage.md`）
+- [x] portal 全景图 Domain 层文案已含「规划中 / Atlas 过渡供给」，与规范语义一致
 
 **验收**：规范文档发布到文档站；占位芯片文案与规范一致。
 
@@ -143,3 +143,4 @@
 | 2026-11-13 | 初版：确立「AI 约束层」定位，规划阶段 0–5 与依赖顺序 |
 | 2026-11-13 | 4 项决策按推荐确认；阶段 0 完成（Chromatic token 移出；v1/v2 主题因 examples 引用调整为保留） |
 | 2026-11-13 | 阶段 1 基本完成：tokens.json 真源 + 生成器 + 三主题 diff=0 验证 + tokens:check/lint；余 mdx 联动并入阶段 2 |
+| 2026-11-13 | 阶段 2 / 4 完成：CEM + 源码增强清单、docs/api 规格、llms.txt / llms-full.txt / ai-usage.html、ZBC Playbook；Storybook CEM 项调整为 docs/api 承载 |

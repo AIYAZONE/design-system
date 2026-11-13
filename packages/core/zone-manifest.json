@@ -1,0 +1,960 @@
+{
+  "name": "AIYAZONE Design System",
+  "shortName": "ZDS",
+  "package": "@aiyazone/core",
+  "version": "0.1.9",
+  "generatedBy": "packages/core/scripts/build-ai-docs.mjs",
+  "components": [
+    {
+      "tag": "zone-badge",
+      "className": "ZoneBadge",
+      "dir": "badge",
+      "summary": "AIYAZONE 徽章组件",
+      "attributes": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "reflects": true,
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "default": "\"medium\"",
+          "description": "/ export class ZoneBadge extends LitElement { // 组件的样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置徽章的大小（影响高度/内边距/图标大小）"
+        },
+        {
+          "name": "variant",
+          "attribute": "variant",
+          "reflects": true,
+          "type": "\"soft\" | \"solid\" | \"outline\"",
+          "default": "\"soft\"",
+          "description": "徽章的风格变体：soft（浅色）、solid（实色）、outline（描边）"
+        },
+        {
+          "name": "kind",
+          "attribute": "kind",
+          "reflects": true,
+          "type": "\"default\" | \"neutral\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"custom\"",
+          "default": "\"default\"",
+          "description": "徽章的语义种类（default/neutral/success/warning/danger/info/custom）"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "reflects": false,
+          "type": "string | undefined",
+          "default": null,
+          "description": "设置图标的名称（亦可通过 icon 插槽覆盖）"
+        },
+        {
+          "name": "iconPosition",
+          "attribute": "icon-position",
+          "reflects": true,
+          "type": "\"prev\" | \"next\" | \"start\" | \"end\"",
+          "default": "\"next\"",
+          "description": "图标位置：prev（文本前）/ next（文本后）"
+        },
+        {
+          "name": "count",
+          "attribute": "count",
+          "reflects": false,
+          "type": "number",
+          "default": null,
+          "description": "点式徽章（仅显示圆点） / // 移除点式徽章支持 /** 计数值（优先显示，超过 maxCount 显示为 \"maxCount+\"）"
+        },
+        {
+          "name": "href",
+          "attribute": "href",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "计数显示上限（默认 99）"
+        }
+      ],
+      "properties": [],
+      "events": [],
+      "slots": [
+        {
+          "name": "icon",
+          "description": "具名插槽 icon"
+        },
+        {
+          "name": "",
+          "description": "默认插槽"
+        }
+      ],
+      "cssVariables": [
+        "--zone-badge-bg-color",
+        "--zone-badge-border-radius",
+        "--zone-badge-color",
+        "--zone-badge-focus-ring-color",
+        "--zone-badge-font",
+        "--zone-badge-height",
+        "--zone-badge-icon-size",
+        "--zone-badge-large-font",
+        "--zone-badge-large-height",
+        "--zone-badge-large-icon-size",
+        "--zone-badge-large-padding-horizontal",
+        "--zone-badge-large-padding-vertical",
+        "--zone-badge-margin-icon",
+        "--zone-badge-outline-border",
+        "--zone-badge-outline-fg",
+        "--zone-badge-padding-horizontal",
+        "--zone-badge-padding-vertical",
+        "--zone-badge-small-font",
+        "--zone-badge-small-height",
+        "--zone-badge-small-padding-horizontal",
+        "--zone-badge-small-padding-vertical",
+        "--zone-badge-soft-bg",
+        "--zone-badge-soft-fg",
+        "--zone-badge-solid-bg",
+        "--zone-badge-solid-fg",
+        "--zone-badge-text-color",
+        "--zone-color-primary",
+        "--zone-color-primary-contrast",
+        "--zone-color-white",
+        "--zone-font-c1",
+        "--zone-font-h3",
+        "--zone-size-14",
+        "--zone-size-16",
+        "--zone-size-20",
+        "--zone-size-24",
+        "--zone-size-4",
+        "--zone-size-6",
+        "--zone-size-8"
+      ],
+      "story": "zone-badge.stories.ts",
+      "tests": 7
+    },
+    {
+      "tag": "zone-button",
+      "className": "ZoneButton",
+      "dir": "button",
+      "summary": "ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置",
+      "attributes": [
+        {
+          "name": "variant",
+          "attribute": "variant",
+          "reflects": true,
+          "type": "\"primary\" | \"secondary\" | \"text\"",
+          "default": "\"primary\"",
+          "description": "ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 / export class ZoneButton extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 按钮变体"
+        },
+        {
+          "name": "kind",
+          "attribute": "kind",
+          "reflects": true,
+          "type": "\"default\" | \"neutral\" | \"success\" | \"danger\" | \"custom\"",
+          "default": "\"default\"",
+          "description": "按钮种类"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "reflects": true,
+          "type": "\"extra\" | \"large\" | \"medium\" | \"small\"",
+          "default": "\"large\"",
+          "description": "按钮尺寸"
+        },
+        {
+          "name": "interaction",
+          "attribute": "interaction",
+          "reflects": true,
+          "type": "\"default\" | \"shine\"",
+          "default": "\"default\"",
+          "description": "按钮交互风格"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "按钮标签（无障碍访问）"
+        },
+        {
+          "name": "href",
+          "attribute": "href",
+          "reflects": true,
+          "type": "string",
+          "default": null,
+          "description": "是否加载中"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "图标名称"
+        },
+        {
+          "name": "iconPosition",
+          "attribute": "icon-position",
+          "reflects": true,
+          "type": "\"prev\" | \"next\"",
+          "default": "\"next\"",
+          "description": "图标位置：prev（文本前）/ next（文本后）"
+        },
+        {
+          "name": "iconMode",
+          "attribute": "icon-mode",
+          "reflects": true,
+          "type": "\"inline\" | \"capsule\"",
+          "default": "\"inline\"",
+          "description": "图标呈现模式：inline（常规图标）/ capsule（胶囊尾缀）"
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "链接目标"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "reflects": false,
+          "type": "\"button\" | \"submit\" | \"reset\"",
+          "default": "\"button\"",
+          "description": "按钮类型"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "reflects": false,
+          "type": "string | HTMLFormElement",
+          "default": null,
+          "description": "是否自动聚焦"
+        }
+      ],
+      "properties": [],
+      "events": [
+        {
+          "name": "zone-click",
+          "description": ""
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "默认插槽"
+        },
+        {
+          "name": "icon",
+          "description": "具名插槽 icon"
+        }
+      ],
+      "cssVariables": [
+        "--zone-animate-only-icon-bg",
+        "--zone-btn-active-color",
+        "--zone-btn-bg-color",
+        "--zone-btn-bg-hover-color",
+        "--zone-btn-border-color",
+        "--zone-btn-border-hover-color",
+        "--zone-btn-border-radius",
+        "--zone-btn-capsule-end-inset",
+        "--zone-btn-capsule-gap",
+        "--zone-btn-capsule-icon-size",
+        "--zone-btn-capsule-shift",
+        "--zone-btn-capsule-size",
+        "--zone-btn-content-color",
+        "--zone-btn-current-bg",
+        "--zone-btn-current-border",
+        "--zone-btn-current-color",
+        "--zone-btn-custom-color",
+        "--zone-btn-custom-highlight-mix",
+        "--zone-btn-disabled-bg",
+        "--zone-btn-disabled-border",
+        "--zone-btn-disabled-color",
+        "--zone-btn-disabled-opacity",
+        "--zone-btn-display",
+        "--zone-btn-extra-font",
+        "--zone-btn-extra-height",
+        "--zone-btn-extra-icon-size",
+        "--zone-btn-extra-margin-icon",
+        "--zone-btn-extra-padding-horizontal",
+        "--zone-btn-extra-padding-vertical",
+        "--zone-btn-font",
+        "--zone-btn-height",
+        "--zone-btn-hover-color",
+        "--zone-btn-icon-only-extra-icon-size",
+        "--zone-btn-icon-only-icon-size",
+        "--zone-btn-icon-only-small-icon-size",
+        "--zone-btn-icon-size",
+        "--zone-btn-label-underline-display",
+        "--zone-btn-large-font",
+        "--zone-btn-large-height",
+        "--zone-btn-large-margin-icon",
+        "--zone-btn-large-padding-horizontal",
+        "--zone-btn-large-padding-vertical",
+        "--zone-btn-local-custom-color",
+        "--zone-btn-main-color",
+        "--zone-btn-main-hover-color",
+        "--zone-btn-margin-icon",
+        "--zone-btn-max-width",
+        "--zone-btn-medium-font",
+        "--zone-btn-medium-height",
+        "--zone-btn-medium-margin-icon",
+        "--zone-btn-medium-padding-horizontal",
+        "--zone-btn-medium-padding-vertical",
+        "--zone-btn-padding-horizontal",
+        "--zone-btn-padding-vertical",
+        "--zone-btn-primary-custom-text-color",
+        "--zone-btn-secondary-border-width",
+        "--zone-btn-shine-blur",
+        "--zone-btn-shine-duration",
+        "--zone-btn-shine-end-x",
+        "--zone-btn-shine-gradient",
+        "--zone-btn-shine-halo-gradient",
+        "--zone-btn-shine-height",
+        "--zone-btn-shine-opacity",
+        "--zone-btn-shine-start-x",
+        "--zone-btn-shine-width",
+        "--zone-btn-small-font",
+        "--zone-btn-small-height",
+        "--zone-btn-small-icon-size",
+        "--zone-btn-small-margin-icon",
+        "--zone-btn-small-padding-horizontal",
+        "--zone-btn-small-padding-vertical",
+        "--zone-btn-small-text-font",
+        "--zone-btn-text-hover-color",
+        "--zone-btn-text-interaction-color",
+        "--zone-btn-text-underline-color",
+        "--zone-btn-underline-bottom",
+        "--zone-btn-underline-display",
+        "--zone-btn-underline-height",
+        "--zone-btn-underline-height-small",
+        "--zone-color-custom-highlight",
+        "--zone-color-danger",
+        "--zone-color-danger-highlight",
+        "--zone-color-neutral",
+        "--zone-color-neutral-100",
+        "--zone-color-neutral-active",
+        "--zone-color-neutral-highlight",
+        "--zone-color-neutral-hover",
+        "--zone-color-primary",
+        "--zone-color-primary-highlight",
+        "--zone-color-success",
+        "--zone-color-success-highlight",
+        "--zone-color-white",
+        "--zone-font-b1",
+        "--zone-font-b3",
+        "--zone-font-family",
+        "--zone-font-h6",
+        "--zone-font-semibold",
+        "--zone-rounded-pill",
+        "--zone-size-12",
+        "--zone-size-16",
+        "--zone-size-18",
+        "--zone-size-2",
+        "--zone-size-22",
+        "--zone-size-24",
+        "--zone-size-32",
+        "--zone-size-36",
+        "--zone-size-4",
+        "--zone-size-48",
+        "--zone-size-56",
+        "--zone-size-8"
+      ],
+      "story": "zone-button.stories.ts",
+      "tests": 33
+    },
+    {
+      "tag": "zone-checkbox",
+      "className": "ZoneCheckbox",
+      "dir": "checkbox",
+      "summary": "ZONE Checkbox 组件",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "change",
+          "description": ""
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "默认插槽"
+        }
+      ],
+      "cssVariables": [
+        "--zone-color-primary",
+        "--zone-color-text-primary",
+        "--zone-font-family",
+        "--zone-font-size-16",
+        "--zone-size-8"
+      ],
+      "story": "zone-checkbox.stories.ts",
+      "tests": 5
+    },
+    {
+      "tag": "zone-dialog",
+      "className": "ZoneDialog",
+      "dir": "dialog",
+      "summary": "AIYAZONE 对话框组件",
+      "attributes": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "reflects": true,
+          "type": "\"extra\" | \"large\"",
+          "default": "\"large\"",
+          "description": "/ export class ZoneDialog extends LitElement { static styles =  [unsafeCSS(styles)] as CSSResultGroup; private static _bodyScrollLockCount = 0; private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); this.appendToTarget(); } disconnectedCallback(): void { super.disconnectedCallback(); window?.removeEventListener(\"keydown\", this.onKeydown); if (this._isBodyScrollLockedByThisDialog) { this.unlockBodyScroll(); } } /** 对话框尺寸"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "reflects": true,
+          "type": "string",
+          "default": null,
+          "description": "设置对话框的打开/关闭状态"
+        },
+        {
+          "name": "ariaLabelText",
+          "attribute": "aria-label-text",
+          "reflects": true,
+          "type": "string",
+          "default": null,
+          "description": "关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭"
+        },
+        {
+          "name": "initialFocus",
+          "attribute": "initial-focus",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素"
+        },
+        {
+          "name": "appendTo",
+          "attribute": "append-to",
+          "reflects": true,
+          "type": "string",
+          "default": null,
+          "description": "关闭图标"
+        }
+      ],
+      "properties": [],
+      "events": [],
+      "slots": [
+        {
+          "name": "",
+          "description": "默认插槽"
+        }
+      ],
+      "cssVariables": [
+        "--zone-color-overlay-70",
+        "--zone-color-text-l1",
+        "--zone-color-text-l3",
+        "--zone-color-white",
+        "--zone-dialog-bg",
+        "--zone-dialog-fg",
+        "--zone-dialog-gap",
+        "--zone-dialog-index",
+        "--zone-dialog-max-height",
+        "--zone-dialog-max-height-extra",
+        "--zone-dialog-max-height-large",
+        "--zone-dialog-max-width-extra",
+        "--zone-dialog-max-width-large",
+        "--zone-dialog-min-height",
+        "--zone-dialog-min-height-extra",
+        "--zone-dialog-min-height-large",
+        "--zone-dialog-overlay-bg",
+        "--zone-dialog-padding-x-extra",
+        "--zone-dialog-padding-x-large",
+        "--zone-dialog-padding-y-extra",
+        "--zone-dialog-padding-y-large",
+        "--zone-dialog-radius",
+        "--zone-dialog-shadow",
+        "--zone-dialog-title-align",
+        "--zone-dialog-transition-duration",
+        "--zone-dialog-transition-easing",
+        "--zone-dialog-width",
+        "--zone-index-dialog",
+        "--zone-rounded-12",
+        "--zone-size-128",
+        "--zone-size-16",
+        "--zone-size-160",
+        "--zone-size-32",
+        "--zone-size-48",
+        "--zone-size-64"
+      ],
+      "story": "zone-dialog.stories.ts",
+      "tests": 8
+    },
+    {
+      "tag": "zone-dropdown",
+      "className": "ZoneDropdown",
+      "dir": "dropdown",
+      "summary": "单选下拉框；数据包含子节点时自动启用树形列表。",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "options",
+          "attribute": null,
+          "reflects": false,
+          "type": "DropdownOption[]",
+          "default": "[]",
+          "description": "/ export class ZoneDropdown extends LitElement { static styles = unsafeCSS(styles); static formAssociated = true; /** 通过 JavaScript 属性赋值，例如 element.options = [...]。"
+        }
+      ],
+      "events": [],
+      "slots": [],
+      "cssVariables": [
+        "--zone-color-bg-200",
+        "--zone-color-danger",
+        "--zone-color-grey",
+        "--zone-color-hr",
+        "--zone-color-primary",
+        "--zone-color-text-invalid",
+        "--zone-color-text-l1",
+        "--zone-color-text-l2",
+        "--zone-color-text-l3",
+        "--zone-color-white",
+        "--zone-dropdown-border-color",
+        "--zone-dropdown-child-font-size",
+        "--zone-dropdown-focus-color",
+        "--zone-dropdown-font-size",
+        "--zone-dropdown-height",
+        "--zone-dropdown-indent",
+        "--zone-dropdown-index",
+        "--zone-dropdown-max-height",
+        "--zone-dropdown-radius",
+        "--zone-dropdown-shadow",
+        "--zone-dropdown-width",
+        "--zone-font-family",
+        "--zone-font-size-16",
+        "--zone-font-size-20",
+        "--zone-index-popover"
+      ],
+      "story": "zone-dropdown.stories.ts",
+      "tests": 29
+    },
+    {
+      "tag": "zone-filter-select",
+      "className": "ZoneFilterSelect",
+      "dir": "filter-select",
+      "summary": "ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮） 默认采用「草稿 + 确认」语义：面板内的勾选只更新草",
+      "attributes": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "下拉筛选项 / export interface FilterSelectOption { /** 选项值 */ value: string; /** 选项文案 */ label: string; /** 是否禁用 */ disabled?: boolean; } let uid = 0; /** 宽松布尔属性转换器 HTML 布尔属性按规范是「存在即为真」，但本组件中 show-confirm / show-clear / show-counter / close-on-scroll 默认值为 true，若沿用标准语义， 纯 HTML 环境下将永远无法关闭（省略属性即取默认 true）。 因此这里额外支持 `attr=\"false\"` / `attr=\"0\"` 表示关闭： - `<zone-filter-select>`                → true（默认） - `<zone-filter-select show-confirm>`   → true - `<zone-filter-select show-confirm=\"false\">` → false / const looseBooleanConverter = { fromAttribute: (value: string | null): boolean => value !== null && value !== \"false\" && value !== \"0\", toAttribute: (value: boolean): string | null => (value ? \"\" : \"false\"), }; /** ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮） 默认采用「草稿 + 确认」语义：面板内的勾选只更新草稿，点击确认后才提交到 `value`。 当 `show-confirm` 为 false 时切换为「即时生效」模式。 / export class ZoneFilterSelect extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 触发器文案。未设置时取内置多语言 `components.filterSelect.label`。"
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "自定义语言。设置后优先于页面 `<html lang>` 与全局语言（`setCurrLanguage`）。 未设置时自动读取 `document.documentElement.lang`， 若仍为空则回退到全局当前语言。 支持任意 HTML lang 写法（如 `en-US` / `zh-Hans` / `jp`），内部会自动归一化。"
+        },
+        {
+          "name": "options",
+          "attribute": "options",
+          "reflects": false,
+          "type": "FilterSelectOption[]",
+          "default": "[]",
+          "description": "可选项列表"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "reflects": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "已提交的选中值"
+        },
+        {
+          "name": "placement",
+          "attribute": "placement",
+          "reflects": true,
+          "type": "Placement",
+          "default": "\"bottom-start\"",
+          "description": "面板是否展开"
+        },
+        {
+          "name": "selectedSummary",
+          "attribute": "selected-summary",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "浮层与触发器的间距"
+        },
+        {
+          "name": "selectedText",
+          "attribute": "selected-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "「已选 n/总数」中的「已选」文案。 未设置时取内置多语言 `components.filterSelect.counter`。"
+        },
+        {
+          "name": "clearText",
+          "attribute": "clear-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "「清空」文案。未设置时取内置多语言 `components.filterSelect.clear`。"
+        },
+        {
+          "name": "confirmText",
+          "attribute": "confirm-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "底部确认按钮文案。未设置时取内置多语言 `components.filterSelect.confirm`。"
+        },
+        {
+          "name": "emptyText",
+          "attribute": "empty-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "无选项时的占位文案。未设置时取内置多语言 `components.filterSelect.empty`。"
+        }
+      ],
+      "properties": [],
+      "events": [
+        {
+          "name": "zone-filter-select-open",
+          "description": ""
+        },
+        {
+          "name": "zone-filter-select-close",
+          "description": ""
+        },
+        {
+          "name": "zone-filter-select-confirm",
+          "description": ""
+        },
+        {
+          "name": "zone-filter-select-clear",
+          "description": ""
+        },
+        {
+          "name": "zone-filter-select-change",
+          "description": ""
+        }
+      ],
+      "slots": [],
+      "cssVariables": [
+        "--zone-color-primary",
+        "--zone-color-white",
+        "--zone-filter-select-action-color",
+        "--zone-filter-select-checkbox-border-color",
+        "--zone-filter-select-checkbox-checked-bg",
+        "--zone-filter-select-checkbox-checked-color",
+        "--zone-filter-select-checkbox-gap",
+        "--zone-filter-select-checkbox-size",
+        "--zone-filter-select-confirm-bg",
+        "--zone-filter-select-confirm-color",
+        "--zone-filter-select-confirm-height",
+        "--zone-filter-select-confirm-radius",
+        "--zone-filter-select-counter-color",
+        "--zone-filter-select-counter-total-color",
+        "--zone-filter-select-divider-color",
+        "--zone-filter-select-empty-color",
+        "--zone-filter-select-font-size",
+        "--zone-filter-select-option-disabled-opacity",
+        "--zone-filter-select-option-line-height",
+        "--zone-filter-select-option-min-height",
+        "--zone-filter-select-option-text-color",
+        "--zone-filter-select-options-max-height",
+        "--zone-filter-select-panel-bg",
+        "--zone-filter-select-panel-gap",
+        "--zone-filter-select-panel-padding",
+        "--zone-filter-select-panel-radius",
+        "--zone-filter-select-panel-shadow",
+        "--zone-filter-select-trigger-arrow-color",
+        "--zone-filter-select-trigger-arrow-opacity",
+        "--zone-filter-select-trigger-bg",
+        "--zone-filter-select-trigger-border-color",
+        "--zone-filter-select-trigger-border-hover-color",
+        "--zone-filter-select-trigger-height",
+        "--zone-filter-select-trigger-radius",
+        "--zone-filter-select-trigger-text-color",
+        "--zone-filter-select-width",
+        "--zone-font-family",
+        "--zone-font-size-14",
+        "--zone-font-size-16",
+        "--zone-index-popover",
+        "--zone-size-10",
+        "--zone-size-12",
+        "--zone-size-16",
+        "--zone-size-24",
+        "--zone-size-28",
+        "--zone-size-32",
+        "--zone-size-8"
+      ],
+      "story": "zone-filter-select.stories.ts",
+      "tests": 52
+    },
+    {
+      "tag": "zone-popover",
+      "className": "ZonePopover",
+      "dir": "popover",
+      "summary": "AIYAZONE 气泡卡片组件 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定位方向",
+      "attributes": [
+        {
+          "name": "placement",
+          "attribute": "placement",
+          "reflects": false,
+          "type": "Placement",
+          "default": "'bottom'",
+          "description": ""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": ""
+        }
+      ],
+      "properties": [],
+      "events": [
+        {
+          "name": "zone-popover-show",
+          "description": ""
+        },
+        {
+          "name": "zone-popover-hide",
+          "description": ""
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "默认插槽"
+        }
+      ],
+      "cssVariables": [
+        "--zone-color-neutral-400",
+        "--zone-color-primary-highlight",
+        "--zone-color-white",
+        "--zone-font-b1-regular",
+        "--zone-index-popover",
+        "--zone-popover-arrow-display",
+        "--zone-popover-background-color",
+        "--zone-popover-border-color",
+        "--zone-popover-border-radius",
+        "--zone-popover-border-size",
+        "--zone-popover-max-width",
+        "--zone-popover-padding",
+        "--zone-popover-position",
+        "--zone-size-14",
+        "--zone-size-16",
+        "--zone-size-6",
+        "--zone-size-8"
+      ],
+      "story": "zone-popover.stories.ts",
+      "tests": 2
+    },
+    {
+      "tag": "zone-spinner",
+      "className": "ZoneSpinner",
+      "dir": "spinner",
+      "summary": "AIYAZONE 加载指示器组件",
+      "attributes": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "reflects": true,
+          "type": "string",
+          "default": "\"var(--zone-spinner-size, var(--zone-size-14))\"",
+          "description": "/ export class ZoneSpinner extends LitElement { // 定义组件的CSS样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置加载指示器的大小"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "reflects": true,
+          "type": "boolean | undefined",
+          "default": "false",
+          "description": "设置加载指示器的禁用状态"
+        },
+        {
+          "name": "overlay",
+          "attribute": "overlay",
+          "reflects": true,
+          "type": "boolean | undefined",
+          "default": "false",
+          "description": "设置加载指示器的覆盖层状态"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "reflects": true,
+          "type": "string",
+          "default": "\"var(--zone-color-primary)\"",
+          "description": "设置加载指示器的颜色"
+        }
+      ],
+      "properties": [],
+      "events": [],
+      "slots": [],
+      "cssVariables": [],
+      "story": "zone-spinner.stories.ts",
+      "tests": 0
+    },
+    {
+      "tag": "zone-toast",
+      "className": "ZoneToast",
+      "dir": "toast",
+      "summary": "AIYAZONE 轻提示组件",
+      "attributes": [
+        {
+          "name": "variant",
+          "attribute": "variant",
+          "reflects": true,
+          "type": "\"info\" | \"warning\" | \"success\" | \"danger\"",
+          "default": "\"info\"",
+          "description": "/ export class ZoneToast extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置轻提示变体"
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "reflects": false,
+          "type": "string | undefined",
+          "default": null,
+          "description": "设置轻提示描述"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "reflects": false,
+          "type": "boolean | string | undefined",
+          "default": null,
+          "description": "允许自定义轻提示图标"
+        },
+        {
+          "name": "closable",
+          "attribute": "closable",
+          "reflects": true,
+          "type": "boolean",
+          "default": "false",
+          "description": "显示关闭按钮"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "reflects": false,
+          "type": "string | undefined",
+          "default": null,
+          "description": "设置轻提示标题"
+        },
+        {
+          "name": "closed",
+          "attribute": "closed",
+          "reflects": true,
+          "type": "boolean",
+          "default": "false",
+          "description": "设置轻提示组件的显示状态"
+        },
+        {
+          "name": "countdownTime",
+          "attribute": "countdown-time",
+          "reflects": false,
+          "type": "number",
+          "default": "0",
+          "description": "倒计时时间（以秒为单位）"
+        }
+      ],
+      "properties": [],
+      "events": [
+        {
+          "name": "zone-close",
+          "description": ""
+        }
+      ],
+      "slots": [
+        {
+          "name": "caption",
+          "description": "具名插槽 caption"
+        },
+        {
+          "name": "",
+          "description": "默认插槽"
+        },
+        {
+          "name": "action",
+          "description": "具名插槽 action"
+        },
+        {
+          "name": "action-secondary",
+          "description": "具名插槽 action-secondary"
+        }
+      ],
+      "cssVariables": [
+        "--zone-color-danger",
+        "--zone-color-danger-contrast",
+        "--zone-color-info",
+        "--zone-color-info-contrast",
+        "--zone-color-neutral-400",
+        "--zone-color-success",
+        "--zone-color-success-contrast",
+        "--zone-color-warning",
+        "--zone-color-warning-contrast",
+        "--zone-font-b2",
+        "--zone-font-h3",
+        "--zone-size-16",
+        "--zone-size-20",
+        "--zone-size-8"
+      ],
+      "story": "zone-toast.stories.ts",
+      "tests": 0
+    },
+    {
+      "tag": "zone-tooltip",
+      "className": "ZoneTooltip",
+      "dir": "tooltip",
+      "summary": "AIYAZONE Tooltip 组件",
+      "attributes": [
+        {
+          "name": "placement",
+          "attribute": "placement",
+          "reflects": false,
+          "type": "Placement",
+          "default": "\"top\"",
+          "description": "/ export class ZoneTooltip extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; private static _activeTouchTooltip: ZoneTooltip | null = null; private readonly _popoverArrowPadding = 14; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置工具提示的位置"
+        }
+      ],
+      "properties": [],
+      "events": [
+        {
+          "name": "zone-tooltip-show",
+          "description": ""
+        },
+        {
+          "name": "zone-tooltip-hide",
+          "description": ""
+        },
+        {
+          "name": "zone-tooltip-hide",
+          "description": ""
+        }
+      ],
+      "slots": [
+        {
+          "name": "tooltip-trigger",
+          "description": "具名插槽 tooltip-trigger"
+        },
+        {
+          "name": "",
+          "description": "默认插槽"
+        }
+      ],
+      "cssVariables": [
+        "--zone-color-info",
+        "--zone-color-white",
+        "--zone-tooltip-trigger-display"
+      ],
+      "story": "zone-tooltip.stories.ts",
+      "tests": 5
+    }
+  ]
+}

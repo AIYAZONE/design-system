@@ -5,6 +5,12 @@ import { autoUpdate, computePosition, flip, offset, shift, arrow as flArrow, Pla
 import styles from './index.less?inline';
 import { adoptInternalStyles } from '../../styles/internal-shared';
 
+/**
+ * AIYAZONE 气泡卡片组件
+ * 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定位方向
+ *
+ * @cssproperty [--zone-index-popover=100] - 浮层层级
+ */
 @customElement('zone-popover')
 export class ZonePopover extends LitElement {
   static styles = [unsafeCSS(styles)] as CSSResultGroup;

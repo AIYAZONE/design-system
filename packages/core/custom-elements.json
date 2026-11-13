@@ -1,0 +1,3479 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/components/badge/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneBadge",
+          "cssProperties": [
+            {
+              "description": "设置徽章的背景颜色",
+              "name": "--zone-badge-bg-color:var(--zone-color-primary-contrast)"
+            },
+            {
+              "description": "设置徽章语义主色（outline 边框默认跟随该值，solid 默认背景也会使用该值）",
+              "name": "--zone-badge-color:var(--zone-color-primary)"
+            },
+            {
+              "description": "设置徽章的文字颜色（所有变体通用）",
+              "name": "--zone-badge-text-color:var(--zone-badge-color)"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "BadgeSize"
+              },
+              "default": "\"medium\"",
+              "description": "设置徽章的大小（影响高度/内边距/图标大小）"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "\"soft\"",
+              "description": "徽章的风格变体：soft（浅色）、solid（实色）、outline（描边）"
+            },
+            {
+              "kind": "field",
+              "name": "kind",
+              "type": {
+                "text": "BadgeKind"
+              },
+              "default": "\"default\"",
+              "description": "徽章的语义种类（default/neutral/success/warning/danger/info/custom）"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "设置图标的名称（亦可通过 icon 插槽覆盖）"
+            },
+            {
+              "kind": "field",
+              "name": "iconPosition",
+              "type": {
+                "text": "BadgeIconPosition"
+              },
+              "default": "\"next\"",
+              "description": "图标位置：prev（文本前）/ next（文本后）"
+            },
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "计数值（优先显示，超过 maxCount 显示为 \"maxCount+\"）"
+            },
+            {
+              "kind": "field",
+              "name": "maxCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "99",
+              "description": "计数显示上限（默认 99）"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "链接地址（设置后渲染为 <a>，自动添加 rel='noopener noreferrer'）"
+            },
+            {
+              "kind": "field",
+              "name": "_warnedA11y",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "description": "无障碍标签（dot 或仅计数时建议设置）"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-badge",
+          "customElement": true,
+          "summary": "AIYAZONE 徽章组件"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneBadge",
+          "declaration": {
+            "name": "ZoneBadge",
+            "module": "src/components/badge/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZoneBadge",
+            "module": "src/components/badge/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "ZONE Button 组件\n支持变体、种类、尺寸、加载、禁用、链接等配置",
+          "name": "ZoneButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "default": "\"primary\"",
+              "description": "按钮变体"
+            },
+            {
+              "kind": "field",
+              "name": "kind",
+              "type": {
+                "text": "ButtonKind"
+              },
+              "default": "\"default\"",
+              "description": "按钮种类"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "default": "\"large\"",
+              "description": "按钮尺寸"
+            },
+            {
+              "kind": "field",
+              "name": "interaction",
+              "type": {
+                "text": "ButtonInteraction"
+              },
+              "default": "\"default\"",
+              "description": "按钮交互风格"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "按钮标签（无障碍访问）"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否加载中"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否禁用"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "链接地址，设置后渲染为 <a>"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "图标名称"
+            },
+            {
+              "kind": "field",
+              "name": "iconPosition",
+              "type": {
+                "text": "\"prev\" | \"next\""
+              },
+              "default": "\"next\"",
+              "description": "图标位置：prev（文本前）/ next（文本后）"
+            },
+            {
+              "kind": "field",
+              "name": "iconMode",
+              "type": {
+                "text": "ButtonIconMode"
+              },
+              "default": "\"inline\"",
+              "description": "图标呈现模式：inline（常规图标）/ capsule（胶囊尾缀）"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "链接目标"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "\"button\" | \"submit\" | \"reset\""
+              },
+              "default": "\"button\"",
+              "description": "按钮类型"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否自动聚焦"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "string | HTMLFormElement | undefined"
+              },
+              "description": "关联的表单"
+            },
+            {
+              "kind": "field",
+              "name": "_isActive",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "description": "是否激活（内部状态）"
+            },
+            {
+              "kind": "field",
+              "name": "button",
+              "type": {
+                "text": "HTMLButtonElement | HTMLAnchorElement | undefined"
+              },
+              "privacy": "private",
+              "description": "按钮元素引用"
+            },
+            {
+              "kind": "field",
+              "name": "_slotObserver",
+              "type": {
+                "text": "MutationObserver | undefined"
+              },
+              "privacy": "private",
+              "description": "插槽观察器"
+            },
+            {
+              "kind": "field",
+              "name": "onClick",
+              "description": "点击事件回调（供 Storybook 使用）"
+            },
+            {
+              "kind": "method",
+              "name": "_setupSlotObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_cleanupSlotObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_iosVersionCache",
+              "type": {
+                "text": "boolean | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "isIOSVersionBelow",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "major",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "minor",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleFormSubmit",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus"
+            },
+            {
+              "kind": "field",
+              "name": "_hasIconSlot",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_hasDefaultSlotCache",
+              "type": {
+                "text": "boolean | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_lastChildNodesVersion",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_hasDefaultSlot",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_computeHasDefaultSlot",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneButton",
+          "declaration": {
+            "name": "ZoneButton",
+            "module": "src/components/button/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/checkbox/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "ZONE Checkbox 组件",
+          "name": "ZoneCheckbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否选中"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否禁用"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"on\"",
+              "description": "表单值"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "表单名称"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "标签文本"
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "输入变更处理：禁用态阻止；派发 change 事件（detail: { checked }）"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneCheckbox",
+          "declaration": {
+            "name": "ZoneCheckbox",
+            "module": "src/components/checkbox/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dialog/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneDialog",
+          "cssProperties": [
+            {
+              "description": "设置对话框内容的宽度",
+              "name": "--zone-dialog-width",
+              "default": "640px"
+            },
+            {
+              "description": "设置对话框标题的对齐方式",
+              "name": "--zone-dialog-title-align",
+              "default": "left"
+            },
+            {
+              "description": "设置对话框的z-index值",
+              "name": "--zone-dialog-index",
+              "default": "500"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "field",
+              "name": "_bodyScrollLockCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_rootStyleSnapshot",
+              "type": {
+                "text": "{ overflow: string; paddingRight: string } | null"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "DialogSize"
+              },
+              "default": "\"large\"",
+              "description": "对话框尺寸"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "设置对话框的打开/关闭状态"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "对话框标题文本；也可通过 header 插槽覆盖标题区域"
+            },
+            {
+              "kind": "field",
+              "name": "critical",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭"
+            },
+            {
+              "kind": "field",
+              "name": "noClose",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否隐藏右上角关闭按钮（强制隐藏）"
+            },
+            {
+              "kind": "field",
+              "name": "showClose",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "是否显示右上角关闭按钮（默认显示）"
+            },
+            {
+              "kind": "field",
+              "name": "disableBodyScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "打开时是否禁用页面滚动（body overflow: hidden）"
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabelText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "无标题时用于可访问性的 aria-label 文本"
+            },
+            {
+              "kind": "field",
+              "name": "initialFocus",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素"
+            },
+            {
+              "kind": "field",
+              "name": "closeIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"close-fill\"",
+              "description": "关闭图标"
+            },
+            {
+              "kind": "field",
+              "name": "appendTo",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Dialog 挂载目标\n\n支持 CSS Selector，例如：\n- body\n- #app\n- .modal-root"
+            },
+            {
+              "kind": "field",
+              "name": "container",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_lastFocus",
+              "type": {
+                "text": "Element | null | undefined"
+              },
+              "privacy": "private",
+              "description": "打开前的触发源，用于关闭后恢复焦点"
+            },
+            {
+              "kind": "field",
+              "name": "_isBodyScrollLockedByThisDialog",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "onOpen",
+              "type": {
+                "text": "EventDispatcher<object>"
+              },
+              "privacy": "private",
+              "description": "对话框打开时触发（detail: { isOpen: true }）"
+            },
+            {
+              "kind": "field",
+              "name": "onRequestClose",
+              "type": {
+                "text": "EventDispatcher<{\n    source: \"close-button\" | \"keyboard\" | \"backdrop\";\n  }>"
+              },
+              "privacy": "private",
+              "description": "请求关闭事件（可取消），detail.source 表示关闭来源：'close-button' | 'keyboard' | 'backdrop'"
+            },
+            {
+              "kind": "field",
+              "name": "onClose",
+              "type": {
+                "text": "EventDispatcher<object>"
+              },
+              "privacy": "private",
+              "description": "对话框关闭时触发（detail: { reason }），用于外部监听关闭完成"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ],
+              "description": "属性变更生命周期：当 open 变化时处理打开/关闭"
+            },
+            {
+              "kind": "method",
+              "name": "appendToTarget",
+              "privacy": "private",
+              "description": "将 Dialog 自身移动到指定 DOM 节点"
+            },
+            {
+              "kind": "method",
+              "name": "toggleDialogHandler",
+              "privacy": "private",
+              "description": "打开/关闭统一入口：管理滚动锁、键盘监听、初始焦点设置与关闭后焦点恢复"
+            },
+            {
+              "kind": "method",
+              "name": "lockBodyScroll",
+              "privacy": "private",
+              "description": "锁定页面滚动\n\n仅对根元素设置 overflow: hidden，不改变 body 的定位与文档流位置，\n因此不会引起页面位移或重排；文档滚动位置由浏览器原样保留"
+            },
+            {
+              "kind": "method",
+              "name": "unlockBodyScroll",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "restoreFocus",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "target",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "restoreLastFocus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "closeDialog",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "source",
+                  "type": {
+                    "text": "\"close-button\" | \"keyboard\" | \"backdrop\""
+                  },
+                  "description": "关闭来源（按钮、键盘 ESC、遮罩点击）"
+                }
+              ],
+              "description": "触发可取消的关闭请求；未被阻止则设置 open=false 并派发关闭事件"
+            },
+            {
+              "kind": "field",
+              "name": "clickOutsideHandler",
+              "privacy": "private",
+              "description": "遮罩点击处理：点击容器外即认为遮罩点击；critical=true 时不生效"
+            },
+            {
+              "kind": "field",
+              "name": "onKeydown",
+              "privacy": "private",
+              "description": "键盘处理：ESC 关闭（critical 禁止）、Tab/Shift+Tab 焦点循环在对话框范围内"
+            },
+            {
+              "kind": "method",
+              "name": "renderContainer",
+              "privacy": "private",
+              "description": "渲染对话框容器与标题、关闭按钮、内容插槽"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "description": "渲染外层 overlay 与 aria 属性：role='dialog'、aria-modal、aria-labelledby/aria-label"
+            }
+          ],
+          "events": [
+            {
+              "name": "closed",
+              "type": {
+                "text": "Event"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-dialog",
+          "customElement": true,
+          "summary": "AIYAZONE 对话框组件"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneDialog",
+          "declaration": {
+            "name": "ZoneDialog",
+            "module": "src/components/dialog/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/filter-select/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "ZONE FilterSelect 组件\n下拉筛选多选：触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮）\n\n默认采用「草稿 + 确认」语义：面板内的勾选只更新草稿，点击确认后才提交到 `value`。\n当 `show-confirm` 为 false 时切换为「即时生效」模式。",
+          "name": "ZoneFilterSelect",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "触发器文案。未设置时取内置多语言 `components.filterSelect.label`。"
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "自定义语言。设置后优先于页面 `<html lang>` 与全局语言（`setCurrLanguage`）。\n未设置时自动读取 `document.documentElement.lang`，\n若仍为空则回退到全局当前语言。\n支持任意 HTML lang 写法（如 `en-US` / `zh-Hans` / `jp`），内部会自动归一化。"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "FilterSelectOption[]"
+              },
+              "default": "[]",
+              "description": "可选项列表"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]",
+              "description": "已提交的选中值"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "面板是否展开"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "是否禁用"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "Placement"
+              },
+              "default": "\"bottom-start\"",
+              "description": "浮层位置"
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "description": "浮层与触发器的间距"
+            },
+            {
+              "kind": "field",
+              "name": "showConfirm",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "是否展示底部确认按钮（false 时为即时生效模式）"
+            },
+            {
+              "kind": "field",
+              "name": "showClear",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "是否展示右上角清空按钮"
+            },
+            {
+              "kind": "field",
+              "name": "showCounter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "是否展示「已选 n/总数」计数"
+            },
+            {
+              "kind": "field",
+              "name": "selectedSummary",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "有选中项时触发器展示的文案模板，支持 {count}（已选数量）与 {label}（label 属性）占位符。\n未设置时取内置多语言 `components.filterSelect.selectedSummary`。"
+            },
+            {
+              "kind": "field",
+              "name": "selectedText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "「已选 n/总数」中的「已选」文案。\n未设置时取内置多语言 `components.filterSelect.counter`。"
+            },
+            {
+              "kind": "field",
+              "name": "clearText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "「清空」文案。未设置时取内置多语言 `components.filterSelect.clear`。"
+            },
+            {
+              "kind": "field",
+              "name": "confirmText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "底部确认按钮文案。未设置时取内置多语言 `components.filterSelect.confirm`。"
+            },
+            {
+              "kind": "field",
+              "name": "emptyText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "无选项时的占位文案。未设置时取内置多语言 `components.filterSelect.empty`。"
+            },
+            {
+              "kind": "field",
+              "name": "closeOnScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "页面滚动时是否自动收起面板。\n面板内部（选项列表）滚动不会收起。"
+            },
+            {
+              "kind": "field",
+              "name": "_draft",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]",
+              "description": "面板内草稿选中值"
+            },
+            {
+              "kind": "field",
+              "name": "_activeIndex",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "-1",
+              "description": "键盘高亮项索引"
+            },
+            {
+              "kind": "field",
+              "name": "_triggerEl",
+              "type": {
+                "text": "HTMLButtonElement | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_panelEl",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_idBase",
+              "privacy": "private",
+              "readonly": true,
+              "default": "`zone-filter-select-${++uid}`"
+            },
+            {
+              "kind": "field",
+              "name": "_cleanupPosition",
+              "type": {
+                "text": "() => void | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_viewportPadding",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "readonly": true,
+              "default": "8"
+            },
+            {
+              "kind": "field",
+              "name": "_i18n",
+              "type": {
+                "text": "I18nController | undefined"
+              },
+              "privacy": "private",
+              "description": "i18n 控制器：语言切换时自动触发重渲染"
+            },
+            {
+              "kind": "field",
+              "name": "I18N_PREFIX",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "static": true,
+              "readonly": true,
+              "default": "\"components.filterSelect.\"",
+              "description": "内置多语言 key 前缀"
+            },
+            {
+              "kind": "method",
+              "name": "_resolveLang",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Language | undefined"
+                }
+              },
+              "description": "解析当前生效语言：\n1. 显式 `language` 属性优先\n2. 否则读取页面 `<html lang>`\n3. 仍为空则回退到全局当前语言（返回 undefined，由 t() 处理）"
+            },
+            {
+              "kind": "method",
+              "name": "_text",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "override",
+                  "type": {
+                    "text": "string | undefined"
+                  }
+                },
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "取文案：显式设置优先，否则回退到内置多语言（按当前解析语言）"
+            },
+            {
+              "kind": "field",
+              "name": "_resolvedLabel",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_listboxId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_triggerText",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "description": "触发器文案：跟随草稿实时更新，未选中时回退到 label",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_optionId",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_attachListeners",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_detachListeners",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "willUpdate",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "展开面板"
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "confirmed",
+                  "default": "false"
+                }
+              ],
+              "description": "收起面板，未确认时丢弃草稿"
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "切换展开 / 收起"
+            },
+            {
+              "kind": "method",
+              "name": "confirm",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "提交草稿并收起面板"
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "清空当前选中"
+            },
+            {
+              "kind": "method",
+              "name": "_commitDraft",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_toggleOption",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_firstEnabledIndex",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_lastEnabledIndex",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_moveActive",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "delta",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_handleTriggerClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleTriggerKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleClickOutside",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleScroll",
+              "privacy": "private",
+              "description": "scroll 事件不冒泡，必须用捕获阶段才能收到任意滚动容器的滚动"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_closeWithFocusRestore",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "键盘打开面板：收起时把焦点还给触发器"
+            },
+            {
+              "kind": "field",
+              "name": "_handleOptionsKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleOptionClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleClearClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleConfirmClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_focusTrigger",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_focusListbox",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncPosition",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_renderUncheckedIcon",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_renderCheckedIcon",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_renderTrigger",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_renderPanel",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "zone-filter-select-open",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "zone-filter-select-close",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "zone-filter-select-confirm",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "zone-filter-select-clear",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "zone-filter-select-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneFilterSelect",
+          "declaration": {
+            "name": "ZoneFilterSelect",
+            "module": "src/components/filter-select/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/popover/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "AIYAZONE 气泡卡片组件\n点击 / 悬停触发浮层，支持自定义触发元素、箭头与定位方向",
+          "name": "ZonePopover",
+          "cssProperties": [
+            {
+              "description": "浮层层级",
+              "name": "--zone-index-popover",
+              "default": "100"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "Placement"
+              },
+              "default": "'bottom'"
+            },
+            {
+              "kind": "field",
+              "name": "fitSize",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "default": "8"
+            },
+            {
+              "kind": "field",
+              "name": "arrowPadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "8"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_visible",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_popoverEl",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_arrowEl",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_targetEl",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_cleanup",
+              "type": {
+                "text": "() => void | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_viewportPadding",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "readonly": true,
+              "default": "8"
+            },
+            {
+              "kind": "method",
+              "name": "_setupTarget",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_togglePopover",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "getMiddleware",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleClickOutside",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeydownEvent",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "show"
+            },
+            {
+              "kind": "method",
+              "name": "hide"
+            },
+            {
+              "kind": "method",
+              "name": "setPopover"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "zone-popover-show",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "zone-popover-hide",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZonePopover",
+          "declaration": {
+            "name": "ZonePopover",
+            "module": "src/components/popover/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Placement",
+          "declaration": {
+            "name": "Placement",
+            "module": "src/components/popover/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/spinner/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneSpinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"var(--zone-spinner-size, var(--zone-size-14))\"",
+              "description": "设置加载指示器的大小"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "description": "设置加载指示器的禁用状态"
+            },
+            {
+              "kind": "field",
+              "name": "overlay",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "description": "设置加载指示器的覆盖层状态"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"var(--zone-color-primary)\"",
+              "description": "设置加载指示器的颜色"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-spinner",
+          "customElement": true,
+          "summary": "AIYAZONE 加载指示器组件"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneSpinner",
+          "declaration": {
+            "name": "ZoneSpinner",
+            "module": "src/components/spinner/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZoneSpinner",
+            "module": "src/components/spinner/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/demo-data.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "dropdownTreeOptions",
+          "type": {
+            "text": "DropdownOption[]"
+          },
+          "default": "[ { value: \"station\", label: \"Power Station\", children: [{ value: \"explorer\", label: \"AIYAZONE Explorer 3000 Pro\" }], }, { value: \"solar\", label: \"Solar PanelsSolar Panels\", children: [ { value: \"solar-station\", label: \"Power StationPower Station\", children: [ { value: \"sg1500\", label: \"SG1500(2*100W)\" }, { value: \"panel60\", label: \"Solar PanelwSolar PanelwSolar Panel 60\" }, { value: \"long\", label: \"Power SG1500(2*100W)Power SG1500(2*100W)Power SG1500(2*100W)Power SG1500(2*100W)1500(2*100W)\", }, ], }, { value: \"solar-other\", label: \"Power Station\", children: [{ value: \"panel100\", label: \"SolarSaga 100W\" }], }, ], }, { value: \"other\", label: \"Power Station\", children: [{ value: \"other-product\", label: \"Other product\" }], }, ]",
+          "description": "设计稿示例数据，特意保留重复名称和需要换行的长文本。"
+        },
+        {
+          "kind": "variable",
+          "name": "dropdownMobileOptions",
+          "type": {
+            "text": "DropdownOption[]"
+          },
+          "default": "[ dropdownTreeOptions[0], { value: \"solar\", label: \"Solar Panelsolar Panels\", children: [ { value: \"solar-station\", label: \"AIYAZONE ExSolar Panelsackery ExSol\", children: [ { value: \"sg1500\", label: \"AIYAZONE ExSolar Panelsackery\" }, { value: \"long\", label: \"AIYAZONE Explorer 3000 sssxxxx Pro Portable Power Stationrtab\", }, ], }, { value: \"solar-other\", label: \"AIYAZONE ExSolar Panelsackery ExSol\", children: [{ value: \"panel100\", label: \"SolarSaga 100W\" }], }, ], }, dropdownTreeOptions[2], ]"
+        },
+        {
+          "kind": "variable",
+          "name": "dropdownFlatOptions",
+          "type": {
+            "text": "DropdownOption[]"
+          },
+          "default": "[ { value: \"power\", label: \"Power Station\" }, { value: \"solar\", label: \"Solar Panels\" }, { value: \"accessories\", label: \"Accessories\" }, { value: \"unavailable\", label: \"Unavailable\", disabled: true }, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "dropdownTreeOptions",
+          "declaration": {
+            "name": "dropdownTreeOptions",
+            "module": "src/components/dropdown/demo-data.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dropdownMobileOptions",
+          "declaration": {
+            "name": "dropdownMobileOptions",
+            "module": "src/components/dropdown/demo-data.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dropdownFlatOptions",
+          "declaration": {
+            "name": "dropdownFlatOptions",
+            "module": "src/components/dropdown/demo-data.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneDropdown",
+          "cssParts": [
+            {
+              "description": "下拉框触发控件。",
+              "name": "trigger"
+            },
+            {
+              "description": "可滚动的选项面板。",
+              "name": "panel"
+            },
+            {
+              "description": "选项行。",
+              "name": "option"
+            },
+            {
+              "description": "字段标签。",
+              "name": "label"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "DropdownOption[]"
+              },
+              "default": "[]",
+              "description": "通过 JavaScript 属性赋值，例如 element.options = [...]。"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_emptyText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_requiredMessage",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_clearLabel",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "未指定文案时使用当前语言；传入空字符串时保留空字符串。"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "clearable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "showPath",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "默认显示所选叶子节点的名称；开启后显示完整路径。"
+            },
+            {
+              "kind": "field",
+              "name": "emptyText",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "requiredMessage",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "clearLabel",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "errorMessage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_expanded",
+              "privacy": "private",
+              "default": "new Set<string>()"
+            },
+            {
+              "kind": "field",
+              "name": "_active",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_keyboardNavigation",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_formDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_invalid",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_scrollTop",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_viewportHeight",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "360"
+            },
+            {
+              "kind": "field",
+              "name": "_layoutVersion",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_trigger",
+              "type": {
+                "text": "HTMLButtonElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_panel",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_i18n",
+              "type": {
+                "text": "I18nController | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_language",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_languageObserver",
+              "type": {
+                "text": "MutationObserver | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_tree",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_internals",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_cleanup",
+              "type": {
+                "text": "() => void | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_positionVersion",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_defaultValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_customValidity",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_typeahead",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "_typeaheadTime",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_visibleCache",
+              "type": {
+                "text": "DropdownNode[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_enabled",
+              "type": {
+                "text": "DropdownNode[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_enabledIndices",
+              "privacy": "private",
+              "default": "new Map<string, number>()"
+            },
+            {
+              "kind": "field",
+              "name": "_visibleIndices",
+              "privacy": "private",
+              "default": "new Map<string, number>()"
+            },
+            {
+              "kind": "field",
+              "name": "_cachedTree",
+              "type": {
+                "text": "typeof this._tree | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_cachedExpanded",
+              "type": {
+                "text": "Set<string> | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_heights",
+              "privacy": "private",
+              "default": "new RowHeights([])"
+            },
+            {
+              "kind": "field",
+              "name": "_measuredHeights",
+              "privacy": "private",
+              "default": "new Map<string, number>()"
+            },
+            {
+              "kind": "field",
+              "name": "_rowObserver",
+              "type": {
+                "text": "ResizeObserver | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_panelObserver",
+              "type": {
+                "text": "ResizeObserver | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_observedRows",
+              "privacy": "private",
+              "default": "new Set<Element>()"
+            },
+            {
+              "kind": "field",
+              "name": "_panelWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "willValidate",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_disabled",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_selected",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_visible",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_refreshVisible",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_virtual",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_window",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_activeId",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "willUpdate",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_expandSelection",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_syncForm",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity"
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity"
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formDisabledCallback",
+              "parameters": [
+                {
+                  "name": "disabled",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formResetCallback"
+            },
+            {
+              "kind": "method",
+              "name": "formStateRestoreCallback",
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string | File | FormData | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_onInvalid",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "show"
+            },
+            {
+              "kind": "method",
+              "name": "hide"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startPositioning",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_stopPositioning",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_position",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_onOutside",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_observeVirtualRows",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_renderOptions",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_activate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "DropdownNode"
+                  }
+                },
+                {
+                  "name": "keyboard",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_emitChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_clear",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_onKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_renderNodes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "nodes",
+                  "type": {
+                    "text": "DropdownNode[]"
+                  }
+                },
+                {
+                  "name": "nested",
+                  "default": "true"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "用户选择或清空时触发，详情类型为 DropdownChangeDetail；支持冒泡并穿透 Shadow DOM。"
+            },
+            {
+              "description": "下拉面板已打开。",
+              "name": "zone-dropdown-show"
+            },
+            {
+              "description": "下拉面板已关闭。",
+              "name": "zone-dropdown-hide"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-dropdown",
+          "customElement": true,
+          "summary": "单选下拉框；数据包含子节点时自动启用树形列表。"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DropdownOption",
+          "declaration": {
+            "name": "DropdownOption",
+            "module": "./types"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DropdownChangeDetail",
+          "declaration": {
+            "name": "DropdownChangeDetail",
+            "module": "./types"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ZoneDropdown",
+          "declaration": {
+            "name": "ZoneDropdown",
+            "module": "src/components/dropdown/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/locale.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getDropdownLanguage",
+          "return": {
+            "type": {
+              "text": "keyof typeof messages"
+            }
+          },
+          "parameters": [
+            {
+              "name": "document",
+              "type": {
+                "text": "Document"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "dropdownText",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "document",
+              "type": {
+                "text": "Document"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "keyof typeof messages.en"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getDropdownLanguage",
+          "declaration": {
+            "name": "getDropdownLanguage",
+            "module": "src/components/dropdown/locale.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dropdownText",
+          "declaration": {
+            "name": "dropdownText",
+            "module": "src/components/dropdown/locale.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/row-heights.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "用树状数组维护动态行高，定位和更新均为 O(log n)。",
+          "name": "RowHeights",
+          "members": [
+            {
+              "kind": "field",
+              "name": "values",
+              "type": {
+                "text": "number[]"
+              },
+              "privacy": "private",
+              "default": "[...heights]"
+            },
+            {
+              "kind": "field",
+              "name": "sums",
+              "type": {
+                "text": "number[]"
+              },
+              "privacy": "private",
+              "default": "[0, ...heights]"
+            },
+            {
+              "kind": "method",
+              "name": "offset",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "end",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "set",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "height",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "indexAt",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "offset",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RowHeights",
+          "declaration": {
+            "name": "RowHeights",
+            "module": "src/components/dropdown/row-heights.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/tree-utils.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "buildDropdownTree",
+          "parameters": [
+            {
+              "name": "options",
+              "type": {
+                "text": "DropdownOption[]"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getDropdownPath",
+          "return": {
+            "type": {
+              "text": "DropdownNode[]"
+            }
+          },
+          "parameters": [
+            {
+              "name": "node",
+              "optional": true,
+              "type": {
+                "text": "DropdownNode"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getVisibleDropdownNodes",
+          "return": {
+            "type": {
+              "text": "DropdownNode[]"
+            }
+          },
+          "parameters": [
+            {
+              "name": "roots",
+              "type": {
+                "text": "DropdownNode[]"
+              }
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "Set<string>"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "buildDropdownTree",
+          "declaration": {
+            "name": "buildDropdownTree",
+            "module": "src/components/dropdown/tree-utils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getDropdownPath",
+          "declaration": {
+            "name": "getDropdownPath",
+            "module": "src/components/dropdown/tree-utils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getVisibleDropdownNodes",
+          "declaration": {
+            "name": "getVisibleDropdownNodes",
+            "module": "src/components/dropdown/tree-utils.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dropdown/types.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/toast/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneToast",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ToastVariant"
+              },
+              "default": "\"info\"",
+              "description": "设置轻提示变体"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "设置轻提示描述"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "boolean | string | undefined"
+              },
+              "description": "允许自定义轻提示图标"
+            },
+            {
+              "kind": "field",
+              "name": "closable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "显示关闭按钮"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "设置轻提示标题"
+            },
+            {
+              "kind": "field",
+              "name": "closed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "设置轻提示组件的显示状态"
+            },
+            {
+              "kind": "field",
+              "name": "countdownTime",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "倒计时时间（以秒为单位）"
+            },
+            {
+              "kind": "field",
+              "name": "countdownInterval",
+              "type": {
+                "text": "number | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "open",
+              "privacy": "public",
+              "description": "打开轻提示组件"
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "privacy": "public",
+              "description": "关闭轻提示组件"
+            },
+            {
+              "kind": "method",
+              "name": "startCountdown",
+              "privacy": "private",
+              "description": "启动倒计时"
+            },
+            {
+              "kind": "method",
+              "name": "stopCountdown",
+              "privacy": "private",
+              "description": "停止倒计时"
+            },
+            {
+              "kind": "method",
+              "name": "_closeHandler",
+              "privacy": "private",
+              "description": "当关闭按钮被点击时触发"
+            },
+            {
+              "kind": "field",
+              "name": "_hasToastCaptionSlot",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_predefinedIcons",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_getIcon",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_initToastActionSlot",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "zone-close",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-toast",
+          "customElement": true,
+          "summary": "AIYAZONE 轻提示组件"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneToast",
+          "declaration": {
+            "name": "ZoneToast",
+            "module": "src/components/toast/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZoneToast",
+            "module": "src/components/toast/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tooltip/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ZoneTooltip",
+          "cssProperties": [
+            {
+              "description": "设置工具提示触发器的显示方式。",
+              "name": "--zone-tooltip-trigger-display",
+              "default": "inline-flex"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "[unsafeCSS(styles)]"
+            },
+            {
+              "kind": "field",
+              "name": "_activeTouchTooltip",
+              "type": {
+                "text": "ZoneTooltip | null"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_popoverArrowPadding",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "readonly": true,
+              "default": "14"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "trigger",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_popover",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "Placement"
+              },
+              "default": "\"top\"",
+              "description": "设置工具提示的位置"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string | HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_timer",
+              "type": {
+                "text": "ReturnType<typeof setTimeout> | null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_isTouchDevice",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addEvents",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_removeEvents",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string | HTMLElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getTarget",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getTargetFromValue",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string | HTMLElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_handleOutsideClick",
+              "privacy": "private",
+              "description": "移动端：点击全局关闭工具提示"
+            },
+            {
+              "kind": "field",
+              "name": "_isScrolling",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_handleTouchStart",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleTouchMove",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleTouch",
+              "privacy": "private",
+              "description": "移动端专用的触摸逻辑"
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "description": "显示工具提示"
+            },
+            {
+              "kind": "method",
+              "name": "_hideImmediately",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_hidePopover",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "hide",
+              "description": "隐藏工具提示"
+            },
+            {
+              "kind": "field",
+              "name": "visible",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "获取工具提示的可见性状态",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "triggerTemplate",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "zone-tooltip-hide",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "zone-tooltip",
+          "customElement": true,
+          "summary": "AIYAZONE Tooltip 组件"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ZoneTooltip",
+          "declaration": {
+            "name": "ZoneTooltip",
+            "module": "src/components/tooltip/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ZoneTooltip",
+            "module": "src/components/tooltip/index.ts"
+          }
+        }
+      ]
+    }
+  ]
+}
