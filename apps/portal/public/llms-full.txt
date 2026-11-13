@@ -60,6 +60,21 @@ import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 
 令牌全量表：`@aiyazone/tokens/dist/tokens.css`（8 色板 + 尺寸/字号/圆角/层级）；真源 `packages/tokens/tokens.json`。
 
+## 图标库（zone-icon）
+
+- 用法：`<zone-icon name="图标名">`，总包引入后可用；颜色随 `currentColor`，大小用 `font-size: var(--zone-font-size-*)` 令牌控制；
+- 图标名**只能取自下方清单，禁止编造**；点击 / 悬停换图用 `hover-name` 属性。
+
+### 系统图标（59 个，节选 40）
+
+alert-fill, alert-line, arrow-down, arrow-left, arrow-left-fill, arrow-right, arrow-right-fill, arrow-right-long, arrow-up, arrow-up-fill, arrow-up-long, battery-line, calendar-line, cart-line, check, check-fill, check-line, close, close-fill, close-line, close-square, delete-fill, delete-line, download, global, heart-fill, heart-line, home-line-1, home-line-2, info-fill, info-line, lamp-line, loading, location, minus, pdf, phone-fill, phone-line, play, play-fill, …（完整清单见 llms-full.txt / 图标库页 /icons/）
+
+### 社交媒体图标（54 个，节选 40）
+
+email, email-color, email-color-fill, email-fill, facebook, facebook-color, facebook-color-fill, facebook-fill, instagram, instagram-color, instagram-color-fill, instagram-fill, line, line-color, line-color-fill, line-fill, link, link-big, link-color, link-color-fill, link-fill, pinterest, pinterest-color, pinterest-color-fill, pinterest-fill, reddit, reddit-color, reddit-color-fill, reddit-fill, refer-a-friend, refer-a-friend-color, refer-a-friend-color-fill, refer-a-friend-fill, telegram, telegram-color, telegram-color-fill, telegram-fill, threads, tiktok, tiktok-color, …（完整清单见 llms-full.txt / 图标库页 /icons/）
+
+共 113 个图标。在线浏览与搜索：/icons/
+
 ## 全量文档
 
 - [llms-full.txt](./llms-full.txt)：全部组件 API 规格拼接（单文件喂给模型）
@@ -738,6 +753,25 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 
 ---
 
+# 图标库全量清单（zone-icon）
+
+## 图标库（zone-icon）
+
+- 用法：`<zone-icon name="图标名">`，总包引入后可用；颜色随 `currentColor`，大小用 `font-size: var(--zone-font-size-*)` 令牌控制；
+- 图标名**只能取自下方清单，禁止编造**；点击 / 悬停换图用 `hover-name` 属性。
+
+### 系统图标（59 个）
+
+alert-fill, alert-line, arrow-down, arrow-left, arrow-left-fill, arrow-right, arrow-right-fill, arrow-right-long, arrow-up, arrow-up-fill, arrow-up-long, battery-line, calendar-line, cart-line, check, check-fill, check-line, close, close-fill, close-line, close-square, delete-fill, delete-line, download, global, heart-fill, heart-line, home-line-1, home-line-2, info-fill, info-line, lamp-line, loading, location, minus, pdf, phone-fill, phone-line, play, play-fill, play-line, plus, plus-fill, plus-line, question, question-fill, question-line, radius-left-top, radius-right-bottom, search, share, star-fill, star-line, tag, tent-line, time-fill, time-line, truck-line-1, truck-line-2
+
+### 社交媒体图标（54 个）
+
+email, email-color, email-color-fill, email-fill, facebook, facebook-color, facebook-color-fill, facebook-fill, instagram, instagram-color, instagram-color-fill, instagram-fill, line, line-color, line-color-fill, line-fill, link, link-big, link-color, link-color-fill, link-fill, pinterest, pinterest-color, pinterest-color-fill, pinterest-fill, reddit, reddit-color, reddit-color-fill, reddit-fill, refer-a-friend, refer-a-friend-color, refer-a-friend-color-fill, refer-a-friend-fill, telegram, telegram-color, telegram-color-fill, telegram-fill, threads, tiktok, tiktok-color, tiktok-color-fill, tiktok-fill, twitter, twitter-color, twitter-color-fill, twitter-fill, whatsapp, whatsapp-color, whatsapp-color-fill, whatsapp-fill, youtube, youtube-color, youtube-color-fill, youtube-fill
+
+共 113 个图标。在线浏览与搜索：/icons/
+
+---
+
 # AI 使用规范：用 ZDS 生成前端页面
 
 > 这份文档是给 AI（以及给 AI 写提示词的人）看的。目标只有一个：**AI 生成的页面，开箱即符合 ZDS 规范**。
@@ -777,6 +811,7 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
 | 加载中 | `<zone-spinner>` |
 | 操作结果反馈 | `<zone-toast>` |
+| 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
 
 完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
 
@@ -790,7 +825,8 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 2. 交互元素只用 zone-* 组件（button/dialog/dropdown/toast 等），禁止 div 模拟；
 3. 样式覆盖只用公开属性与 --zone-* 变量；
 4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
-5. 响应式使用令牌自动缩放，不写数值 media query。
+5. 图标用 <zone-icon name="…">，名称取自 llms.txt 图标库清单，禁止编造；
+6. 响应式使用令牌自动缩放，不写数值 media query。
 
 输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
 <link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"> + <script type="module">import '@aiyazone/design-system';</script>。

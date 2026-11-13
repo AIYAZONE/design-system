@@ -133,7 +133,7 @@
 | 2 | 视觉回归：A. Chromatic（省事，免费 5000 快照/月）vs B. Playwright + pixelmatch（零成本自维护） | A | ✅ 已确认 2026-11-13 | A. Chromatic |
 | 3 | llms.txt 是否随站点公开 | 公开 | ✅ 已确认 2026-11-13 | 公开 |
 | 4 | 是否新建独立 `@aiyazone/tokens` npm 包 | 是（业务线/CDN 直用） | ✅ 已确认 2026-11-13 | 新建独立包 |
-| 5 | icons 是否接 Chromatic | 不接（Storybook 仅作文档站，质量用 vitest 资产守卫兜底） | ✅ 已确认 2026-11-13 | 不接，vitest 守卫 |
+| 5 | icons 是否接 Chromatic / 站点形态 | 不接 Chromatic；/icons/ 站点由 icons Storybook 改为**自建静态图标库页**（搜索/分类/复制图标名），质量用 vitest 资产守卫兜底 | ✅ 已确认 2026-11-13 | 自建图标库页，icons Storybook 下线 |
 
 ---
 
@@ -147,3 +147,4 @@
 | 2026-11-13 | 阶段 2 / 4 完成：CEM + 源码增强清单、docs/api 规格、llms.txt / llms-full.txt / ai-usage.html、ZBC Playbook；Storybook CEM 项调整为 docs/api 承载 |
 | 2026-11-13 | 阶段 3 完成：ci.yml 七步流水线（a11y 内置于 vitest；Chromatic 条件步骤，Secret 未配置时跳过）；组件 DoD 沉淀 CONTRIBUTING.md；余分支保护需管理员配置 |
 | 2026-11-13 | 文档消费方式修正为总包 @aiyazone/design-system；core Chromatic 基线建立（79 stories）；icons 决策 #5（不接 Chromatic，vitest 资产守卫 118 项）；icons 包硬编码 token 移除；.env 解除跟踪并本地化 |
+| 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |

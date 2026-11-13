@@ -37,8 +37,7 @@
     "moduleResolution": "Bundler", // 采用Bundler模式来解析模块，适用于与打包工具配合使用的场景
     "isolatedModules": true, // 强制每个模块在编译时被视为独立的模块，便于与某些打包工具或构建系统兼容
     "moduleDetection": "force", // 强制进行模块检测，确保模块相关的设置能够准确生效
-    "jsx": "react-jsx", // 使用自动 JSX 运行时，减少对 React 导入的需求
-    "types": ["vite/client", "react", "react-dom"],
+    "types": ["vite/client"],
 
     /* 路径别名配置 */
     "baseUrl": ".",

@@ -424,6 +424,7 @@ function llmsIndex() {
   L.push('');
   L.push(`令牌全量表：\`@aiyazone/tokens/dist/tokens.css\`（${Object.keys(baseColors).length} 色板 + 尺寸/字号/圆角/层级）；真源 \`packages/tokens/tokens.json\`。`);
   L.push('');
+  L.push(iconsLlmsSection(true));
   L.push('## 全量文档');
   L.push('');
   L.push('- [llms-full.txt](./llms-full.txt)：全部组件 API 规格拼接（单文件喂给模型）');
@@ -433,11 +434,47 @@ function llmsIndex() {
   return L.join('\n');
 }
 
+// ---------- 图标清单（AI 可消费的合法图标名，禁止编造） ----------
+function iconInventory() {
+  const iconsRoot = path.join(REPO_ROOT, 'packages/icons/src/icons');
+  const cats = ['system', 'social-media'];
+  return cats.map((cat) => {
+    const dir = path.join(iconsRoot, cat);
+    const names = fs.existsSync(dir)
+      ? fs.readdirSync(dir).filter((f) => f.endsWith('.svg')).map((f) => f.replace(/\.svg$/, '')).sort()
+      : [];
+    return { category: cat, label: cat === 'system' ? '系统图标' : '社交媒体图标', names };
+  });
+}
+
+function iconsLlmsSection(brief) {
+  const inv = iconInventory();
+  const total = inv.reduce((n, c) => n + c.names.length, 0);
+  const L = ['## 图标库（zone-icon）', ''];
+  L.push('- 用法：`<zone-icon name="图标名">`，总包引入后可用；颜色随 `currentColor`，大小用 `font-size: var(--zone-font-size-*)` 令牌控制；');
+  L.push('- 图标名**只能取自下方清单，禁止编造**；点击 / 悬停换图用 `hover-name` 属性。');
+  L.push('');
+  for (const c of inv) {
+    if (brief && c.names.length > 40) {
+      L.push(`### ${c.label}（${c.names.length} 个，节选 40）`, '');
+      L.push(c.names.slice(0, 40).join(', ') + `, …（完整清单见 llms-full.txt / 图标库页 /icons/）`);
+    } else {
+      L.push(`### ${c.label}（${c.names.length} 个）`, '');
+      L.push(c.names.join(', '));
+    }
+    L.push('');
+  }
+  L.push(`共 ${total} 个图标。在线浏览与搜索：/icons/`);
+  L.push('');
+  return L.join('\n');
+}
+
 function llmsFull() {
   const L = [llmsIndex(), '', '---', '', `# 组件 API 全量规格（${corePkg.name}@${corePkg.version}）`, ''];
   for (const c of components) {
     L.push('---', '', renderComponentMd(c));
   }
+  L.push('---', '', `# 图标库全量清单（zone-icon）`, '', iconsLlmsSection(false));
   const aiUsage = path.join(REPO_ROOT, 'docs/ai-usage.md');
   if (fs.existsSync(aiUsage)) {
     L.push('---', '', fs.readFileSync(aiUsage, 'utf8'));

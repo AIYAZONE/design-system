@@ -46,13 +46,9 @@ try {
   const storybookTarget = path.join(portalDist, 'storybook');
   copyDir(storybookDist, storybookTarget);
 
-  // 4. Build Icons
-  console.log('Building Icons Storybook...');
-  run('pnpm --filter @aiyazone/icons run build:storybook');
-  
-  const iconsDist = path.resolve(rootDir, 'packages/icons/storybook-static');
-  const iconsTarget = path.join(portalDist, 'icons');
-  copyDir(iconsDist, iconsTarget);
+  // 4. Icons：生成运行时清单并复制 SVG 资源到 dist/icons（页面本体在 portal public/icons/）
+  console.log('Building Icons gallery assets...');
+  run('node apps/portal/scripts/build-icons-manifest.mjs');
 
   console.log('All builds completed successfully!');
   console.log(`Portal is ready at: ${portalDist}`);

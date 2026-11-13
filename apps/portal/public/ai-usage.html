@@ -59,6 +59,7 @@
 <tr><td>气泡提示、二次确认</td><td><code>&lt;zone-popover&gt;</code> / <code>&lt;zone-tooltip&gt;</code></td></tr>
 <tr><td>加载中</td><td><code>&lt;zone-spinner&gt;</code></td></tr>
 <tr><td>操作结果反馈</td><td><code>&lt;zone-toast&gt;</code></td></tr>
+<tr><td>图标</td><td><code>&lt;zone-icon name="…"&gt;</code>（名称只能取自 llms.txt「图标库」清单，禁止编造）</td></tr>
 </tbody></table>
 <p>完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 <code>docs/api/&lt;tag&gt;.md</code>。</p>
 <h3>四、生成页面的提示词模板</h3>
@@ -70,7 +71,8 @@
 2. 交互元素只用 zone-* 组件（button/dialog/dropdown/toast 等），禁止 div 模拟；
 3. 样式覆盖只用公开属性与 --zone-* 变量；
 4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
-5. 响应式使用令牌自动缩放，不写数值 media query。
+5. 图标用 &lt;zone-icon name="…"&gt;，名称取自 llms.txt 图标库清单，禁止编造；
+6. 响应式使用令牌自动缩放，不写数值 media query。
 
 输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
 &lt;link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"&gt; + &lt;script type="module"&gt;import '@aiyazone/design-system';&lt;/script&gt;。

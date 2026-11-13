@@ -37,6 +37,7 @@
 | 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
 | 加载中 | `<zone-spinner>` |
 | 操作结果反馈 | `<zone-toast>` |
+| 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
 
 完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
 
@@ -50,7 +51,8 @@
 2. 交互元素只用 zone-* 组件（button/dialog/dropdown/toast 等），禁止 div 模拟；
 3. 样式覆盖只用公开属性与 --zone-* 变量；
 4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
-5. 响应式使用令牌自动缩放，不写数值 media query。
+5. 图标用 <zone-icon name="…">，名称取自 llms.txt 图标库清单，禁止编造；
+6. 响应式使用令牌自动缩放，不写数值 media query。
 
 输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
 <link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"> + <script type="module">import '@aiyazone/design-system';</script>。
