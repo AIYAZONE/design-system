@@ -1,7 +1,6 @@
 {
   "extends": "@aiyazone/tsconfig/app.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "types": ["vite/client"],
     "moduleResolution": "bundler",
     "paths": {
