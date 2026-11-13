@@ -14,15 +14,15 @@
 ## 安装
 
 ```bash
-pnpm add @aiyazone/core @aiyazone/tokens
+pnpm add @aiyazone/design-system   # 总包：组件 + 主题样式（也可按需只用 @aiyazone/core 与 @aiyazone/tokens）
 ```
 
 ```js
-import '@aiyazone/core';   // 注册全部 zone-* 自定义元素
+import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 ```
 
 ```html
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">   <!-- 完整主题 -->
 ```
 
 ## 组件索引
@@ -81,16 +81,16 @@ import '@aiyazone/core';   // 注册全部 zone-* 自定义元素
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
 - **测试**：7 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-badge size="small">内容</zone-badge>
@@ -141,16 +141,16 @@ import '@aiyazone/core';   // 注册全部 zone-* 自定义元素
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
 - **测试**：33 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-button variant="primary">内容</zone-button>
@@ -229,16 +229,16 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-checkbox>内容</zone-checkbox>
@@ -292,16 +292,16 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
 - **测试**：8 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-dialog size="extra">内容</zone-dialog>
@@ -349,16 +349,16 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
 - **测试**：29 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-dropdown>内容</zone-dropdown>
@@ -407,16 +407,16 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
 - **测试**：52 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-filter-select>内容</zone-filter-select>
@@ -490,16 +490,16 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
 - **测试**：2 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-popover>内容</zone-popover>
@@ -555,16 +555,16 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-spinner>内容</zone-spinner>
@@ -595,16 +595,16 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
 - **测试**：0 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-toast variant="info">内容</zone-toast>
@@ -680,16 +680,16 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
 - **测试**：5 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-tooltip>内容</zone-tooltip>
@@ -792,7 +792,8 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
 5. 响应式使用令牌自动缩放，不写数值 media query。
 
-输出要求：单文件 HTML + 原生 JS，import '@aiyazone/core' 与主题样式。
+输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"> + <script type="module">import '@aiyazone/design-system';</script>。
 参考：llms.txt（索引）、llms-full.txt（全量 API）、docs/api/*.md（组件规格）。
 ```
 

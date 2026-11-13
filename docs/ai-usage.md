@@ -52,7 +52,8 @@
 4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
 5. 响应式使用令牌自动缩放，不写数值 media query。
 
-输出要求：单文件 HTML + 原生 JS，import '@aiyazone/core' 与主题样式。
+输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"> + <script type="module">import '@aiyazone/design-system';</script>。
 参考：llms.txt（索引）、llms-full.txt（全量 API）、docs/api/*.md（组件规格）。
 ```
 

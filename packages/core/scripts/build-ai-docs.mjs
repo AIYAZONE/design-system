@@ -29,6 +29,8 @@ const API_DIR = path.join(REPO_ROOT, 'docs/api');
 const PORTAL_PUBLIC = path.join(REPO_ROOT, 'apps/portal/public');
 
 const corePkg = JSON.parse(fs.readFileSync(path.join(CORE_DIR, 'package.json'), 'utf8'));
+// 消费方使用总包 @aiyazone/design-system（一次引入注册全部组件 + 主题样式）
+const rootPkg = JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'package.json'), 'utf8'));
 const tokens = JSON.parse(fs.readFileSync(TOKENS_PATH, 'utf8'));
 const cem = fs.existsSync(CEM_PATH) ? JSON.parse(fs.readFileSync(CEM_PATH, 'utf8')) : { modules: [] };
 
@@ -281,15 +283,15 @@ function renderComponentMd(c) {
   L.push(`- **实现**：\`${c.className}\`（Lit · Shadow DOM）`);
   L.push(`- **来源**：\`${c.scope}\``);
   L.push(`- **测试**：${c.tests} 个用例`);
-  L.push(`- **包**：\`${corePkg.name}@${corePkg.version}\``);
+  L.push(`- **包**：\`${rootPkg.name}@${rootPkg.version}\`（组件源码：\`${corePkg.name}@${corePkg.version}\`）`);
   L.push('');
   L.push('## 快速使用', '');
   L.push('```html');
-  L.push('<!-- 1. 注册组件 -->');
-  L.push(`<script type="module">import '${corePkg.name}';</script>`);
+  L.push('<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->');
+  L.push(`<link rel="stylesheet" href="${rootPkg.name}/index-v3.css">`);
   L.push('');
-  L.push('<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->');
-  L.push('<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">');
+  L.push('<!-- 2. 注册组件（总包一次注册全部 zone-*） -->');
+  L.push(`<script type="module">import '${rootPkg.name}';</script>`);
   L.push('');
   L.push('<!-- 3. 使用 -->');
   L.push(c.usage ?? synthUsage(c));
@@ -389,15 +391,15 @@ function llmsIndex() {
   L.push('## 安装');
   L.push('');
   L.push('```bash');
-  L.push(`pnpm add ${corePkg.name} @aiyazone/tokens`);
+  L.push(`pnpm add ${rootPkg.name}   # 总包：组件 + 主题样式（也可按需只用 @aiyazone/core 与 @aiyazone/tokens）`);
   L.push('```');
   L.push('');
   L.push('```js');
-  L.push(`import '${corePkg.name}';   // 注册全部 zone-* 自定义元素`);
+  L.push(`import '${rootPkg.name}';   // 注册全部 zone-* 自定义元素`);
   L.push('```');
   L.push('');
   L.push('```html');
-  L.push('<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">');
+  L.push(`<link rel="stylesheet" href="${rootPkg.name}/index-v3.css">   <!-- 完整主题 -->`);
   L.push('```');
   L.push('');
   L.push('## 组件索引');

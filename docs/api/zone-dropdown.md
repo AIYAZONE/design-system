@@ -6,16 +6,16 @@
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
 - **测试**：29 个用例
-- **包**：`@aiyazone/core@0.1.9`
+- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
 ```html
-<!-- 1. 注册组件 -->
-<script type="module">import '@aiyazone/core';</script>
+<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
 
-<!-- 2. 主题令牌（仅令牌用 tokens.css；完整主题用 index-v3.css） -->
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
+<script type="module">import '@aiyazone/design-system';</script>
 
 <!-- 3. 使用 -->
 <zone-dropdown>内容</zone-dropdown>

@@ -35,7 +35,8 @@
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "preview-storybook": "storybook build && serve ./storybook-static",
-    "chromatic": "npx chromatic --project-token=chpt_625cdc21784812f"
+    "chromatic": "chromatic",
+    "test": "vitest run"
   },
   "keywords": [
     "icons"
@@ -75,7 +76,8 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-dts": "^3.7.3",
     "vite-plugin-static-copy": "^2.3.0",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^4.3.0",
+    "vitest": "^1.6.1"
   },
   "dependencies": {
     "lit": "^3.2.1",

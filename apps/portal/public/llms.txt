@@ -14,15 +14,15 @@
 ## 安装
 
 ```bash
-pnpm add @aiyazone/core @aiyazone/tokens
+pnpm add @aiyazone/design-system   # 总包：组件 + 主题样式（也可按需只用 @aiyazone/core 与 @aiyazone/tokens）
 ```
 
 ```js
-import '@aiyazone/core';   // 注册全部 zone-* 自定义元素
+import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 ```
 
 ```html
-<link rel="stylesheet" href="@aiyazone/tokens/dist/tokens.css">
+<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">   <!-- 完整主题 -->
 ```
 
 ## 组件索引
