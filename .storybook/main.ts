@@ -10,10 +10,9 @@ const config = {
     "../packages/utils/src/**/*.stories.@(js|ts|mdx)",
   ],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-a11y",
     "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/web-components-vite",
