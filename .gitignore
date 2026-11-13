@@ -44,3 +44,8 @@ vite.config.ts.timestamp-*
 package-lock.json
 coverage/
 **/coverage/
+
+# secrets
+.env
+.env.local
+.env.*.local

@@ -2,7 +2,7 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🔵 阶段 0（小清理）——未开始
+> **当前阶段**：🟣 阶段 1（Tokens 真源化）——进行中
 >
 > **最后更新**：2026-11-13
 
@@ -21,8 +21,8 @@
 
 | 阶段 | 内容 | 工期 | 状态 | 完成日期 |
 |------|------|------|------|----------|
-| 0 | 小清理（主题归档 + token 泄露修复） | 0.5 天 | 🔵 未开始 | — |
-| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | ⚪ 未开始 | — |
+| 0 | 小清理（token 泄露修复 + 产物卫生） | 0.5 天 | 🟢 已完成 | 2026-11-13 |
+| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟣 进行中 | — |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | ⚪ 未开始 | — |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | ⚪ 未开始 | — |
 | 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | ⚪ 未开始 | — |
@@ -36,10 +36,10 @@
 
 **目标**：消除安全隐患与维护负担，为阶段 1 扫清障碍。
 
-- [ ] `apps/storybook/package.json` 中硬编码的 Chromatic token（`chpt_ab15…`）移至环境变量（本地 `.env` + 未来 CI Secret），并**轮换该 token**（已在 package.json 明文出现过）
-- [ ] 归档删除 `src/styles/themes/v1/`、`v2/`（已无任何引用），仅保留 v3
-- [ ] 删除 `apps/storybook/storybook-static/` 等构建产物目录，确认 `.gitignore` 覆盖（避免基线/产物误入仓库）
-- [ ] 全仓敏感词复扫（jackery / jds / jbc / 内网 IP / hello-tech / @zone）确认 0 命中
+- [x] `apps/storybook/package.json` 中硬编码的 Chromatic token 移至环境变量（chromatic CLI 自动读取 `CHROMATIC_PROJECT_TOKEN`），新增 `.env.example` 与 `.gitignore` 忽略 ⚠️ **该 token 历史提交中曾明文出现，需到 Chromatic 后台轮换**
+- [x] ~~归档删除 v1/v2 主题~~ → **调整为保留**：核查发现 `apps/examples` 主题切换演示仍引用 v1/v2（`apps/examples/main.ts`），不删除；阶段 1 仅收敛 zone 主线 + v3
+- [x] 确认构建产物（dist / storybook-static）未被 git 跟踪，`.gitignore` 已覆盖并补充 `.env*` 忽略
+- [x] 全仓敏感词复扫 0 命中；build 5/5、test 7/7 全绿
 
 **验收**：`pnpm run build && pnpm run test` 全绿；v1/v2 删除后文档站与组件样式无回归（肉眼过一遍 stories）。
 
@@ -129,10 +129,10 @@
 
 | # | 决策项 | 推荐 | 状态 | 结论 |
 |---|--------|------|------|------|
-| 1 | Token 格式：W3C DTCG JSON 单真源 vs 保留 LESS 只做导出 | DTCG 单真源 | ⏳ 待定 | — |
-| 2 | 视觉回归：A. Chromatic（省事，免费 5000 快照/月）vs B. Playwright + pixelmatch（零成本自维护） | A | ⏳ 待定 | — |
-| 3 | llms.txt 是否随站点公开 | 公开 | ⏳ 待定 | — |
-| 4 | 是否新建独立 `@aiyazone/tokens` npm 包 | 是（业务线/CDN 直用） | ⏳ 待定 | — |
+| 1 | Token 格式：W3C DTCG JSON 单真源 vs 保留 LESS 只做导出 | DTCG 单真源 | ✅ 已确认 2026-11-13 | DTCG 单真源 |
+| 2 | 视觉回归：A. Chromatic（省事，免费 5000 快照/月）vs B. Playwright + pixelmatch（零成本自维护） | A | ✅ 已确认 2026-11-13 | A. Chromatic |
+| 3 | llms.txt 是否随站点公开 | 公开 | ✅ 已确认 2026-11-13 | 公开 |
+| 4 | 是否新建独立 `@aiyazone/tokens` npm 包 | 是（业务线/CDN 直用） | ✅ 已确认 2026-11-13 | 新建独立包 |
 
 ---
 
@@ -141,3 +141,4 @@
 | 日期 | 变更 |
 |------|------|
 | 2026-11-13 | 初版：确立「AI 约束层」定位，规划阶段 0–5 与依赖顺序 |
+| 2026-11-13 | 4 项决策按推荐确认；阶段 0 完成（Chromatic token 移出；v1/v2 主题因 examples 引用调整为保留） |
