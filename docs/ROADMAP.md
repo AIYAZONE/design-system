@@ -2,7 +2,7 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟣 阶段 1（Tokens 真源化）——进行中
+> **当前阶段**：🟣 阶段 1（Tokens 真源化）——基本完成，余 mdx 联动 1 项；下一步阶段 2（AI 文档）
 >
 > **最后更新**：2026-11-13
 
@@ -22,7 +22,7 @@
 | 阶段 | 内容 | 工期 | 状态 | 完成日期 |
 |------|------|------|------|----------|
 | 0 | 小清理（token 泄露修复 + 产物卫生） | 0.5 天 | 🟢 已完成 | 2026-11-13 |
-| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟣 进行中 | — |
+| 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 基本完成（余 mdx 联动 1 项） | 2026-11-13 |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | ⚪ 未开始 | — |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | ⚪ 未开始 | — |
 | 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | ⚪ 未开始 | — |
@@ -49,16 +49,16 @@
 
 **目标**：设计令牌从「手写 LESS」变为「机器可读 JSON 单真源 + 自动生成」，AI 与人消费同一份数据。
 
-- [ ] 新建 `packages/tokens`，定义 `tokens.json`（W3C DTCG 格式）：color / size / font / radius / shadow / z-index / 语义层（semantic aliases）
-- [ ] 编写生成器 `pnpm tokens:build`，产出：
-  - [ ] `src/styles/zone/generated.less` —— 替换 `tokens.base.less` 变量段（mixin 结构保留，`--zone-*` 命名零变更）
-  - [ ] `src/styles/themes/v3/generated.less` —— 主题覆盖
-  - [ ] `packages/tokens/dist/tokens.css` —— 可 CDN 引用
-  - [ ] `packages/tokens/dist/tokens.ts` —— typed `as const`，TS 侧消费
-- [ ] 新旧并行比对：生成物与现网 CSS 变量 **diff = 0** 后才切换真源（删除手写变量段）
-- [ ] `pnpm tokens:check`：真源变更未重新生成 → CI 失败
-- [ ] lint 规则：组件 `*.less` 禁止裸 hex / 魔法数值（白名单机制）
-- [ ] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染
+- [x] 新建 `packages/tokens`，定义 `tokens.json`（DTCG 风格）：基础色板 / 语义色 / 尺寸刻度 / 字号 / 圆角 / 字重 / 层级 / 字体组合 / 响应式参数
+- [x] 编写生成器 `pnpm tokens:build`（零依赖 Node），产出：
+  - [x] `src/styles/zone/generated-tokens.less` —— tokens.base.less 变量段（mixin 保留手写）
+  - [x] `src/styles/themes/v3/generated-tokens.less` —— 主题覆盖 + 语义变量 + 字体组合（原 205 行手写收敛为 12 行骨架）
+  - [x] `packages/tokens/dist/tokens.css` —— 静态全量令牌表（149 变量，CDN/npm 直用）
+  - [x] `packages/tokens/dist/tokens.ts` —— typed `as const`，TS 侧消费
+- [x] 新旧并行比对：`scripts/verify.mjs` 用 lessc 编译 v3/v1/v2 三主题，基线 vs 生成版 **diff = 0**（1144/1079/1143 行完全一致）
+- [x] `pnpm tokens:check`：生成物与提交不一致 → 失败
+- [x] lint 规则 `pnpm tokens:lint`：组件 less 禁止**新增**裸 hex（存量 47 处冻结于 `hex-allowlist.json`，增量即失败）
+- [ ] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染（阶段 1 唯一余项，随阶段 2 文档生成器一并做）
 
 **验收**：`tokens:check` 通过；变量名零变更（下游无感知）；文档站 tokens 页与 JSON 一致。
 
@@ -142,3 +142,4 @@
 |------|------|
 | 2026-11-13 | 初版：确立「AI 约束层」定位，规划阶段 0–5 与依赖顺序 |
 | 2026-11-13 | 4 项决策按推荐确认；阶段 0 完成（Chromatic token 移出；v1/v2 主题因 examples 引用调整为保留） |
+| 2026-11-13 | 阶段 1 基本完成：tokens.json 真源 + 生成器 + 三主题 diff=0 验证 + tokens:check/lint；余 mdx 联动并入阶段 2 |

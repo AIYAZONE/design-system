@@ -52,7 +52,10 @@
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
     "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
     "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
-    "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs"
+    "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs",
+    "tokens:build": "pnpm --filter @aiyazone/tokens run build",
+    "tokens:check": "pnpm --filter @aiyazone/tokens run check",
+    "tokens:lint": "pnpm --filter @aiyazone/tokens run lint"
   },
   "keywords": [
     "web-components",

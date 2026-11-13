@@ -1,0 +1,102 @@
+/* Base tokens and mixins (shared across theme versions) */
+
+@zone-color-white: #FFFFFF;
+@zone-color-grey: #F5F5F5;
+@zone-color-primary: #FD5000;
+@zone-color-success: #52C41A;
+@zone-color-danger: #FF3B30;
+@zone-color-warning: #FAAD14;
+@zone-color-info: #5794FF;
+@zone-color-neutral: #273142;
+
+@zone-color-primary-contrast: #FEF2E8;
+@zone-color-success-contrast: #E7F9EF;
+@zone-color-danger-contrast: #FFEEEC;
+@zone-color-warning-contrast: #FFF8E6;
+@zone-color-info-contrast: #EEF4FF;
+@zone-color-neutral-contrast: #3A4552;
+
+@zone-font-regular: 400;
+@zone-font-medium: 500;
+@zone-font-semibold: 600;
+@zone-font-bold: 700;
+@zone-font-extrabold: 800;
+
+.generate-sizes(@rem-base) {
+  --zone-size-2: max(0, 2 * @rem-base);
+  --zone-size-4: max(0, 4 * @rem-base);
+  --zone-size-6: max(0, 6 * @rem-base);
+  --zone-size-8: max(0, 8 * @rem-base);
+  --zone-size-10: max(0, 10 * @rem-base);
+  --zone-size-12: max(0, 12 * @rem-base);
+  --zone-size-14: max(0, 14 * @rem-base);
+  --zone-size-16: max(0, 16 * @rem-base);
+  --zone-size-18: max(0, 18 * @rem-base);
+  --zone-size-20: max(0, 20 * @rem-base);
+  --zone-size-22: max(0, 22 * @rem-base);
+  --zone-size-24: max(0, 24 * @rem-base);
+  --zone-size-28: max(0, 28 * @rem-base);
+  --zone-size-32: max(0, 32 * @rem-base);
+  --zone-size-36: max(0, 36 * @rem-base);
+  --zone-size-40: max(0, 40 * @rem-base);
+  --zone-size-42: max(0, 42 * @rem-base);
+  --zone-size-44: max(0, 44 * @rem-base);
+  --zone-size-48: max(0, 48 * @rem-base);
+  --zone-size-50: max(0, 50 * @rem-base);
+  --zone-size-56: max(0, 56 * @rem-base);
+  --zone-size-64: max(0, 64 * @rem-base);
+  --zone-size-68: max(0, 68 * @rem-base);
+  --zone-size-72: max(0, 72 * @rem-base);
+  --zone-size-80: max(0, 80 * @rem-base);
+  --zone-size-94: max(0, 94 * @rem-base);
+  --zone-size-96: max(0, 96 * @rem-base);
+  --zone-size-128: max(0, 128 * @rem-base);
+}
+
+.generate-font-sizes(@rem-base) {
+  --zone-font-size-12: 12px;
+  --zone-font-size-14: max(12px, 14 * @rem-base);
+  --zone-font-size-16: max(12px, 16 * @rem-base);
+  --zone-font-size-18: max(12px, 18 * @rem-base);
+  --zone-font-size-20: max(12px, 20 * @rem-base);
+  --zone-font-size-24: max(12px, 24 * @rem-base);
+  --zone-font-size-28: max(12px, 28 * @rem-base);
+  --zone-font-size-32: max(12px, 32 * @rem-base);
+  --zone-font-size-36: max(12px, 36 * @rem-base);
+  --zone-font-size-40: max(12px, 40 * @rem-base);
+  --zone-font-size-44: max(12px, 44 * @rem-base);
+  --zone-font-size-48: max(12px, 48 * @rem-base);
+  --zone-font-size-56: max(12px, 56 * @rem-base);
+  --zone-font-size-64: max(12px, 64 * @rem-base);
+  --zone-font-size-72: max(12px, 72 * @rem-base);
+  --zone-font-size-80: max(12px, 80 * @rem-base);
+  --zone-font-size-88: max(12px, 88 * @rem-base);
+  --zone-font-size-96: max(12px, 96 * @rem-base);
+}
+
+.generate-color-common(@color-name, @base-color, @contrast-color) {
+  --zone-color-@{color-name}: var(--zone-custom-color-@{color-name}, @base-color);
+  --zone-color-@{color-name}-highlight: mix(#FFFFFF, @base-color, 15%);
+
+  @supports (color: color-mix(in srgb, red, blue)) {
+    --zone-color-@{color-name}-highlight: color-mix(in srgb, #FFFFFF 15%, var(--zone-color-@{color-name}) 85%);
+  }
+
+  --zone-color-@{color-name}-contrast: @contrast-color;
+}
+
+.generate-border-radius(@rem-base) {
+  --zone-rounded-2: max(0, 2 * @rem-base);
+  --zone-rounded-4: max(0, 4 * @rem-base);
+  --zone-rounded-8: max(0, 8 * @rem-base);
+  --zone-rounded-12: max(0, 12 * @rem-base);
+  --zone-rounded-14: max(0, 14 * @rem-base);
+  --zone-rounded-24: max(0, 24 * @rem-base);
+  --zone-rounded-pill: 999px;
+  --zone-rounded-circle: 50%;
+}
+
+:root[dir="rtl"] {
+  direction: rtl;
+  --zone-text-x-direction: -1;
+}

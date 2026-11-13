@@ -1,0 +1,25 @@
+{
+  "name": "@aiyazone/tokens",
+  "version": "0.1.0",
+  "description": "AIYAZONE Design System design tokens (single source of truth)",
+  "type": "module",
+  "exports": {
+    ".": "./tokens.json",
+    "./css": "./dist/tokens.css",
+    "./ts": "./dist/tokens.ts"
+  },
+  "files": [
+    "tokens.json",
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "check": "node scripts/build.mjs && git diff --exit-code -- ../../src/styles/zone/generated-tokens.less ../../src/styles/themes/v3/generated-tokens.less",
+    "lint": "node scripts/lint-tokens.mjs",
+    "lint:update": "node scripts/lint-tokens.mjs --update"
+  },
+  "devDependencies": {
+    "less": "^4.4.2"
+  }
+}

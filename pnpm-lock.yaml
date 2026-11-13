@@ -8,6 +8,12 @@ importers:
 
   .:
     devDependencies:
+      '@aiyazone/eslint-config':
+        specifier: workspace:*
+        version: link:tooling/eslint-config
+      '@aiyazone/tsconfig':
+        specifier: workspace:*
+        version: link:tooling/tsconfig
       '@changesets/cli':
         specifier: ^2.27.0
         version: 2.31.1(@types/node@20.19.43)
@@ -29,12 +35,6 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^1.6.1
         version: 1.6.1(vitest@1.6.1(@types/node@20.19.43)(jsdom@27.4.0)(less@4.9.1)(lightningcss@1.33.0)(terser@5.51.2))
-      '@aiyazone/eslint-config':
-        specifier: workspace:*
-        version: link:tooling/eslint-config
-      '@aiyazone/tsconfig':
-        specifier: workspace:*
-        version: link:tooling/tsconfig
       axe-core:
         specifier: ^4.11.1
         version: 4.14.0
@@ -149,6 +149,12 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
     devDependencies:
+      '@aiyazone/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@aiyazone/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/tsconfig
       '@chromatic-com/storybook':
         specifier: ^3.2.6
         version: 3.2.8(react@18.3.1)(storybook@8.6.14(prettier@3.10.0))
@@ -194,12 +200,6 @@ importers:
       '@storybook/web-components-vite':
         specifier: 8.6.14
         version: 8.6.14(lit@3.3.3)(storybook@8.6.14(prettier@3.10.0))(vite@5.4.21(@types/node@20.19.43)(less@4.9.1)(lightningcss@1.33.0)(terser@5.51.2))
-      '@aiyazone/eslint-config':
-        specifier: workspace:*
-        version: link:../../tooling/eslint-config
-      '@aiyazone/tsconfig':
-        specifier: workspace:*
-        version: link:../../tooling/tsconfig
       chromatic:
         specifier: ^13.0.1
         version: 13.3.5
@@ -224,19 +224,25 @@ importers:
 
   packages/core:
     dependencies:
-      '@floating-ui/dom':
-        specifier: ^1.7.4
-        version: 1.8.0
       '@aiyazone/i18n':
         specifier: workspace:*
         version: link:../i18n
       '@aiyazone/utils':
         specifier: workspace:*
         version: link:../utils
+      '@floating-ui/dom':
+        specifier: ^1.7.4
+        version: 1.8.0
       lit:
         specifier: ^3.0.0
         version: 3.3.3
     devDependencies:
+      '@aiyazone/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@aiyazone/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/tsconfig
       '@testing-library/dom':
         specifier: ^9.3.0
         version: 9.3.4
@@ -249,12 +255,6 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^1.6.1
         version: 1.6.1(vitest@1.6.1(@types/node@20.19.43)(jsdom@27.4.0)(less@4.9.1)(lightningcss@1.33.0)(terser@5.51.2))
-      '@aiyazone/eslint-config':
-        specifier: workspace:*
-        version: link:../../tooling/eslint-config
-      '@aiyazone/tsconfig':
-        specifier: workspace:*
-        version: link:../../tooling/tsconfig
       axe-core:
         specifier: ^4.7.0
         version: 4.14.0
@@ -409,6 +409,12 @@ importers:
       vite-plugin-svgr:
         specifier: ^4.3.0
         version: 4.5.0(rollup@4.68.2)(typescript@5.8.3)(vite@5.4.21(@types/node@20.19.43)(less@4.9.1)(lightningcss@1.33.0)(terser@5.51.2))
+
+  packages/tokens:
+    devDependencies:
+      less:
+        specifier: ^4.4.2
+        version: 4.9.1
 
   packages/utils:
     dependencies:
