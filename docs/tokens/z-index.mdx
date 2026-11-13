@@ -14,20 +14,24 @@ Z-index 层级系统是用于控制元素在页面中的堆叠顺序的重要机
 - 2.根据元素的功能和重要性选择合适的层级
 - 3.避免在同一层级范围内自定义中间值，以维持系统的一致性
 
+> 以下变量表由 `packages/tokens/tokens.json` 自动生成（`pnpm docs:gen`），请勿手改。
+
 ## 层级变量
 
+{/* zds-tokens:auto:z-index */}
 ```css
 
-  /* ----------------------------------------
-   * Z-index层级系统 (Z-index Layer System)
-   * ---------------------------------------- */
+/* ----------------------------------------
+ * Z-index 层级系统（由 packages/tokens/tokens.json 自动生成——禁止手改）
+ * ---------------------------------------- */
 
-  --zone-index-deep: -1;                                                        /* 深层级：负层级，用于背景元素 */
-  --zone-index-base: 1;                                                         /* 基础层级：默认内容层级 */
-  --zone-index-popover: 100;                                                    /* 弹出层级：下拉菜单、弹出框 */
-  --zone-index-tooltip: 200;                                                    /* 工具提示层级：提示信息 */
-  --zone-index-sticky: 300;                                                     /* 固定层级：粘性定位元素 */
-  --zone-index-overlay: 400;                                                    /* 遮罩层级：模态背景遮罩 */
-  --zone-index-dialog: 500;                                                     /* 对话框层级：模态对话框 */
-  --zone-index-notification: 600;                                               /* 通知层级：全局通知消息 */
+--zone-index-deep: -1; /* 深层级：负层级，用于背景元素 */
+--zone-index-base: 1; /* 基础层级：默认内容层级 */
+--zone-index-popover: 100; /* 弹出层级：下拉菜单、弹出框 */
+--zone-index-tooltip: 200; /* 工具提示层级：提示信息 */
+--zone-index-sticky: 300; /* 固定层级：粘性定位元素 */
+--zone-index-overlay: 400; /* 遮罩层级：模态背景遮罩 */
+--zone-index-dialog: 500; /* 对话框层级：模态对话框 */
+--zone-index-notification: 600; /* 通知层级：全局通知消息 */
 ```
+{/* /zds-tokens:auto */}

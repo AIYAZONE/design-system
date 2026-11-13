@@ -2,7 +2,7 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 
 <Meta title="02 设计变量/05 圆角" />
 
-# 圆角 - Size and Spacing
+# 圆角 - Border Radius
 
 ## 概述
 
@@ -25,27 +25,30 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 - 胶囊圆角(999px)：用于标签、徽章等需要完全圆润效果的元素
 - 圆形(50%)：适用于头像、图标按钮等需要完全圆形的元素
 
+> 以下变量表由 `packages/tokens/tokens.json` 自动生成（`pnpm docs:gen`），请勿手改。
+
 ## CSS 变量
 
+{/* zds-tokens:auto:radius */}
 ```css
-/* ========================================
- * 边框圆角系统 (Border Radius System)
- * ======================================== */
+
+/**
+ * 由 packages/tokens/tokens.json 自动生成（zds-tokens:auto 标记段，禁止手改）
+ */
 .generate-border-radius(@rem-base) {
-  --zone-rounded-2: max(0, 2 * @rem-base);                /* 当需要使用圆角的组件长度小于20px时，使用2px圆角 */
-  --zone-rounded-4: max(0, 4 * @rem-base);                /* 当需要使用圆角的组件长度在20-60px时，使用4px圆角 */
-  --zone-rounded-8: max(0, 8 * @rem-base);                /* 当需要使用圆角的组件长度大于60px时，使用8px圆角 */
-  --zone-rounded-12: max(0, 12 * @rem-base);              /* PC端卡片圆角 */
-  --zone-rounded-14: max(0, 14 * @rem-base);              /* 嵌套圆角-内卡片圆角*/
-  --zone-rounded-24: max(0, 24 * @rem-base);              /* 移动端卡片圆角、嵌套圆角-外卡片圆角*/
-  --zone-rounded-pill: 999px;                             /* 胶囊圆角：标签、徽章 */
-  --zone-rounded-circle: 50%;                             /* 圆形：头像、图标按钮 */
+  --zone-rounded-2: max(0, 2 * @rem-base);  /* 当需要使用圆角的组件长度小于20px时，使用2px圆角 */
+  --zone-rounded-4: max(0, 4 * @rem-base);  /* 当需要使用圆角的组件长度在20-60px时，使用4px圆角 */
+  --zone-rounded-8: max(0, 8 * @rem-base);  /* 当需要使用圆角的组件长度大于60px时，使用8px圆角 */
+  --zone-rounded-12: max(0, 12 * @rem-base);  /* PC端卡片圆角 */
+  --zone-rounded-14: max(0, 14 * @rem-base);  /* 嵌套圆角-内卡片圆角 */
+  --zone-rounded-24: max(0, 24 * @rem-base);  /* 移动端卡片圆角、嵌套圆角-外卡片圆角 */
+  --zone-rounded-pill: 999px;  /* 胶囊圆角：标签、徽章 */
+  --zone-rounded-circle: 50%;  /* 圆形：头像、图标按钮 */
 }
 
 @media screen and (min-width: 1024px) {
   @rem: (1rem / 16);
   :root {
-    /* 生成桌面端边框圆角变量 */
     .generate-border-radius(@rem);
   }
 }
@@ -53,7 +56,6 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 @media screen and (max-width: 1023.98px) {
   @rem: (1rem / 32);
   :root {
-    /* 生成移动端边框圆角变量 */
     .generate-border-radius(@rem);
   }
 }
@@ -67,8 +69,8 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
     --zone-rounded-12: 0.75rem;
     --zone-rounded-14: 0.875rem;
     --zone-rounded-24: 1.5rem;
-    --zone-rounded-pill: 999px;
-    --zone-rounded-circle: 50%;
+    --zone-rounded-pill: 999px;  /* 胶囊圆角：标签、徽章 */
+    --zone-rounded-circle: 50%;  /* 圆形：头像、图标按钮 */
   }
 }
 @media screen and (max-width: 1023.98px) {
@@ -79,10 +81,9 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
     --zone-rounded-12: 0.375rem;
     --zone-rounded-14: 0.4375rem;
     --zone-rounded-24: 0.75rem;
-    --zone-rounded-pill: 999px;
-    --zone-rounded-circle: 50%;
+    --zone-rounded-pill: 999px;  /* 胶囊圆角：标签、徽章 */
+    --zone-rounded-circle: 50%;  /* 圆形：头像、图标按钮 */
   }
 }
-
-
 ```
+{/* /zds-tokens:auto */}

@@ -68,7 +68,7 @@
     "dev": "vite build --watch",
     "manifest": "cem analyze --globs \"src/components/**/index.ts\" --exclude \"**/*.stories.ts\" --outdir .",
     "docs:gen": "node scripts/build-ai-docs.mjs",
-    "docs:check": "pnpm run manifest && pnpm run docs:gen && git diff --exit-code -- zone-manifest.json ../../docs/api ../../apps/portal/public/llms.txt ../../apps/portal/public/llms-full.txt ../../apps/portal/public/ai-usage.html",
+    "docs:check": "pnpm run manifest && pnpm run docs:gen && git diff --exit-code -- zone-manifest.json ../../docs/api ../../docs/tokens ../../apps/portal/public/llms.txt ../../apps/portal/public/llms-full.txt ../../apps/portal/public/ai-usage.html",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --quiet",
     "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
     "lint:fix": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --fix --quiet",

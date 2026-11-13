@@ -56,8 +56,8 @@
     "tokens:build": "pnpm --filter @aiyazone/tokens run build",
     "tokens:check": "pnpm --filter @aiyazone/tokens run check",
     "tokens:lint": "pnpm --filter @aiyazone/tokens run lint",
-    "docs:gen": "pnpm --filter @aiyazone/core run docs:gen",
-    "docs:check": "pnpm --filter @aiyazone/core run docs:check"
+    "docs:gen": "pnpm --filter @aiyazone/tokens run docs:mdx && pnpm --filter @aiyazone/core run docs:gen",
+    "docs:check": "pnpm --filter @aiyazone/tokens run docs:mdx && pnpm --filter @aiyazone/core run docs:check"
   },
   "keywords": [
     "web-components",

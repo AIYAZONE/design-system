@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "docs:mdx": "node scripts/build-docs-mdx.mjs",
     "verify": "node scripts/verify.mjs",
     "check": "node scripts/build.mjs && git diff --exit-code -- ../../src/styles/zone/generated-tokens.less ../../src/styles/themes/v3/generated-tokens.less",
     "lint": "node scripts/lint-tokens.mjs",

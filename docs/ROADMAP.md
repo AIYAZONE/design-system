@@ -58,7 +58,7 @@
 - [x] 新旧并行比对：`scripts/verify.mjs` 用 lessc 编译 v3/v1/v2 三主题，基线 vs 生成版 **diff = 0**（1144/1079/1143 行完全一致）
 - [x] `pnpm tokens:check`：生成物与提交不一致 → 失败
 - [x] lint 规则 `pnpm tokens:lint`：组件 less 禁止**新增**裸 hex（存量 47 处冻结于 `hex-allowlist.json`，增量即失败）
-- [ ] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染（阶段 1 唯一余项，随阶段 2 文档生成器一并做）
+- [x] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染（`packages/tokens/scripts/build-docs-mdx.mjs`：colors / size-and-spacing / radius / z-index 四份文档的表格段由 tokens.json 生成，`pnpm docs:gen` 一并产出，`docs:check` 纳入 diff 校验；顺带修正了手写表格与 JSON 的漂移——尺寸 42/44/50/68/94 五档此前缺失）
 
 **验收**：`tokens:check` 通过；变量名零变更（下游无感知）；文档站 tokens 页与 JSON 一致。
 
@@ -148,3 +148,4 @@
 | 2026-11-13 | 阶段 3 完成：ci.yml 七步流水线（a11y 内置于 vitest；Chromatic 条件步骤，Secret 未配置时跳过）；组件 DoD 沉淀 CONTRIBUTING.md；余分支保护需管理员配置 |
 | 2026-11-13 | 文档消费方式修正为总包 @aiyazone/design-system；core Chromatic 基线建立（79 stories）；icons 决策 #5（不接 Chromatic，vitest 资产守卫 118 项）；icons 包硬编码 token 移除；.env 解除跟踪并本地化 |
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
+| 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |

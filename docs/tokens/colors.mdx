@@ -20,35 +20,68 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 
 说明：当前仅提供浅色主题配色方案。
 
+> 以下色板由 `packages/tokens/tokens.json` 自动生成（`pnpm docs:gen`），请勿手改。
+
 ## 功能颜色
 
+{/* zds-tokens:auto:colors-functional */}
 <ColorPalette>
   <ColorItem
     title="--zone-color-primary-{x}"
     subtitle="主色"
-    colors={{ '(正常)': 'var(--zone-color-primary)', 'highlight (高亮)': 'var(--zone-color-primary-highlight)', 'contrast (对比)': 'var(--zone-color-primary-contrast)' }}
+    colors={{
+    '(正常)': '#FF6727',
+    'highlight (高亮)': 'var(--zone-color-primary-highlight)',
+    'contrast (对比)': '#FFF0E9',
+  }}
   />
   <ColorItem
     title="--zone-color-success-{x}"
     subtitle="成功色"
-    colors={{ '(正常)': 'var(--zone-color-success)', 'highlight (高亮)': 'var(--zone-color-success-highlight)', 'contrast (对比)': 'var(--zone-color-success-contrast)'  }}
+    colors={{
+    '(正常)': '#5E8A4E',
+    'highlight (高亮)': 'var(--zone-color-success-highlight)',
+    'contrast (对比)': '#EFF3ED',
+  }}
   />
   <ColorItem
     title="--zone-color-danger-{x}"
     subtitle="错误色/危险色"
-    colors={{ '(正常)': 'var(--zone-color-danger)', 'highlight (高亮)': 'var(--zone-color-danger-highlight)', 'contrast (对比)': 'var(--zone-color-danger-contrast)'  }}
+    colors={{
+    '(正常)': '#F52317',
+    'highlight (高亮)': 'var(--zone-color-danger-highlight)',
+    'contrast (对比)': '#FEE9E8',
+  }}
   />
   <ColorItem
     title="--zone-color-warning-{x}"
     subtitle="警告色 - 暂未定义"
-    colors={{ '(正常)': 'var(--zone-color-warning)', 'highlight (高亮)': 'var(--zone-color-warning-highlight)', 'contrast (对比)': 'var(--zone-color-warning-contrast)'  }}
+    colors={{
+    '(正常)': '#FAAD14',
+    'highlight (高亮)': 'var(--zone-color-warning-highlight)',
+    'contrast (对比)': '#FFF8E6',
+  }}
   />
   <ColorItem
     title="--zone-color-info-{x}"
     subtitle="信息色 - 暂未定义"
-    colors={{ '(正常)': 'var(--zone-color-info)', 'highlight (高亮)': 'var(--zone-color-info-highlight)', 'contrast (对比)': 'var(--zone-color-info-contrast)'  }}
+    colors={{
+    '(正常)': '#5794FF',
+    'highlight (高亮)': 'var(--zone-color-info-highlight)',
+    'contrast (对比)': '#EEF4FF',
+  }}
+  />
+  <ColorItem
+    title="--zone-color-neutral-{x}"
+    subtitle="neutral"
+    colors={{
+    '(正常)': '#242F20',
+    'highlight (高亮)': 'var(--zone-color-neutral-highlight)',
+    'contrast (对比)': '#E8E8E5',
+  }}
   />
 </ColorPalette>
+{/* /zds-tokens:auto */}
 
 #### 待完善
 - 所有的高亮色和对比色UED未提供
@@ -56,73 +89,129 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 
 ## 文本颜色
 
+{/* zds-tokens:auto:colors-text */}
 <ColorPalette>
   <ColorItem
     title="--zone-color-text-{x}"
     subtitle="文本"
-    colors={{ 'l1(一级文本)': 'var(--zone-color-text-l1)','l2(二级文本)': 'var(--zone-color-text-l2)','l3(三级文本)': 'var(--zone-color-text-l3)' }}
+    colors={{
+    'l1(一级文本)': '#242F20',
+    'l2(二级文本)': '#3A4436',
+    'l3(三级文本)': '#595959',
+  }}
   />
   <ColorItem
     title="--zone-color-text-{x}"
     subtitle="状态文本"
-    colors={{ 'invalid(无效文本)': 'var(--zone-color-text-invalid)','highlight(高亮文本)': 'var(--zone-color-text-highlight)','link(超链接文本)': 'var(--zone-color-text-link)'  }}
+    colors={{
+    'invalid(无效文本)': '#B2B2B2',
+    'highlight(高亮文本)': 'var(--zone-color-primary)',
+    'link(超链接文本)': '#818181',
+  }}
   />
 </ColorPalette>
+{/* /zds-tokens:auto */}
 
 ## 其他颜色
 
+{/* zds-tokens:auto:colors-other */}
 <ColorPalette>
   <ColorItem
     title="--zone-color-icon-{x}"
     subtitle="系统图标颜色"
-    colors={{ 'normal(常规图标色)': 'var(--zone-color-icon-normal)','orange(橙色图标色)': 'var(--zone-color-icon-orange)' }}
+    colors={{
+    'normal': '#242F20',
+    'orange': 'var(--zone-color-primary)',
+  }}
   />
   <ColorItem
     title="--zone-color-bg-{x}"
     subtitle="背景颜色"
-    colors={{ 'white(白色)': 'var(--zone-color-white)','grey(灰色)': 'var(--zone-color-grey)' }}
+    colors={{
+    'white(白色)': '#FFFFFF',
+    'grey(灰色)': '#F5F5F5',
+  }}
   />
   <ColorItem
     title="--zone-color-card-{x}"
     subtitle="系统卡片色"
-    colors={{ 'white(白卡片)': 'var(--zone-color-card-white)','grey(灰卡片)': 'var(--zone-color-card-grey)','list(列表卡片（用于导航栏）)': 'var(--zone-color-card-list)' }}
+    colors={{
+    '-white(白卡片)': 'undefined',
+    '-grey(灰卡片)': '#F5F5F3',
+    '-list(列表卡片（用于导航栏）)': '#E8E8E5',
+  }}
   />
   <ColorItem
     title="--zone-color-{x}"
     subtitle="线条颜色"
-    colors={{ 'line(产品指示线)': 'var(--zone-color-line)','hr(分割线)': 'var(--zone-color-hr)' }}
+    colors={{
+    'line': '#A9AAAC',
+    'hr': '#C6C7C8',
+  }}
   />
   <ColorItem
     title="--zone-color-overlay-{x}"
     subtitle="蒙黑颜色"
-    colors={{ '30(30%图片蒙黑-图片全局蒙黑)': 'var(--zone-color-overlay-30)' ,'50(50%图片蒙黑（信任状、文字）/系统50%蒙黑（顶部导航栏、弹窗）)': 'var(--zone-color-overlay-50)' }}
+    colors={{
+    '30': 'rgba(0, 0, 0, 0.3)',
+    '50': 'rgba(0, 0, 0, 0.5)',
+    '70': 'rgba(0, 0, 0, 0.7)',
+  }}
   />
   <ColorItem
     title="--zone-color-primary-{x}"
     subtitle="品牌橙色"
-    colors={{ '500': 'var(--zone-color-primary-500)','400': 'var(--zone-color-primary-400)','300': 'var(--zone-color-primary-300)','200': 'var(--zone-color-primary-200)','100': 'var(--zone-color-primary-100)'}}
+    colors={{
+    '100': '#FFD9C9',
+    '200': '#FFBB9E',
+    '300': '#FF9C73',
+    '400': '#FF7E47',
+    '500': 'var(--zone-color-primary)',
+  }}
   />
   <ColorItem
     title="--zone-color-neutral-{x}"
-    subtitle="中性色 - 暂未定义"
-    colors={{ '500': 'var(--zone-color-neutral-500)','400': 'var(--zone-color-neutral-400)','300': 'var(--zone-color-neutral-300)','200': 'var(--zone-color-neutral-200)','100': 'var(--zone-color-neutral-100)'}}
+    subtitle="中性色"
+    colors={{
+    '100': '#F1F2F7',
+    '200': '#AFBBCA',
+    '300': '#95A1B5',
+    '400': '#6E7787',
+    '500': '#273142',
+  }}
   />
   <ColorItem
     title="--zone-color-bg-{x}"
     subtitle="背景色系列"
-    colors={{ '500': 'var(--zone-color-bg-500)','400': 'var(--zone-color-bg-400)','300': 'var(--zone-color-bg-300)','200': 'var(--zone-color-bg-200)'}}
+    colors={{
+    'bg-500': '#94948F',
+    'bg-400': '#C3C3BE',
+    'bg-300': '#E8E8E5',
+    'bg-200': '#F5F5F3',
+  }}
+  />
+  <ColorItem
+    title="--zone-color-frame-{x}"
+    subtitle="框架色"
+    colors={{
+    '100': '#E2E3E3',
+    '300': '#C6C7C8',
+    '500': '#A9AAAC',
+    '700': '#818181',
+  }}
   />
   <ColorItem
     title="--zone-color-{x}"
     subtitle="交互状态色"
     colors={{
-      'primary-hover': 'var(--zone-color-primary-hover)',
-      'primary-active': 'var(--zone-color-primary-active)',
-      'neutral-hover': 'var(--zone-color-neutral-hover)',
-      'neutral-active': 'var(--zone-color-neutral-active)',
-      'disabled-bg': 'var(--zone-color-disabled-bg)',
-      'disabled-border': 'var(--zone-color-disabled-border)',
-      'disabled-text': 'var(--zone-color-disabled-text)',
-    }}
+    'primary-hover': '#CA4000',
+    'primary-active': '#983000',
+    'neutral-hover': '#1D261A',
+    'neutral-active': '#161C13',
+    'disabled-bg': '#0000004D',
+    'disabled-border': '#0000004D',
+    'disabled-text': '#0000004D',
+  }}
   />
 </ColorPalette>
+{/* /zds-tokens:auto */}
