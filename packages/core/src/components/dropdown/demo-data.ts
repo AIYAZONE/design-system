@@ -5,7 +5,7 @@ export const dropdownTreeOptions: DropdownOption[] = [
   {
     value: "station",
     label: "Power Station",
-    children: [{ value: "explorer", label: "AIYAZONE Explorer 3000 Pro" }],
+    children: [{ value: "explorer", label: "Station 3000 Pro" }],
   },
   {
     value: "solar",
@@ -27,7 +27,7 @@ export const dropdownTreeOptions: DropdownOption[] = [
       {
         value: "solar-other",
         label: "Power Station",
-        children: [{ value: "panel100", label: "SolarSaga 100W" }],
+        children: [{ value: "panel100", label: "Panel 100W" }],
       },
     ],
   },
@@ -46,20 +46,19 @@ export const dropdownMobileOptions: DropdownOption[] = [
     children: [
       {
         value: "solar-station",
-        label: "AIYAZONE ExSolar Panelsackery ExSol",
+        label: "Solar Station Solar Station",
         children: [
-          { value: "sg1500", label: "AIYAZONE ExSolar Panelsackery" },
+          { value: "sg1500", label: "Solar Station 3000" },
           {
             value: "long",
-            label:
-              "AIYAZONE Explorer 3000 sssxxxx Pro Portable Power Stationrtab",
+            label: "Station 3000 Pro Portable Power Station Max Long Long",
           },
         ],
       },
       {
         value: "solar-other",
-        label: "AIYAZONE ExSolar Panelsackery ExSol",
-        children: [{ value: "panel100", label: "SolarSaga 100W" }],
+        label: "Solar Station Solar Station",
+        children: [{ value: "panel100", label: "Panel 100W" }],
       },
     ],
   },

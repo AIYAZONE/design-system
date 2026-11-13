@@ -2,7 +2,7 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟢 阶段 1 / 2 / 4 完成；🔵 下一步：阶段 3（CI 质量门禁）
+> **当前阶段**：🟢 阶段 0–4 全部完成；🔵 剩余：分支保护人工配置 + 阶段 5（依赖升级，需 Chromatic 基线就绪）
 >
 > **最后更新**：2026-11-13
 
@@ -25,8 +25,8 @@
 | 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
-| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | ⚪ 未开始 | — |
-| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | ⚪ 未开始 | — |
+| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成（余分支保护人工配置） | 2026-11-13 |
+| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | ⚪ 未开始（前置：Chromatic 基线就绪） | — |
 
 依赖关系：`0 → 1 →（2 ∥ 4）→ 3 → 5`。合计约 10–14 人天。
 
@@ -102,12 +102,12 @@
 
 **目标**：所有变更机器把关，AI 参与度越高门禁越重要。
 
-- [ ] 新建 `.github/workflows/ci.yml`，PR 必过六关：
-  `install → build → type-check → test → a11y → visual → tokens:check`
-- [ ] a11y：Storybook test-runner + axe 扫全部 stories，violations = 0
-- [ ] 视觉回归：按「决策登记 #2」执行（Chromatic 或 Playwright），PR 自动 diff + 基线审批
-- [ ] 组件 DoD 写入 README/CONTRIBUTING：story + 单测 + a11y + 视觉基线 + 文档块，缺一不可合并
-- [ ] 分支保护：master / develop 开 required checks
+- [x] 新建 `.github/workflows/ci.yml`，push/PR 必过关卡：
+  `install → build → type-check → test（单测 + a11y 断言）→ tokens:check → tokens:lint → docs:check → storybook 构建 → Chromatic（条件）`
+- [x] a11y：**调整实现方式**——a11y 断言已内置于 vitest（button/checkbox/dialog/dropdown 各有 `.a11y.test.ts`，axe-core 断言），随 test 关卡执行；Storybook test-runner 待阶段 5 升级 Storybook 9 后再接（避免为 8.6 增加维护面）
+- [x] 视觉回归：Chromatic（决策 #2）作为条件步骤——仓库配置 `CHROMATIC_PROJECT_TOKEN` Secret 后自动生效，未配置时跳过不阻塞；`--exit-once-uploaded` 允许基线待审时通过
+- [x] 组件 DoD 写入 `CONTRIBUTING.md`：story + 单测（含 a11y 用例）+ 视觉基线 + API 文档生成，缺一不可合并
+- [ ] 分支保护：需仓库管理员在 GitHub Settings → Branches 为 master/develop 配置 required checks（机器无法代操作，见 CONTRIBUTING 对应说明）
 
 **验收**：一个故意引入样式回归的 PR 被 CI 拦截；绿灯合入流程跑通一次。
 
@@ -144,3 +144,4 @@
 | 2026-11-13 | 4 项决策按推荐确认；阶段 0 完成（Chromatic token 移出；v1/v2 主题因 examples 引用调整为保留） |
 | 2026-11-13 | 阶段 1 基本完成：tokens.json 真源 + 生成器 + 三主题 diff=0 验证 + tokens:check/lint；余 mdx 联动并入阶段 2 |
 | 2026-11-13 | 阶段 2 / 4 完成：CEM + 源码增强清单、docs/api 规格、llms.txt / llms-full.txt / ai-usage.html、ZBC Playbook；Storybook CEM 项调整为 docs/api 承载 |
+| 2026-11-13 | 阶段 3 完成：ci.yml 七步流水线（a11y 内置于 vitest；Chromatic 条件步骤，Secret 未配置时跳过）；组件 DoD 沉淀 CONTRIBUTING.md；余分支保护需管理员配置 |

@@ -32,6 +32,21 @@ const corePkg = JSON.parse(fs.readFileSync(path.join(CORE_DIR, 'package.json'), 
 const tokens = JSON.parse(fs.readFileSync(TOKENS_PATH, 'utf8'));
 const cem = fs.existsSync(CEM_PATH) ? JSON.parse(fs.readFileSync(CEM_PATH, 'utf8')) : { modules: [] };
 
+// CEM 输出顺序依赖文件系统扫描顺序（不稳定）——规范化排序后写回，保证 docs:check 可复现
+{
+  const sortedModules = [...(cem.modules ?? [])].sort((a, b) => a.path.localeCompare(b.path));
+  let changed = sortedModules.length !== (cem.modules ?? []).length;
+  for (const m of sortedModules) {
+    if (Array.isArray(m.declarations) && m.declarations.length > 1) {
+      const before = JSON.stringify(m.declarations.map((d) => d.name));
+      m.declarations.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+      if (JSON.stringify(m.declarations.map((d) => d.name)) !== before) changed = true;
+    }
+  }
+  cem.modules = sortedModules;
+  if (changed) fs.writeFileSync(CEM_PATH, JSON.stringify(cem, null, 2) + '\n');
+}
+
 // ---------- CEM 索引（className → 声明） ----------
 const cemDecl = new Map();
 for (const m of cem.modules ?? []) {

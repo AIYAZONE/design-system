@@ -1,6 +1,8 @@
 
 ![Logo](./public/logo.png)
 
+[![CI](https://github.com/AIYAZONE/design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/AIYAZONE/design-system/actions/workflows/ci.yml)
+
 ## 1. 简介
 
 - **全称：** AIYAZONE Design System - AIYAZONE 设计系统
