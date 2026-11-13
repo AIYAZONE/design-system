@@ -54,6 +54,11 @@ jobs:
       - name: Build storybook（视觉回归前置）
         run: pnpm --filter @aiyazone/storybook run build:storybook
 
+      - name: Storybook test-runner（79 stories 渲染冒烟，playwright-core 起 Chromium）
+        run: |
+          pnpm exec playwright-core install chromium
+          pnpm --filter @aiyazone/storybook run test:storybook
+
       - name: Visual regression（Chromatic，未配置 Secret 时跳过）
         if: env.CHROMATIC_PROJECT_TOKEN != ''
         working-directory: apps/storybook

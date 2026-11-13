@@ -104,7 +104,8 @@
 
 - [x] 新建 `.github/workflows/ci.yml`，push/PR 必过关卡：
   `install → build → type-check → test（单测 + a11y 断言）→ tokens:check → tokens:lint → docs:check → storybook 构建 → Chromatic（条件）`
-- [x] a11y：**调整实现方式**——a11y 断言已内置于 vitest（button/checkbox/dialog/dropdown 各有 `.a11y.test.ts`，axe-core 断言），随 test 关卡执行；Storybook test-runner 待阶段 5 升级 Storybook 9 后再接（避免为 8.6 增加维护面）
+- [x] a11y：**调整实现方式**——a11y 断言已内置于 vitest（button/checkbox/dialog/dropdown 各有 `.a11y.test.ts`，axe-core 断言），随 test 关卡执行；Storybook test-runner 已随 SB9 接入（见下条）
+- [x] Storybook test-runner（SB9 后的既定后续，CI 第 7 关）：`pnpm --filter @aiyazone/storybook run test:storybook`——静态构建 + `--index-json` + playwright-core Chromium，79 stories 渲染冒烟全过；CI 在 storybook 构建 后执行
 - [x] 视觉回归：Chromatic（决策 #2）作为条件步骤——仓库配置 `CHROMATIC_PROJECT_TOKEN` Secret 后自动生效，未配置时跳过不阻塞；`--exit-once-uploaded` 允许基线待审时通过。**core 基线已建立**（build 1：10 组件 79 stories 上传成功）；icons 项目**不接 Chromatic**（决策 #5），以 vitest 资产守卫测试兜底（SVG 完整性/唯一性/数量，118 项）
 - [x] 组件 DoD 写入 `CONTRIBUTING.md`：story + 单测（含 a11y 用例）+ 视觉基线 + API 文档生成，缺一不可合并
 - [ ] 分支保护：需仓库管理员在 GitHub Settings → Branches 为 master/develop 配置 required checks（机器无法代操作，见 CONTRIBUTING 对应说明）
@@ -150,3 +151,4 @@
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
 | 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
 | 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
+| 2026-11-13 | 收官后既定后续落地：Storybook test-runner 接入（test-runner 0.23.0 兼容 SB9；静态构建冒烟 79/79 stories 全过；CI 增为第 7 关，位于 storybook 构建与 Chromatic 之间）。本机备忘：公司网络证书链拦截 playwright 浏览器下载，已用本地 chromium-1234 修订版符号链接为 1254 绕过（CI 无此问题） |
