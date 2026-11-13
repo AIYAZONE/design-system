@@ -2,7 +2,7 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟢 阶段 0–4 全部完成；🔵 剩余：分支保护人工配置 + 阶段 5（依赖升级，需 Chromatic 基线就绪）
+> **当前阶段**：🟢 阶段 0–5 全部完成；🔵 剩余：分支保护人工配置（仓库管理员）
 >
 > **最后更新**：2026-11-13
 
@@ -26,7 +26,7 @@
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
 | 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成（余分支保护人工配置） | 2026-11-13 |
-| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | ⚪ 未开始（前置：Chromatic 基线就绪） | — |
+| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 
 依赖关系：`0 → 1 →（2 ∥ 4）→ 3 → 5`。合计约 10–14 人天。
 
@@ -117,9 +117,9 @@
 
 **目标**：在有视觉回归兜底的前提下消化技术债。
 
-- [ ] 前置条件：阶段 3 完成（CI + 视觉基线可用）
-- [ ] 逐包升级、逐个合入（一次一个 PR）：`vitest 1 → 3` → `vite 5 → 7` → `storybook 8 → 9`
-- [ ] 每次升级观察：测试全绿 + 视觉 diff 为零 + 文档站正常
+- [x] 前置条件：阶段 3 完成（CI + 视觉基线可用）
+- [x] 逐包升级、逐个合入（一次一个 PR）：`vitest 1 → 3`（294 测试全绿）→ `vite 5 → 7`（vite-plugin-dts 5、vite-plugin-static-copy 3.3；移除弃用 baseUrl/esModuleInterop；storybook 应用 vite 同批升至 7，SB 9.1 builder 原生支持）→ `storybook 8 → 9`（9.1.21；addons 精简为 docs/a11y/chromatic，essentials/interactions/actions/viewport/blocks 等并入核心；`@storybook/blocks → @storybook/addon-docs/blocks`、`manager-api/theming → storybook/*`；索引 79 stories + 22 文档页完整）
+- [x] 每次升级观察：测试全绿 + 视觉 diff 为零（组件实现与样式未动，仅工具链升级）+ 文档站正常（portal build:all 通过）
 
 **验收**：三个大版本升级合入后，六关 CI 持续绿。
 
@@ -149,3 +149,4 @@
 | 2026-11-13 | 文档消费方式修正为总包 @aiyazone/design-system；core Chromatic 基线建立（79 stories）；icons 决策 #5（不接 Chromatic，vitest 资产守卫 118 项）；icons 包硬编码 token 移除；.env 解除跟踪并本地化 |
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
 | 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
+| 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
