@@ -188,6 +188,9 @@ importers:
       lit:
         specifier: ^3.2.1
         version: 3.3.3
+      playwright-core:
+        specifier: 1.65.0
+        version: 1.65.0
       serve:
         specifier: ^14.2.4
         version: 14.2.7

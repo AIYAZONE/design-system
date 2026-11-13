@@ -56,7 +56,7 @@ jobs:
 
       - name: Storybook test-runner（79 stories 渲染冒烟，playwright-core 起 Chromium）
         run: |
-          pnpm exec playwright-core install chromium
+          pnpm --filter @aiyazone/storybook exec playwright-core install chromium
           pnpm --filter @aiyazone/storybook run test:storybook
 
       - name: Visual regression（Chromatic，未配置 Secret 时跳过）
