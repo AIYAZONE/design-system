@@ -29,13 +29,16 @@ pnpm run tokens:lint   # 禁止新增裸 hex（--update 冻结存量）
 2. GitHub 仓库 → Settings → Secrets and variables → Actions → 新增 `CHROMATIC_PROJECT_TOKEN`；
 3. 之后 PR 自动产出视觉 diff 与基线审批；未配置时该步骤自动跳过，不阻塞 CI。
 
-## 分支保护（管理员一次性配置）
+## 分支保护（✅ 已配置，2026-11-15）
 
-Settings → Branches → Add rule：
+已通过 GitHub Rulesets（Settings → Rules → Rulesets）为 `master` 与 `develop` 配置：
 
-- `master` 与 `develop`：required checks 勾选 `Build · Type · Test · Tokens · Docs`；
-- 勾选 "Require branches to be up to date before merging"；
-- 禁止 force push。
+- Require a pull request before merging；
+- Required status check：`Build · Type · Test · Tokens · Docs`；
+- Require branches to be up to date before merging；
+- 禁止 force push / delete。
+
+如 CI job 名称（`ci.yml` 中 `quality` 的 `name:`）变更，需同步更新 ruleset 中的 required check。
 
 ## 本地提交前自检
 
