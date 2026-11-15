@@ -2,9 +2,9 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟢 阶段 0–5 全部完成；🔵 剩余：分支保护人工配置（仓库管理员）
+> **当前阶段**：🏁 阶段 0–5 全部完成，分支保护已配置，计划内工作全部收官
 >
-> **最后更新**：2026-11-13
+> **最后更新**：2026-11-15
 
 ---
 
@@ -25,7 +25,7 @@
 | 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
-| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成（余分支保护人工配置） | 2026-11-13 |
+| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成 | 2026-11-15 |
 | 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 
 依赖关系：`0 → 1 →（2 ∥ 4）→ 3 → 5`。合计约 10–14 人天。
@@ -108,7 +108,7 @@
 - [x] Storybook test-runner（SB9 后的既定后续，CI 第 7 关）：`pnpm --filter @aiyazone/storybook run test:storybook`——静态构建 + `--index-json` + playwright-core Chromium，79 stories 渲染冒烟全过；CI 在 storybook 构建 后执行
 - [x] 视觉回归：Chromatic（决策 #2）作为条件步骤——仓库配置 `CHROMATIC_PROJECT_TOKEN` Secret 后自动生效，未配置时跳过不阻塞；`--exit-once-uploaded` 允许基线待审时通过。**core 基线已建立**（build 1：10 组件 79 stories 上传成功）；icons 项目**不接 Chromatic**（决策 #5），以 vitest 资产守卫测试兜底（SVG 完整性/唯一性/数量，118 项）
 - [x] 组件 DoD 写入 `CONTRIBUTING.md`：story + 单测（含 a11y 用例）+ 视觉基线 + API 文档生成，缺一不可合并
-- [ ] 分支保护：需仓库管理员在 GitHub Settings → Branches 为 master/develop 配置 required checks（机器无法代操作，见 CONTRIBUTING 对应说明）
+- [x] 分支保护：已由仓库管理员通过 GitHub Rulesets 为 master/develop 配置——Require a pull request before merging + Require status checks（`Build · Type · Test · Tokens · Docs`）+ Require branches to be up to date before merging
 
 **验收**：一个故意引入样式回归的 PR 被 CI 拦截；绿灯合入流程跑通一次。
 
@@ -152,3 +152,4 @@
 | 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
 | 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
 | 2026-11-13 | 收官后既定后续落地：Storybook test-runner 接入（test-runner 0.23.0 兼容 SB9；静态构建冒烟 79/79 stories 全过；CI 增为第 7 关，位于 storybook 构建与 Chromatic 之间）。本机备忘：公司网络证书链拦截 playwright 浏览器下载，已用本地 chromium-1234 修订版符号链接为 1254 绕过（CI 无此问题） |
+| 2026-11-15 | 分支保护配置完成（最后一项人工操作清零）：管理员通过 GitHub Rulesets 为 master/develop 配置 required pull request + required status check（`Build · Type · Test · Tokens · Docs`）+ up to date 约束。阶段 0–5 计划内工作全部收官 |
