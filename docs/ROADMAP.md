@@ -149,6 +149,7 @@
 | 2026-11-13 | 阶段 3 完成：ci.yml 七步流水线（a11y 内置于 vitest；Chromatic 条件步骤，Secret 未配置时跳过）；组件 DoD 沉淀 CONTRIBUTING.md；余分支保护需管理员配置 |
 | 2026-11-13 | 文档消费方式修正为总包 @aiyazone/design-system；core Chromatic 基线建立（79 stories）；icons 决策 #5（不接 Chromatic，vitest 资产守卫 118 项）；icons 包硬编码 token 移除；.env 解除跟踪并本地化 |
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
+| 2026-11-16 | **npm 首发**：@aiyazone/design-system@0.3.1 与 @aiyazone/tokens@0.1.0 上线 registry（经暂存发布 + 2FA 批准，npm 2026-08 新规）；发布配置修正（prepublishOnly 去递归发布、publishConfig public 统一、tokens exports）；release.yml 就绪（tag 触发 + OIDC trusted publishing + 版本校验），待网页配置 Trusted Publisher 后生效 |
 | 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
 | 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
 | 2026-11-13 | 收官后既定后续落地：Storybook test-runner 接入（test-runner 0.23.0 兼容 SB9；静态构建冒烟 79/79 stories 全过；CI 增为第 7 关，位于 storybook 构建与 Chromatic 之间）。本机备忘：公司网络证书链拦截 playwright 浏览器下载，已用本地 chromium-1234 修订版符号链接为 1254 绕过（CI 无此问题） |

@@ -103,7 +103,7 @@
     "@aiyazone/utils": "workspace:*"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "customElements": "custom-elements.json"
 }
