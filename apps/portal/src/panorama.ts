@@ -662,7 +662,7 @@ const renderArchitecture = () => `
     <div class="flex flex-col gap-3 mb-6 md:mb-8">
       <div class="flex items-start justify-between gap-4">
         <div class="min-w-0">
-          <h3 id="architecture" class="text-xl md:text-2xl font-bold border-l-4 border-orange-500 pl-4 text-gray-900">AIYAZDS 前端工程与运行治理全景图</h3>
+          <h3 id="architecture" class="text-xl md:text-2xl font-bold border-l-4 border-orange-500 pl-4 text-gray-900">AIYAZONE 前端工程与运行治理全景图</h3>
           <div class="mt-2 text-xs md:text-sm text-gray-500 pl-4">Engineering & Governance Driven Architecture</div>
           <div class="arch-quicknav" aria-label="架构分层导航">
             <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-business">Business</button>
