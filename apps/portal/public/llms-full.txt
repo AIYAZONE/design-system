@@ -2,6 +2,7 @@
 
 > ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。
 > 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。
+> 版本：@aiyazone/design-system@0.3.2 · 生成时间：2026-11-16（版本不同请勿使用缓存）
 
 ## 使用规则（必须遵守）
 
@@ -39,6 +40,7 @@ import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 | `<zone-spinner>` | AIYAZONE 加载指示器组件 | [zone-spinner.md](./docs/api/zone-spinner.md) |
 | `<zone-toast>` | AIYAZONE 轻提示组件 | [zone-toast.md](./docs/api/zone-toast.md) |
 | `<zone-tooltip>` | AIYAZONE Tooltip 组件 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
+| `<zone-icon>` | 图标（名称清单见下方「图标库」章节） | /icons/ |
 
 ## 设计令牌摘要
 
@@ -96,7 +98,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
 - **测试**：7 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -115,13 +117,14 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | / export class ZoneBadge extends LitElement { // 组件的样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置徽章的大小（影响高度/内边距/图标大小） |
+| `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | 设置徽章的大小（影响高度/内边距/图标大小） |
 | `variant` | `variant` | `"soft" \| "solid" \| "outline"` | `"soft"` | 徽章的风格变体：soft（浅色）、solid（实色）、outline（描边） |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "warning" \| "danger" \| "info" \| "custom"` | `"default"` | 徽章的语义种类（default/neutral/success/warning/danger/info/custom） |
 | `icon` | `icon` | `string \| undefined` | — | 设置图标的名称（亦可通过 icon 插槽覆盖） |
 | `iconPosition` | `icon-position` | `"prev" \| "next" \| "start" \| "end"` | `"next"` | 图标位置：prev（文本前）/ next（文本后） |
-| `count` | `count` | `number` | — | 点式徽章（仅显示圆点） / // 移除点式徽章支持 /** 计数值（优先显示，超过 maxCount 显示为 "maxCount+"） |
-| `href` | `href` | `string` | — | 计数显示上限（默认 99） |
+| `count` | `count` | `number` | — | 计数值（优先显示，超过 maxCount 显示为 "maxCount+"） |
+| `maxCount` | `max-count` | `Number` | `99` | 计数显示上限（默认 99） |
+| `href` | `href` | `string` | — | 链接地址（设置后渲染为 <a>，自动添加 rel='noopener noreferrer'） |
 
 ## 插槽
 
@@ -156,7 +159,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
 - **测试**：33 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -175,18 +178,21 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `variant` | `variant` | `"primary" \| "secondary" \| "text"` | `"primary"` | ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 / export class ZoneButton extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 按钮变体 |
+| `variant` | `variant` | `"primary" \| "secondary" \| "text"` | `"primary"` | 按钮变体 |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "danger" \| "custom"` | `"default"` | 按钮种类 |
 | `size` | `size` | `"extra" \| "large" \| "medium" \| "small"` | `"large"` | 按钮尺寸 |
 | `interaction` | `interaction` | `"default" \| "shine"` | `"default"` | 按钮交互风格 |
 | `label` | `label` | `string` | — | 按钮标签（无障碍访问） |
-| `href` | `href` | `string` | — | 是否加载中 |
+| `loading` | `loading` | `Boolean` | `false` | 是否加载中 |
+| `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
+| `href` | `href` | `string` | — | 链接地址，设置后渲染为 <a> |
 | `icon` | `icon` | `string` | — | 图标名称 |
 | `iconPosition` | `icon-position` | `"prev" \| "next"` | `"next"` | 图标位置：prev（文本前）/ next（文本后） |
 | `iconMode` | `icon-mode` | `"inline" \| "capsule"` | `"inline"` | 图标呈现模式：inline（常规图标）/ capsule（胶囊尾缀） |
 | `target` | `target` | `string` | — | 链接目标 |
 | `type` | `type` | `"button" \| "submit" \| "reset"` | `"button"` | 按钮类型 |
-| `form` | `form` | `string \| HTMLFormElement` | — | 是否自动聚焦 |
+| `autofocus` | `autofocus` | `Boolean` | `false` | 是否自动聚焦 |
+| `form` | `form` | `string \| HTMLFormElement` | — | 关联的表单 |
 
 ## 事件
 
@@ -244,7 +250,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -258,6 +264,16 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 <!-- 3. 使用 -->
 <zone-checkbox>内容</zone-checkbox>
 ```
+
+## 属性（Attributes / Properties）
+
+| 属性 | Attribute | 类型 | 默认值 | 说明 |
+|------|-----------|------|--------|------|
+| `checked` | `checked` | `Boolean` | `false` | 是否选中 |
+| `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
+| `value` | `value` | `string` | `"on"` | 表单值 |
+| `name` | `name` | `string` | `""` | 表单名称 |
+| `label` | `label` | `string` | `""` | 标签文本 |
 
 ## 事件
 
@@ -307,7 +323,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
 - **测试**：8 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -326,11 +342,17 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `"extra" \| "large"` | `"large"` | / export class ZoneDialog extends LitElement { static styles =  [unsafeCSS(styles)] as CSSResultGroup; private static _bodyScrollLockCount = 0; private static _rootStyleSnapshot: { overflow: string; paddingRight: string } \| null = null; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); this.appendToTarget(); } disconnectedCallback(): void { super.disconnectedCallback(); window?.removeEventListener("keydown", this.onKeydown); if (this._isBodyScrollLockedByThisDialog) { this.unlockBodyScroll(); } } /** 对话框尺寸 |
-| `caption` | `caption` | `string` | — | 设置对话框的打开/关闭状态 |
-| `ariaLabelText` | `aria-label-text` | `string` | — | 关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭 |
+| `size` | `size` | `"extra" \| "large"` | `"large"` | 对话框尺寸 |
+| `open` | `open` | `Boolean` | `false` | 设置对话框的打开/关闭状态 |
+| `caption` | `caption` | `string` | — | 对话框标题文本；也可通过 header 插槽覆盖标题区域 |
+| `critical` | `critical` | `Boolean` | `false` | 关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭 |
+| `noClose` | `no-close` | `Boolean` | `false` | 是否隐藏右上角关闭按钮（强制隐藏） |
+| `showClose` | `show-close` | `Boolean` | `true` | 是否显示右上角关闭按钮（默认显示） |
+| `disableBodyScroll` | `disable-body-scroll` | `Boolean` | `true` | 打开时是否禁用页面滚动（body overflow: hidden） |
+| `ariaLabelText` | `aria-label-text` | `string` | — | 无标题时用于可访问性的 aria-label 文本 |
 | `initialFocus` | `initial-focus` | `string` | — | 初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素 |
-| `appendTo` | `append-to` | `string` | — | 关闭图标 |
+| `closeIcon` | `close-icon` | `String` | `"close-fill"` | 关闭图标 |
+| `appendTo` | `append-to` | `string` | — | Dialog 挂载目标 支持 CSS Selector，例如： - body - #app - .modal-root |
 
 ## 插槽
 
@@ -364,7 +386,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
 - **测试**：29 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -379,11 +401,25 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 <zone-dropdown>内容</zone-dropdown>
 ```
 
+## 属性（Attributes / Properties）
+
+| 属性 | Attribute | 类型 | 默认值 | 说明 |
+|------|-----------|------|--------|------|
+| `value` | `value` | `string` | `""` |  |
+| `name` | `name` | `string` | `""` |  |
+| `label` | `label` | `string` | `""` |  |
+| `disabled` | `disabled` | `Boolean` | `false` |  |
+| `required` | `required` | `Boolean` | `false` |  |
+| `open` | `open` | `Boolean` | `false` |  |
+| `clearable` | `clearable` | `Boolean` | `false` |  |
+| `showPath` | `show-path` | `Boolean` | `false` | 默认显示所选叶子节点的名称；开启后显示完整路径。 |
+| `errorMessage` | `error-message` | `string` | `""` |  |
+
 ## 仅 JS 属性（无对应 attribute）
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `options` | `DropdownOption[]` | `[]` | / export class ZoneDropdown extends LitElement { static styles = unsafeCSS(styles); static formAssociated = true; /** 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
+| `options` | `DropdownOption[]` | `[]` | 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
 
 ## 可覆盖的 CSS 变量
 
@@ -422,7 +458,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
 - **测试**：52 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -441,16 +477,23 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `label` | `label` | `string` | — | 下拉筛选项 / export interface FilterSelectOption { /** 选项值 */ value: string; /** 选项文案 */ label: string; /** 是否禁用 */ disabled?: boolean; } let uid = 0; /** 宽松布尔属性转换器 HTML 布尔属性按规范是「存在即为真」，但本组件中 show-confirm / show-clear / show-counter / close-on-scroll 默认值为 true，若沿用标准语义， 纯 HTML 环境下将永远无法关闭（省略属性即取默认 true）。 因此这里额外支持 `attr="false"` / `attr="0"` 表示关闭： - `<zone-filter-select>`                → true（默认） - `<zone-filter-select show-confirm>`   → true - `<zone-filter-select show-confirm="false">` → false / const looseBooleanConverter = { fromAttribute: (value: string \| null): boolean => value !== null && value !== "false" && value !== "0", toAttribute: (value: boolean): string \| null => (value ? "" : "false"), }; /** ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮） 默认采用「草稿 + 确认」语义：面板内的勾选只更新草稿，点击确认后才提交到 `value`。 当 `show-confirm` 为 false 时切换为「即时生效」模式。 / export class ZoneFilterSelect extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 触发器文案。未设置时取内置多语言 `components.filterSelect.label`。 |
+| `label` | `label` | `string` | — | 触发器文案。未设置时取内置多语言 `components.filterSelect.label`。 |
 | `language` | `language` | `string` | — | 自定义语言。设置后优先于页面 `<html lang>` 与全局语言（`setCurrLanguage`）。 未设置时自动读取 `document.documentElement.lang`， 若仍为空则回退到全局当前语言。 支持任意 HTML lang 写法（如 `en-US` / `zh-Hans` / `jp`），内部会自动归一化。 |
 | `options` | `options` | `FilterSelectOption[]` | `[]` | 可选项列表 |
 | `value` | `value` | `string[]` | `[]` | 已提交的选中值 |
-| `placement` | `placement` | `Placement` | `"bottom-start"` | 面板是否展开 |
-| `selectedSummary` | `selected-summary` | `string` | — | 浮层与触发器的间距 |
+| `open` | `open` | `Boolean` | `false` | 面板是否展开 |
+| `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
+| `placement` | `placement` | `Placement` | `"bottom-start"` | 浮层位置 |
+| `offset` | `offset` | `Number` | `4` | 浮层与触发器的间距 |
+| `showConfirm` | `show-confirm` | `Boolean` | `true` | 是否展示底部确认按钮（false 时为即时生效模式） |
+| `showClear` | `show-clear` | `Boolean` | `true` | 是否展示右上角清空按钮 |
+| `showCounter` | `show-counter` | `Boolean` | `true` | 是否展示「已选 n/总数」计数 |
+| `selectedSummary` | `selected-summary` | `string` | — | 有选中项时触发器展示的文案模板，支持 {count}（已选数量）与 {label}（label 属性）占位符。 未设置时取内置多语言 `components.filterSelect.selectedSummary`。 |
 | `selectedText` | `selected-text` | `string` | — | 「已选 n/总数」中的「已选」文案。 未设置时取内置多语言 `components.filterSelect.counter`。 |
 | `clearText` | `clear-text` | `string` | — | 「清空」文案。未设置时取内置多语言 `components.filterSelect.clear`。 |
 | `confirmText` | `confirm-text` | `string` | — | 底部确认按钮文案。未设置时取内置多语言 `components.filterSelect.confirm`。 |
 | `emptyText` | `empty-text` | `string` | — | 无选项时的占位文案。未设置时取内置多语言 `components.filterSelect.empty`。 |
+| `closeOnScroll` | `close-on-scroll` | `Boolean` | `true` | 页面滚动时是否自动收起面板。 面板内部（选项列表）滚动不会收起。 |
 
 ## 事件
 
@@ -505,7 +548,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
 - **测试**：2 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -525,6 +568,9 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
 | `placement` | `placement` | `Placement` | `'bottom'` |  |
+| `fitSize` | `fit-size` | `Boolean` | `false` |  |
+| `offset` | `offset` | `Number` | `8` |  |
+| `arrowPadding` | `arrow-padding` | `Number` | `8` |  |
 | `target` | `target` | `string` | — |  |
 
 ## 事件
@@ -570,7 +616,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -589,7 +635,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `string` | `"var(--zone-spinner-size, var(--zone-size-14))"` | / export class ZoneSpinner extends LitElement { // 定义组件的CSS样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置加载指示器的大小 |
+| `size` | `size` | `string` | `"var(--zone-spinner-size, var(--zone-size-14))"` | 设置加载指示器的大小 |
 | `disabled` | `disabled` | `boolean \| undefined` | `false` | 设置加载指示器的禁用状态 |
 | `overlay` | `overlay` | `boolean \| undefined` | `false` | 设置加载指示器的覆盖层状态 |
 | `color` | `color` | `string` | `"var(--zone-color-primary)"` | 设置加载指示器的颜色 |
@@ -610,7 +656,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -629,12 +675,12 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `variant` | `variant` | `"info" \| "warning" \| "success" \| "danger"` | `"info"` | / export class ZoneToast extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置轻提示变体 |
+| `variant` | `variant` | `"info" \| "warning" \| "success" \| "danger"` | `"info"` | 设置轻提示变体 |
 | `description` | `description` | `string \| undefined` | — | 设置轻提示描述 |
 | `icon` | `icon` | `boolean \| string \| undefined` | — | 允许自定义轻提示图标 |
 | `closable` | `closable` | `boolean` | `false` | 显示关闭按钮 |
 | `caption` | `caption` | `string \| undefined` | — | 设置轻提示标题 |
-| `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态 |
+| `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性） |
 | `countdownTime` | `countdown-time` | `number` | `0` | 倒计时时间（以秒为单位） |
 
 ## 事件
@@ -695,7 +741,7 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -714,7 +760,7 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `placement` | `placement` | `Placement` | `"top"` | / export class ZoneTooltip extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; private static _activeTouchTooltip: ZoneTooltip \| null = null; private readonly _popoverArrowPadding = 14; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置工具提示的位置 |
+| `placement` | `placement` | `Placement` | `"top"` | 设置工具提示的位置 |
 
 ## 事件
 
@@ -810,8 +856,9 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 | 下拉选择、级联选择 | `<zone-dropdown>` / `<zone-filter-select>` |
 | 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
 | 加载中 | `<zone-spinner>` |
-| 操作结果反馈 | `<zone-toast>` |
+| 操作结果反馈 | `<zone-toast>`（声明式：`closed` 默认 false＝显示，初始隐藏必须设 `closed`） |
 | 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
+| 文本/邮箱/密码等输入框 | ZDS 暂无输入框组件：用原生 `<input>` 并全部用 `--zone-*` 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 `zone-input`） |
 
 完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
 
@@ -869,3 +916,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - 新的交互模式（ZDS 未覆盖的交互应先提出需求，再补组件）。
 
 规范未覆盖的场景，正确做法是**先补 ZDS（组件或令牌），再生成页面**，而不是在页面里绕过规范。
+
+## 八、实测样例
+
+- [`/ai-demo.html`](./ai-demo.html)：按本规范 + llms-full.txt 由 AI 生成的「账户设置」页（表单 / 下拉 / 复选 / 弹窗确认 / 轻提示 / 图标 / 危险操作），CDN 直用 npm 包，可作为生成时的对照样例。

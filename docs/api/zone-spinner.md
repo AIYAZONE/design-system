@@ -6,7 +6,7 @@
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -25,7 +25,7 @@
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `string` | `"var(--zone-spinner-size, var(--zone-size-14))"` | / export class ZoneSpinner extends LitElement { // 定义组件的CSS样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置加载指示器的大小 |
+| `size` | `size` | `string` | `"var(--zone-spinner-size, var(--zone-size-14))"` | 设置加载指示器的大小 |
 | `disabled` | `disabled` | `boolean \| undefined` | `false` | 设置加载指示器的禁用状态 |
 | `overlay` | `overlay` | `boolean \| undefined` | `false` | 设置加载指示器的覆盖层状态 |
 | `color` | `color` | `string` | `"var(--zone-color-primary)"` | 设置加载指示器的颜色 |

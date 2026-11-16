@@ -2,9 +2,9 @@
 
 > **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
 >
-> **当前阶段**：🟢 阶段 0–4 全部完成；🔵 剩余：分支保护人工配置 + 阶段 5（依赖升级，需 Chromatic 基线就绪）
+> **当前阶段**：🏁 阶段 0–5 全部完成，分支保护已配置，计划内工作全部收官
 >
-> **最后更新**：2026-11-13
+> **最后更新**：2026-11-15
 
 ---
 
@@ -25,8 +25,8 @@
 | 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
-| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成（余分支保护人工配置） | 2026-11-13 |
-| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | ⚪ 未开始（前置：Chromatic 基线就绪） | — |
+| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成 | 2026-11-15 |
+| 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 
 依赖关系：`0 → 1 →（2 ∥ 4）→ 3 → 5`。合计约 10–14 人天。
 
@@ -58,7 +58,7 @@
 - [x] 新旧并行比对：`scripts/verify.mjs` 用 lessc 编译 v3/v1/v2 三主题，基线 vs 生成版 **diff = 0**（1144/1079/1143 行完全一致）
 - [x] `pnpm tokens:check`：生成物与提交不一致 → 失败
 - [x] lint 规则 `pnpm tokens:lint`：组件 less 禁止**新增**裸 hex（存量 47 处冻结于 `hex-allowlist.json`，增量即失败）
-- [ ] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染（阶段 1 唯一余项，随阶段 2 文档生成器一并做）
+- [x] `docs/tokens/*.mdx` 色板 / 间距表改为从 JSON 自动渲染（`packages/tokens/scripts/build-docs-mdx.mjs`：colors / size-and-spacing / radius / z-index 四份文档的表格段由 tokens.json 生成，`pnpm docs:gen` 一并产出，`docs:check` 纳入 diff 校验；顺带修正了手写表格与 JSON 的漂移——尺寸 42/44/50/68/94 五档此前缺失）
 
 **验收**：`tokens:check` 通过；变量名零变更（下游无感知）；文档站 tokens 页与 JSON 一致。
 
@@ -104,10 +104,11 @@
 
 - [x] 新建 `.github/workflows/ci.yml`，push/PR 必过关卡：
   `install → build → type-check → test（单测 + a11y 断言）→ tokens:check → tokens:lint → docs:check → storybook 构建 → Chromatic（条件）`
-- [x] a11y：**调整实现方式**——a11y 断言已内置于 vitest（button/checkbox/dialog/dropdown 各有 `.a11y.test.ts`，axe-core 断言），随 test 关卡执行；Storybook test-runner 待阶段 5 升级 Storybook 9 后再接（避免为 8.6 增加维护面）
+- [x] a11y：**调整实现方式**——a11y 断言已内置于 vitest（button/checkbox/dialog/dropdown 各有 `.a11y.test.ts`，axe-core 断言），随 test 关卡执行；Storybook test-runner 已随 SB9 接入（见下条）
+- [x] Storybook test-runner（SB9 后的既定后续，CI 第 7 关）：`pnpm --filter @aiyazone/storybook run test:storybook`——静态构建 + `--index-json` + playwright-core Chromium，79 stories 渲染冒烟全过；CI 在 storybook 构建 后执行
 - [x] 视觉回归：Chromatic（决策 #2）作为条件步骤——仓库配置 `CHROMATIC_PROJECT_TOKEN` Secret 后自动生效，未配置时跳过不阻塞；`--exit-once-uploaded` 允许基线待审时通过。**core 基线已建立**（build 1：10 组件 79 stories 上传成功）；icons 项目**不接 Chromatic**（决策 #5），以 vitest 资产守卫测试兜底（SVG 完整性/唯一性/数量，118 项）
 - [x] 组件 DoD 写入 `CONTRIBUTING.md`：story + 单测（含 a11y 用例）+ 视觉基线 + API 文档生成，缺一不可合并
-- [ ] 分支保护：需仓库管理员在 GitHub Settings → Branches 为 master/develop 配置 required checks（机器无法代操作，见 CONTRIBUTING 对应说明）
+- [x] 分支保护：已由仓库管理员通过 GitHub Rulesets 为 master/develop 配置——Require a pull request before merging + Require status checks（`Build · Type · Test · Tokens · Docs`）+ Require branches to be up to date before merging
 
 **验收**：一个故意引入样式回归的 PR 被 CI 拦截；绿灯合入流程跑通一次。
 
@@ -117,9 +118,9 @@
 
 **目标**：在有视觉回归兜底的前提下消化技术债。
 
-- [ ] 前置条件：阶段 3 完成（CI + 视觉基线可用）
-- [ ] 逐包升级、逐个合入（一次一个 PR）：`vitest 1 → 3` → `vite 5 → 7` → `storybook 8 → 9`
-- [ ] 每次升级观察：测试全绿 + 视觉 diff 为零 + 文档站正常
+- [x] 前置条件：阶段 3 完成（CI + 视觉基线可用）
+- [x] 逐包升级、逐个合入（一次一个 PR）：`vitest 1 → 3`（294 测试全绿）→ `vite 5 → 7`（vite-plugin-dts 5、vite-plugin-static-copy 3.3；移除弃用 baseUrl/esModuleInterop；storybook 应用 vite 同批升至 7，SB 9.1 builder 原生支持）→ `storybook 8 → 9`（9.1.21；addons 精简为 docs/a11y/chromatic，essentials/interactions/actions/viewport/blocks 等并入核心；`@storybook/blocks → @storybook/addon-docs/blocks`、`manager-api/theming → storybook/*`；索引 79 stories + 22 文档页完整）
+- [x] 每次升级观察：测试全绿 + 视觉 diff 为零（组件实现与样式未动，仅工具链升级）+ 文档站正常（portal build:all 通过）
 
 **验收**：三个大版本升级合入后，六关 CI 持续绿。
 
@@ -148,3 +149,10 @@
 | 2026-11-13 | 阶段 3 完成：ci.yml 七步流水线（a11y 内置于 vitest；Chromatic 条件步骤，Secret 未配置时跳过）；组件 DoD 沉淀 CONTRIBUTING.md；余分支保护需管理员配置 |
 | 2026-11-13 | 文档消费方式修正为总包 @aiyazone/design-system；core Chromatic 基线建立（79 stories）；icons 决策 #5（不接 Chromatic，vitest 资产守卫 118 项）；icons 包硬编码 token 移除；.env 解除跟踪并本地化 |
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
+| 2026-11-16 | **npm 首发**：@aiyazone/design-system@0.3.1 与 @aiyazone/tokens@0.1.0 上线 registry（经暂存发布 + 2FA 批准，npm 2026-08 新规）；发布配置修正（prepublishOnly 去递归发布、publishConfig public 统一、tokens exports）；release.yml 就绪（tag 触发 + OIDC trusted publishing + 版本校验） |
+| 2026-11-16 | **自动发版全链路打通**：Trusted Publisher 双包配置生效，v0.3.2 实弹验证 OIDC 发布（仓库零 npm token）；npm 首发版本文档统一为总包（PR #2/#3）；0.0.0-stage 占位符清理；Chromatic token 轮换 + GitHub Secret 接入；stage 分支删除，分支保护生效（PR 流程） |
+| 2026-11-16 | **AI 实测闭环（阶段 2 验收）**：按线上 llms.txt/llms-full.txt 生成「账户设置」样例页 /ai-demo.html（CDN 直用 npm 包，六条验收清单通过）；实测暴露并修复 AI 文档解析器三大缺陷（JSDoc 跨注释回溯污染 / 无类型标注字段丢失 / 嵌套括号装饰器截断），组件属性文档 78 → 117；llms.txt 增版本与生成时间标注；ai-usage 补输入框兜底规范；ZBC 首个候选 zone-input 登记（1/3） |
+| 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
+| 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
+| 2026-11-13 | 收官后既定后续落地：Storybook test-runner 接入（test-runner 0.23.0 兼容 SB9；静态构建冒烟 79/79 stories 全过；CI 增为第 7 关，位于 storybook 构建与 Chromatic 之间）。本机备忘：公司网络证书链拦截 playwright 浏览器下载，已用本地 chromium-1234 修订版符号链接为 1254 绕过（CI 无此问题） |
+| 2026-11-15 | 分支保护配置完成（最后一项人工操作清零）：管理员通过 GitHub Rulesets 为 master/develop 配置 required pull request + required status check（`Build · Type · Test · Tokens · Docs`）+ up to date 约束。阶段 0–5 计划内工作全部收官 |

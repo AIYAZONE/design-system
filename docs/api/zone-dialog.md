@@ -6,7 +6,7 @@
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
 - **测试**：8 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -25,11 +25,17 @@
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `"extra" \| "large"` | `"large"` | / export class ZoneDialog extends LitElement { static styles =  [unsafeCSS(styles)] as CSSResultGroup; private static _bodyScrollLockCount = 0; private static _rootStyleSnapshot: { overflow: string; paddingRight: string } \| null = null; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); this.appendToTarget(); } disconnectedCallback(): void { super.disconnectedCallback(); window?.removeEventListener("keydown", this.onKeydown); if (this._isBodyScrollLockedByThisDialog) { this.unlockBodyScroll(); } } /** 对话框尺寸 |
-| `caption` | `caption` | `string` | — | 设置对话框的打开/关闭状态 |
-| `ariaLabelText` | `aria-label-text` | `string` | — | 关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭 |
+| `size` | `size` | `"extra" \| "large"` | `"large"` | 对话框尺寸 |
+| `open` | `open` | `Boolean` | `false` | 设置对话框的打开/关闭状态 |
+| `caption` | `caption` | `string` | — | 对话框标题文本；也可通过 header 插槽覆盖标题区域 |
+| `critical` | `critical` | `Boolean` | `false` | 关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭 |
+| `noClose` | `no-close` | `Boolean` | `false` | 是否隐藏右上角关闭按钮（强制隐藏） |
+| `showClose` | `show-close` | `Boolean` | `true` | 是否显示右上角关闭按钮（默认显示） |
+| `disableBodyScroll` | `disable-body-scroll` | `Boolean` | `true` | 打开时是否禁用页面滚动（body overflow: hidden） |
+| `ariaLabelText` | `aria-label-text` | `string` | — | 无标题时用于可访问性的 aria-label 文本 |
 | `initialFocus` | `initial-focus` | `string` | — | 初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素 |
-| `appendTo` | `append-to` | `string` | — | 关闭图标 |
+| `closeIcon` | `close-icon` | `String` | `"close-fill"` | 关闭图标 |
+| `appendTo` | `append-to` | `string` | — | Dialog 挂载目标 支持 CSS Selector，例如： - body - #app - .modal-root |
 
 ## 插槽
 

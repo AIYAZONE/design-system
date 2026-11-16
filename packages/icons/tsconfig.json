@@ -11,7 +11,6 @@
 
     /* 模块相关设置 */
     "module": "ESNext", // 指定模块系统为ESNext，采用最新的ES模块规范相关的特性和语法
-    "esModuleInterop": false, // 当设置为false时，不进行ES模块互操作的特殊处理，保持模块导入导出的原始行为
     "allowImportingTsExtensions": true, // 允许导入以.ts扩展名结尾的文件，方便在模块导入时直接使用TypeScript源文件
 
     /* 错误处理相关设置 */
@@ -40,9 +39,8 @@
     "types": ["vite/client"],
 
     /* 路径别名配置 */
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     /* Linting相关设置 */

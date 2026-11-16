@@ -1,6 +1,6 @@
 {
   "name": "@aiyazone/design-system",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "AIYAZONE Design System (ZDS) - Monorepo",
   "author": "AIYAZONE F2E Team",
   "type": "module",
@@ -48,7 +48,7 @@
     "changeset:status": "changeset status",
     "release": "pnpm run build && pnpm run changeset:publish",
     "publish:design-system": "pnpm run design:build",
-    "prepublishOnly": "pnpm install && pnpm run release && pnpm run design:build",
+    "prepublishOnly": "pnpm run build && pnpm run design:build",
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
     "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
     "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
@@ -56,8 +56,8 @@
     "tokens:build": "pnpm --filter @aiyazone/tokens run build",
     "tokens:check": "pnpm --filter @aiyazone/tokens run check",
     "tokens:lint": "pnpm --filter @aiyazone/tokens run lint",
-    "docs:gen": "pnpm --filter @aiyazone/core run docs:gen",
-    "docs:check": "pnpm --filter @aiyazone/core run docs:check"
+    "docs:gen": "pnpm --filter @aiyazone/tokens run docs:mdx && pnpm --filter @aiyazone/core run docs:gen",
+    "docs:check": "pnpm --filter @aiyazone/tokens run docs:mdx && pnpm --filter @aiyazone/core run docs:check"
   },
   "keywords": [
     "web-components",
@@ -111,7 +111,7 @@
     "@testing-library/dom": "^9.3.4",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.19.28",
-    "@vitest/coverage-v8": "^1.6.1",
+    "@vitest/coverage-v8": "^3.2.7",
     "axe-core": "^4.11.1",
     "eslint": "^8.57.0",
     "exceljs": "^4.4.0",
@@ -125,9 +125,10 @@
     "tslib": "^2.8.1",
     "turbo": "^2.6.0",
     "typescript": "~5.8.3",
-    "vite": "^5.4.11",
+    "vite": "^7.2.2",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-dts": "^3.9.1"
+    "vite-plugin-dts": "^5.1.2",
+    "@storybook/addon-docs": "^9.1.21"
   },
   "optionalDependencies": {
     "@esbuild/linux-x64": "^0.25.5",

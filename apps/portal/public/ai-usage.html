@@ -58,8 +58,9 @@
 <tr><td>下拉选择、级联选择</td><td><code>&lt;zone-dropdown&gt;</code> / <code>&lt;zone-filter-select&gt;</code></td></tr>
 <tr><td>气泡提示、二次确认</td><td><code>&lt;zone-popover&gt;</code> / <code>&lt;zone-tooltip&gt;</code></td></tr>
 <tr><td>加载中</td><td><code>&lt;zone-spinner&gt;</code></td></tr>
-<tr><td>操作结果反馈</td><td><code>&lt;zone-toast&gt;</code></td></tr>
+<tr><td>操作结果反馈</td><td><code>&lt;zone-toast&gt;</code>（声明式：<code>closed</code> 默认 false＝显示，初始隐藏必须设 <code>closed</code>）</td></tr>
 <tr><td>图标</td><td><code>&lt;zone-icon name="…"&gt;</code>（名称只能取自 llms.txt「图标库」清单，禁止编造）</td></tr>
+<tr><td>文本/邮箱/密码等输入框</td><td>ZDS 暂无输入框组件：用原生 <code>&lt;input&gt;</code> 并全部用 <code>--zone-*</code> 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 <code>zone-input</code>）</td></tr>
 </tbody></table>
 <p>完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 <code>docs/api/&lt;tag&gt;.md</code>。</p>
 <h3>四、生成页面的提示词模板</h3>
@@ -111,6 +112,10 @@
 <li>新的交互模式（ZDS 未覆盖的交互应先提出需求，再补组件）。</li>
 </ul>
 <p>规范未覆盖的场景，正确做法是<strong>先补 ZDS（组件或令牌），再生成页面</strong>，而不是在页面里绕过规范。</p>
+<h3>八、实测样例</h3>
+<ul>
+<li><a href="./ai-demo.html"><code>/ai-demo.html</code></a>：按本规范 + llms-full.txt 由 AI 生成的「账户设置」页（表单 / 下拉 / 复选 / 弹窗确认 / 轻提示 / 图标 / 危险操作），CDN 直用 npm 包，可作为生成时的对照样例。</li>
+</ul>
     </main>
     <div id="site-footer"></div>
     <script type="module" src="/shared/site-header.js"></script>

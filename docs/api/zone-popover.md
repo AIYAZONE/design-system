@@ -6,7 +6,7 @@
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
 - **测试**：2 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -26,6 +26,9 @@
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
 | `placement` | `placement` | `Placement` | `'bottom'` |  |
+| `fitSize` | `fit-size` | `Boolean` | `false` |  |
+| `offset` | `offset` | `Number` | `8` |  |
+| `arrowPadding` | `arrow-padding` | `Number` | `8` |  |
 | `target` | `target` | `string` | — |  |
 
 ## 事件

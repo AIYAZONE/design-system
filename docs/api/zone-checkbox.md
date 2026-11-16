@@ -6,7 +6,7 @@
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -20,6 +20,16 @@
 <!-- 3. 使用 -->
 <zone-checkbox>内容</zone-checkbox>
 ```
+
+## 属性（Attributes / Properties）
+
+| 属性 | Attribute | 类型 | 默认值 | 说明 |
+|------|-----------|------|--------|------|
+| `checked` | `checked` | `Boolean` | `false` | 是否选中 |
+| `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
+| `value` | `value` | `string` | `"on"` | 表单值 |
+| `name` | `name` | `string` | `""` | 表单名称 |
+| `label` | `label` | `string` | `""` | 标签文本 |
 
 ## 事件
 

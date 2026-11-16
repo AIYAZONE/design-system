@@ -6,7 +6,7 @@
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
 - **测试**：7 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -25,13 +25,14 @@
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | / export class ZoneBadge extends LitElement { // 组件的样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置徽章的大小（影响高度/内边距/图标大小） |
+| `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | 设置徽章的大小（影响高度/内边距/图标大小） |
 | `variant` | `variant` | `"soft" \| "solid" \| "outline"` | `"soft"` | 徽章的风格变体：soft（浅色）、solid（实色）、outline（描边） |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "warning" \| "danger" \| "info" \| "custom"` | `"default"` | 徽章的语义种类（default/neutral/success/warning/danger/info/custom） |
 | `icon` | `icon` | `string \| undefined` | — | 设置图标的名称（亦可通过 icon 插槽覆盖） |
 | `iconPosition` | `icon-position` | `"prev" \| "next" \| "start" \| "end"` | `"next"` | 图标位置：prev（文本前）/ next（文本后） |
-| `count` | `count` | `number` | — | 点式徽章（仅显示圆点） / // 移除点式徽章支持 /** 计数值（优先显示，超过 maxCount 显示为 "maxCount+"） |
-| `href` | `href` | `string` | — | 计数显示上限（默认 99） |
+| `count` | `count` | `number` | — | 计数值（优先显示，超过 maxCount 显示为 "maxCount+"） |
+| `maxCount` | `max-count` | `Number` | `99` | 计数显示上限（默认 99） |
+| `href` | `href` | `string` | — | 链接地址（设置后渲染为 <a>，自动添加 rel='noopener noreferrer'） |
 
 ## 插槽
 

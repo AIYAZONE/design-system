@@ -6,7 +6,7 @@
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -25,12 +25,12 @@
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `variant` | `variant` | `"info" \| "warning" \| "success" \| "danger"` | `"info"` | / export class ZoneToast extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置轻提示变体 |
+| `variant` | `variant` | `"info" \| "warning" \| "success" \| "danger"` | `"info"` | 设置轻提示变体 |
 | `description` | `description` | `string \| undefined` | — | 设置轻提示描述 |
 | `icon` | `icon` | `boolean \| string \| undefined` | — | 允许自定义轻提示图标 |
 | `closable` | `closable` | `boolean` | `false` | 显示关闭按钮 |
 | `caption` | `caption` | `string \| undefined` | — | 设置轻提示标题 |
-| `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态 |
+| `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性） |
 | `countdownTime` | `countdown-time` | `number` | `0` | 倒计时时间（以秒为单位） |
 
 ## 事件

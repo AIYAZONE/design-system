@@ -2,7 +2,6 @@
   "extends": "@aiyazone/tsconfig/lib.json",
   "compilerOptions": {
     "composite": true,
-    "baseUrl": ".",
     "rootDir": ".",
     "emitDeclarationOnly": true,
     "experimentalDecorators": true,

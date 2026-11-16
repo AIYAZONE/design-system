@@ -36,8 +36,9 @@
 | 下拉选择、级联选择 | `<zone-dropdown>` / `<zone-filter-select>` |
 | 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
 | 加载中 | `<zone-spinner>` |
-| 操作结果反馈 | `<zone-toast>` |
+| 操作结果反馈 | `<zone-toast>`（声明式：`closed` 默认 false＝显示，初始隐藏必须设 `closed`） |
 | 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
+| 文本/邮箱/密码等输入框 | ZDS 暂无输入框组件：用原生 `<input>` 并全部用 `--zone-*` 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 `zone-input`） |
 
 完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
 
@@ -95,3 +96,7 @@
 - 新的交互模式（ZDS 未覆盖的交互应先提出需求，再补组件）。
 
 规范未覆盖的场景，正确做法是**先补 ZDS（组件或令牌），再生成页面**，而不是在页面里绕过规范。
+
+## 八、实测样例
+
+- [`/ai-demo.html`](./ai-demo.html)：按本规范 + llms-full.txt 由 AI 生成的「账户设置」页（表单 / 下拉 / 复选 / 弹窗确认 / 轻提示 / 图标 / 危险操作），CDN 直用 npm 包，可作为生成时的对照样例。
