@@ -1,6 +1,7 @@
 const NAV_LINKS = [
   { href: '/index.html', text: '概览' },
   { href: '/storybook/', text: '文档' },
+  { href: '/ai-usage.html', text: 'AI 规范' },
   { href: '/examples/', text: '示例' },
   { href: '/icons/', text: '图标' }
 ];
