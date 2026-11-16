@@ -26,12 +26,30 @@ interface ArchChip {
 const cards: CardItem[] = [
   {
     title: '设计系统指导文档',
-    description: '基于 Web Components 的跨框架组件库，含 Button、Dialog、Toast 等 7+ 核心组件，支持深浅主题与无障碍访问。',
+    description: '基于 Web Components 的跨框架组件库，含 Button、Dialog、Toast 等 10 个核心组件与图标，支持深浅主题与无障碍访问。',
     href: '/storybook/',
     linkText: '查看文档',
     iconColor: 'text-pink-500',
     iconBg: 'bg-pink-50',
     iconPath: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>'
+  },
+  {
+    title: 'AI 生成规范',
+    description: '让 AI 直接产出合规页面：提示词要点、组件选择指南、六条验收清单，配套 llms.txt 机器可读文档与实测样例。',
+    href: '/ai-usage.html',
+    linkText: '查看规范',
+    iconColor: 'text-orange-500',
+    iconBg: 'bg-orange-50',
+    iconPath: '<path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/>'
+  },
+  {
+    title: 'AI 实测样例',
+    description: '按 llms.txt 规范由 AI 生成的「账户设置」页：表单、下拉、复选、弹窗确认、轻提示全链路，CDN 直用 npm 包。',
+    href: '/ai-demo.html',
+    linkText: '查看样例',
+    iconColor: 'text-emerald-500',
+    iconBg: 'bg-emerald-50',
+    iconPath: '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/>'
   },
   {
     title: '设计系统示例',
@@ -53,7 +71,7 @@ const cards: CardItem[] = [
   },
   {
     title: '图标资产',
-    description: '87+ 精选 SVG 图标，含系统图标与社媒图标，支持按需导入与 Tree-shaking。',
+    description: '113 个精选 SVG 图标（系统 + 社媒），支持搜索、一键复制图标名与 hover 换图。',
     href: '/icons/',
     linkText: '搜索图标',
     iconColor: 'text-purple-500',
@@ -1030,7 +1048,7 @@ app.innerHTML = `
   ${renderSiteHeaderSlot()}
   <main class="flex-1 flex flex-col items-center w-full max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16">
     ${renderHero()}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full mb-12 md:mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full mb-12 md:mb-24">
       ${cards.map(renderCard).join('')}
     </div>
     ${renderArchitecture()}
