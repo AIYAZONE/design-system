@@ -1122,3 +1122,18 @@
     @apply flex items-center justify-between gap-4 border-b border-gray-100 py-3.5 transition-colors hover:bg-orange-50/40;
   }
 }
+
+/* --- 架构页视图切换 --- */
+@layer components {
+  .view-tab {
+    @apply inline-flex items-center rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-bold text-gray-500 transition-all hover:border-orange-300 hover:text-orange-600;
+  }
+
+  .view-tab.is-active {
+    @apply border-orange-500 bg-orange-500 text-white shadow-sm hover:text-white;
+  }
+
+  .view-tab.is-active span {
+    @apply text-orange-100;
+  }
+}

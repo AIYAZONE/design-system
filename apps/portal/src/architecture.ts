@@ -1,4 +1,5 @@
 import './style.css';
+import { renderPanorama, setupPanorama } from './panorama';
 
 // --- 站点骨架 ---
 const renderSiteHeaderSlot = () => `<div data-site-header data-app="portal"></div>`;
@@ -331,6 +332,22 @@ const renderHero = () => `
   </section>
 `;
 
+// --- 视图切换（架构总览 / 治理全景图），支持 ?view=panorama 直达 ---
+const initialView = new URLSearchParams(window.location.search).get('view') === 'panorama' ? 'panorama' : 'overview';
+
+const renderViewTabs = () => `
+  <div class="flex flex-wrap gap-2 mb-8 md:mb-10 border-b border-gray-200 pb-4">
+    <button type="button" class="view-tab ${initialView === 'overview' ? 'is-active' : ''}" data-view-tab="overview" aria-selected="${initialView === 'overview'}">
+      架构总览
+      <span class="text-[11px] font-normal text-gray-400 ml-1">AI 时代 · 分层 · 门禁</span>
+    </button>
+    <button type="button" class="view-tab ${initialView === 'panorama' ? 'is-active' : ''}" data-view-tab="panorama" aria-selected="${initialView === 'panorama'}">
+      治理全景图
+      <span class="text-[11px] font-normal text-gray-400 ml-1">工程与运行全景 · 原版</span>
+    </button>
+  </div>
+`;
+
 // --- 渲染 ---
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
@@ -338,11 +355,36 @@ app.innerHTML = `
   ${renderSiteHeaderSlot()}
   <main class="flex-1 w-full max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
     ${renderHero()}
-    ${renderFlow()}
-    ${renderLayers()}
-    ${renderGates()}
-    ${renderRelease()}
-    ${renderNotDoing()}
+    ${renderViewTabs()}
+    <div data-view="overview" ${initialView === 'panorama' ? 'hidden' : ''}>
+      ${renderFlow()}
+      ${renderLayers()}
+      ${renderGates()}
+      ${renderRelease()}
+      ${renderNotDoing()}
+    </div>
+    <div data-view="panorama" ${initialView === 'panorama' ? '' : 'hidden'}>
+      ${renderPanorama()}
+    </div>
   </main>
   ${renderFooter()}
 `;
+
+setupPanorama();
+
+const viewTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-view-tab]'));
+const views = Array.from(document.querySelectorAll<HTMLElement>('[data-view]'));
+
+viewTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const key = tab.dataset.viewTab;
+    viewTabs.forEach((t) => {
+      const active = t === tab;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    views.forEach((v) => {
+      v.toggleAttribute('hidden', v.dataset.view !== key);
+    });
+  });
+});
