@@ -134,18 +134,6 @@ const renderInstall = () => {
 `;
 };
 
-// --- 事实条 ---
-const renderFacts = () => `
-  <section class="border-t border-gray-200 pt-6">
-    <p class="text-xs text-gray-400 leading-relaxed">
-      <code class="font-mono text-gray-600">@aiyazone/design-system@${__ZONE_VERSION__}</code>
-      · 每次 PR 通过七道门禁（类型、测试、令牌、API 契约、文档、渲染冒烟、视觉 diff）
-      · npm 发布走 OIDC 临时凭证
-      <a href="/architecture.html" class="text-gray-500 underline underline-offset-2 hover:text-orange-600 ml-1">治理细节</a>
-    </p>
-  </section>
-`;
-
 // --- 渲染 ---
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
@@ -155,7 +143,6 @@ app.innerHTML = `
     ${renderHero()}
     ${renderEntries()}
     ${renderInstall()}
-    ${renderFacts()}
   </main>
   ${renderFooter()}
 `;
