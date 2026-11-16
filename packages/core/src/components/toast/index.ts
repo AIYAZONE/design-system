@@ -46,7 +46,7 @@ export class ZoneToast extends LitElement {
   caption: string | undefined; // 标题内容可选
 
   /**
-   * 设置轻提示组件的显示状态
+   * 设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性）
    */
   @property({ type: Boolean, reflect: true })
   closed: boolean = false; // 默认未关闭

@@ -17,7 +17,7 @@
           "reflects": true,
           "type": "\"small\" | \"medium\" | \"large\"",
           "default": "\"medium\"",
-          "description": "/ export class ZoneBadge extends LitElement { // 组件的样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置徽章的大小（影响高度/内边距/图标大小）"
+          "description": "设置徽章的大小（影响高度/内边距/图标大小）"
         },
         {
           "name": "variant",
@@ -57,7 +57,15 @@
           "reflects": false,
           "type": "number",
           "default": null,
-          "description": "点式徽章（仅显示圆点） / // 移除点式徽章支持 /** 计数值（优先显示，超过 maxCount 显示为 \"maxCount+\"）"
+          "description": "计数值（优先显示，超过 maxCount 显示为 \"maxCount+\"）"
+        },
+        {
+          "name": "maxCount",
+          "attribute": "max-count",
+          "reflects": false,
+          "type": "Number",
+          "default": "99",
+          "description": "计数显示上限（默认 99）"
         },
         {
           "name": "href",
@@ -65,7 +73,7 @@
           "reflects": false,
           "type": "string",
           "default": null,
-          "description": "计数显示上限（默认 99）"
+          "description": "链接地址（设置后渲染为 <a>，自动添加 rel='noopener noreferrer'）"
         }
       ],
       "properties": [],
@@ -135,7 +143,7 @@
           "reflects": true,
           "type": "\"primary\" | \"secondary\" | \"text\"",
           "default": "\"primary\"",
-          "description": "ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 / export class ZoneButton extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 按钮变体"
+          "description": "按钮变体"
         },
         {
           "name": "kind",
@@ -170,12 +178,28 @@
           "description": "按钮标签（无障碍访问）"
         },
         {
+          "name": "loading",
+          "attribute": "loading",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否加载中"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否禁用"
+        },
+        {
           "name": "href",
           "attribute": "href",
-          "reflects": true,
+          "reflects": false,
           "type": "string",
           "default": null,
-          "description": "是否加载中"
+          "description": "链接地址，设置后渲染为 <a>"
         },
         {
           "name": "icon",
@@ -218,12 +242,20 @@
           "description": "按钮类型"
         },
         {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否自动聚焦"
+        },
+        {
           "name": "form",
           "attribute": "form",
           "reflects": false,
           "type": "string | HTMLFormElement",
           "default": null,
-          "description": "是否自动聚焦"
+          "description": "关联的表单"
         }
       ],
       "properties": [],
@@ -363,7 +395,48 @@
       "className": "ZoneCheckbox",
       "dir": "checkbox",
       "summary": "ZONE Checkbox 组件",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "checked",
+          "attribute": "checked",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否选中"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否禁用"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "reflects": false,
+          "type": "string",
+          "default": "\"on\"",
+          "description": "表单值"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "表单名称"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "标签文本"
+        }
+      ],
       "properties": [],
       "events": [
         {
@@ -399,23 +472,63 @@
           "reflects": true,
           "type": "\"extra\" | \"large\"",
           "default": "\"large\"",
-          "description": "/ export class ZoneDialog extends LitElement { static styles =  [unsafeCSS(styles)] as CSSResultGroup; private static _bodyScrollLockCount = 0; private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); this.appendToTarget(); } disconnectedCallback(): void { super.disconnectedCallback(); window?.removeEventListener(\"keydown\", this.onKeydown); if (this._isBodyScrollLockedByThisDialog) { this.unlockBodyScroll(); } } /** 对话框尺寸"
+          "description": "对话框尺寸"
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "设置对话框的打开/关闭状态"
         },
         {
           "name": "caption",
           "attribute": "caption",
-          "reflects": true,
+          "reflects": false,
           "type": "string",
           "default": null,
-          "description": "设置对话框的打开/关闭状态"
+          "description": "对话框标题文本；也可通过 header 插槽覆盖标题区域"
+        },
+        {
+          "name": "critical",
+          "attribute": "critical",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭"
+        },
+        {
+          "name": "noClose",
+          "attribute": "no-close",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否隐藏右上角关闭按钮（强制隐藏）"
+        },
+        {
+          "name": "showClose",
+          "attribute": "show-close",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "true",
+          "description": "是否显示右上角关闭按钮（默认显示）"
+        },
+        {
+          "name": "disableBodyScroll",
+          "attribute": "disable-body-scroll",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "true",
+          "description": "打开时是否禁用页面滚动（body overflow: hidden）"
         },
         {
           "name": "ariaLabelText",
           "attribute": "aria-label-text",
-          "reflects": true,
+          "reflects": false,
           "type": "string",
           "default": null,
-          "description": "关键对话框：屏蔽 ESC 与遮罩点击关闭，仅允许显式按钮或编程方式关闭"
+          "description": "无标题时用于可访问性的 aria-label 文本"
         },
         {
           "name": "initialFocus",
@@ -426,12 +539,20 @@
           "description": "初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素"
         },
         {
+          "name": "closeIcon",
+          "attribute": "close-icon",
+          "reflects": false,
+          "type": "String",
+          "default": "\"close-fill\"",
+          "description": "关闭图标"
+        },
+        {
           "name": "appendTo",
           "attribute": "append-to",
           "reflects": true,
           "type": "string",
           "default": null,
-          "description": "关闭图标"
+          "description": "Dialog 挂载目标 支持 CSS Selector，例如： - body - #app - .modal-root"
         }
       ],
       "properties": [],
@@ -487,7 +608,80 @@
       "className": "ZoneDropdown",
       "dir": "dropdown",
       "summary": "单选下拉框；数据包含子节点时自动启用树形列表。",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "required",
+          "attribute": "required",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "clearable",
+          "attribute": "clearable",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "showPath",
+          "attribute": "show-path",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "false",
+          "description": "默认显示所选叶子节点的名称；开启后显示完整路径。"
+        },
+        {
+          "name": "errorMessage",
+          "attribute": "error-message",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": ""
+        }
+      ],
       "properties": [
         {
           "name": "options",
@@ -495,7 +689,7 @@
           "reflects": false,
           "type": "DropdownOption[]",
           "default": "[]",
-          "description": "/ export class ZoneDropdown extends LitElement { static styles = unsafeCSS(styles); static formAssociated = true; /** 通过 JavaScript 属性赋值，例如 element.options = [...]。"
+          "description": "通过 JavaScript 属性赋值，例如 element.options = [...]。"
         }
       ],
       "events": [],
@@ -542,7 +736,7 @@
           "reflects": false,
           "type": "string",
           "default": null,
-          "description": "下拉筛选项 / export interface FilterSelectOption { /** 选项值 */ value: string; /** 选项文案 */ label: string; /** 是否禁用 */ disabled?: boolean; } let uid = 0; /** 宽松布尔属性转换器 HTML 布尔属性按规范是「存在即为真」，但本组件中 show-confirm / show-clear / show-counter / close-on-scroll 默认值为 true，若沿用标准语义， 纯 HTML 环境下将永远无法关闭（省略属性即取默认 true）。 因此这里额外支持 `attr=\"false\"` / `attr=\"0\"` 表示关闭： - `<zone-filter-select>`                → true（默认） - `<zone-filter-select show-confirm>`   → true - `<zone-filter-select show-confirm=\"false\">` → false / const looseBooleanConverter = { fromAttribute: (value: string | null): boolean => value !== null && value !== \"false\" && value !== \"0\", toAttribute: (value: boolean): string | null => (value ? \"\" : \"false\"), }; /** ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计数 / 清空 / 多选列表 / 确认按钮） 默认采用「草稿 + 确认」语义：面板内的勾选只更新草稿，点击确认后才提交到 `value`。 当 `show-confirm` 为 false 时切换为「即时生效」模式。 / export class ZoneFilterSelect extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 触发器文案。未设置时取内置多语言 `components.filterSelect.label`。"
+          "description": "触发器文案。未设置时取内置多语言 `components.filterSelect.label`。"
         },
         {
           "name": "language",
@@ -569,12 +763,60 @@
           "description": "已提交的选中值"
         },
         {
+          "name": "open",
+          "attribute": "open",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "面板是否展开"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "是否禁用"
+        },
+        {
           "name": "placement",
           "attribute": "placement",
-          "reflects": true,
+          "reflects": false,
           "type": "Placement",
           "default": "\"bottom-start\"",
-          "description": "面板是否展开"
+          "description": "浮层位置"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "reflects": false,
+          "type": "Number",
+          "default": "4",
+          "description": "浮层与触发器的间距"
+        },
+        {
+          "name": "showConfirm",
+          "attribute": "show-confirm",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "true",
+          "description": "是否展示底部确认按钮（false 时为即时生效模式）"
+        },
+        {
+          "name": "showClear",
+          "attribute": "show-clear",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "true",
+          "description": "是否展示右上角清空按钮"
+        },
+        {
+          "name": "showCounter",
+          "attribute": "show-counter",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "true",
+          "description": "是否展示「已选 n/总数」计数"
         },
         {
           "name": "selectedSummary",
@@ -582,7 +824,7 @@
           "reflects": false,
           "type": "string",
           "default": null,
-          "description": "浮层与触发器的间距"
+          "description": "有选中项时触发器展示的文案模板，支持 {count}（已选数量）与 {label}（label 属性）占位符。 未设置时取内置多语言 `components.filterSelect.selectedSummary`。"
         },
         {
           "name": "selectedText",
@@ -615,6 +857,14 @@
           "type": "string",
           "default": null,
           "description": "无选项时的占位文案。未设置时取内置多语言 `components.filterSelect.empty`。"
+        },
+        {
+          "name": "closeOnScroll",
+          "attribute": "close-on-scroll",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "true",
+          "description": "页面滚动时是否自动收起面板。 面板内部（选项列表）滚动不会收起。"
         }
       ],
       "properties": [],
@@ -708,6 +958,30 @@
           "description": ""
         },
         {
+          "name": "fitSize",
+          "attribute": "fit-size",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "false",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "reflects": false,
+          "type": "Number",
+          "default": "8",
+          "description": ""
+        },
+        {
+          "name": "arrowPadding",
+          "attribute": "arrow-padding",
+          "reflects": false,
+          "type": "Number",
+          "default": "8",
+          "description": ""
+        },
+        {
           "name": "target",
           "attribute": "target",
           "reflects": false,
@@ -767,7 +1041,7 @@
           "reflects": true,
           "type": "string",
           "default": "\"var(--zone-spinner-size, var(--zone-size-14))\"",
-          "description": "/ export class ZoneSpinner extends LitElement { // 定义组件的CSS样式 static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置加载指示器的大小"
+          "description": "设置加载指示器的大小"
         },
         {
           "name": "disabled",
@@ -813,7 +1087,7 @@
           "reflects": true,
           "type": "\"info\" | \"warning\" | \"success\" | \"danger\"",
           "default": "\"info\"",
-          "description": "/ export class ZoneToast extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; /** 设置轻提示变体"
+          "description": "设置轻提示变体"
         },
         {
           "name": "description",
@@ -853,7 +1127,7 @@
           "reflects": true,
           "type": "boolean",
           "default": "false",
-          "description": "设置轻提示组件的显示状态"
+          "description": "设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性）"
         },
         {
           "name": "countdownTime",
@@ -920,7 +1194,7 @@
           "reflects": false,
           "type": "Placement",
           "default": "\"top\"",
-          "description": "/ export class ZoneTooltip extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; private static _activeTouchTooltip: ZoneTooltip | null = null; private readonly _popoverArrowPadding = 14; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 设置工具提示的位置"
+          "description": "设置工具提示的位置"
         }
       ],
       "properties": [],

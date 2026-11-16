@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>账户设置 · AI 生成实测样例</title>
+  <!-- 知识来源：design.aiyazone.com/llms-full.txt（按其快速使用三步接入，CDN 直用 npm 包） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index-v3.css" />
+  <script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index.esm.js';
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: var(--zone-color-grey);
+      color: var(--zone-color-neutral);
+      font-family: var(--zone-font-family, system-ui);
+      font-size: var(--zone-font-size-14);
+    }
+    main {
+      max-width: var(--zone-size-176, 44rem);
+      margin: 0 auto;
+      padding: var(--zone-size-32) var(--zone-size-16) var(--zone-size-64);
+    }
+    .page-title { font-size: var(--zone-font-size-24); margin: 0 0 var(--zone-size-4); }
+    .page-desc  { color: var(--zone-color-neutral); opacity: .6; margin: 0 0 var(--zone-size-24); }
+    .card {
+      background: var(--zone-color-white);
+      border-radius: var(--zone-rounded-12);
+      padding: var(--zone-size-24);
+      margin-bottom: var(--zone-size-16);
+    }
+    .card-head { display: flex; align-items: center; gap: var(--zone-size-8); margin-bottom: var(--zone-size-16); }
+    .card-head zone-icon { font-size: var(--zone-font-size-20); color: var(--zone-color-primary); }
+    .card-head h2 { font-size: var(--zone-font-size-16); margin: 0; }
+    .field { margin-bottom: var(--zone-size-16); }
+    .field label { display: block; margin-bottom: var(--zone-size-8); font-size: var(--zone-font-size-14); }
+    /* 文档未提供输入框组件：按「只用 token」规范以原生 input 兜底 */
+    .field input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: var(--zone-size-8) var(--zone-size-12);
+      font-size: var(--zone-font-size-14);
+      font-family: inherit;
+      color: var(--zone-color-neutral);
+      background: var(--zone-color-white);
+      border: 1px solid var(--zone-color-grey);
+      border-radius: var(--zone-rounded-8);
+      outline: none;
+    }
+    .field input:focus-visible { border-color: var(--zone-color-primary); }
+    .row { display: flex; gap: var(--zone-size-24); flex-wrap: wrap; }
+    .prefs { display: grid; gap: var(--zone-size-12); }
+    .danger { border: 1px solid var(--zone-color-danger); }
+    .danger .card-head zone-icon { color: var(--zone-color-danger); }
+    .danger p { opacity: .6; margin: 0 0 var(--zone-size-16); }
+    .actions { display: flex; justify-content: flex-end; gap: var(--zone-size-12); margin-top: var(--zone-size-24); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="page-title">账户设置</h1>
+    <p class="page-desc">管理你的个人资料与通知偏好</p>
+
+    <section class="card" aria-labelledby="h-profile">
+      <div class="card-head">
+        <zone-icon name="home-line-2" aria-hidden="true"></zone-icon>
+        <h2 id="h-profile">基本资料</h2>
+      </div>
+      <div class="row">
+        <div class="field" style="flex: 1; min-width: 200px;">
+          <label for="nick">昵称</label>
+          <input id="nick" type="text" value="Zone 用户" autocomplete="nickname" />
+        </div>
+        <div class="field" style="flex: 1; min-width: 200px;">
+          <label for="tz">时区</label>
+          <zone-dropdown id="tz" style="width: 100%;"></zone-dropdown>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="h-pref">
+      <div class="card-head">
+        <zone-icon name="lamp-line" aria-hidden="true"></zone-icon>
+        <h2 id="h-pref">通知偏好</h2>
+      </div>
+      <div class="prefs">
+        <zone-checkbox name="mail" checked>邮件通知（订单与物流）</zone-checkbox>
+        <zone-checkbox name="sms">短信通知（仅安全事件）</zone-checkbox>
+      </div>
+    </section>
+
+    <section class="card danger" aria-labelledby="h-danger">
+      <div class="card-head">
+        <zone-icon name="delete-line" aria-hidden="true"></zone-icon>
+        <h2 id="h-danger">危险操作</h2>
+      </div>
+      <p>删除账户后数据不可恢复，请谨慎操作。</p>
+      <zone-button id="del" kind="danger" variant="secondary" icon="delete-fill" icon-position="prev">删除账户</zone-button>
+      <zone-dialog id="confirm" caption="确认删除账户？" aria-label-text="确认删除账户" size="large">
+        <p style="margin: 0 0 16px;">此操作不可恢复，所有数据将被永久清除。确定要继续吗？</p>
+        <div class="actions" style="margin-top: 0;">
+          <zone-button id="cancel" variant="text">取消</zone-button>
+          <zone-button id="confirm-del" kind="danger" loading-icon="loading">确认删除</zone-button>
+        </div>
+      </zone-dialog>
+    </section>
+
+  </main>
+
+  <zone-toast id="toast" closed countdown-time="3" closable aria-live="polite"></zone-toast>
+
+  <script type="module">
+    // 时区下拉（文档：数据含子节点自动树形；此处单层）
+    const tz = document.getElementById('tz');
+    tz.data = [
+      { value: 'cst', label: '中国标准时间 UTC+8' },
+      { value: 'jst', label: '日本标准时间 UTC+9' },
+      { value: 'pst', label: '太平洋时间 UTC-8' },
+    ];
+
+    // 保存偏好（声明式 toast：设 variant/caption/description 后置 closed=false）
+    const toast = document.getElementById('toast');
+    function showToast(type, caption, description) {
+      toast.setAttribute('variant', type);
+      toast.setAttribute('caption', caption);
+      toast.setAttribute('description', description);
+      toast.closed = false;
+    }
+    document.querySelectorAll('zone-checkbox').forEach((c) =>
+      c.addEventListener('change', () => showToast('success', '已保存', '通知偏好更新成功'))
+    );
+
+    // 危险操作确认流：dialog → toast
+    const dialog = document.getElementById('confirm');
+    document.getElementById('del').addEventListener('zone-click', () => (dialog.open = true));
+    document.getElementById('cancel').addEventListener('zone-click', () => (dialog.open = false));
+    document.getElementById('confirm-del').addEventListener('zone-click', () => {
+      dialog.open = false;
+      showToast('warning', '删除请求已提交', '账户将在 7 天后永久清除');
+    });
+  </script>
+</body>
+</html>

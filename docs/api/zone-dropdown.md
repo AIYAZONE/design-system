@@ -21,11 +21,25 @@
 <zone-dropdown>内容</zone-dropdown>
 ```
 
+## 属性（Attributes / Properties）
+
+| 属性 | Attribute | 类型 | 默认值 | 说明 |
+|------|-----------|------|--------|------|
+| `value` | `value` | `string` | `""` |  |
+| `name` | `name` | `string` | `""` |  |
+| `label` | `label` | `string` | `""` |  |
+| `disabled` | `disabled` | `Boolean` | `false` |  |
+| `required` | `required` | `Boolean` | `false` |  |
+| `open` | `open` | `Boolean` | `false` |  |
+| `clearable` | `clearable` | `Boolean` | `false` |  |
+| `showPath` | `show-path` | `Boolean` | `false` | 默认显示所选叶子节点的名称；开启后显示完整路径。 |
+| `errorMessage` | `error-message` | `string` | `""` |  |
+
 ## 仅 JS 属性（无对应 attribute）
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `options` | `DropdownOption[]` | `[]` | / export class ZoneDropdown extends LitElement { static styles = unsafeCSS(styles); static formAssociated = true; /** 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
+| `options` | `DropdownOption[]` | `[]` | 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
 
 ## 可覆盖的 CSS 变量
 
