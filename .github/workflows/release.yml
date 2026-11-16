@@ -16,13 +16,13 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup pnpm（读取 packageManager 字段）
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       # npm ≥ 11.5 才支持 OIDC trusted publishing；node 22 自带 npm 10.x，显式升级
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
