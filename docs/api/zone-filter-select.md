@@ -6,7 +6,7 @@
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
 - **测试**：52 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 

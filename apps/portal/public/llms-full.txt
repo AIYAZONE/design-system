@@ -96,7 +96,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
 - **测试**：7 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -156,7 +156,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
 - **测试**：33 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -244,7 +244,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -307,7 +307,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
 - **测试**：8 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -364,7 +364,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
 - **测试**：29 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -422,7 +422,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
 - **测试**：52 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -505,7 +505,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
 - **测试**：2 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -570,7 +570,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -610,7 +610,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
@@ -695,7 +695,7 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.1`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
