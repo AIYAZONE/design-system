@@ -43,5 +43,13 @@ export default defineConfig({
   },
   server: {
     host: true
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        architecture: 'architecture.html'
+      }
+    }
   }
 });

@@ -1091,3 +1091,34 @@
 }
 
 }
+
+/* --- Portal 首页 / 架构页新增组件样式 --- */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-orange-600 hover:shadow-md active:translate-y-px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-bold text-gray-800 transition-all hover:border-orange-300 hover:text-orange-600;
+  }
+
+  .copy-btn {
+    @apply rounded-md px-2 py-1 text-xs font-bold text-gray-400 transition-colors hover:bg-orange-50 hover:text-orange-600;
+  }
+
+  .code-block {
+    @apply mt-1 overflow-x-auto rounded-xl bg-gray-900 p-4 font-mono text-xs leading-relaxed text-gray-100 md:text-sm;
+  }
+
+  .gate-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/70 px-3 py-1.5 text-xs font-bold text-gray-600;
+  }
+
+  .gate-pill svg {
+    @apply text-emerald-500;
+  }
+
+  .entry-row {
+    @apply flex items-center justify-between gap-4 border-b border-gray-100 py-3.5 transition-colors hover:bg-orange-50/40;
+  }
+}

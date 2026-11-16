@@ -2,6 +2,7 @@ const NAV_LINKS = [
   { href: '/index.html', text: '概览' },
   { href: '/storybook/', text: '文档' },
   { href: '/ai-usage.html', text: 'AI 规范' },
+  { href: '/architecture.html', text: '架构' },
   { href: '/examples/', text: '示例' },
   { href: '/icons/', text: '图标' }
 ];
@@ -26,6 +27,7 @@ const getActivePath = (pathname) => {
   if (p.startsWith('/storybook/')) return '/storybook/';
   if (p.startsWith('/examples/')) return '/examples/';
   if (p.startsWith('/icons/')) return '/icons/';
+  if (p.startsWith('/architecture')) return '/architecture.html';
   return '/';
 };
 
