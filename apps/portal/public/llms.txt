@@ -2,6 +2,7 @@
 
 > ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。
 > 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。
+> 版本：@aiyazone/design-system@0.3.2 · 生成时间：2026-11-16（版本不同请勿使用缓存）
 
 ## 使用规则（必须遵守）
 
@@ -39,6 +40,7 @@ import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 | `<zone-spinner>` | AIYAZONE 加载指示器组件 | [zone-spinner.md](./docs/api/zone-spinner.md) |
 | `<zone-toast>` | AIYAZONE 轻提示组件 | [zone-toast.md](./docs/api/zone-toast.md) |
 | `<zone-tooltip>` | AIYAZONE Tooltip 组件 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
+| `<zone-icon>` | 图标（名称清单见下方「图标库」章节） | /icons/ |
 
 ## 设计令牌摘要
 

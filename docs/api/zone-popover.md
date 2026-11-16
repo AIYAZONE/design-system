@@ -26,6 +26,9 @@
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
 | `placement` | `placement` | `Placement` | `'bottom'` |  |
+| `fitSize` | `fit-size` | `Boolean` | `false` |  |
+| `offset` | `offset` | `Number` | `8` |  |
+| `arrowPadding` | `arrow-padding` | `Number` | `8` |  |
 | `target` | `target` | `string` | — |  |
 
 ## 事件

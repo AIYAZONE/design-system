@@ -25,18 +25,21 @@
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `variant` | `variant` | `"primary" \| "secondary" \| "text"` | `"primary"` | ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 / export class ZoneButton extends LitElement { static styles = [unsafeCSS(styles)] as CSSResultGroup; protected firstUpdated(): void { if (this.shadowRoot) adoptInternalStyles(this.shadowRoot); } /** 按钮变体 |
+| `variant` | `variant` | `"primary" \| "secondary" \| "text"` | `"primary"` | 按钮变体 |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "danger" \| "custom"` | `"default"` | 按钮种类 |
 | `size` | `size` | `"extra" \| "large" \| "medium" \| "small"` | `"large"` | 按钮尺寸 |
 | `interaction` | `interaction` | `"default" \| "shine"` | `"default"` | 按钮交互风格 |
 | `label` | `label` | `string` | — | 按钮标签（无障碍访问） |
-| `href` | `href` | `string` | — | 是否加载中 |
+| `loading` | `loading` | `Boolean` | `false` | 是否加载中 |
+| `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
+| `href` | `href` | `string` | — | 链接地址，设置后渲染为 <a> |
 | `icon` | `icon` | `string` | — | 图标名称 |
 | `iconPosition` | `icon-position` | `"prev" \| "next"` | `"next"` | 图标位置：prev（文本前）/ next（文本后） |
 | `iconMode` | `icon-mode` | `"inline" \| "capsule"` | `"inline"` | 图标呈现模式：inline（常规图标）/ capsule（胶囊尾缀） |
 | `target` | `target` | `string` | — | 链接目标 |
 | `type` | `type` | `"button" \| "submit" \| "reset"` | `"button"` | 按钮类型 |
-| `form` | `form` | `string \| HTMLFormElement` | — | 是否自动聚焦 |
+| `autofocus` | `autofocus` | `Boolean` | `false` | 是否自动聚焦 |
+| `form` | `form` | `string \| HTMLFormElement` | — | 关联的表单 |
 
 ## 事件
 

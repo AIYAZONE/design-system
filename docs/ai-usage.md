@@ -36,8 +36,9 @@
 | 下拉选择、级联选择 | `<zone-dropdown>` / `<zone-filter-select>` |
 | 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
 | 加载中 | `<zone-spinner>` |
-| 操作结果反馈 | `<zone-toast>` |
+| 操作结果反馈 | `<zone-toast>`（声明式：`closed` 默认 false＝显示，初始隐藏必须设 `closed`） |
 | 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
+| 文本/邮箱/密码等输入框 | ZDS 暂无输入框组件：用原生 `<input>` 并全部用 `--zone-*` 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 `zone-input`） |
 
 完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
 

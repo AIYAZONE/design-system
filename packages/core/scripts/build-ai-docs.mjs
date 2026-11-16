@@ -90,24 +90,49 @@ function expandType(typeText, aliases, depth = 0) {
 /** 解析 @property/@state 装饰的字段 */
 function parseDecoratedFields(src) {
   const fields = [];
-  // 匹配 [JSDoc] @decorator(...) [name][?]: type [= default];
-  const re =
-    /(?:\/\*\*([\s\S]*?)\*\/\s*)?@(property|state)\(([\s\S]*?)\)\s*(?:@\w+\([^)]*\)\s*)?([A-Za-z_$][\w$]*)\s*\??\s*:\s*([^=\n]+?)\s*(?:=\s*([^;\n]+))?;/g;
+  // 先匹配装饰器字段本体，再「向前回看」紧邻（仅隔空白）的 JSDoc 块。
+  // 旧实现把 JSDoc 放进同一条正则，惰性回溯会跨越类注释+类体，
+  // 把类源码吞进第一个属性的说明，且后续属性连环错位/丢失。
+  const propRe = /@(property|state)\s*\(/g;
   let m;
-  while ((m = re.exec(src))) {
-    const [, doc, kind, decoratorBody, name, type, def] = m;
+  while ((m = propRe.exec(src))) {
+    // 平衡括号扫描装饰器体（@property 内可嵌套 hasChanged() 等含括号的配置）
+    let depth = 1;
+    let i = m.index + m[0].length;
+    while (i < src.length && depth > 0) {
+      if (src[i] === '(') depth++;
+      else if (src[i] === ')') depth--;
+      i++;
+    }
+    const kind = m[1];
+    const decoratorBody = src.slice(m.index + m[0].length, i - 1);
+    // 字段声明紧跟装饰器（允许中间再叠其他装饰器）
+    const fm = /^\s*(?:@\w+\s*\([^)]*\)\s*)?([A-Za-z_$][\w$]*)\s*\??\s*(?::\s*([^=\n]+?)\s*)?(?:=\s*([^;\n]+))?;/.exec(
+      src.slice(i)
+    );
+    if (!fm) continue;
     if (kind === 'state') continue; // 内部状态不作为公开 API
+    // 向前回看：取紧邻该装饰器（仅隔空白）的最后一个 JSDoc 块
+    const before = src.slice(0, m.index);
+    const start = before.lastIndexOf('/**');
+    let doc = '';
+    if (start !== -1) {
+      const tail = before.slice(start);
+      const close = /\*\/\s*$/.exec(tail);
+      if (close) doc = tail.slice(3, close.index);
+    }
     const attrMatch = /attribute\s*:\s*false/.test(decoratorBody);
     const reflect = /reflect\s*:\s*true/.test(decoratorBody);
     const typeHint = /type\s*:\s*(Boolean|Number|String)/.exec(decoratorBody);
     fields.push({
-      name,
-      attribute: attrMatch ? null : name.replace(/([A-Z])/g, (_, c) => '-' + c.toLowerCase()),
+      name: fm[1],
+      attribute: attrMatch ? null : fm[1].replace(/([A-Z])/g, (_, c) => '-' + c.toLowerCase()),
       reflects: reflect,
-      type: type?.trim() ?? (typeHint ? typeHint[1] : 'string'),
-      default: def?.trim() ?? null,
+      type: fm[2]?.trim() ?? (typeHint ? typeHint[1] : 'string'),
+      default: fm[3]?.trim() ?? null,
       description: parseJsDocBlock(doc),
     });
+    propRe.lastIndex = i + fm[0].length;
   }
   return fields;
 }
@@ -379,6 +404,7 @@ function llmsIndex() {
   L.push('');
   L.push('> ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。');
   L.push('> 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。');
+  L.push(`> 版本：${rootPkg.name}@${rootPkg.version} · 生成时间：${new Date().toISOString().slice(0, 10)}（版本不同请勿使用缓存）`);
   L.push('');
   L.push('## 使用规则（必须遵守）');
   L.push('');
@@ -410,6 +436,7 @@ function llmsIndex() {
     const brief = c.summary.length > 42 ? c.summary.slice(0, 42) + '…' : c.summary;
     L.push(`| \`<${c.tag}>\` | ${brief.replace(/\n/g, ' ') || '—'} | [${c.tag}.md](./docs/api/${c.tag}.md) |`);
   }
+  L.push(`| \`<zone-icon>\` | 图标（名称清单见下方「图标库」章节） | /icons/ |`);
   L.push('');
   L.push('## 设计令牌摘要');
   L.push('');
