@@ -233,7 +233,7 @@ function genStaticCss() {
   for (const [k, v] of Object.entries(v3.icon)) L.push(`  --zone-color-icon-${k}: ${v};`);
   for (const [k, v] of Object.entries(v3.background)) {
     const key = /^bg\d+$/.test(k) ? 'bg-' + k.slice(2) : k.replace(/([A-Z])/g, (_, c) => '-' + c.toLowerCase());
-    const val = typeof v === 'string' && v.startsWith('$') ? color[v.slice(1).split('.')[1]] : v;
+    const val = typeof v === 'string' && v.startsWith('$') ? color[v.slice(1).split('.').at(-1)] : v;
     L.push(`  --zone-color-${key}: ${val};`);
   }
   for (const [k, v] of Object.entries(v3.line)) L.push(`  --zone-color-${k}: ${v};`);

@@ -194,3 +194,53 @@ export const selfAssessment = {
     },
   ],
 } as const;
+
+export const currentArchitecture = [
+  {
+    number: '01',
+    title: '设计源数据',
+    implementation: 'packages/tokens · packages/core · packages/icons',
+    detail: 'DTCG 风格令牌、Lit 自定义元素与 SVG 图标保存在仓库中。',
+    output: '令牌 CSS / TypeScript · Web Components · 图标包',
+  },
+  {
+    number: '02',
+    title: '生成的使用说明',
+    implementation: 'Custom Elements Manifest · zone-manifest · docs/api',
+    detail: '组件属性和用法从组件源码提取，再生成 API 文档与 AI 可读索引。',
+    output: '组件 API 文档 · llms.txt · llms-full.txt',
+  },
+  {
+    number: '03',
+    title: '交付与消费',
+    implementation: 'npm · CDN · Storybook · examples · portal',
+    detail: '开发者可在不同框架的页面中使用自定义元素；门户提供文档和完整页面样例。',
+    output: '可安装的包 · 交互示例 · 机器可读参考',
+  },
+] as const;
+
+export const currentChecks = [
+  { name: '源码与包', detail: '构建、类型检查和组件测试' },
+  { name: '设计资产', detail: '令牌生成物与裸色值规则' },
+  { name: '文档', detail: '组件清单、API 文档和 AI 索引同步' },
+  { name: '页面样例', detail: 'ai-demo 的 HTML/JS 组件 API、图标名和令牌值校验' },
+  { name: '呈现', detail: 'Storybook 渲染冒烟；Chromatic 配置后执行视觉回归' },
+] as const;
+
+export const futureWork = [
+  {
+    state: '按真实复用推进',
+    title: '业务组合组件',
+    detail: '某种业务模式在多个真实页面重复后，再考虑沉淀为 ZBC。',
+  },
+  {
+    state: '尚未建设',
+    title: 'Atlas 内容平台',
+    detail: '当前仓库没有 CMS、Schema API 或可视化内容搭建运行时。',
+  },
+  {
+    state: '由业务系统负责',
+    title: '站点运行监控与发布治理',
+    detail: '灰度、业务转化、全局可观测性不属于当前设计系统仓库的已交付能力。',
+  },
+] as const;

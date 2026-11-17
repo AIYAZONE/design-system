@@ -1,10 +1,10 @@
-# ZDS 迭代路线图（AI 约束层升级计划）
+# ZDS 工程与产品演进路线
 
-> **定位**：ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
+> **定位**：ZDS 维护可版本化的设计令牌、Lit Web Components、图标与机器可读组件说明。AI 文档提供上下文，不限制模型输出；仓库 CI 检查本仓库的样例，不替下游项目背书。
 >
-> **当前阶段**：🏁 阶段 0–5 全部完成，分支保护已配置，计划内工作全部收官
+> **当前阶段**：🟢 阶段 0–6 已完成；后续按真实消费项目反馈迭代
 >
-> **最后更新**：2026-11-15
+> **最后更新**：2026-11-16
 
 ---
 
@@ -25,8 +25,9 @@
 | 1 | Tokens 真源化（DTCG JSON → 生成物） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
 | 2 | AI 可消费文档（CEM + API 规格 + llms.txt） | 3–4 天 | 🟢 已完成 | 2026-11-13 |
 | 4 | ZBC 薄层规范（与阶段 2 并行） | 1 天 | 🟢 已完成 | 2026-11-13 |
-| 3 | CI 质量门禁（GitHub Actions 六关） | 2–3 天 | 🟢 已完成 | 2026-11-15 |
+| 3 | CI 质量门禁（构建、类型、测试、令牌、文档、Storybook） | 2–3 天 | 🟢 已完成 | 2026-11-15 |
 | 5 | 依赖大版本升级（Vite/Vitest/Storybook） | 2–3 天 | 🟢 已完成 | 2026-11-13 |
+| 6 | 定位收敛、站点呈现与 AI 样例验证 | 持续 | 🟢 已完成 | 2026-11-16 |
 
 依赖关系：`0 → 1 →（2 ∥ 4）→ 3 → 5`。合计约 10–14 人天。
 
@@ -74,12 +75,12 @@
 - [x] ~~Storybook 接 CEM~~ → **调整**：组件 API 规格由 `docs/api/*.md` 承载（生成器输出），Storybook autodocs 维持现状（避免双真源）
 - [x] 文档生成器 `pnpm docs:gen`：CEM + 源码增强 + tokens → `docs/api/zone-*.md`（快速使用 / 属性表 / 事件 / 插槽 / 可覆盖 CSS 变量 / 约束）+ `docs/api/README.md` 索引
 - [x] 站点 AI 入口（`apps/portal/public/`，构建时随 dist 发布）：
-  - [x] `/llms.txt` —— 组件索引 + 五条硬约束 + 令牌摘要 + 安装方式
+  - [x] `/llms.txt` —— 组件索引 + 使用建议 + 令牌摘要 + 安装方式
   - [x] `/llms-full.txt` —— llms 索引 + 10 组件全量规格 + AI 使用规范 拼接
-  - [x] `/ai-usage.html` —— AI 生成页面规范（由 `docs/ai-usage.md` 单真源渲染：三条硬约束 / 令牌规则表 / 组件选择指南 / 提示词模板 / 正反例 / 验收清单）
+  - [x] `/ai-usage.html` —— AI 生成页面指南（由 `docs/ai-usage.md` 单真源渲染：资料使用、样例检查范围、提示词起点与人工验收）
 - [x] 同步校验 `pnpm docs:check`：CEM/清单/文档/llms 产物与源码不一致即失败（阶段 3 接入 CI）
 
-**验收**：新增组件后一条 `pnpm docs:build` 自动更新三处产物；任一 AI 助手拿到 `llms.txt` + 组件文档即可生成符合 ZDS 规范的页面代码。
+**验收**：新增组件后一条 `pnpm docs:gen` 自动更新清单与 API 文档；AI 可读取这些资料作为上下文，生成结果仍需检查。
 
 ---
 
@@ -91,7 +92,7 @@
   - [x] 准入规则：同一模式出现 **≥3 处复用**才沉淀为 ZBC
   - [x] API 形状约定：受控/非受控、事件命名（`zone-biz-*` custom event）、样式钩子只暴露 CSS 变量
   - [x] 组合优先：ZBC 必须由基础组件 + token 组合而成，禁止重写原语
-  - [x] AI 页面生成 prompt 模板 + 校验清单（与 `/ai-usage.html` 同源，`docs/ai-usage.md`）
+  - [x] AI 页面生成提示词起点 + 人工检查建议（与 `/ai-usage.html` 同源，`docs/ai-usage.md`）
 - [x] portal 全景图 Domain 层文案已含「规划中 / Atlas 过渡供给」，与规范语义一致
 
 **验收**：规范文档发布到文档站；占位芯片文案与规范一致。
@@ -126,6 +127,23 @@
 
 ---
 
+## 阶段 6：定位收敛、站点呈现与 AI 样例验证
+
+**目标**：将项目定位落到已交付的源码、产物和检查上；让门户更清楚地呈现真实组件与架构边界；用可复现检查代替“AI 一定合规”的文案承诺。
+
+- [x] README 与 AI 入口改为事实型描述：Lit 是实现技术；AI 文档是上下文；下游项目需要自行验证
+- [x] 首页改为组件实物演示、源码到产物的说明、接入入口；架构页区分当前实现与未来事项
+- [x] 建立站点视觉 tokens，并统一首页、架构页、共享导航、页脚与 AI 指南页的呈现
+- [x] 增加 `check:ai-demo`：对照组件清单、图标文件与令牌生成物检查静态页面样例，并加入 CI
+- [x] 修复样例中的无效组件属性；修复 tokens CSS 导出中白色别名被写成 `undefined` 的生成器缺陷
+- [x] 在指南中记录静态规则覆盖范围与无法替代的人工、运行时和下游检查
+
+**验收**：`check:ai-demo` 通过；令牌产物与源码同步；门户构建成功；主要视口检查无明显溢出。
+
+**边界**：仓库样例的静态检查不是模型约束，也不代表任意生成代码、运行时交互或下游页面已合规。
+
+---
+
 ## 决策登记
 
 | # | 决策项 | 推荐 | 状态 | 结论 |
@@ -151,10 +169,12 @@
 | 2026-11-13 | icons Storybook 下线：/icons/ 改为自建静态图标库页（搜索/分类/尺寸切换/复制图标名），build:all 少一个 Storybook 构建步；图标名清单（113 个）进入 llms.txt 与 llms-full.txt，AI 可直接取用合法图标名；icons 包 storybook 全家桶依赖移除（24 个） |
 | 2026-11-16 | **npm 首发**：@aiyazone/design-system@0.3.1 与 @aiyazone/tokens@0.1.0 上线 registry（经暂存发布 + 2FA 批准，npm 2026-08 新规）；发布配置修正（prepublishOnly 去递归发布、publishConfig public 统一、tokens exports）；release.yml 就绪（tag 触发 + OIDC trusted publishing + 版本校验） |
 | 2026-11-16 | **自动发版全链路打通**：Trusted Publisher 双包配置生效，v0.3.2 实弹验证 OIDC 发布（仓库零 npm token）；npm 首发版本文档统一为总包（PR #2/#3）；0.0.0-stage 占位符清理；Chromatic token 轮换 + GitHub Secret 接入；stage 分支删除，分支保护生效（PR 流程） |
-| 2026-11-16 | **AI 实测闭环（阶段 2 验收）**：按线上 llms.txt/llms-full.txt 生成「账户设置」样例页 /ai-demo.html（CDN 直用 npm 包，六条验收清单通过）；实测暴露并修复 AI 文档解析器三大缺陷（JSDoc 跨注释回溯污染 / 无类型标注字段丢失 / 嵌套括号装饰器截断），组件属性文档 78 → 117；llms.txt 增版本与生成时间标注；ai-usage 补输入框兜底规范；ZBC 首个候选 zone-input 登记（1/3） |
+| 2026-11-16 | **AI 实测闭环（阶段 2 验收）**：按线上 llms.txt/llms-full.txt 生成「账户设置」样例页 /ai-demo.html（CDN 直用 npm 包，初版人工清单通过）。阶段 6 的 API 与运行时检查随后发现 `loading-icon` 不受支持且下拉应赋值 `options` 而非 `data`，均已修正；另修复令牌 CSS 的白色别名输出 `undefined`。AI 资料不再描述为执行约束 |
 | 2026-11-16 | **门户视觉与结构收敛**：首页改为事实型文案（版本标签 + 数据事实）+「查/抄/喂 AI/了解」分组入口矩阵 + 浅色安装块 + 一行事实条，删除口号/光晕/深色终端块/大卡；架构页取消双 Tab 改纵向（全景图为主体 → AI 生成流水线 → Non-goals），删除与全景图重复的分层/门禁/发布段；修复品牌名误替换（AIYAZDS → AIYAZONE）；导航「文档」更名「组件」 |
+| 2026-11-17 | **门户编辑风重构 + 排版与圆角收敛**：首页改为封面式（事实文案 + LIVE SPECIMEN 真实组件演示 + 交付路径三步 + AI 检查深色块 + 安装区），架构页改为「系统边界按代码说」三节（现状 / 质量闭环 / 明确的未来项）；新增编辑风设计令牌 tokens.css（mono 眉标 + hairline + 编号章节）；修正中文排版（节标题 34-56px → 22-28px、Hero ≤44px、行高 1.18、字距 -0.01em）与圆角语言（2-4px → 8/12/16px，与 logo rx=8 统一），修复 specimen 卡与主按钮直角残留；CI 增 AI 样例页检查关（check-ai-demo）；tokens 导出 CSS 解析基础色别名（changeset patch）；README 定位改写 |
 | 2026-11-16 | **首页双轨叙事重构 + 架构页独立（方案 B）**：首页重写为「一套零件，两种写法」（给人用 / 给 AI 用双栏 + 两种引入方式 + 七关门禁徽章 + 紧凑入口行）；/architecture.html 为双视图页：「架构总览」（AI 生成流水线 · 四层单向依赖 · 七道门禁表 · 发布链路 · Non-goals）+「治理全景图」（原工程与运行治理全景图完整保留，含业务分层/C4/KPI/成熟度/升级路线，支持 ?view=panorama 直达）；命名统一 ZONE → ZDS；导航新增「架构」；portal 改多入口构建（index + architecture） |
 | 2026-11-13 | 阶段 1 余项清零：docs/tokens 四份 mdx 的色板/尺寸/圆角/层级表格段改为 tokens.json 自动渲染（build-docs-mdx.mjs，docs:gen/docs:check 链路接入），顺带修正手写表格漂移（尺寸 5 档缺失）；并补入此前缺失的框架色 frame 组。阶段 5 开始：vitest 1 → 3 |
 | 2026-11-13 | 阶段 5 完成：vitest 1→3（294 测试全绿）→ vite 5→7（vite-plugin-dts 5 / static-copy 3.3，弃用 tsconfig 选项清理）→ storybook 8→9（9.1.21，addons 精简，blocks/manager-api/theming 导入迁移，索引 79 stories + 22 docs 完整）。全部按单步提交合入，各步全门禁通过。计划内工作全部完成，仅余分支保护需管理员配置 |
 | 2026-11-13 | 收官后既定后续落地：Storybook test-runner 接入（test-runner 0.23.0 兼容 SB9；静态构建冒烟 79/79 stories 全过；CI 增为第 7 关，位于 storybook 构建与 Chromatic 之间）。本机备忘：公司网络证书链拦截 playwright 浏览器下载，已用本地 chromium-1234 修订版符号链接为 1254 绕过（CI 无此问题） |
 | 2026-11-15 | 分支保护配置完成（最后一项人工操作清零）：管理员通过 GitHub Rulesets 为 master/develop 配置 required pull request + required status check（`Build · Type · Test · Tokens · Docs`）+ up to date 约束。阶段 0–5 计划内工作全部收官 |
+| 2026-11-16 | **阶段 6 完成**：README、llms 与 AI 指南改为准确表达；门户首页以实际 Lit 组件演示，架构页按当前实现与未来事项分层；新增 `check:ai-demo` 对照组件 HTML/JS API、图标、令牌与表单标签检查，并接入 CI；统一门户与 AI 指南页的纸白/石墨/橙色视觉和窄屏导航 |

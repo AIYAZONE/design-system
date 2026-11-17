@@ -7,19 +7,19 @@
 
 - **全称：** AIYAZONE Design System - AIYAZONE 设计系统
 - **简写：** ZDS
-- **介绍：** 作为通用设计系统，按照前端规范，基于 Web Components + Vite + Lit + Storybook 设计实现跨技术栈的 Web 端基础库。采用 Monorepo 架构，包含核心组件、图标库、国际化和工具函数四个独立包。
-- **目标：** Shoelace/Spectrum/Baklava
+- **介绍：** 面向多技术栈页面的 Web 基础库。以 Lit 自定义元素、设计令牌、图标和机器可读组件说明为核心，采用 Monorepo 管理源码、文档、示例与发布包。
+- **当前边界：** Lit 是组件实现技术；发布后的自定义元素可被不同框架或原生 HTML 使用。AI 文档提供上下文，不限制模型输出；CI 检查仓库自己的页面样例，不替下游项目背书。
 - **仓库：** [https://github.com/AIYAZONE/design-system](https://github.com/AIYAZONE/design-system)
 - **文档站点：** [https://design.aiyazone.com](https://design.aiyazone.com)
 
 ## 1.1 项目定位
 
-- **一句话：** ZDS 是一套「标准零件 + 统一规范」：不管页面是人写的还是 AI 写的，都只能用这套零件和规范来拼，出来的东西风格统一、质量达标。
-- **对内：** 以前组件库是给开发者用的工具箱；现在 AI 也会写代码，但没人管它会乱来。ZDS 就是给 AI 上的规矩——只用我们的颜色、间距、组件，写出来的页面自然不跑偏。
-- **对外：** AIYAZONE Design System：让每一行前端代码——无论出自人还是 AI——都遵循同一套设计语言，产出可靠、一致、可维护。
+- **一句话：** ZDS 把设计令牌、Lit Web Components、图标和组件 API 文档放进同一套可版本化的前端基础设施。
+- **对内：** 设计师和开发者维护源码；生成器产出主题样式、类型、组件清单和 API 文档；CI 检查仓库样例是否与这些来源一致。
+- **对外：** 人和 AI 可以参考相同的组件与令牌资料。最终页面仍由工程检查、交互验证与设计评审负责。
 - 边界：设计语言与通用组件的唯一来源；业务逻辑不进入本设计系统
 - 下游依赖：业务站点、前端渲染层
-- 演进路线：见 [docs/ROADMAP.md](./docs/ROADMAP.md)（AI 时代约束层升级计划，含进度追踪）
+- 演进路线：见 [docs/ROADMAP.md](./docs/ROADMAP.md)（已完成的工程化阶段与当前站点、AI 样例改进）
 
 ## 1.2 项目目录结构
 
@@ -27,7 +27,7 @@
 design-system/
 ├─ apps/                 示例与预览工程
 │  ├─ examples/         组件演示与联调示例站
-│  ├─ portal/           门户首页（导航入口）
+│  ├─ portal/           门户、架构页、AI 说明与实测样例
 │  ├─ storybook/        Storybook 项目
 │  ├─ styles/           示例站公共样式
 │  └─ index.ts          示例入口聚合
@@ -35,7 +35,8 @@ design-system/
 │  ├─ core/             核心 Web Components 组件库
 │  ├─ icons/            SVG 图标库与 Storybook
 │  ├─ i18n/             国际化能力（window.i18n）
-│  └─ utils/            通用工具函数
+│  ├─ utils/            通用工具函数
+│  └─ tokens/           DTCG 风格令牌源与生成物
 ├─ src/                 设计系统根入口与样式
 │  ├─ styles/           全局样式与主题
 │  │  ├─ themes/v1,v2,v3  主题样式与 Tokens
@@ -58,13 +59,13 @@ design-system/
 - src/styles：全局样式唯一来源，入口为 [index.less](./src/styles/index.less)，主题分为 [themes/v1](./src/styles/themes/v1)、[themes/v2](./src/styles/themes/v2) 与 [themes/v3](./src/styles/themes/v3)。
 - docs：包含设计令牌与规范说明（MD/MDX），如 [tokens](./docs/tokens)。
 
-## 2. 目标
+## 2. 当前能力范围
 
-- 兼容所有框架
-- CDN 部署
-- 可通过 CSS 完全自定义
-- 包含深浅两个主题
-- 无障碍优先
+- 以 Web Components 提供跨框架可消费的 UI 基础；具体框架兼容情况以接入测试为准。
+- 支持 npm 包与 CDN 引入；生产页面应锁定明确版本。
+- 通过主题 CSS 变量定制组件外观；可覆盖范围见各组件 API 文档。
+- 保留 v1、v2、v3 主题资产；它们是主题版本，不代表完整的明暗主题方案。
+- 组件测试包含部分无障碍断言；页面仍需自行评估语义、键盘操作和对比度。
 
 ## 3. 发布与部署
 
@@ -101,12 +102,12 @@ ZDS 采用 Monorepo 架构，包含以下独立包：
 
 ### 📦 @aiyazone/core
 - **用途**: 核心 Web Components 组件
-- **包含**: Button, Badge, Dialog, Popover, Spinner, Toast, Tooltip
+- **包含**: 组件数量与 API 以 [zone-manifest.json](./packages/core/zone-manifest.json) 和 [docs/api](./docs/api) 为准。
 - **安装**: `npm install @aiyazone/core`
 - **样式策略**: 组件样式以内联方式注入（`index.less?inline`）；不再自动注入核心包的全局样式，项目需在入口显式引入设计系统样式（见下文）。
 
 ### 🎨 @aiyazone/icons
-- **用途**: 图标库，提供 87+ 个 SVG 图标
+- **用途**: SVG 图标库；可用名称以门户 `/llms.txt` 与 SVG 源文件为准。
 - **特性**: 支持按需导入、Tree-shaking、多种尺寸和颜色
 - **安装**: `npm install @aiyazone/icons`
 - **使用**: `import { ArrowRight, AlertFill } from '@aiyazone/icons'`
@@ -120,6 +121,16 @@ ZDS 采用 Monorepo 架构，包含以下独立包：
 - **用途**: 通用工具函数
 - **包含**: DOM 操作、事件处理、表单控制、通用工具
 - **安装**: `npm install @aiyazone/utils`
+
+### 🎛️ @aiyazone/tokens
+- **用途**: DTCG 风格设计令牌源及 CSS / TypeScript 生成物
+- **安装**: `npm install @aiyazone/tokens`
+
+## AI 使用与验证边界
+
+- `/llms.txt`、`/llms-full.txt` 和 `/ai-usage.html` 为人和 AI 提供组件、令牌和图标参考，不构成对生成结果的强制约束。
+- 仓库内 `apps/portal/public/ai-demo.html` 由 `pnpm --filter @aiyazone/portal run check:ai-demo` 检查；检查器对照组件 HTML/JS API、图标 SVG 和令牌源码，覆盖范围见 [AI 使用指南](./docs/ai-usage.md)。
+- 下游项目需要在自己的代码库中接入适合的 API、令牌、交互和无障碍检查。
 
 ## 5. 使用
 

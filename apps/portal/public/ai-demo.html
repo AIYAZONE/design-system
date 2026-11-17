@@ -18,7 +18,7 @@
       font-size: var(--zone-font-size-14);
     }
     main {
-      max-width: var(--zone-size-176, 44rem);
+      max-width: 44rem;
       margin: 0 auto;
       padding: var(--zone-size-32) var(--zone-size-16) var(--zone-size-64);
     }
@@ -34,8 +34,10 @@
     .card-head zone-icon { font-size: var(--zone-font-size-20); color: var(--zone-color-primary); }
     .card-head h2 { font-size: var(--zone-font-size-16); margin: 0; }
     .field { margin-bottom: var(--zone-size-16); }
+    .field--fill { flex: 1; min-width: 12rem; }
+    .field__control { width: 100%; }
     .field label { display: block; margin-bottom: var(--zone-size-8); font-size: var(--zone-font-size-14); }
-    /* 文档未提供输入框组件：按「只用 token」规范以原生 input 兜底 */
+    /* 当前没有通用输入框组件，因此此页使用原生 input。 */
     .field input {
       width: 100%;
       box-sizing: border-box;
@@ -54,7 +56,9 @@
     .danger { border: 1px solid var(--zone-color-danger); }
     .danger .card-head zone-icon { color: var(--zone-color-danger); }
     .danger p { opacity: .6; margin: 0 0 var(--zone-size-16); }
+    .dialog-copy { margin: 0 0 var(--zone-size-16); }
     .actions { display: flex; justify-content: flex-end; gap: var(--zone-size-12); margin-top: var(--zone-size-24); }
+    .actions--dialog { margin-top: 0; }
   </style>
 </head>
 <body>
@@ -68,13 +72,13 @@
         <h2 id="h-profile">基本资料</h2>
       </div>
       <div class="row">
-        <div class="field" style="flex: 1; min-width: 200px;">
+        <div class="field field--fill">
           <label for="nick">昵称</label>
           <input id="nick" type="text" value="Zone 用户" autocomplete="nickname" />
         </div>
-        <div class="field" style="flex: 1; min-width: 200px;">
+        <div class="field field--fill">
           <label for="tz">时区</label>
-          <zone-dropdown id="tz" style="width: 100%;"></zone-dropdown>
+          <zone-dropdown id="tz" class="field__control"></zone-dropdown>
         </div>
       </div>
     </section>
@@ -98,10 +102,10 @@
       <p>删除账户后数据不可恢复，请谨慎操作。</p>
       <zone-button id="del" kind="danger" variant="secondary" icon="delete-fill" icon-position="prev">删除账户</zone-button>
       <zone-dialog id="confirm" caption="确认删除账户？" aria-label-text="确认删除账户" size="large">
-        <p style="margin: 0 0 16px;">此操作不可恢复，所有数据将被永久清除。确定要继续吗？</p>
-        <div class="actions" style="margin-top: 0;">
+        <p class="dialog-copy">此操作不可恢复，所有数据将被永久清除。确定要继续吗？</p>
+        <div class="actions actions--dialog">
           <zone-button id="cancel" variant="text">取消</zone-button>
-          <zone-button id="confirm-del" kind="danger" loading-icon="loading">确认删除</zone-button>
+          <zone-button id="confirm-del" kind="danger">确认删除</zone-button>
         </div>
       </zone-dialog>
     </section>
@@ -111,9 +115,9 @@
   <zone-toast id="toast" closed countdown-time="3" closable aria-live="polite"></zone-toast>
 
   <script type="module">
-    // 时区下拉（文档：数据含子节点自动树形；此处单层）
+    // 时区下拉（选项由公开的 options 属性传入；此处为单层列表）
     const tz = document.getElementById('tz');
-    tz.data = [
+    tz.options = [
       { value: 'cst', label: '中国标准时间 UTC+8' },
       { value: 'jst', label: '日本标准时间 UTC+9' },
       { value: 'pst', label: '太平洋时间 UTC-8' },

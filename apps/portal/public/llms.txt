@@ -1,16 +1,21 @@
 # AIYAZONE Design System (ZDS)
 
-> ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。
-> 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。
+> ZDS 提供可版本化的设计令牌、Lit 自定义元素、SVG 图标和生成的组件 API 说明。
+> 自定义元素可用于原生 HTML 页面，并可接入支持 Web Components 的前端框架；具体接入方式以目标框架文档为准。
 > 版本：@aiyazone/design-system@0.3.2 · 生成时间：2026-11-16（版本不同请勿使用缓存）
 
-## 使用规则（必须遵守）
+## AI 参考说明
 
-1. 颜色、字号、间距、圆角、层级一律使用 `--zone-*` 令牌，禁止硬编码色值与像素魔法数值；
-2. 页面结构优先用 ZDS 基础组件组合，不得用 `div` 模拟按钮、弹窗、下拉等交互元素；
-3. 组件样式定制只通过 `--zone-*` CSS 变量或公开属性，禁止覆盖 shadow DOM 内部类名；
-4. 交互必须保留键盘可达性与 ARIA 语义；
-5. 响应式断点：桌面 ≥1024px、移动 <1024px（750 设计稿基准），字号/间距令牌已按断点自动缩放。
+以下资料可作为生成页面时的上下文，但提示词和 llms 文件不会限制模型输出，也不构成合规保证。
+本仓库 CI 只检查 apps/portal/public/ai-demo.html 的静态样例；下游项目需要检查自己的代码。
+
+## 使用建议
+
+1. 优先参考已定义的 `--zone-*` 令牌，并核对变量属于当前主题；
+2. 优先使用 API 文档列出的 `zone-*` 组件、属性、事件和插槽；
+3. 样式优先使用公开属性与 CSS 变量；shadow DOM 内部类名不属于稳定的定制接口；
+4. 人工检查键盘操作、语义结构、表单标签、窄屏布局与实际交互；
+5. 需要自动检查时，将规则接入生成代码所在项目的 CI。
 
 ## 安装
 
@@ -65,7 +70,7 @@ import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 ## 图标库（zone-icon）
 
 - 用法：`<zone-icon name="图标名">`，总包引入后可用；颜色随 `currentColor`，大小用 `font-size: var(--zone-font-size-*)` 令牌控制；
-- 图标名**只能取自下方清单，禁止编造**；点击 / 悬停换图用 `hover-name` 属性。
+- 图标名取自 SVG 资源清单；点击 / 悬停换图用 `hover-name` 属性，页面仍需核对名称有效。
 
 ### 系统图标（59 个，节选 40）
 
@@ -80,5 +85,5 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 ## 全量文档
 
 - [llms-full.txt](./llms-full.txt)：全部组件 API 规格拼接（单文件喂给模型）
-- [AI 使用规范](./ai-usage.html)：生成页面时的提示词要点与验收清单
+- [AI 使用指南](./ai-usage.html)：生成页面参考、样例检查范围与人工验收建议
 - Storybook：/storybook/ · 示例站：/examples/ · 图标库：/icons/

@@ -1,102 +1,62 @@
-# AI 使用规范：用 ZDS 生成前端页面
+# AI 使用指南：用 ZDS 生成前端页面
 
-> 这份文档是给 AI（以及给 AI 写提示词的人）看的。目标只有一个：**AI 生成的页面，开箱即符合 ZDS 规范**。
+## 这份指南能做什么
 
-## 一、三条硬约束
+组件说明、令牌和图标清单可以作为 AI 生成页面时的上下文，帮助它选用仓库里已有的能力。提示词和 `llms.txt` 不会限制模型输出，也不能保证生成结果合规。
 
-1. **只用令牌**：颜色、字号、间距、圆角、阴影、层级一律用 `--zone-*` CSS 变量，禁止出现 `#FD5000`、`16px`（间距）、`z-index: 9999` 这类硬编码。
-2. **只用组件**：按钮、弹窗、下拉、提示等交互元素用 `zone-*` 自定义元素，**禁止用 `div`/`span` 模拟**。
-3. **只从外部定制**：样式覆盖只允许通过公开属性与 `--zone-*` 变量，禁止选择 shadow DOM 内部类名。
+本仓库会检查自己的实测样例：脚本对照组件 API 清单、令牌定义和 SVG 图标文件，发现若干常见的静态错误。CI 只检查仓库中的 `ai-demo.html`；使用 ZDS 的下游项目仍需对自己的页面运行适合的检查。
 
-违反任意一条，生成的代码视为**不合格**，即使视觉看起来正确。
+## 建议的生成流程
 
-## 二、令牌使用规则
+1. 先读 `/llms.txt` 了解入口，再按需读 `/llms-full.txt` 和 `docs/api/` 里的具体组件说明。
+2. 选用已存在的 `zone-*` 组件、文档列出的 HTML 属性与 JavaScript 属性、有效图标名和当前主题中的 `--zone-*` 变量。
+3. 让模型输出可运行页面，并人工检查内容、交互、键盘操作和窄屏布局。
+4. 对照组件 API 与令牌真源检查代码。仓库样例可运行 `pnpm --filter @aiyazone/portal run check:ai-demo`；CI 会执行相同检查。
 
-| 需求 | 正确写法 | 禁止写法 |
-|------|----------|----------|
-| 主色 | `color: var(--zone-color-primary)` | `color: #FF6727` |
-| 正文文字 | `color: var(--zone-color-text-l1)` | `color: #242F20` |
-| 间距 | `padding: var(--zone-size-16)` | `padding: 16px` |
-| 字号 | `font-size: var(--zone-font-size-14)` | `font-size: 14px` |
-| 标题排版 | `font: var(--zone-font-h2)` | 手写 `font-size` + `font-weight` + `line-height` |
-| 圆角 | `border-radius: var(--zone-rounded-8)` | `border-radius: 8px` |
-| 层级 | `z-index: var(--zone-index-dialog)` | `z-index: 9999` |
-| 遮罩 | `background: var(--zone-color-overlay-50)` | `rgba(0,0,0,.5)` |
+## 使用时的建议
 
-字号与尺寸令牌已内置响应式缩放（桌面 1rem/16、移动 1rem/32），**不要自己写 media query 调整数值**，直接用令牌即可。
+| 场景 | 建议 |
+|------|------|
+| 主色、正文、状态颜色 | 优先使用当前主题提供的语义颜色令牌，例如 `var(--zone-color-primary)`。先确认变量在主题中定义。 |
+| 字号、间距、圆角、层级 | 优先使用对应的 `--zone-*` 令牌。没有合适令牌时，记录例外或提出令牌需求。 |
+| 按钮、下拉、弹窗、提示 | 优先选择已有 `zone-*` 组件，并按 `docs/api/` 里的属性和事件说明使用。 |
+| 图标 | 使用 `<zone-icon name="…">`，图标名从 `/llms.txt` 或 `packages/icons/src/icons/` 核对。 |
+| 文本输入框 | 当前没有通用输入框组件时，可用原生 `<input>`，并按项目令牌与无障碍要求实现。多处业务复用时，再按 ZBC 流程评估。 |
+| 未覆盖的交互 | 先说明差距并评估组件需求，不要假设现有组件支持未记录的属性或行为。 |
 
-## 三、组件选择指南
-
-| 页面需求 | 使用组件 |
-|----------|----------|
-| 提交 / 取消 / 次要操作 | `<zone-button>`（variant 三变体见文档） |
-| 状态标记 | `<zone-badge>` |
-| 多选 / 勾选 | `<zone-checkbox>` |
-| 模态确认、表单弹窗 | `<zone-dialog>` |
-| 下拉选择、级联选择 | `<zone-dropdown>` / `<zone-filter-select>` |
-| 气泡提示、二次确认 | `<zone-popover>` / `<zone-tooltip>` |
-| 加载中 | `<zone-spinner>` |
-| 操作结果反馈 | `<zone-toast>`（声明式：`closed` 默认 false＝显示，初始隐藏必须设 `closed`） |
-| 图标 | `<zone-icon name="…">`（名称只能取自 llms.txt「图标库」清单，禁止编造） |
-| 文本/邮箱/密码等输入框 | ZDS 暂无输入框组件：用原生 `<input>` 并全部用 `--zone-*` 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 `zone-input`） |
-
-完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 `docs/api/<tag>.md`。
-
-## 四、生成页面的提示词模板
-
-```text
-你是 AIYAZONE 前端工程师。请用 ZDS 设计系统生成【页面描述】。
-
-硬约束：
-1. 颜色/字号/间距/圆角/层级只用 --zone-* 令牌，禁止硬编码数值；
-2. 交互元素只用 zone-* 组件（button/dialog/dropdown/toast 等），禁止 div 模拟；
-3. 样式覆盖只用公开属性与 --zone-* 变量；
-4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
-5. 图标用 <zone-icon name="…">，名称取自 llms.txt 图标库清单，禁止编造；
-6. 响应式使用令牌自动缩放，不写数值 media query。
-
-输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"> + <script type="module">import '@aiyazone/design-system';</script>。
-参考：llms.txt（索引）、llms-full.txt（全量 API）、docs/api/*.md（组件规格）。
-```
-
-## 五、正例与反例
+示例：
 
 ```html
-<!-- ✅ 合格：组件 + 令牌 + 语义 -->
-<zone-button variant="primary" label="提交订单">
-  提交订单
-</zone-button>
-
-<section style="padding: var(--zone-size-24); background: var(--zone-color-card-white);">
+<zone-button variant="primary" label="提交订单">提交订单</zone-button>
+<section style="padding: var(--zone-size-24);">
   <h2 style="font: var(--zone-font-h3); color: var(--zone-color-text-l1);">订单详情</h2>
 </section>
 ```
 
-```html
-<!-- ❌ 不合格：div 模拟按钮 + 硬编码颜色与间距 -->
-<div onclick="submit()" style="background:#FF6727; color:#fff; padding:16px; border-radius:8px;">
-  提交订单
-</div>
+## 提示词起点
+
+```text
+请基于 AIYAZONE Design System 生成【页面描述】。
+
+先阅读 /llms.txt；需要组件细节时再阅读 /llms-full.txt 和 docs/api/ 对应文件。
+使用清单中存在的 zone-* 组件、有效图标名和当前主题中定义的 --zone-* 变量。
+不要假设未记录的属性、事件或交互存在；组件覆盖不到的部分请明确说明。
+输出可运行页面，并列出用到的组件、变量、未覆盖需求和需要人工确认的地方。
+页面完成后，请检查语义结构、表单关联、键盘操作、窄屏布局和控制台错误。
 ```
 
-## 六、验收清单（生成后逐条自检）
+## 实测样例和自动检查
 
-- [ ] 全文搜索 `#` 十六进制色值：0 处（除组件内部）
-- [ ] 全文搜索 `px`：仅允许出现在 `border-width` 等无法令牌化的边线场景
-- [ ] 所有交互元素都是 `zone-*` 组件，且带 `label` 或 `aria-label`
-- [ ] 弹层类组件（dialog/dropdown/popover/toast）的层级来自 `--zone-index-*`
-- [ ] 移动端（<1024px）布局不溢出，字号随令牌自动缩小
-- [ ] 深色/自定义主题下只需切换主题变量即可适配，无需改页面代码
+- [`/ai-demo.html`](./ai-demo.html)：由 AI 起草的账户设置页面，经过源码核对与修订后保留为可运行样例。
+- `pnpm --filter @aiyazone/portal run check:ai-demo`：检查样例中的组件 HTML 属性和已绑定元素的 JavaScript 属性赋值、图标名、CSS 变量，以及颜色和常见间距/字号/圆角/层级写法。
+- CI 运行同一脚本，因此示例代码中出现当前 API 不支持的 HTML/JS 属性或不存在、值无效的令牌时会失败。
 
-## 七、AI 不可自行发明的东西
+检查器覆盖的是当前仓库这一个静态 HTML 样例和一组明确规则。它不能证明任意 AI 输出完整合规，也不能替代运行时交互测试、无障碍评估、视觉审查或下游项目自己的 CI。动态 JavaScript 生成的标记与样式也不在当前静态检查范围内。
 
-- 新的颜色值、新的间距刻度、新的字号档位；
-- 组件的内部结构（如自行拼装 dialog 的遮罩层）；
-- 新的交互模式（ZDS 未覆盖的交互应先提出需求，再补组件）。
+## 人工验收
 
-规范未覆盖的场景，正确做法是**先补 ZDS（组件或令牌），再生成页面**，而不是在页面里绕过规范。
-
-## 八、实测样例
-
-- [`/ai-demo.html`](./ai-demo.html)：按本规范 + llms-full.txt 由 AI 生成的「账户设置」页（表单 / 下拉 / 复选 / 弹窗确认 / 轻提示 / 图标 / 危险操作），CDN 直用 npm 包，可作为生成时的对照样例。
+- 组件属性、事件、插槽与目标版本 API 文档一致；
+- 使用的图标名和令牌名能在当前仓库真源中找到；
+- 表单字段有关联标签，交互控件可键盘操作，并有清晰的可访问名称；
+- 窄屏下内容不溢出，关键流程可以实际完成；
+- 对尚无组件或令牌支持的部分，明确记录例外与后续需求。

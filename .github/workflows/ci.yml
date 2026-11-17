@@ -53,6 +53,9 @@ jobs:
       - name: Docs check（CEM / 清单 / API 文档 / llms 与源码同步）
         run: pnpm run docs:check
 
+      - name: AI 页面样例检查（组件 API / 图标 / 令牌）
+        run: pnpm --filter @aiyazone/portal run check:ai-demo
+
       - name: Build storybook（视觉回归前置）
         run: pnpm --filter @aiyazone/storybook run build:storybook
 

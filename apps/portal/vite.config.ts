@@ -41,6 +41,11 @@ export default defineConfig({
   define: {
     __ZONE_VERSION__: zoneVersion ? JSON.stringify(zoneVersion) : JSON.stringify('unknown'),
   },
+  resolve: {
+    alias: {
+      '@aiyazone/utils': path.join(zoneRoot?.dir ?? process.cwd(), 'packages/utils/src'),
+    },
+  },
   server: {
     host: true
   },
