@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createIconsManifest } from './scripts/icons-manifest.mjs';
 
 const tryReadJson = (filePath: string) => {
   try {
@@ -46,6 +47,24 @@ export default defineConfig({
           if (pathname === '/icons/' || pathname === '/icons') {
             request.url = '/icons/index.html';
             next();
+            return;
+          }
+          const iconsSource = path.resolve(zoneRoot?.dir ?? process.cwd(), 'packages/icons/src/icons');
+          if (pathname === '/icons/icons-manifest.json') {
+            response.setHeader('Content-Type', 'application/json');
+            response.end(JSON.stringify(createIconsManifest(zoneRoot?.dir ?? process.cwd())));
+            return;
+          }
+          if (pathname.startsWith('/icons/assets/')) {
+            const match = /^\/icons\/assets\/(system|social-media)\/([a-z0-9-]+)\.svg$/.exec(pathname);
+            const file = match && path.join(iconsSource, match[1], `${match[2]}.svg`);
+            if (!file || !fs.existsSync(file)) {
+              response.statusCode = 404;
+              response.end('Icon not found');
+              return;
+            }
+            response.setHeader('Content-Type', 'image/svg+xml');
+            fs.createReadStream(file).pipe(response);
             return;
           }
           if (!/^\/(examples|storybook|icons)\//.test(pathname)) { next(); return; }

@@ -6,22 +6,20 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createIconsManifest } from './icons-manifest.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '../../..');
 const iconsSrc = path.join(rootDir, 'packages/icons/src/icons');
 const outDir = process.argv[2] || path.resolve(__dirname, '../dist/icons');
 
-const categories = ['system', 'social-media'];
-const manifest = { generatedBy: 'apps/portal/scripts/build-icons-manifest.mjs', categories: [] };
+const manifest = createIconsManifest(rootDir);
 
-for (const cat of categories) {
+for (const { category: cat, icons } of manifest.categories) {
   const dir = path.join(iconsSrc, cat);
-  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.svg')).sort() : [];
   const assetDir = path.join(outDir, 'assets', cat);
   fs.mkdirSync(assetDir, { recursive: true });
-  for (const f of files) fs.copyFileSync(path.join(dir, f), path.join(assetDir, f));
-  manifest.categories.push({ category: cat, assets: 'assets/' + cat + '/', icons: files.map((f) => f.replace(/\.svg$/, '')) });
+  for (const name of icons) fs.copyFileSync(path.join(dir, `${name}.svg`), path.join(assetDir, `${name}.svg`));
 }
 
 const total = manifest.categories.reduce((n, c) => n + c.icons.length, 0);

@@ -19,12 +19,11 @@ function mount() {
   const style = document.createElement('style');
   style.textContent = `
     body { margin:0; }
-    #root { position:relative; top:76px; height:calc(100dvh - 76px); }
+    #root { position:relative; top:var(--portal-header-height); height:calc(100dvh - var(--portal-header-height)); }
     #root > div { height:100%; min-height:0; }
     .portal-topbar { position:fixed; inset:0 0 auto; }
     .sidebar-item[data-selected="true"] a, .sidebar-item[data-selected="true"] svg { color:var(--portal-on-accent); }
     @media(max-width:900px) {
-      #root { top:68px; height:calc(100dvh - 68px); }
       #root > div > div:has(> .sb-bar > button[aria-label="Open navigation menu"]) { height:49px; flex-basis:49px; }
       .sb-bar:has(> button[aria-label="Open navigation menu"]) { height:48px; }
     }`;

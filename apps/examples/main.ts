@@ -1,6 +1,7 @@
 import '@aiyazone/design-system';
 import './styles/public.less';
 import '../portal/public/shared/site-header.css';
+import '../portal/public/shared/page-intro.css';
 import '../portal/public/shared/site-footer.css';
 import '../portal/public/shared/site-header.js';
 import '../portal/public/shared/site-footer.js';
