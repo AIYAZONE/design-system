@@ -53,6 +53,8 @@
     "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
     "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
     "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs",
+    "packages:check": "node scripts/check-package-exports.mjs",
+    "packages:test": "node scripts/check-packed-consumer.mjs",
     "tokens:build": "pnpm --filter @aiyazone/tokens run build",
     "tokens:check": "pnpm --filter @aiyazone/tokens run check",
     "tokens:lint": "pnpm --filter @aiyazone/tokens run lint",
@@ -94,6 +96,7 @@
     "dist/index-v2.css",
     "dist/index-v3.css",
     "dist/chunks/*.js",
+    "dist/chunks/*.cjs",
     "dist/fonts/**",
     "dist/assets/**",
     "dist/zone.d.ts",
@@ -101,6 +104,12 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4"
+  },
+  "peerDependencies": {
+    "lit": "^3.3.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",

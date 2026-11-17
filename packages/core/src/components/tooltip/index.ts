@@ -267,6 +267,6 @@ export default ZoneTooltip;
 
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-tooltip": ZoneTooltip;
+    "zone-tooltip": Pick<ZoneTooltip, keyof ZoneTooltip>;
   }
 }

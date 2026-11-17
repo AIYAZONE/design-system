@@ -820,6 +820,6 @@ export class ZoneFilterSelect extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-filter-select": ZoneFilterSelect;
+    "zone-filter-select": Pick<ZoneFilterSelect, keyof ZoneFilterSelect>;
   }
 }

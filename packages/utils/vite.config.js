@@ -11,18 +11,16 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: Object.fromEntries(['index', 'common', 'elements', 'event', 'form-control'].map(name => [name, resolve(__dirname, `src/${name}.ts`)])),
       name: '@aiyazone/utils',
-      fileName: (format) => `index.${format}.js`,
-      formats: ['es', 'cjs']
+      fileName: (format, name) => `${name}.${format === 'cjs' ? 'cjs' : 'js'}`,
     },
     rollupOptions: {
-      external: ['@open-wc/form-control'],
-      input: 'src/index.ts',
-      output: {
-        entryFileNames: 'index.[format].js',
-        chunkFileNames: 'chunks/[name].[format].js'
-      }
+      external: id => /^(?:lit|@lit\/[^/]+)(?:$|\/)/.test(id),
+      output: ['es', 'cjs'].map(format => ({
+        format,
+        chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`
+      }))
     },
     sourcemap: true,
     minify: 'esbuild',
@@ -31,8 +29,7 @@ export default defineConfig({
   plugins: [
     dts({
       outDir: 'dist',
-      rollupTypes: true,
-      insertTypesEntry: true,
+      entryRoot: 'src',
       tsconfigPath: resolve(__dirname, 'tsconfig.json'),
       skipDiagnostics: true
     })

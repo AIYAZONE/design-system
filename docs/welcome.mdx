@@ -1,6 +1,26 @@
-import { Meta, Markdown } from '@storybook/addon-docs/blocks';
-import ReadMe from '../README.md?raw';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="介绍" />
 
-<Markdown>{ReadMe.replaceAll('(./public/', import.meta.env.PROD ? '(./' : '(/')}</Markdown>
+# AIYAZONE 组件文档
+
+查找组件，了解属性和事件，再把它用到页面里。
+
+- [用 AI 做页面：复制使用指令](/ai-usage.html)
+- [打开账户设置示例](/ai-demo.html)
+- [查看全部页面与组件示例](/examples/)
+- [查找并复制图标名称](/icons/)
+
+## 如何使用文档
+
+从左侧目录选择组件。文档页提供用法和可操作的示例，组件预览页可以调整参数，查看不同状态。
+
+组件演示保留设计系统的真实主题，文档外框采用深色。页面中的颜色、字号和间距说明在“设计变量”目录里。
+
+## 安装到项目
+
+```sh
+pnpm add @aiyazone/design-system
+```
+
+需要让 AI 阅读组件说明时，从 [llms.txt](/llms.txt) 开始。生成页面后，检查内容、按钮、表单与手机布局。

@@ -110,6 +110,6 @@ export class ZoneCheckbox extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-checkbox': ZoneCheckbox;
+    'zone-checkbox': Pick<ZoneCheckbox, keyof ZoneCheckbox>;
   }
 }

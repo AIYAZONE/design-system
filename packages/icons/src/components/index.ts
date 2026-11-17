@@ -1,5 +1,6 @@
 import { css, html, LitElement, TemplateResult } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { property, state } from "lit/decorators.js";
+import { customElement } from "@aiyazone/utils";
 import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import { event, EventDispatcher } from "../utils/event";
 import { getIconPath, getIconCategory } from "../types";

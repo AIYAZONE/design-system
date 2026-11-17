@@ -182,6 +182,6 @@ export type { Placement };
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-popover': ZonePopover;
+    'zone-popover': Pick<ZonePopover, keyof ZonePopover>;
   }
 }

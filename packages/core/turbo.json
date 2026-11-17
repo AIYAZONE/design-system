@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../../scripts/build-core-types.rollup.config.mjs",
+        "../../tsconfig.types.json",
+        "../../src/styles/**",
+        "../../tokens.css"
+      ]
+    }
+  }
+}

@@ -198,49 +198,51 @@ export const selfAssessment = {
 export const currentArchitecture = [
   {
     number: '01',
-    title: '设计源数据',
+    title: '组件、统一样式和图标',
     implementation: 'packages/tokens · packages/core · packages/icons',
-    detail: 'DTCG 风格令牌、Lit 自定义元素与 SVG 图标保存在仓库中。',
+    detail: '按钮、弹窗等常用组件，配套颜色、字号、间距和可搜索的图标。',
     output: '令牌 CSS / TypeScript · Web Components · 图标包',
   },
   {
     number: '02',
-    title: '生成的使用说明',
+    title: '文档如何生成',
     implementation: 'Custom Elements Manifest · zone-manifest · docs/api',
-    detail: '组件属性和用法从组件源码提取，再生成 API 文档与 AI 可读索引。',
+    detail: '从组件源码提取属性和用法，生成组件文档与 AI 可读说明，方便核对已有功能。',
     output: '组件 API 文档 · llms.txt · llms-full.txt',
   },
   {
     number: '03',
-    title: '交付与消费',
+    title: '安装与使用',
     implementation: 'npm · CDN · Storybook · examples · portal',
-    detail: '开发者可在不同框架的页面中使用自定义元素；门户提供文档和完整页面样例。',
+    detail: '在前端项目中安装组件包，或在静态 HTML 中引入固定版本。页面示例展示实际操作。',
     output: '可安装的包 · 交互示例 · 机器可读参考',
   },
 ] as const;
 
 export const currentChecks = [
-  { name: '源码与包', detail: '构建、类型检查和组件测试' },
-  { name: '设计资产', detail: '令牌生成物与裸色值规则' },
+  { name: '源码与包', detail: '构建、代码规范、类型检查、组件测试和包文件校验' },
+  { name: '独立安装', detail: '六个打包产物的 ESM/CJS、严格类型、混用注册、多语言和生产样式' },
+  { name: '发布前检查', detail: '标签发布先执行同一提交的 CI；远端运行结果需提交后确认' },
+  { name: '统一样式', detail: '样式生成结果与未使用样式变量的颜色' },
   { name: '文档', detail: '组件清单、API 文档和 AI 索引同步' },
-  { name: '页面样例', detail: 'ai-demo 的 HTML/JS 组件 API、图标名和令牌值校验' },
-  { name: '呈现', detail: 'Storybook 渲染冒烟；Chromatic 配置后执行视觉回归' },
+  { name: '页面示例', detail: '账户设置示例的组件属性、图标名、样式变量与表单标签' },
+  { name: '页面呈现', detail: '组件文档渲染检查；配置截图服务后可比较视觉变化' },
 ] as const;
 
 export const futureWork = [
   {
     state: '按真实复用推进',
     title: '业务组合组件',
-    detail: '某种业务模式在多个真实页面重复后，再考虑沉淀为 ZBC。',
+    detail: '某种业务模式在多个真实页面重复后，再考虑做成可复用的组合组件。',
   },
   {
     state: '尚未建设',
     title: 'Atlas 内容平台',
-    detail: '当前仓库没有 CMS、Schema API 或可视化内容搭建运行时。',
+    detail: '当前尚未提供内容管理或可视化页面搭建功能。',
   },
   {
     state: '由业务系统负责',
-    title: '站点运行监控与发布治理',
-    detail: '灰度、业务转化、全局可观测性不属于当前设计系统仓库的已交付能力。',
+    title: '业务站点监控与发布',
+    detail: '业务站点的发布、运行监控和效果统计，由相应业务系统负责。',
   },
 ] as const;

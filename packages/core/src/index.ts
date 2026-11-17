@@ -1,5 +1,6 @@
 // AIYAZONE Design System - Core Components
 // 导出所有组件
+import './styles/index.less';
 
 export * from './components/badge';
 export * from './components/button';
@@ -15,5 +16,4 @@ export * from './components/tooltip';
 // 导出基础类和工具
 export * from './base';
 export * from './types';
-
 

@@ -10,7 +10,7 @@
     "build": "storybook build -c ../../.storybook",
     "build:storybook": "pnpm run build",
     "preview": "serve ./storybook-static",
-    "test:storybook": "concurrently -k -s first -n \"SERVER,TEST\" \"serve storybook-static -l 6006 --no-clipboard\" \"wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook\"",
+    "test:storybook": "concurrently -k -s first -n \"SERVER,TEST\" \"serve storybook-static -l 6006 --no-clipboard --no-port-switching --config ../serve.json\" \"wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook\"",
     "chromatic": "chromatic",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js --quiet",
     "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs ../../.storybook --ext .ts,.js",

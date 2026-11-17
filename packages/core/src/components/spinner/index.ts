@@ -59,6 +59,6 @@ export default ZoneSpinner;
 // 扩展HTMLElementTagNameMap接口，以便在TypeScript中识别自定义元素
 declare global {
   interface HTMLElementTagNameMap {
-    ["zone-spinner"]: ZoneSpinner;
+    ["zone-spinner"]: Pick<ZoneSpinner, keyof ZoneSpinner>;
   }
 }

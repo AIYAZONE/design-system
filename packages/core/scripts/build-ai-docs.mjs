@@ -14,7 +14,7 @@
  *   - docs/api/README.md                   组件索引
  *   - apps/portal/public/llms.txt          精简 AI 索引
  *   - apps/portal/public/llms-full.txt     全量文档拼接
- *   - apps/portal/public/ai-usage.html     AI 使用规范页（由 docs/ai-usage.md 渲染）
+ *   - apps/portal/public/ai-usage.html     AI 使用页（优先使用门户模板）
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -404,7 +404,7 @@ function llmsIndex() {
   L.push('');
   L.push('> ZDS 提供可版本化的设计令牌、Lit 自定义元素、SVG 图标和生成的组件 API 说明。');
   L.push('> 自定义元素可用于原生 HTML 页面，并可接入支持 Web Components 的前端框架；具体接入方式以目标框架文档为准。');
-  L.push(`> 版本：${rootPkg.name}@${rootPkg.version} · 生成时间：${new Date().toISOString().slice(0, 10)}（版本不同请勿使用缓存）`);
+  L.push(`> 版本：${rootPkg.name}@${rootPkg.version}（版本不同请勿使用缓存）`);
   L.push('');
   L.push('## AI 参考说明');
   L.push('');
@@ -570,7 +570,8 @@ function mdToHtml(md) {
 const aiUsageMdPath = path.join(REPO_ROOT, 'docs/ai-usage.md');
 if (fs.existsSync(aiUsageMdPath)) {
   const body = mdToHtml(fs.readFileSync(aiUsageMdPath, 'utf8'));
-  const html = `<!doctype html>
+  const templatePath = path.join(REPO_ROOT, 'apps/portal/templates/ai-usage.html');
+  const html = fs.existsSync(templatePath) ? fs.readFileSync(templatePath, 'utf8') : `<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />

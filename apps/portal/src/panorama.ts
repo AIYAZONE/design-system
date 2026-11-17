@@ -47,15 +47,11 @@ const renderChip = (chip: ArchChip) => {
   const attrs = hasTooltip
     ? ` data-tooltip-title="${tooltipTitle}" data-tooltip-desc="${tooltipDesc}" aria-label="${ariaLabel}" tabindex="0"`
     : '';
-  const tooltip =
-    hasTooltip
-      ? `<span class="arch-tooltip" role="tooltip"><span class="arch-tooltip-title">${tooltipTitle}</span><span class="arch-tooltip-desc">${tooltipDesc}</span></span>`
-      : '';
-  return `<span class="arch-chip ${chipVariantClass(chip.variant)}"${attrs}><span class="arch-chip-label">${chip.label}</span>${tooltip}</span>`;
+  return `<span class="arch-chip ${chipVariantClass(chip.variant)}"${attrs}><span class="arch-chip-label">${chip.label}</span></span>`;
 };
 
 const layerTitle = (en: string, zh: string) =>
-  `<div class="arch-layer-head"><div class="arch-layer-en">${en}</div><div class="arch-layer-zh">${zh}</div></div>`;
+  `<div class="arch-layer-head"><div class="arch-layer-zh">${zh}</div><div class="arch-layer-en">${en}</div></div>`;
 
 const businessModules: ArchChip[] = [
   { label: '多端站点', tooltipTitle: 'Multi-Site', tooltipDesc: '官网与多区域站点入口' },
@@ -167,9 +163,9 @@ const platformQuadrants = [
 ];
 
 const platformDependency: ArchChip[] = [
-  { label: '页面 → ZDS', tooltipTitle: 'Dependency Layering', tooltipDesc: '页面直接使用设计系统', variant: 'muted' },
-  { label: '禁止页面直依赖 ZDS', tooltipTitle: 'Architecture Rule', tooltipDesc: '避免业务页面绕过域能力抽象', variant: 'muted' },
-  { label: '依赖分层门禁', tooltipTitle: 'Layer Gate', tooltipDesc: '通过 lint/graph 强制执行', variant: 'muted' },
+  { label: '页面可直接使用 ZDS', tooltipTitle: '依赖方向', tooltipDesc: '页面使用基础组件和样式；基础组件不依赖业务页面', variant: 'muted' },
+  { label: '真实复用后再增加组合层', tooltipTitle: '业务组件准入', tooltipDesc: '同一模式在至少三个真实场景使用，行为稳定后再抽象', variant: 'muted' },
+  { label: '依赖检查：待补充', tooltipTitle: '检查配置', tooltipDesc: '建议用 lint 或依赖图自动检查跨层引用', variant: 'muted' },
 ];
 
 const runtimeModules: ArchChip[] = [
@@ -253,11 +249,13 @@ const renderPanelScore = () => `
 const renderPanelArchitectureDiagram = () => `
   <div class="arch-panel-grid">
     <div class="arch-panel-card col-span-1 md:col-span-2">
-      <div class="arch-panel-title">分层架构图（C4 Container）</div>
-      <div class="arch-panel-desc">展示系统核心容器、组件及其运行时的分层关系与数据流向。</div>
+      <div class="arch-panel-title">系统关系与链路（规划）</div>
+      <div class="arch-panel-desc">实线表示访问与内容数据，虚线表示组件包的构建依赖。Atlas 与页面内的组件映射仍在规划；站点监控由业务项目接入。手机可在图内左右滑动，下方有文字说明。</div>
       
-      <div class="arch-c4-container">
-        <svg viewBox="0 0 1200 920" class="arch-c4-svg" preserveAspectRatio="xMidYMid meet">
+      <div class="arch-c4-container" tabindex="0" role="region" aria-label="完整规划关系图，可横向滚动；下方有文字说明">
+        <svg viewBox="0 0 1200 920" class="arch-c4-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="blueprint-title blueprint-desc">
+          <title id="blueprint-title">多站点前端架构规划</title>
+          <desc id="blueprint-desc">用户通过 CDN 访问站点；Atlas 通过 Schema API 提供内容数据，页面渲染核心映射到设计系统组件。NPM 分发组件包供应用构建。运行监控由站点负责，未绘制监控接入线。</desc>
           <!-- 定义箭头标记 -->
           <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7" 
@@ -270,11 +268,11 @@ const renderPanelArchitectureDiagram = () => `
           <g class="arch-c4-layers">
             <!-- 接入层背景 -->
             <rect x="0" y="40" width="1200" height="100" class="arch-c4-layer-bg arch-c4-client-bg" rx="8"/>
-            <text x="60" y="95" class="arch-c4-layer-label">接入层</text>
+            <text x="60" y="95" class="arch-c4-layer-label">用户端</text>
             
             <!-- 边缘层背景 -->
             <rect x="0" y="150" width="1200" height="120" class="arch-c4-layer-bg arch-c4-edge-bg" rx="8"/>
-            <text x="60" y="205" class="arch-c4-layer-label">边缘层</text>
+            <text x="60" y="205" class="arch-c4-layer-label">访问加速</text>
             
             <!-- 应用层背景 -->
             <rect x="0" y="290" width="1200" height="140" class="arch-c4-layer-bg arch-c4-app-bg" rx="8"/>
@@ -282,15 +280,15 @@ const renderPanelArchitectureDiagram = () => `
             
             <!-- 编排层背景 -->
             <rect x="0" y="450" width="1200" height="170" class="arch-c4-layer-bg arch-c4-orchestration-bg" rx="8"/>
-            <text x="60" y="505" class="arch-c4-layer-label">编排层</text>
+            <text x="60" y="505" class="arch-c4-layer-label">内容与渲染</text>
             
             <!-- 领域层背景 -->
             <rect x="0" y="640" width="1200" height="140" class="arch-c4-layer-bg arch-c4-domain-bg" rx="8"/>
-            <text x="60" y="695" class="arch-c4-layer-label">领域层</text>
+            <text x="60" y="695" class="arch-c4-layer-label">界面组件包</text>
             
             <!-- 基础设施层背景 -->
             <rect x="0" y="800" width="1200" height="110" class="arch-c4-layer-bg arch-c4-infra-bg" rx="8"/>
-            <text x="60" y="855" class="arch-c4-layer-label">基础设施</text>
+            <text x="60" y="855" class="arch-c4-layer-label">分发与监控</text>
           </g>
 
           <!-- 节点定义 -->
@@ -319,7 +317,7 @@ const renderPanelArchitectureDiagram = () => `
             <g class="arch-c4-node arch-c4-container" data-id="multisite" transform="translate(210, 310)">
               <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
               <text x="90" y="32" class="arch-c4-node-title">多端站点</text>
-              <text x="90" y="52" class="arch-c4-node-desc">主站与转化入口</text>
+              <text x="90" y="52" class="arch-c4-node-desc">官网与业务入口</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--container">
                 <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
                 <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
@@ -349,8 +347,8 @@ const renderPanelArchitectureDiagram = () => `
             <!-- 编排层节点 -->
             <g class="arch-c4-node arch-c4-container" data-id="atlas" transform="translate(820, 490)">
               <rect x="0" y="0" width="160" height="90" rx="4" class="arch-c4-node-shape"/>
-              <text x="80" y="28" class="arch-c4-node-title">Atlas 内容中台</text>
-              <text x="80" y="46" class="arch-c4-node-desc">Schema First 内容建模</text>
+              <text x="80" y="28" class="arch-c4-node-title">Atlas 内容平台</text>
+              <text x="80" y="46" class="arch-c4-node-desc">内容建模 · 规划中</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--container">
                 <rect x="50" y="62" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
                 <text x="80" y="71" class="arch-c4-type-badge-text">容器</text>
@@ -360,17 +358,17 @@ const renderPanelArchitectureDiagram = () => `
             <g class="arch-c4-node arch-c4-container" data-id="renderer" transform="translate(210, 485)">
               <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
               <text x="90" y="32" class="arch-c4-node-title">渲染核心</text>
-              <text x="90" y="52" class="arch-c4-node-desc">基于 ZDS 渲染</text>
+              <text x="90" y="52" class="arch-c4-node-desc">组件映射 · 规划中</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--container">
                 <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
-                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+                <text x="90" y="79" class="arch-c4-type-badge-text">页面代码</text>
               </g>
             </g>
 
             <g class="arch-c4-node arch-c4-component" data-id="schema-api" transform="translate(520, 495)">
               <rect x="0" y="0" width="160" height="80" rx="8" class="arch-c4-node-shape"/>
-              <text x="80" y="22" class="arch-c4-node-title">Schema API</text>
-              <text x="80" y="42" class="arch-c4-node-desc">Schema 实例 / JSON</text>
+              <text x="80" y="22" class="arch-c4-node-title">内容 API</text>
+              <text x="80" y="42" class="arch-c4-node-desc">JSON 数据 · 规划中</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--component">
                 <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
                 <text x="80" y="61" class="arch-c4-type-badge-text">组件</text>
@@ -381,17 +379,17 @@ const renderPanelArchitectureDiagram = () => `
             <g class="arch-c4-node arch-c4-container" data-id="zone" transform="translate(460, 660)">
               <rect x="0" y="0" width="180" height="100" rx="4" class="arch-c4-node-shape"/>
               <text x="90" y="32" class="arch-c4-node-title">ZDS 设计系统</text>
-              <text x="90" y="52" class="arch-c4-node-desc">统一设计令牌与基础组件</text>
+              <text x="90" y="52" class="arch-c4-node-desc">样式与组件 · 已实现</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--container">
                 <rect x="60" y="70" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
-                <text x="90" y="79" class="arch-c4-type-badge-text">容器</text>
+                <text x="90" y="79" class="arch-c4-type-badge-text">组件包</text>
               </g>
             </g>
 
             <!-- 基础设施层节点 -->
             <g class="arch-c4-node arch-c4-system" data-id="npm" transform="translate(320, 815)">
               <rect x="0" y="0" width="160" height="80" rx="4" class="arch-c4-node-shape"/>
-              <text x="80" y="22" class="arch-c4-node-title">NPM 制品库</text>
+              <text x="80" y="22" class="arch-c4-node-title">npm 包仓库</text>
               <text x="80" y="42" class="arch-c4-node-desc">组件与资产分发</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--system">
                 <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
@@ -401,7 +399,7 @@ const renderPanelArchitectureDiagram = () => `
 
             <g class="arch-c4-node arch-c4-system" data-id="observability" transform="translate(720, 815)">
               <rect x="0" y="0" width="160" height="80" rx="4" class="arch-c4-node-shape"/>
-              <text x="80" y="22" class="arch-c4-node-title">可观测性平台</text>
+              <text x="80" y="22" class="arch-c4-node-title">站点监控</text>
               <text x="80" y="42" class="arch-c4-node-desc">性能与错误监控</text>
               <g class="arch-c4-type-badge arch-c4-type-badge--system">
                 <rect x="50" y="52" width="60" height="18" rx="9" class="arch-c4-type-badge-bg"/>
@@ -455,17 +453,9 @@ const renderPanelArchitectureDiagram = () => `
       </div>
 
       <div class="arch-legend">
-        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-actor-pill"></span> 角色</div>
-        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-container"></span> 容器</div>
-        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-component"></span> 组件</div>
-        <div class="arch-legend-item"><span class="arch-legend-icon arch-legend-system"></span> 外部系统</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-orange-500"></span> 访问</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-violet-500"></span> 分发</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-blue-500"></span> 渲染</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-cyan-500"></span> 内容流</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-emerald-500"></span> 组件/样式</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded border border-emerald-500 border-dashed"></span> 提供</div>
-        <div class="arch-legend-item"><span class="w-6 h-0.5 rounded bg-purple-500"></span> NPM 包</div>
+        <div class="arch-legend-item"><span class="arch-legend-line"></span> 访问与内容数据</div>
+        <div class="arch-legend-item"><span class="arch-legend-line arch-legend-line--dependency"></span> 组件包的构建依赖</div>
+        <div class="arch-legend-item">节点内标注“已实现”或“规划中”；外部系统需另行核实</div>
       </div>
     </div>
   </div>
@@ -474,16 +464,16 @@ const renderPanelArchitectureDiagram = () => `
     <div class="arch-panel-card">
       <div class="arch-panel-title">关键流向说明</div>
       <div class="arch-panel-list">
-        <div class="arch-panel-item"><span class="arch-panel-k">渲染流 (Render)</span><span class="arch-panel-v">用户 → CDN → 应用 → 渲染核心 → ZDS</span></div>
-        <div class="arch-panel-item"><span class="arch-panel-k">内容流 (Content)</span><span class="arch-panel-v">Atlas → Schema API → 渲染核心 (获取 JSON)</span></div>
-        <div class="arch-panel-item"><span class="arch-panel-k">资产流 (Asset)</span><span class="arch-panel-v">NPM → ZDS → 应用构建 → 组件映射</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">页面访问</span><span class="arch-panel-v">用户 → CDN → 业务站点；渲染代码属于页面应用</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">内容数据</span><span class="arch-panel-v">Atlas → 内容 API → 页面内的组件映射（规划）</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">构建依赖</span><span class="arch-panel-v">从 NPM 安装 ZDS → 应用构建 → 部署页面</span></div>
       </div>
     </div>
     <div class="arch-panel-card">
       <div class="arch-panel-title">核心设计决策</div>
       <div class="arch-panel-list">
-        <div class="arch-panel-item"><span class="arch-panel-k">Schema First</span><span class="arch-panel-v">Atlas 仅输出数据，不输出 HTML</span></div>
-        <div class="arch-panel-item"><span class="arch-panel-k">Registry Pattern</span><span class="arch-panel-v">渲染层通过白名单映射组件，解耦实现</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">内容与界面分开</span><span class="arch-panel-v">Atlas 按约定输出数据，页面负责生成界面（规划）</span></div>
+        <div class="arch-panel-item"><span class="arch-panel-k">限定可用组件</span><span class="arch-panel-v">只把数据中的组件名映射到已登记的实现（规划）</span></div>
         <div class="arch-panel-item"><span class="arch-panel-k">分层依赖</span><span class="arch-panel-v">基础设施对上层透明，依赖单向流动</span></div>
       </div>
     </div>
@@ -612,7 +602,7 @@ const renderPanelRubric = () => {
   return `
     <div class="arch-panel-grid">
       <div class="arch-panel-card">
-        <div class="arch-panel-title">自评判据（可勾选）</div>
+      <div class="arch-panel-title">历史自评判据</div>
         <div class="arch-panel-desc">用于把“成熟度”从感受变成清单：每条都要能给出证据（规则配置、流水线、链接或截图）。</div>
         <div class="arch-panel-table">
           <div class="arch-panel-row">
@@ -658,53 +648,30 @@ const renderPanelRubric = () => {
 };
 
 const renderArchitecture = () => `
-  <section class="w-full mb-12 md:mb-20">
-    <div class="flex flex-col gap-3 mb-6 md:mb-8">
-      <div class="flex items-start justify-between gap-4">
-        <div class="min-w-0">
-          <h3 id="architecture" class="text-xl md:text-2xl font-bold border-l-4 border-orange-500 pl-4 text-gray-900">AIYAZONE 前端工程与运行治理全景图</h3>
-          <div class="mt-2 text-xs md:text-sm text-gray-500 pl-4">Engineering & Governance Driven Architecture</div>
+  <div class="panorama">
+    <details class="arch-capabilities">
+      <summary>展开七层能力规划：业务、内容、组件、工程、运行与监控</summary>
+      <p class="arch-note">下面列出目标能力范围。设计系统已实现基础组件与样式；内容平台和业务组合层尚未建设，工程与运行能力需要逐项确认。</p>
           <div class="arch-quicknav" aria-label="架构分层导航">
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-business">Business</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-atlas">Atlas</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-domain">Domain</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-design">Design</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-platform">Platform</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-runtime">Runtime</button>
-            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-observability">Observability</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-business">业务页面</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-atlas">内容平台</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-domain">业务组合</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-design">设计系统</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-platform">工程工具</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-runtime">站点运行</button>
+            <button class="arch-quickbtn" type="button" data-arch-jump="arch-layer-observability">运行监控</button>
           </div>
-          <div class="mt-3 pl-4 flex flex-wrap gap-2">
-            ${renderChip({ label: 'SSOT：架构索引', tooltipTitle: 'SSOT', tooltipDesc: 'f2e-team/08-架构说明索引（全景图+契约+Atlas）.md', variant: 'muted' })}
-            ${renderChip({ label: 'SSOT：渲染契约', tooltipTitle: 'Contract', tooltipDesc: 'f2e-team/09-渲染契约（Atlas Registry 与 Schema 映射）.md', variant: 'muted' })}
-            ${renderChip({ label: 'ADR：Schema 与映射', tooltipTitle: 'ADR-0002', tooltipDesc: 'f2e-team/06-ADR/ADR-0002-Atlas Schema 版本化与组件映射契约.md', variant: 'muted' })}
-          </div>
-        </div>
-        <div class="flex flex-col items-end gap-2">
-          <div class="text-xs text-gray-400 font-mono">LIVE MAP v${archMeta.liveMapVersion}</div>
-          <div class="flex flex-wrap justify-end gap-2">
-            ${renderChip({ label: '适用：多站点前端体系', tooltipTitle: 'Designed for', tooltipDesc: '支持多站点、多语言与高频营销交付的架构蓝图', variant: 'muted' })}
-            ${renderChip({ label: archMeta.blueprintYear, tooltipTitle: 'Version', tooltipDesc: '蓝图版本标注', variant: 'muted' })}
-          </div>
-        </div>
-      </div>
-    </div>
     
     <!-- Diagram Container -->
-    <div class="relative w-full bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-8">
+    <div class="arch-blueprint">
       <div class="arch-blueprint-bg"></div>
 
-      <div class="relative z-10">
+      <div class="arch-blueprint-content">
         <div class="arch-meta-row">
           <div class="arch-meta-left">
-            ${renderChip({ label: '构建：Passing', tooltipTitle: 'Build Status', tooltipDesc: '构建与校验通过', variant: 'success' })}
-            ${renderChip({ label: 'ZDS v' + archMeta.zoneVersion, tooltipTitle: 'Design System', tooltipDesc: '设计系统版本', variant: 'warning' })}
-            ${renderChip({ label: 'ZBC v' + archMeta.zbcVersion, tooltipTitle: 'Business Components', tooltipDesc: '业务组件库（规划中，过渡期由 Atlas 供给）', variant: 'purple' })}
-            ${renderChip({ label: 'Atlas：Schema + Registry', tooltipTitle: 'Atlas (CMS)', tooltipDesc: '内容建模/搭建/发布；输出可版本化 Schema，通过 type/key 映射到组件', variant: 'muted' })}
-          </div>
-          <div class="arch-meta-right">
-            ${renderChip({ label: '当前成熟度：' + maturity.current.label, tooltipTitle: 'Current Maturity', tooltipDesc: maturity.current.subtitle, variant: 'muted' })}
-            ${renderChip({ label: '自评更新：' + maturity.lastUpdated, tooltipTitle: 'Updated', tooltipDesc: '成熟度与自评数据最后更新时间', variant: 'muted' })}
-            ${renderChip({ label: '目标：' + maturity.target.label, tooltipTitle: 'Target', tooltipDesc: maturity.target.tooltipDesc, variant: 'muted' })}
+            ${renderChip({ label: 'ZDS v' + archMeta.zoneVersion + ' · 已实现', variant: 'success' })}
+            ${renderChip({ label: 'ZBC · 规划中', variant: 'muted' })}
+            ${renderChip({ label: 'Atlas · 规划中', variant: 'muted' })}
           </div>
         </div>
 
@@ -721,9 +688,9 @@ const renderArchitecture = () => `
           <div class="arch-layers">
             <div class="arch-layer arch-tone-blue" id="arch-layer-business">
               <div class="arch-layer-row">
-                ${layerTitle('Business Layer', '变现业务层')}
+                ${layerTitle('Business Layer', '业务页面 · 外部范围')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">直接面向用户的商业入口，承接转化与高频营销交付。</div>
+                  <div class="arch-layer-desc">面向用户的站点、账户与活动页面，由业务项目负责。</div>
                   <div class="arch-layer-tags">${businessTags.map(renderChip).join('')}</div>
                   <div class="arch-chip-row">
                     ${businessModules.map(renderChip).join('')}
@@ -734,9 +701,9 @@ const renderArchitecture = () => `
 
             <div class="arch-layer arch-tone-cyan" id="arch-layer-atlas">
               <div class="arch-layer-row">
-                ${layerTitle('Content Platform', '内容平台（Atlas）')}
+                ${layerTitle('Content Platform', '内容平台 · Atlas 规划中')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">Atlas：内容建模与可视化搭建，输出可版本化 Schema 实例，通过 registry 映射到渲染组件。</div>
+                  <div class="arch-layer-desc">Atlas 计划负责定义内容结构、编辑和发布数据。页面按约定把内容数据对应到组件，本仓库尚未实现该平台。</div>
                   <div class="arch-layer-tags">${atlasTags.map(renderChip).join('')}</div>
                   <div class="arch-chip-row">
                     ${atlasModules.map(renderChip).join('')}
@@ -747,14 +714,14 @@ const renderArchitecture = () => `
 
             <div class="arch-layer arch-tone-purple" id="arch-layer-domain">
               <div class="arch-layer-row">
-                ${layerTitle('Domain Capability', '领域能力层（ZBC · 规划中）')}
+                ${layerTitle('Business Components', '业务组合 · ZBC 规划中')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">ZBC：基于 ZDS 沉淀业务级复用组件。当前规划中，过渡期业务组件能力由 Atlas 供给。</div>
+                  <div class="arch-layer-desc">ZBC 计划组合基础组件，复用稳定的业务界面模式。当前没有业务组件包，也没有已确认的 Atlas 组件供给。</div>
                   <div class="arch-chip-row">
                     ${renderChip({ label: '营销活动', tooltipTitle: 'Marketing Campaigns', tooltipDesc: '活动页与营销玩法组件（占位）' })}
                     ${renderChip({ label: '表单流程', tooltipTitle: 'Form Flows', tooltipDesc: '复杂表单与流程编排组件（占位）' })}
                     ${renderChip({ label: '数据展示', tooltipTitle: 'Data Display', tooltipDesc: '列表 / 图表等数据展示组件（占位）' })}
-                    ${renderChip({ label: 'Atlas 过渡供给', tooltipTitle: 'Interim via Atlas', tooltipDesc: '过渡期业务组件能力由 Atlas 提供', variant: 'tag' })}
+                    ${renderChip({ label: '达到复用条件后再建设', variant: 'tag' })}
                   </div>
                 </div>
               </div>
@@ -762,7 +729,7 @@ const renderArchitecture = () => `
 
             <div class="arch-layer arch-tone-orange" id="arch-layer-design">
               <div class="arch-layer-row">
-                ${layerTitle('Design System', '设计系统（ZDS）')}
+                ${layerTitle('Design System', '设计系统 · ZDS 已实现')}
                 <div class="arch-layer-body">
                   <div class="arch-layer-desc">统一 Tokens、基础组件与视觉资产，支持多主题与国际化。</div>
                   <div class="arch-layer-tags">${designTags.map(renderChip).join('')}</div>
@@ -790,11 +757,11 @@ const renderArchitecture = () => `
             <div class="arch-layer arch-tone-yellow arch-layer-platform" id="arch-layer-platform">
               <div class="arch-layer-row">
                 <div class="arch-platform-head">
-                  ${layerTitle('Engineering Platform', '前端工程平台')}
+                  ${layerTitle('Engineering Platform', '工程工具 · 部分配置')}
                   <div class="arch-platform-watermark">PLATFORM</div>
                 </div>
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">工程能力闭环（治理 / 交付 / 构建 / 质量），体现工程实力。</div>
+                  <div class="arch-layer-desc">已有仓库构建、CI 与文档检查配置；下列预览、依赖限制、体积与安全检查仍需逐项补齐或核实。</div>
                   <div class="arch-platform-grid">
                     ${platformQuadrants
                       .map(
@@ -815,9 +782,9 @@ const renderArchitecture = () => `
 
             <div class="arch-layer arch-tone-green" id="arch-layer-runtime">
               <div class="arch-layer-row">
-                ${layerTitle('Runtime Layer', '运行与交付')}
+                ${layerTitle('Runtime Layer', '站点运行 · 外部范围')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">多区域交付与可回滚的运行体系，保障稳定上线与快速止损。</div>
+                  <div class="arch-layer-desc">站点项目负责部署、缓存、灰度与回滚。下列是运行规划，不是本组件仓库已经提供的服务。</div>
                   <div class="arch-chip-row">
                     ${runtimeModules.map(renderChip).join('')}
                   </div>
@@ -827,9 +794,9 @@ const renderArchitecture = () => `
 
             <div class="arch-layer arch-tone-red" id="arch-layer-observability">
               <div class="arch-layer-row">
-                ${layerTitle('Observability', '可观测性与数据闭环')}
+                ${layerTitle('Observability', '运行监控 · 外部范围')}
                 <div class="arch-layer-body">
-                  <div class="arch-layer-desc">性能 → 稳定性 → 交付效率闭环，用数据驱动体验与工程改进。</div>
+                  <div class="arch-layer-desc">站点项目采集加载性能、错误与业务效果，再据此改进页面。本仓库尚未接入这些运行监控服务。</div>
                   <div class="arch-obs-cols">
                     <div class="arch-obs-col">
                       <div class="arch-obs-title">Performance</div>
@@ -881,8 +848,14 @@ const renderArchitecture = () => `
           </div>
         </div>
         
+      </div>
+    </div>
+    </details>
+    <details class="arch-history">
+      <summary>历史自评数据 · ${maturity.lastUpdated} · 未重新核实</summary>
+      <p class="arch-note">保留原自评百分比供追溯，不能当作当前成熟度。内网 GitLab、Jenkins 与 CDN 的证据未在此次核查中验证。</p>
         <aside class="arch-maturity">
-          <div class="arch-maturity-title">成熟度</div>
+          <div class="arch-maturity-title">历史成熟度</div>
           <div class="arch-maturity-level">${maturity.current.label} / ${maturity.current.maxLevel}</div>
           <div class="arch-maturity-bars">
             ${maturity.bars
@@ -903,33 +876,35 @@ const renderArchitecture = () => `
           </div>
         </aside>
 
+    </details>
         <div class="arch-panels" data-arch-panels>
           <div class="arch-tabs" role="tablist" aria-label="架构说明与自评">
-            <button class="arch-tab is-active" type="button" role="tab" aria-selected="true" data-arch-tab="maturity">成熟度模型说明</button>
-            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="score">架构自评打分体系</button>
-            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="arch">架构图（系统关系与链路）</button>
-            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="rubric">自评判据清单</button>
-            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="upgrade">升级方案摘要</button>
+            <button class="arch-tab is-active" type="button" role="tab" aria-selected="true" data-arch-tab="arch">系统关系图</button>
+            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="maturity">历史成熟度模型</button>
+            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="score">旧评分方法</button>
+            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="rubric">历史自评判据</button>
+            <button class="arch-tab" type="button" role="tab" aria-selected="false" data-arch-tab="upgrade">原升级设想</button>
           </div>
-          <div class="arch-panel is-active" role="tabpanel" data-arch-panel="maturity">
+          <div class="arch-panel" role="tabpanel" data-arch-panel="maturity" hidden>
+            <p class="arch-note">以下定位来自 ${maturity.lastUpdated} 的旧自评，未重新核实，不代表本次源码评估结论。</p>
             ${renderPanelMaturity()}
           </div>
           <div class="arch-panel" role="tabpanel" data-arch-panel="score" hidden>
             ${renderPanelScore()}
           </div>
-          <div class="arch-panel" role="tabpanel" data-arch-panel="arch" hidden>
+          <div class="arch-panel is-active" role="tabpanel" data-arch-panel="arch">
             ${renderPanelArchitectureDiagram()}
           </div>
           <div class="arch-panel" role="tabpanel" data-arch-panel="rubric" hidden>
+            <p class="arch-note">这是 ${selfAssessment.lastUpdated} 的历史记录。内网证据未验证，部分“缺失”项如今已有 CI 配置，不能直接作为当前结论。</p>
             ${renderPanelRubric()}
           </div>
           <div class="arch-panel" role="tabpanel" data-arch-panel="upgrade" hidden>
+            <p class="arch-note">以下为原目标设想，提效百分比没有本次测量依据。当前优化优先级见本页“优化建议”。</p>
             ${renderPanelUpgrade()}
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+  </div>
 `;
 
 
@@ -938,8 +913,7 @@ export const renderPanorama = () => renderArchitecture();
 export const setupPanorama = () => {
   setupArchPanels();
   setupArchQuickNav();
-  setupMaturityTooltip();
-  setupArchTooltipLayerLift();
+  setupArchitectureTooltip();
 };
 
 const setupArchPanels = () => {
@@ -954,6 +928,7 @@ const setupArchPanels = () => {
       const active = t.dataset.archTab === key;
       t.classList.toggle('is-active', active);
       t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.tabIndex = active ? 0 : -1;
     });
 
     panels.forEach((p) => {
@@ -964,21 +939,38 @@ const setupArchPanels = () => {
   };
 
   tabs.forEach((t) => {
+    const key = t.dataset.archTab!;
+    t.id = `arch-tab-${key}`;
+    t.setAttribute('aria-controls', `arch-panel-${key}`);
+    t.tabIndex = t.getAttribute('aria-selected') === 'true' ? 0 : -1;
+    const panel = panels.find((p) => p.dataset.archPanel === key);
+    if (panel) {
+      panel.id = `arch-panel-${key}`;
+      panel.setAttribute('aria-labelledby', t.id);
+    }
     t.addEventListener('click', () => {
       const key = t.dataset.archTab;
       if (!key) return;
       activate(key);
     });
+    t.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const index = tabs.indexOf(t);
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1
+        : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      activate(tabs[next].dataset.archTab!);
+      tabs[next].focus();
+    });
   });
 };
-
-
-const setupMaturityTooltip = () => {
-  const bars = Array.from(document.querySelectorAll<HTMLElement>('.arch-maturity .arch-bar'));
+const setupArchitectureTooltip = () => {
+  const bars = Array.from(document.querySelectorAll<HTMLElement>('.arch-maturity .arch-bar, .arch-chip[data-tooltip-title]'));
   if (!bars.length) return;
 
   const tooltip = document.createElement('div');
   tooltip.className = 'arch-tooltip-float';
+  tooltip.id = 'architecture-tooltip';
   tooltip.setAttribute('role', 'tooltip');
 
   const titleEl = document.createElement('span');
@@ -1031,12 +1023,15 @@ const setupMaturityTooltip = () => {
   };
 
   const show = (bar: HTMLElement) => {
+    active?.removeAttribute('aria-describedby');
     active = bar;
+    active.setAttribute('aria-describedby', tooltip.id);
     tooltip.classList.add('is-visible');
     position();
   };
 
   const hide = () => {
+    active?.removeAttribute('aria-describedby');
     active = null;
     tooltip.classList.remove('is-visible', 'is-below');
   };
@@ -1050,6 +1045,7 @@ const setupMaturityTooltip = () => {
 
   window.addEventListener('scroll', position, true);
   window.addEventListener('resize', position);
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') hide(); });
 };
 
 const setupArchQuickNav = () => {
@@ -1088,47 +1084,5 @@ const setupArchQuickNav = () => {
       window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
       highlight(el);
     });
-  });
-};
-
-
-const setupArchTooltipLayerLift = () => {
-  const selector = '.arch-chip[data-tooltip-title], .arch-chip[data-tooltip-desc]';
-  const activeClass = 'is-tooltip-open';
-
-  const lift = (target: Element | null) => {
-    const layer = target?.closest('.arch-layer');
-    if (!layer) return;
-    layer.classList.add(activeClass);
-  };
-
-  const drop = (target: Element | null) => {
-    const layer = target?.closest('.arch-layer');
-    if (!layer) return;
-    layer.classList.remove(activeClass);
-  };
-
-  document.addEventListener('pointerenter', (e) => {
-    const el = (e.target as Element | null)?.closest(selector);
-    if (!el) return;
-    lift(el);
-  }, true);
-
-  document.addEventListener('pointerleave', (e) => {
-    const el = (e.target as Element | null)?.closest(selector);
-    if (!el) return;
-    drop(el);
-  }, true);
-
-  document.addEventListener('focusin', (e) => {
-    const el = (e.target as Element | null)?.closest(selector);
-    if (!el) return;
-    lift(el);
-  });
-
-  document.addEventListener('focusout', (e) => {
-    const el = (e.target as Element | null)?.closest(selector);
-    if (!el) return;
-    drop(el);
   });
 };

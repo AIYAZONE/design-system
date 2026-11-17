@@ -2,7 +2,7 @@
 
 > ZDS 提供可版本化的设计令牌、Lit 自定义元素、SVG 图标和生成的组件 API 说明。
 > 自定义元素可用于原生 HTML 页面，并可接入支持 Web Components 的前端框架；具体接入方式以目标框架文档为准。
-> 版本：@aiyazone/design-system@0.3.2 · 生成时间：2026-11-16（版本不同请勿使用缓存）
+> 版本：@aiyazone/design-system@0.3.2（版本不同请勿使用缓存）
 
 ## AI 参考说明
 

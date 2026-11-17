@@ -30,7 +30,7 @@ export class ZoneDialog extends LitElement {
   }
 
   disconnectedCallback(): void {
-    super.disconnectedCallback();
+    super.disconnectedCallback?.();
     window?.removeEventListener("keydown", this.onKeydown);
     if (this._isBodyScrollLockedByThisDialog) {
       this.unlockBodyScroll();
@@ -155,7 +155,7 @@ export class ZoneDialog extends LitElement {
   /**
    * 属性变更生命周期：当 open 变化时处理打开/关闭
    */
-  updated(changedProperties: PropertyValues<this>) {
+  updated(changedProperties: PropertyValues) {
     if (changedProperties.has("appendTo")) {
       this.appendToTarget();
     }
@@ -175,7 +175,7 @@ export class ZoneDialog extends LitElement {
 
     try {
       target = document.querySelector(this.appendTo);
-    } catch (error) {
+    } catch {
       console.warn(
         `[zone-dialog] Invalid append-to selector: ${this.appendTo}`
       );
@@ -401,6 +401,6 @@ export class ZoneDialog extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-dialog": ZoneDialog;
+    "zone-dialog": Pick<ZoneDialog, keyof ZoneDialog>;
   }
 }

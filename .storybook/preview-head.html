@@ -1,25 +1,9 @@
+<link rel="stylesheet" href="./shared/site-theme.css">
 <style>
-  .stacked-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    gap: 16px;
-  }
-
-  .stacked-form * {
-    width: auto;
-  }
-
-  .sbdocs * {
-    font-family: "Poppins", sans-serif;
-  }
-
-  .sbdocs>zone-toast {
-    margin: var(--zone-size-16) 0;
-  }
-
-  .sbdocs [scale] {
-    -webkit-transform: none;
-    transform: none;
-  }
+  body { background: var(--zone-color-white, #fff); color: var(--zone-color-text-l1, #202020); }
+  .sbdocs-wrapper { background: var(--portal-bg); }
+  .sbdocs-preview { background: var(--zone-color-white, #fff); color: var(--zone-color-text-l1, #202020); color-scheme: light; }
+  .sbdocs-preview .docs-story { color: var(--zone-color-text-l1, #202020); background: var(--zone-color-white, #fff); }
+  .stacked-form { display:flex; flex-direction:column; max-width:100%; width:300px; gap:16px; }
+  .sbdocs pre { overflow-x:auto; }
 </style>

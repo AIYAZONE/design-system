@@ -1,0 +1,18 @@
+.sidebar-header a:has(> img[alt="AIYAZONE Design System"]) {
+  display: flex;
+  align-items: center;
+  width: 206px;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.sidebar-header img[alt="AIYAZONE Design System"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Storybook 的品牌图片默认带有 150px !important 上限。 */
+  max-width: 206px !important;
+  max-height: none;
+  aspect-ratio: 206 / 44;
+  object-fit: contain;
+}

@@ -89,10 +89,9 @@ export default defineConfig((configEnv) => {
         },
         rollupOptions: {
           external: [],
-          output: {
-            chunkFileNames: (chunkInfo) => {
-              return 'chunks/[name]-[hash].js';
-            },
+          output: ['es', 'cjs'].map(format => ({
+            format,
+            chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`,
             assetFileNames: (assetInfo) => {
               const fileName = assetInfo.name || '';
               const ext = path.extname(fileName);
@@ -109,7 +108,7 @@ export default defineConfig((configEnv) => {
                   return '[name].[ext]';
               }
             }
-          },
+          })),
           treeshake: {
             preset: 'recommended',
             moduleSideEffects: (id) => /(\.(css|less))$/.test(id) || /[\\\/]packages[\\\/]core[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]icons[\\\/]src[\\\/]/.test(id) || /[\\\/]packages[\\\/]i18n[\\\/]src[\\\/]/.test(id)

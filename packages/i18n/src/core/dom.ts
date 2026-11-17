@@ -79,12 +79,15 @@ function updateAllTranslations() {
   });
 }
 
+let disconnectDomObserver: (() => void) | undefined;
+
 // 初始化i18n dom
 export function initI18nDom() {
+  if (disconnectDomObserver) return disconnectDomObserver;
   const observer = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
       if (mutation.type === 'attributes' &&
-          mutation.attributeName === ORIGINAL_TEXT_ATTR &&
+          (mutation.attributeName === ORIGINAL_TEXT_ATTR || mutation.attributeName === PARAMS_ATTR) &&
           mutation.target instanceof HTMLElement) {
         updateElementTranslation(mutation.target);
       } else if (mutation.type === 'childList') {
@@ -124,21 +127,27 @@ export function initI18nDom() {
     processTextNode(node);
   }
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      observer.observe(document.body, observerConfig);
-      updateAllTranslations();
-      processAllTextNodes(); // 添加对所有文本节点的处理
-    });
-  } else {
+  function startObserver() {
     observer.observe(document.body, observerConfig);
     updateAllTranslations();
-    processAllTextNodes(); // 添加对所有文本节点的处理
+    processAllTextNodes();
   }
-  // 语言变化时重新处理所有节点
-  window.addEventListener(I18N_LANGUAGE_CHANGE, () => {
+  function updateTranslations() {
     updateAllTranslations();
     processAllTextNodes();
-  });
-  return () => observer.disconnect();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startObserver, { once: true });
+  } else {
+    startObserver();
+  }
+  window.addEventListener(I18N_LANGUAGE_CHANGE, updateTranslations);
+  const disconnect = () => {
+    observer.disconnect();
+    document.removeEventListener('DOMContentLoaded', startObserver);
+    window.removeEventListener(I18N_LANGUAGE_CHANGE, updateTranslations);
+    if (disconnectDomObserver === disconnect) disconnectDomObserver = undefined;
+  };
+  disconnectDomObserver = disconnect;
+  return disconnectDomObserver;
 }

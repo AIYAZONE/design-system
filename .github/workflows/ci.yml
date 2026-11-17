@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_call:
   push:
     branches: [master, develop, stage]
   pull_request:
@@ -16,7 +17,7 @@ env:
 
 jobs:
   quality:
-    name: Build · Type · Test · Tokens · Docs
+    name: Build · Type · Test · Tokens · Docs · Packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -38,8 +39,19 @@ jobs:
       - name: Build（全部包）
         run: pnpm run build
 
+      - name: Build published bundle
+        run: pnpm run design:build
+
+      - name: Package exports and installed consumer
+        run: |
+          pnpm run packages:check
+          pnpm run packages:test
+
       - name: Type check
         run: pnpm run type-check
+
+      - name: Lint
+        run: pnpm run lint
 
       - name: Test（单测 + a11y 断言）
         run: pnpm run test

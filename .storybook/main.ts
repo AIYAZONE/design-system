@@ -1,5 +1,6 @@
 import type { UserConfig as ViteConfig } from "vite";
 import { resolve } from "node:path";
+import { createRequire } from "node:module";
 
 const config = {
   stories: [
@@ -20,6 +21,7 @@ const config = {
   },
   staticDirs: [
     { from: "../public", to: "/" },
+    { from: "../apps/portal/public/shared", to: "/shared" },
   ],
   docs: {
     autodocs: true,
@@ -53,6 +55,7 @@ const config = {
       ...(config.resolve ?? {}),
       alias: {
         ...(config.resolve?.alias ?? {}),
+        'storybook/theming': createRequire(resolve(process.cwd(), 'package.json')).resolve('storybook/theming'),
         // 将工作区包映射到源码，避免依赖 dist 构建
         '@aiyazone/i18n': resolve(process.cwd(), '../../packages/i18n/src/index.ts'),
         '@aiyazone/core': resolve(process.cwd(), '../../packages/core/src/index.ts'),

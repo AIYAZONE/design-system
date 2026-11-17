@@ -37,15 +37,43 @@ const zoneVersion =
 export default defineConfig({
   plugins: [
     tailwindcss(),
+    {
+      name: 'portal-subsites',
+      configureServer(server) {
+        // 完整构建后的子站在门户开发地址下可直接浏览。
+        server.middlewares.use((request, response, next) => {
+          const pathname = new URL(request.url ?? '/', 'http://localhost').pathname;
+          if (pathname === '/icons/' || pathname === '/icons') {
+            request.url = '/icons/index.html';
+            next();
+            return;
+          }
+          if (!/^\/(examples|storybook|icons)\//.test(pathname)) { next(); return; }
+          const dist = path.resolve(zoneRoot?.dir ?? process.cwd(), 'apps/portal/dist');
+          let file: string;
+          try { file = path.resolve(dist, `.${decodeURIComponent(pathname)}`); }
+          catch { next(); return; }
+          if (!file.startsWith(`${dist}${path.sep}`)) { next(); return; }
+          if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
+          if (!fs.existsSync(file) || !fs.statSync(file).isFile()) { next(); return; }
+          const mime: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
+          response.setHeader('Content-Type', mime[path.extname(file)] ?? 'application/octet-stream');
+          fs.createReadStream(file).pipe(response);
+        });
+      },
+    },
   ],
   define: {
     __ZONE_VERSION__: zoneVersion ? JSON.stringify(zoneVersion) : JSON.stringify('unknown'),
   },
   resolve: {
     alias: {
+      '@aiyazone/core': path.join(zoneRoot?.dir ?? process.cwd(), 'packages/core/src/index.ts'),
+      '@aiyazone/icons': path.join(zoneRoot?.dir ?? process.cwd(), 'packages/icons/src/index.ts'),
       '@aiyazone/utils': path.join(zoneRoot?.dir ?? process.cwd(), 'packages/utils/src'),
     },
   },
+  optimizeDeps: { exclude: ['@aiyazone/core', '@aiyazone/icons', '@aiyazone/utils'] },
   server: {
     host: true
   },

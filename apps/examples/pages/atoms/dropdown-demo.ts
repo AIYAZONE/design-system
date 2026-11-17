@@ -1,3 +1,4 @@
+import "../../main";
 import "../../../../packages/core/src/components/dropdown";
 import "../../../../packages/core/src/components/dialog";
 import {
@@ -9,13 +10,6 @@ import type { ZoneDropdown } from "../../../../packages/core/src/components/drop
 
 async function initializeDemo() {
   const params = new URLSearchParams(location.search);
-  const theme = params.get("theme");
-  if (theme === "v1")
-    await import("../../../../src/styles/themes/v1/index.less");
-  else if (theme === "v3")
-    await import("../../../../src/styles/themes/v3/index.less");
-  else await import("../../../../src/styles/themes/v2/index.less");
-
   const tree = document.querySelector<ZoneDropdown>("#tree")!;
   const flat = document.querySelector<ZoneDropdown>("#flat")!;
   const accessory = document.querySelector<ZoneDropdown>("#fieldset-dropdown")!;

@@ -1,106 +1,36 @@
-# AIYAZONE Design System site design
+# AIYAZONE 门户视觉与内容规范
 
-This system applies to the public portal routes. Keep existing route ownership and generated Storybook pages intact.
+门户帮助访客用 AI 更快做出统一风格的页面。首页先展示用途、AI 使用方法和可操作的账户设置示例，再展示三步使用、组件与样式资源、安装方式。
 
-## Product position
+## 视觉
 
-AIYAZONE Design System is a small, framework-neutral UI foundation: design tokens, Lit Web Components, icons, localization utilities, and generated implementation references. AI-readable files provide context. They do not constrain model output. The repository's own AI sample is checked by CI; consumer projects need their own checks.
+共享规范位于 `apps/portal/public/shared/site-theme.css`，门户使用独立的 `--portal-*` 变量。
 
-## Genre and voice
+| 用途 | 值 |
+| --- | --- |
+| 背景 | `#080D17` |
+| 表面 | `#101827` |
+| 选中表面 | `#172338` |
+| 主要文字 | `#F3F6FC` |
+| 次要文字 | `#AAB8CD` |
+| 分隔线 | `#2A3A52` |
+| 操作强调 | `#80C7FF` |
+| 强调底色上的文字 | `#07111E` |
 
-- Genre: technical editorial, built like a component standard rather than a SaaS sales page.
-- Home page: specimen-led index. Lead with one concise claim, show running ZDS elements directly, then trace source → generated references → consumer page.
-- Architecture page: Long Document organized as current state, source-to-consumer flow, automated checks, and explicitly future work.
-- Reference pages: single reading column with clear section titles and practical examples.
-- Copy: specific, calm, factual. Label shipped capabilities and future ideas separately. Do not imply every AI output is automatically compliant.
+保留 Z 标志与品牌橙色，不将橙色铺满标题和按钮。科技感来自深蓝黑底、蓝色操作、清晰排版和真实界面；首屏演示背后可以使用极淡的静态网格。
 
-## Theme
+内容宽度以 1200px 为上限，桌面留白 40px、手机 20px。首屏标题桌面 56px、手机 36px；正文 16px、行高 1.65。控件圆角 8px，演示容器 16px。中文采用系统字体，代码采用 SFMono/Menlo 回退。
 
-The canonical CSS values live in the root tokens.css file.
+## 内容
 
-- Paper: nearly white neutral.
-- Ink: near-black graphite with strong text contrast.
-- Muted text and rules: neutral gray; rules provide the page grid.
-- Accent: dark AIYAZONE orange for controls; brighter brand orange is reserved for tiny status marks.
-- Display, body, and code use named font tokens.
-- No gradient text, decorative glow, glass surfaces, soft floating cards, or invented usage metrics.
-- Prefer square edges, direct typography, and explicit rules over shadows, pills, and repeated panels.
+标题和引导用中文说明用途与下一步操作。先说“颜色、字号和间距”，技术参考中再解释“样式变量”。API、命令和文件路径只在需要核对时展示，详细工程资料使用可展开区域。
 
-## Interaction
+不展示未经核实的数量、自评分数、性能收益，也不承诺 AI 生成结果必然正确。演示反馈明确写“演示”，所有操作只影响当前页面。
 
-- CTAs use one orange filled action and quiet text links.
-- Component previews use real ZDS elements registered from the workspace packages.
-- No decorative motion. Respect reduced-motion preferences.
-- All text links and controls remain single-line at narrow widths.
+## 全站一致性与主题
 
-## Shared structure
+统一导航顺序为首页、AI 使用、页面示例、组件文档、图标、系统说明。导航数据和路径状态来自 `site-navigation.js`。手机菜单支持键盘、Escape 和焦点返回；页面有跳到正文入口。
 
-- Header navigation stays consistent across portal routes, with a compact wordmark and ruled active state.
-- Home leads with a typographic statement and a live component bench, then shows the source path, the exact AI sample checks, and install commands.
-- Architecture separates what exists from what is considered later.
-- AI guidance describes recommendations and the checks that actually run.
+深色外框适用于门户、静态指南、图标、示例和 Storybook 文档。组件的 `--zone-*` 变量不被门户覆盖；示例的 `.example-preview` 与 Storybook 的官方演示容器保留真实组件主题。示例页面的 V1/V2/V3 按钮标记为“组件主题”。
 
-## Exports
-
-### tokens.css
-
-See the root tokens.css.
-
-### Tailwind v4
-
-~~~css
-@theme {
-  --color-paper: oklch(98.5% 0.003 95);
-  --color-ink: oklch(17% 0.008 50);
-  --color-accent: oklch(52% 0.19 38);
-  --color-accent-bright: oklch(76% 0.16 48);
-  --color-on-dark-muted: oklch(100% 0 0 / 0.72);
-  --color-on-dark-copy: oklch(91% 0.003 95);
-  --color-on-dark-rule: oklch(100% 0 0 / 0.24);
-  --color-accent-bright: oklch(76% 0.16 48);
-  --color-on-dark-muted: oklch(100% 0 0 / 0.72);
-  --color-on-dark-copy: oklch(91% 0.003 95);
-  --color-on-dark-rule: oklch(100% 0 0 / 0.24);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
-  --spacing-4: 1rem;
-  --spacing-8: 2rem;
-}
-~~~
-
-### DTCG
-
-~~~json
-{
-  "color": {
-    "paper": { "$value": "oklch(98.5% 0.003 95)", "$type": "color" },
-    "ink": { "$value": "oklch(17% 0.008 50)", "$type": "color" },
-    "accent": { "$value": "oklch(52% 0.19 38)", "$type": "color" },
-    "accentBright": { "$value": "oklch(76% 0.16 48)", "$type": "color" },
-    "onDarkMuted": { "$value": "oklch(100% 0 0 / 0.72)", "$type": "color" },
-    "onDarkCopy": { "$value": "oklch(91% 0.003 95)", "$type": "color" },
-    "onDarkRule": { "$value": "oklch(100% 0 0 / 0.24)", "$type": "color" }
-  },
-  "font": {
-    "sans": { "$value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, PingFang SC, sans-serif", "$type": "fontFamily" },
-    "mono": { "$value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace", "$type": "fontFamily" }
-  },
-  "space": {
-    "4": { "$value": "1rem", "$type": "dimension" },
-    "8": { "$value": "2rem", "$type": "dimension" }
-  }
-}
-~~~
-
-### shadcn/ui
-
-~~~css
-:root {
-  --background: 98.5% 0.003 95;
-  --foreground: 17% 0.008 50;
-  --primary: 52% 0.19 38;
-  --border: 88% 0.01 92;
-  --ring: 52% 0.19 38;
-  --radius: 0.5rem;
-}
-~~~
+动效只用于短操作反馈，并支持减少动效设置。焦点清晰，状态不只通过颜色表达，复制失败与网络失败必须显示可理解的反馈。

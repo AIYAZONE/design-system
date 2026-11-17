@@ -23,10 +23,6 @@ try {
   console.log('Building Monorepo packages...');
   run('pnpm run build');
 
-  // 1. Build Portal
-  console.log('Building Portal...');
-  run('pnpm --filter @aiyazone/portal run build');
-
   // 2. Build Examples
   console.log('Building Examples...');
   // Note: We might need to adjust base path for examples. For now assuming it works or has relative paths.

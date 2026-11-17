@@ -23,7 +23,14 @@ export const innerInputValidators = validityStates.map((key) => ({
   },
 }));
 
-export const textareaLengthValidator = {
+export interface TextareaLengthValidator {
+  attribute?: string | string[];
+  key?: keyof ValidityState;
+  message: string | ((instance: HTMLElement, value: File | FormData | string | null) => string);
+  isValid(instance: HTMLElement & { validationTarget: HTMLTextAreaElement }): boolean;
+}
+
+export const textareaLengthValidator: TextareaLengthValidator = {
   ...maxLengthValidator,
   isValid(instance: HTMLElement & { validationTarget: HTMLTextAreaElement }) {
     if (instance.validationTarget && instance.getAttribute("maxlength")) {

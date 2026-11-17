@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { viteStaticCopy } from "vite-plugin-static-copy";
-import dts from 'vite-plugin-dts';
 
 const isStorybookBuild = process.env.npm_lifecycle_event?.includes('storybook') || 
                           process.argv.some(arg => arg.includes('storybook'));
@@ -30,17 +29,17 @@ export default defineConfig({
       // 库的全局变量名
       name: '@aiyazone/icons',
       // 输出文件名格式
-      fileName: (format) => `index.${format}.js`,
+      fileName: (format) => format === 'cjs' ? 'index.cjs' : `index.${format}.js`,
       // 输出格式：ES Module 和 UMD
-      formats: ['es', 'umd'],
     },
 
     rollupOptions: {
       input: 'src/index.ts',
-      output: {
-        entryFileNames: 'index.[format].js',
-        chunkFileNames: 'chunks/[name].[format].js',
-      }
+      output: ['es', 'cjs', 'umd'].map(format => ({
+        format,
+        name: '@aiyazone/icons',
+        chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`
+      }))
     },
 
     // 生成 sourcemap 文件，便于调试
@@ -54,12 +53,6 @@ export default defineConfig({
   plugins: [
     // Storybook 构建时跳过 dts 插件，避免解析 Storybook 内部模块报错
     ...(isStorybookBuild ? [] : [
-      // 生成TypeScript声明文件
-      dts({
-        outDir: 'dist',
-        rollupTypes: true,
-        insertTypesEntry: true
-      }),
       viteStaticCopy({
         targets: [
           {

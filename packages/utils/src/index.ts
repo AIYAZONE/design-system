@@ -1,9 +1,10 @@
 // AIYAZONE Design System - Utility Functions
 // 导出所有工具函数
 
-export * from './common';
-export * from './elements';
-export * from './event';
-export * from './form-control';
-export * from './string-boolean.converter';
-export * from './submit';
+export * from './common.js';
+export * from './elements.js';
+export * from './event.js';
+export * from './form-control.js';
+export * from './string-boolean.converter.js';
+export * from './submit.js';
+export * from './custom-element.js';

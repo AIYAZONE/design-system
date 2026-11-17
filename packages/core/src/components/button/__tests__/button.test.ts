@@ -3,8 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-vi.mock("@aiyazone/utils", () => {
+vi.mock("@aiyazone/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@aiyazone/utils")>();
   return {
+    ...actual,
     submit: (form: HTMLFormElement) => {
       form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
     },
