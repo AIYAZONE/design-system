@@ -7,7 +7,7 @@ export function activeRoute(path) {
   if (path === '/ai-demo.html' || path.includes('/pages/') || path.startsWith('/examples/')) return '/examples/';
   if (path.startsWith('/storybook/')) return '/storybook/';
   if (path.startsWith('/icons/')) return '/icons/';
-  if (path === '/architecture.html') return path;
+  if (path === '/architecture.html' || path === '/architecture-reference.html') return '/architecture.html';
   return '/index.html';
 }
 export function renderNavigation(path = location.pathname) {

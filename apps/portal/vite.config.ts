@@ -100,7 +100,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        architecture: 'architecture.html'
+        architecture: 'architecture.html',
+        architectureReference: 'architecture-reference.html'
       }
     }
   }
