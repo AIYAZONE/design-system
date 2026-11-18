@@ -367,6 +367,7 @@
         "--zone-color-primary-highlight",
         "--zone-color-success",
         "--zone-color-success-highlight",
+        "--zone-color-text-l1",
         "--zone-color-white",
         "--zone-font-b1",
         "--zone-font-b3",
@@ -388,7 +389,7 @@
         "--zone-size-8"
       ],
       "story": "zone-button.stories.ts",
-      "tests": 33
+      "tests": 34
     },
     {
       "tag": "zone-checkbox",
@@ -601,7 +602,7 @@
         "--zone-size-64"
       ],
       "story": "zone-dialog.stories.ts",
-      "tests": 8
+      "tests": 9
     },
     {
       "tag": "zone-dropdown",
@@ -1168,9 +1169,9 @@
         "--zone-color-danger-contrast",
         "--zone-color-info",
         "--zone-color-info-contrast",
-        "--zone-color-neutral-400",
         "--zone-color-success",
         "--zone-color-success-contrast",
+        "--zone-color-text-l2",
         "--zone-color-warning",
         "--zone-color-warning-contrast",
         "--zone-font-b2",

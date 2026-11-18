@@ -22,6 +22,8 @@ export class ZoneDialog extends LitElement {
   static styles =  [unsafeCSS(styles)] as CSSResultGroup;
   private static _bodyScrollLockCount = 0;
   private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null;
+  private static _openDialogs: ZoneDialog[] = [];
+  private _focusTimer?: ReturnType<typeof setTimeout>;
 
   protected firstUpdated(): void {
     if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
@@ -32,6 +34,8 @@ export class ZoneDialog extends LitElement {
   disconnectedCallback(): void {
     super.disconnectedCallback?.();
     window?.removeEventListener("keydown", this.onKeydown);
+    clearTimeout(this._focusTimer);
+    ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(dialog => dialog !== this);
     if (this._isBodyScrollLockedByThisDialog) {
       this.unlockBodyScroll();
     }
@@ -201,10 +205,12 @@ export class ZoneDialog extends LitElement {
     try {
       if (this.open) {
         this.onOpen({ isOpen: true });
-        this._lastFocus = document.activeElement;
+        this._lastFocus = this.deepActiveElement();
+        ZoneDialog._openDialogs.push(this);
         if (this.disableBodyScroll) this.lockBodyScroll();
         window?.addEventListener("keydown", this.onKeydown);
-        setTimeout(() => {
+        this._focusTimer = setTimeout(() => {
+          if (!this.open || !this.isConnected) return;
           const root = this.shadowRoot;
           if (!root) return;
           let target: HTMLElement | null = null;
@@ -212,12 +218,14 @@ export class ZoneDialog extends LitElement {
             target = root.querySelector(this.initialFocus) as HTMLElement || (this.querySelector(this.initialFocus) as HTMLElement);
           }
           if (!target) {
-            const focusables = root.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const focusables = this.focusableElements();
             target = focusables[0] || this.container;
           }
           target?.focus();
         }, 0);
       } else {
+        clearTimeout(this._focusTimer);
+        ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(dialog => dialog !== this);
         this.onClose({ isOpen: false }, { bubbles: false });
         this.unlockBodyScroll();
         this.restoreLastFocus();
@@ -299,6 +307,36 @@ export class ZoneDialog extends LitElement {
     this.restoreFocus(last);
   }
 
+  private deepActiveElement(): Element | null {
+    let active = document.activeElement;
+    while (active?.shadowRoot?.activeElement) active = active.shadowRoot.activeElement;
+    return active;
+  }
+
+  private focusableElements(): HTMLElement[] {
+    const result: HTMLElement[] = [];
+    const visit = (element: Element) => {
+      if (element.hasAttribute("hidden") || element.hasAttribute("inert")) return;
+      const style = getComputedStyle(element);
+      if (style.display === "none" || style.visibility === "hidden") return;
+      if (element instanceof HTMLSlotElement) {
+        element.assignedElements({ flatten: true }).forEach(visit);
+        return;
+      }
+      if (element.shadowRoot) {
+        Array.from(element.shadowRoot.children).forEach(visit);
+        return;
+      }
+      if (element instanceof HTMLElement && element.tabIndex >= 0 &&
+          !element.matches(':disabled, [aria-disabled="true"], input[type="hidden"]')) {
+        result.push(element);
+      }
+      Array.from(element.children).forEach(visit);
+    };
+    visit(this.container);
+    return result;
+  }
+
   /**
    * 触发可取消的关闭请求；未被阻止则设置 open=false 并派发关闭事件
    * @param source 关闭来源（按钮、键盘 ESC、遮罩点击）
@@ -332,18 +370,23 @@ export class ZoneDialog extends LitElement {
    * 键盘处理：ESC 关闭（critical 禁止）、Tab/Shift+Tab 焦点循环在对话框范围内
    */
   private onKeydown = (event: KeyboardEvent): void => {
+    if (ZoneDialog._openDialogs.at(-1) !== this) return;
     if (event.code === "Escape" && this.open && !this.critical) {
       event.preventDefault();
       this.closeDialog("keyboard");
     }
     if (event.code === "Tab" && this.open) {
-      const root = this.shadowRoot;
-      if (!root) return;
-      const focusables = Array.from(root.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
-      if (focusables.length === 0) return;
-      const currentIndex = focusables.indexOf(document.activeElement as HTMLElement);
+      const focusables = this.focusableElements();
+      if (focusables.length === 0) {
+        this.container.focus();
+        event.preventDefault();
+        return;
+      }
+      const currentIndex = focusables.indexOf(this.deepActiveElement() as HTMLElement);
       const dir = event.shiftKey ? -1 : 1;
-      const nextIndex = (currentIndex + dir + focusables.length) % focusables.length;
+      const nextIndex = currentIndex < 0
+        ? (event.shiftKey ? focusables.length - 1 : 0)
+        : (currentIndex + dir + focusables.length) % focusables.length;
       focusables[nextIndex].focus();
       event.preventDefault();
     }
@@ -354,24 +397,24 @@ export class ZoneDialog extends LitElement {
    */
   private renderContainer() {
     const title = this.caption
-      ? html`<h4 id="dialogCaption" part="dialog-title" class="zone-h4" .innerHTML="${this.caption}"></h4>`
+      ? html`<h2 id="dialogCaption" part="dialog-title" class="zone-h4" .innerHTML="${this.caption}"></h2>`
       : "";
     const showClose = this.showClose && !this.noClose;
     const closeButton = showClose
-      ? html`<zone-icon
+      ? html`<button
+          type="button"
           part="dialog-close"
           class="close"
+          aria-label="关闭"
           @click="${() => this.closeDialog("close-button")}"
-          name="${this.closeIcon}"
-          label="close"
-        ></zone-icon>`
+        ><zone-icon class="close" name="${this.closeIcon}" aria-hidden="true"></zone-icon></button>`
       : null;
 
     const classes = {
       container: true,
     };
 
-    return html`<div part="dialog-container" class="${classMap(classes)}">
+    return html`<div part="dialog-container" tabindex="-1" class="${classMap(classes)}">
       ${closeButton}
       <section part="dialog-content" class="content">
         ${title}

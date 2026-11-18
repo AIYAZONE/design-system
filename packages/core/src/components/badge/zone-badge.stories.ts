@@ -161,7 +161,7 @@ export const Custom = {
     content: "Custom",
     variant: "soft",
     kind: "custom",
-    badgeColor: "#ff7a00",
+    badgeColor: "#983000",
   },
   render: (args: any) => {
     const el = document.createElement("zone-badge");

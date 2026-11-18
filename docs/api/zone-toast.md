@@ -68,9 +68,9 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
   --zone-color-danger-contrast: /* 你的值 */;
   --zone-color-info: /* 你的值 */;
   --zone-color-info-contrast: /* 你的值 */;
-  --zone-color-neutral-400: /* 你的值 */;
   --zone-color-success: /* 你的值 */;
   --zone-color-success-contrast: /* 你的值 */;
+  --zone-color-text-l2: /* 你的值 */;
   --zone-color-warning: /* 你的值 */;
   --zone-color-warning-contrast: /* 你的值 */;
   --zone-font-b2: /* 你的值 */;

@@ -1,0 +1,7 @@
+
+> @aiyazone/tokens@0.1.1 verify /Users/ht-2502/Documents/Code/design-system/packages/tokens
+> node scripts/verify.mjs
+
+✓ [v3] 编译产物 diff = 0（1144 行）
+✓ [v1] 编译产物 diff = 0（1079 行）
+✓ [v2] 编译产物 diff = 0（1143 行）

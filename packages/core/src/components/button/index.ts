@@ -2,6 +2,7 @@ import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup} from "lit"
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
+import { ref } from "lit/directives/ref.js";
 import { submit } from "@aiyazone/utils";
 
 import styles from "./index.less?inline";
@@ -212,14 +213,14 @@ export class ZoneButton extends LitElement {
   }
 
   private _handleKeydown(event: KeyboardEvent) {
-    if (event.code === "Space" || event.code === "Enter") {
+    if (event.code === "Space") {
       event.preventDefault();
-      this._handleClick(event);
+      this.button?.click();
     }
   }
 
   focus() {
-    this.button?.focus();
+    (this.button ?? this.shadowRoot?.querySelector<HTMLElement>("button, a"))?.focus();
   }
 
   get _hasIconSlot() {
@@ -316,11 +317,15 @@ export class ZoneButton extends LitElement {
     return isAnchor
       ? html`
           <a
+            ${ref(element => { this.button = element as HTMLAnchorElement; })}
             part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
             aria-disabled="${ifDefined(isDisabled)}"
             aria-label="${ifDefined(this.label)}"
+            aria-busy=${String(this.loading)}
+            @click=${this._handleClick}
+            @keydown=${this._handleKeydown}
             href=${ifDefined(this.href)}
             target=${ifDefined(this.target)}
             rel=${ifDefined(this.target === "_blank" ? "noopener noreferrer" : undefined)}
@@ -331,14 +336,15 @@ export class ZoneButton extends LitElement {
         `
       : html`
           <button
+            ${ref(element => { this.button = element as HTMLButtonElement; })}
             part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
             aria-disabled="${ifDefined(isDisabled)}"
             aria-label="${ifDefined(this.label)}"
+            aria-busy=${String(this.loading)}
             ?disabled=${isDisabled}
             @click="${this._handleClick}"
-            @keydown="${this._handleKeydown}"
           >
             ${slots}
           </button>

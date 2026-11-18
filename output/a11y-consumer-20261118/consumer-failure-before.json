@@ -1,0 +1,10 @@
+{
+  "current": {
+    "scenario": "bundle",
+    "width": 1440
+  },
+  "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '验证按钮', exact: true })\n",
+  "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '验证按钮', exact: true })\n\n    at /Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:53:73\n    at async withStaticServer (/Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:24:12)\n    at async checkConsumerBrowser (/Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:40:5)\n    at async file:///Users/ht-2502/Documents/Code/design-system/scripts/check-packed-consumer.mjs:222:3",
+  "errors": [],
+  "results": []
+}

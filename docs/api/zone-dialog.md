@@ -5,7 +5,7 @@
 - **标签**：`<zone-dialog>`
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
-- **测试**：8 个用例
+- **测试**：9 个用例
 - **包**：`@aiyazone/design-system@0.4.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用

@@ -1,0 +1,238 @@
+
+> @aiyazone/storybook@0.1.1 test:storybook /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> concurrently -k -s first -n "SERVER,TEST" "serve storybook-static -l 6006 --no-clipboard --no-port-switching --config ../serve.json" "wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook"
+
+[SERVER]  UPDATE  The latest version of `serve` is 14.2.8
+[SERVER]  INFO  Accepting connections at http://localhost:6006
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 GET /
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 Returned 200 in 15 ms
+[TEST] [test-storybook] Detected a remote Storybook URL, running in index json mode. To disable this, run the command again with --no-index-json
+[TEST] 
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 GET /stories.json
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 Returned 404 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:01 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 20 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:03 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 16 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 15 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 11 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 11 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:04 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 17:23:05 127.0.0.1 GET /assets/zone-dropdown.stories-DlpKnrGN.js
+[SERVER]  HTTP  2026/11/18 17:23:05 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 17:23:05 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:05 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/zone-toast.stories-DkKS4hPM.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/zone-popover.stories-fDHBLjrf.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/play-CTlENMai.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 17 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 57 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 66 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/zone-button.stories-C51dto-C.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:06 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/close-BT9GqDsG.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 24 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-popover.test.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/zone-dialog.stories-BpVVqYux.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/close-fill-DD3IAph6.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 19 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 10 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-dropdown.test.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/zone-filter-select.stories-DQILQl5S.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 4 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-toast.test.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/close-BT9GqDsG.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 11 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 12 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 12 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 10 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/zone-tooltip.stories-Bu4yznpO.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/arrow-right-long-mlJIx9Jh.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 19 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 16 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 16 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 23 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 21 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/loading-DM7TiwXH.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 15 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 53 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dn08cloa.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/iframe-Dx6dUzvv.css
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 17:23:07 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 17 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 3 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-button.test.js (5.332 s)
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 4 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-dialog.test.js (5.442 s)
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-filter-select.test.js (5.36 s)
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/alert-line-DtoixnvO.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 0 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-tooltip.test.js (5.688 s)
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/zone-spinner.stories-CHRDzbWc.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/zone-checkbox.stories-DxuFaXFn.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/loading-DM7TiwXH.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/zone-badge.stories-Dt8uwOfV.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/axe-B-60mXak.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 17:23:08 127.0.0.1 Returned 200 in 4 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-spinner.test.js
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-checkbox.test.js
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b/03-基础组件-zone-badge.test.js
+[TEST] 
+[TEST] Test Suites: 10 passed, 10 total
+[TEST] Tests:       79 passed, 79 total
+[TEST] Snapshots:   0 total
+[TEST] Time:        7.418 s
+[TEST] Ran all test suites.
+[TEST] [test-storybook] Cleaning up /private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/bfc5477a8a74839f1cf6b0ab8dd9a42b
+[TEST] wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook exited with code 0
+--> Sending SIGTERM to other processes..
+[SERVER] 
+[SERVER]  INFO  Gracefully shutting down. Please wait...
+[SERVER] serve storybook-static -l 6006 --no-clipboard --no-port-switching --config ../serve.json exited with code 0

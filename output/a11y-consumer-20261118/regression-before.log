@@ -1,0 +1,130 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/Users/ht-2502/Documents/Code/design-system/packages/core[39m
+
+[90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts
+[22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+
+[90mstderr[2m | src/components/badge/__tests__/badge.a11y.test.ts
+[22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+
+[90mstderr[2m | src/components/dialog/__tests__/dialog.a11y.test.ts
+[22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+
+[90mstderr[2m | src/components/badge/__tests__/badge.a11y.test.ts[2m > [22m[2mzone-badge a11y[2m > [22m[2mcount-only has accessible name and no axe violations
+[22m[39mzone-badge: 仅计数时将自动生成 aria-label 以提升可访问性
+
+[90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2mhas accessible name (basic)
+[22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ [32m✓[39m src/components/badge/__tests__/badge.a11y.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 159[2mms[22m[39m
+[90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2manchor rendering has role and rel for safety
+[22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ [31m❯[39m src/components/dialog/__tests__/dialog.a11y.test.ts [2m([22m[2m2 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 177[2mms[22m[39m
+[31m   [31m×[31m zone-dialog a11y[2m > [22mdialog has role/aria-modal (basic)[39m[32m 149[2mms[22m[39m
+[31m     → expected undefined to be '关闭' // Object.is equality[39m
+[31m   [31m×[31m zone-dialog a11y[2m > [22mmoves focus through slotted controls and restores the shadow trigger[39m[32m 27[2mms[22m[39m
+[31m     → expected null to be <button part="button" …(2)>…(2)</button> // Object.is equality[39m
+[90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2mcapsule icon mode does not introduce nested interactive descendants
+[22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ [31m❯[39m src/components/button/__tests__/button.a11y.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 216[2mms[22m[39m
+   [32m✓[39m zone-button a11y[2m > [22mhas accessible name (basic)[32m 151[2mms[22m[39m
+   [32m✓[39m zone-button a11y[2m > [22manchor rendering has role and rel for safety[32m 29[2mms[22m[39m
+[31m   [31m×[31m zone-button a11y[2m > [22mkeeps its slotted accessible name while loading[39m[32m 4[2mms[22m[39m
+[31m     → expected null to be 'true' // Object.is equality[39m
+   [32m✓[39m zone-button a11y[2m > [22mcapsule icon mode does not introduce nested interactive descendants[32m 31[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/components/dialog/__tests__/dialog.a11y.test.ts[2m > [22mzone-dialog a11y[2m > [22mdialog has role/aria-modal (basic)
+[31m[1mAssertionError[22m: expected undefined to be '关闭' // Object.is equality[39m
+
+[32m- Expected:[39m 
+"关闭"
+
+[31m+ Received:[39m 
+undefined
+
+[36m [2m❯[22m src/components/dialog/__tests__/dialog.a11y.test.ts:[2m18:91[22m[39m
+    [90m 16| [39m    [34mexpect[39m(roleEl[33m?.[39m[34mgetAttribute[39m([32m'aria-label'[39m))[33m.[39m[34mtoBe[39m([32m'确认操作'[39m)
+    [90m 17| [39m    [34mexpect[39m(results[33m.[39mviolations)[33m.[39m[34mtoEqual[39m([])
+    [90m 18| [39m    expect(root.querySelector('button[part="dialog-close"]')?.getAttri…
+    [90m   | [39m                                                                                          [31m^[39m
+    [90m 19| [39m  })
+    [90m 20| [39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/dialog/__tests__/dialog.a11y.test.ts[2m > [22mzone-dialog a11y[2m > [22mmoves focus through slotted controls and restores the shadow trigger
+[31m[1mAssertionError[22m: expected null to be <button part="button" …(2)>…(2)</button> // Object.is equality[39m
+
+[32m- Expected:[39m 
+<button
+  aria-disabled="false"
+  class=" button has-content "
+  part="button"
+>
+  
+            
+  <!--?lit$450498387$-->
+  <!--?lit$450498387$-->
+  <span
+    class="label"
+    part="label"
+  >
+    <!--?lit$450498387$-->
+    <slot />
+  </span>
+  <!--?lit$450498387$-->
+  <slot
+    name="icon"
+  >
+    <!--?lit$450498387$-->
+  </slot>
+  <!--?-->
+  
+          
+</button>
+
+[31m+ Received:[39m 
+null
+
+[36m [2m❯[22m src/components/dialog/__tests__/dialog.a11y.test.ts:[2m34:64[22m[39m
+    [90m 32| [39m    [34mexpect[39m(document[33m.[39mactiveElement)[33m.[39m[34mtoBe[39m(el[33m.[39m[34mquerySelector[39m([32m'#first'[39m))
+    [90m 33| [39m    window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Tab', b…
+    [90m 34| [39m    expect(el.querySelector('#last').shadowRoot.activeElement).toBe(el…
+    [90m   | [39m                                                               [31m^[39m
+    [90m 35| [39m    el[33m.[39mopen [33m=[39m [35mfalse[39m
+    [90m 36| [39m    [35mawait[39m [34mwaitUpdate[39m(el)
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/button/__tests__/button.a11y.test.ts[2m > [22mzone-button a11y[2m > [22mkeeps its slotted accessible name while loading
+[31m[1mAssertionError[22m: expected null to be 'true' // Object.is equality[39m
+
+[32m- Expected:[39m 
+"true"
+
+[31m+ Received:[39m 
+null
+
+[36m [2m❯[22m src/components/button/__tests__/button.a11y.test.ts:[2m27:69[22m[39m
+    [90m 25| [39m    [35mconst[39m { el } [33m=[39m [34mmount[39m([32m'zone-button'[39m[33m,[39m { loading[33m:[39m [35mtrue[39m }[33m,[39m [32m'保存'[39m)
+    [90m 26| [39m    [35mconst[39m root [33m=[39m [35mawait[39m [34mwaitUpdate[39m(el)
+    [90m 27| [39m    expect(root.querySelector('button')?.getAttribute('aria-busy')).to…
+    [90m   | [39m                                                                    [31m^[39m
+    [90m 28| [39m    const results = await axe.run(el, { rules: { 'color-contrast': { e…
+    [90m 29| [39m    [34mexpect[39m(results[33m.[39mviolations)[33m.[39m[34mtoEqual[39m([])
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m5 passed[39m[22m[90m (8)[39m
+[2m   Start at [22m 17:11:15
+[2m   Duration [22m 1.48s[2m (transform 692ms, setup 48ms, collect 1.42s, tests 552ms, environment 1.60s, prepare 197ms)[22m
+
+undefined
+/Users/ht-2502/Documents/Code/design-system/packages/core:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/components/button/__tests__/button.a11y.test.ts src/components/badge/__tests__/badge.a11y.test.ts src/components/dialog/__tests__/dialog.a11y.test.ts

@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { checkConsumerBrowser } from './check-consumer-browser.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'zds-consumer-'));
@@ -13,6 +14,7 @@ const dependencies = {};
 const artifacts = [];
 const run = (command, args, cwd = temporary) => execFileSync(command, args, { cwd, stdio: 'inherit' });
 
+try {
 console.log(`独立消费者：${temporary}`);
 for (const directory of directories) {
   const cwd = path.join(root, directory);
@@ -168,15 +170,33 @@ const browserImports = internal ? {
   reverse: ["@aiyazone/core", "@aiyazone/icons", "@aiyazone/design-system"]
 } : { bundle: ['@aiyazone/design-system'] };
 for (const [scenario, names] of Object.entries(browserImports)) {
-  fs.writeFileSync(path.join(temporary, `${scenario}.html`), `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><zone-button>验证按钮</zone-button><zone-icon name="plus"></zone-icon><span data-i18n-key="common.submit"></span><button id="language">日本語</button><script type="module" src="/${scenario}.js"></script></body></html>`);
+  fs.writeFileSync(path.join(temporary, `${scenario}.html`), `<!doctype html><html lang="zh-CN"><head><title>ZDS 独立消费者</title><meta name="viewport" content="width=device-width, initial-scale=1"><link id="theme" rel="stylesheet"><style>body{padding:24px;display:flex;gap:16px;flex-direction:column;align-items:flex-start}zone-dropdown{width:min(320px,100%)}zone-dialog input{display:block}</style></head><body><main><h1>ZDS 独立消费者</h1><zone-button id="action">验证按钮</zone-button><zone-icon id="dynamic-icon" name="plus"></zone-icon><span data-i18n-key="common.submit"></span><button id="language">日本語</button><zone-button id="loading" loading>保存中</zone-button><zone-button id="open-dialog">打开弹窗</zone-button><zone-dialog caption="编辑内容" initialfocus="#first"><label for="first">名称</label><input id="first"><zone-button id="last">完成</zone-button></zone-dialog><zone-dropdown label="选择项目" placeholder="选择项目"></zone-dropdown></main><script type="module" src="/${scenario}.js"></script></body></html>`);
   fs.writeFileSync(path.join(temporary, `${scenario}.js`), `
 ${names.map(name => `import '${name}';`).join('\n')}
-import '@aiyazone/design-system/index-v3.css';
+import v1 from '@aiyazone/design-system/index.css?url';
+import v2 from '@aiyazone/design-system/index-v2.css?url';
+import v3 from '@aiyazone/design-system/index-v3.css?url';
 import { LitElement } from 'lit';
-import { setCurrLanguage } from '${scenario === 'bundle' ? '@aiyazone/design-system' : '@aiyazone/i18n'}';
+import { setCurrLanguage, t } from '${scenario === 'bundle' ? '@aiyazone/design-system' : '@aiyazone/i18n'}';
+(async () => {
 window.consumerLit = LitElement;
+window.themes = {v1, v2, v3};
+document.querySelector('#theme').href = v3;
+window.buttonClicks = 0;
+document.querySelector('#action').addEventListener('zone-click', () => window.buttonClicks++);
+document.querySelector('#open-dialog').addEventListener('zone-click', () => document.querySelector('zone-dialog').open = true);
+const dropdown = document.querySelector('zone-dropdown');
+dropdown.options = [{label: '项目', value: 'parent', children: [{label: '子项目', value: 'leaf'}, {label: '禁用', value: 'disabled', disabled: true}]}];
+dropdown.addEventListener('change', event => window.dropdownValue = event.detail.value);
+setCurrLanguage('ja');
+window.translations = {ja: t('common.submit')};
 setCurrLanguage('en');
-document.querySelector('#language').addEventListener('click', () => setCurrLanguage('ja'));`);
+window.translations.en = t('common.submit');
+document.querySelector('#language').addEventListener('click', () => setCurrLanguage('ja'));
+await Promise.all([...document.querySelectorAll('zone-button, zone-dropdown, zone-dialog')].map(el => el.updateComplete));
+await document.querySelector('#dynamic-icon').load();
+window.consumerReady = true;
+})();`);
 }
 fs.writeFileSync(path.join(temporary, 'vite.config.js'), `
 import assert from 'node:assert/strict';
@@ -195,6 +215,12 @@ run('node', ['node_modules/vite/bin/vite.js', 'build']);
 const assets = fs.readdirSync(path.join(temporary, 'dist/assets'));
 assert.ok(assets.some(name => name.endsWith('.css')), '生产构建必须保留公共样式');
 console.log('打包安装、ESM/CJS、类型和生产构建全部通过。');
+if (process.argv.includes('--browser')) {
+  const diagnosticsIndex = process.argv.indexOf('--diagnostics');
+  assert.ok(diagnosticsIndex === -1 || process.argv[diagnosticsIndex + 1], '--diagnostics 需要输出目录');
+  const diagnostics = path.resolve(diagnosticsIndex === -1 ? path.join(root, 'output/consumer-browser') : process.argv[diagnosticsIndex + 1]);
+  await checkConsumerBrowser(temporary, Object.keys(browserImports), diagnostics);
+}
 const recordIndex = process.argv.indexOf('--record');
 if (recordIndex !== -1) {
   assert.ok(process.argv[recordIndex + 1], '--record 需要输出文件路径');
@@ -204,4 +230,12 @@ if (recordIndex !== -1) {
     uncommitted: Boolean(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8' }).trim()),
     artifacts
   }, null, 2) + '\n');
+}
+} finally {
+  if (process.argv.includes('--keep')) {
+    console.log(`保留消费者目录：${temporary}`);
+  } else {
+    fs.rmSync(temporary, { recursive: true, force: true });
+    console.log(`已清理消费者目录：${temporary}`);
+  }
 }

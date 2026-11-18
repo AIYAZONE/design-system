@@ -1,0 +1,509 @@
+
+> @aiyazone/design-system@0.4.1 test /Users/ht-2502/Documents/Code/design-system
+> turbo run test
+
+
+   • Packages in scope: @aiyazone/core, @aiyazone/eslint-config, @aiyazone/examples, @aiyazone/i18n, @aiyazone/icons, @aiyazone/portal, @aiyazone/storybook, @aiyazone/tokens, @aiyazone/tsconfig, @aiyazone/utils
+   • Running test in 10 packages
+   • Remote caching disabled
+
+@aiyazone/utils:test: cache hit, replaying logs fc83fd385de06391
+@aiyazone/utils:build: cache hit, replaying logs 47fe1ba106761a40
+@aiyazone/utils:build: 
+@aiyazone/utils:build: > @aiyazone/utils@0.1.0 build /Users/ht-2502/Documents/Code/design-system/packages/utils
+@aiyazone/utils:build: > vite build
+@aiyazone/utils:build: 
+@aiyazone/utils:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/utils:build: transforming...
+@aiyazone/utils:build: [32m✓[39m 13 modules transformed.
+@aiyazone/utils:build: rendering chunks...
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: 
+@aiyazone/utils:build: [unplugin:dts] Start generate declaration files...
+@aiyazone/utils:build: computing gzip size...
+@aiyazone/utils:build: [2mdist/[22m[36mcommon.js        [39m[1m[2m0.42 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map: 1.58 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36melements.js      [39m[1m[2m0.49 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map: 1.34 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mevent.js         [39m[1m[2m0.68 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map: 2.42 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mform-control.js  [39m[1m[2m0.94 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map: 4.77 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mindex.js         [39m[1m[2m1.28 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map: 2.96 kB[22m
+@aiyazone/utils:build: [unplugin:dts] Declaration files built in 921ms.
+@aiyazone/utils:build: 
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: [2mdist/[22m[36mevent.cjs         [39m[1m[2m0.39 kB[22m[1m[22m[2m │ gzip: 0.28 kB[22m[2m │ map: 2.32 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36melements.cjs      [39m[1m[2m0.42 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map: 1.31 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mcommon.cjs        [39m[1m[2m0.45 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map: 1.58 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mform-control.cjs  [39m[1m[2m0.86 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map: 4.64 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mindex.cjs         [39m[1m[2m1.01 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map: 2.86 kB[22m
+@aiyazone/utils:build: [32m✓ built in 1.07s[39m
+@aiyazone/utils:test: 
+@aiyazone/utils:test: > @aiyazone/utils@0.1.0 test /Users/ht-2502/Documents/Code/design-system/packages/utils
+@aiyazone/utils:test: > vitest run
+@aiyazone/utils:test: 
+@aiyazone/utils:test: 
+@aiyazone/utils:test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/Users/ht-2502/Documents/Code/design-system/packages/utils[39m
+@aiyazone/utils:test: 
+@aiyazone/utils:test:  [32m✓[39m src/__tests__/placeholder.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+@aiyazone/utils:test: 
+@aiyazone/utils:test: [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+@aiyazone/utils:test: [2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+@aiyazone/utils:test: [2m   Start at [22m 14:59:16
+@aiyazone/utils:test: [2m   Duration [22m 1.72s[2m (transform 63ms, setup 0ms, collect 70ms, tests 4ms, environment 0ms, prepare 399ms)[22m
+@aiyazone/utils:test: 
+@aiyazone/i18n:test: cache hit, replaying logs 049d1ab6ae26af8b
+@aiyazone/i18n:test: 
+@aiyazone/i18n:test: > @aiyazone/i18n@0.1.1 test /Users/ht-2502/Documents/Code/design-system/packages/i18n
+@aiyazone/i18n:test: > vitest run
+@aiyazone/i18n:test: 
+@aiyazone/i18n:test: 
+@aiyazone/i18n:test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/Users/ht-2502/Documents/Code/design-system/packages/i18n[39m
+@aiyazone/i18n:test: 
+@aiyazone/i18n:test:  [32m✓[39m src/__tests__/placeholder.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 14[2mms[22m[39m
+@aiyazone/i18n:test: 
+@aiyazone/i18n:test: [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+@aiyazone/i18n:test: [2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+@aiyazone/i18n:test: [2m   Start at [22m 14:59:14
+@aiyazone/i18n:test: [2m   Duration [22m 2.01s[2m (transform 149ms, setup 0ms, collect 136ms, tests 14ms, environment 0ms, prepare 830ms)[22m
+@aiyazone/i18n:test: 
+@aiyazone/icons:test: cache hit, replaying logs 5f150437f73e48a1
+@aiyazone/i18n:build: cache hit, replaying logs f037f848682d3242
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: > @aiyazone/i18n@0.1.1 build /Users/ht-2502/Documents/Code/design-system/packages/i18n
+@aiyazone/i18n:build: > vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/i18n:build: transforming...
+@aiyazone/i18n:build: [32m✓[39m 20 modules transformed.
+@aiyazone/i18n:build: rendering chunks...
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: computing gzip size...
+@aiyazone/i18n:build: [2mdist/[22m[36mindex.es.js  [39m[1m[2m38.97 kB[22m[1m[22m[2m │ gzip: 13.40 kB[22m[2m │ map: 33.70 kB[22m
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: [2mdist/[22m[36mindex.cjs  [39m[1m[2m33.66 kB[22m[1m[22m[2m │ gzip: 12.68 kB[22m[2m │ map: 32.61 kB[22m
+@aiyazone/i18n:build: [32m✓ built in 1.12s[39m
+@aiyazone/i18n:build: [36m
+@aiyazone/i18n:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/i18n/src/index.ts[22m → [1mdist/index.d.ts[22m...[39m
+@aiyazone/i18n:build: [32mcreated [1mdist/index.d.ts[22m in [1m9.3s[22m[39m
+@aiyazone/icons:test: 
+@aiyazone/icons:test: > @aiyazone/icons@0.1.3 test /Users/ht-2502/Documents/Code/design-system/packages/icons
+@aiyazone/icons:test: > vitest run
+@aiyazone/icons:test: 
+@aiyazone/icons:test: 
+@aiyazone/icons:test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/Users/ht-2502/Documents/Code/design-system/packages/icons[39m
+@aiyazone/icons:test: 
+@aiyazone/icons:test:  [32m✓[39m src/__tests__/placeholder.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+@aiyazone/icons:test:  [32m✓[39m src/__tests__/icons.assets.test.ts [2m([22m[2m117 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+@aiyazone/icons:test: 
+@aiyazone/icons:test: [2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+@aiyazone/icons:test: [2m      Tests [22m [1m[32m118 passed[39m[22m[90m (118)[39m
+@aiyazone/icons:test: [2m   Start at [22m 14:59:14
+@aiyazone/icons:test: [2m   Duration [22m 2.50s[2m (transform 73ms, setup 0ms, collect 294ms, tests 20ms, environment 0ms, prepare 1.64s)[22m
+@aiyazone/icons:test: 
+@aiyazone/core:test: cache miss, executing 70923456b23e306b
+@aiyazone/core:build: cache hit, replaying logs f52e30789f809010
+@aiyazone/core:build: 
+@aiyazone/core:build: > @aiyazone/core@0.1.9 build /Users/ht-2502/Documents/Code/design-system/packages/core
+@aiyazone/core:build: > vite build && rollup -c ../../scripts/build-core-types.rollup.config.mjs
+@aiyazone/core:build: 
+@aiyazone/core:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/core:build: transforming...
+@aiyazone/core:build: [32m✓[39m 45 modules transformed.
+@aiyazone/core:build: rendering chunks...
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: computing gzip size...
+@aiyazone/core:build: [2mdist/[22m[35mstyles/index.css                    [39m[1m[2m44.15 kB[22m[1m[22m[2m │ gzip: 5.45 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/decorators-CuQZomWl.js       [39m[1m[2m 0.15 kB[22m[1m[22m[2m │ gzip: 0.13 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mindex.js                            [39m[1m[2m 1.65 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mspinner/index.js                    [39m[1m[2m 1.82 kB[22m[1m[22m[2m │ gzip: 0.96 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mcheckbox/index.js                   [39m[1m[2m 4.62 kB[22m[1m[22m[2m │ gzip: 1.89 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbadge/index.js                      [39m[1m[2m 4.98 kB[22m[1m[22m[2m │ gzip: 1.65 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mpopover/index.js                    [39m[1m[2m 6.15 kB[22m[1m[22m[2m │ gzip: 2.06 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtooltip/index.js                    [39m[1m[2m 6.37 kB[22m[1m[22m[2m │ gzip: 1.97 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtoast/index.js                      [39m[1m[2m 6.44 kB[22m[1m[22m[2m │ gzip: 2.39 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdialog/index.js                     [39m[1m[2m14.31 kB[22m[1m[22m[2m │ gzip: 4.55 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/internal-shared-n9javRSb.js  [39m[1m[2m18.37 kB[22m[1m[22m[2m │ gzip: 2.06 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mfilter-select/index.js              [39m[1m[2m24.54 kB[22m[1m[22m[2m │ gzip: 6.67 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/floating-ui.dom-BS3B8OHI.js  [39m[1m[2m26.52 kB[22m[1m[22m[2m │ gzip: 8.41 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbutton/index.js                     [39m[1m[2m33.74 kB[22m[1m[22m[2m │ gzip: 5.64 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdropdown/index.js                   [39m[1m[2m34.06 kB[22m[1m[22m[2m │ gzip: 9.69 kB[22m
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: [2mdist/[22m[35mstyles/index.css                     [39m[1m[2m44.15 kB[22m[1m[22m[2m │ gzip: 5.45 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/decorators-BzCoYcbl.cjs       [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.30 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mindex.cjs                            [39m[1m[2m 1.74 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mspinner/index.cjs                    [39m[1m[2m 1.83 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mcheckbox/index.cjs                   [39m[1m[2m 4.41 kB[22m[1m[22m[2m │ gzip: 1.72 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbadge/index.cjs                      [39m[1m[2m 4.97 kB[22m[1m[22m[2m │ gzip: 1.57 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtoast/index.cjs                      [39m[1m[2m 5.61 kB[22m[1m[22m[2m │ gzip: 1.98 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mpopover/index.cjs                    [39m[1m[2m 5.68 kB[22m[1m[22m[2m │ gzip: 1.96 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtooltip/index.cjs                    [39m[1m[2m 5.92 kB[22m[1m[22m[2m │ gzip: 1.82 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdialog/index.cjs                     [39m[1m[2m12.49 kB[22m[1m[22m[2m │ gzip: 3.59 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/floating-ui.dom-wukjC_sP.cjs  [39m[1m[2m17.81 kB[22m[1m[22m[2m │ gzip: 7.14 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/internal-shared-yuij7l57.cjs  [39m[1m[2m18.31 kB[22m[1m[22m[2m │ gzip: 2.04 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mfilter-select/index.cjs              [39m[1m[2m22.16 kB[22m[1m[22m[2m │ gzip: 5.81 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdropdown/index.cjs                   [39m[1m[2m29.78 kB[22m[1m[22m[2m │ gzip: 9.01 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbutton/index.cjs                     [39m[1m[2m33.23 kB[22m[1m[22m[2m │ gzip: 5.48 kB[22m
+@aiyazone/core:build: [32m✓ built in 459ms[39m
+@aiyazone/core:build: [36m
+@aiyazone/core:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/core/src/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/badge/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/button/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/checkbox/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dialog/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/filter-select/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/popover/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/spinner/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/toast/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/tooltip/index.ts[22m → [1mdist[22m...[39m
+@aiyazone/core:build: [32mcreated [1mdist[22m in [1m3.5s[22m[39m
+@aiyazone/icons:build: cache hit, replaying logs a2c9bc4dd96843ea
+@aiyazone/icons:build: 
+@aiyazone/icons:build: > @aiyazone/icons@0.1.3 build /Users/ht-2502/Documents/Code/design-system/packages/icons
+@aiyazone/icons:build: > tsc && vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/icons:build: 
+@aiyazone/icons:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/icons:build: transforming...
+@aiyazone/icons:build: [32m✓[39m 119 modules transformed.
+@aiyazone/icons:build: rendering chunks...
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: computing gzip size...
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-square-Cr81q2eI.js               [39m[1m[2m 0.34 kB[22m[1m[22m[2m │ gzip: 0.25 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-left-top-B3jngAd7.js            [39m[1m[2m 0.37 kB[22m[1m[22m[2m │ gzip: 0.29 kB[22m[2m │ map:  0.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-right-bottom-DGUdyN8A.js        [39m[1m[2m 0.37 kB[22m[1m[22m[2m │ gzip: 0.30 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/lamp-line-uKVXL1H4.js                  [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map:  0.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/cart-line-Cg_JjUQI.js                  [39m[1m[2m 0.48 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map:  0.68 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-BI2YA8g2.js                      [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.35 kB[22m[2m │ map:  0.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tent-line-6N2gut_C.js                  [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.33 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-uBdUKfuT.js                    [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-Cm3Ggkq_.js                   [39m[1m[2m 0.53 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-fill-BEXA7BXT.js              [39m[1m[2m 0.55 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-DeXVkFJM.js              [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-fill-BVZBzi_8.js        [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-fill-CDfJarUM.js               [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-Ct1gQ3fV.js             [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-fill-Cn5ePnDQ.js         [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-suqgggeE.js                      [39m[1m[2m 0.57 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-fill-gDWNsKyt.js        [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-fill-C4tDSVZS.js                 [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-fill-B4tVBoPD.js           [39m[1m[2m 0.60 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-DsQnlpui.js                [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.85 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-iVi8OG-4.js                   [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-long-D1h18Xnh.js              [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.83 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-2-DSLtJP86.js                [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map:  0.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-fill-BSTQgJWl.js              [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-fill-BfXmCKJO.js                  [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-long-DMIoTViY.js           [39m[1m[2m 0.64 kB[22m[1m[22m[2m │ gzip: 0.41 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-DX5sqUNP.js             [39m[1m[2m 0.65 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/battery-line-Dj2z7MZh.js               [39m[1m[2m 0.65 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-fill-C9q1mTsW.js                 [39m[1m[2m 0.67 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/minus-Dl05_5EM.js                      [39m[1m[2m 0.69 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-CstGoxlO.js                 [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-CpEJm37W.js                   [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-1-Bh1-vRO3.js                [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  1.02 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-down-BKyORfPe.js                 [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tag-CemJP-oQ.js                        [39m[1m[2m 0.75 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-CU08GFLS.js                  [39m[1m[2m 0.75 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  0.98 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-A8YlqQ6N.js                     [39m[1m[2m 0.76 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.00 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-BilmN3EK.js                [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-fill-NHHgmJFl.js          [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-fill-C2VTndCJ.js                [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-BqbjzgHb.js            [39m[1m[2m 0.79 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-BQn9V4e8.js               [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-fill-BkU4QZri.js             [39m[1m[2m 0.81 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-fill-D5uoHPQC.js                  [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.07 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-fill-Bp7jpud_.js       [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  1.08 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-ChmO25C3.js                       [39m[1m[2m 0.84 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/calendar-line-CALrooE8.js              [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  1.12 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-fill-DRsM8YBD.js               [39m[1m[2m 0.86 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-2-CU7S7Iuq.js               [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  1.22 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-fill-0KRTaQbB.js         [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-line-BxU4o-xt.js                 [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/search-BbwqgZ3Q.js                     [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-EHaqyQ5o.js                   [39m[1m[2m 0.90 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-fill-BN78INHL.js            [39m[1m[2m 0.90 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-fill-B8pV6h50.js           [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-CtygV3it.js                    [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-fill-DyQLgDxz.js              [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-Cm-oIuwb.js              [39m[1m[2m 0.92 kB[22m[1m[22m[2m │ gzip: 0.57 kB[22m[2m │ map:  1.17 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-BEKAczCB.js                      [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.24 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/global-C3jV6r1L.js                     [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.31 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-fill-BDme83Hs.js                  [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-fill-Clp7AEaT.js                 [39m[1m[2m 1.05 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-fill-Sug-y3qj.js                 [39m[1m[2m 1.06 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-Coj-avdP.js                       [39m[1m[2m 1.06 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/loading-BhQE8FoO.js                    [39m[1m[2m 1.08 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-CrbsPZb0.js       [39m[1m[2m 1.09 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-x5YKUXA7.js             [39m[1m[2m 1.09 kB[22m[1m[22m[2m │ gzip: 0.66 kB[22m[2m │ map:  1.33 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-fill-CYJAcyPa.js        [39m[1m[2m 1.10 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.35 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-fill-cYjXUC4F.js  [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.37 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-fill-BVl0o-Sr.js                  [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.38 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-line-Djb7qWjy.js                  [39m[1m[2m 1.17 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.42 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/share-CLGx3pZg.js                      [39m[1m[2m 1.19 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-1-DIYBzLlj.js               [39m[1m[2m 1.23 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.61 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-CwCcHsyk.js                       [39m[1m[2m 1.27 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-Chk-IuqK.js                   [39m[1m[2m 1.29 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-fill-DLWyWbP6.js                  [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-line-ft1jQUug.js                  [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.64 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-yTuoP1Fl.js             [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-fill-B_3Oxl-O.js            [39m[1m[2m 1.31 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-COg92nuz.js                 [39m[1m[2m 1.31 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-fill-VoGqYBq5.js              [39m[1m[2m 1.32 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.57 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-fill-C6-l7T68.js        [39m[1m[2m 1.33 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-fill-Co2Z6kcs.js                  [39m[1m[2m 1.33 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/location-CkJOIb5w.js                   [39m[1m[2m 1.35 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-fill-CLIKCGGe.js                 [39m[1m[2m 1.39 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.60 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-fill-DnzJWHIx.js              [39m[1m[2m 1.43 kB[22m[1m[22m[2m │ gzip: 0.69 kB[22m[2m │ map:  1.77 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-fill-BUtq80Mu.js                 [39m[1m[2m 1.46 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.67 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-big-CdB_ic6u.js                   [39m[1m[2m 1.48 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/download-DWo7Fuz1.js                   [39m[1m[2m 1.48 kB[22m[1m[22m[2m │ gzip: 0.81 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-BCWvqlEM.js                     [39m[1m[2m 1.50 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-fill-Cf0HMRnJ.js                [39m[1m[2m 1.51 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-OBLe4Zo0.js               [39m[1m[2m 1.51 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-line-Dau-l5cU.js                  [39m[1m[2m 1.53 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-C8R1Zvf1.js                       [39m[1m[2m 1.54 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-fill-LteU0Grv.js                  [39m[1m[2m 1.56 kB[22m[1m[22m[2m │ gzip: 0.77 kB[22m[2m │ map:  1.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-fill-Cx_iwqDh.js            [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-B_m-3xrD.js                 [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-line-BBO4pPfd.js              [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-fill-BH3-cqjL.js                [39m[1m[2m 1.62 kB[22m[1m[22m[2m │ gzip: 0.81 kB[22m[2m │ map:  1.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-fill-CK39SgOH.js          [39m[1m[2m 1.63 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-line-D4JXd4KD.js                 [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-DzepD-kc.js                  [39m[1m[2m 1.67 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-line-VJnYYV6O.js                [39m[1m[2m 1.68 kB[22m[1m[22m[2m │ gzip: 0.93 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-line-TYUxn21G.js                  [39m[1m[2m 1.76 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-line-CUZzEEBj.js                 [39m[1m[2m 1.81 kB[22m[1m[22m[2m │ gzip: 0.99 kB[22m[2m │ map:  2.03 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-line-CLiq3LMK.js                  [39m[1m[2m 1.82 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m[2m │ map:  2.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-fill-DbSpVp2W.js             [39m[1m[2m 1.84 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  2.09 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-line-BYi8Z2rs.js                 [39m[1m[2m 1.84 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  2.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-DB2m4rwp.js            [39m[1m[2m 2.03 kB[22m[1m[22m[2m │ gzip: 1.02 kB[22m[2m │ map:  2.41 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/threads-DQ7JDEOX.js                    [39m[1m[2m 2.13 kB[22m[1m[22m[2m │ gzip: 1.19 kB[22m[2m │ map:  2.29 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-fill-DUpnmic2.js       [39m[1m[2m 2.16 kB[22m[1m[22m[2m │ gzip: 1.01 kB[22m[2m │ map:  2.53 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pdf-uDF4g0M7.js                        [39m[1m[2m 2.17 kB[22m[1m[22m[2m │ gzip: 0.87 kB[22m[2m │ map:  2.32 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-line-CdWbVFnb.js                 [39m[1m[2m 2.54 kB[22m[1m[22m[2m │ gzip: 1.33 kB[22m[2m │ map:  2.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mindex.es.js                                   [39m[1m[2m31.47 kB[22m[1m[22m[2m │ gzip: 4.24 kB[22m[2m │ map: 29.19 kB[22m
+@aiyazone/icons:build: [36m[vite-plugin-static-copy][39m [32mCopied 113 items.[39m
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-square-LMPj4X2m.cjs               [39m[1m[2m 0.41 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map:  0.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-left-top-FTkkZxPL.cjs            [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  0.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-right-bottom-CsBxw1cr.cjs        [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.35 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/lamp-line-CPzItHfv.cjs                  [39m[1m[2m 0.51 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  0.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/cart-line-ClPrQ7Uy.cjs                  [39m[1m[2m 0.55 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.68 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-CH4wsbBN.cjs                      [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.41 kB[22m[2m │ map:  0.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tent-line-D-rvnFCr.cjs                  [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-tj55MMNe.cjs                    [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-kDRb4zA4.cjs                   [39m[1m[2m 0.60 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-fill-CxqaTARh.cjs              [39m[1m[2m 0.62 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-Chd9XRYK.cjs              [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-fill-7aq_zvou.cjs        [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-fill-Bsh3Yr8f.cjs               [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-buHCFnT-.cjs             [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-fill-DOhoua4s.cjs         [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-O80EzLSY.cjs                      [39m[1m[2m 0.64 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-fill-2BZNKoWy.cjs        [39m[1m[2m 0.66 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-fill-dIy1lIzE.cjs                 [39m[1m[2m 0.66 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-fill-D_dxBcrv.cjs           [39m[1m[2m 0.67 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-CYuoedKd.cjs                [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.85 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-BmOj2LC6.cjs                   [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-long-55UZvYgD.cjs              [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.83 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-2-z3X_IBOK.cjs                [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-fill-DT-PWZ5i.cjs              [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-fill-BMDxrrJM.cjs                  [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-long-Bie2Y0wD.cjs           [39m[1m[2m 0.71 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-D8RQZJja.cjs             [39m[1m[2m 0.72 kB[22m[1m[22m[2m │ gzip: 0.51 kB[22m[2m │ map:  0.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/battery-line-BVTOYx1c.cjs               [39m[1m[2m 0.72 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-fill-taVVj5xZ.cjs                 [39m[1m[2m 0.74 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/minus-DyHfKouV.cjs                      [39m[1m[2m 0.76 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-Cf-Mldt6.cjs                 [39m[1m[2m 0.77 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  0.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-9TXcHovU.cjs                   [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-1-CUYr4hYG.cjs                [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  1.02 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-down-BPwPQ1C3.cjs                 [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tag-Dr9CFuvt.cjs                        [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-DM9d9RDg.cjs                  [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-Cjnz1M1N.cjs                     [39m[1m[2m 0.83 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.00 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-BvS4qPc4.cjs                [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-fill-BUCKdglz.cjs          [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-fill-rtsZC128.cjs                [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-DvpjGqJK.cjs            [39m[1m[2m 0.86 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-DnaXglf-.cjs               [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-fill-Q83tGwt6.cjs             [39m[1m[2m 0.88 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-fill-DgEg9s7P.cjs                  [39m[1m[2m 0.89 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.07 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-fill-D-K7sgk-.cjs       [39m[1m[2m 0.89 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.08 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-D1EH1hKr.cjs                       [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/calendar-line-h6TOw_OO.cjs              [39m[1m[2m 0.92 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.12 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-fill-Dr2X1hOV.cjs               [39m[1m[2m 0.93 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-2-Cszp2PV6.cjs               [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  1.22 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-fill-pHMb9-Yh.cjs         [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-line-f_3LVe8g.cjs                 [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/search-soVKa2kZ.cjs                     [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-Dwedastn.cjs                   [39m[1m[2m 0.97 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-fill-DKDyes6j.cjs            [39m[1m[2m 0.97 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-fill-ZmTy9N8-.cjs           [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-DND6Ezc6.cjs                    [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-fill-YH9N6UnS.cjs              [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-xvyD5qiW.cjs              [39m[1m[2m 0.99 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.17 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-OmopKZ79.cjs                      [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.64 kB[22m[2m │ map:  1.24 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/global-DhbcPj3L.cjs                     [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.66 kB[22m[2m │ map:  1.31 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-fill-Cl1La928.cjs                  [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-fill-CvQfYymA.cjs                 [39m[1m[2m 1.12 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-fill-DuJ8LZVW.cjs                 [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-D0aYMjwJ.cjs                       [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.35 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/loading-oQaXVnF7.cjs                    [39m[1m[2m 1.15 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-B4PS_wIK.cjs       [39m[1m[2m 1.16 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-B2gMy-Bk.cjs             [39m[1m[2m 1.16 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.33 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-fill-BIM5g6ZA.cjs        [39m[1m[2m 1.17 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.36 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-fill-BWBTX_sg.cjs  [39m[1m[2m 1.18 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.37 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-fill-D1IwkvrM.cjs                  [39m[1m[2m 1.20 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.38 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-line-C8uMcdaj.cjs                  [39m[1m[2m 1.24 kB[22m[1m[22m[2m │ gzip: 0.69 kB[22m[2m │ map:  1.42 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/share-Ch4ht_zp.cjs                      [39m[1m[2m 1.26 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-1-e3v8iHwV.cjs               [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.61 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-qDvx2jJK.cjs                       [39m[1m[2m 1.34 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-BoDrpfaA.cjs                   [39m[1m[2m 1.36 kB[22m[1m[22m[2m │ gzip: 0.80 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-fill-BONqi0xg.cjs                  [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-line-Cje6SKyq.cjs                  [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-BUHjTKfy.cjs             [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-fill-zxZnbjbL.cjs            [39m[1m[2m 1.38 kB[22m[1m[22m[2m │ gzip: 0.77 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-jKQT-ogZ.cjs                 [39m[1m[2m 1.38 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-fill-CRK9T-XY.cjs              [39m[1m[2m 1.39 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.57 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-fill-BlateLGI.cjs        [39m[1m[2m 1.40 kB[22m[1m[22m[2m │ gzip: 0.83 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-fill-Bh-TU_DI.cjs                  [39m[1m[2m 1.40 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/location-RvHQlhHx.cjs                   [39m[1m[2m 1.42 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-fill-E6Jo4ndF.cjs                 [39m[1m[2m 1.46 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.60 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-fill-mxCyOpvd.cjs              [39m[1m[2m 1.50 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.77 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-fill-nO20JzBu.cjs                 [39m[1m[2m 1.53 kB[22m[1m[22m[2m │ gzip: 0.89 kB[22m[2m │ map:  1.67 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-big-BLYQOQ3j.cjs                   [39m[1m[2m 1.55 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.65 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/download-B3DkO_bX.cjs                   [39m[1m[2m 1.55 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.74 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-B0D-oWG6.cjs                     [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-fill-CdiAsm48.cjs                [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.91 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-BdDjcjux.cjs               [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-line-BQz8dlIA.cjs                  [39m[1m[2m 1.60 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-hgcsxgDR.cjs                       [39m[1m[2m 1.61 kB[22m[1m[22m[2m │ gzip: 0.83 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-fill-CvHUjD_K.cjs                  [39m[1m[2m 1.63 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-fill-DqyrzwXa.cjs            [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-DXEmp9tI.cjs                 [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-line-CNpZwwcn.cjs              [39m[1m[2m 1.65 kB[22m[1m[22m[2m │ gzip: 0.80 kB[22m[2m │ map:  1.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-fill-BVZZxiAw.cjs                [39m[1m[2m 1.69 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-fill-9RGKAkXL.cjs          [39m[1m[2m 1.70 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-line-BUGeJ_vD.cjs                 [39m[1m[2m 1.71 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.98 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-AvuLDRp2.cjs                  [39m[1m[2m 1.74 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-line-_hoqNH8L.cjs                [39m[1m[2m 1.75 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-line-Cb54L7tE.cjs                  [39m[1m[2m 1.83 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-line-MNOKeMWW.cjs                 [39m[1m[2m 1.88 kB[22m[1m[22m[2m │ gzip: 1.06 kB[22m[2m │ map:  2.03 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-line-46Lv7beV.cjs                  [39m[1m[2m 1.89 kB[22m[1m[22m[2m │ gzip: 0.97 kB[22m[2m │ map:  2.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-fill-CbPUELUt.cjs             [39m[1m[2m 1.91 kB[22m[1m[22m[2m │ gzip: 0.95 kB[22m[2m │ map:  2.09 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-line-DoQrzPwb.cjs                 [39m[1m[2m 1.91 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  2.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-kHhF96V_.cjs            [39m[1m[2m 2.10 kB[22m[1m[22m[2m │ gzip: 1.08 kB[22m[2m │ map:  2.41 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/threads-Cf7imXk4.cjs                    [39m[1m[2m 2.20 kB[22m[1m[22m[2m │ gzip: 1.26 kB[22m[2m │ map:  2.29 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-fill-Cl8MUha4.cjs       [39m[1m[2m 2.23 kB[22m[1m[22m[2m │ gzip: 1.07 kB[22m[2m │ map:  2.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pdf-BeRC59r3.cjs                        [39m[1m[2m 2.24 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  2.32 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-line-B5iQwMpK.cjs                 [39m[1m[2m 2.61 kB[22m[1m[22m[2m │ gzip: 1.39 kB[22m[2m │ map:  2.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mindex.cjs                                      [39m[1m[2m35.29 kB[22m[1m[22m[2m │ gzip: 4.03 kB[22m[2m │ map: 33.67 kB[22m
+@aiyazone/icons:build: [32m✓ built in 5.72s[39m
+@aiyazone/icons:build: 
+@aiyazone/icons:build: ✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+@aiyazone/icons:build: dist//Users/ht-2502/Documents/Code/design-system/packages/icons/index.es.js.gz   30.73kb / gzip: 4.06kb
+@aiyazone/icons:build: 
+@aiyazone/icons:build: 
+@aiyazone/icons:build: [36m
+@aiyazone/icons:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/icons/src/index.ts[22m → [1mdist/index.d.ts[22m...[39m
+@aiyazone/icons:build: [32mcreated [1mdist/index.d.ts[22m in [1m3.8s[22m[39m
+@aiyazone/core:test: 
+@aiyazone/core:test: > @aiyazone/core@0.1.9 test /Users/ht-2502/Documents/Code/design-system/packages/core
+@aiyazone/core:test: > vitest run
+@aiyazone/core:test: 
+@aiyazone/core:test: 
+@aiyazone/core:test: [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/Users/ht-2502/Documents/Code/design-system/packages/core[39m
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/filter-select/__tests__/filter-select.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/badge/__tests__/badge.a11y.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/filter-select/__tests__/filter-select.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/filter-select/__tests__/filter-select.i18n.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/dropdown/__tests__/dropdown.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/dialog/__tests__/dialog.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/badge/__tests__/badge.a11y.test.ts[2m > [22m[2mzone-badge a11y[2m > [22m[2mcount-only has accessible name and no axe violations
+@aiyazone/core:test: [22m[39mzone-badge: 仅计数时将自动生成 aria-label 以提升可访问性
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/badge/__tests__/badge.a11y.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 223[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/dropdown/__tests__/dropdown.test.ts[2m > [22m[2mzone-dropdown[2m > [22m[2m默认文案随语言切换，并更新已显示的必填校验提示
+@aiyazone/core:test: [22m[39mElement zone-dropdown scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/filter-select/__tests__/filter-select.interaction.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 273[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/filter-select/__tests__/filter-select.test.ts [2m([22m[2m31 tests[22m[2m)[22m[33m 427[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/dialog/__tests__/dialog.interaction.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 448[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/button/__tests__/button.test.ts [2m([22m[2m23 tests[22m[2m)[22m[33m 447[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/filter-select/__tests__/filter-select.i18n.test.ts [2m([22m[2m29 tests[22m[2m)[22m[33m 1036[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/dropdown/__tests__/dropdown.test.ts [2m([22m[2m38 tests[22m[2m)[22m[33m 1271[2mms[22m[39m
+@aiyazone/core:test:    [33m[2m✓[22m[39m zone-dropdown[2m > [22mhas no axe violations for flat and hierarchical open/closed controls [33m 625[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/dialog/__tests__/dialog.a11y.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/checkbox/__tests__/checkbox.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/tooltip/__tests__/tooltip.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2mhas accessible name (basic)
+@aiyazone/core:test: [22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2manchor rendering has role and rel for safety
+@aiyazone/core:test: [22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/button/__tests__/button.interaction.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 418[2mms[22m[39m
+@aiyazone/core:test:    [33m[2m✓[22m[39m zone-button interaction[2m > [22mclick triggers zone-click when enabled [33m 314[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/dialog/__tests__/dialog.a11y.test.ts [2m([22m[2m2 tests[22m[2m)[22m[33m 371[2mms[22m[39m
+@aiyazone/core:test:    [33m[2m✓[22m[39m zone-dialog a11y[2m > [22mdialog has role/aria-modal (basic) [33m 304[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/button/__tests__/button.a11y.test.ts[2m > [22m[2mzone-button a11y[2m > [22m[2mcapsule icon mode does not introduce nested interactive descendants
+@aiyazone/core:test: [22m[39mNot implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/button/__tests__/button.a11y.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 524[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/checkbox/__tests__/checkbox.interaction.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 298[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/checkbox/__tests__/checkbox.a11y.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/tooltip/__tests__/tooltip.interaction.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 373[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/checkbox/__tests__/checkbox.a11y.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 164[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/dialog/__tests__/dialog.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/dialog/__tests__/dialog.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 156[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/checkbox/__tests__/checkbox.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/badge/__tests__/badge.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test: [90mstderr[2m | src/components/badge/__tests__/badge.test.ts[2m > [22m[2mzone-badge[2m > [22m[2mshows maxCount+ when count exceeds maxCount
+@aiyazone/core:test: [22m[39mzone-badge: 仅计数时将自动生成 aria-label 以提升可访问性
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/checkbox/__tests__/checkbox.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+@aiyazone/core:test:  [32m✓[39m src/components/badge/__tests__/badge.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/badge/__tests__/badge.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/badge/__tests__/badge.interaction.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 17[2mms[22m[39m
+@aiyazone/core:test: [90mstderr[2m | src/components/popover/__tests__/popover.interaction.test.ts
+@aiyazone/core:test: [22m[39mLit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+@aiyazone/core:test: 
+@aiyazone/core:test:  [32m✓[39m src/components/popover/__tests__/popover.interaction.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+@aiyazone/core:test: 
+@aiyazone/core:test: [2m Test Files [22m [1m[32m18 passed[39m[22m[90m (18)[39m
+@aiyazone/core:test: [2m      Tests [22m [1m[32m176 passed[39m[22m[90m (176)[39m
+@aiyazone/core:test: [2m   Start at [22m 17:22:02
+@aiyazone/core:test: [2m   Duration [22m 5.04s[2m (transform 1.36s, setup 111ms, collect 6.39s, tests 6.56s, environment 15.51s, prepare 1.28s)[22m
+@aiyazone/core:test: 
+
+ Tasks:    8 successful, 8 total
+Cached:    7 cached, 8 total
+  Time:    5.789s 
+
+ WARNING  no output files found for task @aiyazone/core#test. Please check your `outputs` key in `turbo.json`

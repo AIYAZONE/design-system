@@ -8,7 +8,7 @@ describe('zone-button a11y', () => {
     const { el } = mount('zone-button', { label: '添加' }, '添加')
     await waitUpdate(el)
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
-    expect(Array.isArray(results.violations)).toBe(true)
+    expect(results.violations).toEqual([])
   })
 
   it('anchor rendering has role and rel for safety', async () => {
@@ -18,7 +18,15 @@ describe('zone-button a11y', () => {
     expect(anchor.getAttribute('role')).toBe('button')
     expect(anchor.getAttribute('rel')).toBe('noopener noreferrer')
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
-    expect(Array.isArray(results.violations)).toBe(true)
+    expect(results.violations).toEqual([])
+  })
+
+  it('keeps its slotted accessible name while loading', async () => {
+    const { el } = mount('zone-button', { loading: true }, '保存')
+    const root = await waitUpdate(el)
+    expect(root.querySelector('button')?.getAttribute('aria-busy')).toBe('true')
+    const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
+    expect(results.violations).toEqual([])
   })
 
   it('capsule icon mode does not introduce nested interactive descendants', async () => {

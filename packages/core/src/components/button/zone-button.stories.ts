@@ -319,6 +319,7 @@ export const IconOnly = {
     })}`,
   args: {
     icon: "star-fill",
+    label: "收藏",
   },
 };
 
@@ -411,21 +412,21 @@ export const CustomColor = {
         ...args,
         content: "Custom Color Button",
         kind: "custom",
-        style: "--zone-btn-custom-color: #10b981",
+        style: "--zone-btn-custom-color: #047857",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "secondary",
-        style: "--zone-btn-custom-color: #10b981",
+        style: "--zone-btn-custom-color: #047857",
       })}
       ${SingleButtonTemplate({
         ...args,
         content: "Custom Color Button",
         kind: "custom",
         variant: "text",
-        style: "--zone-btn-custom-color: #10b981",
+        style: "--zone-btn-custom-color: #047857",
       })}
       ${SingleButtonTemplate({
         ...args,
