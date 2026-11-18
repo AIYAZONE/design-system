@@ -16,6 +16,11 @@ assert.deepEqual(publicPackages.map(manifest => manifest.name).sort(), [...allow
 const workspaceNames = new Set(manifests.map(manifest => manifest.name));
 for (const manifest of publicPackages) {
   assert.equal(manifest.publishConfig?.access, 'public', `${manifest.name} 必须公开可安装`);
+  assert.equal(manifest.repository?.type, 'git', `${manifest.name} repository.type 必须为 git`);
+  assert.ok(
+    /^https:\/\/github\.com\/AIYAZONE\/design-system(?:\.git)?$/.test(manifest.repository?.url ?? ''),
+    `${manifest.name} repository.url 必须匹配 provenance 的 GitHub 仓库`
+  );
   for (const section of ['dependencies', 'peerDependencies', 'optionalDependencies']) {
     for (const [name, range] of Object.entries(manifest[section] ?? {})) {
       assert.ok(!/^(workspace|file|link):/.test(range), `${manifest.name} ${name} 不得依赖工作区路径`);

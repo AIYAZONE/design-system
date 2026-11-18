@@ -2,6 +2,11 @@
   "name": "@aiyazone/tokens",
   "version": "0.1.1",
   "description": "AIYAZONE Design System design tokens (single source of truth)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIYAZONE/design-system.git",
+    "directory": "packages/tokens"
+  },
   "type": "module",
   "exports": {
     "./tokens.json": "./tokens.json",

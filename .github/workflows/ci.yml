@@ -2,6 +2,12 @@ name: CI
 
 on:
   workflow_call:
+    inputs:
+      source_ref:
+        description: 要验证的发布标签；为空时验证触发提交
+        required: false
+        type: string
+        default: ''
   push:
     branches: [master, develop, stage]
   pull_request:
@@ -23,6 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ inputs.source_ref || github.sha }}
           fetch-depth: 0 # Chromatic 需要完整 git 历史定位基线提交（浅克隆会报 "Found only one commit"）
 
       - name: Setup pnpm（读取 packageManager 字段）

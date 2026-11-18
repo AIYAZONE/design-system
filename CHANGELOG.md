@@ -1,5 +1,11 @@
 # @aiyazone/design-system
 
+## 0.4.1
+
+### Patch Changes
+
+- Recover the release after the original v0.4.0 attempt failed. Require matching GitHub repository metadata for both public packages before OIDC publication, and add the tokens repository metadata required by npm provenance. Preserve the original v0.4.0 tag.
+
 ## 0.4.0
 
 ### Minor Changes
