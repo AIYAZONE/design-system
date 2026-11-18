@@ -20,8 +20,8 @@ const mountSiteFooter = () => {
   footer.className = 'site-footer';
   footer.innerHTML = `
     <div class="site-footer__inner">
-      <p>© ${yearText} AIYAZONE Inc. All rights reserved.</p>
-      <p class="site-footer__mono">Powered by AIYAZONE F2E Team</p>
+      <p class="site-footer__identity"><span class="site-footer__brand">AIYAZONE</span><span class="site-footer__copyright">© ${yearText} · 设计系统</span></p>
+      <a class="site-footer__link" href="/architecture.html">架构<span aria-hidden="true">↗</span></a>
     </div>
   `.trim();
 

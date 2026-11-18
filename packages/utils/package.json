@@ -1,5 +1,6 @@
 {
   "name": "@aiyazone/utils",
+  "private": true,
   "version": "0.1.0",
   "description": "AIYAZONE Design System - Utility Functions",
   "type": "module",
@@ -8,29 +9,29 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./common": {
+      "types": "./dist/common.d.ts",
       "import": "./dist/common.js",
-      "require": "./dist/common.cjs",
-      "types": "./dist/common.d.ts"
+      "require": "./dist/common.cjs"
     },
     "./elements": {
+      "types": "./dist/elements.d.ts",
       "import": "./dist/elements.js",
-      "require": "./dist/elements.cjs",
-      "types": "./dist/elements.d.ts"
+      "require": "./dist/elements.cjs"
     },
     "./event": {
+      "types": "./dist/event.d.ts",
       "import": "./dist/event.js",
-      "require": "./dist/event.cjs",
-      "types": "./dist/event.d.ts"
+      "require": "./dist/event.cjs"
     },
     "./form-control": {
+      "types": "./dist/form-control.d.ts",
       "import": "./dist/form-control.js",
-      "require": "./dist/form-control.cjs",
-      "types": "./dist/form-control.d.ts"
+      "require": "./dist/form-control.cjs"
     }
   },
   "files": [
@@ -38,7 +39,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "vite build",
     "dev": "vite build --watch",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --quiet",
     "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
@@ -54,14 +55,14 @@
   "devDependencies": {
     "@aiyazone/eslint-config": "workspace:*",
     "@aiyazone/tsconfig": "workspace:*",
-    "lit": "^3.0.0",
+    "lit": "^3.3.1",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.0",
     "vite": "^7.2.2",
     "vite-plugin-dts": "^5.1.2",
     "vitest": "^3.2.7"
   },
-  "publishConfig": {
-    "access": "restricted"
+  "peerDependencies": {
+    "lit": "^3.3.1"
   }
 }

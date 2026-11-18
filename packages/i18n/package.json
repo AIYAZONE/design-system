@@ -1,16 +1,17 @@
 {
   "name": "@aiyazone/i18n",
+  "private": true,
   "version": "0.1.1",
   "description": "AIYAZONE Design System - Internationalization",
   "type": "module",
-  "main": "./dist/index.cjs.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
@@ -18,7 +19,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs",
     "dev": "vite build --watch",
     "lint": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx --quiet",
     "lint:verbose": "eslint -c ../../tooling/eslint-config/index.cjs src --ext .ts,.tsx",
@@ -32,8 +33,11 @@
     "./src/index.ts",
     "./dist/*"
   ],
+  "dependencies": {
+    "@aiyazone/utils": "workspace:*"
+  },
   "peerDependencies": {
-    "lit": "^3.2.1"
+    "lit": "^3.3.1"
   },
   "devDependencies": {
     "@aiyazone/eslint-config": "workspace:*",
@@ -44,8 +48,5 @@
     "vite": "^7.2.2",
     "vite-plugin-dts": "^5.1.2",
     "vitest": "^3.2.7"
-  },
-  "publishConfig": {
-    "access": "restricted"
   }
 }

@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_call:
   push:
     branches: [master, develop, stage]
   pull_request:
@@ -16,6 +17,7 @@ env:
 
 jobs:
   quality:
+    # 保护规则按此名称匹配；新增检查步骤时保持名称稳定。
     name: Build · Type · Test · Tokens · Docs
     runs-on: ubuntu-latest
     steps:
@@ -38,8 +40,21 @@ jobs:
       - name: Build（全部包）
         run: pnpm run build
 
+      - name: Build published bundle
+        run: pnpm run design:build
+
+      - name: Package exports and installed consumer
+        run: |
+          pnpm run release:check
+          pnpm run packages:check
+          pnpm run packages:check:lit
+          pnpm run packages:test
+
       - name: Type check
         run: pnpm run type-check
+
+      - name: Lint
+        run: pnpm run lint
 
       - name: Test（单测 + a11y 断言）
         run: pnpm run test
@@ -52,6 +67,9 @@ jobs:
 
       - name: Docs check（CEM / 清单 / API 文档 / llms 与源码同步）
         run: pnpm run docs:check
+
+      - name: AI 页面样例检查（组件 API / 图标 / 令牌）
+        run: pnpm --filter @aiyazone/portal run check:ai-demo
 
       - name: Build storybook（视觉回归前置）
         run: pnpm --filter @aiyazone/storybook run build:storybook

@@ -1,6 +1,6 @@
 {
   "name": "@aiyazone/design-system",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "AIYAZONE Design System (ZDS) - Monorepo",
   "author": "AIYAZONE F2E Team",
   "type": "module",
@@ -17,6 +17,7 @@
     "url": "https://github.com/AIYAZONE/design-system.git"
   },
   "workspaces": [
+    ".",
     "packages/*",
     "apps/*",
     "tooling/*"
@@ -27,8 +28,9 @@
     "site:preview": "vite preview --strictPort --port 5175",
     "design:build:lib": "vite build --mode library",
     "postdesign:build:lib": "pnpm run types:bundle",
-    "design:build": "pnpm run design:build:lib && pnpm run design:build:themes",
-    "design:build:single": "vite build --mode library-single",
+    "design:build": "pnpm run design:build:lib && pnpm run design:build:cdn && pnpm run design:build:themes",
+    "design:build:cdn": "vite build --mode library-cdn",
+    "design:build:single": "pnpm run design:build:cdn",
     "design:build:themes": "vite build --mode themes",
     "design:watch:lib": "vite build --mode library --watch",
     "design:watch:themes": "vite build --mode themes --watch",
@@ -43,16 +45,21 @@
     "storybook": "turbo run storybook --filter=@aiyazone/storybook",
     "build:storybook": "turbo run build:storybook --filter=@aiyazone/storybook",
     "changeset": "changeset",
-    "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish",
+    "changeset:version": "pnpm run release:check && changeset version",
+    "changeset:publish": "pnpm run release:check && changeset publish",
     "changeset:status": "changeset status",
-    "release": "pnpm run build && pnpm run changeset:publish",
+    "release": "pnpm run build && pnpm run design:build && pnpm run packages:test && pnpm run changeset:publish",
+    "release:check": "node scripts/check-release-scope.mjs",
     "publish:design-system": "pnpm run design:build",
-    "prepublishOnly": "pnpm run build && pnpm run design:build",
+    "prepublishOnly": "pnpm run release:check && pnpm run build && pnpm run design:build",
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",
     "i18n:to-excel": "node packages/i18n/src/scripts/convert-to-excel.js",
     "i18n:to-json": "node packages/i18n/src/scripts/excel-to-json.js",
     "types:bundle": "rollup -c scripts/build-types.rollup.config.mjs",
+    "packages:check": "node scripts/check-package-exports.mjs",
+    "packages:test": "node scripts/check-packed-consumer.mjs",
+    "packages:test:internal": "node scripts/check-packed-consumer.mjs --internal",
+    "packages:check:lit": "node scripts/check-lit-artifacts.mjs",
     "tokens:build": "pnpm --filter @aiyazone/tokens run build",
     "tokens:check": "pnpm --filter @aiyazone/tokens run check",
     "tokens:lint": "pnpm --filter @aiyazone/tokens run lint",
@@ -67,7 +74,7 @@
   "sideEffects": [
     "./src/index.ts",
     "./src/entry.base.ts",
-    "./dist/*"
+    "./dist/**"
   ],
   "engines": {
     "node": ">=18"
@@ -81,6 +88,10 @@
       "import": "./dist/index.esm.js",
       "require": "./dist/index.cjs"
     },
+    "./cdn": {
+      "types": "./dist/zone.d.ts",
+      "import": "./dist/cdn/index.js"
+    },
     "./index.css": "./dist/index.css",
     "./internal.css": "./dist/internal.css",
     "./index-v2.css": "./dist/index-v2.css",
@@ -89,11 +100,13 @@
   "files": [
     "dist/index.esm.js",
     "dist/index.cjs",
+    "dist/cdn/index.js",
     "dist/index.css",
     "dist/internal.css",
     "dist/index-v2.css",
     "dist/index-v3.css",
     "dist/chunks/*.js",
+    "dist/chunks/*.cjs",
     "dist/fonts/**",
     "dist/assets/**",
     "dist/zone.d.ts",
@@ -101,6 +114,12 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4"
+  },
+  "peerDependencies": {
+    "lit": "^3.3.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",

@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { customElement } from '@aiyazone/utils';
 import { I18nController } from '../core/controller';
 
 @customElement('zone-i18n')
@@ -31,6 +32,6 @@ export class ZoneI18n extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-i18n': ZoneI18n;
+    'zone-i18n': Pick<ZoneI18n, keyof ZoneI18n>;
   }
 }

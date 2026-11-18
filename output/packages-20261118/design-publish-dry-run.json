@@ -1,0 +1,1179 @@
+{
+  "id": "@aiyazone/design-system@0.4.0",
+  "name": "@aiyazone/design-system",
+  "version": "0.4.0",
+  "size": 302537,
+  "unpackedSize": 1306636,
+  "shasum": "a06893a9ef092fffc858ae56042311c005408120",
+  "integrity": "sha512-m8/TBWmINIMHeAOkiojvi7EZABC15GvEgBY37xRgT9YpKF9jpMgd/xuknOt84gmp9c141syUJDgz1Fsz0ZI9ug==",
+  "filename": "aiyazone-design-system-0.4.0.tgz",
+  "files": [
+    {
+      "path": "LICENSE",
+      "size": 1064,
+      "mode": 420
+    },
+    {
+      "path": "README.md",
+      "size": 16402,
+      "mode": 420
+    },
+    {
+      "path": "dist/cdn/index.js",
+      "size": 397622,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/alert-fill-DkTEOhdx.cjs",
+      "size": 1076,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/alert-fill-DwZ3lRLL.js",
+      "size": 1007,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/alert-line-CcUSloRw.js",
+      "size": 1587,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/alert-line-zSvH8W6I.cjs",
+      "size": 1656,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-left-BaGXrY9G.js",
+      "size": 650,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-left-fill-CFuy08R3.cjs",
+      "size": 920,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-left-fill-D814IgXq.js",
+      "size": 851,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-left-vxfjql3g.cjs",
+      "size": 719,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-right-fill-BOPoUsB_.js",
+      "size": 851,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-right-fill-DuQ5FtgK.cjs",
+      "size": 920,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-right-long-C05OdTIH.js",
+      "size": 589,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-right-long-DBwAe5rh.cjs",
+      "size": 658,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-B1Da2Ns_.cjs",
+      "size": 750,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-BKyXcjR4.js",
+      "size": 681,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-fill-BCr2nYjx.js",
+      "size": 863,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-fill-CsBjS89O.cjs",
+      "size": 932,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-long-C0pT-z8n.cjs",
+      "size": 629,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/arrow-up-long-CU6GbN6n.js",
+      "size": 560,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/battery-line-BbCgKD4q.js",
+      "size": 601,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/battery-line-swNuY5lh.cjs",
+      "size": 670,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/calendar-line-CDBSmesn.js",
+      "size": 795,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/calendar-line-DV7kjKRO.cjs",
+      "size": 864,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/cart-line-C_XEaImZ.cjs",
+      "size": 505,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/cart-line-qTFrrtv3.js",
+      "size": 436,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-CP-uAKCH.cjs",
+      "size": 542,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-fill-BUJ4GgbK.cjs",
+      "size": 690,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-fill-DRYeYNcH.js",
+      "size": 621,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-Gd9B0vdC.js",
+      "size": 473,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-line-DTnHjqKw.cjs",
+      "size": 890,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/check-line-DubZ6WZS.js",
+      "size": 821,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-BYmVEyOJ.js",
+      "size": 993,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-Cj6i9KbL.cjs",
+      "size": 1062,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-fill-CvA4Qc5D.js",
+      "size": 1339,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-fill-wtYGR_q7.cjs",
+      "size": 1408,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-line-DQY8GKTO.cjs",
+      "size": 1859,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-line-mK-IolDy.js",
+      "size": 1790,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-square-Cb4AMtsi.cjs",
+      "size": 357,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/close-square-D_MhW9x3.js",
+      "size": 288,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/delete-fill-C8amqlAy.cjs",
+      "size": 1528,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/delete-fill-DInk0wYs.js",
+      "size": 1459,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/delete-line-BKnvoTx2.js",
+      "size": 1632,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/delete-line-zG3AlT-V.cjs",
+      "size": 1701,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/download-CyLVKyLu.js",
+      "size": 1438,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/download-DZdHN6TY.cjs",
+      "size": 1507,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-BFkfB32Y.js",
+      "size": 528,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-CMWWOfsK.cjs",
+      "size": 597,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-color-CG0v6iMc.js",
+      "size": 557,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-color-D626uFnX.cjs",
+      "size": 626,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-color-fill-BKvSw1m3.cjs",
+      "size": 610,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-color-fill-DFNfrM6m.js",
+      "size": 541,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-fill-0eARZpzM.js",
+      "size": 541,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/email-fill-DegjFqIR.cjs",
+      "size": 610,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-ByUjwDLa.js",
+      "size": 481,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-color-fill-CkQIZGYk.cjs",
+      "size": 569,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-color-fill-DlsM6kDV.js",
+      "size": 500,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-color-rJXe6Hu7.js",
+      "size": 510,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-color-X3kgoXIG.cjs",
+      "size": 579,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-fill-Ba52m-zy.js",
+      "size": 503,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-fill-CwEl1fMw.cjs",
+      "size": 572,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/facebook-nONhxsV4.cjs",
+      "size": 550,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/global-7D8FXAM0.js",
+      "size": 999,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/global-BCwVJqfd.cjs",
+      "size": 1068,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/heart-fill-DxtTidAX.cjs",
+      "size": 1071,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/heart-fill-kxETIaDN.js",
+      "size": 1002,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/heart-line-BTc6SZVk.js",
+      "size": 1766,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/heart-line-DQewBLx2.cjs",
+      "size": 1835,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/home-line-1-ChwO0sjP.cjs",
+      "size": 747,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/home-line-1-NKiFCAB-.js",
+      "size": 678,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/home-line-2-1GR-NejE.js",
+      "size": 564,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/home-line-2-CRdvYkzJ.cjs",
+      "size": 633,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/info-fill-DVRTDMms.js",
+      "size": 769,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/info-fill-QY6Kc5ho.cjs",
+      "size": 838,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/info-line-BILqvyLV.cjs",
+      "size": 1322,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/info-line-BkqYlsCE.js",
+      "size": 1253,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-BKW7YsAw.cjs",
+      "size": 1688,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-color-DV-2l8qL.cjs",
+      "size": 2050,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-color-DYBkhGq2.js",
+      "size": 1981,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-color-fill-Dqe77jZj.cjs",
+      "size": 2173,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-color-fill-DS5p3Jeu.js",
+      "size": 2104,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-CSj-_1aP.js",
+      "size": 1619,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-fill-BdsxjKwX.cjs",
+      "size": 1852,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/instagram-fill-BGtO6ctd.js",
+      "size": 1783,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/lamp-line-DEDkksB6.cjs",
+      "size": 461,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/lamp-line-DHOPNhlo.js",
+      "size": 392,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-BcabyXJW.cjs",
+      "size": 1562,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-color-DgmGNrkb.js",
+      "size": 1522,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-color-DSySFgjJ.cjs",
+      "size": 1591,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-color-fill-BnY_VoPk.cjs",
+      "size": 1585,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-color-fill-BQ1xt5wo.js",
+      "size": 1516,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-DX6n6rgd.js",
+      "size": 1493,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-fill-CFb22yTp.cjs",
+      "size": 1585,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/line-fill-D-IzKT7f.js",
+      "size": 1516,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-big-BKYoJCAM.js",
+      "size": 1434,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-big-CreF8Exb.cjs",
+      "size": 1503,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-BIotg2rr.cjs",
+      "size": 1299,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-color-Cj1Jyk-B.cjs",
+      "size": 1328,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-color-fill-CU7-V5CI.cjs",
+      "size": 1322,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-color-fill-CUK2DTyk.js",
+      "size": 1253,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-color-oFt13yko.js",
+      "size": 1259,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-fill-DjfvvBpj.js",
+      "size": 1253,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-fill-LUfmaNNM.cjs",
+      "size": 1322,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/link-pD9DtLXi.js",
+      "size": 1230,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/loading-GcKEwm6P.cjs",
+      "size": 1102,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/loading-hZBh5I_P.js",
+      "size": 1033,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/location-CSUuPG3z.js",
+      "size": 1303,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/location-DXT6uIN-.cjs",
+      "size": 1372,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/minus-BIgbaJuQ.cjs",
+      "size": 712,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/minus-piVS4ctm.js",
+      "size": 643,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pdf-D3VN2eo7.cjs",
+      "size": 2202,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pdf-lUlM6Yos.js",
+      "size": 2133,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/phone-fill-CF9RW9LS.js",
+      "size": 1409,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/phone-fill-G4_46Z7x.cjs",
+      "size": 1478,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/phone-line-CiDEQP6B.js",
+      "size": 2492,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/phone-line-TDK_XUlI.cjs",
+      "size": 2561,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-CmMMrbPW.cjs",
+      "size": 775,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-color--TJUpxo8.cjs",
+      "size": 804,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-color-Cu7YGljk.js",
+      "size": 735,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-color-fill-KWfjRJQ4.js",
+      "size": 759,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-color-fill-YQToCR2p.cjs",
+      "size": 828,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-fill-BWWb2cdM.cjs",
+      "size": 828,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-fill-DvZcuE21.js",
+      "size": 759,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/pinterest-MC3mN3bX.js",
+      "size": 706,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-DlCEIw9Z.js",
+      "size": 1018,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-fill-CSOD_Qbw.cjs",
+      "size": 1152,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-fill-hms3apvI.js",
+      "size": 1083,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-line-BSFGvWas.cjs",
+      "size": 1189,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-line-cW4j4MmO.js",
+      "size": 1120,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/play-z0XUe1c1.cjs",
+      "size": 1087,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-BDxuRYUK.js",
+      "size": 795,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-D_5tfqeM.cjs",
+      "size": 864,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-fill-BQP5uQw_.cjs",
+      "size": 1349,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-fill-CipgY8vv.js",
+      "size": 1280,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-line-Bi63oE_V.js",
+      "size": 1777,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/plus-line-DzUmgh2y.cjs",
+      "size": 1846,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-B6Uh3aWo.js",
+      "size": 849,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-CW08zSmp.cjs",
+      "size": 918,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-fill-BEXB1ZCp.js",
+      "size": 1378,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-fill-DntVuvPR.cjs",
+      "size": 1447,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-line-C9s-JpPW.js",
+      "size": 1526,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/question-line-CdiC8c61.cjs",
+      "size": 1595,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/radius-left-top-D_7RY_6I.cjs",
+      "size": 381,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/radius-left-top-z5Mb2Jqe.js",
+      "size": 312,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/radius-right-bottom-BHjtrS-H.js",
+      "size": 313,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/radius-right-bottom-CtO4_YkL.cjs",
+      "size": 382,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-BkofLbSO.js",
+      "size": 1456,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-color-CXY0ZYw4.js",
+      "size": 1462,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-color-fill-BcE5G8NY.cjs",
+      "size": 1644,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-color-fill-DhF1CNKF.js",
+      "size": 1575,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-color-QzwnJQdr.cjs",
+      "size": 1531,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-EFZPz8ds.cjs",
+      "size": 1525,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-fill-BkWIS6er.js",
+      "size": 1575,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/reddit-fill-COJFrquD.cjs",
+      "size": 1644,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-BSA6g5Zf.cjs",
+      "size": 1105,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-BSHNeu-v.js",
+      "size": 1036,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-color-BzNvz_AU.js",
+      "size": 1027,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-color-C-ccmM4x.cjs",
+      "size": 1096,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-color-fill-CRsgJCVN.js",
+      "size": 1043,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-color-fill-DnPtdui5.cjs",
+      "size": 1112,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-fill-Bgyr1esH.js",
+      "size": 1043,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/refer-a-friend-fill-DJ65XOTd.cjs",
+      "size": 1112,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/search-C4ijuRLT.cjs",
+      "size": 899,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/search-DUdq3ZSx.js",
+      "size": 830,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/share-BE8MiH4D.js",
+      "size": 1147,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/share-DvXMT94d.cjs",
+      "size": 1216,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/star-fill-COYH000P.js",
+      "size": 996,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/star-fill-DnfT_mm8.cjs",
+      "size": 1065,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/star-line-DgZ3ibqn.cjs",
+      "size": 1783,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/star-line-oeMshTEU.js",
+      "size": 1714,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tag-BhDwgGGD.cjs",
+      "size": 775,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tag-DfP-r2fy.js",
+      "size": 706,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-Bc3efEt7.js",
+      "size": 564,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-color-15ngdaDM.cjs",
+      "size": 662,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-color-fill-Bjrs6Fi1.js",
+      "size": 530,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-color-fill-BQeUJ8D4.cjs",
+      "size": 599,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-color-UOB4EikC.js",
+      "size": 593,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-fill-CMDcdu-1.js",
+      "size": 574,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-fill-OoyqTK32.cjs",
+      "size": 643,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/telegram-i5LehglT.cjs",
+      "size": 633,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tent-line-B9kaXLHz.js",
+      "size": 475,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tent-line-D3k8aTlZ.cjs",
+      "size": 544,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/threads-6IffeNr1.js",
+      "size": 2081,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/threads-D836h07a.cjs",
+      "size": 2150,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-CitkdLFY.cjs",
+      "size": 788,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-CLFQycPS.js",
+      "size": 719,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-color-B6sqggwY.js",
+      "size": 748,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-color-CqqJGRdl.cjs",
+      "size": 817,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-color-fill-Bh6oxCKz.js",
+      "size": 726,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-color-fill-BqT0tkEN.cjs",
+      "size": 795,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-fill-Dchf4vhT.js",
+      "size": 732,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/tiktok-fill-sO9SF6XX.cjs",
+      "size": 801,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/time-fill-4-0o3N3a.cjs",
+      "size": 652,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/time-fill-CyZkRY9a.js",
+      "size": 583,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/time-line-BGUQuHFF.cjs",
+      "size": 1556,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/time-line-CA-DXik9.js",
+      "size": 1487,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/truck-line-1-BW6JilxZ.js",
+      "size": 1177,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/truck-line-1-DEIRnhWp.cjs",
+      "size": 1246,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/truck-line-2-BQgO7yBL.js",
+      "size": 816,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/truck-line-2-D32u8A2i.cjs",
+      "size": 885,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-C4YSJm3G.js",
+      "size": 479,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-color-CNXjtxGT.js",
+      "size": 505,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-color-DbY2ndk0.cjs",
+      "size": 574,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-color-fill-BTCC-q5-.cjs",
+      "size": 576,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-color-fill-CHO0fH-X.js",
+      "size": 507,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-CPEp9dVH.cjs",
+      "size": 548,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-fill-CEDpY69n.cjs",
+      "size": 579,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/twitter-fill-DZCxa48L.js",
+      "size": 510,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-Cdip9LbD.js",
+      "size": 1241,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-color-BKmbNVZH.cjs",
+      "size": 1319,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-color-CKIhkd7s.js",
+      "size": 1250,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-color-fill--PjmgGTe.cjs",
+      "size": 1339,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-color-fill-DeS7QXem.js",
+      "size": 1270,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-DVtMTblg.cjs",
+      "size": 1310,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-fill-CmM7C-jw.cjs",
+      "size": 1339,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/whatsapp-fill-DcYUDpwp.js",
+      "size": 1270,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-BNoxJE0n.cjs",
+      "size": 930,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-CegTIqTc.js",
+      "size": 861,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-color-B3c9XtKr.cjs",
+      "size": 939,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-color-BXWYoAsu.js",
+      "size": 870,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-color-fill-CaJ6IVZQ.cjs",
+      "size": 880,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-color-fill-CDYHzskb.js",
+      "size": 811,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-fill-DgZaLqAB.cjs",
+      "size": 880,
+      "mode": 420
+    },
+    {
+      "path": "dist/chunks/youtube-fill-ZbUVHMoW.js",
+      "size": 811,
+      "mode": 420
+    },
+    {
+      "path": "dist/index-v2.css",
+      "size": 45146,
+      "mode": 420
+    },
+    {
+      "path": "dist/index-v3.css",
+      "size": 44631,
+      "mode": 420
+    },
+    {
+      "path": "dist/index.cjs",
+      "size": 223493,
+      "mode": 420
+    },
+    {
+      "path": "dist/index.css",
+      "size": 44165,
+      "mode": 420
+    },
+    {
+      "path": "dist/index.esm.js",
+      "size": 245900,
+      "mode": 420
+    },
+    {
+      "path": "dist/internal.css",
+      "size": 17870,
+      "mode": 420
+    },
+    {
+      "path": "dist/zone.d.ts",
+      "size": 31213,
+      "mode": 420
+    },
+    {
+      "path": "package.json",
+      "size": 5281,
+      "mode": 420
+    }
+  ],
+  "entryCount": 233,
+  "bundled": []
+}

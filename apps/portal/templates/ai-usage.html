@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 使用方法 · AIYAZONE</title><link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/shared/site-header.css"><link rel="stylesheet" href="/shared/site-footer.css">
+  <link rel="stylesheet" href="/shared/ai-usage.css">
+  <link rel="stylesheet" href="/shared/page-intro.css">
+</head>
+<body>
+  <div data-site-header></div>
+  <main id="content" class="site-main ai-guide portal-page">
+    <header class="ai-guide__intro page-intro">
+      <p class="site-eyebrow page-intro__label">AI 指南</p>
+      <h1 class="page-intro__title">用 AI 做页面</h1>
+      <p class="site-lede page-intro__description">从一段指令开始，让 AI 使用这套组件完成你的页面。</p>
+    </header>
+    <section class="ai-guide__start" aria-label="开始使用">
+      <div class="ai-guide__workflow">
+        <h2>只需三步</h2>
+        <ol class="ai-guide__steps">
+          <li><span class="number" aria-hidden="true">01</span><div><h3>复制使用指令</h3><p>粘贴到你正在使用的 AI 工具。</p></div></li>
+          <li><span class="number" aria-hidden="true">02</span><div><h3>写下页面需求</h3><p>说明页面内容、需要的操作和布局。</p></div></li>
+          <li><span class="number" aria-hidden="true">03</span><div><h3>打开并检查页面</h3><p>试试按钮和表单，再看看手机效果。</p></div></li>
+        </ol>
+        <a class="ai-guide__example" href="/ai-demo.html"><span><span class="ai-guide__example-label">看看完成后的效果</span><strong>账户设置示例</strong></span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="ai-guide__prompt">
+        <div class="ai-guide__prompt-head"><div><span class="ai-guide__prompt-label">使用指令</span><span class="ai-guide__prompt-hint">复制后，替换高亮处的需求</span></div><button type="button" class="site-button site-button--primary" data-copy-target="ai-prompt" aria-live="polite">复制指令</button></div>
+      <pre id="ai-prompt">请使用 AIYAZONE 设计系统制作一个<mark>【写下页面需求】</mark>。
+先阅读 https://design.aiyazone.com/llms.txt。
+需要组件细节时，继续阅读其中链接的完整说明。
+使用说明中已有的组件、图标和样式变量。
+没有现成组件的部分请说明，不要编造组件属性或事件。
+输出可运行页面，并告诉我如何打开。
+完成后检查按钮、表单、键盘操作和手机布局。</pre>
+        <div class="ai-guide__request"><span>需求示例</span><p>做一个账户设置页，可以修改昵称和通知偏好。</p></div>
+      </div>
+    </section>
+    <section class="ai-guide__reference" aria-labelledby="reference-title">
+      <div class="ai-guide__reference-intro"><h2 id="reference-title">按需参考</h2><p>选组件、调样式、检查结果。<br>需要时再展开。</p><a href="/examples/">浏览更多示例 <span aria-hidden="true">→</span></a></div>
+      <div class="ai-guide__details">
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">01</span><span>选择组件<small>按钮、下拉与弹窗</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p>先从<a href="/storybook/">组件文档</a>选择已有组件。每个组件的使用接口（API）说明列出了可用的属性、事件和内容位置。</p>
+        <pre>&lt;zone-button variant="primary"&gt;提交订单&lt;/zone-button&gt;</pre>
+        <p>文本输入目前可以使用原生 <code>&lt;input&gt;</code>，需要给输入框关联标签。组件不能覆盖的功能应明确说明，不要编造属性或事件。图标名称从<a href="/icons/">图标页</a>查找。</p>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">02</span><span>统一样式<small>颜色、字号与间距</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p>样式变量是可以复用的颜色和尺寸名称。例如 <code>var(--zone-color-primary)</code> 表示当前组件主题的主色，<code>var(--zone-size-24)</code> 表示统一间距。</p>
+        <pre>&lt;section style="padding: var(--zone-size-24);"&gt;
+  &lt;h2 style="color: var(--zone-color-text-l1);"&gt;订单详情&lt;/h2&gt;
+&lt;/section&gt;</pre>
+        <p>使用前核对变量是否在目标主题中存在。没有合适变量时说明差距。<a href="/storybook/?path=/docs/02-设计变量-06-主题与-token-架构--document">查看主题与样式说明</a>。</p>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">03</span><span>检查页面<small>内容、交互与手机显示</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <ul><li>文字是否正确，按钮是否完成了预期操作。</li><li>输入框是否有标签，下拉与弹窗是否可以键盘操作。</li><li>手机上是否看得清、点得到，有没有内容超出屏幕。</li><li>使用的组件属性、事件、图标名和样式变量是否与目标版本说明一致。</li><li>浏览器控制台是否有错误。</li></ul>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">04</span><span>技术参考<small>完整说明与自动检查</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p><a href="/llms.txt">AI 文档入口 llms.txt</a> · <a href="/llms-full.txt">完整说明 llms-full.txt</a> · <a href="/storybook/">组件 API 文档</a></p>
+        <p>本仓库的账户设置示例使用以下命令检查组件属性、图标、样式变量与输入框标签：</p>
+        <pre>pnpm --filter @aiyazone/portal run check:ai-demo</pre>
+        <p>这条命令只检查仓库里的 <code>apps/portal/public/ai-demo.html</code>。持续集成（CI）执行相同规则；其他项目需要对自己的页面设置检查。</p>
+      </details>
+      <p class="site-note">组件说明帮助 AI 选用已有能力，不能保证生成结果正确。自动检查也不能代替实际操作、内容核对和视觉检查。</p>
+      </div>
+    </section>
+  </main><div data-site-footer></div>
+  <script type="module" src="/shared/site-header.js"></script><script type="module" src="/shared/site-footer.js"></script><script type="module" src="/shared/copy-text.js"></script>
+</body></html>

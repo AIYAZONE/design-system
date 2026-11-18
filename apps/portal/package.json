@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/build-icons-manifest.mjs",
     "build:all": "node scripts/build-all.mjs",
+    "check:ai-demo": "node scripts/check-ai-demo.mjs",
+    "check:architecture": "node scripts/check-architecture.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

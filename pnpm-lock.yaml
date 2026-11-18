@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@floating-ui/dom':
+        specifier: ^1.7.4
+        version: 1.8.0
     devDependencies:
       '@aiyazone/eslint-config':
         specifier: workspace:*
@@ -219,7 +223,7 @@ importers:
         specifier: ^1.7.4
         version: 1.8.0
       lit:
-        specifier: ^3.0.0
+        specifier: ^3.3.1
         version: 3.3.3
     devDependencies:
       '@aiyazone/eslint-config':
@@ -266,6 +270,10 @@ importers:
         version: 3.2.7(@types/node@20.19.43)(jiti@2.7.0)(jsdom@27.4.0)(less@4.9.1)(lightningcss@1.33.0)(terser@5.51.2)
 
   packages/i18n:
+    dependencies:
+      '@aiyazone/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@aiyazone/eslint-config':
         specifier: workspace:*
@@ -294,8 +302,11 @@ importers:
 
   packages/icons:
     dependencies:
+      '@aiyazone/utils':
+        specifier: workspace:*
+        version: link:../utils
       lit:
-        specifier: ^3.2.1
+        specifier: ^3.3.1
         version: 3.3.3
       tslib:
         specifier: ^2.8.1
@@ -351,7 +362,7 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/tsconfig
       lit:
-        specifier: ^3.0.0
+        specifier: ^3.3.1
         version: 3.3.3
       rimraf:
         specifier: ^5.0.0

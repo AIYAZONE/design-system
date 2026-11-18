@@ -7,65 +7,99 @@
     <title>图标库 · AIYAZONE Design System</title>
     <link rel="stylesheet" href="/shared/site-header.css" />
     <link rel="stylesheet" href="/shared/site-footer.css" />
+    <link rel="stylesheet" href="/shared/page-intro.css" />
     <style>
-      :root { --ink:#1c1a17; --muted:#5b574f; --line:#e6e2da; --brand:#FD5000; --bg:#fbfaf8; }
+      :root { --ink:var(--portal-text); --muted:var(--portal-muted); --line:var(--portal-line); --brand:var(--portal-accent); --bg:var(--portal-bg); }
       * { box-sizing: border-box; }
       body { margin:0; font-family: Inter, -apple-system, "PingFang SC", sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
-      main { max-width: 1120px; margin: 0 auto; padding: 88px 24px 80px; }
-      h1 { font-size: 1.9rem; letter-spacing:-.02em; margin: 0 0 6px; }
-      .sub { color: var(--muted); font-size: .92rem; margin: 0 0 24px; }
-      .sub code { background:#f1eee8; padding:2px 6px; border-radius:4px; font-family: ui-monospace, monospace; font-size:.86em; }
+      main { max-width: 1200px; margin: 0 auto; padding: 40px 40px 64px; min-height:70vh; }
+      .intro { display:flex; align-items:center; justify-content:space-between; gap:32px; }
+      .usage { position:relative; padding:0; border:0; font-size:12px; flex-shrink:0; }
+      .usage summary { color:var(--brand); min-height:44px; display:flex; align-items:center; gap:12px; font-weight:400; }
+      .usage summary::after { content:"＋"; }
+      .usage[open] summary::after { content:"−"; }
+      .usage-content { position:absolute; right:0; top:44px; width:340px; z-index:10; padding:16px 20px; border:1px solid var(--line); border-radius:8px; background:var(--portal-surface); box-shadow:0 12px 32px #0006; }
+      .usage-content pre { font-size:11px; }
+      .sub code { background:var(--portal-surface); padding:2px 6px; border-radius:4px; font-family: ui-monospace, monospace; font-size:.86em; }
 
-      .toolbar { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:20px; position:sticky; top:0; z-index:5;
-        background:var(--bg); padding:12px 0; border-bottom:1px solid var(--line); }
-      .search { flex:1 1 260px; max-width:420px; display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
-        border-radius:10px; padding:8px 12px; }
-      .search input { border:none; outline:none; flex:1; font-size:.92rem; background:transparent; color:var(--ink); }
-      .tabs { display:flex; gap:6px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:4px; }
-      .tabs button { border:none; background:transparent; padding:6px 14px; border-radius:7px; font-size:.86rem; cursor:pointer; color:var(--muted); }
-      .tabs button.active { background:var(--brand); color:#fff; font-weight:600; }
-      .sizes { display:flex; gap:6px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:4px; }
-      .sizes button { border:none; background:transparent; padding:6px 10px; border-radius:7px; font-size:.82rem; cursor:pointer; color:var(--muted); }
-      .sizes button.active { background:#f1eee8; color:var(--ink); font-weight:600; }
-      .count { color:var(--muted); font-size:.86rem; }
+      .toolbar { display:grid; grid-template-columns:minmax(200px,1fr) auto auto; gap:24px; align-items:center; position:sticky; top:0; z-index:5;
+        padding:10px 0; isolation:isolate; }
+      .toolbar::before { content:""; position:absolute; inset:0; background:var(--bg); border-bottom:1px solid var(--line); box-shadow:0 0 0 100vmax var(--bg); clip-path:inset(0 -100vmax); z-index:-1; }
+      .search { min-height:40px; display:flex; align-items:center; gap:10px; background:var(--portal-surface); border:1px solid var(--line);
+        border-radius:5px; padding:4px 12px; color:var(--muted); }
+      .search:focus-within { border-color:var(--brand); }
+      .search input { border:none; flex:1; min-width:0; font-size:14px; background:transparent; color:var(--ink); outline:none; min-height:30px; }
+      .search input::placeholder { color:var(--muted); opacity:.8; }
+      .tabs { display:flex; gap:20px; }
+      .tabs button { border:none; border-bottom:2px solid transparent; min-height:40px; background:transparent; padding:6px 0; font-size:12px; cursor:pointer; color:var(--muted); }
+      .tabs button.active { border-bottom-color:var(--brand); color:var(--ink); }
+      .tabs small { margin-left:6px; font:10px var(--portal-mono); color:var(--muted); }
+      .display-options { display:flex; align-items:center; gap:20px; }
+      .sizes { display:flex; gap:2px; align-items:center; }
+      .sizes::before { content:"尺寸"; font-size:11px; color:var(--muted); margin-right:8px; }
+      .sizes button { border:none; min-height:36px; min-width:36px; background:transparent; padding:4px 8px; border-radius:4px; font:11px var(--portal-mono); cursor:pointer; color:var(--muted); }
+      .sizes button.active { background:var(--portal-raised); color:var(--ink); }
+      .count { color:var(--muted); font-size:11px; min-width:65px; text-align:right; }
 
-      .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap:12px; margin-top:20px; }
-      .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 12px 12px; text-align:center;
-        cursor:pointer; transition: border-color .15s, transform .15s; position:relative; }
-      .card:hover { border-color: var(--brand); transform: translateY(-2px); }
-      .card .glyph { height:34px; display:flex; align-items:center; justify-content:center; color:var(--ink); }
+      .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:8px; margin-top:20px; }
+      .card { background:#0e1624; border:1px solid transparent; border-radius:6px; padding:12px 8px; text-align:center;
+        cursor:pointer; transition: border-color .15s, background .15s; position:relative; min-width:0; }
+      .card:hover { border-color:var(--line); background:var(--portal-raised); }
+      .card .glyph { height:64px; display:flex; align-items:center; justify-content:center; color:var(--ink); }
       .card:hover .glyph { color: var(--brand); }
       .card .glyph svg { width:var(--icon-size, 24px); height:var(--icon-size, 24px); }
-      .card .name { margin-top:10px; font-size:.78rem; font-family: ui-monospace, monospace; color:var(--muted);
-        overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-      .card .cat { font-size:.68rem; color:#b6b1a7; margin-top:2px; }
+      .card .name { margin-top:4px; font:11px/1.5 var(--portal-mono); color:var(--muted); min-height:33px;
+        overflow-wrap:anywhere; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
       .card.copied { border-color: var(--brand); }
-      .card .tip { position:absolute; top:8px; right:8px; font-size:.66rem; color:#fff; background:var(--brand);
+      .card .tip { position:absolute; top:8px; right:8px; font-size:.66rem; color:var(--portal-on-accent); background:var(--brand);
         border-radius:999px; padding:2px 8px; opacity:0; transition:opacity .15s; }
       .card.copied .tip { opacity:1; }
       .empty { color:var(--muted); text-align:center; padding:48px 0; }
-      .notice { background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; color:var(--muted); font-size:.86rem; margin-bottom:16px; }
+      .notice { background:var(--portal-surface); border:1px solid var(--line); border-radius:10px; padding:10px 14px; color:var(--muted); font-size:.86rem; margin-bottom:16px; }
+      #copy-status { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:20; max-width:calc(100vw - 32px); width:max-content; background:var(--portal-raised); border:1px solid var(--line); border-radius:6px; padding:10px 16px; font-size:12px; color:var(--ink); box-shadow:0 8px 32px #0006; margin:0; overflow-wrap:anywhere; }
+      #copy-status:empty { display:none; }
+      @media(max-width:1000px) {
+        .toolbar { grid-template-columns:1fr auto; gap:6px 20px; }
+        .search { grid-column:1/-1; }
+      }
+      @media(max-width:700px) {
+        .intro { display:block; }
+        .usage { margin-top:8px; }
+        .usage-content { position:static; width:100%; margin-bottom:12px; box-shadow:none; }
+        .toolbar { gap:2px; grid-template-columns:1fr; padding:8px 0 4px; }
+        .tabs { gap:20px; }
+        .tabs button { min-height:36px; }
+        .display-options { justify-content:space-between; }
+        .sizes button { min-height:30px; }
+        .grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin-top:16px; }
+        .card { padding:8px 5px; }
+        .card .glyph { height:56px; }
+        .card .name { font-size:10px; min-height:30px; }
+      }
     </style>
   </head>
   <body>
     <div class="tech-bg"></div>
     <div id="site-header"></div>
-    <main>
-      <h1>图标库</h1>
-      <p class="sub">用法：<code>&lt;zone-icon name="图标名"&gt;</code> —— 颜色随 <code>currentColor</code>，大小随 <code>font-size</code>（用 <code>--zone-font-size-*</code> 令牌）。点击卡片复制图标名。</p>
+    <main class="icons-main portal-page">
+      <div class="intro page-intro"><div><p class="eyebrow page-intro__label">图标</p><h1 class="page-intro__title">图标库</h1>
+      <p class="sub page-intro__description">找到合适的图标，点击复制名称。</p></div>
+      <details class="usage"><summary>如何使用图标</summary><div class="usage-content"><pre>&lt;zone-icon name="home-line-2"&gt;&lt;/zone-icon&gt;</pre><p>颜色跟随文字颜色，大小可通过 <code>--zone-font-size-*</code> 样式变量设置。</p></div></details></div>
       <div class="notice" id="loading">加载图标清单…</div>
+      <button class="site-button" id="retry" type="button" hidden>重新加载图标</button>
+      <p class="site-note" id="copy-status" role="status"></p>
       <div class="toolbar" id="toolbar" hidden>
         <label class="search">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5b574f" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="搜索图标名…" autocomplete="off" />
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" aria-label="搜索图标名称或关键词" placeholder="搜索名称或关键词，例如 首页、删除、arrow" autocomplete="off" />
         </label>
         <div class="tabs" id="tabs"></div>
-        <div class="sizes" id="sizes">
-          <button data-size="16">16</button>
-          <button data-size="24" class="active">24</button>
-          <button data-size="32">32</button>
+        <div class="display-options"><div class="sizes" id="sizes" role="group" aria-label="预览尺寸">
+          <button data-size="16" aria-pressed="false">16</button>
+          <button data-size="24" class="active" aria-pressed="true">24</button>
+          <button data-size="32" aria-pressed="false">32</button>
         </div>
-        <span class="count" id="count"></span>
+        <span class="count" id="count" aria-live="polite"></span></div>
       </div>
       <div class="grid" id="grid"></div>
       <div class="empty" id="empty" hidden>没有匹配的图标</div>
@@ -74,12 +108,14 @@
     <script type="module" src="/shared/site-header.js"></script>
     <script type="module" src="/shared/site-footer.js"></script>
     <script type="module">
+      import { copyText } from '/shared/copy-text.js';
       const CAT_LABEL = { system: '系统图标', 'social-media': '社媒图标' };
       let manifest = null;
       let activeCat = 'all';
       let iconSize = 24;
       let query = '';
       const svgCache = new Map();
+      let statusTimer;
 
       async function fetchSvg(cat, name) {
         const key = cat + '/' + name;
@@ -90,12 +126,15 @@
       }
 
       function allIcons() {
-        return manifest.categories.flatMap((c) => c.icons.map((name) => ({ category: c.category, name })));
+        return manifest.categories.flatMap((c) => c.icons.map((name) => ({
+          category: c.category, name, searchText: [name, ...(c.keywords?.[name] ?? [])].join(' ').toLowerCase(),
+        })));
       }
 
       function render() {
         const grid = document.getElementById('grid');
-        const list = allIcons().filter((i) => (activeCat === 'all' || i.category === activeCat) && i.name.includes(query));
+        const terms = query.split(/\s+/).filter(Boolean);
+        const list = allIcons().filter((i) => (activeCat === 'all' || i.category === activeCat) && terms.every((term) => i.searchText.includes(term)));
         grid.innerHTML = '';
         grid.style.setProperty('--icon-size', iconSize + 'px');
         for (const item of list) {
@@ -103,15 +142,28 @@
           card.className = 'card';
           card.type = 'button';
           card.setAttribute('aria-label', '复制图标名 ' + item.name);
+          card.title = item.name;
           card.innerHTML = `<span class="tip">已复制</span><div class="glyph" aria-hidden="true"></div>
-            <div class="name">${item.name}</div><div class="cat">${CAT_LABEL[item.category] || item.category}</div>`;
+            <div class="name">${item.name}</div>`;
           card.addEventListener('click', async () => {
-            try { await navigator.clipboard.writeText(item.name); } catch { /* 剪贴板不可用时静默 */ }
-            card.classList.add('copied');
-            setTimeout(() => card.classList.remove('copied'), 1200);
+            const copied = await copyText(item.name);
+            const status = document.getElementById('copy-status');
+            status.textContent = copied ? `已复制：${item.name}` : `复制失败，请手动复制：${item.name}`;
+            clearTimeout(statusTimer);
+            if (copied) statusTimer = setTimeout(() => { status.textContent = ''; }, 2400);
+            if (copied) {
+              card.classList.add('copied');
+              setTimeout(() => card.classList.remove('copied'), 1200);
+            }
           });
           fetchSvg(item.category, item.name).then((svg) => {
             if (svg) card.querySelector('.glyph').innerHTML = svg;
+            else {
+              card.querySelector('.glyph').textContent = '加载失败';
+              document.getElementById('retry').hidden = false;
+              document.getElementById('loading').hidden = false;
+              document.getElementById('loading').textContent = '图标加载失败，请重试';
+            }
           });
           grid.appendChild(card);
         }
@@ -121,12 +173,13 @@
 
       function renderTabs() {
         const tabs = document.getElementById('tabs');
-        const items = [{ key: 'all', label: '全部' },
-          ...manifest.categories.map((c) => ({ key: c.category, label: `${CAT_LABEL[c.category] || c.category} ${c.icons.length}` }))];
+        const items = [{ key: 'all', label: '全部', count: allIcons().length },
+          ...manifest.categories.map((c) => ({ key: c.category, label: c.category === 'system' ? '系统' : '社交', count: c.icons.length }))];
         tabs.innerHTML = '';
         for (const t of items) {
           const b = document.createElement('button');
-          b.textContent = t.label;
+          b.innerHTML = `${t.label} <small>${t.count}</small>`;
+          b.setAttribute('aria-pressed', String(t.key === activeCat));
           if (t.key === activeCat) b.classList.add('active');
           b.addEventListener('click', () => { activeCat = t.key; renderTabs(); render(); });
           tabs.appendChild(b);
@@ -138,12 +191,17 @@
         const b = e.target.closest('button[data-size]');
         if (!b) return;
         iconSize = Number(b.dataset.size);
-        document.querySelectorAll('#sizes button').forEach((x) => x.classList.toggle('active', x === b));
+        document.querySelectorAll('#sizes button').forEach((x) => { x.classList.toggle('active', x === b); x.setAttribute('aria-pressed', String(x === b)); });
         render();
       });
 
+      function loadIcons() {
+      document.getElementById('retry').hidden = true;
+      document.getElementById('loading').hidden = false;
+      document.getElementById('loading').textContent = '加载图标清单…';
+      svgCache.clear();
       fetch('/icons/icons-manifest.json')
-        .then((r) => r.json())
+        .then((r) => { if (!r.ok) throw new Error('加载失败'); return r.json(); })
         .then((m) => {
           manifest = m;
           document.getElementById('loading').hidden = true;
@@ -152,8 +210,12 @@
           render();
         })
         .catch(() => {
-          document.getElementById('loading').textContent = '图标清单加载失败：请确认构建产物包含 icons-manifest.json（pnpm build-all 后访问）。';
+          document.getElementById('loading').textContent = '图标加载失败，请重试';
+          document.getElementById('retry').hidden = false;
         });
+      }
+      document.getElementById('retry').addEventListener('click', loadIcons);
+      loadIcons();
     </script>
   </body>
 </html>

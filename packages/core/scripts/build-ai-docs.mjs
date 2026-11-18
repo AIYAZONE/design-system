@@ -14,7 +14,7 @@
  *   - docs/api/README.md                   组件索引
  *   - apps/portal/public/llms.txt          精简 AI 索引
  *   - apps/portal/public/llms-full.txt     全量文档拼接
- *   - apps/portal/public/ai-usage.html     AI 使用规范页（由 docs/ai-usage.md 渲染）
+ *   - apps/portal/public/ai-usage.html     AI 使用页（优先使用门户模板）
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -311,14 +311,11 @@ function renderComponentMd(c) {
   L.push(`- **包**：\`${rootPkg.name}@${rootPkg.version}\`（组件源码：\`${corePkg.name}@${corePkg.version}\`）`);
   L.push('');
   L.push('## 快速使用', '');
+  L.push('npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：', '');
+  L.push('```bash', `pnpm add ${rootPkg.name} lit`, '```', '');
+  L.push('```js', `import '${rootPkg.name}';`, `import '${rootPkg.name}/index-v3.css';`, '```', '');
+  L.push('静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。', '');
   L.push('```html');
-  L.push('<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->');
-  L.push(`<link rel="stylesheet" href="${rootPkg.name}/index-v3.css">`);
-  L.push('');
-  L.push('<!-- 2. 注册组件（总包一次注册全部 zone-*） -->');
-  L.push(`<script type="module">import '${rootPkg.name}';</script>`);
-  L.push('');
-  L.push('<!-- 3. 使用 -->');
   L.push(c.usage ?? synthUsage(c));
   L.push('```');
   L.push('');
@@ -364,10 +361,10 @@ function renderComponentMd(c) {
     L.push('## 可覆盖的 CSS 变量', '', '```css', `:root {`, ...c.cssVariables.slice(0, 12).map((v) => `  ${v}: /* 你的值 */;`), `}`, '```', '');
     L.push(`共消费 ${c.cssVariables.length} 个 \`--zone-*\` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。`, '');
   }
-  L.push('## 约束', '');
-  L.push('- 只允许通过 \`--zone-*\` 令牌定制样式，禁止直接覆盖 shadow DOM 内部类名；');
-  L.push('- 颜色 / 间距 / 字号必须来自设计令牌，不得硬编码；');
-  L.push('- 交互元素自带键盘可达性与 ARIA 语义，请勿用 \`div\` 模拟。');
+  L.push('## 接入建议', '');
+  L.push('- 优先使用文档列出的公开属性与 CSS 变量；shadow DOM 内部类名不属于稳定的定制接口；');
+  L.push('- 优先选择当前主题中已有的颜色、间距和字号令牌；');
+  L.push('- 页面仍需自行检查语义结构、键盘操作与 ARIA 名称，不能仅凭组件存在就视为通过无障碍检查。');
   L.push('');
   return L.join('\n');
 }
@@ -402,31 +399,36 @@ function llmsIndex() {
   const L = [];
   L.push('# AIYAZONE Design System (ZDS)');
   L.push('');
-  L.push('> ZDS 是一套「标准零件 + 统一规范」：人或 AI 写的页面，都只用这套零件和规范来拼，风格统一、质量达标。');
-  L.push('> 技术栈：Web Components (Lit 3) + CSS 变量设计令牌 + Storybook 文档。框架无关，React/Vue/原生均可使用。');
-  L.push(`> 版本：${rootPkg.name}@${rootPkg.version} · 生成时间：${new Date().toISOString().slice(0, 10)}（版本不同请勿使用缓存）`);
+  L.push('> ZDS 提供可版本化的设计令牌、Lit 自定义元素、SVG 图标和生成的组件 API 说明。');
+  L.push('> 自定义元素可用于原生 HTML 页面，并可接入支持 Web Components 的前端框架；具体接入方式以目标框架文档为准。');
+  L.push(`> 版本：${rootPkg.name}@${rootPkg.version}（版本不同请勿使用缓存）`);
   L.push('');
-  L.push('## 使用规则（必须遵守）');
+  L.push('## AI 参考说明');
   L.push('');
-  L.push('1. 颜色、字号、间距、圆角、层级一律使用 `--zone-*` 令牌，禁止硬编码色值与像素魔法数值；');
-  L.push('2. 页面结构优先用 ZDS 基础组件组合，不得用 `div` 模拟按钮、弹窗、下拉等交互元素；');
-  L.push('3. 组件样式定制只通过 `--zone-*` CSS 变量或公开属性，禁止覆盖 shadow DOM 内部类名；');
-  L.push('4. 交互必须保留键盘可达性与 ARIA 语义；');
-  L.push('5. 响应式断点：桌面 ≥1024px、移动 <1024px（750 设计稿基准），字号/间距令牌已按断点自动缩放。');
+  L.push('以下资料可作为生成页面时的上下文，但提示词和 llms 文件不会限制模型输出，也不构成合规保证。');
+  L.push('本仓库 CI 只检查 apps/portal/public/ai-demo.html 的静态样例；下游项目需要检查自己的代码。');
+  L.push('');
+  L.push('## 使用建议');
+  L.push('');
+  L.push('1. 优先参考已定义的 `--zone-*` 令牌，并核对变量属于当前主题；');
+  L.push('2. 优先使用 API 文档列出的 `zone-*` 组件、属性、事件和插槽；');
+  L.push('3. 样式优先使用公开属性与 CSS 变量；shadow DOM 内部类名不属于稳定的定制接口；');
+  L.push('4. 人工检查键盘操作、语义结构、表单标签、窄屏布局与实际交互；');
+  L.push('5. 需要自动检查时，将规则接入生成代码所在项目的 CI。');
   L.push('');
   L.push('## 安装');
   L.push('');
   L.push('```bash');
-  L.push(`pnpm add ${rootPkg.name}   # 总包：组件 + 主题样式（也可按需只用 @aiyazone/core 与 @aiyazone/tokens）`);
+  L.push(`pnpm add ${rootPkg.name} lit   # 公开组件总包，共享应用的 Lit 3`);
+  L.push('# 令牌可单独安装 @aiyazone/tokens；core/icons/i18n/utils 是内部工作区模块');
   L.push('```');
   L.push('');
   L.push('```js');
   L.push(`import '${rootPkg.name}';   // 注册全部 zone-* 自定义元素`);
+  L.push(`import '${rootPkg.name}/index-v3.css';   // 完整主题`);
   L.push('```');
   L.push('');
-  L.push('```html');
-  L.push(`<link rel="stylesheet" href="${rootPkg.name}/index-v3.css">   <!-- 完整主题 -->`);
-  L.push('```');
+  L.push('静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。新 CDN 入口当前仅本地验收，尚未发布；线上 0.3.2 继续使用旧入口。接入与回退方法见仓库 README §5.2。');
   L.push('');
   L.push('## 组件索引');
   L.push('');
@@ -455,13 +457,13 @@ function llmsIndex() {
   L.push('## 全量文档');
   L.push('');
   L.push('- [llms-full.txt](./llms-full.txt)：全部组件 API 规格拼接（单文件喂给模型）');
-  L.push('- [AI 使用规范](./ai-usage.html)：生成页面时的提示词要点与验收清单');
+  L.push('- [AI 使用指南](./ai-usage.html)：生成页面参考、样例检查范围与人工验收建议');
   L.push('- Storybook：/storybook/ · 示例站：/examples/ · 图标库：/icons/');
   L.push('');
   return L.join('\n');
 }
 
-// ---------- 图标清单（AI 可消费的合法图标名，禁止编造） ----------
+// ---------- 图标清单（AI 可消费的资源名称） ----------
 function iconInventory() {
   const iconsRoot = path.join(REPO_ROOT, 'packages/icons/src/icons');
   const cats = ['system', 'social-media'];
@@ -479,7 +481,7 @@ function iconsLlmsSection(brief) {
   const total = inv.reduce((n, c) => n + c.names.length, 0);
   const L = ['## 图标库（zone-icon）', ''];
   L.push('- 用法：`<zone-icon name="图标名">`，总包引入后可用；颜色随 `currentColor`，大小用 `font-size: var(--zone-font-size-*)` 令牌控制；');
-  L.push('- 图标名**只能取自下方清单，禁止编造**；点击 / 悬停换图用 `hover-name` 属性。');
+  L.push('- 图标名取自 SVG 资源清单；点击 / 悬停换图用 `hover-name` 属性，页面仍需核对名称有效。');
   L.push('');
   for (const c of inv) {
     if (brief && c.names.length > 40) {
@@ -565,36 +567,38 @@ function mdToHtml(md) {
 const aiUsageMdPath = path.join(REPO_ROOT, 'docs/ai-usage.md');
 if (fs.existsSync(aiUsageMdPath)) {
   const body = mdToHtml(fs.readFileSync(aiUsageMdPath, 'utf8'));
-  const html = `<!doctype html>
+  const templatePath = path.join(REPO_ROOT, 'apps/portal/templates/ai-usage.html');
+  const html = fs.existsSync(templatePath) ? fs.readFileSync(templatePath, 'utf8') : `<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 使用规范 · AIYAZONE Design System</title>
+    <title>AI 使用指南 · AIYAZONE Design System</title>
     <link rel="stylesheet" href="/shared/site-header.css" />
     <link rel="stylesheet" href="/shared/site-footer.css" />
     <style>
-      :root { --ink:#1c1a17; --muted:#5b574f; --line:#e6e2da; --brand:#FD5000; }
+      :root { --page-max:64rem; --page-gutter:clamp(1.25rem,4vw,4rem); }
       * { box-sizing: border-box; }
-      body { margin:0; font-family: Inter, -apple-system, "PingFang SC", sans-serif; color:var(--ink); background:#fbfaf8; line-height:1.75; }
-      main { max-width: 880px; margin: 0 auto; padding: 96px 24px 80px; }
-      h1 { font-size: 2rem; letter-spacing:-.02em; margin: 0 0 8px; }
-      h2 { font-size: 1.35rem; margin: 40px 0 12px; padding-left: 12px; border-left: 4px solid var(--brand); }
-      h3 { font-size: 1.08rem; margin: 28px 0 8px; }
-      p, li { color: var(--ink); font-size: .95rem; }
-      code { background:#f1eee8; padding:2px 6px; border-radius:4px; font-family:"JetBrains Mono", ui-monospace, monospace; font-size:.86em; }
-      pre { background:#1c1a17; color:#f4f1ea; padding:16px 18px; border-radius:10px; overflow:auto; }
-      pre code { background:none; padding:0; color:inherit; }
-      table { width:100%; border-collapse: collapse; margin: 16px 0; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
-      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); font-size:.9rem; }
-      th { background:#f6f3ed; font-weight:600; }
-      hr { border:none; border-top:1px solid var(--line); margin:36px 0; }
-      a { color: var(--brand); }
+      body { margin:0; font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; color:var(--site-header-ink); background:var(--site-header-bg); line-height:1.7; }
+      main { max-width:var(--page-max); margin:0 auto; padding:clamp(3rem,7vw,6rem) var(--page-gutter) 5rem; }
+      main > h2:first-child { margin:0 0 2rem; font-size:clamp(2rem,4vw,3rem); letter-spacing:-.04em; line-height:1.1; }
+      h2 { margin:3.5rem 0 1rem; padding-top:1rem; border-top:1px solid var(--site-header-border); font-size:1.5rem; letter-spacing:-.025em; }
+      h3 { margin:2rem 0 .75rem; font-size:1.125rem; }
+      p, li { color:var(--site-header-ink); font-size:1rem; }
+      li + li { margin-top:.5rem; }
+      code { padding:.15em .35em; border-radius:.25rem; background:var(--site-header-subtle); font-family:ui-monospace,"SFMono-Regular",Menlo,Monaco,Consolas,monospace; font-size:.88em; }
+      pre { padding:1rem 1.25rem; overflow:auto; border:1px solid var(--site-header-border); border-radius:.5rem; background:var(--site-header-subtle); color:var(--site-header-ink); }
+      pre code { padding:0; background:transparent; }
+      table { width:100%; margin:1.25rem 0; border-collapse:collapse; border:1px solid var(--site-header-border); background:var(--site-header-bg); }
+      th, td { padding:.75rem; border-bottom:1px solid var(--site-header-border); text-align:left; font-size:.9rem; vertical-align:top; }
+      th { background:var(--site-header-subtle); font-weight:600; }
+      hr { margin:2.5rem 0; border:0; border-top:1px solid var(--site-header-border); }
+      a { color:var(--site-header-brand); }
+      @media (max-width:42rem) { th, td { padding:.625rem .5rem; } }
     </style>
   </head>
   <body>
-    <div class="tech-bg"></div>
     <div id="site-header"></div>
     <main id="content">
 ${body}

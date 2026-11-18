@@ -888,6 +888,6 @@ export class ZoneDropdown extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-dropdown": ZoneDropdown;
+    "zone-dropdown": Pick<ZoneDropdown, keyof ZoneDropdown>;
   }
 }

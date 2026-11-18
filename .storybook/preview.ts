@@ -6,9 +6,11 @@ import "@aiyazone/icons";
 // 最后引入站点样式，使站点的 tokens 与变量覆盖核心包的默认值
 import "zone:styles";
 import { initialize, initI18nDom, setCurrLanguage } from "@aiyazone/i18n";
+import zoneDesignSystem from './zone-d';
 
 const preview: Preview = {
   parameters: {
+    docs: { theme: zoneDesignSystem },
     controls: {
       matchers: {
         color: /(background|color)$/i,

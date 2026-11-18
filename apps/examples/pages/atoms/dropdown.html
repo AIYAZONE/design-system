@@ -106,18 +106,12 @@
     </style>
   </head>
   <body>
-    <main>
-      <div class="intro">
-        <a href="../../index.html">← All components</a>
-        <h1>Dropdown</h1>
-        <p>
-          Single selection, with a flat list or an expandable tree based on the
-          supplied options.
-        </p>
-      </div>
+    <div class="container">
+      <header class="header"><div class="content"><h1>下拉选择示例</h1><p class="subtitle">选择单个选项，支持普通列表、分组与表单。</p></div></header>
+    <main class="example-preview">
       <div class="grid">
         <section class="tree-section">
-          <h2>Hierarchical options</h2>
+          <h2>分组选择</h2>
           <div class="reference">
             <zone-dropdown
               id="tree"
@@ -128,7 +122,7 @@
           </div>
         </section>
         <section class="flat-section">
-          <h2>Flat options · form</h2>
+          <h2>普通选择与表单</h2>
           <form id="form">
             <zone-dropdown
               id="flat"
@@ -139,10 +133,10 @@
               clearable
             ></zone-dropdown>
             <div class="actions">
-              <button type="submit">Submit</button
-              ><button type="reset">Reset</button
+              <button type="submit">提交</button
+              ><button type="reset">重置</button
               ><button type="button" id="toggle-disabled">
-                Toggle disabled fieldset
+                切换禁用状态
               </button>
             </div>
             <fieldset
@@ -175,7 +169,7 @@
         ></zone-dropdown>
         <div class="actions">
           <button type="button" id="open-dialog">
-            Open dialog with dropdown
+            打开包含下拉选择的弹窗
           </button>
         </div>
         <zone-dialog id="audit-dialog" caption="Dropdown keyboard isolation">
@@ -185,10 +179,10 @@
           ></zone-dropdown>
         </zone-dialog>
         <div class="actions">
-          <button type="button" id="run-checks" disabled>Run browser checks</button>
+          <button type="button" id="run-checks" disabled>运行交互检查</button>
         </div>
         <output id="checks-result" aria-live="polite"></output>
       </section>
-    </main>
+    </main></div>
   </body>
 </html>

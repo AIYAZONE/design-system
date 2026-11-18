@@ -1,0 +1,19 @@
+@import "./apps/portal/public/shared/site-theme.css";
+/* 历史门户样式兼容；组件 --zone-* 变量继续由各主题提供。 */
+:root {
+  --color-paper: var(--portal-bg);
+  --color-surface: var(--portal-surface);
+  --color-surface-muted: var(--portal-raised);
+  --color-ink: var(--portal-text);
+  --color-ink-soft: var(--portal-muted);
+  --color-ink-muted: var(--portal-muted);
+  --color-rule: var(--portal-line);
+  --color-rule-strong: var(--portal-muted);
+  --color-accent: var(--portal-accent);
+  --color-accent-ink: var(--portal-on-accent);
+  --color-accent-soft: var(--portal-raised);
+  --font-sans: var(--portal-font);
+  --font-mono: var(--portal-mono);
+  --page-gutter: 40px;
+  --layout-max: 1200px;
+}

@@ -1,0 +1,5 @@
+
+> @aiyazone/design-system@0.3.2 packages:check:lit /Users/ht-2502/Documents/Code/design-system
+> node scripts/check-lit-artifacts.mjs
+
+Lit 产物检查通过：492 个 npm JS 文件无内嵌运行时，CDN 有独立自包含入口。

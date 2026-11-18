@@ -348,6 +348,6 @@ export class ZoneButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-button': ZoneButton;
+    'zone-button': Pick<ZoneButton, keyof ZoneButton>;
   }
 }

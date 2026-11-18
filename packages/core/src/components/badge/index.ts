@@ -150,6 +150,6 @@ export default ZoneBadge;
 // 扩展HTMLElementTagNameMap接口，添加zone-badge元素类型定义
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-badge": ZoneBadge;
+    "zone-badge": Pick<ZoneBadge, keyof ZoneBadge>;
   }
 }

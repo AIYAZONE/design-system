@@ -1,0 +1,16 @@
+.sidebar-header > div:has(img[alt="AIYAZONE Design System"]) {
+  display: none;
+}
+
+.sidebar-header {
+  min-height: 28px;
+  padding-left: 4px;
+  justify-content: space-between;
+}
+
+.sidebar-header::before {
+  content: "组件目录";
+  color: #AAB8CD;
+  font-size: 14px;
+  font-weight: 600;
+}

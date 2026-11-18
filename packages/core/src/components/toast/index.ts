@@ -235,6 +235,6 @@ export default ZoneToast;
 
 declare global {
   interface HTMLElementTagNameMap {
-    "zone-toast": ZoneToast; // 定义全局标签
+    "zone-toast": Pick<ZoneToast, keyof ZoneToast>;
   }
 }

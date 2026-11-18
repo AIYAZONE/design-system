@@ -13,6 +13,7 @@ const PARAM_REGEX = /\{([^}]+)\}/g;
 // 核心状态
 let currentLanguage: Language = config.defaultLanguage || 'en';
 const translationCache = new LRUCache<string, string>(config.cacheSize || 1000);
+let initialized = false;
 
 /**
  * 错误处理函数
@@ -180,6 +181,8 @@ export function normalizeLanguage(input?: string): Language {
  * @description 初始化i18n系统，设置默认语言，绑定事件监听，并挂载全局实例
  */
 export function initialize(): void {
+  if (initialized) return;
+  initialized = true;
   const savedLanguage = getCookie('zone-language') as Language;
   const languageToUse = savedLanguage || config.defaultLanguage || 'en';
 
@@ -187,6 +190,10 @@ export function initialize(): void {
 
   window.addEventListener(I18N_LANGUAGE_CHANGE, (event: Event) => {
     const lang = (event as CustomEvent<Language>).detail;
+    if (currentLanguage !== lang) {
+      currentLanguage = lang;
+      translationCache.clear();
+    }
     setCookie('zone-language', lang);
   });
 

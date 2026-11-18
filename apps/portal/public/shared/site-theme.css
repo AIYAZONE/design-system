@@ -1,0 +1,63 @@
+:root {
+  --portal-bg: #080d17;
+  --portal-surface: #101827;
+  --portal-raised: #172338;
+  --portal-text: #f3f6fc;
+  --portal-muted: #aab8cd;
+  --portal-line: #2a3a52;
+  --portal-accent: #80c7ff;
+  --portal-on-accent: #07111e;
+  --portal-font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --portal-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --portal-header-height: 76px;
+  --portal-title-size: clamp(28px, 2.5vw, 36px);
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 96px; }
+body { margin: 0; background: var(--portal-bg); color: var(--portal-text); font: 16px/1.65 var(--portal-font); }
+.home-main, .site-main, .architecture-main { font-family: var(--portal-font); font-weight: 400; }
+.home-main p, .site-main p, .architecture-main p { font-family: var(--portal-font); font-weight: 400; }
+a { color: var(--portal-accent); text-underline-offset: 5px; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--portal-accent); outline-offset: 4px; }
+.site-main { max-width: 1200px; margin: auto; padding: 48px 40px 96px; min-height: 70vh; }
+.site-main h1 { font-size: var(--portal-title-size); font-weight: 600; line-height: 1.35; letter-spacing: -.02em; margin: 0 0 16px; }
+.site-main h2 { font-size: 28px; line-height: 1.4; margin: 0 0 16px; }
+.site-main h3 { font-size: 20px; margin: 0 0 10px; }
+.site-lede { color: var(--portal-muted); max-width: 680px; margin: 0 0 36px; }
+.site-eyebrow { color: var(--portal-muted); font-size: 13px; letter-spacing: .08em; margin: 0 0 20px; }
+.site-section { padding: 48px 0; border-top: 1px solid var(--portal-line); }
+.site-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 20px; border: 1px solid var(--portal-line); border-radius: 8px; background: transparent; color: var(--portal-text); text-decoration: none; font-weight: 600; transition: background 180ms; }
+.site-button:hover { background: var(--portal-raised); }
+.site-button--primary { background: var(--portal-accent); color: var(--portal-on-accent); border-color: var(--portal-accent); }
+.site-button--primary:hover { background: #a5d7ff; }
+.site-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.site-code { background: var(--portal-surface); border: 1px solid var(--portal-line); border-radius: 12px; padding: 24px; margin: 24px 0; min-width: 0; }
+.site-code__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--portal-muted); font-size: 14px; }
+.site-code pre { margin-bottom: 0; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: auto; font: 14px/1.85 var(--portal-mono); }
+code { font-family: var(--portal-mono); }
+details { padding: 22px 0; border-top: 1px solid var(--portal-line); }
+summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+details p, details li { color: var(--portal-muted); }
+.site-steps, .site-resources { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 0; list-style: none; margin: 28px 0; }
+.site-steps .number { color: var(--portal-accent); font: 14px var(--portal-mono); display: block; margin-bottom: 20px; }
+.site-steps p, .site-resources p { color: var(--portal-muted); margin: 0 0 16px; }
+.site-note { color: var(--portal-muted); font-size: 14px; }
+.example-preview { color: var(--zone-color-text-l1, var(--zone-color-neutral, #202020)); background: var(--zone-color-white, #fff); color-scheme: light; border-radius: 16px; }
+.account-demo-shell { max-width: 880px; }
+body .account-demo-shell { padding: 48px 40px 80px; }
+.account-demo-shell .example-preview { padding: 24px; }
+.account-demo-shell .page-desc { opacity: 1; }
+@media (max-width: 700px) {
+  .site-main, body .account-demo-shell { padding: 32px 20px 64px; }
+  .site-main h2 { font-size: 24px; }
+  .site-steps, .site-resources { grid-template-columns: 1fr; gap: 24px; }
+  .site-code { padding: 20px; }
+  .site-section { padding: 36px 0; }
+  .site-steps .number { margin-bottom: 12px; }
+  .account-demo-shell .example-preview { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

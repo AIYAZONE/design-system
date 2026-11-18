@@ -1,124 +1,69 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 使用规范 · AIYAZONE Design System</title>
-    <link rel="stylesheet" href="/shared/site-header.css" />
-    <link rel="stylesheet" href="/shared/site-footer.css" />
-    <style>
-      :root { --ink:#1c1a17; --muted:#5b574f; --line:#e6e2da; --brand:#FD5000; }
-      * { box-sizing: border-box; }
-      body { margin:0; font-family: Inter, -apple-system, "PingFang SC", sans-serif; color:var(--ink); background:#fbfaf8; line-height:1.75; }
-      main { max-width: 880px; margin: 0 auto; padding: 96px 24px 80px; }
-      h1 { font-size: 2rem; letter-spacing:-.02em; margin: 0 0 8px; }
-      h2 { font-size: 1.35rem; margin: 40px 0 12px; padding-left: 12px; border-left: 4px solid var(--brand); }
-      h3 { font-size: 1.08rem; margin: 28px 0 8px; }
-      p, li { color: var(--ink); font-size: .95rem; }
-      code { background:#f1eee8; padding:2px 6px; border-radius:4px; font-family:"JetBrains Mono", ui-monospace, monospace; font-size:.86em; }
-      pre { background:#1c1a17; color:#f4f1ea; padding:16px 18px; border-radius:10px; overflow:auto; }
-      pre code { background:none; padding:0; color:inherit; }
-      table { width:100%; border-collapse: collapse; margin: 16px 0; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
-      th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); font-size:.9rem; }
-      th { background:#f6f3ed; font-weight:600; }
-      hr { border:none; border-top:1px solid var(--line); margin:36px 0; }
-      a { color: var(--brand); }
-    </style>
-  </head>
-  <body>
-    <div class="tech-bg"></div>
-    <div id="site-header"></div>
-    <main id="content">
-<h2>AI 使用规范：用 ZDS 生成前端页面</h2>
-<p>&gt; 这份文档是给 AI（以及给 AI 写提示词的人）看的。目标只有一个：<strong>AI 生成的页面，开箱即符合 ZDS 规范</strong>。</p>
-<h3>一、三条硬约束</h3>
-<p>1. <strong>只用令牌</strong>：颜色、字号、间距、圆角、阴影、层级一律用 <code>--zone-*</code> CSS 变量，禁止出现 <code>#FD5000</code>、<code>16px</code>（间距）、<code>z-index: 9999</code> 这类硬编码。</p>
-<p>2. <strong>只用组件</strong>：按钮、弹窗、下拉、提示等交互元素用 <code>zone-*</code> 自定义元素，<strong>禁止用 <code>div</code>/<code>span</code> 模拟</strong>。</p>
-<p>3. <strong>只从外部定制</strong>：样式覆盖只允许通过公开属性与 <code>--zone-*</code> 变量，禁止选择 shadow DOM 内部类名。</p>
-<p>违反任意一条，生成的代码视为<strong>不合格</strong>，即使视觉看起来正确。</p>
-<h3>二、令牌使用规则</h3>
-<table><thead><tr><th>需求</th><th>正确写法</th><th>禁止写法</th></tr></thead><tbody>
-<tr><td>主色</td><td><code>color: var(--zone-color-primary)</code></td><td><code>color: #FF6727</code></td></tr>
-<tr><td>正文文字</td><td><code>color: var(--zone-color-text-l1)</code></td><td><code>color: #242F20</code></td></tr>
-<tr><td>间距</td><td><code>padding: var(--zone-size-16)</code></td><td><code>padding: 16px</code></td></tr>
-<tr><td>字号</td><td><code>font-size: var(--zone-font-size-14)</code></td><td><code>font-size: 14px</code></td></tr>
-<tr><td>标题排版</td><td><code>font: var(--zone-font-h2)</code></td><td>手写 <code>font-size</code> + <code>font-weight</code> + <code>line-height</code></td></tr>
-<tr><td>圆角</td><td><code>border-radius: var(--zone-rounded-8)</code></td><td><code>border-radius: 8px</code></td></tr>
-<tr><td>层级</td><td><code>z-index: var(--zone-index-dialog)</code></td><td><code>z-index: 9999</code></td></tr>
-<tr><td>遮罩</td><td><code>background: var(--zone-color-overlay-50)</code></td><td><code>rgba(0,0,0,.5)</code></td></tr>
-</tbody></table>
-<p>字号与尺寸令牌已内置响应式缩放（桌面 1rem/16、移动 1rem/32），<strong>不要自己写 media query 调整数值</strong>，直接用令牌即可。</p>
-<h3>三、组件选择指南</h3>
-<table><thead><tr><th>页面需求</th><th>使用组件</th></tr></thead><tbody>
-<tr><td>提交 / 取消 / 次要操作</td><td><code>&lt;zone-button&gt;</code>（variant 三变体见文档）</td></tr>
-<tr><td>状态标记</td><td><code>&lt;zone-badge&gt;</code></td></tr>
-<tr><td>多选 / 勾选</td><td><code>&lt;zone-checkbox&gt;</code></td></tr>
-<tr><td>模态确认、表单弹窗</td><td><code>&lt;zone-dialog&gt;</code></td></tr>
-<tr><td>下拉选择、级联选择</td><td><code>&lt;zone-dropdown&gt;</code> / <code>&lt;zone-filter-select&gt;</code></td></tr>
-<tr><td>气泡提示、二次确认</td><td><code>&lt;zone-popover&gt;</code> / <code>&lt;zone-tooltip&gt;</code></td></tr>
-<tr><td>加载中</td><td><code>&lt;zone-spinner&gt;</code></td></tr>
-<tr><td>操作结果反馈</td><td><code>&lt;zone-toast&gt;</code>（声明式：<code>closed</code> 默认 false＝显示，初始隐藏必须设 <code>closed</code>）</td></tr>
-<tr><td>图标</td><td><code>&lt;zone-icon name="…"&gt;</code>（名称只能取自 llms.txt「图标库」清单，禁止编造）</td></tr>
-<tr><td>文本/邮箱/密码等输入框</td><td>ZDS 暂无输入框组件：用原生 <code>&lt;input&gt;</code> 并全部用 <code>--zone-*</code> 令牌样式化（出现 ≥3 处复用时按 ZBC 流程立项 <code>zone-input</code>）</td></tr>
-</tbody></table>
-<p>完整 API（属性 / 事件 / 插槽 / 可覆盖变量）见 <code>docs/api/&lt;tag&gt;.md</code>。</p>
-<h3>四、生成页面的提示词模板</h3>
-<pre><code>
-你是 AIYAZONE 前端工程师。请用 ZDS 设计系统生成【页面描述】。
-
-硬约束：
-1. 颜色/字号/间距/圆角/层级只用 --zone-* 令牌，禁止硬编码数值；
-2. 交互元素只用 zone-* 组件（button/dialog/dropdown/toast 等），禁止 div 模拟；
-3. 样式覆盖只用公开属性与 --zone-* 变量；
-4. 交互元素必须键盘可达，图标按钮必须有 aria-label；
-5. 图标用 &lt;zone-icon name="…"&gt;，名称取自 llms.txt 图标库清单，禁止编造；
-6. 响应式使用令牌自动缩放，不写数值 media query。
-
-输出要求：单文件 HTML + 原生 JS；引入 @aiyazone/design-system（总包，组件+主题），
-&lt;link rel="stylesheet" href="@aiyazone/design-system/index-v3.css"&gt; + &lt;script type="module"&gt;import '@aiyazone/design-system';&lt;/script&gt;。
-参考：llms.txt（索引）、llms-full.txt（全量 API）、docs/api/*.md（组件规格）。
-</code></pre>
-<h3>五、正例与反例</h3>
-<pre><code>
-&lt;!-- ✅ 合格：组件 + 令牌 + 语义 --&gt;
-&lt;zone-button variant="primary" label="提交订单"&gt;
-  提交订单
-&lt;/zone-button&gt;
-
-&lt;section style="padding: var(--zone-size-24); background: var(--zone-color-card-white);"&gt;
-  &lt;h2 style="font: var(--zone-font-h3); color: var(--zone-color-text-l1);"&gt;订单详情&lt;/h2&gt;
-&lt;/section&gt;
-</code></pre>
-<pre><code>
-&lt;!-- ❌ 不合格：div 模拟按钮 + 硬编码颜色与间距 --&gt;
-&lt;div onclick="submit()" style="background:#FF6727; color:#fff; padding:16px; border-radius:8px;"&gt;
-  提交订单
-&lt;/div&gt;
-</code></pre>
-<h3>六、验收清单（生成后逐条自检）</h3>
-<ul>
-<li>[ ] 全文搜索 <code>#</code> 十六进制色值：0 处（除组件内部）</li>
-<li>[ ] 全文搜索 <code>px</code>：仅允许出现在 <code>border-width</code> 等无法令牌化的边线场景</li>
-<li>[ ] 所有交互元素都是 <code>zone-*</code> 组件，且带 <code>label</code> 或 <code>aria-label</code></li>
-<li>[ ] 弹层类组件（dialog/dropdown/popover/toast）的层级来自 <code>--zone-index-*</code></li>
-<li>[ ] 移动端（&lt;1024px）布局不溢出，字号随令牌自动缩小</li>
-<li>[ ] 深色/自定义主题下只需切换主题变量即可适配，无需改页面代码</li>
-</ul>
-<h3>七、AI 不可自行发明的东西</h3>
-<ul>
-<li>新的颜色值、新的间距刻度、新的字号档位；</li>
-<li>组件的内部结构（如自行拼装 dialog 的遮罩层）；</li>
-<li>新的交互模式（ZDS 未覆盖的交互应先提出需求，再补组件）。</li>
-</ul>
-<p>规范未覆盖的场景，正确做法是<strong>先补 ZDS（组件或令牌），再生成页面</strong>，而不是在页面里绕过规范。</p>
-<h3>八、实测样例</h3>
-<ul>
-<li><a href="./ai-demo.html"><code>/ai-demo.html</code></a>：按本规范 + llms-full.txt 由 AI 生成的「账户设置」页（表单 / 下拉 / 复选 / 弹窗确认 / 轻提示 / 图标 / 危险操作），CDN 直用 npm 包，可作为生成时的对照样例。</li>
-</ul>
-    </main>
-    <div id="site-footer"></div>
-    <script type="module" src="/shared/site-header.js"></script>
-    <script type="module" src="/shared/site-footer.js"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 使用方法 · AIYAZONE</title><link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/shared/site-header.css"><link rel="stylesheet" href="/shared/site-footer.css">
+  <link rel="stylesheet" href="/shared/ai-usage.css">
+  <link rel="stylesheet" href="/shared/page-intro.css">
+</head>
+<body>
+  <div data-site-header></div>
+  <main id="content" class="site-main ai-guide portal-page">
+    <header class="ai-guide__intro page-intro">
+      <p class="site-eyebrow page-intro__label">AI 指南</p>
+      <h1 class="page-intro__title">用 AI 做页面</h1>
+      <p class="site-lede page-intro__description">从一段指令开始，让 AI 使用这套组件完成你的页面。</p>
+    </header>
+    <section class="ai-guide__start" aria-label="开始使用">
+      <div class="ai-guide__workflow">
+        <h2>只需三步</h2>
+        <ol class="ai-guide__steps">
+          <li><span class="number" aria-hidden="true">01</span><div><h3>复制使用指令</h3><p>粘贴到你正在使用的 AI 工具。</p></div></li>
+          <li><span class="number" aria-hidden="true">02</span><div><h3>写下页面需求</h3><p>说明页面内容、需要的操作和布局。</p></div></li>
+          <li><span class="number" aria-hidden="true">03</span><div><h3>打开并检查页面</h3><p>试试按钮和表单，再看看手机效果。</p></div></li>
+        </ol>
+        <a class="ai-guide__example" href="/ai-demo.html"><span><span class="ai-guide__example-label">看看完成后的效果</span><strong>账户设置示例</strong></span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="ai-guide__prompt">
+        <div class="ai-guide__prompt-head"><div><span class="ai-guide__prompt-label">使用指令</span><span class="ai-guide__prompt-hint">复制后，替换高亮处的需求</span></div><button type="button" class="site-button site-button--primary" data-copy-target="ai-prompt" aria-live="polite">复制指令</button></div>
+      <pre id="ai-prompt">请使用 AIYAZONE 设计系统制作一个<mark>【写下页面需求】</mark>。
+先阅读 https://design.aiyazone.com/llms.txt。
+需要组件细节时，继续阅读其中链接的完整说明。
+使用说明中已有的组件、图标和样式变量。
+没有现成组件的部分请说明，不要编造组件属性或事件。
+输出可运行页面，并告诉我如何打开。
+完成后检查按钮、表单、键盘操作和手机布局。</pre>
+        <div class="ai-guide__request"><span>需求示例</span><p>做一个账户设置页，可以修改昵称和通知偏好。</p></div>
+      </div>
+    </section>
+    <section class="ai-guide__reference" aria-labelledby="reference-title">
+      <div class="ai-guide__reference-intro"><h2 id="reference-title">按需参考</h2><p>选组件、调样式、检查结果。<br>需要时再展开。</p><a href="/examples/">浏览更多示例 <span aria-hidden="true">→</span></a></div>
+      <div class="ai-guide__details">
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">01</span><span>选择组件<small>按钮、下拉与弹窗</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p>先从<a href="/storybook/">组件文档</a>选择已有组件。每个组件的使用接口（API）说明列出了可用的属性、事件和内容位置。</p>
+        <pre>&lt;zone-button variant="primary"&gt;提交订单&lt;/zone-button&gt;</pre>
+        <p>文本输入目前可以使用原生 <code>&lt;input&gt;</code>，需要给输入框关联标签。组件不能覆盖的功能应明确说明，不要编造属性或事件。图标名称从<a href="/icons/">图标页</a>查找。</p>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">02</span><span>统一样式<small>颜色、字号与间距</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p>样式变量是可以复用的颜色和尺寸名称。例如 <code>var(--zone-color-primary)</code> 表示当前组件主题的主色，<code>var(--zone-size-24)</code> 表示统一间距。</p>
+        <pre>&lt;section style="padding: var(--zone-size-24);"&gt;
+  &lt;h2 style="color: var(--zone-color-text-l1);"&gt;订单详情&lt;/h2&gt;
+&lt;/section&gt;</pre>
+        <p>使用前核对变量是否在目标主题中存在。没有合适变量时说明差距。<a href="/storybook/?path=/docs/02-设计变量-06-主题与-token-架构--document">查看主题与样式说明</a>。</p>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">03</span><span>检查页面<small>内容、交互与手机显示</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <ul><li>文字是否正确，按钮是否完成了预期操作。</li><li>输入框是否有标签，下拉与弹窗是否可以键盘操作。</li><li>手机上是否看得清、点得到，有没有内容超出屏幕。</li><li>使用的组件属性、事件、图标名和样式变量是否与目标版本说明一致。</li><li>浏览器控制台是否有错误。</li></ul>
+      </details>
+      <details><summary><span class="ai-guide__detail-number" aria-hidden="true">04</span><span>技术参考<small>完整说明与自动检查</small></span><span class="ai-guide__expand" aria-hidden="true"></span></summary>
+        <p><a href="/llms.txt">AI 文档入口 llms.txt</a> · <a href="/llms-full.txt">完整说明 llms-full.txt</a> · <a href="/storybook/">组件 API 文档</a></p>
+        <p>本仓库的账户设置示例使用以下命令检查组件属性、图标、样式变量与输入框标签：</p>
+        <pre>pnpm --filter @aiyazone/portal run check:ai-demo</pre>
+        <p>这条命令只检查仓库里的 <code>apps/portal/public/ai-demo.html</code>。持续集成（CI）执行相同规则；其他项目需要对自己的页面设置检查。</p>
+      </details>
+      <p class="site-note">组件说明帮助 AI 选用已有能力，不能保证生成结果正确。自动检查也不能代替实际操作、内容核对和视觉检查。</p>
+      </div>
+    </section>
+  </main><div data-site-footer></div>
+  <script type="module" src="/shared/site-header.js"></script><script type="module" src="/shared/site-footer.js"></script><script type="module" src="/shared/copy-text.js"></script>
+</body></html>

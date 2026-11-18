@@ -29,7 +29,7 @@ pnpm run tokens:lint   # 禁止新增裸 hex（--update 冻结存量）
 2. GitHub 仓库 → Settings → Secrets and variables → Actions → 新增 `CHROMATIC_PROJECT_TOKEN`；
 3. 之后 PR 自动产出视觉 diff 与基线审批；未配置时该步骤自动跳过，不阻塞 CI。
 
-## 分支保护（✅ 已配置，2026-11-15）
+## 分支保护（2026-11-15 配置记录）
 
 已通过 GitHub Rulesets（Settings → Rules → Rulesets）为 `master` 与 `develop` 配置：
 
@@ -38,10 +38,15 @@ pnpm run tokens:lint   # 禁止新增裸 hex（--update 冻结存量）
 - Require branches to be up to date before merging；
 - 禁止 force push / delete。
 
-如 CI job 名称（`ci.yml` 中 `quality` 的 `name:`）变更，需同步更新 ruleset 中的 required check。
+CI job 名称（`ci.yml` 中 `quality` 的 `name:`）保持稳定；发布范围、Lit 产物和 tarball 消费者检查也在该任务内执行，新增步骤不更名。如确需更名，需同步更新 ruleset 中的 required check，并核对 PR 实际产生的检查。
+
+2026-11-18 已恢复上述稳定检查名，并通过 GitHub API 核对 master / develop 的 active Rulesets：检查名一致、来源为 GitHub Actions、要求分支更新且禁止强推与删除。传统分支保护接口返回 404，实际保护由 Rulesets 生效。PR 同一提交的 CI 结果在 [ZDS-03](docs/ROADMAP.md#zds-03-ci-名称兼容与远端核查2026-11-18) 中跟踪。
 
 ## 本地提交前自检
 
+只公开发布总包 `@aiyazone/design-system` 和 `@aiyazone/tokens`。组件、图标、翻译和工具改动写总包 Changeset；令牌改动写 tokens，影响总包主题时也写总包。私有工作区包不升版、不打发布标签。版本准备后运行 `docs:gen`，更新文档中的版本。
+
 ```bash
-pnpm run build && pnpm run type-check && pnpm run test && pnpm run tokens:check && pnpm run docs:check
+pnpm run release:check && pnpm run build && pnpm run design:build && pnpm run packages:test
+pnpm run type-check && pnpm run lint && pnpm run test && pnpm run tokens:check && pnpm run docs:check
 ```

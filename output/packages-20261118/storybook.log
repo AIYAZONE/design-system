@@ -1,0 +1,866 @@
+
+> @aiyazone/storybook@0.1.1 build:storybook /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> pnpm run build
+
+
+> @aiyazone/storybook@0.1.1 build /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> storybook build -c ../../.storybook
+
+storybook v9.1.21
+
+info => Cleaning outputDir: storybook-static
+info => Loading presets
+info => Building manager..
+info => Building preview..
+No story files found for the specified pattern: ../../packages/i18n/src/**/*.stories.@(js|ts|mdx)
+No story files found for the specified pattern: ../../packages/utils/src/**/*.stories.@(js|ts|mdx)
+vite v7.3.8 building client environment for production...
+transforming...
+info => Copying static files: ../../public at storybook-static
+info => Copying static files: ../portal/public/shared at storybook-static/shared
+✓ 322 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+storybook-static/iframe.html                                       20.07 kB │ gzip:   5.63 kB
+storybook-static/assets/iframe-BUQvc38A.css                        47.32 kB │ gzip:   5.47 kB
+storybook-static/assets/close-square-C1KT-yWF.js                    0.28 kB │ gzip:   0.20 kB
+storybook-static/assets/radius-left-top-DMWXWt7z.js                 0.30 kB │ gzip:   0.24 kB
+storybook-static/assets/radius-right-bottom-DzHC-hZi.js             0.31 kB │ gzip:   0.25 kB
+storybook-static/assets/lamp-line-CngT6vmA.js                       0.38 kB │ gzip:   0.26 kB
+storybook-static/assets/cart-line-CwiZSLYu.js                       0.43 kB │ gzip:   0.30 kB
+storybook-static/assets/react-pYxR2ZoL.js                           0.46 kB │ gzip:   0.29 kB
+storybook-static/assets/check-BOtKSUS9.js                           0.47 kB │ gzip:   0.31 kB
+storybook-static/assets/tent-line-Ch9T_jXL.js                       0.47 kB │ gzip:   0.28 kB
+storybook-static/assets/twitter-BrE8kSYm.js                         0.47 kB │ gzip:   0.33 kB
+storybook-static/assets/facebook-Dee9YJfm.js                        0.47 kB │ gzip:   0.33 kB
+storybook-static/assets/facebook-color-fill-B1Nq0myV.js             0.49 kB │ gzip:   0.34 kB
+storybook-static/assets/facebook-fill-1iSD8yVB.js                   0.50 kB │ gzip:   0.33 kB
+storybook-static/assets/twitter-color-DxWfqNU1.js                   0.50 kB │ gzip:   0.35 kB
+storybook-static/assets/twitter-color-fill-CE0eNhwL.js              0.50 kB │ gzip:   0.34 kB
+storybook-static/assets/facebook-color-BaOoc0u6.js                  0.50 kB │ gzip:   0.35 kB
+storybook-static/assets/twitter-fill-BDmZRiZx.js                    0.50 kB │ gzip:   0.34 kB
+storybook-static/assets/email-HVrgWlQi.js                           0.52 kB │ gzip:   0.34 kB
+storybook-static/assets/telegram-color-fill-BWF559oS.js             0.52 kB │ gzip:   0.37 kB
+storybook-static/assets/email-color-fill-ceZQV_EX.js                0.53 kB │ gzip:   0.35 kB
+storybook-static/assets/email-fill-BNWfoN3d.js                      0.53 kB │ gzip:   0.34 kB
+storybook-static/assets/email-color-DDlGKA-l.js                     0.55 kB │ gzip:   0.36 kB
+storybook-static/assets/arrow-up-long-9p8VcVo0.js                   0.55 kB │ gzip:   0.33 kB
+storybook-static/assets/telegram-PHFpMhiA.js                        0.56 kB │ gzip:   0.38 kB
+storybook-static/assets/home-line-2-cneRXK4c.js                     0.56 kB │ gzip:   0.30 kB
+storybook-static/assets/telegram-fill-DNiWk0s1.js                   0.57 kB │ gzip:   0.38 kB
+storybook-static/assets/time-fill-XZKfAKpf.js                       0.58 kB │ gzip:   0.36 kB
+storybook-static/assets/arrow-right-long-mlJIx9Jh.js                0.58 kB │ gzip:   0.35 kB
+storybook-static/assets/telegram-color-CjFVyOv4.js                  0.59 kB │ gzip:   0.40 kB
+storybook-static/assets/battery-line-qgPs_3pd.js                    0.59 kB │ gzip:   0.34 kB
+storybook-static/assets/check-fill-Dhw21q-n.js                      0.61 kB │ gzip:   0.37 kB
+storybook-static/assets/minus-B2Qe7Bnl.js                           0.64 kB │ gzip:   0.38 kB
+storybook-static/assets/arrow-left-CbpbxjVJ.js                      0.64 kB │ gzip:   0.39 kB
+storybook-static/assets/home-line-1-DFhFKg40.js                     0.67 kB │ gzip:   0.32 kB
+storybook-static/assets/arrow-up-CxcOwgJU.js                        0.67 kB │ gzip:   0.42 kB
+storybook-static/assets/pinterest-CnU8hIXT.js                       0.70 kB │ gzip:   0.45 kB
+storybook-static/assets/tag-BD9GlTu7.js                             0.70 kB │ gzip:   0.43 kB
+storybook-static/assets/tiktok-CdqXaidV.js                          0.71 kB │ gzip:   0.42 kB
+storybook-static/assets/tiktok-color-fill-DrLg71fq.js               0.72 kB │ gzip:   0.41 kB
+storybook-static/assets/tiktok-fill-B51e6RVW.js                     0.72 kB │ gzip:   0.41 kB
+storybook-static/assets/pinterest-color-BSjueacX.js                 0.73 kB │ gzip:   0.47 kB
+storybook-static/assets/tiktok-color-GqGyXgxo.js                    0.74 kB │ gzip:   0.43 kB
+storybook-static/assets/pinterest-color-fill-BVZ9RHYH.js            0.75 kB │ gzip:   0.48 kB
+storybook-static/assets/pinterest-fill-D4WxedAg.js                  0.75 kB │ gzip:   0.47 kB
+storybook-static/assets/info-fill-jjGx71Eg.js                       0.76 kB │ gzip:   0.44 kB
+storybook-static/assets/calendar-line-DqfC0OZC.js                   0.79 kB │ gzip:   0.39 kB
+storybook-static/assets/plus-3VUwL8B1.js                            0.79 kB │ gzip:   0.45 kB
+storybook-static/assets/animate-CAvCrSsC.js                         0.79 kB │ gzip:   0.53 kB
+storybook-static/assets/youtube-color-fill-BhAUocTg.js              0.80 kB │ gzip:   0.49 kB
+storybook-static/assets/youtube-fill-BnD2VuYJ.js                    0.80 kB │ gzip:   0.49 kB
+storybook-static/assets/truck-line-2-D35VzedZ.js                    0.81 kB │ gzip:   0.37 kB
+storybook-static/assets/check-line-gLiNHk4X.js                      0.81 kB │ gzip:   0.46 kB
+storybook-static/assets/search-BQyPef98.js                          0.82 kB │ gzip:   0.42 kB
+storybook-static/assets/question-DAcbj0hR.js                        0.84 kB │ gzip:   0.48 kB
+storybook-static/assets/arrow-left-fill-DMc7BQk-.js                 0.84 kB │ gzip:   0.50 kB
+storybook-static/assets/arrow-right-fill-DjeDXHHb.js                0.84 kB │ gzip:   0.50 kB
+storybook-static/assets/youtube-CJ7xyDBz.js                         0.85 kB │ gzip:   0.51 kB
+storybook-static/assets/arrow-up-fill-suA4rCuz.js                   0.86 kB │ gzip:   0.50 kB
+storybook-static/assets/youtube-color-BPcd26MP.js                   0.86 kB │ gzip:   0.52 kB
+storybook-static/assets/close-BT9GqDsG.js                           0.99 kB │ gzip:   0.54 kB
+storybook-static/assets/star-fill-B3W3pzNX.js                       0.99 kB │ gzip:   0.57 kB
+storybook-static/assets/global-3A-pTdVR.js                          0.99 kB │ gzip:   0.55 kB
+storybook-static/assets/heart-fill-CnlAvUfC.js                      0.99 kB │ gzip:   0.59 kB
+storybook-static/assets/alert-fill-DwkN26n3.js                      1.00 kB │ gzip:   0.50 kB
+storybook-static/assets/play-CTlENMai.js                            1.01 kB │ gzip:   0.58 kB
+storybook-static/assets/refer-a-friend-color-DX17Qkr4.js            1.02 kB │ gzip:   0.61 kB
+storybook-static/assets/loading-DM7TiwXH.js                         1.03 kB │ gzip:   0.56 kB
+storybook-static/assets/refer-a-friend-DA9U66TM.js                  1.03 kB │ gzip:   0.61 kB
+storybook-static/assets/refer-a-friend-color-fill-D7ObhvCx.js       1.04 kB │ gzip:   0.61 kB
+storybook-static/assets/refer-a-friend-fill-B3Wl_ODF.js             1.04 kB │ gzip:   0.60 kB
+storybook-static/assets/play-fill-CWxnldgc.js                       1.08 kB │ gzip:   0.57 kB
+storybook-static/assets/play-line-B85pyskB.js                       1.11 kB │ gzip:   0.58 kB
+storybook-static/assets/share-BCmXvC5V.js                           1.14 kB │ gzip:   0.62 kB
+storybook-static/assets/truck-line-1-DkxN2X3R.js                    1.17 kB │ gzip:   0.54 kB
+storybook-static/assets/link-D5SPc0zw.js                            1.22 kB │ gzip:   0.63 kB
+storybook-static/assets/preload-helper-PPVm8Dsz.js                  1.23 kB │ gzip:   0.71 kB
+storybook-static/assets/whatsapp-CdwNrIJw.js                        1.23 kB │ gzip:   0.69 kB
+storybook-static/assets/whatsapp-color-BJ9Dczuf.js                  1.24 kB │ gzip:   0.70 kB
+storybook-static/assets/link-color-fill-s2kP_jaM.js                 1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/link-fill-B-AqT6Bm.js                       1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/info-line-Cf2lNKX2.js                       1.25 kB │ gzip:   0.60 kB
+storybook-static/assets/link-color-5ihTZBm3.js                      1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/whatsapp-color-fill-B6sBHNSQ.js             1.26 kB │ gzip:   0.70 kB
+storybook-static/assets/whatsapp-fill-D_MsdoX4.js                   1.26 kB │ gzip:   0.70 kB
+storybook-static/assets/plus-fill-D-UyFMn-.js                       1.27 kB │ gzip:   0.66 kB
+storybook-static/assets/location-MBupTsCG.js                        1.30 kB │ gzip:   0.67 kB
+storybook-static/assets/close-fill-DD3IAph6.js                      1.33 kB │ gzip:   0.67 kB
+storybook-static/assets/question-fill-BQFauHM1.js                   1.37 kB │ gzip:   0.64 kB
+storybook-static/assets/phone-fill-dj6R33iN.js                      1.40 kB │ gzip:   0.77 kB
+storybook-static/assets/link-big-4uBnFSxX.js                        1.43 kB │ gzip:   0.63 kB
+storybook-static/assets/download-BXRx34ou.js                        1.43 kB │ gzip:   0.76 kB
+storybook-static/assets/reddit-CAJqQ37N.js                          1.45 kB │ gzip:   0.73 kB
+storybook-static/assets/delete-fill-seFyLMBm.js                     1.45 kB │ gzip:   0.80 kB
+storybook-static/assets/reddit-color-MUV_sN6b.js                    1.45 kB │ gzip:   0.74 kB
+storybook-static/assets/time-line-FBCBwdih.js                       1.48 kB │ gzip:   0.66 kB
+storybook-static/assets/line-BYajnJIE.js                            1.49 kB │ gzip:   0.72 kB
+storybook-static/assets/line-color-fill-CbcVRKoX.js                 1.51 kB │ gzip:   0.73 kB
+storybook-static/assets/line-fill-BxlmPMQa.js                       1.51 kB │ gzip:   0.72 kB
+storybook-static/assets/line-color-BviKHOPd.js                      1.51 kB │ gzip:   0.74 kB
+storybook-static/assets/question-line-mmrbDDaf.js                   1.52 kB │ gzip:   0.69 kB
+storybook-static/assets/reddit-color-fill-BziimOLe.js               1.57 kB │ gzip:   0.76 kB
+storybook-static/assets/reddit-fill-DCTYBoWW.js                     1.57 kB │ gzip:   0.76 kB
+storybook-static/assets/alert-line-DtoixnvO.js                      1.58 kB │ gzip:   0.55 kB
+storybook-static/assets/instagram-BuiDNVoj.js                       1.61 kB │ gzip:   0.79 kB
+storybook-static/assets/delete-line-Cdu514fM.js                     1.62 kB │ gzip:   0.87 kB
+storybook-static/assets/star-line-CwCVr197.js                       1.71 kB │ gzip:   0.89 kB
+storybook-static/assets/heart-line-ByP9XnuN.js                      1.76 kB │ gzip:   0.93 kB
+storybook-static/assets/plus-line-BfbgHHxq.js                       1.77 kB │ gzip:   0.85 kB
+storybook-static/assets/instagram-fill-CglGP3_g.js                  1.78 kB │ gzip:   0.83 kB
+storybook-static/assets/close-line-DQpfOlNJ.js                      1.78 kB │ gzip:   0.88 kB
+storybook-static/assets/welcome-D8IOcpGo.js                         1.89 kB │ gzip:   1.07 kB
+storybook-static/assets/DocsRenderer-PQXLIZUC-lfprI-tb.js           1.94 kB │ gzip:   0.98 kB
+storybook-static/assets/instagram-color-BCJmISSe.js                 1.97 kB │ gzip:   0.96 kB
+storybook-static/assets/zone-checkbox.stories-B0ObURye.js           2.00 kB │ gzip:   0.78 kB
+storybook-static/assets/threads-T5vrJ48z.js                         2.07 kB │ gzip:   1.12 kB
+storybook-static/assets/instagram-color-fill-DqD0TA8W.js            2.10 kB │ gzip:   0.97 kB
+storybook-static/assets/pdf-CegYDcUQ.js                             2.13 kB │ gzip:   0.83 kB
+storybook-static/assets/phone-line-gIc0VJUh.js                      2.48 kB │ gzip:   1.26 kB
+storybook-static/assets/z-index-BlT6EI4b.js                         2.72 kB │ gzip:   1.46 kB
+storybook-static/assets/zone-spinner.stories-CXq7mY7z.js            3.77 kB │ gzip:   0.98 kB
+storybook-static/assets/radius-B_OJ56MB.js                          4.14 kB │ gzip:   1.45 kB
+storybook-static/assets/theme-architecture-Cfi_pb5t.js              4.34 kB │ gzip:   1.68 kB
+storybook-static/assets/responsive-design-BrF0Z7dF.js               4.94 kB │ gzip:   2.36 kB
+storybook-static/assets/colors-IlwafbvR.js                          5.62 kB │ gzip:   2.10 kB
+storybook-static/assets/size-and-spacing-TJ9GNLbq.js                5.88 kB │ gzip:   1.88 kB
+storybook-static/assets/zone-popover.stories-TbWUV-XJ.js            6.06 kB │ gzip:   1.38 kB
+storybook-static/assets/i18n-BKeODZ3I.js                            6.65 kB │ gzip:   2.96 kB
+storybook-static/assets/font-BNAM-K_W.js                            7.15 kB │ gzip:   2.48 kB
+storybook-static/assets/zone-toast.stories-Dw7tt4c1.js              7.21 kB │ gzip:   1.54 kB
+storybook-static/assets/zone-tooltip.stories-D8Y76QQW.js            7.43 kB │ gzip:   1.52 kB
+storybook-static/assets/zone-badge.stories-DlHUAKXh.js              7.62 kB │ gzip:   2.22 kB
+storybook-static/assets/zone-filter-select.stories-3x-EhZQP.js      7.79 kB │ gzip:   2.79 kB
+storybook-static/assets/zone-dropdown.stories-Ch0hsgp2.js           9.61 kB │ gzip:   3.07 kB
+storybook-static/assets/typography-CJzVkLPQ.js                     11.45 kB │ gzip:   2.31 kB
+storybook-static/assets/colors-spec-BQUo9PrS.js                    11.95 kB │ gzip:   2.44 kB
+storybook-static/assets/zone-button.stories-BFeY36EW.js            16.66 kB │ gzip:   3.47 kB
+storybook-static/assets/zone-dialog.stories-C-s_5Kbj.js            17.85 kB │ gzip:   3.73 kB
+storybook-static/vite-inject-mocker-entry.js                       28.30 kB │ gzip:   9.84 kB
+storybook-static/assets/Color-AVL7NMMY-C_ifUAJT.js                 29.13 kB │ gzip:  11.00 kB
+storybook-static/assets/matchers-7Z3WT2CE-CcSi9QFY.js              29.66 kB │ gzip:  10.29 kB
+storybook-static/assets/axe-DJOdZOYT.js                           675.80 kB │ gzip: 193.80 kB
+storybook-static/assets/blocks-CrtT-898.js                        785.16 kB │ gzip: 252.37 kB
+storybook-static/assets/iframe-BP8YQVdi.js                      1,268.96 kB │ gzip: 345.89 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 9.14s
+info => Output directory: /Users/ht-2502/Documents/Code/design-system/apps/storybook/storybook-static
+
+> @aiyazone/storybook@0.1.1 test:storybook /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> concurrently -k -s first -n "SERVER,TEST" "serve storybook-static -l 6006 --no-clipboard --no-port-switching --config ../serve.json" "wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook"
+
+[SERVER]  UPDATE  The latest version of `serve` is 14.2.8
+[SERVER]  INFO  Accepting connections at http://localhost:6006
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 GET /
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 Returned 200 in 16 ms
+[TEST] [test-storybook] Detected a remote Storybook URL, running in index json mode. To disable this, run the command again with --no-index-json
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 GET /stories.json
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 Returned 404 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:17 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 10 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 20 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 12 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 7 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:21 127.0.0.1 Returned 200 in 18 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 21 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 25 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 23 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 8 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 20 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 6 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:22 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-button.stories-BFeY36EW.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 19 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 14 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-filter-select.stories-3x-EhZQP.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 9 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-dropdown.stories-Ch0hsgp2.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-tooltip.stories-D8Y76QQW.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-toast.stories-Dw7tt4c1.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 5 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Variants
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--variants&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/play-CTlENMai.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 2 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Kinds
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--kinds&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Sizes
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--sizes&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 32 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > With Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--with-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Top
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--top&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > 默认文案（不传 value）
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--default-text&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/arrow-right-long-mlJIx9Jh.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/zone-popover.stories-TbWUV-XJ.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 5 ms
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:24 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/loading-DM7TiwXH.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 4 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Bottom
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--bottom&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Capsule Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--capsule-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Hierarchical
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--hierarchical&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Icon Only
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--icon-only&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > Success
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--success&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Left
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--left&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > Warning
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--warning&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Loading
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--loading&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/zone-dialog.stories-C-s_5Kbj.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 8 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > PC Design
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--pc-design&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 2 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Right
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--right&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/close-fill-DD3IAph6.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 15 ms
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 9 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > Top
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--top&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > Danger
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--danger&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > With Target
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--with-target&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Mobile Design
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--mobile-design&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 2 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > Left
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--left&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/close-BT9GqDsG.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 29 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Link
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--link&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > With Close Button
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--with-close-button&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Full Width
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--full-width&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Long Content
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--long-content&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/alert-line-DtoixnvO.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 10 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-filter-select.test.js (5.872 s)
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 GET /assets/close-BT9GqDsG.js
+[SERVER]  HTTP  2026/11/18 14:12:25 127.0.0.1 Returned 200 in 6 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Empty
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--empty&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > With Countdown
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--with-countdown&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > Right
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--right&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Custom Color
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--custom-color&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > With Arrow
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--with-arrow&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Error
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--error&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-tooltip > Multiple Tooltips
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-tooltip--multiple-tooltips&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > Custom Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--custom-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Form Submit
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--form-submit&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-tooltip.test.js (5.946 s)
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-popover.test.js (6.02 s)
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Custom Close Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--custom-close-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-popover > Different Offsets
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-popover--different-offsets&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-toast > No Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-toast--no-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-button > Interactions
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-button--interactions&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-button.test.js (6.245 s)
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-dropdown.test.js (6.055 s)
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-toast.test.js (6.091 s)
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dropdown > Form
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dropdown--form&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Sizes
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--sizes&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Without Title
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--without-title&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 4 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Without Close Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--without-close-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Critical
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--critical&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /iframe.html
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /vite-inject-mocker-entry.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /shared/site-theme.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BP8YQVdi.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/iframe-BUQvc38A.css
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/preload-helper-PPVm8Dsz.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 3 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Custom Style
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--custom-style&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Custom Append To
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--custom-append-to&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-dialog.test.js (6.47 s)
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Initial Focus
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--initial-focus&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-dialog > Theme Comparison
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-dialog--theme-comparison&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /index.json
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/zone-spinner.stories-CXq7mY7z.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 13 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/loading-DM7TiwXH.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 0 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/zone-checkbox.stories-B0ObURye.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 4 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/zone-badge.stories-DlHUAKXh.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 2 ms
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 GET /assets/axe-DJOdZOYT.js
+[SERVER]  HTTP  2026/11/18 14:12:26 127.0.0.1 Returned 200 in 1 ms
+[SERVER]  HTTP  2026/11/18 14:12:27 127.0.0.1 GET /assets/star-fill-B3W3pzNX.js
+[SERVER]  HTTP  2026/11/18 14:12:27 127.0.0.1 Returned 200 in 3 ms
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-spinner.test.js
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-checkbox.test.js
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-badge > Default
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-badge--default&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-badge > With Icon
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-badge--with-icon&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] PASS browser: chromium ../../../../../../../private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639/03-基础组件-zone-badge.test.js
+[TEST] --------------------------
+[TEST] 03 基础组件/zone-badge > Custom
+[TEST] Click to debug the error directly in Storybook:
+[TEST] http://127.0.0.1:6006/?path=/story/03-基础组件-zone-badge--custom&addonPanel=storybook/a11y/panel
+[TEST] 
+[TEST] Message:
+[TEST]  Found 1 a11y violations, run the test with 'a11y: { test: 'error' }' parameter to see the full report or debug it directly in Storybook.
+[TEST] 
+[TEST] 
+[TEST] Test Suites: 10 passed, 10 total
+[TEST] Tests:       79 passed, 79 total
+[TEST] Snapshots:   0 total
+[TEST] Time:        9.16 s
+[TEST] Ran all test suites.
+[TEST] [test-storybook] Cleaning up /private/var/folders/_7/cfk62ptx7bl8dn8kq73d5kqr0000gn/T/a7071113403567bc0c94cf71a0d84639
+[TEST] wait-on tcp:127.0.0.1:6006 && test-storybook --index-json --config-dir ../../.storybook exited with code 0
+--> Sending SIGTERM to other processes..
+[SERVER] 
+[SERVER]  INFO  Gracefully shutting down. Please wait...
+[SERVER] serve storybook-static -l 6006 --no-clipboard --no-port-switching --config ../serve.json exited with code 0
