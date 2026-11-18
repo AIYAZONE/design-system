@@ -1,6 +1,6 @@
 {
   "name": "@aiyazone/design-system",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "AIYAZONE Design System (ZDS) - Monorepo",
   "author": "AIYAZONE F2E Team",
   "type": "module",
@@ -49,7 +49,7 @@
     "changeset:publish": "pnpm run release:check && changeset publish",
     "changeset:status": "changeset status",
     "release": "pnpm run build && pnpm run design:build && pnpm run packages:test && pnpm run changeset:publish",
-    "release:check": "node scripts/check-release-scope.mjs",
+    "release:check": "node --test scripts/check-release-scope.test.mjs && node scripts/check-release-scope.mjs",
     "publish:design-system": "pnpm run design:build",
     "prepublishOnly": "pnpm run release:check && pnpm run build && pnpm run design:build",
     "version-packages": "pnpm run changeset:version && pnpm install --lockfile-only",

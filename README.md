@@ -135,7 +135,7 @@ ZDS 采用 Monorepo 管理源码，对外只发布 `@aiyazone/design-system` 总
 
 ### 5.1 依赖引用
 
-以下 npm 契约对应待发布的 `0.4.0`，当前 registry 最新仍为 `0.3.2`。版本准备和本地验收不等同于正式发布。
+以下 npm 契约对应待发布的 `0.4.1`，当前 registry 最新仍为 `0.3.2`。`v0.4.0` 发布未成功，原标签保留；补齐来源证明所需的仓库元数据后使用新标签发布。
 
 1. 命令安装：
 
@@ -158,11 +158,11 @@ Lit 为 ESM 依赖。直接在 Node 中 `require()` CJS 入口需要支持加载
 
 新构建的浏览器入口为 `dist/cdn/index.js`（包子路径 `@aiyazone/design-system/cdn`）：自包含 Lit、组件、图标和翻译，不需要 import map 或额外 JS。主题继续单独加载；同一页面选择 npm 或 CDN 中的一种方式。
 
-**发布状态（2026-11-18）**：新入口已通过本地 tarball 浏览器验证，尚未发布。下面的 `0.4.0` 是本次准备的版本；当前 registry 的 `0.3.2` 没有这个新入口。由于浏览器接入路径改变，总包按 0.x 的 minor 升版。正式发布后锁定确切版本，并让 JS 与 CSS 的版本一致：
+**发布状态（2026-11-18）**：新入口已通过本地 tarball 浏览器验证，尚未发布。原 `v0.4.0` 发布在 tokens 来源证明校验时失败，修复后准备发布 `0.4.1`；当前 registry 的 `0.3.2` 没有这个新入口。正式发布后锁定确切版本，并让 JS 与 CSS 的版本一致：
 
 ```html
-<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.0/dist/index-v3.css">
-<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.0/dist/cdn/index.js"></script>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/index-v3.css">
+<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/cdn/index.js"></script>
 ```
 
 unpkg 使用相同的包、版本及文件路径。新版 `dist/index.esm.js` 含 npm 裸导入，仅适合打包器使用，不能继续直接作为浏览器 script 引用。
@@ -316,4 +316,4 @@ pnpm run packages:test
 
 `packages:test` 只安装两份公开 tarball 和 Lit，检查 ESM/CJS、类型、样式与生产构建；`packages:test:internal` 保留六包的内部接口与混用检查。`publish:design-system` 仅构建，不执行发布。
 
-正式发布另行授权。标准流程使用与总包版本一致的 `v*` 标签触发 `.github/workflows/release.yml`，先通过复用的 quality 检查，再以 npm Trusted Publishing 发布 tokens 和总包。发布步骤使用消费者验证过的同一份 tarball；Actions 保存提交、版本、文件清单、依赖及 SHA256 和两份 tarball。已存在的版本跳过。新版 registry 与 jsDelivr/unpkg 核查完成后，才更新门户的固定版本 CDN 引用。
+本次正式发布已获用户授权。标准流程使用与总包版本一致的 `v*` 标签触发 `.github/workflows/release.yml`，先通过复用的 quality 检查，再以 npm Trusted Publishing 发布 tokens 和总包。发布前校验两包的 GitHub 仓库地址与来源证明一致。发布步骤使用消费者验证过的同一份 tarball；Actions 保存提交、版本、文件清单、依赖及 SHA256 和两份 tarball。已存在的版本跳过。新版 registry 与 jsDelivr/unpkg 核查完成后，才更新门户的固定版本 CDN 引用。

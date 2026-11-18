@@ -6,7 +6,7 @@
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
