@@ -49,7 +49,7 @@ npm 入口共享应用安装的 Lit 3，需要打包器解析依赖。框架中�
 
 ### CDN 静态页面
 
-无需构建工具，将以下内容保存为 HTML 即可使用。示例固定使用已发布并验证的 `0.4.1`；JS 与 CSS 保持同一版本。
+无需构建工具，将以下内容保存为 HTML 即可使用。示例固定使用已发布并验证的 `0.5.0`；JS 与 CSS 保持同一版本。
 
 ```html
 <!doctype html>
@@ -59,9 +59,9 @@ npm 入口共享应用安装的 Lit 3，需要打包器解析依赖。框架中�
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ZDS 示例</title>
     <link rel="stylesheet" crossorigin
-      href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/index-v3.css">
+      href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.5.0/dist/index-v3.css">
     <script type="module" crossorigin
-      src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/cdn/index.js"></script>
+      src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.5.0/dist/cdn/index.js"></script>
   </head>
   <body>
     <zone-button variant="primary" icon="arrow-right">开始使用</zone-button>

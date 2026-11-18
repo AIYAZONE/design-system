@@ -49,7 +49,7 @@ The npm entry point shares the application's Lit 3 installation and requires a b
 
 ### Static HTML via CDN
 
-Save the following as an HTML file to use ZDS without build tools. This example pins the published and verified version `0.4.1`; keep JavaScript and CSS on the same version.
+Save the following as an HTML file to use ZDS without build tools. This example pins the published and verified version `0.5.0`; keep JavaScript and CSS on the same version.
 
 ```html
 <!doctype html>
@@ -59,9 +59,9 @@ Save the following as an HTML file to use ZDS without build tools. This example 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ZDS example</title>
     <link rel="stylesheet" crossorigin
-      href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/index-v3.css">
+      href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.5.0/dist/index-v3.css">
     <script type="module" crossorigin
-      src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.1/dist/cdn/index.js"></script>
+      src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.5.0/dist/cdn/index.js"></script>
   </head>
   <body>
     <zone-button variant="primary" icon="arrow-right">Get started</zone-button>

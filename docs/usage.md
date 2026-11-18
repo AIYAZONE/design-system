@@ -60,7 +60,7 @@ CDN 页面在组件脚本加载后使用 `window.i18n.t()` 和 `window.i18n.setC
 
 ## 版本与回退
 
-截至 2026-11-18，已完成公开安装及在线验收的版本为总包 `0.4.1`、tokens `0.1.1`。源码版本与待发布改动可能领先于 npm；实际可安装版本以 [npm 总包](https://www.npmjs.com/package/@aiyazone/design-system) 和 [npm tokens](https://www.npmjs.com/package/@aiyazone/tokens) 为准。
+截至 2026-11-18，已完成公开安装及在线验收的版本为总包 `0.5.0`、tokens `0.2.0`。源码版本与待发布改动可能领先于 npm；实际可安装版本以 [npm 总包](https://www.npmjs.com/package/@aiyazone/design-system) 和 [npm tokens](https://www.npmjs.com/package/@aiyazone/tokens) 为准。
 
 生产页面固定版本。CDN 更新时同时替换 JS 与主题 CSS，并复验组件、图标、语言及弹窗交互。
 
