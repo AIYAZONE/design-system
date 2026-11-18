@@ -7,9 +7,8 @@ import { aiInstruction, bindCopy } from '../public/shared/copy-text.js';
 import { renderHomePreview, initHomePreview } from './home-preview';
 declare const __ZONE_VERSION__: string;
 const escape = (text: string) => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-// 发布核查完成前，静态接入示例固定在 registry 已存在的版本。
-const cdn = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index-v3.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index.esm.js"></script>`;
+const cdn = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@${__ZONE_VERSION__}/dist/index-v3.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@${__ZONE_VERSION__}/dist/cdn/index.js"></script>`;
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div data-site-header data-app="portal"></div>
   <main class="home-main" id="content" tabindex="-1">

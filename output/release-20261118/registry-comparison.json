@@ -1,0 +1,71 @@
+{
+  "sourceCommit": "a79038942015e92654bf8860517fb334699546d8",
+  "results": [
+    {
+      "name": "@aiyazone/design-system",
+      "version": "0.4.1",
+      "sha256": "065c54303c2ff24aa0992a13164d1e27186fe2caa33b1ea87443b1464425e7e2",
+      "files": 233,
+      "actionsAndRegistryIdentical": true,
+      "metadata": {
+        "version": "0.4.1",
+        "dist": {
+          "shasum": "2da88de2de2e82c4aecd5eaff00acda5459ae1b2",
+          "tarball": "https://registry.npmjs.org/@aiyazone/design-system/-/design-system-0.4.1.tgz",
+          "fileCount": 233,
+          "integrity": "sha512-/2ntlfRVmkm4WcmtmjI93Rq580t5RvBJBVfDt6PI8HAnXbMCA1sV2+SXTbZJJcsHPwYKkAt9s4gfLJzcQo5mSg==",
+          "signatures": [
+            {
+              "sig": "MEUCIQCtDmO4JAkKAyuKeF3g2Uyzth7sUetHiKCeF3SjUMQ4oQIgNCvtJt2a93b39d8+xSXMnvEASEM9JkpU+V0tbdZbs+U=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+              "sig": "MEUCIGAwcCq0wyWAr5zDGcyFOwMiZ4l6MAOIgIY0+HuhmoneAiEA2XoGGXBcM4PZOiAXmCTWjpyMWXBrzGnqOX1SVovg/po="
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@aiyazone%2fdesign-system@0.4.1",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 1306806
+        }
+      }
+    },
+    {
+      "name": "@aiyazone/tokens",
+      "version": "0.1.1",
+      "sha256": "a45fef45fe0ccb646d6951ef405f8c2bc9f33721d45c9e27440b083d94884c62",
+      "files": 5,
+      "actionsAndRegistryIdentical": true,
+      "metadata": {
+        "version": "0.1.1",
+        "dist": {
+          "shasum": "d0ad7f2928d765100a33b4daf3fd8676ea8c0266",
+          "tarball": "https://registry.npmjs.org/@aiyazone/tokens/-/tokens-0.1.1.tgz",
+          "fileCount": 5,
+          "integrity": "sha512-DB6xi25guxwWfnx3q4hDe+LJkDUzhyquuS691zYnsRa1s+HrT/IvqXNXBzJaKM6xp5UYgL5PYZ15XbHXTVZmSg==",
+          "signatures": [
+            {
+              "sig": "MEUCIFIM3Ad9uGMF9h/3zBhx7oyVzc648g6lelz3XNcq5Gk/AiEA2ruxlmQ6r859zR6YJ0kGDQPdT2W8MYDZZyIJ4Gh7hcc=",
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+            },
+            {
+              "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+              "sig": "MEQCIEF1gcJ7OTgpXwPwRbQ8KO1+V5ZE2wWRMycwhsTD8MzXAiAtkMA38QV8oNK6pyjtzCuAfaCX/ucoAo/RWXjDJJxs3g=="
+            }
+          ],
+          "attestations": {
+            "url": "https://registry.npmjs.org/-/npm/v1/attestations/@aiyazone%2ftokens@0.1.1",
+            "provenance": {
+              "predicateType": "https://slsa.dev/provenance/v1"
+            }
+          },
+          "unpackedSize": 14509
+        }
+      }
+    }
+  ]
+}

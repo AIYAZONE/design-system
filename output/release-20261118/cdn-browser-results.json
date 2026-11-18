@@ -1,0 +1,110 @@
+[
+  {
+    "cdn": "jsdelivr",
+    "width": 1440,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  {
+    "cdn": "jsdelivr",
+    "width": 768,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  {
+    "cdn": "jsdelivr",
+    "width": 390,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  {
+    "cdn": "unpkg",
+    "width": 1440,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  {
+    "cdn": "unpkg",
+    "width": 768,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  {
+    "cdn": "unpkg",
+    "width": 390,
+    "passed": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": [],
+    "failedRequests": []
+  }
+]
