@@ -7,6 +7,16 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: 重试已有发布标签（例如 v0.4.0）
+        required: true
+        type: string
+
+concurrency:
+  group: release-${{ inputs.release_ref || github.ref_name }}
+  cancel-in-progress: false
 
 permissions:
   id-token: write # OIDC 临时凭证（trusted publishing 必需）
@@ -15,6 +25,8 @@ permissions:
 jobs:
   quality:
     uses: ./.github/workflows/ci.yml
+    with:
+      source_ref: ${{ inputs.release_ref || github.ref }}
     permissions:
       contents: read
     secrets: inherit
@@ -22,8 +34,14 @@ jobs:
   publish:
     needs: quality
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_ref || github.ref }}
+          fetch-depth: 0
 
       - name: Setup pnpm（读取 packageManager 字段）
         uses: pnpm/action-setup@v6
@@ -36,12 +54,25 @@ jobs:
       - name: Upgrade npm（OIDC 发布要求 ≥ 11.5）
         run: npm install -g npm@latest
 
+      - name: 检查 OIDC 发布环境
+        run: |
+          node --version
+          npm --version
+          node -e "for (const key of ['ACTIONS_ID_TOKEN_REQUEST_URL', 'ACTIONS_ID_TOKEN_REQUEST_TOKEN']) { console.log(key + ' present: ' + Boolean(process.env[key])); if (!process.env[key]) process.exitCode = 1; }"
+
       - name: Install
         run: pnpm install --frozen-lockfile
 
       - name: 校验标签与版本一致
+        env:
+          RELEASE_REF: ${{ inputs.release_ref || github.ref_name }}
         run: |
-          TAG="${GITHUB_REF_NAME#v}"
+          if [[ ! "$RELEASE_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::发布引用必须是版本标签"
+            exit 1
+          fi
+          test "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/$RELEASE_REF^{commit}")"
+          TAG="${RELEASE_REF#v}"
           ROOT_VERSION=$(node -p "require('./package.json').version")
           if [ "$TAG" != "$ROOT_VERSION" ]; then
             echo "::error::标签 v$TAG 与 package.json 版本 $ROOT_VERSION 不一致"
@@ -60,7 +91,7 @@ jobs:
       - name: Save release artifact record
         uses: actions/upload-artifact@v4
         with:
-          name: npm-release-${{ github.ref_name }}
+          name: npm-release-${{ inputs.release_ref || github.ref_name }}
           path: |
             release-artifacts.json
             release-packages/*.tgz
@@ -71,7 +102,7 @@ jobs:
           if npm view "$(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")" version > /dev/null 2>&1; then
             echo "已存在，跳过"
           else
-            npm publish ../../release-packages/aiyazone-tokens.tgz
+            npm publish ../../release-packages/aiyazone-tokens.tgz --loglevel=verbose
           fi
 
       - name: Publish @aiyazone/design-system
@@ -79,5 +110,5 @@ jobs:
           if npm view "$(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")" version > /dev/null 2>&1; then
             echo "已存在，跳过"
           else
-            npm publish release-packages/aiyazone-design-system.tgz
+            npm publish release-packages/aiyazone-design-system.tgz --loglevel=verbose
           fi
