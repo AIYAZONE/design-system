@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
+import { isLitImport, litBuildContract } from '../../scripts/lit-build-contract.mjs';
 
 export default defineConfig({
   base: './',
@@ -16,7 +17,7 @@ export default defineConfig({
       fileName: (format, name) => `${name}.${format === 'cjs' ? 'cjs' : 'js'}`,
     },
     rollupOptions: {
-      external: id => /^(?:lit|@lit\/[^/]+)(?:$|\/)/.test(id),
+      external: isLitImport,
       output: ['es', 'cjs'].map(format => ({
         format,
         chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`
@@ -27,6 +28,7 @@ export default defineConfig({
     emptyOutDir: true
   },
   plugins: [
+    litBuildContract(),
     dts({
       outDir: 'dist',
       entryRoot: 'src',

@@ -1,5 +1,6 @@
 {
   "name": "@aiyazone/utils",
+  "private": true,
   "version": "0.1.0",
   "description": "AIYAZONE Design System - Utility Functions",
   "type": "module",
@@ -63,8 +64,5 @@
   },
   "peerDependencies": {
     "lit": "^3.3.1"
-  },
-  "publishConfig": {
-    "access": "restricted"
   }
 }

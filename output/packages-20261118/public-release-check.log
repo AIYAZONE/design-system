@@ -1,0 +1,33 @@
+发布范围的四个拒绝场景通过；未来 Changesets 只升两包（0.4.1 / 0.1.2），私有包不联动。
+
+> @aiyazone/design-system@0.4.0 docs:check /Users/ht-2502/Documents/Code/design-system
+> pnpm --filter @aiyazone/tokens run docs:mdx && pnpm --filter @aiyazone/core run docs:check
+
+
+> @aiyazone/tokens@0.1.1 docs:mdx /Users/ht-2502/Documents/Code/design-system/packages/tokens
+> node scripts/build-docs-mdx.mjs
+
+generated: docs/tokens/colors.mdx (colors-functional)
+generated: docs/tokens/colors.mdx (colors-text)
+generated: docs/tokens/colors.mdx (colors-other)
+generated: docs/tokens/size-and-spacing.mdx (sizes)
+generated: docs/tokens/radius.mdx (radius)
+generated: docs/tokens/z-index.mdx (z-index)
+done.
+
+> @aiyazone/core@0.1.9 docs:check /Users/ht-2502/Documents/Code/design-system/packages/core
+> pnpm run manifest && pnpm run docs:gen && git diff --exit-code -- zone-manifest.json ../../docs/api ../../docs/tokens ../../apps/portal/public/llms.txt ../../apps/portal/public/llms-full.txt ../../apps/portal/public/ai-usage.html
+
+
+> @aiyazone/core@0.1.9 manifest /Users/ht-2502/Documents/Code/design-system/packages/core
+> cem analyze --globs "src/components/**/index.ts" --exclude "**/*.stories.ts" --outdir .
+
+[14:59:33] @custom-elements-manifest/analyzer: Created new manifest.
+
+> @aiyazone/core@0.1.9 docs:gen /Users/ht-2502/Documents/Code/design-system/packages/core
+> node scripts/build-ai-docs.mjs
+
+✓ 组件清单：10 个 → packages/core/zone-manifest.json
+✓ API 文档：docs/api/*.md（含 README 索引）
+✓ AI 入口：apps/portal/public/llms.txt / llms-full.txt / ai-usage.html
+docs:check 对本地生成基线通过，真实暂存区未改动。

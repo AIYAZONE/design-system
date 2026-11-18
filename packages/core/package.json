@@ -1,5 +1,6 @@
 {
   "name": "@aiyazone/core",
+  "private": true,
   "version": "0.1.9",
   "description": "AIYAZONE Design System - Core Components",
   "type": "module",
@@ -104,9 +105,6 @@
     "typescript": "^5.0.0",
     "vite": "^7.2.2",
     "vitest": "^3.2.7"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "sideEffects": ["./src/components/**", "./src/index.ts", "./dist/**"],
   "customElements": "custom-elements.json"

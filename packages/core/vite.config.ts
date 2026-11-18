@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import { readdirSync, existsSync } from 'node:fs';
+import { isLitImport, litBuildContract } from '../../scripts/lit-build-contract.mjs';
 
 const componentEntries = Object.fromEntries(
   readdirSync(resolve(__dirname, 'src/components'))
@@ -9,6 +10,7 @@ const componentEntries = Object.fromEntries(
 );
 
 export default defineConfig({
+  plugins: [litBuildContract()],
   build: {
     lib: {
       entry: { index: resolve(__dirname, 'src/index.ts'), ...componentEntries },
@@ -17,7 +19,7 @@ export default defineConfig({
       cssFileName: 'styles/index',
     },
     rollupOptions: {
-      external: id => /^(?:lit|@lit\/[^/]+|@aiyazone\/(?:utils|i18n))(?:$|\/)/.test(id),
+      external: id => isLitImport(id) || /^@aiyazone\/(?:utils|i18n)(?:$|\/)/.test(id),
       output: ['es', 'cjs'].map(format => ({
         format,
         exports: 'named',

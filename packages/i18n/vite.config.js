@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { isLitImport, litBuildContract } from '../../scripts/lit-build-contract.mjs';
 
 export default defineConfig({
+  plugins: [litBuildContract()],
   base: './',
   resolve: {
     alias: [
@@ -17,7 +19,7 @@ export default defineConfig({
     },
     rollupOptions: {
       input: 'src/index.ts',
-      external: id => /^(?:lit|@lit\/[^/]+|@aiyazone\/utils)(?:$|\/)/.test(id),
+      external: id => isLitImport(id) || /^@aiyazone\/utils(?:$|\/)/.test(id),
       output: {
         chunkFileNames: 'chunks/[name].[format].js'
       }

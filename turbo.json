@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local", "scripts/build-package-types.rollup.config.mjs", "tsconfig.types.json"],
+  "globalDependencies": ["**/.env.*local", "scripts/build-package-types.rollup.config.mjs", "scripts/lit-build-contract.mjs", "tsconfig.types.json"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

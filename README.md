@@ -98,29 +98,28 @@ vercel --prod   # 生产环境
 
 ## 4. 包结构
 
-ZDS 采用 Monorepo 架构，包含以下独立包：
+ZDS 采用 Monorepo 管理源码，对外只发布 `@aiyazone/design-system` 总包和 `@aiyazone/tokens`。core、icons、i18n、utils 是私有工作区模块，随总包交付；以下模块名用于仓库内开发。
 
 ### 📦 @aiyazone/core
 - **用途**: 核心 Web Components 组件
 - **包含**: 组件数量与 API 以 [zone-manifest.json](./packages/core/zone-manifest.json) 和 [docs/api](./docs/api) 为准。
-- **安装**: `npm install @aiyazone/core`
+- **对外使用**: `npm install @aiyazone/design-system lit`
 - **样式策略**: 组件样式以内联方式注入（`index.less?inline`）；不再自动注入核心包的全局样式，项目需在入口显式引入设计系统样式（见下文）。
 
 ### 🎨 @aiyazone/icons
 - **用途**: SVG 图标库；可用名称以门户 `/llms.txt` 与 SVG 源文件为准。
 - **特性**: 支持按需导入、Tree-shaking、多种尺寸和颜色
-- **安装**: `npm install @aiyazone/icons`
-- **使用**: `import { ArrowRight, AlertFill } from '@aiyazone/icons'`
+- **对外使用**: 导入总包后使用 `<zone-icon name="arrow-right">`，图标由总包按需加载。
 
 ### 🌍 @aiyazone/i18n
 - **用途**: 国际化功能
 - **包含**: 核心 i18n 功能、装饰器、语言包
-- **安装**: `npm install @aiyazone/i18n`
+- **对外使用**: 从 `@aiyazone/design-system` 导入语言切换与翻译 API。
 
 ### 🔧 @aiyazone/utils
 - **用途**: 通用工具函数
 - **包含**: DOM 操作、事件处理、表单控制、通用工具
-- **安装**: `npm install @aiyazone/utils`
+- **对外使用**: 工具实现随总包组件交付，不单独提供工具包安装入口。
 
 ### 🎛️ @aiyazone/tokens
 - **用途**: DTCG 风格设计令牌源及 CSS / TypeScript 生成物
@@ -136,35 +135,50 @@ ZDS 采用 Monorepo 架构，包含以下独立包：
 
 ### 5.1 依赖引用
 
+以下 npm 契约对应待发布的 `0.4.0`，当前 registry 最新仍为 `0.3.2`。版本准备和本地验收不等同于正式发布。
+
 1. 命令安装：
 
 ```cmd
-npm i @aiyazone/design-system --save
+npm i @aiyazone/design-system lit --save
 ```
+
+在应用入口导入 JS 和一种主题：
+
+```ts
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+npm 的 ESM/CJS 共享应用安装的 Lit 3，不内嵌运行时。对外使用总包入口；`@aiyazone/core/button` 等子路径只供内部工作区开发与验证。令牌可单独安装 `@aiyazone/tokens`，无需组件包或 Lit。
+
+Lit 为 ESM 依赖。直接在 Node 中 `require()` CJS 入口需要支持加载 ESM 的 Node（推荐 22.13+），并提供组件所需 DOM；Node 18 请使用 ESM 或能解析 Lit ESM 的打包器。本批安装验证使用 Node 24，CI 使用 Node 22。
 
 ### 5.2 CDN 引用（基于 npm 公网包）
 
-本项目不维护自有 CDN。包发布到 npm 公网仓库后，可直接使用 jsDelivr 或 unpkg 提供的免费 CDN 链接：
+新构建的浏览器入口为 `dist/cdn/index.js`（包子路径 `@aiyazone/design-system/cdn`）：自包含 Lit、组件、图标和翻译，不需要 import map 或额外 JS。主题继续单独加载；同一页面选择 npm 或 CDN 中的一种方式。
 
-1. 最新版本（jsDelivr）：
-
-```html
-<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@latest/dist/index.css">
-<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@latest/dist/index.esm.js"></script>
-```
-
-2. 锁定特定版本（unpkg）：
+**发布状态（2026-11-18）**：新入口已通过本地 tarball 浏览器验证，尚未发布。下面的 `0.4.0` 是本次准备的版本；当前 registry 的 `0.3.2` 没有这个新入口。由于浏览器接入路径改变，总包按 0.x 的 minor 升版。正式发布后锁定确切版本，并让 JS 与 CSS 的版本一致：
 
 ```html
-<link rel="stylesheet" crossorigin href="https://unpkg.com/@aiyazone/design-system@0.1.0/dist/index.css">
-<script type="module" crossorigin src="https://unpkg.com/@aiyazone/design-system@0.1.0/dist/index.esm.js"></script>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.0/dist/index-v3.css">
+<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.4.0/dist/cdn/index.js"></script>
 ```
 
-> 说明：版本号需与 npm 上实际发布的版本一致；生产环境建议锁定明确版本而非 `@latest`。
+unpkg 使用相同的包、版本及文件路径。新版 `dist/index.esm.js` 含 npm 裸导入，仅适合打包器使用，不能继续直接作为浏览器 script 引用。
+
+**当前线上接入与回退**：门户首页和账户样例仍锁定已发布的 `0.3.2` 旧入口，待新版发布并核对 CDN 后一起更新。如果新版接入有问题，JS 与主题 CSS 一起退回这个组合并刷新页面：
+
+```html
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index-v3.css">
+<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@0.3.2/dist/index.esm.js"></script>
+```
+
+npm 项目回退时固定上一可用版本并重新安装、构建；不要在已加载的页面里再导入另一个版本。验证新产物：`pnpm build && pnpm design:build && pnpm packages:check && pnpm packages:check:lit && pnpm packages:test`；三尺寸浏览器复验方式见 [包验收记录](./output/packages-20261118/验收.md)。
 
 ### 5.3 样式使用规范（最新）
 
-- **全局样式唯一来源**: 在项目入口显式引入 `src/styles/index.less`，统一加载字体、设计令牌、重置、公共样式与动效。
+- **全局样式唯一来源**: npm 应用在入口显式引入包的一个主题 CSS；仓库内部开发使用 `src/styles/index.less`，统一加载字体、设计令牌、重置、公共样式与动效。
   - 示例：`apps/examples/main.ts:3` `import '../../src/styles/index.less';`
 - **组件样式**: 组件内仅以 `index.less?inline` 注入结构样式，使用 `:root` 的 CSS 变量（由全局样式注入）进行主题化，无需在组件内再 `@import` 全局文件。
 - **核心包不再自动注入全局样式**: `@aiyazone/core` 的入口不再引入 `packages/core/src/styles/index.css`，避免与 `src/styles` 的重复与冲突。
@@ -254,6 +268,8 @@ import '@aiyazone/icons';
 ## 7. 构建与预览
 
 - 构建库产物：`pnpm run design:build:lib`
+- 构建自包含 CDN：`pnpm run design:build:cdn`（只清空 `dist/cdn`；`design:build:single` 为此命令的兼容别名）
+- 完整发布构建：`pnpm run design:build`（npm → CDN → 主题，不相互覆盖）
 - 构建主题样式：`pnpm run design:build:themes`
 - 本地联调 watch（持续产出 dist）：
   - JS：`pnpm run design:watch:lib`
@@ -262,50 +278,42 @@ import '@aiyazone/icons';
 - 验证页：`dist/index.html`，支持 `?theme=v1|v2` 切换，示例地址 `http://localhost:5175/index.html?theme=v2`
 
 ### 打包格式
-- `dist/index.esm.js`：ES Modules，适合浏览器与现代打包器（推荐）
-- `dist/index.cjs`：CommonJS，适合 Node/老旧打包器
+- `dist/index.esm.js`：npm ES Modules，供现代打包器解析外部 Lit
+- `dist/index.cjs`：CommonJS，需支持 Lit ESM 依赖的 Node/打包器
+- `dist/cdn/index.js`：自包含浏览器 ES Module，直接 CDN 引用
 - 类型声明：`dist/zone.d.ts`
 
 ### 发布产物（NPM 包内文件）
 
-- JS：`dist/index.esm.js`、`dist/index.cjs`、`dist/chunks/**`
-- CSS：`dist/index.css`、`dist/index-v2.css`
+- JS：`dist/index.esm.js`、`dist/index.cjs`、`dist/chunks/**`、`dist/cdn/index.js`
+- CSS：`dist/index.css`、`dist/internal.css`、`dist/index-v2.css`、`dist/index-v3.css`
 - 资产：`dist/fonts/**`、`dist/assets/**`
 - 类型：`dist/zone.d.ts`、`dist/**/*.d.ts`
 - 说明：不包含 `public/**`、Storybook 或站点预览文件。
 
-### 按需引入组件
-- 在应用中仅导入需要的组件入口（打包器会按需包含）：
-  - `import '@aiyazone/core/components/button'`
-  - `import '@aiyazone/core/components/dialog'`
+### 内部按需引入组件
+- 以下子路径供本仓库工作区开发；外部应用导入总包：
+  - `import '@aiyazone/core/button'`
+  - `import '@aiyazone/core/dialog'`
   - 其它：`badge`、`popover`、`spinner`、`toast`、`tooltip`
 - 图标库副作用注册：`import '@aiyazone/icons'`，图标按需通过懒加载 chunk 引入
 
 ## 8. 发布到 npm 公网
 
-### 发布根包 @aiyazone/design-system
-- 确认 `.npmrc` 使用公网仓库：`registry=https://registry.npmjs.com/`
-- 登录：`npm login`
-- 一键构建并发布：`pnpm run publish:design-system`
-- 版本冲突（`EPUBLISHCONFLICT`）时：`npm version patch --no-git-tag-version` → `pnpm run publish:design-system`
-- 说明：脚本等价于 `pnpm run design:build && npm publish --access public`
+仅发布总包和 tokens，两包保持独立语义版本。core/icons/i18n/utils 及共享工具配置为 `private:true`，Changesets 不给私有包升版或打标签。组件、图标、翻译与工具变化写总包 Changeset；令牌变化写 tokens Changeset，若影响总包生成的主题则同时写总包 Changeset。总包包含内部实现，不引用私有包的 registry 依赖。
 
-### 发布子包（两种方式）
-- 变更集（推荐）：
-  - `pnpm run build`
-  - `pnpm run changeset:status`
-  - `pnpm run version-packages`
-  - `pnpm run release`
-- 工作区逐个发布：
-  - `npm publish --workspace @aiyazone/core --access public`
-  - `npm publish --workspace @aiyazone/utils --access public`
-  - `npm publish --workspace @aiyazone/i18n --access public`
-  - `npm publish --workspace @aiyazone/icons --access public`
+发布准备：
 
-### 快速排查
-- 当前仓库地址：`npm config get registry`
-- 登录校验：`npm publish` 如报 `ENEEDAUTH` 则需先 `npm login`
-- 冲突处理：`EPUBLISHCONFLICT` 时先升版再发布
+```sh
+pnpm run release:check
+pnpm run changeset:status
+pnpm run version-packages
+pnpm run docs:gen
+pnpm run build
+pnpm run design:build
+pnpm run packages:test
+```
 
-### 整包 vs 子包说明
-- 依赖 `@aiyazone/design-system` 整包时通常不需要单独发布子包；子包仅在你直接按包名引入时需要发布。
+`packages:test` 只安装两份公开 tarball 和 Lit，检查 ESM/CJS、类型、样式与生产构建；`packages:test:internal` 保留六包的内部接口与混用检查。`publish:design-system` 仅构建，不执行发布。
+
+正式发布另行授权。标准流程使用与总包版本一致的 `v*` 标签触发 `.github/workflows/release.yml`，先通过复用的 quality 检查，再以 npm Trusted Publishing 发布 tokens 和总包。发布步骤使用消费者验证过的同一份 tarball；Actions 保存提交、版本、文件清单、依赖及 SHA256 和两份 tarball。已存在的版本跳过。新版 registry 与 jsDelivr/unpkg 核查完成后，才更新门户的固定版本 CDN 引用。

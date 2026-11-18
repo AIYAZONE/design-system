@@ -17,7 +17,8 @@ env:
 
 jobs:
   quality:
-    name: Build · Type · Test · Tokens · Docs · Packages
+    # 保护规则按此名称匹配；新增检查步骤时保持名称稳定。
+    name: Build · Type · Test · Tokens · Docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -44,7 +45,9 @@ jobs:
 
       - name: Package exports and installed consumer
         run: |
+          pnpm run release:check
           pnpm run packages:check
+          pnpm run packages:check:lit
           pnpm run packages:test
 
       - name: Type check

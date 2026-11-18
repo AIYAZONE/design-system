@@ -1,0 +1,39 @@
+{
+  "id": "@aiyazone/tokens@0.1.1",
+  "name": "@aiyazone/tokens",
+  "version": "0.1.1",
+  "size": 4290,
+  "unpackedSize": 14372,
+  "shasum": "19d6e7196aaa02756fab8d66183e0117bcdac205",
+  "integrity": "sha512-tyICvxhJvvXAr6F9RhDHiiGM2RvQ/loUjnVd5ZL6uUQWvf0QcNkkUlsMa9ClAETAsNjCrdBnK1S6IIfatnipCw==",
+  "filename": "aiyazone-tokens-0.1.1.tgz",
+  "files": [
+    {
+      "path": "LICENSE",
+      "size": 1064,
+      "mode": 420
+    },
+    {
+      "path": "dist/tokens.css",
+      "size": 6079,
+      "mode": 420
+    },
+    {
+      "path": "dist/tokens.ts",
+      "size": 2711,
+      "mode": 420
+    },
+    {
+      "path": "package.json",
+      "size": 800,
+      "mode": 420
+    },
+    {
+      "path": "tokens.json",
+      "size": 3718,
+      "mode": 420
+    }
+  ],
+  "entryCount": 5,
+  "bundled": []
+}

@@ -1,0 +1,188 @@
+[
+  {
+    "scenario": "bundle",
+    "width": 1440,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "cdn",
+    "width": 1440,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "bundle",
+    "width": 768,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "cdn",
+    "width": 768,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "bundle",
+    "width": 390,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "cdn",
+    "width": 390,
+    "version": "0.4.0",
+    "theme": "#FF6727",
+    "versions": [
+      [
+        "litHtmlVersions",
+        [
+          "3.3.3"
+        ]
+      ],
+      [
+        "litElementVersions",
+        [
+          "4.2.2"
+        ]
+      ],
+      [
+        "reactiveElementVersions",
+        [
+          "2.1.2"
+        ]
+      ]
+    ],
+    "external_assets": [
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-regular.woff2?v=1751599147",
+      "https://cdn.shopify.com/s/files/1/0970/9262/files/poppins-semibold.woff2?v=1751599147"
+    ],
+    "passed": true
+  }
+]

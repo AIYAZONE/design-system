@@ -6,18 +6,24 @@
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-checkbox>内容</zone-checkbox>
 ```
 

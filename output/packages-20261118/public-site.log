@@ -1,0 +1,864 @@
+
+> @aiyazone/design-system@0.4.0 portal:build:all /Users/ht-2502/Documents/Code/design-system
+> pnpm --filter @aiyazone/portal run build:all
+
+
+> @aiyazone/portal@0.0.1 build:all /Users/ht-2502/Documents/Code/design-system/apps/portal
+> node scripts/build-all.mjs
+
+Building Monorepo packages...
+Running: pnpm run build
+
+> @aiyazone/design-system@0.4.0 build /Users/ht-2502/Documents/Code/design-system
+> turbo run build --filter=!@aiyazone/examples --filter=!@aiyazone/storybook
+
+
+   • Packages in scope: @aiyazone/core, @aiyazone/eslint-config, @aiyazone/i18n, @aiyazone/icons, @aiyazone/portal, @aiyazone/tokens, @aiyazone/tsconfig, @aiyazone/utils
+   • Running build in 8 packages
+   • Remote caching disabled
+
+@aiyazone/utils:build: cache hit, replaying logs 47fe1ba106761a40
+@aiyazone/utils:build: 
+@aiyazone/utils:build: > @aiyazone/utils@0.1.0 build /Users/ht-2502/Documents/Code/design-system/packages/utils
+@aiyazone/utils:build: > vite build
+@aiyazone/utils:build: 
+@aiyazone/utils:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/utils:build: transforming...
+@aiyazone/utils:build: [32m✓[39m 13 modules transformed.
+@aiyazone/utils:build: rendering chunks...
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: 
+@aiyazone/utils:build: [unplugin:dts] Start generate declaration files...
+@aiyazone/utils:build: computing gzip size...
+@aiyazone/utils:build: [2mdist/[22m[36mcommon.js        [39m[1m[2m0.42 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map: 1.58 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36melements.js      [39m[1m[2m0.49 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map: 1.34 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mevent.js         [39m[1m[2m0.68 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map: 2.42 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mform-control.js  [39m[1m[2m0.94 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map: 4.77 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mindex.js         [39m[1m[2m1.28 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map: 2.96 kB[22m
+@aiyazone/utils:build: [unplugin:dts] Declaration files built in 921ms.
+@aiyazone/utils:build: 
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: [2mdist/[22m[36mevent.cjs         [39m[1m[2m0.39 kB[22m[1m[22m[2m │ gzip: 0.28 kB[22m[2m │ map: 2.32 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36melements.cjs      [39m[1m[2m0.42 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map: 1.31 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mcommon.cjs        [39m[1m[2m0.45 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map: 1.58 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mform-control.cjs  [39m[1m[2m0.86 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map: 4.64 kB[22m
+@aiyazone/utils:build: [2mdist/[22m[36mindex.cjs         [39m[1m[2m1.01 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map: 2.86 kB[22m
+@aiyazone/utils:build: [32m✓ built in 1.07s[39m
+@aiyazone/i18n:build: cache hit, replaying logs f037f848682d3242
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: > @aiyazone/i18n@0.1.1 build /Users/ht-2502/Documents/Code/design-system/packages/i18n
+@aiyazone/i18n:build: > vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/i18n:build: transforming...
+@aiyazone/i18n:build: [32m✓[39m 20 modules transformed.
+@aiyazone/i18n:build: rendering chunks...
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: computing gzip size...
+@aiyazone/i18n:build: [2mdist/[22m[36mindex.es.js  [39m[1m[2m38.97 kB[22m[1m[22m[2m │ gzip: 13.40 kB[22m[2m │ map: 33.70 kB[22m
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: [2mdist/[22m[36mindex.cjs  [39m[1m[2m33.66 kB[22m[1m[22m[2m │ gzip: 12.68 kB[22m[2m │ map: 32.61 kB[22m
+@aiyazone/i18n:build: [32m✓ built in 1.12s[39m
+@aiyazone/i18n:build: [36m
+@aiyazone/i18n:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/i18n/src/index.ts[22m → [1mdist/index.d.ts[22m...[39m
+@aiyazone/i18n:build: [32mcreated [1mdist/index.d.ts[22m in [1m9.3s[22m[39m
+@aiyazone/core:build: cache hit, replaying logs c8a22fffd592f92c
+@aiyazone/core:build: 
+@aiyazone/core:build: > @aiyazone/core@0.1.9 build /Users/ht-2502/Documents/Code/design-system/packages/core
+@aiyazone/core:build: > vite build && rollup -c ../../scripts/build-core-types.rollup.config.mjs
+@aiyazone/core:build: 
+@aiyazone/core:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/core:build: transforming...
+@aiyazone/core:build: [32m✓[39m 45 modules transformed.
+@aiyazone/core:build: rendering chunks...
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: computing gzip size...
+@aiyazone/core:build: [2mdist/[22m[35mstyles/index.css                    [39m[1m[2m44.17 kB[22m[1m[22m[2m │ gzip: 5.43 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/decorators-CuQZomWl.js       [39m[1m[2m 0.15 kB[22m[1m[22m[2m │ gzip: 0.13 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mindex.js                            [39m[1m[2m 1.65 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mspinner/index.js                    [39m[1m[2m 1.82 kB[22m[1m[22m[2m │ gzip: 0.96 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mcheckbox/index.js                   [39m[1m[2m 4.62 kB[22m[1m[22m[2m │ gzip: 1.89 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbadge/index.js                      [39m[1m[2m 4.98 kB[22m[1m[22m[2m │ gzip: 1.65 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mpopover/index.js                    [39m[1m[2m 6.15 kB[22m[1m[22m[2m │ gzip: 2.06 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtooltip/index.js                    [39m[1m[2m 6.37 kB[22m[1m[22m[2m │ gzip: 1.97 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtoast/index.js                      [39m[1m[2m 6.45 kB[22m[1m[22m[2m │ gzip: 2.39 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdialog/index.js                     [39m[1m[2m12.85 kB[22m[1m[22m[2m │ gzip: 4.12 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/internal-shared-n9javRSb.js  [39m[1m[2m18.37 kB[22m[1m[22m[2m │ gzip: 2.06 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mfilter-select/index.js              [39m[1m[2m24.54 kB[22m[1m[22m[2m │ gzip: 6.67 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/floating-ui.dom-BS3B8OHI.js  [39m[1m[2m26.52 kB[22m[1m[22m[2m │ gzip: 8.41 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbutton/index.js                     [39m[1m[2m33.38 kB[22m[1m[22m[2m │ gzip: 5.56 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdropdown/index.js                   [39m[1m[2m33.81 kB[22m[1m[22m[2m │ gzip: 9.63 kB[22m
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: [2mdist/[22m[35mstyles/index.css                     [39m[1m[2m44.17 kB[22m[1m[22m[2m │ gzip: 5.43 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/decorators-BzCoYcbl.cjs       [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.30 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mindex.cjs                            [39m[1m[2m 1.74 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mspinner/index.cjs                    [39m[1m[2m 1.83 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mcheckbox/index.cjs                   [39m[1m[2m 4.41 kB[22m[1m[22m[2m │ gzip: 1.72 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbadge/index.cjs                      [39m[1m[2m 4.97 kB[22m[1m[22m[2m │ gzip: 1.57 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtoast/index.cjs                      [39m[1m[2m 5.62 kB[22m[1m[22m[2m │ gzip: 1.98 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mpopover/index.cjs                    [39m[1m[2m 5.68 kB[22m[1m[22m[2m │ gzip: 1.96 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mtooltip/index.cjs                    [39m[1m[2m 5.92 kB[22m[1m[22m[2m │ gzip: 1.82 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdialog/index.cjs                     [39m[1m[2m11.20 kB[22m[1m[22m[2m │ gzip: 3.21 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/floating-ui.dom-wukjC_sP.cjs  [39m[1m[2m17.81 kB[22m[1m[22m[2m │ gzip: 7.14 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mchunks/internal-shared-yuij7l57.cjs  [39m[1m[2m18.31 kB[22m[1m[22m[2m │ gzip: 2.04 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mfilter-select/index.cjs              [39m[1m[2m22.16 kB[22m[1m[22m[2m │ gzip: 5.81 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mdropdown/index.cjs                   [39m[1m[2m29.52 kB[22m[1m[22m[2m │ gzip: 8.96 kB[22m
+@aiyazone/core:build: [2mdist/[22m[36mbutton/index.cjs                     [39m[1m[2m32.91 kB[22m[1m[22m[2m │ gzip: 5.42 kB[22m
+@aiyazone/core:build: [32m✓ built in 2.47s[39m
+@aiyazone/core:build: [36m
+@aiyazone/core:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/core/src/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/badge/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/button/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/checkbox/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dialog/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/filter-select/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/popover/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/spinner/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/toast/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/tooltip/index.ts[22m → [1mdist[22m...[39m
+@aiyazone/core:build: [32mcreated [1mdist[22m in [1m16.3s[22m[39m
+@aiyazone/tokens:build: cache hit, replaying logs 7b79bcdcca102e56
+@aiyazone/tokens:build: 
+@aiyazone/tokens:build: > @aiyazone/tokens@0.1.1 build /Users/ht-2502/Documents/Code/design-system/packages/tokens
+@aiyazone/tokens:build: > node scripts/build.mjs
+@aiyazone/tokens:build: 
+@aiyazone/tokens:build: generated: src/styles/zone/generated-tokens.less
+@aiyazone/tokens:build: generated: src/styles/themes/v3/generated-tokens.less
+@aiyazone/tokens:build: generated: packages/tokens/dist/tokens.css
+@aiyazone/tokens:build: generated: packages/tokens/dist/tokens.ts
+@aiyazone/tokens:build: done.
+@aiyazone/icons:build: cache hit, replaying logs a2c9bc4dd96843ea
+@aiyazone/icons:build: 
+@aiyazone/icons:build: > @aiyazone/icons@0.1.3 build /Users/ht-2502/Documents/Code/design-system/packages/icons
+@aiyazone/icons:build: > tsc && vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/icons:build: 
+@aiyazone/icons:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/icons:build: transforming...
+@aiyazone/icons:build: [32m✓[39m 119 modules transformed.
+@aiyazone/icons:build: rendering chunks...
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: computing gzip size...
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-square-Cr81q2eI.js               [39m[1m[2m 0.34 kB[22m[1m[22m[2m │ gzip: 0.25 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-left-top-B3jngAd7.js            [39m[1m[2m 0.37 kB[22m[1m[22m[2m │ gzip: 0.29 kB[22m[2m │ map:  0.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-right-bottom-DGUdyN8A.js        [39m[1m[2m 0.37 kB[22m[1m[22m[2m │ gzip: 0.30 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/lamp-line-uKVXL1H4.js                  [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map:  0.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/cart-line-Cg_JjUQI.js                  [39m[1m[2m 0.48 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map:  0.68 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-BI2YA8g2.js                      [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.35 kB[22m[2m │ map:  0.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tent-line-6N2gut_C.js                  [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.33 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-uBdUKfuT.js                    [39m[1m[2m 0.52 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-Cm3Ggkq_.js                   [39m[1m[2m 0.53 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-fill-BEXA7BXT.js              [39m[1m[2m 0.55 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-DeXVkFJM.js              [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-fill-BVZBzi_8.js        [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-fill-CDfJarUM.js               [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-Ct1gQ3fV.js             [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-fill-Cn5ePnDQ.js         [39m[1m[2m 0.56 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-suqgggeE.js                      [39m[1m[2m 0.57 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-fill-gDWNsKyt.js        [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-fill-C4tDSVZS.js                 [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-fill-B4tVBoPD.js           [39m[1m[2m 0.60 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-DsQnlpui.js                [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.85 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-iVi8OG-4.js                   [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-long-D1h18Xnh.js              [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.83 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-2-DSLtJP86.js                [39m[1m[2m 0.61 kB[22m[1m[22m[2m │ gzip: 0.34 kB[22m[2m │ map:  0.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-fill-BSTQgJWl.js              [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-fill-BfXmCKJO.js                  [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-long-DMIoTViY.js           [39m[1m[2m 0.64 kB[22m[1m[22m[2m │ gzip: 0.41 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-DX5sqUNP.js             [39m[1m[2m 0.65 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/battery-line-Dj2z7MZh.js               [39m[1m[2m 0.65 kB[22m[1m[22m[2m │ gzip: 0.38 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-fill-C9q1mTsW.js                 [39m[1m[2m 0.67 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/minus-Dl05_5EM.js                      [39m[1m[2m 0.69 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-CstGoxlO.js                 [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-CpEJm37W.js                   [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-1-Bh1-vRO3.js                [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  1.02 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-down-BKyORfPe.js                 [39m[1m[2m 0.73 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tag-CemJP-oQ.js                        [39m[1m[2m 0.75 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-CU08GFLS.js                  [39m[1m[2m 0.75 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  0.98 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-A8YlqQ6N.js                     [39m[1m[2m 0.76 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.00 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-BilmN3EK.js                [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-fill-NHHgmJFl.js          [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-fill-C2VTndCJ.js                [39m[1m[2m 0.78 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-BqbjzgHb.js            [39m[1m[2m 0.79 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-BQn9V4e8.js               [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-fill-BkU4QZri.js             [39m[1m[2m 0.81 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-fill-D5uoHPQC.js                  [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.07 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-fill-Bp7jpud_.js       [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  1.08 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-ChmO25C3.js                       [39m[1m[2m 0.84 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/calendar-line-CALrooE8.js              [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  1.12 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-fill-DRsM8YBD.js               [39m[1m[2m 0.86 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-2-CU7S7Iuq.js               [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.42 kB[22m[2m │ map:  1.22 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-fill-0KRTaQbB.js         [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-line-BxU4o-xt.js                 [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/search-BbwqgZ3Q.js                     [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-EHaqyQ5o.js                   [39m[1m[2m 0.90 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-fill-BN78INHL.js            [39m[1m[2m 0.90 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-fill-B8pV6h50.js           [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-CtygV3it.js                    [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-fill-DyQLgDxz.js              [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-Cm-oIuwb.js              [39m[1m[2m 0.92 kB[22m[1m[22m[2m │ gzip: 0.57 kB[22m[2m │ map:  1.17 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-BEKAczCB.js                      [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.24 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/global-C3jV6r1L.js                     [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.31 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-fill-BDme83Hs.js                  [39m[1m[2m 1.04 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-fill-Clp7AEaT.js                 [39m[1m[2m 1.05 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-fill-Sug-y3qj.js                 [39m[1m[2m 1.06 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-Coj-avdP.js                       [39m[1m[2m 1.06 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/loading-BhQE8FoO.js                    [39m[1m[2m 1.08 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-CrbsPZb0.js       [39m[1m[2m 1.09 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-x5YKUXA7.js             [39m[1m[2m 1.09 kB[22m[1m[22m[2m │ gzip: 0.66 kB[22m[2m │ map:  1.33 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-fill-CYJAcyPa.js        [39m[1m[2m 1.10 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.35 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-fill-cYjXUC4F.js  [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.37 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-fill-BVl0o-Sr.js                  [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.38 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-line-Djb7qWjy.js                  [39m[1m[2m 1.17 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.42 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/share-CLGx3pZg.js                      [39m[1m[2m 1.19 kB[22m[1m[22m[2m │ gzip: 0.67 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-1-DIYBzLlj.js               [39m[1m[2m 1.23 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.61 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-CwCcHsyk.js                       [39m[1m[2m 1.27 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-Chk-IuqK.js                   [39m[1m[2m 1.29 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-fill-DLWyWbP6.js                  [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-line-ft1jQUug.js                  [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.64 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-yTuoP1Fl.js             [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-fill-B_3Oxl-O.js            [39m[1m[2m 1.31 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-COg92nuz.js                 [39m[1m[2m 1.31 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-fill-VoGqYBq5.js              [39m[1m[2m 1.32 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.57 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-fill-C6-l7T68.js        [39m[1m[2m 1.33 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-fill-Co2Z6kcs.js                  [39m[1m[2m 1.33 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/location-CkJOIb5w.js                   [39m[1m[2m 1.35 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-fill-CLIKCGGe.js                 [39m[1m[2m 1.39 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.60 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-fill-DnzJWHIx.js              [39m[1m[2m 1.43 kB[22m[1m[22m[2m │ gzip: 0.69 kB[22m[2m │ map:  1.77 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-fill-BUtq80Mu.js                 [39m[1m[2m 1.46 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.67 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-big-CdB_ic6u.js                   [39m[1m[2m 1.48 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/download-DWo7Fuz1.js                   [39m[1m[2m 1.48 kB[22m[1m[22m[2m │ gzip: 0.81 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-BCWvqlEM.js                     [39m[1m[2m 1.50 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-fill-Cf0HMRnJ.js                [39m[1m[2m 1.51 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-OBLe4Zo0.js               [39m[1m[2m 1.51 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-line-Dau-l5cU.js                  [39m[1m[2m 1.53 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-C8R1Zvf1.js                       [39m[1m[2m 1.54 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-fill-LteU0Grv.js                  [39m[1m[2m 1.56 kB[22m[1m[22m[2m │ gzip: 0.77 kB[22m[2m │ map:  1.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-fill-Cx_iwqDh.js            [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-B_m-3xrD.js                 [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-line-BBO4pPfd.js              [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-fill-BH3-cqjL.js                [39m[1m[2m 1.62 kB[22m[1m[22m[2m │ gzip: 0.81 kB[22m[2m │ map:  1.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-fill-CK39SgOH.js          [39m[1m[2m 1.63 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-line-D4JXd4KD.js                 [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-DzepD-kc.js                  [39m[1m[2m 1.67 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-line-VJnYYV6O.js                [39m[1m[2m 1.68 kB[22m[1m[22m[2m │ gzip: 0.93 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-line-TYUxn21G.js                  [39m[1m[2m 1.76 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-line-CUZzEEBj.js                 [39m[1m[2m 1.81 kB[22m[1m[22m[2m │ gzip: 0.99 kB[22m[2m │ map:  2.03 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-line-CLiq3LMK.js                  [39m[1m[2m 1.82 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m[2m │ map:  2.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-fill-DbSpVp2W.js             [39m[1m[2m 1.84 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  2.09 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-line-BYi8Z2rs.js                 [39m[1m[2m 1.84 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  2.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-DB2m4rwp.js            [39m[1m[2m 2.03 kB[22m[1m[22m[2m │ gzip: 1.02 kB[22m[2m │ map:  2.41 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/threads-DQ7JDEOX.js                    [39m[1m[2m 2.13 kB[22m[1m[22m[2m │ gzip: 1.19 kB[22m[2m │ map:  2.29 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-fill-DUpnmic2.js       [39m[1m[2m 2.16 kB[22m[1m[22m[2m │ gzip: 1.01 kB[22m[2m │ map:  2.53 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pdf-uDF4g0M7.js                        [39m[1m[2m 2.17 kB[22m[1m[22m[2m │ gzip: 0.87 kB[22m[2m │ map:  2.32 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-line-CdWbVFnb.js                 [39m[1m[2m 2.54 kB[22m[1m[22m[2m │ gzip: 1.33 kB[22m[2m │ map:  2.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mindex.es.js                                   [39m[1m[2m31.47 kB[22m[1m[22m[2m │ gzip: 4.24 kB[22m[2m │ map: 29.19 kB[22m
+@aiyazone/icons:build: [36m[vite-plugin-static-copy][39m [32mCopied 113 items.[39m
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-square-LMPj4X2m.cjs               [39m[1m[2m 0.41 kB[22m[1m[22m[2m │ gzip: 0.31 kB[22m[2m │ map:  0.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-left-top-FTkkZxPL.cjs            [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  0.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/radius-right-bottom-CsBxw1cr.cjs        [39m[1m[2m 0.44 kB[22m[1m[22m[2m │ gzip: 0.35 kB[22m[2m │ map:  0.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/lamp-line-CPzItHfv.cjs                  [39m[1m[2m 0.51 kB[22m[1m[22m[2m │ gzip: 0.36 kB[22m[2m │ map:  0.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/cart-line-ClPrQ7Uy.cjs                  [39m[1m[2m 0.55 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.68 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-CH4wsbBN.cjs                      [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.41 kB[22m[2m │ map:  0.72 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tent-line-D-rvnFCr.cjs                  [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.39 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-tj55MMNe.cjs                    [39m[1m[2m 0.59 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-kDRb4zA4.cjs                   [39m[1m[2m 0.60 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.75 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-fill-CxqaTARh.cjs              [39m[1m[2m 0.62 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-Chd9XRYK.cjs              [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-fill-7aq_zvou.cjs        [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-fill-Bsh3Yr8f.cjs               [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/facebook-color-buHCFnT-.cjs             [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.81 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/twitter-color-fill-DOhoua4s.cjs         [39m[1m[2m 0.63 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-O80EzLSY.cjs                      [39m[1m[2m 0.64 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-fill-2BZNKoWy.cjs        [39m[1m[2m 0.66 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  0.79 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-fill-dIy1lIzE.cjs                 [39m[1m[2m 0.66 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-fill-D_dxBcrv.cjs           [39m[1m[2m 0.67 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/email-color-CYuoedKd.cjs                [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.85 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-BmOj2LC6.cjs                   [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  0.84 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-long-55UZvYgD.cjs              [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.83 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-2-z3X_IBOK.cjs                [39m[1m[2m 0.68 kB[22m[1m[22m[2m │ gzip: 0.40 kB[22m[2m │ map:  0.86 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-fill-DT-PWZ5i.cjs              [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-fill-BMDxrrJM.cjs                  [39m[1m[2m 0.70 kB[22m[1m[22m[2m │ gzip: 0.45 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-long-Bie2Y0wD.cjs           [39m[1m[2m 0.71 kB[22m[1m[22m[2m │ gzip: 0.46 kB[22m[2m │ map:  0.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/telegram-color-D8RQZJja.cjs             [39m[1m[2m 0.72 kB[22m[1m[22m[2m │ gzip: 0.51 kB[22m[2m │ map:  0.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/battery-line-BVTOYx1c.cjs               [39m[1m[2m 0.72 kB[22m[1m[22m[2m │ gzip: 0.44 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-fill-taVVj5xZ.cjs                 [39m[1m[2m 0.74 kB[22m[1m[22m[2m │ gzip: 0.47 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/minus-DyHfKouV.cjs                      [39m[1m[2m 0.76 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  0.89 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-Cf-Mldt6.cjs                 [39m[1m[2m 0.77 kB[22m[1m[22m[2m │ gzip: 0.50 kB[22m[2m │ map:  0.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-9TXcHovU.cjs                   [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  0.94 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/home-line-1-CUYr4hYG.cjs                [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.43 kB[22m[2m │ map:  1.02 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-down-BPwPQ1C3.cjs                 [39m[1m[2m 0.80 kB[22m[1m[22m[2m │ gzip: 0.53 kB[22m[2m │ map:  0.95 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tag-Dr9CFuvt.cjs                        [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-DM9d9RDg.cjs                  [39m[1m[2m 0.82 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-Cjnz1M1N.cjs                     [39m[1m[2m 0.83 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.00 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-BvS4qPc4.cjs                [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  0.99 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-fill-BUCKdglz.cjs          [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-fill-rtsZC128.cjs                [39m[1m[2m 0.85 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-DvpjGqJK.cjs            [39m[1m[2m 0.86 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/tiktok-color-DnaXglf-.cjs               [39m[1m[2m 0.87 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-fill-Q83tGwt6.cjs             [39m[1m[2m 0.88 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.06 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-fill-DgEg9s7P.cjs                  [39m[1m[2m 0.89 kB[22m[1m[22m[2m │ gzip: 0.54 kB[22m[2m │ map:  1.07 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pinterest-color-fill-D-K7sgk-.cjs       [39m[1m[2m 0.89 kB[22m[1m[22m[2m │ gzip: 0.59 kB[22m[2m │ map:  1.08 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-D1EH1hKr.cjs                       [39m[1m[2m 0.91 kB[22m[1m[22m[2m │ gzip: 0.55 kB[22m[2m │ map:  1.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/calendar-line-h6TOw_OO.cjs              [39m[1m[2m 0.92 kB[22m[1m[22m[2m │ gzip: 0.49 kB[22m[2m │ map:  1.12 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-fill-Dr2X1hOV.cjs               [39m[1m[2m 0.93 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-2-Cszp2PV6.cjs               [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.48 kB[22m[2m │ map:  1.22 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-fill-pHMb9-Yh.cjs         [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/check-line-f_3LVe8g.cjs                 [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.56 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/search-soVKa2kZ.cjs                     [39m[1m[2m 0.94 kB[22m[1m[22m[2m │ gzip: 0.52 kB[22m[2m │ map:  1.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-Dwedastn.cjs                   [39m[1m[2m 0.97 kB[22m[1m[22m[2m │ gzip: 0.58 kB[22m[2m │ map:  1.11 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-left-fill-DKDyes6j.cjs            [39m[1m[2m 0.97 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-right-fill-ZmTy9N8-.cjs           [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-DND6Ezc6.cjs                    [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.62 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/arrow-up-fill-YH9N6UnS.cjs              [39m[1m[2m 0.98 kB[22m[1m[22m[2m │ gzip: 0.61 kB[22m[2m │ map:  1.13 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/youtube-color-xvyD5qiW.cjs              [39m[1m[2m 0.99 kB[22m[1m[22m[2m │ gzip: 0.63 kB[22m[2m │ map:  1.17 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-OmopKZ79.cjs                      [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.64 kB[22m[2m │ map:  1.24 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/global-DhbcPj3L.cjs                     [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.66 kB[22m[2m │ map:  1.31 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-fill-Cl1La928.cjs                  [39m[1m[2m 1.11 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.26 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-fill-CvQfYymA.cjs                 [39m[1m[2m 1.12 kB[22m[1m[22m[2m │ gzip: 0.71 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-fill-DuJ8LZVW.cjs                 [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.60 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-D0aYMjwJ.cjs                       [39m[1m[2m 1.13 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.35 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/loading-oQaXVnF7.cjs                    [39m[1m[2m 1.15 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.27 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-B4PS_wIK.cjs       [39m[1m[2m 1.16 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.34 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-B2gMy-Bk.cjs             [39m[1m[2m 1.16 kB[22m[1m[22m[2m │ gzip: 0.72 kB[22m[2m │ map:  1.33 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-fill-BIM5g6ZA.cjs        [39m[1m[2m 1.17 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.36 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/refer-a-friend-color-fill-BWBTX_sg.cjs  [39m[1m[2m 1.18 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.37 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-fill-D1IwkvrM.cjs                  [39m[1m[2m 1.20 kB[22m[1m[22m[2m │ gzip: 0.68 kB[22m[2m │ map:  1.38 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/play-line-C8uMcdaj.cjs                  [39m[1m[2m 1.24 kB[22m[1m[22m[2m │ gzip: 0.69 kB[22m[2m │ map:  1.42 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/share-Ch4ht_zp.cjs                      [39m[1m[2m 1.26 kB[22m[1m[22m[2m │ gzip: 0.73 kB[22m[2m │ map:  1.39 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/truck-line-1-e3v8iHwV.cjs               [39m[1m[2m 1.30 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.61 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-qDvx2jJK.cjs                       [39m[1m[2m 1.34 kB[22m[1m[22m[2m │ gzip: 0.74 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-BoDrpfaA.cjs                   [39m[1m[2m 1.36 kB[22m[1m[22m[2m │ gzip: 0.80 kB[22m[2m │ map:  1.52 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-fill-BONqi0xg.cjs                  [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.56 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/info-line-Cje6SKyq.cjs                  [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.70 kB[22m[2m │ map:  1.64 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-BUHjTKfy.cjs             [39m[1m[2m 1.37 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-fill-zxZnbjbL.cjs            [39m[1m[2m 1.38 kB[22m[1m[22m[2m │ gzip: 0.77 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-color-jKQT-ogZ.cjs                 [39m[1m[2m 1.38 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-fill-CRK9T-XY.cjs              [39m[1m[2m 1.39 kB[22m[1m[22m[2m │ gzip: 0.82 kB[22m[2m │ map:  1.57 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/whatsapp-color-fill-BlateLGI.cjs        [39m[1m[2m 1.40 kB[22m[1m[22m[2m │ gzip: 0.83 kB[22m[2m │ map:  1.58 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-fill-Bh-TU_DI.cjs                  [39m[1m[2m 1.40 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/location-RvHQlhHx.cjs                   [39m[1m[2m 1.42 kB[22m[1m[22m[2m │ gzip: 0.79 kB[22m[2m │ map:  1.55 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-fill-E6Jo4ndF.cjs                 [39m[1m[2m 1.46 kB[22m[1m[22m[2m │ gzip: 0.78 kB[22m[2m │ map:  1.60 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-fill-mxCyOpvd.cjs              [39m[1m[2m 1.50 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.77 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-fill-nO20JzBu.cjs                 [39m[1m[2m 1.53 kB[22m[1m[22m[2m │ gzip: 0.89 kB[22m[2m │ map:  1.67 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/link-big-BLYQOQ3j.cjs                   [39m[1m[2m 1.55 kB[22m[1m[22m[2m │ gzip: 0.75 kB[22m[2m │ map:  1.65 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/download-B3DkO_bX.cjs                   [39m[1m[2m 1.55 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.74 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-B0D-oWG6.cjs                     [39m[1m[2m 1.57 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-fill-CdiAsm48.cjs                [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.91 kB[22m[2m │ map:  1.73 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-BdDjcjux.cjs               [39m[1m[2m 1.58 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/time-line-BQz8dlIA.cjs                  [39m[1m[2m 1.60 kB[22m[1m[22m[2m │ gzip: 0.76 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-hgcsxgDR.cjs                       [39m[1m[2m 1.61 kB[22m[1m[22m[2m │ gzip: 0.83 kB[22m[2m │ map:  1.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-fill-CvHUjD_K.cjs                  [39m[1m[2m 1.63 kB[22m[1m[22m[2m │ gzip: 0.84 kB[22m[2m │ map:  1.80 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-fill-DqyrzwXa.cjs            [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/line-color-DXEmp9tI.cjs                 [39m[1m[2m 1.64 kB[22m[1m[22m[2m │ gzip: 0.85 kB[22m[2m │ map:  1.82 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/question-line-CNpZwwcn.cjs              [39m[1m[2m 1.65 kB[22m[1m[22m[2m │ gzip: 0.80 kB[22m[2m │ map:  1.92 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-fill-BVZZxiAw.cjs                [39m[1m[2m 1.69 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.87 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/reddit-color-fill-9RGKAkXL.cjs          [39m[1m[2m 1.70 kB[22m[1m[22m[2m │ gzip: 0.88 kB[22m[2m │ map:  1.88 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/alert-line-BUGeJ_vD.cjs                 [39m[1m[2m 1.71 kB[22m[1m[22m[2m │ gzip: 0.65 kB[22m[2m │ map:  1.98 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-AvuLDRp2.cjs                  [39m[1m[2m 1.74 kB[22m[1m[22m[2m │ gzip: 0.90 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/delete-line-_hoqNH8L.cjs                [39m[1m[2m 1.75 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  1.90 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/star-line-Cb54L7tE.cjs                  [39m[1m[2m 1.83 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  1.97 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/heart-line-MNOKeMWW.cjs                 [39m[1m[2m 1.88 kB[22m[1m[22m[2m │ gzip: 1.06 kB[22m[2m │ map:  2.03 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/plus-line-46Lv7beV.cjs                  [39m[1m[2m 1.89 kB[22m[1m[22m[2m │ gzip: 0.97 kB[22m[2m │ map:  2.04 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-fill-CbPUELUt.cjs             [39m[1m[2m 1.91 kB[22m[1m[22m[2m │ gzip: 0.95 kB[22m[2m │ map:  2.09 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/close-line-DoQrzPwb.cjs                 [39m[1m[2m 1.91 kB[22m[1m[22m[2m │ gzip: 1.00 kB[22m[2m │ map:  2.05 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-kHhF96V_.cjs            [39m[1m[2m 2.10 kB[22m[1m[22m[2m │ gzip: 1.08 kB[22m[2m │ map:  2.41 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/threads-Cf7imXk4.cjs                    [39m[1m[2m 2.20 kB[22m[1m[22m[2m │ gzip: 1.26 kB[22m[2m │ map:  2.29 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/instagram-color-fill-Cl8MUha4.cjs       [39m[1m[2m 2.23 kB[22m[1m[22m[2m │ gzip: 1.07 kB[22m[2m │ map:  2.54 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/pdf-BeRC59r3.cjs                        [39m[1m[2m 2.24 kB[22m[1m[22m[2m │ gzip: 0.94 kB[22m[2m │ map:  2.32 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mchunks/phone-line-B5iQwMpK.cjs                 [39m[1m[2m 2.61 kB[22m[1m[22m[2m │ gzip: 1.39 kB[22m[2m │ map:  2.76 kB[22m
+@aiyazone/icons:build: [2mdist/[22m[36mindex.cjs                                      [39m[1m[2m35.29 kB[22m[1m[22m[2m │ gzip: 4.03 kB[22m[2m │ map: 33.67 kB[22m
+@aiyazone/icons:build: [32m✓ built in 5.72s[39m
+@aiyazone/icons:build: 
+@aiyazone/icons:build: ✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+@aiyazone/icons:build: dist//Users/ht-2502/Documents/Code/design-system/packages/icons/index.es.js.gz   30.73kb / gzip: 4.06kb
+@aiyazone/icons:build: 
+@aiyazone/icons:build: 
+@aiyazone/icons:build: [36m
+@aiyazone/icons:build: [1m/Users/ht-2502/Documents/Code/design-system/packages/icons/src/index.ts[22m → [1mdist/index.d.ts[22m...[39m
+@aiyazone/icons:build: [32mcreated [1mdist/index.d.ts[22m in [1m3.8s[22m[39m
+@aiyazone/portal:build: cache hit, replaying logs 1efd24904bfaaee6
+@aiyazone/portal:build: 
+@aiyazone/portal:build: > @aiyazone/portal@0.0.1 build /Users/ht-2502/Documents/Code/design-system/apps/portal
+@aiyazone/portal:build: > tsc && vite build && node scripts/build-icons-manifest.mjs
+@aiyazone/portal:build: 
+@aiyazone/portal:build: [36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+@aiyazone/portal:build: transforming...
+@aiyazone/portal:build: [32m✓[39m 225 modules transformed.
+@aiyazone/portal:build: rendering chunks...
+@aiyazone/portal:build: [33m[plugin vite:reporter] 
+@aiyazone/portal:build: (!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+@aiyazone/portal:build: [39m
+@aiyazone/portal:build: [33m[plugin vite:reporter] 
+@aiyazone/portal:build: (!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+@aiyazone/portal:build: [39m
+@aiyazone/portal:build: computing gzip size...
+@aiyazone/portal:build: [2mdist/[22m[32marchitecture-reference.html                   [39m[1m[2m  1.17 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[32mindex.html                                    [39m[1m[2m  1.19 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[32marchitecture.html                             [39m[1m[2m  1.28 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[35marchitecture-BTs0il7g.css              [39m[1m[2m  6.55 kB[22m[1m[22m[2m │ gzip:  1.89 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[35mstyle-BYA0z7IM.css                     [39m[1m[2m 10.92 kB[22m[1m[22m[2m │ gzip:  2.79 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[35mpanorama-C5QnHX16.css                  [39m[1m[2m 26.25 kB[22m[1m[22m[2m │ gzip:  5.69 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[35mmain-BUQvc38A.css                      [39m[1m[2m 47.32 kB[22m[1m[22m[2m │ gzip:  5.47 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mclose-square-C1KT-yWF.js               [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:  0.20 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mradius-left-top-DMWXWt7z.js            [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:  0.24 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mradius-right-bottom-DzHC-hZi.js        [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlamp-line-CngT6vmA.js                  [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:  0.26 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mcart-line-CwiZSLYu.js                  [39m[1m[2m  0.43 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mcheck-BOtKSUS9.js                      [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:  0.31 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtent-line-Ch9T_jXL.js                  [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:  0.28 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtwitter-BrE8kSYm.js                    [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mfacebook-Dee9YJfm.js                   [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mfacebook-color-fill-B1Nq0myV.js        [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mfacebook-fill-1iSD8yVB.js              [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtwitter-color-DxWfqNU1.js              [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtwitter-color-fill-CE0eNhwL.js         [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mfacebook-color-BaOoc0u6.js             [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtwitter-fill-BDmZRiZx.js               [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36memail-HVrgWlQi.js                      [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtelegram-color-fill-BWF559oS.js        [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36memail-color-fill-ceZQV_EX.js           [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36memail-fill-BNWfoN3d.js                 [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36memail-color-DDlGKA-l.js                [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-up-long-9p8VcVo0.js              [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtelegram-PHFpMhiA.js                   [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mhome-line-2-cneRXK4c.js                [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtelegram-fill-DNiWk0s1.js              [39m[1m[2m  0.57 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtime-fill-XZKfAKpf.js                  [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-right-long-mlJIx9Jh.js           [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.35 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtelegram-color-CjFVyOv4.js             [39m[1m[2m  0.59 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mbattery-line-qgPs_3pd.js               [39m[1m[2m  0.59 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mcheck-fill-Dhw21q-n.js                 [39m[1m[2m  0.61 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mminus-B2Qe7Bnl.js                      [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-left-CbpbxjVJ.js                 [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mhome-line-1-DFhFKg40.js                [39m[1m[2m  0.67 kB[22m[1m[22m[2m │ gzip:  0.32 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-up-CxcOwgJU.js                   [39m[1m[2m  0.67 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mpinterest-CnU8hIXT.js                  [39m[1m[2m  0.70 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtag-BD9GlTu7.js                        [39m[1m[2m  0.70 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mstyle-108r_wJz.js                      [39m[1m[2m  0.71 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtiktok-CdqXaidV.js                     [39m[1m[2m  0.71 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtiktok-color-fill-DrLg71fq.js          [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtiktok-fill-B51e6RVW.js                [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mpinterest-color-BSjueacX.js            [39m[1m[2m  0.73 kB[22m[1m[22m[2m │ gzip:  0.47 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtiktok-color-GqGyXgxo.js               [39m[1m[2m  0.74 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mpinterest-color-fill-BVZ9RHYH.js       [39m[1m[2m  0.75 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mpinterest-fill-D4WxedAg.js             [39m[1m[2m  0.75 kB[22m[1m[22m[2m │ gzip:  0.47 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minfo-fill-jjGx71Eg.js                  [39m[1m[2m  0.76 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mcalendar-line-DqfC0OZC.js              [39m[1m[2m  0.79 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplus-3VUwL8B1.js                       [39m[1m[2m  0.79 kB[22m[1m[22m[2m │ gzip:  0.45 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36myoutube-color-fill-BhAUocTg.js         [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:  0.49 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36myoutube-fill-BnD2VuYJ.js               [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:  0.49 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtruck-line-2-D35VzedZ.js               [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mcheck-line-gLiNHk4X.js                 [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36msearch-BQyPef98.js                     [39m[1m[2m  0.82 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mquestion-DAcbj0hR.js                   [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-left-fill-DMc7BQk-.js            [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-right-fill-DjeDXHHb.js           [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36myoutube-CJ7xyDBz.js                    [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.51 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marrow-up-fill-suA4rCuz.js              [39m[1m[2m  0.86 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36myoutube-color-BPcd26MP.js              [39m[1m[2m  0.86 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mclose-BT9GqDsG.js                      [39m[1m[2m  0.99 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mstar-fill-B3W3pzNX.js                  [39m[1m[2m  0.99 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mglobal-3A-pTdVR.js                     [39m[1m[2m  0.99 kB[22m[1m[22m[2m │ gzip:  0.55 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mheart-fill-CnlAvUfC.js                 [39m[1m[2m  0.99 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36malert-fill-DwkN26n3.js                 [39m[1m[2m  1.00 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplay-CTlENMai.js                       [39m[1m[2m  1.01 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mrefer-a-friend-color-DX17Qkr4.js       [39m[1m[2m  1.02 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mloading-DM7TiwXH.js                    [39m[1m[2m  1.03 kB[22m[1m[22m[2m │ gzip:  0.56 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mrefer-a-friend-DA9U66TM.js             [39m[1m[2m  1.03 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mrefer-a-friend-color-fill-D7ObhvCx.js  [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mrefer-a-friend-fill-B3Wl_ODF.js        [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.60 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplay-fill-CWxnldgc.js                  [39m[1m[2m  1.08 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplay-line-B85pyskB.js                  [39m[1m[2m  1.11 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mshare-BCmXvC5V.js                      [39m[1m[2m  1.14 kB[22m[1m[22m[2m │ gzip:  0.62 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtruck-line-1-DkxN2X3R.js               [39m[1m[2m  1.17 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlink-D5SPc0zw.js                       [39m[1m[2m  1.22 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mwhatsapp-CdwNrIJw.js                   [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mwhatsapp-color-BJ9Dczuf.js             [39m[1m[2m  1.24 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlink-color-fill-s2kP_jaM.js            [39m[1m[2m  1.25 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlink-fill-B-AqT6Bm.js                  [39m[1m[2m  1.25 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minfo-line-Cf2lNKX2.js                  [39m[1m[2m  1.25 kB[22m[1m[22m[2m │ gzip:  0.60 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlink-color-5ihTZBm3.js                 [39m[1m[2m  1.25 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mwhatsapp-color-fill-B6sBHNSQ.js        [39m[1m[2m  1.26 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mwhatsapp-fill-D_MsdoX4.js              [39m[1m[2m  1.26 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplus-fill-D-UyFMn-.js                  [39m[1m[2m  1.27 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlocation-MBupTsCG.js                   [39m[1m[2m  1.30 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mclose-fill-DD3IAph6.js                 [39m[1m[2m  1.33 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mquestion-fill-BQFauHM1.js              [39m[1m[2m  1.37 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mphone-fill-dj6R33iN.js                 [39m[1m[2m  1.40 kB[22m[1m[22m[2m │ gzip:  0.77 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mlink-big-4uBnFSxX.js                   [39m[1m[2m  1.43 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mdownload-BXRx34ou.js                   [39m[1m[2m  1.43 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mreddit-CAJqQ37N.js                     [39m[1m[2m  1.45 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mdelete-fill-seFyLMBm.js                [39m[1m[2m  1.45 kB[22m[1m[22m[2m │ gzip:  0.80 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mreddit-color-MUV_sN6b.js               [39m[1m[2m  1.45 kB[22m[1m[22m[2m │ gzip:  0.74 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mtime-line-FBCBwdih.js                  [39m[1m[2m  1.48 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mline-BYajnJIE.js                       [39m[1m[2m  1.49 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mline-color-fill-CbcVRKoX.js            [39m[1m[2m  1.51 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mline-fill-BxlmPMQa.js                  [39m[1m[2m  1.51 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mline-color-BviKHOPd.js                 [39m[1m[2m  1.51 kB[22m[1m[22m[2m │ gzip:  0.74 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mquestion-line-mmrbDDaf.js              [39m[1m[2m  1.52 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mreddit-color-fill-BziimOLe.js          [39m[1m[2m  1.57 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mreddit-fill-DCTYBoWW.js                [39m[1m[2m  1.57 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36malert-line-DtoixnvO.js                 [39m[1m[2m  1.58 kB[22m[1m[22m[2m │ gzip:  0.55 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minstagram-BuiDNVoj.js                  [39m[1m[2m  1.61 kB[22m[1m[22m[2m │ gzip:  0.79 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mdelete-line-Cdu514fM.js                [39m[1m[2m  1.62 kB[22m[1m[22m[2m │ gzip:  0.87 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mstar-line-CwCVr197.js                  [39m[1m[2m  1.71 kB[22m[1m[22m[2m │ gzip:  0.89 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mheart-line-ByP9XnuN.js                 [39m[1m[2m  1.76 kB[22m[1m[22m[2m │ gzip:  0.93 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mplus-line-BfbgHHxq.js                  [39m[1m[2m  1.77 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minstagram-fill-CglGP3_g.js             [39m[1m[2m  1.78 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mclose-line-DQpfOlNJ.js                 [39m[1m[2m  1.78 kB[22m[1m[22m[2m │ gzip:  0.88 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minstagram-color-BCJmISSe.js            [39m[1m[2m  1.97 kB[22m[1m[22m[2m │ gzip:  0.96 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mthreads-T5vrJ48z.js                    [39m[1m[2m  2.07 kB[22m[1m[22m[2m │ gzip:  1.12 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36minstagram-color-fill-DqD0TA8W.js       [39m[1m[2m  2.10 kB[22m[1m[22m[2m │ gzip:  0.97 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mpdf-CegYDcUQ.js                        [39m[1m[2m  2.13 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mphone-line-gIc0VJUh.js                 [39m[1m[2m  2.48 kB[22m[1m[22m[2m │ gzip:  1.26 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marchitecture-wVBZNbcg.js               [39m[1m[2m 19.26 kB[22m[1m[22m[2m │ gzip:  7.92 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36marchitectureReference-ChnqAgJa.js      [39m[1m[2m 91.88 kB[22m[1m[22m[2m │ gzip: 26.79 kB[22m
+@aiyazone/portal:build: [2mdist/[22m[2massets/[22m[36mmain-Dhf9Bb1r.js                       [39m[1m[2m242.35 kB[22m[1m[22m[2m │ gzip: 62.10 kB[22m
+@aiyazone/portal:build: [32m✓ built in 3.72s[39m
+@aiyazone/portal:build: ✓ 图标清单：113 个（system 59 / social-media 54）→ dist/icons/icons-manifest.json
+
+ Tasks:    6 successful, 6 total
+Cached:    6 cached, 6 total
+  Time:    83ms >>> FULL TURBO
+
+Building Examples...
+Running: pnpm --filter @aiyazone/examples run build
+
+> @aiyazone/examples@0.1.3 build /Users/ht-2502/Documents/Code/design-system/apps/examples
+> vite build
+
+[36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 266 modules transformed.
+rendering chunks...
+[33m[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+[39m
+[33m[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+[39m
+computing gzip size...
+[2mdist/[22m[32mpages/atoms/spinner.html                      [39m[1m[2m  0.92 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m
+[2mdist/[22m[32mpages/i18n/all.html                           [39m[1m[2m  1.12 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m
+[2mdist/[22m[32mpages/atoms/icons.html                        [39m[1m[2m  1.16 kB[22m[1m[22m[2m │ gzip:  0.68 kB[22m
+[2mdist/[22m[32mpages/components/public-style.html            [39m[1m[2m  1.25 kB[22m[1m[22m[2m │ gzip:  0.72 kB[22m
+[2mdist/[22m[32mpages/atoms/toast.html                        [39m[1m[2m  1.53 kB[22m[1m[22m[2m │ gzip:  0.74 kB[22m
+[2mdist/[22m[32mpages/i18n/index.html                         [39m[1m[2m  2.43 kB[22m[1m[22m[2m │ gzip:  1.06 kB[22m
+[2mdist/[22m[32mpages/atoms/tooltip.html                      [39m[1m[2m  3.07 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m
+[2mdist/[22m[32mpages/atoms/popover.html                      [39m[1m[2m  3.50 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m
+[2mdist/[22m[32mindex.html                                    [39m[1m[2m  4.46 kB[22m[1m[22m[2m │ gzip:  1.75 kB[22m
+[2mdist/[22m[32mpages/atoms/dropdown.html                     [39m[1m[2m  5.34 kB[22m[1m[22m[2m │ gzip:  1.77 kB[22m
+[2mdist/[22m[2massets/[22m[32mlogo-CUlSh4Vr.svg                      [39m[1m[2m  6.07 kB[22m[1m[22m[2m │ gzip:  2.54 kB[22m
+[2mdist/[22m[32mpages/components/rte.html                     [39m[1m[2m  6.07 kB[22m[1m[22m[2m │ gzip:  1.61 kB[22m
+[2mdist/[22m[32mpages/atoms/badge.html                        [39m[1m[2m  7.25 kB[22m[1m[22m[2m │ gzip:  1.74 kB[22m
+[2mdist/[22m[32mpages/font/ja.html                            [39m[1m[2m  7.57 kB[22m[1m[22m[2m │ gzip:  2.65 kB[22m
+[2mdist/[22m[32mpages/atoms/filter-select.html                [39m[1m[2m  7.64 kB[22m[1m[22m[2m │ gzip:  2.17 kB[22m
+[2mdist/[22m[32mpages/atoms/dialog.html                       [39m[1m[2m  7.84 kB[22m[1m[22m[2m │ gzip:  1.46 kB[22m
+[2mdist/[22m[32mpages/components/index.html                   [39m[1m[2m 10.24 kB[22m[1m[22m[2m │ gzip:  1.86 kB[22m
+[2mdist/[22m[32mpages/atoms/button.html                       [39m[1m[2m 10.44 kB[22m[1m[22m[2m │ gzip:  1.91 kB[22m
+[2mdist/[22m[32mpages/font/en.html                            [39m[1m[2m 19.04 kB[22m[1m[22m[2m │ gzip:  4.27 kB[22m
+[2mdist/[22m[2massets/[22m[35mfont-test-DpWGO3Ih.css                 [39m[1m[2m  4.66 kB[22m[1m[22m[2m │ gzip:  1.13 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-Dfp1j-6Y.css                     [39m[1m[2m  6.30 kB[22m[1m[22m[2m │ gzip:  1.50 kB[22m
+[2mdist/[22m[2massets/[22m[35mexamples-theme-v1.css                  [39m[1m[2m 44.17 kB[22m[1m[22m[2m │ gzip:  5.43 kB[22m
+[2mdist/[22m[2massets/[22m[35mexamples-theme-v3.css                  [39m[1m[2m 44.63 kB[22m[1m[22m[2m │ gzip:  5.54 kB[22m
+[2mdist/[22m[2massets/[22m[35mexamples-theme-v2.css                  [39m[1m[2m 45.15 kB[22m[1m[22m[2m │ gzip:  5.55 kB[22m
+[2mdist/[22m[2massets/[22m[35mmain-DCNJ8zqr.css                      [39m[1m[2m 53.95 kB[22m[1m[22m[2m │ gzip:  7.84 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-DwuZbXug.js                      [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:  0.18 kB[22m[2m │ map:   0.45 kB[22m
+[2mdist/[22m[2massets/[22m[36mclose-square-27RqXl7E.js               [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:  0.25 kB[22m[2m │ map:   0.57 kB[22m
+[2mdist/[22m[2massets/[22m[36mradius-left-top-DfNUERm8.js            [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.29 kB[22m[2m │ map:   0.55 kB[22m
+[2mdist/[22m[2massets/[22m[36mradius-right-bottom-DzH6xDfL.js        [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m[2m │ map:   0.57 kB[22m
+[2mdist/[22m[2massets/[22m[36mlamp-line-IyQA--gs.js                  [39m[1m[2m  0.43 kB[22m[1m[22m[2m │ gzip:  0.30 kB[22m[2m │ map:   0.66 kB[22m
+[2mdist/[22m[2massets/[22m[36mcart-line-Cnh4mdnT.js                  [39m[1m[2m  0.48 kB[22m[1m[22m[2m │ gzip:  0.33 kB[22m[2m │ map:   0.70 kB[22m
+[2mdist/[22m[2massets/[22m[36mcheck-DyIiBHs9.js                      [39m[1m[2m  0.51 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m[2m │ map:   0.73 kB[22m
+[2mdist/[22m[2massets/[22m[36mtent-line-TvJO04Oi.js                  [39m[1m[2m  0.51 kB[22m[1m[22m[2m │ gzip:  0.32 kB[22m[2m │ map:   0.77 kB[22m
+[2mdist/[22m[2massets/[22m[36mtwitter-DrK8r3me.js                    [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.37 kB[22m[2m │ map:   0.76 kB[22m
+[2mdist/[22m[2massets/[22m[36mfacebook-DdOVirWe.js                   [39m[1m[2m  0.52 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m[2m │ map:   0.77 kB[22m
+[2mdist/[22m[2massets/[22m[36mfacebook-fill-CWjeI3PH.js              [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m[2m │ map:   0.81 kB[22m
+[2mdist/[22m[2massets/[22m[36mtwitter-color-D3BRGeD3.js              [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.82 kB[22m
+[2mdist/[22m[2massets/[22m[36mfacebook-color-fill-CS2x9cUc.js        [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.83 kB[22m
+[2mdist/[22m[2massets/[22m[36mtwitter-fill-O_4fC0KB.js               [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.82 kB[22m
+[2mdist/[22m[2massets/[22m[36mfacebook-color-B-O-2hko.js             [39m[1m[2m  0.55 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m[2m │ map:   0.82 kB[22m
+[2mdist/[22m[2massets/[22m[36mtwitter-color-fill-B0fd3FBF.js         [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.83 kB[22m
+[2mdist/[22m[2massets/[22m[36memail-BWh9ZmTD.js                      [39m[1m[2m  0.56 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m[2m │ map:   0.80 kB[22m
+[2mdist/[22m[2massets/[22m[36mtelegram-color-fill-D0_wLo64.js        [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   0.80 kB[22m
+[2mdist/[22m[2massets/[22m[36memail-fill-c1bSXS0A.js                 [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.84 kB[22m
+[2mdist/[22m[2massets/[22m[36memail-color-fill-DqE6d09V.js           [39m[1m[2m  0.59 kB[22m[1m[22m[2m │ gzip:  0.39 kB[22m[2m │ map:   0.85 kB[22m
+[2mdist/[22m[2massets/[22m[36memail-color-DjjU7ZXk.js                [39m[1m[2m  0.60 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m[2m │ map:   0.86 kB[22m
+[2mdist/[22m[2massets/[22m[36mtelegram-CMgNy7ld.js                   [39m[1m[2m  0.60 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   0.86 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-up-long-sZmA53Bu.js              [39m[1m[2m  0.60 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m[2m │ map:   0.85 kB[22m
+[2mdist/[22m[2massets/[22m[36mhome-line-2-DtVIHLkL.js                [39m[1m[2m  0.61 kB[22m[1m[22m[2m │ gzip:  0.34 kB[22m[2m │ map:   0.88 kB[22m
+[2mdist/[22m[2massets/[22m[36mtelegram-fill-BNbdI8Ev.js              [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   0.89 kB[22m
+[2mdist/[22m[2massets/[22m[36mtime-fill-x4DzFjod.js                  [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m[2m │ map:   0.90 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-right-long-C1pYZZOr.js           [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:  0.40 kB[22m[2m │ map:   0.89 kB[22m
+[2mdist/[22m[2massets/[22m[36mtelegram-color-DeO3Stoo.js             [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m[2m │ map:   0.91 kB[22m
+[2mdist/[22m[2massets/[22m[36mbattery-line-DtkliQ47.js               [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:  0.38 kB[22m[2m │ map:   0.90 kB[22m
+[2mdist/[22m[2massets/[22m[36mcheck-fill-CjlKN0R3.js                 [39m[1m[2m  0.66 kB[22m[1m[22m[2m │ gzip:  0.41 kB[22m[2m │ map:   0.96 kB[22m
+[2mdist/[22m[2massets/[22m[36mminus-B_Ny4986.js                      [39m[1m[2m  0.68 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   0.91 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-left-D2SEjrfz.js                 [39m[1m[2m  0.69 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m[2m │ map:   0.94 kB[22m
+[2mdist/[22m[2massets/[22m[36mpages/atoms/filter-select-5oKUBVF_.js  [39m[1m[2m  0.71 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   1.69 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-up-CwG0xo2r.js                   [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   0.95 kB[22m
+[2mdist/[22m[2massets/[22m[36mhome-line-1-CdksVx0O.js                [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:  0.36 kB[22m[2m │ map:   1.03 kB[22m
+[2mdist/[22m[2massets/[22m[36mtag-CIWS-Bma.js                        [39m[1m[2m  0.74 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   1.01 kB[22m
+[2mdist/[22m[2massets/[22m[36mpinterest-Bkn-rcwC.js                  [39m[1m[2m  0.75 kB[22m[1m[22m[2m │ gzip:  0.49 kB[22m[2m │ map:   1.00 kB[22m
+[2mdist/[22m[2massets/[22m[36mtiktok-DsqZ5jvN.js                     [39m[1m[2m  0.76 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   1.02 kB[22m
+[2mdist/[22m[2massets/[22m[36mtiktok-color-fill-CrGhmaRz.js          [39m[1m[2m  0.77 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   1.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mtiktok-fill-BALAGIhu.js                [39m[1m[2m  0.77 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   1.05 kB[22m
+[2mdist/[22m[2massets/[22m[36mpinterest-color-BvEWHfLj.js            [39m[1m[2m  0.78 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m[2m │ map:   1.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mtiktok-color--mdfI-C7.js               [39m[1m[2m  0.79 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m[2m │ map:   1.08 kB[22m
+[2mdist/[22m[2massets/[22m[36mpinterest-fill-aSuA5u_g.js             [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m[2m │ map:   1.08 kB[22m
+[2mdist/[22m[2massets/[22m[36minfo-fill-CV6GFWON.js                  [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m[2m │ map:   1.08 kB[22m
+[2mdist/[22m[2massets/[22m[36mpinterest-color-fill-DvofoAE2.js       [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m[2m │ map:   1.10 kB[22m
+[2mdist/[22m[2massets/[22m[36mplus-CcXJ2miC.js                       [39m[1m[2m  0.83 kB[22m[1m[22m[2m │ gzip:  0.49 kB[22m[2m │ map:   1.06 kB[22m
+[2mdist/[22m[2massets/[22m[36mcalendar-line-Cg0lnNQc.js              [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:  0.43 kB[22m[2m │ map:   1.13 kB[22m
+[2mdist/[22m[2massets/[22m[36myoutube-fill-CQjAq0GZ.js               [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m[2m │ map:   1.13 kB[22m
+[2mdist/[22m[2massets/[22m[36mtruck-line-2-DyA5Zv9m.js               [39m[1m[2m  0.86 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m[2m │ map:   1.23 kB[22m
+[2mdist/[22m[2massets/[22m[36myoutube-color-fill-DI8gd6Jj.js         [39m[1m[2m  0.86 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m[2m │ map:   1.14 kB[22m
+[2mdist/[22m[2massets/[22m[36mcheck-line-DoEBmd4P.js                 [39m[1m[2m  0.86 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m[2m │ map:   1.14 kB[22m
+[2mdist/[22m[2massets/[22m[36msearch-cnxhkps5.js                     [39m[1m[2m  0.87 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m[2m │ map:   1.07 kB[22m
+[2mdist/[22m[2massets/[22m[36mquestion-Omsfpd6s.js                   [39m[1m[2m  0.89 kB[22m[1m[22m[2m │ gzip:  0.52 kB[22m[2m │ map:   1.12 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-left-fill-DtIwBnm5.js            [39m[1m[2m  0.90 kB[22m[1m[22m[2m │ gzip:  0.55 kB[22m[2m │ map:   1.14 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-right-fill-D5wP98-9.js           [39m[1m[2m  0.90 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m[2m │ map:   1.15 kB[22m
+[2mdist/[22m[2massets/[22m[36myoutube-CltKVjnO.js                    [39m[1m[2m  0.90 kB[22m[1m[22m[2m │ gzip:  0.55 kB[22m[2m │ map:   1.15 kB[22m
+[2mdist/[22m[2massets/[22m[36marrow-up-fill-CEJS1R6-.js              [39m[1m[2m  0.91 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m[2m │ map:   1.15 kB[22m
+[2mdist/[22m[2massets/[22m[36myoutube-color-DauU6ubK.js              [39m[1m[2m  0.91 kB[22m[1m[22m[2m │ gzip:  0.57 kB[22m[2m │ map:   1.18 kB[22m
+[2mdist/[22m[2massets/[22m[36mclose-CTtmap6g.js                      [39m[1m[2m  1.03 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m[2m │ map:   1.26 kB[22m
+[2mdist/[22m[2massets/[22m[36mglobal-DS24ZS_8.js                     [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.60 kB[22m[2m │ map:   1.32 kB[22m
+[2mdist/[22m[2massets/[22m[36mstar-fill-GniWn-VC.js                  [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.62 kB[22m[2m │ map:   1.27 kB[22m
+[2mdist/[22m[2massets/[22m[36mheart-fill-BrLI8DLl.js                 [39m[1m[2m  1.04 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m[2m │ map:   1.28 kB[22m
+[2mdist/[22m[2massets/[22m[36malert-fill-DKugP8Do.js                 [39m[1m[2m  1.05 kB[22m[1m[22m[2m │ gzip:  0.54 kB[22m[2m │ map:   1.40 kB[22m
+[2mdist/[22m[2massets/[22m[36mplay-BZ-6fIVz.js                       [39m[1m[2m  1.05 kB[22m[1m[22m[2m │ gzip:  0.62 kB[22m[2m │ map:   1.36 kB[22m
+[2mdist/[22m[2massets/[22m[36mloading-DLSGLlSk.js                    [39m[1m[2m  1.07 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m[2m │ map:   1.28 kB[22m
+[2mdist/[22m[2massets/[22m[36mrefer-a-friend-color-BIPnB8TZ.js       [39m[1m[2m  1.08 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m[2m │ map:   1.35 kB[22m
+[2mdist/[22m[2massets/[22m[36mrefer-a-friend-Coyb8PbX.js             [39m[1m[2m  1.08 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m[2m │ map:   1.34 kB[22m
+[2mdist/[22m[2massets/[22m[36mrefer-a-friend-fill-tXOtoUwl.js        [39m[1m[2m  1.09 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m[2m │ map:   1.37 kB[22m
+[2mdist/[22m[2massets/[22m[36mrefer-a-friend-color-fill-sh7FBJJx.js  [39m[1m[2m  1.10 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m[2m │ map:   1.39 kB[22m
+[2mdist/[22m[2massets/[22m[36mplay-fill-CtCeeXfd.js                  [39m[1m[2m  1.12 kB[22m[1m[22m[2m │ gzip:  0.61 kB[22m[2m │ map:   1.40 kB[22m
+[2mdist/[22m[2massets/[22m[36mplay-line-A_qtneG2.js                  [39m[1m[2m  1.16 kB[22m[1m[22m[2m │ gzip:  0.63 kB[22m[2m │ map:   1.43 kB[22m
+[2mdist/[22m[2massets/[22m[36mshare-DfaugADB.js                      [39m[1m[2m  1.18 kB[22m[1m[22m[2m │ gzip:  0.66 kB[22m[2m │ map:   1.41 kB[22m
+[2mdist/[22m[2massets/[22m[36mtruck-line-1-D-1yw9XM.js               [39m[1m[2m  1.22 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m[2m │ map:   1.62 kB[22m
+[2mdist/[22m[2massets/[22m[36mlink-2XVDjk_c.js                       [39m[1m[2m  1.26 kB[22m[1m[22m[2m │ gzip:  0.67 kB[22m[2m │ map:   1.54 kB[22m
+[2mdist/[22m[2massets/[22m[36mwhatsapp-DHGX-azb.js                   [39m[1m[2m  1.28 kB[22m[1m[22m[2m │ gzip:  0.74 kB[22m[2m │ map:   1.53 kB[22m
+[2mdist/[22m[2massets/[22m[36mlink-fill-DfKfkkUq.js                  [39m[1m[2m  1.29 kB[22m[1m[22m[2m │ gzip:  0.69 kB[22m[2m │ map:   1.58 kB[22m
+[2mdist/[22m[2massets/[22m[36minfo-line-DY0aVPVv.js                  [39m[1m[2m  1.29 kB[22m[1m[22m[2m │ gzip:  0.64 kB[22m[2m │ map:   1.65 kB[22m
+[2mdist/[22m[2massets/[22m[36mwhatsapp-color-DPq_370l.js             [39m[1m[2m  1.29 kB[22m[1m[22m[2m │ gzip:  0.75 kB[22m[2m │ map:   1.56 kB[22m
+[2mdist/[22m[2massets/[22m[36mlink-color-fill-6JF-5bCY.js            [39m[1m[2m  1.30 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m[2m │ map:   1.60 kB[22m
+[2mdist/[22m[2massets/[22m[36mlink-color-B-W-duhG.js                 [39m[1m[2m  1.30 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m[2m │ map:   1.59 kB[22m
+[2mdist/[22m[2massets/[22m[36mwhatsapp-fill-BFsFbkQW.js              [39m[1m[2m  1.31 kB[22m[1m[22m[2m │ gzip:  0.75 kB[22m[2m │ map:   1.58 kB[22m
+[2mdist/[22m[2massets/[22m[36mwhatsapp-color-fill-y-KFvZz5.js        [39m[1m[2m  1.32 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m[2m │ map:   1.60 kB[22m
+[2mdist/[22m[2massets/[22m[36mplus-fill-D-DkgVDc.js                  [39m[1m[2m  1.32 kB[22m[1m[22m[2m │ gzip:  0.71 kB[22m[2m │ map:   1.56 kB[22m
+[2mdist/[22m[2massets/[22m[36mlocation-88CAJEpR.js                   [39m[1m[2m  1.34 kB[22m[1m[22m[2m │ gzip:  0.71 kB[22m[2m │ map:   1.56 kB[22m
+[2mdist/[22m[2massets/[22m[36mclose-fill-paojG1aX.js                 [39m[1m[2m  1.38 kB[22m[1m[22m[2m │ gzip:  0.71 kB[22m[2m │ map:   1.62 kB[22m
+[2mdist/[22m[2massets/[22m[36mquestion-fill-BCv_eXNM.js              [39m[1m[2m  1.42 kB[22m[1m[22m[2m │ gzip:  0.68 kB[22m[2m │ map:   1.79 kB[22m
+[2mdist/[22m[2massets/[22m[36mphone-fill-Dbfdn2PC.js                 [39m[1m[2m  1.45 kB[22m[1m[22m[2m │ gzip:  0.82 kB[22m[2m │ map:   1.69 kB[22m
+[2mdist/[22m[2massets/[22m[36mlink-big-Dj8xuUmf.js                   [39m[1m[2m  1.47 kB[22m[1m[22m[2m │ gzip:  0.68 kB[22m[2m │ map:   1.66 kB[22m
+[2mdist/[22m[2massets/[22m[36mdownload-CbXY8JV-.js                   [39m[1m[2m  1.48 kB[22m[1m[22m[2m │ gzip:  0.81 kB[22m[2m │ map:   1.75 kB[22m
+[2mdist/[22m[2massets/[22m[36mreddit-DzkOECLW.js                     [39m[1m[2m  1.49 kB[22m[1m[22m[2m │ gzip:  0.78 kB[22m[2m │ map:   1.74 kB[22m
+[2mdist/[22m[2massets/[22m[36mdelete-fill-DmeFWOq5.js                [39m[1m[2m  1.50 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m[2m │ map:   1.74 kB[22m
+[2mdist/[22m[2massets/[22m[36mreddit-color-CZcjk2CW.js               [39m[1m[2m  1.50 kB[22m[1m[22m[2m │ gzip:  0.79 kB[22m[2m │ map:   1.77 kB[22m
+[2mdist/[22m[2massets/[22m[36mtime-line-Dd_8-0Fx.js                  [39m[1m[2m  1.53 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m[2m │ map:   1.88 kB[22m
+[2mdist/[22m[2massets/[22m[36mline-DRUjzS4k.js                       [39m[1m[2m  1.53 kB[22m[1m[22m[2m │ gzip:  0.76 kB[22m[2m │ map:   1.77 kB[22m
+[2mdist/[22m[2massets/[22m[36mline-fill-BJiXAKfh.js                  [39m[1m[2m  1.56 kB[22m[1m[22m[2m │ gzip:  0.77 kB[22m[2m │ map:   1.82 kB[22m
+[2mdist/[22m[2massets/[22m[36mline-color-fill-BbvCu_wv.js            [39m[1m[2m  1.56 kB[22m[1m[22m[2m │ gzip:  0.78 kB[22m[2m │ map:   1.83 kB[22m
+[2mdist/[22m[2massets/[22m[36mline-color-B6LOIPGx.js                 [39m[1m[2m  1.56 kB[22m[1m[22m[2m │ gzip:  0.78 kB[22m[2m │ map:   1.83 kB[22m
+[2mdist/[22m[2massets/[22m[36mquestion-line-DqxCeCE0.js              [39m[1m[2m  1.57 kB[22m[1m[22m[2m │ gzip:  0.73 kB[22m[2m │ map:   1.94 kB[22m
+[2mdist/[22m[2massets/[22m[36mreddit-fill-BYPxpzIN.js                [39m[1m[2m  1.62 kB[22m[1m[22m[2m │ gzip:  0.80 kB[22m[2m │ map:   1.88 kB[22m
+[2mdist/[22m[2massets/[22m[36mreddit-color-fill-C66POEoz.js          [39m[1m[2m  1.62 kB[22m[1m[22m[2m │ gzip:  0.81 kB[22m[2m │ map:   1.90 kB[22m
+[2mdist/[22m[2massets/[22m[36malert-line-CkPJfK9v.js                 [39m[1m[2m  1.63 kB[22m[1m[22m[2m │ gzip:  0.58 kB[22m[2m │ map:   1.99 kB[22m
+[2mdist/[22m[2massets/[22m[36minstagram-ClEErFdK.js                  [39m[1m[2m  1.66 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m[2m │ map:   1.91 kB[22m
+[2mdist/[22m[2massets/[22m[36mdelete-line-DNoa-MHP.js                [39m[1m[2m  1.67 kB[22m[1m[22m[2m │ gzip:  0.92 kB[22m[2m │ map:   1.91 kB[22m
+[2mdist/[22m[2massets/[22m[36mstar-line-Dn3hqMSd.js                  [39m[1m[2m  1.75 kB[22m[1m[22m[2m │ gzip:  0.93 kB[22m[2m │ map:   1.99 kB[22m
+[2mdist/[22m[2massets/[22m[36mheart-line-mTRupby3.js                 [39m[1m[2m  1.81 kB[22m[1m[22m[2m │ gzip:  0.98 kB[22m[2m │ map:   2.04 kB[22m
+[2mdist/[22m[2massets/[22m[36mplus-line-CAxwwD84.js                  [39m[1m[2m  1.82 kB[22m[1m[22m[2m │ gzip:  0.90 kB[22m[2m │ map:   2.05 kB[22m
+[2mdist/[22m[2massets/[22m[36minstagram-fill-BK4fLZUA.js             [39m[1m[2m  1.83 kB[22m[1m[22m[2m │ gzip:  0.88 kB[22m[2m │ map:   2.10 kB[22m
+[2mdist/[22m[2massets/[22m[36mclose-line-BD_6os65.js                 [39m[1m[2m  1.83 kB[22m[1m[22m[2m │ gzip:  0.93 kB[22m[2m │ map:   2.07 kB[22m
+[2mdist/[22m[2massets/[22m[36minstagram-color-mpYK6j-d.js            [39m[1m[2m  2.03 kB[22m[1m[22m[2m │ gzip:  1.01 kB[22m[2m │ map:   2.43 kB[22m
+[2mdist/[22m[2massets/[22m[36mthreads-CqlNXfA-.js                    [39m[1m[2m  2.12 kB[22m[1m[22m[2m │ gzip:  1.18 kB[22m[2m │ map:   2.31 kB[22m
+[2mdist/[22m[2massets/[22m[36minstagram-color-fill-bCxPoEUk.js       [39m[1m[2m  2.15 kB[22m[1m[22m[2m │ gzip:  1.01 kB[22m[2m │ map:   2.55 kB[22m
+[2mdist/[22m[2massets/[22m[36mpdf-DuApUN4I.js                        [39m[1m[2m  2.17 kB[22m[1m[22m[2m │ gzip:  0.87 kB[22m[2m │ map:   2.34 kB[22m
+[2mdist/[22m[2massets/[22m[36mphone-line-CDL6LJmd.js                 [39m[1m[2m  2.53 kB[22m[1m[22m[2m │ gzip:  1.32 kB[22m[2m │ map:   2.77 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-1rpU-Vw8.js                      [39m[1m[2m  3.84 kB[22m[1m[22m[2m │ gzip:  1.76 kB[22m[2m │ map:  10.22 kB[22m
+[2mdist/[22m[2massets/[22m[36mpages/atoms/dropdown-odDldpHl.js       [39m[1m[2m  6.42 kB[22m[1m[22m[2m │ gzip:  2.44 kB[22m[2m │ map:  18.02 kB[22m
+[2mdist/[22m[2massets/[22m[36mpages/i18n/all-BtRVjkBC.js             [39m[1m[2m  8.05 kB[22m[1m[22m[2m │ gzip:  3.02 kB[22m[2m │ map:  20.88 kB[22m
+[2mdist/[22m[2massets/[22m[36mmain-CA_x4i1F.js                       [39m[1m[2m243.06 kB[22m[1m[22m[2m │ gzip: 61.02 kB[22m[2m │ map: 400.43 kB[22m
+[32m✓ built in 2.08s[39m
+Copying /Users/ht-2502/Documents/Code/design-system/apps/examples/dist to /Users/ht-2502/Documents/Code/design-system/apps/portal/dist/examples
+Building Storybook...
+Running: pnpm --filter @aiyazone/storybook run build:storybook
+
+> @aiyazone/storybook@0.1.1 build:storybook /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> pnpm run build
+
+
+> @aiyazone/storybook@0.1.1 build /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> storybook build -c ../../.storybook
+
+[1mstorybook v9.1.21
+[22m
+info => Cleaning outputDir: [36mstorybook-static[39m
+info => Loading presets
+info => Building manager..
+info => Building preview..
+No story files found for the specified pattern: [34m../../packages/i18n/src/**/*.stories.@(js|ts|mdx)[39m
+No story files found for the specified pattern: [34m../../packages/utils/src/**/*.stories.@(js|ts|mdx)[39m
+[36mvite v7.3.8 [32mbuilding client environment for production...[36m[39m
+transforming...
+info => Copying static files: [36m../../public[39m at [36mstorybook-static[39m
+info => Copying static files: [36m../portal/public/shared[39m at [36mstorybook-static/shared[39m
+[32m✓[39m 322 modules transformed.
+rendering chunks...
+[33m[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+[39m
+[33m[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+[39m
+computing gzip size...
+[2mstorybook-static/[22m[32miframe.html                                    [39m[1m[2m   20.07 kB[22m[1m[22m[2m │ gzip:   5.63 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[35miframe-BUQvc38A.css                     [39m[1m[2m   47.32 kB[22m[1m[22m[2m │ gzip:   5.47 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mclose-square-C1KT-yWF.js                [39m[1m[2m    0.28 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mradius-left-top-DMWXWt7z.js             [39m[1m[2m    0.30 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mradius-right-bottom-DzHC-hZi.js         [39m[1m[2m    0.31 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlamp-line-CngT6vmA.js                   [39m[1m[2m    0.38 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcart-line-CwiZSLYu.js                   [39m[1m[2m    0.43 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mreact-pYxR2ZoL.js                       [39m[1m[2m    0.46 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcheck-BOtKSUS9.js                       [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.31 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtent-line-Ch9T_jXL.js                   [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtwitter-BrE8kSYm.js                     [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mfacebook-Dee9YJfm.js                    [39m[1m[2m    0.47 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mfacebook-color-fill-B1Nq0myV.js         [39m[1m[2m    0.49 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mfacebook-fill-1iSD8yVB.js               [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtwitter-color-DxWfqNU1.js               [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtwitter-color-fill-CE0eNhwL.js          [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mfacebook-color-BaOoc0u6.js              [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtwitter-fill-BDmZRiZx.js                [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36memail-HVrgWlQi.js                       [39m[1m[2m    0.52 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtelegram-color-fill-BWF559oS.js         [39m[1m[2m    0.52 kB[22m[1m[22m[2m │ gzip:   0.37 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36memail-color-fill-ceZQV_EX.js            [39m[1m[2m    0.53 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36memail-fill-BNWfoN3d.js                  [39m[1m[2m    0.53 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36memail-color-DDlGKA-l.js                 [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-up-long-9p8VcVo0.js               [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtelegram-PHFpMhiA.js                    [39m[1m[2m    0.56 kB[22m[1m[22m[2m │ gzip:   0.38 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mhome-line-2-cneRXK4c.js                 [39m[1m[2m    0.56 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtelegram-fill-DNiWk0s1.js               [39m[1m[2m    0.57 kB[22m[1m[22m[2m │ gzip:   0.38 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtime-fill-XZKfAKpf.js                   [39m[1m[2m    0.58 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-right-long-mlJIx9Jh.js            [39m[1m[2m    0.58 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtelegram-color-CjFVyOv4.js              [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.40 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mbattery-line-qgPs_3pd.js                [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcheck-fill-Dhw21q-n.js                  [39m[1m[2m    0.61 kB[22m[1m[22m[2m │ gzip:   0.37 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mminus-B2Qe7Bnl.js                       [39m[1m[2m    0.64 kB[22m[1m[22m[2m │ gzip:   0.38 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-left-CbpbxjVJ.js                  [39m[1m[2m    0.64 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mhome-line-1-DFhFKg40.js                 [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-up-CxcOwgJU.js                    [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.42 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpinterest-CnU8hIXT.js                   [39m[1m[2m    0.70 kB[22m[1m[22m[2m │ gzip:   0.45 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtag-BD9GlTu7.js                         [39m[1m[2m    0.70 kB[22m[1m[22m[2m │ gzip:   0.43 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtiktok-CdqXaidV.js                      [39m[1m[2m    0.71 kB[22m[1m[22m[2m │ gzip:   0.42 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtiktok-color-fill-DrLg71fq.js           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.41 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtiktok-fill-B51e6RVW.js                 [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.41 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpinterest-color-BSjueacX.js             [39m[1m[2m    0.73 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtiktok-color-GqGyXgxo.js                [39m[1m[2m    0.74 kB[22m[1m[22m[2m │ gzip:   0.43 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpinterest-color-fill-BVZ9RHYH.js        [39m[1m[2m    0.75 kB[22m[1m[22m[2m │ gzip:   0.48 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpinterest-fill-D4WxedAg.js              [39m[1m[2m    0.75 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minfo-fill-jjGx71Eg.js                   [39m[1m[2m    0.76 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcalendar-line-DqfC0OZC.js               [39m[1m[2m    0.79 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplus-3VUwL8B1.js                        [39m[1m[2m    0.79 kB[22m[1m[22m[2m │ gzip:   0.45 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36manimate-CAvCrSsC.js                     [39m[1m[2m    0.79 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36myoutube-color-fill-BhAUocTg.js          [39m[1m[2m    0.80 kB[22m[1m[22m[2m │ gzip:   0.49 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36myoutube-fill-BnD2VuYJ.js                [39m[1m[2m    0.80 kB[22m[1m[22m[2m │ gzip:   0.49 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtruck-line-2-D35VzedZ.js                [39m[1m[2m    0.81 kB[22m[1m[22m[2m │ gzip:   0.37 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcheck-line-gLiNHk4X.js                  [39m[1m[2m    0.81 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36msearch-BQyPef98.js                      [39m[1m[2m    0.82 kB[22m[1m[22m[2m │ gzip:   0.42 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mquestion-DAcbj0hR.js                    [39m[1m[2m    0.84 kB[22m[1m[22m[2m │ gzip:   0.48 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-left-fill-DMc7BQk-.js             [39m[1m[2m    0.84 kB[22m[1m[22m[2m │ gzip:   0.50 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-right-fill-DjeDXHHb.js            [39m[1m[2m    0.84 kB[22m[1m[22m[2m │ gzip:   0.50 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36myoutube-CJ7xyDBz.js                     [39m[1m[2m    0.85 kB[22m[1m[22m[2m │ gzip:   0.51 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36marrow-up-fill-suA4rCuz.js               [39m[1m[2m    0.86 kB[22m[1m[22m[2m │ gzip:   0.50 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36myoutube-color-BPcd26MP.js               [39m[1m[2m    0.86 kB[22m[1m[22m[2m │ gzip:   0.52 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mclose-BT9GqDsG.js                       [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mstar-fill-B3W3pzNX.js                   [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.57 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mglobal-3A-pTdVR.js                      [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.55 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mheart-fill-CnlAvUfC.js                  [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.59 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36malert-fill-DwkN26n3.js                  [39m[1m[2m    1.00 kB[22m[1m[22m[2m │ gzip:   0.50 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplay-CTlENMai.js                        [39m[1m[2m    1.01 kB[22m[1m[22m[2m │ gzip:   0.58 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mrefer-a-friend-color-DX17Qkr4.js        [39m[1m[2m    1.02 kB[22m[1m[22m[2m │ gzip:   0.61 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mloading-DM7TiwXH.js                     [39m[1m[2m    1.03 kB[22m[1m[22m[2m │ gzip:   0.56 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mrefer-a-friend-DA9U66TM.js              [39m[1m[2m    1.03 kB[22m[1m[22m[2m │ gzip:   0.61 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mrefer-a-friend-color-fill-D7ObhvCx.js   [39m[1m[2m    1.04 kB[22m[1m[22m[2m │ gzip:   0.61 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mrefer-a-friend-fill-B3Wl_ODF.js         [39m[1m[2m    1.04 kB[22m[1m[22m[2m │ gzip:   0.60 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplay-fill-CWxnldgc.js                   [39m[1m[2m    1.08 kB[22m[1m[22m[2m │ gzip:   0.57 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplay-line-B85pyskB.js                   [39m[1m[2m    1.11 kB[22m[1m[22m[2m │ gzip:   0.58 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mshare-BCmXvC5V.js                       [39m[1m[2m    1.14 kB[22m[1m[22m[2m │ gzip:   0.62 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtruck-line-1-DkxN2X3R.js                [39m[1m[2m    1.17 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlink-D5SPc0zw.js                        [39m[1m[2m    1.22 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpreload-helper-PPVm8Dsz.js              [39m[1m[2m    1.23 kB[22m[1m[22m[2m │ gzip:   0.71 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mwhatsapp-CdwNrIJw.js                    [39m[1m[2m    1.23 kB[22m[1m[22m[2m │ gzip:   0.69 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mwhatsapp-color-BJ9Dczuf.js              [39m[1m[2m    1.24 kB[22m[1m[22m[2m │ gzip:   0.70 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlink-color-fill-s2kP_jaM.js             [39m[1m[2m    1.25 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlink-fill-B-AqT6Bm.js                   [39m[1m[2m    1.25 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minfo-line-Cf2lNKX2.js                   [39m[1m[2m    1.25 kB[22m[1m[22m[2m │ gzip:   0.60 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlink-color-5ihTZBm3.js                  [39m[1m[2m    1.25 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mwhatsapp-color-fill-B6sBHNSQ.js         [39m[1m[2m    1.26 kB[22m[1m[22m[2m │ gzip:   0.70 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mwhatsapp-fill-D_MsdoX4.js               [39m[1m[2m    1.26 kB[22m[1m[22m[2m │ gzip:   0.70 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplus-fill-D-UyFMn-.js                   [39m[1m[2m    1.27 kB[22m[1m[22m[2m │ gzip:   0.66 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlocation-MBupTsCG.js                    [39m[1m[2m    1.30 kB[22m[1m[22m[2m │ gzip:   0.67 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mclose-fill-DD3IAph6.js                  [39m[1m[2m    1.33 kB[22m[1m[22m[2m │ gzip:   0.67 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mquestion-fill-BQFauHM1.js               [39m[1m[2m    1.37 kB[22m[1m[22m[2m │ gzip:   0.64 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mphone-fill-dj6R33iN.js                  [39m[1m[2m    1.40 kB[22m[1m[22m[2m │ gzip:   0.77 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mlink-big-4uBnFSxX.js                    [39m[1m[2m    1.43 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mdownload-BXRx34ou.js                    [39m[1m[2m    1.43 kB[22m[1m[22m[2m │ gzip:   0.76 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mreddit-CAJqQ37N.js                      [39m[1m[2m    1.45 kB[22m[1m[22m[2m │ gzip:   0.73 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mdelete-fill-seFyLMBm.js                 [39m[1m[2m    1.45 kB[22m[1m[22m[2m │ gzip:   0.80 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mreddit-color-MUV_sN6b.js                [39m[1m[2m    1.45 kB[22m[1m[22m[2m │ gzip:   0.74 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtime-line-FBCBwdih.js                   [39m[1m[2m    1.48 kB[22m[1m[22m[2m │ gzip:   0.66 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mline-BYajnJIE.js                        [39m[1m[2m    1.49 kB[22m[1m[22m[2m │ gzip:   0.72 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mline-color-fill-CbcVRKoX.js             [39m[1m[2m    1.51 kB[22m[1m[22m[2m │ gzip:   0.73 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mline-fill-BxlmPMQa.js                   [39m[1m[2m    1.51 kB[22m[1m[22m[2m │ gzip:   0.72 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mline-color-BviKHOPd.js                  [39m[1m[2m    1.51 kB[22m[1m[22m[2m │ gzip:   0.74 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mquestion-line-mmrbDDaf.js               [39m[1m[2m    1.52 kB[22m[1m[22m[2m │ gzip:   0.69 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mreddit-color-fill-BziimOLe.js           [39m[1m[2m    1.57 kB[22m[1m[22m[2m │ gzip:   0.76 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mreddit-fill-DCTYBoWW.js                 [39m[1m[2m    1.57 kB[22m[1m[22m[2m │ gzip:   0.76 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36malert-line-DtoixnvO.js                  [39m[1m[2m    1.58 kB[22m[1m[22m[2m │ gzip:   0.55 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minstagram-BuiDNVoj.js                   [39m[1m[2m    1.61 kB[22m[1m[22m[2m │ gzip:   0.79 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mdelete-line-Cdu514fM.js                 [39m[1m[2m    1.62 kB[22m[1m[22m[2m │ gzip:   0.87 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mstar-line-CwCVr197.js                   [39m[1m[2m    1.71 kB[22m[1m[22m[2m │ gzip:   0.89 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mheart-line-ByP9XnuN.js                  [39m[1m[2m    1.76 kB[22m[1m[22m[2m │ gzip:   0.93 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mplus-line-BfbgHHxq.js                   [39m[1m[2m    1.77 kB[22m[1m[22m[2m │ gzip:   0.85 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minstagram-fill-CglGP3_g.js              [39m[1m[2m    1.78 kB[22m[1m[22m[2m │ gzip:   0.83 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mclose-line-DQpfOlNJ.js                  [39m[1m[2m    1.78 kB[22m[1m[22m[2m │ gzip:   0.88 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mwelcome-D8IOcpGo.js                     [39m[1m[2m    1.89 kB[22m[1m[22m[2m │ gzip:   1.07 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mDocsRenderer-PQXLIZUC-lfprI-tb.js       [39m[1m[2m    1.94 kB[22m[1m[22m[2m │ gzip:   0.98 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minstagram-color-BCJmISSe.js             [39m[1m[2m    1.97 kB[22m[1m[22m[2m │ gzip:   0.96 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-checkbox.stories-B0ObURye.js       [39m[1m[2m    2.00 kB[22m[1m[22m[2m │ gzip:   0.78 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mthreads-T5vrJ48z.js                     [39m[1m[2m    2.07 kB[22m[1m[22m[2m │ gzip:   1.12 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36minstagram-color-fill-DqD0TA8W.js        [39m[1m[2m    2.10 kB[22m[1m[22m[2m │ gzip:   0.97 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mpdf-CegYDcUQ.js                         [39m[1m[2m    2.13 kB[22m[1m[22m[2m │ gzip:   0.83 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mphone-line-gIc0VJUh.js                  [39m[1m[2m    2.48 kB[22m[1m[22m[2m │ gzip:   1.26 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mz-index-BlT6EI4b.js                     [39m[1m[2m    2.72 kB[22m[1m[22m[2m │ gzip:   1.46 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-spinner.stories-CXq7mY7z.js        [39m[1m[2m    3.77 kB[22m[1m[22m[2m │ gzip:   0.98 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mradius-B_OJ56MB.js                      [39m[1m[2m    4.14 kB[22m[1m[22m[2m │ gzip:   1.45 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtheme-architecture-Cfi_pb5t.js          [39m[1m[2m    4.34 kB[22m[1m[22m[2m │ gzip:   1.68 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mresponsive-design-BrF0Z7dF.js           [39m[1m[2m    4.94 kB[22m[1m[22m[2m │ gzip:   2.36 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcolors-IlwafbvR.js                      [39m[1m[2m    5.62 kB[22m[1m[22m[2m │ gzip:   2.10 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36msize-and-spacing-TJ9GNLbq.js            [39m[1m[2m    5.88 kB[22m[1m[22m[2m │ gzip:   1.88 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-popover.stories-TbWUV-XJ.js        [39m[1m[2m    6.06 kB[22m[1m[22m[2m │ gzip:   1.38 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mi18n-BKeODZ3I.js                        [39m[1m[2m    6.65 kB[22m[1m[22m[2m │ gzip:   2.96 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mfont-BNAM-K_W.js                        [39m[1m[2m    7.15 kB[22m[1m[22m[2m │ gzip:   2.48 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-toast.stories-Dw7tt4c1.js          [39m[1m[2m    7.21 kB[22m[1m[22m[2m │ gzip:   1.54 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-tooltip.stories-D8Y76QQW.js        [39m[1m[2m    7.43 kB[22m[1m[22m[2m │ gzip:   1.52 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-badge.stories-DlHUAKXh.js          [39m[1m[2m    7.62 kB[22m[1m[22m[2m │ gzip:   2.22 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-filter-select.stories-3x-EhZQP.js  [39m[1m[2m    7.79 kB[22m[1m[22m[2m │ gzip:   2.79 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-dropdown.stories-Ch0hsgp2.js       [39m[1m[2m    9.61 kB[22m[1m[22m[2m │ gzip:   3.07 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mtypography-CJzVkLPQ.js                  [39m[1m[2m   11.45 kB[22m[1m[22m[2m │ gzip:   2.31 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mcolors-spec-BQUo9PrS.js                 [39m[1m[2m   11.95 kB[22m[1m[22m[2m │ gzip:   2.44 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-button.stories-BFeY36EW.js         [39m[1m[2m   16.66 kB[22m[1m[22m[2m │ gzip:   3.47 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mzone-dialog.stories-C-s_5Kbj.js         [39m[1m[2m   17.85 kB[22m[1m[22m[2m │ gzip:   3.73 kB[22m
+[2mstorybook-static/[22m[36mvite-inject-mocker-entry.js                    [39m[1m[2m   28.30 kB[22m[1m[22m[2m │ gzip:   9.84 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mColor-AVL7NMMY-C_ifUAJT.js              [39m[1m[2m   29.13 kB[22m[1m[22m[2m │ gzip:  11.00 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mmatchers-7Z3WT2CE-CcSi9QFY.js           [39m[1m[2m   29.66 kB[22m[1m[22m[2m │ gzip:  10.29 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36maxe-DJOdZOYT.js                         [39m[1m[33m  675.80 kB[39m[22m[2m │ gzip: 193.80 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36mblocks-CrtT-898.js                      [39m[1m[33m  785.16 kB[39m[22m[2m │ gzip: 252.37 kB[22m
+[2mstorybook-static/[22m[2massets/[22m[36miframe-BP8YQVdi.js                      [39m[1m[33m1,268.96 kB[39m[22m[2m │ gzip: 345.89 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 1m 3s[39m
+info => Output directory: /Users/ht-2502/Documents/Code/design-system/apps/storybook/storybook-static
+Copying /Users/ht-2502/Documents/Code/design-system/apps/storybook/storybook-static to /Users/ht-2502/Documents/Code/design-system/apps/portal/dist/storybook
+Building Icons gallery assets...
+Running: node apps/portal/scripts/build-icons-manifest.mjs
+✓ 图标清单：113 个（system 59 / social-media 54）→ dist/icons/icons-manifest.json
+All builds completed successfully!
+Portal is ready at: /Users/ht-2502/Documents/Code/design-system/apps/portal/dist

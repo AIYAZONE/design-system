@@ -2,7 +2,7 @@
 
 > ZDS 提供可版本化的设计令牌、Lit 自定义元素、SVG 图标和生成的组件 API 说明。
 > 自定义元素可用于原生 HTML 页面，并可接入支持 Web Components 的前端框架；具体接入方式以目标框架文档为准。
-> 版本：@aiyazone/design-system@0.3.2（版本不同请勿使用缓存）
+> 版本：@aiyazone/design-system@0.4.0（版本不同请勿使用缓存）
 
 ## AI 参考说明
 
@@ -20,16 +20,16 @@
 ## 安装
 
 ```bash
-pnpm add @aiyazone/design-system   # 总包：组件 + 主题样式（也可按需只用 @aiyazone/core 与 @aiyazone/tokens）
+pnpm add @aiyazone/design-system lit   # 公开组件总包，共享应用的 Lit 3
+# 令牌可单独安装 @aiyazone/tokens；core/icons/i18n/utils 是内部工作区模块
 ```
 
 ```js
 import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
+import '@aiyazone/design-system/index-v3.css';   // 完整主题
 ```
 
-```html
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">   <!-- 完整主题 -->
-```
+静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。新 CDN 入口当前仅本地验收，尚未发布；线上 0.3.2 继续使用旧入口。接入与回退方法见仓库 README §5.2。
 
 ## 组件索引
 
@@ -103,18 +103,24 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
 - **测试**：7 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-badge size="small">内容</zone-badge>
 ```
 
@@ -164,18 +170,24 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
 - **测试**：33 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-button variant="primary">内容</zone-button>
 ```
 
@@ -255,18 +267,24 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-checkbox>内容</zone-checkbox>
 ```
 
@@ -328,18 +346,24 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
 - **测试**：8 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-dialog size="extra">内容</zone-dialog>
 ```
 
@@ -391,18 +415,24 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
 - **测试**：29 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-dropdown>内容</zone-dropdown>
 ```
 
@@ -463,18 +493,24 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
 - **测试**：52 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-filter-select>内容</zone-filter-select>
 ```
 
@@ -553,18 +589,24 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
 - **测试**：2 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-popover>内容</zone-popover>
 ```
 
@@ -621,18 +663,24 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-spinner>内容</zone-spinner>
 ```
 
@@ -661,18 +709,24 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
 - **测试**：0 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-toast variant="info">内容</zone-toast>
 ```
 
@@ -746,18 +800,24 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
 - **测试**：5 个用例
-- **包**：`@aiyazone/design-system@0.3.2`（组件源码：`@aiyazone/core@0.1.9`）
+- **包**：`@aiyazone/design-system@0.4.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
 
+npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：
+
+```bash
+pnpm add @aiyazone/design-system lit
+```
+
+```js
+import '@aiyazone/design-system';
+import '@aiyazone/design-system/index-v3.css';
+```
+
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+
 ```html
-<!-- 1. 引入主题样式（完整主题；仅需令牌可用 @aiyazone/tokens/dist/tokens.css） -->
-<link rel="stylesheet" href="@aiyazone/design-system/index-v3.css">
-
-<!-- 2. 注册组件（总包一次注册全部 zone-*） -->
-<script type="module">import '@aiyazone/design-system';</script>
-
-<!-- 3. 使用 -->
 <zone-tooltip>内容</zone-tooltip>
 ```
 

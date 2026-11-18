@@ -1,0 +1,864 @@
+
+> @aiyazone/design-system@0.3.2 portal:build:all /Users/ht-2502/Documents/Code/design-system
+> pnpm --filter @aiyazone/portal run build:all
+
+
+> @aiyazone/portal@0.0.1 build:all /Users/ht-2502/Documents/Code/design-system/apps/portal
+> node scripts/build-all.mjs
+
+Building Monorepo packages...
+Running: pnpm run build
+
+> @aiyazone/design-system@0.3.2 build /Users/ht-2502/Documents/Code/design-system
+> turbo run build --filter=!@aiyazone/examples --filter=!@aiyazone/storybook
+
+
+   • Packages in scope: @aiyazone/core, @aiyazone/eslint-config, @aiyazone/i18n, @aiyazone/icons, @aiyazone/portal, @aiyazone/tokens, @aiyazone/tsconfig, @aiyazone/utils
+   • Running build in 8 packages
+   • Remote caching disabled
+
+@aiyazone/tokens:build: cache miss, executing 54647fb61b658ffb
+@aiyazone/utils:build: cache miss, executing 92a2d6a9cc551f64
+@aiyazone/utils:build: 
+@aiyazone/utils:build: > @aiyazone/utils@0.1.0 build /Users/ht-2502/Documents/Code/design-system/packages/utils
+@aiyazone/utils:build: > vite build
+@aiyazone/utils:build: 
+@aiyazone/tokens:build: 
+@aiyazone/tokens:build: > @aiyazone/tokens@0.1.0 build /Users/ht-2502/Documents/Code/design-system/packages/tokens
+@aiyazone/tokens:build: > node scripts/build.mjs
+@aiyazone/tokens:build: 
+@aiyazone/tokens:build: generated: src/styles/zone/generated-tokens.less
+@aiyazone/tokens:build: generated: src/styles/themes/v3/generated-tokens.less
+@aiyazone/tokens:build: generated: packages/tokens/dist/tokens.css
+@aiyazone/tokens:build: generated: packages/tokens/dist/tokens.ts
+@aiyazone/tokens:build: done.
+@aiyazone/utils:build: vite v7.3.8 building client environment for production...
+@aiyazone/utils:build: transforming...
+@aiyazone/utils:build: ✓ 13 modules transformed.
+@aiyazone/utils:build: rendering chunks...
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: 
+@aiyazone/utils:build: [unplugin:dts] Start generate declaration files...
+@aiyazone/utils:build: computing gzip size...
+@aiyazone/utils:build: dist/common.js        0.42 kB │ gzip: 0.31 kB │ map: 1.58 kB
+@aiyazone/utils:build: dist/elements.js      0.49 kB │ gzip: 0.34 kB │ map: 1.34 kB
+@aiyazone/utils:build: dist/event.js         0.68 kB │ gzip: 0.43 kB │ map: 2.42 kB
+@aiyazone/utils:build: dist/form-control.js  0.94 kB │ gzip: 0.47 kB │ map: 4.77 kB
+@aiyazone/utils:build: dist/index.js         1.28 kB │ gzip: 0.70 kB │ map: 2.96 kB
+@aiyazone/utils:build: [unplugin:dts] Declaration files built in 840ms.
+@aiyazone/utils:build: 
+@aiyazone/utils:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/utils:build: dist/event.cjs         0.39 kB │ gzip: 0.28 kB │ map: 2.32 kB
+@aiyazone/utils:build: dist/elements.cjs      0.42 kB │ gzip: 0.31 kB │ map: 1.31 kB
+@aiyazone/utils:build: dist/common.cjs        0.45 kB │ gzip: 0.34 kB │ map: 1.58 kB
+@aiyazone/utils:build: dist/form-control.cjs  0.86 kB │ gzip: 0.48 kB │ map: 4.64 kB
+@aiyazone/utils:build: dist/index.cjs         1.01 kB │ gzip: 0.52 kB │ map: 2.86 kB
+@aiyazone/utils:build: ✓ built in 1.03s
+@aiyazone/i18n:build: cache miss, executing 9692f4ea10450136
+@aiyazone/icons:build: cache miss, executing 9ed89d4f57966fcb
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: > @aiyazone/i18n@0.1.1 build /Users/ht-2502/Documents/Code/design-system/packages/i18n
+@aiyazone/i18n:build: > vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/i18n:build: 
+@aiyazone/icons:build: 
+@aiyazone/icons:build: > @aiyazone/icons@0.1.3 build /Users/ht-2502/Documents/Code/design-system/packages/icons
+@aiyazone/icons:build: > tsc && vite build && rollup -c ../../scripts/build-package-types.rollup.config.mjs
+@aiyazone/icons:build: 
+@aiyazone/i18n:build: vite v7.3.8 building client environment for production...
+@aiyazone/i18n:build: transforming...
+@aiyazone/i18n:build: ✓ 20 modules transformed.
+@aiyazone/i18n:build: rendering chunks...
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: computing gzip size...
+@aiyazone/i18n:build: dist/index.es.js  38.97 kB │ gzip: 13.40 kB │ map: 33.70 kB
+@aiyazone/i18n:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/i18n:build: dist/index.cjs  33.66 kB │ gzip: 12.68 kB │ map: 32.61 kB
+@aiyazone/i18n:build: ✓ built in 272ms
+@aiyazone/i18n:build: 
+@aiyazone/i18n:build: /Users/ht-2502/Documents/Code/design-system/packages/i18n/src/index.ts → dist/index.d.ts...
+@aiyazone/icons:build: vite v7.3.8 building client environment for production...
+@aiyazone/icons:build: transforming...
+@aiyazone/icons:build: ✓ 119 modules transformed.
+@aiyazone/icons:build: rendering chunks...
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: computing gzip size...
+@aiyazone/icons:build: dist/chunks/close-square-Cr81q2eI.js                0.34 kB │ gzip: 0.25 kB │ map:  0.55 kB
+@aiyazone/icons:build: dist/chunks/radius-left-top-B3jngAd7.js             0.37 kB │ gzip: 0.29 kB │ map:  0.54 kB
+@aiyazone/icons:build: dist/chunks/radius-right-bottom-DGUdyN8A.js         0.37 kB │ gzip: 0.30 kB │ map:  0.55 kB
+@aiyazone/icons:build: dist/chunks/lamp-line-uKVXL1H4.js                   0.44 kB │ gzip: 0.31 kB │ map:  0.64 kB
+@aiyazone/icons:build: dist/chunks/cart-line-Cg_JjUQI.js                   0.48 kB │ gzip: 0.34 kB │ map:  0.68 kB
+@aiyazone/icons:build: dist/chunks/check-BI2YA8g2.js                       0.52 kB │ gzip: 0.35 kB │ map:  0.72 kB
+@aiyazone/icons:build: dist/chunks/tent-line-6N2gut_C.js                   0.52 kB │ gzip: 0.33 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/twitter-uBdUKfuT.js                     0.52 kB │ gzip: 0.38 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/facebook-Cm3Ggkq_.js                    0.53 kB │ gzip: 0.38 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/facebook-fill-BEXA7BXT.js               0.55 kB │ gzip: 0.39 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/twitter-color-DeXVkFJM.js               0.56 kB │ gzip: 0.40 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/facebook-color-fill-BVZBzi_8.js         0.56 kB │ gzip: 0.39 kB │ map:  0.81 kB
+@aiyazone/icons:build: dist/chunks/twitter-fill-CDfJarUM.js                0.56 kB │ gzip: 0.39 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/facebook-color-Ct1gQ3fV.js              0.56 kB │ gzip: 0.40 kB │ map:  0.81 kB
+@aiyazone/icons:build: dist/chunks/twitter-color-fill-Cn5ePnDQ.js          0.56 kB │ gzip: 0.40 kB │ map:  0.82 kB
+@aiyazone/icons:build: dist/chunks/email-suqgggeE.js                       0.57 kB │ gzip: 0.38 kB │ map:  0.79 kB
+@aiyazone/icons:build: dist/chunks/telegram-color-fill-gDWNsKyt.js         0.59 kB │ gzip: 0.42 kB │ map:  0.79 kB
+@aiyazone/icons:build: dist/chunks/email-fill-C4tDSVZS.js                  0.59 kB │ gzip: 0.39 kB │ map:  0.82 kB
+@aiyazone/icons:build: dist/chunks/email-color-fill-B4tVBoPD.js            0.60 kB │ gzip: 0.40 kB │ map:  0.84 kB
+@aiyazone/icons:build: dist/chunks/email-color-DsQnlpui.js                 0.61 kB │ gzip: 0.40 kB │ map:  0.85 kB
+@aiyazone/icons:build: dist/chunks/telegram-iVi8OG-4.js                    0.61 kB │ gzip: 0.43 kB │ map:  0.84 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-long-D1h18Xnh.js               0.61 kB │ gzip: 0.38 kB │ map:  0.83 kB
+@aiyazone/icons:build: dist/chunks/home-line-2-DSLtJP86.js                 0.61 kB │ gzip: 0.34 kB │ map:  0.86 kB
+@aiyazone/icons:build: dist/chunks/telegram-fill-BSTQgJWl.js               0.63 kB │ gzip: 0.43 kB │ map:  0.87 kB
+@aiyazone/icons:build: dist/chunks/time-fill-BfXmCKJO.js                   0.63 kB │ gzip: 0.40 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-long-DMIoTViY.js            0.64 kB │ gzip: 0.41 kB │ map:  0.87 kB
+@aiyazone/icons:build: dist/chunks/telegram-color-DX5sqUNP.js              0.65 kB │ gzip: 0.45 kB │ map:  0.90 kB
+@aiyazone/icons:build: dist/chunks/battery-line-Dj2z7MZh.js                0.65 kB │ gzip: 0.38 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/check-fill-C9q1mTsW.js                  0.67 kB │ gzip: 0.42 kB │ map:  0.95 kB
+@aiyazone/icons:build: dist/chunks/minus-Dl05_5EM.js                       0.69 kB │ gzip: 0.43 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/arrow-left-CstGoxlO.js                  0.70 kB │ gzip: 0.44 kB │ map:  0.92 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-CpEJm37W.js                    0.73 kB │ gzip: 0.47 kB │ map:  0.94 kB
+@aiyazone/icons:build: dist/chunks/home-line-1-Bh1-vRO3.js                 0.73 kB │ gzip: 0.36 kB │ map:  1.02 kB
+@aiyazone/icons:build: dist/chunks/arrow-down-BKyORfPe.js                  0.73 kB │ gzip: 0.47 kB │ map:  0.94 kB
+@aiyazone/icons:build: dist/chunks/tag-CemJP-oQ.js                         0.75 kB │ gzip: 0.47 kB │ map:  0.99 kB
+@aiyazone/icons:build: dist/chunks/pinterest-CU08GFLS.js                   0.75 kB │ gzip: 0.50 kB │ map:  0.98 kB
+@aiyazone/icons:build: dist/chunks/tiktok-A8YlqQ6N.js                      0.76 kB │ gzip: 0.46 kB │ map:  1.00 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-BilmN3EK.js                 0.78 kB │ gzip: 0.49 kB │ map:  0.99 kB
+@aiyazone/icons:build: dist/chunks/tiktok-color-fill-NHHgmJFl.js           0.78 kB │ gzip: 0.47 kB │ map:  1.05 kB
+@aiyazone/icons:build: dist/chunks/tiktok-fill-C2VTndCJ.js                 0.78 kB │ gzip: 0.46 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/pinterest-color-BqbjzgHb.js             0.79 kB │ gzip: 0.52 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/tiktok-color-BQn9V4e8.js                0.80 kB │ gzip: 0.48 kB │ map:  1.06 kB
+@aiyazone/icons:build: dist/chunks/pinterest-fill-BkU4QZri.js              0.81 kB │ gzip: 0.52 kB │ map:  1.06 kB
+@aiyazone/icons:build: dist/chunks/info-fill-D5uoHPQC.js                   0.82 kB │ gzip: 0.49 kB │ map:  1.07 kB
+@aiyazone/icons:build: dist/chunks/pinterest-color-fill-Bp7jpud_.js        0.82 kB │ gzip: 0.53 kB │ map:  1.08 kB
+@aiyazone/icons:build: dist/chunks/plus-ChmO25C3.js                        0.84 kB │ gzip: 0.49 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/calendar-line-CALrooE8.js               0.85 kB │ gzip: 0.44 kB │ map:  1.12 kB
+@aiyazone/icons:build: dist/chunks/youtube-fill-DRsM8YBD.js                0.86 kB │ gzip: 0.54 kB │ map:  1.11 kB
+@aiyazone/icons:build: dist/chunks/truck-line-2-CU7S7Iuq.js                0.87 kB │ gzip: 0.42 kB │ map:  1.22 kB
+@aiyazone/icons:build: dist/chunks/youtube-color-fill-0KRTaQbB.js          0.87 kB │ gzip: 0.55 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/check-line-BxU4o-xt.js                  0.87 kB │ gzip: 0.50 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/search-BbwqgZ3Q.js                      0.87 kB │ gzip: 0.46 kB │ map:  1.05 kB
+@aiyazone/icons:build: dist/chunks/question-EHaqyQ5o.js                    0.90 kB │ gzip: 0.53 kB │ map:  1.11 kB
+@aiyazone/icons:build: dist/chunks/arrow-left-fill-BN78INHL.js             0.90 kB │ gzip: 0.55 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-fill-B8pV6h50.js            0.91 kB │ gzip: 0.55 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/youtube-CtygV3it.js                     0.91 kB │ gzip: 0.56 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-fill-DyQLgDxz.js               0.91 kB │ gzip: 0.55 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/youtube-color-Cm-oIuwb.js               0.92 kB │ gzip: 0.57 kB │ map:  1.17 kB
+@aiyazone/icons:build: dist/chunks/close-BEKAczCB.js                       1.04 kB │ gzip: 0.58 kB │ map:  1.24 kB
+@aiyazone/icons:build: dist/chunks/global-C3jV6r1L.js                      1.04 kB │ gzip: 0.60 kB │ map:  1.31 kB
+@aiyazone/icons:build: dist/chunks/star-fill-BDme83Hs.js                   1.04 kB │ gzip: 0.62 kB │ map:  1.26 kB
+@aiyazone/icons:build: dist/chunks/heart-fill-Clp7AEaT.js                  1.05 kB │ gzip: 0.65 kB │ map:  1.26 kB
+@aiyazone/icons:build: dist/chunks/alert-fill-Sug-y3qj.js                  1.06 kB │ gzip: 0.54 kB │ map:  1.39 kB
+@aiyazone/icons:build: dist/chunks/play-Coj-avdP.js                        1.06 kB │ gzip: 0.63 kB │ map:  1.34 kB
+@aiyazone/icons:build: dist/chunks/loading-BhQE8FoO.js                     1.08 kB │ gzip: 0.62 kB │ map:  1.27 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-color-CrbsPZb0.js        1.09 kB │ gzip: 0.67 kB │ map:  1.34 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-x5YKUXA7.js              1.09 kB │ gzip: 0.66 kB │ map:  1.33 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-fill-CYJAcyPa.js         1.10 kB │ gzip: 0.67 kB │ map:  1.35 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-color-fill-cYjXUC4F.js   1.11 kB │ gzip: 0.67 kB │ map:  1.37 kB
+@aiyazone/icons:build: dist/chunks/play-fill-BVl0o-Sr.js                   1.13 kB │ gzip: 0.61 kB │ map:  1.38 kB
+@aiyazone/icons:build: dist/chunks/play-line-Djb7qWjy.js                   1.17 kB │ gzip: 0.63 kB │ map:  1.42 kB
+@aiyazone/icons:build: dist/chunks/share-CLGx3pZg.js                       1.19 kB │ gzip: 0.67 kB │ map:  1.39 kB
+@aiyazone/icons:build: dist/chunks/truck-line-1-DIYBzLlj.js                1.23 kB │ gzip: 0.59 kB │ map:  1.61 kB
+@aiyazone/icons:build: dist/chunks/link-CwCcHsyk.js                        1.27 kB │ gzip: 0.68 kB │ map:  1.52 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-Chk-IuqK.js                    1.29 kB │ gzip: 0.74 kB │ map:  1.52 kB
+@aiyazone/icons:build: dist/chunks/link-fill-DLWyWbP6.js                   1.30 kB │ gzip: 0.70 kB │ map:  1.56 kB
+@aiyazone/icons:build: dist/chunks/info-line-ft1jQUug.js                   1.30 kB │ gzip: 0.64 kB │ map:  1.64 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-color-yTuoP1Fl.js              1.30 kB │ gzip: 0.75 kB │ map:  1.55 kB
+@aiyazone/icons:build: dist/chunks/link-color-fill-B_3Oxl-O.js             1.31 kB │ gzip: 0.71 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/link-color-COg92nuz.js                  1.31 kB │ gzip: 0.70 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-fill-VoGqYBq5.js               1.32 kB │ gzip: 0.75 kB │ map:  1.57 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-color-fill-C6-l7T68.js         1.33 kB │ gzip: 0.76 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/plus-fill-Co2Z6kcs.js                   1.33 kB │ gzip: 0.71 kB │ map:  1.54 kB
+@aiyazone/icons:build: dist/chunks/location-CkJOIb5w.js                    1.35 kB │ gzip: 0.72 kB │ map:  1.55 kB
+@aiyazone/icons:build: dist/chunks/close-fill-CLIKCGGe.js                  1.39 kB │ gzip: 0.72 kB │ map:  1.60 kB
+@aiyazone/icons:build: dist/chunks/question-fill-DnzJWHIx.js               1.43 kB │ gzip: 0.69 kB │ map:  1.77 kB
+@aiyazone/icons:build: dist/chunks/phone-fill-BUtq80Mu.js                  1.46 kB │ gzip: 0.82 kB │ map:  1.67 kB
+@aiyazone/icons:build: dist/chunks/link-big-CdB_ic6u.js                    1.48 kB │ gzip: 0.68 kB │ map:  1.64 kB
+@aiyazone/icons:build: dist/chunks/download-DWo7Fuz1.js                    1.48 kB │ gzip: 0.81 kB │ map:  1.73 kB
+@aiyazone/icons:build: dist/chunks/reddit-BCWvqlEM.js                      1.50 kB │ gzip: 0.78 kB │ map:  1.73 kB
+@aiyazone/icons:build: dist/chunks/delete-fill-Cf0HMRnJ.js                 1.51 kB │ gzip: 0.85 kB │ map:  1.72 kB
+@aiyazone/icons:build: dist/chunks/reddit-color-OBLe4Zo0.js                1.51 kB │ gzip: 0.79 kB │ map:  1.75 kB
+@aiyazone/icons:build: dist/chunks/time-line-Dau-l5cU.js                   1.53 kB │ gzip: 0.70 kB │ map:  1.87 kB
+@aiyazone/icons:build: dist/chunks/line-C8R1Zvf1.js                        1.54 kB │ gzip: 0.76 kB │ map:  1.76 kB
+@aiyazone/icons:build: dist/chunks/line-fill-LteU0Grv.js                   1.56 kB │ gzip: 0.77 kB │ map:  1.80 kB
+@aiyazone/icons:build: dist/chunks/line-color-fill-Cx_iwqDh.js             1.57 kB │ gzip: 0.79 kB │ map:  1.82 kB
+@aiyazone/icons:build: dist/chunks/line-color-B_m-3xrD.js                  1.57 kB │ gzip: 0.79 kB │ map:  1.81 kB
+@aiyazone/icons:build: dist/chunks/question-line-BBO4pPfd.js               1.58 kB │ gzip: 0.74 kB │ map:  1.92 kB
+@aiyazone/icons:build: dist/chunks/reddit-fill-BH3-cqjL.js                 1.62 kB │ gzip: 0.81 kB │ map:  1.86 kB
+@aiyazone/icons:build: dist/chunks/reddit-color-fill-CK39SgOH.js           1.63 kB │ gzip: 0.82 kB │ map:  1.88 kB
+@aiyazone/icons:build: dist/chunks/alert-line-D4JXd4KD.js                  1.64 kB │ gzip: 0.59 kB │ map:  1.97 kB
+@aiyazone/icons:build: dist/chunks/instagram-DzepD-kc.js                   1.67 kB │ gzip: 0.84 kB │ map:  1.90 kB
+@aiyazone/icons:build: dist/chunks/delete-line-VJnYYV6O.js                 1.68 kB │ gzip: 0.93 kB │ map:  1.90 kB
+@aiyazone/icons:build: dist/chunks/star-line-TYUxn21G.js                   1.76 kB │ gzip: 0.94 kB │ map:  1.97 kB
+@aiyazone/icons:build: dist/chunks/heart-line-CUZzEEBj.js                  1.81 kB │ gzip: 0.99 kB │ map:  2.03 kB
+@aiyazone/icons:build: dist/chunks/plus-line-CLiq3LMK.js                   1.82 kB │ gzip: 0.90 kB │ map:  2.04 kB
+@aiyazone/icons:build: dist/chunks/instagram-fill-DbSpVp2W.js              1.84 kB │ gzip: 0.88 kB │ map:  2.09 kB
+@aiyazone/icons:build: dist/chunks/close-line-BYi8Z2rs.js                  1.84 kB │ gzip: 0.94 kB │ map:  2.05 kB
+@aiyazone/icons:build: dist/chunks/instagram-color-DB2m4rwp.js             2.03 kB │ gzip: 1.02 kB │ map:  2.41 kB
+@aiyazone/icons:build: dist/chunks/threads-DQ7JDEOX.js                     2.13 kB │ gzip: 1.19 kB │ map:  2.29 kB
+@aiyazone/icons:build: dist/chunks/instagram-color-fill-DUpnmic2.js        2.16 kB │ gzip: 1.01 kB │ map:  2.53 kB
+@aiyazone/icons:build: dist/chunks/pdf-uDF4g0M7.js                         2.17 kB │ gzip: 0.87 kB │ map:  2.32 kB
+@aiyazone/icons:build: dist/chunks/phone-line-CdWbVFnb.js                  2.54 kB │ gzip: 1.33 kB │ map:  2.75 kB
+@aiyazone/icons:build: dist/index.es.js                                   31.47 kB │ gzip: 4.24 kB │ map: 29.19 kB
+@aiyazone/icons:build: [vite-plugin-static-copy] Copied 113 items.
+@aiyazone/icons:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/icons:build: dist/chunks/close-square-LMPj4X2m.cjs                0.41 kB │ gzip: 0.31 kB │ map:  0.56 kB
+@aiyazone/icons:build: dist/chunks/radius-left-top-FTkkZxPL.cjs             0.44 kB │ gzip: 0.36 kB │ map:  0.54 kB
+@aiyazone/icons:build: dist/chunks/radius-right-bottom-CsBxw1cr.cjs         0.44 kB │ gzip: 0.35 kB │ map:  0.55 kB
+@aiyazone/icons:build: dist/chunks/lamp-line-CPzItHfv.cjs                   0.51 kB │ gzip: 0.36 kB │ map:  0.64 kB
+@aiyazone/icons:build: dist/chunks/cart-line-ClPrQ7Uy.cjs                   0.55 kB │ gzip: 0.40 kB │ map:  0.68 kB
+@aiyazone/icons:build: dist/chunks/check-CH4wsbBN.cjs                       0.59 kB │ gzip: 0.41 kB │ map:  0.72 kB
+@aiyazone/icons:build: dist/chunks/tent-line-D-rvnFCr.cjs                   0.59 kB │ gzip: 0.39 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/twitter-tj55MMNe.cjs                     0.59 kB │ gzip: 0.43 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/facebook-kDRb4zA4.cjs                    0.60 kB │ gzip: 0.44 kB │ map:  0.75 kB
+@aiyazone/icons:build: dist/chunks/facebook-fill-CxqaTARh.cjs               0.62 kB │ gzip: 0.44 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/twitter-color-Chd9XRYK.cjs               0.63 kB │ gzip: 0.46 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/facebook-color-fill-7aq_zvou.cjs         0.63 kB │ gzip: 0.45 kB │ map:  0.81 kB
+@aiyazone/icons:build: dist/chunks/twitter-fill-Bsh3Yr8f.cjs                0.63 kB │ gzip: 0.45 kB │ map:  0.80 kB
+@aiyazone/icons:build: dist/chunks/facebook-color-buHCFnT-.cjs              0.63 kB │ gzip: 0.46 kB │ map:  0.81 kB
+@aiyazone/icons:build: dist/chunks/twitter-color-fill-DOhoua4s.cjs          0.63 kB │ gzip: 0.45 kB │ map:  0.82 kB
+@aiyazone/icons:build: dist/chunks/email-O80EzLSY.cjs                       0.64 kB │ gzip: 0.44 kB │ map:  0.79 kB
+@aiyazone/icons:build: dist/chunks/telegram-color-fill-2BZNKoWy.cjs         0.66 kB │ gzip: 0.48 kB │ map:  0.79 kB
+@aiyazone/icons:build: dist/chunks/email-fill-dIy1lIzE.cjs                  0.66 kB │ gzip: 0.45 kB │ map:  0.82 kB
+@aiyazone/icons:build: dist/chunks/email-color-fill-D_dxBcrv.cjs            0.67 kB │ gzip: 0.45 kB │ map:  0.84 kB
+@aiyazone/icons:build: dist/chunks/email-color-CYuoedKd.cjs                 0.68 kB │ gzip: 0.46 kB │ map:  0.85 kB
+@aiyazone/icons:build: dist/chunks/telegram-BmOj2LC6.cjs                    0.68 kB │ gzip: 0.48 kB │ map:  0.84 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-long-55UZvYgD.cjs               0.68 kB │ gzip: 0.44 kB │ map:  0.83 kB
+@aiyazone/icons:build: dist/chunks/home-line-2-z3X_IBOK.cjs                 0.68 kB │ gzip: 0.40 kB │ map:  0.86 kB
+@aiyazone/icons:build: dist/chunks/telegram-fill-DT-PWZ5i.cjs               0.70 kB │ gzip: 0.49 kB │ map:  0.87 kB
+@aiyazone/icons:build: dist/chunks/time-fill-BMDxrrJM.cjs                   0.70 kB │ gzip: 0.45 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-long-Bie2Y0wD.cjs            0.71 kB │ gzip: 0.46 kB │ map:  0.88 kB
+@aiyazone/icons:build: dist/chunks/telegram-color-D8RQZJja.cjs              0.72 kB │ gzip: 0.51 kB │ map:  0.90 kB
+@aiyazone/icons:build: dist/chunks/battery-line-BVTOYx1c.cjs                0.72 kB │ gzip: 0.44 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/check-fill-taVVj5xZ.cjs                  0.74 kB │ gzip: 0.47 kB │ map:  0.95 kB
+@aiyazone/icons:build: dist/chunks/minus-DyHfKouV.cjs                       0.76 kB │ gzip: 0.49 kB │ map:  0.89 kB
+@aiyazone/icons:build: dist/chunks/arrow-left-Cf-Mldt6.cjs                  0.77 kB │ gzip: 0.50 kB │ map:  0.92 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-9TXcHovU.cjs                    0.80 kB │ gzip: 0.52 kB │ map:  0.94 kB
+@aiyazone/icons:build: dist/chunks/home-line-1-CUYr4hYG.cjs                 0.80 kB │ gzip: 0.43 kB │ map:  1.02 kB
+@aiyazone/icons:build: dist/chunks/arrow-down-BPwPQ1C3.cjs                  0.80 kB │ gzip: 0.53 kB │ map:  0.95 kB
+@aiyazone/icons:build: dist/chunks/tag-Dr9CFuvt.cjs                         0.82 kB │ gzip: 0.52 kB │ map:  0.99 kB
+@aiyazone/icons:build: dist/chunks/pinterest-DM9d9RDg.cjs                   0.82 kB │ gzip: 0.56 kB │ map:  0.99 kB
+@aiyazone/icons:build: dist/chunks/tiktok-Cjnz1M1N.cjs                      0.83 kB │ gzip: 0.52 kB │ map:  1.00 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-BvS4qPc4.cjs                 0.85 kB │ gzip: 0.54 kB │ map:  0.99 kB
+@aiyazone/icons:build: dist/chunks/tiktok-color-fill-BUCKdglz.cjs           0.85 kB │ gzip: 0.52 kB │ map:  1.05 kB
+@aiyazone/icons:build: dist/chunks/tiktok-fill-rtsZC128.cjs                 0.85 kB │ gzip: 0.52 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/pinterest-color-DvpjGqJK.cjs             0.86 kB │ gzip: 0.58 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/tiktok-color-DnaXglf-.cjs                0.87 kB │ gzip: 0.54 kB │ map:  1.06 kB
+@aiyazone/icons:build: dist/chunks/pinterest-fill-Q83tGwt6.cjs              0.88 kB │ gzip: 0.58 kB │ map:  1.06 kB
+@aiyazone/icons:build: dist/chunks/info-fill-DgEg9s7P.cjs                   0.89 kB │ gzip: 0.54 kB │ map:  1.07 kB
+@aiyazone/icons:build: dist/chunks/pinterest-color-fill-D-K7sgk-.cjs        0.89 kB │ gzip: 0.59 kB │ map:  1.08 kB
+@aiyazone/icons:build: dist/chunks/plus-D1EH1hKr.cjs                        0.91 kB │ gzip: 0.55 kB │ map:  1.04 kB
+@aiyazone/icons:build: dist/chunks/calendar-line-h6TOw_OO.cjs               0.92 kB │ gzip: 0.49 kB │ map:  1.12 kB
+@aiyazone/icons:build: dist/chunks/youtube-fill-Dr2X1hOV.cjs                0.93 kB │ gzip: 0.60 kB │ map:  1.11 kB
+@aiyazone/icons:build: dist/chunks/truck-line-2-Cszp2PV6.cjs                0.94 kB │ gzip: 0.48 kB │ map:  1.22 kB
+@aiyazone/icons:build: dist/chunks/youtube-color-fill-pHMb9-Yh.cjs          0.94 kB │ gzip: 0.61 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/check-line-f_3LVe8g.cjs                  0.94 kB │ gzip: 0.56 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/search-soVKa2kZ.cjs                      0.94 kB │ gzip: 0.52 kB │ map:  1.05 kB
+@aiyazone/icons:build: dist/chunks/question-Dwedastn.cjs                    0.97 kB │ gzip: 0.58 kB │ map:  1.11 kB
+@aiyazone/icons:build: dist/chunks/arrow-left-fill-DKDyes6j.cjs             0.97 kB │ gzip: 0.61 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/arrow-right-fill-ZmTy9N8-.cjs            0.98 kB │ gzip: 0.61 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/youtube-DND6Ezc6.cjs                     0.98 kB │ gzip: 0.62 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/arrow-up-fill-YH9N6UnS.cjs               0.98 kB │ gzip: 0.61 kB │ map:  1.13 kB
+@aiyazone/icons:build: dist/chunks/youtube-color-xvyD5qiW.cjs               0.99 kB │ gzip: 0.63 kB │ map:  1.17 kB
+@aiyazone/icons:build: dist/chunks/close-OmopKZ79.cjs                       1.11 kB │ gzip: 0.64 kB │ map:  1.24 kB
+@aiyazone/icons:build: dist/chunks/global-DhbcPj3L.cjs                      1.11 kB │ gzip: 0.66 kB │ map:  1.31 kB
+@aiyazone/icons:build: dist/chunks/star-fill-Cl1La928.cjs                   1.11 kB │ gzip: 0.68 kB │ map:  1.26 kB
+@aiyazone/icons:build: dist/chunks/heart-fill-CvQfYymA.cjs                  1.12 kB │ gzip: 0.71 kB │ map:  1.27 kB
+@aiyazone/icons:build: dist/chunks/alert-fill-DuJ8LZVW.cjs                  1.13 kB │ gzip: 0.60 kB │ map:  1.39 kB
+@aiyazone/icons:build: dist/chunks/play-D0aYMjwJ.cjs                        1.13 kB │ gzip: 0.68 kB │ map:  1.35 kB
+@aiyazone/icons:build: dist/chunks/loading-oQaXVnF7.cjs                     1.15 kB │ gzip: 0.68 kB │ map:  1.27 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-color-B4PS_wIK.cjs        1.16 kB │ gzip: 0.73 kB │ map:  1.34 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-B2gMy-Bk.cjs              1.16 kB │ gzip: 0.72 kB │ map:  1.33 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-fill-BIM5g6ZA.cjs         1.17 kB │ gzip: 0.73 kB │ map:  1.36 kB
+@aiyazone/icons:build: dist/chunks/refer-a-friend-color-fill-BWBTX_sg.cjs   1.18 kB │ gzip: 0.73 kB │ map:  1.37 kB
+@aiyazone/icons:build: dist/chunks/play-fill-D1IwkvrM.cjs                   1.20 kB │ gzip: 0.68 kB │ map:  1.38 kB
+@aiyazone/icons:build: dist/chunks/play-line-C8uMcdaj.cjs                   1.24 kB │ gzip: 0.69 kB │ map:  1.42 kB
+@aiyazone/icons:build: dist/chunks/share-Ch4ht_zp.cjs                       1.26 kB │ gzip: 0.73 kB │ map:  1.39 kB
+@aiyazone/icons:build: dist/chunks/truck-line-1-e3v8iHwV.cjs                1.30 kB │ gzip: 0.65 kB │ map:  1.61 kB
+@aiyazone/icons:build: dist/chunks/link-qDvx2jJK.cjs                        1.34 kB │ gzip: 0.74 kB │ map:  1.52 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-BoDrpfaA.cjs                    1.36 kB │ gzip: 0.80 kB │ map:  1.52 kB
+@aiyazone/icons:build: dist/chunks/link-fill-BONqi0xg.cjs                   1.37 kB │ gzip: 0.76 kB │ map:  1.56 kB
+@aiyazone/icons:build: dist/chunks/info-line-Cje6SKyq.cjs                   1.37 kB │ gzip: 0.70 kB │ map:  1.64 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-color-BUHjTKfy.cjs              1.37 kB │ gzip: 0.82 kB │ map:  1.55 kB
+@aiyazone/icons:build: dist/chunks/link-color-fill-zxZnbjbL.cjs             1.38 kB │ gzip: 0.77 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/link-color-jKQT-ogZ.cjs                  1.38 kB │ gzip: 0.76 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-fill-CRK9T-XY.cjs               1.39 kB │ gzip: 0.82 kB │ map:  1.57 kB
+@aiyazone/icons:build: dist/chunks/whatsapp-color-fill-BlateLGI.cjs         1.40 kB │ gzip: 0.83 kB │ map:  1.58 kB
+@aiyazone/icons:build: dist/chunks/plus-fill-Bh-TU_DI.cjs                   1.40 kB │ gzip: 0.78 kB │ map:  1.54 kB
+@aiyazone/icons:build: dist/chunks/location-RvHQlhHx.cjs                    1.42 kB │ gzip: 0.79 kB │ map:  1.55 kB
+@aiyazone/icons:build: dist/chunks/close-fill-E6Jo4ndF.cjs                  1.46 kB │ gzip: 0.78 kB │ map:  1.60 kB
+@aiyazone/icons:build: dist/chunks/question-fill-mxCyOpvd.cjs               1.50 kB │ gzip: 0.75 kB │ map:  1.77 kB
+@aiyazone/icons:build: dist/chunks/phone-fill-nO20JzBu.cjs                  1.53 kB │ gzip: 0.89 kB │ map:  1.67 kB
+@aiyazone/icons:build: dist/chunks/link-big-BLYQOQ3j.cjs                    1.55 kB │ gzip: 0.75 kB │ map:  1.65 kB
+@aiyazone/icons:build: dist/chunks/download-B3DkO_bX.cjs                    1.55 kB │ gzip: 0.88 kB │ map:  1.74 kB
+@aiyazone/icons:build: dist/chunks/reddit-B0D-oWG6.cjs                      1.57 kB │ gzip: 0.84 kB │ map:  1.73 kB
+@aiyazone/icons:build: dist/chunks/delete-fill-CdiAsm48.cjs                 1.58 kB │ gzip: 0.91 kB │ map:  1.73 kB
+@aiyazone/icons:build: dist/chunks/reddit-color-BdDjcjux.cjs                1.58 kB │ gzip: 0.85 kB │ map:  1.76 kB
+@aiyazone/icons:build: dist/chunks/time-line-BQz8dlIA.cjs                   1.60 kB │ gzip: 0.76 kB │ map:  1.87 kB
+@aiyazone/icons:build: dist/chunks/line-hgcsxgDR.cjs                        1.61 kB │ gzip: 0.83 kB │ map:  1.76 kB
+@aiyazone/icons:build: dist/chunks/line-fill-CvHUjD_K.cjs                   1.63 kB │ gzip: 0.84 kB │ map:  1.80 kB
+@aiyazone/icons:build: dist/chunks/line-color-fill-DqyrzwXa.cjs             1.64 kB │ gzip: 0.85 kB │ map:  1.82 kB
+@aiyazone/icons:build: dist/chunks/line-color-DXEmp9tI.cjs                  1.64 kB │ gzip: 0.85 kB │ map:  1.82 kB
+@aiyazone/icons:build: dist/chunks/question-line-CNpZwwcn.cjs               1.65 kB │ gzip: 0.80 kB │ map:  1.92 kB
+@aiyazone/icons:build: dist/chunks/reddit-fill-BVZZxiAw.cjs                 1.69 kB │ gzip: 0.88 kB │ map:  1.87 kB
+@aiyazone/icons:build: dist/chunks/reddit-color-fill-9RGKAkXL.cjs           1.70 kB │ gzip: 0.88 kB │ map:  1.88 kB
+@aiyazone/icons:build: dist/chunks/alert-line-BUGeJ_vD.cjs                  1.71 kB │ gzip: 0.65 kB │ map:  1.98 kB
+@aiyazone/icons:build: dist/chunks/instagram-AvuLDRp2.cjs                   1.74 kB │ gzip: 0.90 kB │ map:  1.90 kB
+@aiyazone/icons:build: dist/chunks/delete-line-_hoqNH8L.cjs                 1.75 kB │ gzip: 1.00 kB │ map:  1.90 kB
+@aiyazone/icons:build: dist/chunks/star-line-Cb54L7tE.cjs                   1.83 kB │ gzip: 1.00 kB │ map:  1.97 kB
+@aiyazone/icons:build: dist/chunks/heart-line-MNOKeMWW.cjs                  1.88 kB │ gzip: 1.06 kB │ map:  2.03 kB
+@aiyazone/icons:build: dist/chunks/plus-line-46Lv7beV.cjs                   1.89 kB │ gzip: 0.97 kB │ map:  2.04 kB
+@aiyazone/icons:build: dist/chunks/instagram-fill-CbPUELUt.cjs              1.91 kB │ gzip: 0.95 kB │ map:  2.09 kB
+@aiyazone/icons:build: dist/chunks/close-line-DoQrzPwb.cjs                  1.91 kB │ gzip: 1.00 kB │ map:  2.05 kB
+@aiyazone/icons:build: dist/chunks/instagram-color-kHhF96V_.cjs             2.10 kB │ gzip: 1.08 kB │ map:  2.41 kB
+@aiyazone/icons:build: dist/chunks/threads-Cf7imXk4.cjs                     2.20 kB │ gzip: 1.26 kB │ map:  2.29 kB
+@aiyazone/icons:build: dist/chunks/instagram-color-fill-Cl8MUha4.cjs        2.23 kB │ gzip: 1.07 kB │ map:  2.54 kB
+@aiyazone/icons:build: dist/chunks/pdf-BeRC59r3.cjs                         2.24 kB │ gzip: 0.94 kB │ map:  2.32 kB
+@aiyazone/icons:build: dist/chunks/phone-line-B5iQwMpK.cjs                  2.61 kB │ gzip: 1.39 kB │ map:  2.76 kB
+@aiyazone/icons:build: dist/index.cjs                                      35.29 kB │ gzip: 4.03 kB │ map: 33.67 kB
+@aiyazone/icons:build: ✓ built in 1.22s
+@aiyazone/icons:build: 
+@aiyazone/icons:build: ✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+@aiyazone/icons:build: dist//Users/ht-2502/Documents/Code/design-system/packages/icons/index.es.js.gz   30.73kb / gzip: 4.06kb
+@aiyazone/icons:build: 
+@aiyazone/icons:build: 
+@aiyazone/i18n:build: created dist/index.d.ts in 3.5s
+@aiyazone/core:build: cache miss, executing bbb8a70f81c14692
+@aiyazone/icons:build: 
+@aiyazone/icons:build: /Users/ht-2502/Documents/Code/design-system/packages/icons/src/index.ts → dist/index.d.ts...
+@aiyazone/core:build: 
+@aiyazone/core:build: > @aiyazone/core@0.1.9 build /Users/ht-2502/Documents/Code/design-system/packages/core
+@aiyazone/core:build: > vite build && rollup -c ../../scripts/build-core-types.rollup.config.mjs
+@aiyazone/core:build: 
+@aiyazone/core:build: vite v7.3.8 building client environment for production...
+@aiyazone/core:build: transforming...
+@aiyazone/icons:build: created dist/index.d.ts in 6.9s
+@aiyazone/core:build: ✓ 45 modules transformed.
+@aiyazone/core:build: rendering chunks...
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: computing gzip size...
+@aiyazone/core:build: dist/styles/index.css                    44.17 kB │ gzip: 5.43 kB
+@aiyazone/core:build: dist/chunks/decorators-CuQZomWl.js        0.15 kB │ gzip: 0.13 kB
+@aiyazone/core:build: dist/index.js                             1.65 kB │ gzip: 0.71 kB
+@aiyazone/core:build: dist/spinner/index.js                     1.82 kB │ gzip: 0.96 kB
+@aiyazone/core:build: dist/checkbox/index.js                    4.62 kB │ gzip: 1.89 kB
+@aiyazone/core:build: dist/badge/index.js                       4.98 kB │ gzip: 1.65 kB
+@aiyazone/core:build: dist/popover/index.js                     6.15 kB │ gzip: 2.06 kB
+@aiyazone/core:build: dist/tooltip/index.js                     6.37 kB │ gzip: 1.97 kB
+@aiyazone/core:build: dist/toast/index.js                       6.45 kB │ gzip: 2.39 kB
+@aiyazone/core:build: dist/dialog/index.js                     12.85 kB │ gzip: 4.12 kB
+@aiyazone/core:build: dist/chunks/internal-shared-n9javRSb.js  18.37 kB │ gzip: 2.06 kB
+@aiyazone/core:build: dist/filter-select/index.js              24.54 kB │ gzip: 6.67 kB
+@aiyazone/core:build: dist/chunks/floating-ui.dom-BS3B8OHI.js  26.52 kB │ gzip: 8.41 kB
+@aiyazone/core:build: dist/button/index.js                     33.38 kB │ gzip: 5.56 kB
+@aiyazone/core:build: dist/dropdown/index.js                   33.81 kB │ gzip: 9.63 kB
+@aiyazone/core:build: Lit 构建契约：npm 共享，内嵌 0 个 Lit 模块。
+@aiyazone/core:build: dist/styles/index.css                     44.17 kB │ gzip: 5.43 kB
+@aiyazone/core:build: dist/chunks/decorators-BzCoYcbl.cjs        0.44 kB │ gzip: 0.30 kB
+@aiyazone/core:build: dist/index.cjs                             1.74 kB │ gzip: 0.59 kB
+@aiyazone/core:build: dist/spinner/index.cjs                     1.83 kB │ gzip: 0.90 kB
+@aiyazone/core:build: dist/checkbox/index.cjs                    4.41 kB │ gzip: 1.72 kB
+@aiyazone/core:build: dist/badge/index.cjs                       4.97 kB │ gzip: 1.57 kB
+@aiyazone/core:build: dist/toast/index.cjs                       5.62 kB │ gzip: 1.98 kB
+@aiyazone/core:build: dist/popover/index.cjs                     5.68 kB │ gzip: 1.96 kB
+@aiyazone/core:build: dist/tooltip/index.cjs                     5.92 kB │ gzip: 1.82 kB
+@aiyazone/core:build: dist/dialog/index.cjs                     11.20 kB │ gzip: 3.21 kB
+@aiyazone/core:build: dist/chunks/floating-ui.dom-wukjC_sP.cjs  17.81 kB │ gzip: 7.14 kB
+@aiyazone/core:build: dist/chunks/internal-shared-yuij7l57.cjs  18.31 kB │ gzip: 2.04 kB
+@aiyazone/core:build: dist/filter-select/index.cjs              22.16 kB │ gzip: 5.81 kB
+@aiyazone/core:build: dist/dropdown/index.cjs                   29.52 kB │ gzip: 8.96 kB
+@aiyazone/core:build: dist/button/index.cjs                     32.91 kB │ gzip: 5.42 kB
+@aiyazone/core:build: ✓ built in 7.94s
+@aiyazone/core:build: 
+@aiyazone/core:build: /Users/ht-2502/Documents/Code/design-system/packages/core/src/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/badge/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/button/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/checkbox/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dialog/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/filter-select/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/popover/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/spinner/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/toast/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/tooltip/index.ts → dist...
+@aiyazone/core:build: created dist in 10.4s
+@aiyazone/portal:build: cache miss, executing e23fc10649f317d1
+@aiyazone/portal:build: 
+@aiyazone/portal:build: > @aiyazone/portal@0.0.1 build /Users/ht-2502/Documents/Code/design-system/apps/portal
+@aiyazone/portal:build: > tsc && vite build && node scripts/build-icons-manifest.mjs
+@aiyazone/portal:build: 
+@aiyazone/portal:build: vite v7.3.8 building client environment for production...
+@aiyazone/portal:build: transforming...
+@aiyazone/portal:build: ✓ 225 modules transformed.
+@aiyazone/portal:build: rendering chunks...
+@aiyazone/portal:build: [plugin vite:reporter] 
+@aiyazone/portal:build: (!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+@aiyazone/portal:build: 
+@aiyazone/portal:build: [plugin vite:reporter] 
+@aiyazone/portal:build: (!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+@aiyazone/portal:build: 
+@aiyazone/portal:build: computing gzip size...
+@aiyazone/portal:build: dist/architecture-reference.html                     1.17 kB │ gzip:  0.64 kB
+@aiyazone/portal:build: dist/index.html                                      1.19 kB │ gzip:  0.66 kB
+@aiyazone/portal:build: dist/architecture.html                               1.28 kB │ gzip:  0.69 kB
+@aiyazone/portal:build: dist/assets/architecture-BTs0il7g.css                6.55 kB │ gzip:  1.89 kB
+@aiyazone/portal:build: dist/assets/style-BYA0z7IM.css                      10.92 kB │ gzip:  2.79 kB
+@aiyazone/portal:build: dist/assets/panorama-C5QnHX16.css                   26.25 kB │ gzip:  5.69 kB
+@aiyazone/portal:build: dist/assets/main-BUQvc38A.css                       47.32 kB │ gzip:  5.47 kB
+@aiyazone/portal:build: dist/assets/close-square-C1KT-yWF.js                 0.28 kB │ gzip:  0.20 kB
+@aiyazone/portal:build: dist/assets/radius-left-top-DMWXWt7z.js              0.30 kB │ gzip:  0.24 kB
+@aiyazone/portal:build: dist/assets/radius-right-bottom-DzHC-hZi.js          0.31 kB │ gzip:  0.25 kB
+@aiyazone/portal:build: dist/assets/lamp-line-CngT6vmA.js                    0.38 kB │ gzip:  0.26 kB
+@aiyazone/portal:build: dist/assets/cart-line-CwiZSLYu.js                    0.43 kB │ gzip:  0.30 kB
+@aiyazone/portal:build: dist/assets/check-BOtKSUS9.js                        0.47 kB │ gzip:  0.31 kB
+@aiyazone/portal:build: dist/assets/tent-line-Ch9T_jXL.js                    0.47 kB │ gzip:  0.28 kB
+@aiyazone/portal:build: dist/assets/twitter-BrE8kSYm.js                      0.47 kB │ gzip:  0.33 kB
+@aiyazone/portal:build: dist/assets/facebook-Dee9YJfm.js                     0.47 kB │ gzip:  0.33 kB
+@aiyazone/portal:build: dist/assets/facebook-color-fill-B1Nq0myV.js          0.49 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/facebook-fill-1iSD8yVB.js                0.50 kB │ gzip:  0.33 kB
+@aiyazone/portal:build: dist/assets/twitter-color-DxWfqNU1.js                0.50 kB │ gzip:  0.35 kB
+@aiyazone/portal:build: dist/assets/twitter-color-fill-CE0eNhwL.js           0.50 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/facebook-color-BaOoc0u6.js               0.50 kB │ gzip:  0.35 kB
+@aiyazone/portal:build: dist/assets/twitter-fill-BDmZRiZx.js                 0.50 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/email-HVrgWlQi.js                        0.52 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/telegram-color-fill-BWF559oS.js          0.52 kB │ gzip:  0.37 kB
+@aiyazone/portal:build: dist/assets/email-color-fill-ceZQV_EX.js             0.53 kB │ gzip:  0.35 kB
+@aiyazone/portal:build: dist/assets/email-fill-BNWfoN3d.js                   0.53 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/email-color-DDlGKA-l.js                  0.55 kB │ gzip:  0.36 kB
+@aiyazone/portal:build: dist/assets/arrow-up-long-9p8VcVo0.js                0.55 kB │ gzip:  0.33 kB
+@aiyazone/portal:build: dist/assets/telegram-PHFpMhiA.js                     0.56 kB │ gzip:  0.38 kB
+@aiyazone/portal:build: dist/assets/home-line-2-cneRXK4c.js                  0.56 kB │ gzip:  0.30 kB
+@aiyazone/portal:build: dist/assets/telegram-fill-DNiWk0s1.js                0.57 kB │ gzip:  0.38 kB
+@aiyazone/portal:build: dist/assets/time-fill-XZKfAKpf.js                    0.58 kB │ gzip:  0.36 kB
+@aiyazone/portal:build: dist/assets/arrow-right-long-mlJIx9Jh.js             0.58 kB │ gzip:  0.35 kB
+@aiyazone/portal:build: dist/assets/telegram-color-CjFVyOv4.js               0.59 kB │ gzip:  0.40 kB
+@aiyazone/portal:build: dist/assets/battery-line-qgPs_3pd.js                 0.59 kB │ gzip:  0.34 kB
+@aiyazone/portal:build: dist/assets/check-fill-Dhw21q-n.js                   0.61 kB │ gzip:  0.37 kB
+@aiyazone/portal:build: dist/assets/minus-B2Qe7Bnl.js                        0.64 kB │ gzip:  0.38 kB
+@aiyazone/portal:build: dist/assets/arrow-left-CbpbxjVJ.js                   0.64 kB │ gzip:  0.39 kB
+@aiyazone/portal:build: dist/assets/home-line-1-DFhFKg40.js                  0.67 kB │ gzip:  0.32 kB
+@aiyazone/portal:build: dist/assets/arrow-up-CxcOwgJU.js                     0.67 kB │ gzip:  0.42 kB
+@aiyazone/portal:build: dist/assets/pinterest-CnU8hIXT.js                    0.70 kB │ gzip:  0.45 kB
+@aiyazone/portal:build: dist/assets/tag-BD9GlTu7.js                          0.70 kB │ gzip:  0.43 kB
+@aiyazone/portal:build: dist/assets/style-108r_wJz.js                        0.71 kB │ gzip:  0.40 kB
+@aiyazone/portal:build: dist/assets/tiktok-CdqXaidV.js                       0.71 kB │ gzip:  0.42 kB
+@aiyazone/portal:build: dist/assets/tiktok-color-fill-DrLg71fq.js            0.72 kB │ gzip:  0.41 kB
+@aiyazone/portal:build: dist/assets/tiktok-fill-B51e6RVW.js                  0.72 kB │ gzip:  0.41 kB
+@aiyazone/portal:build: dist/assets/pinterest-color-BSjueacX.js              0.73 kB │ gzip:  0.47 kB
+@aiyazone/portal:build: dist/assets/tiktok-color-GqGyXgxo.js                 0.74 kB │ gzip:  0.43 kB
+@aiyazone/portal:build: dist/assets/pinterest-color-fill-BVZ9RHYH.js         0.75 kB │ gzip:  0.48 kB
+@aiyazone/portal:build: dist/assets/pinterest-fill-D4WxedAg.js               0.75 kB │ gzip:  0.47 kB
+@aiyazone/portal:build: dist/assets/info-fill-jjGx71Eg.js                    0.76 kB │ gzip:  0.44 kB
+@aiyazone/portal:build: dist/assets/calendar-line-DqfC0OZC.js                0.79 kB │ gzip:  0.39 kB
+@aiyazone/portal:build: dist/assets/plus-3VUwL8B1.js                         0.79 kB │ gzip:  0.45 kB
+@aiyazone/portal:build: dist/assets/youtube-color-fill-BhAUocTg.js           0.80 kB │ gzip:  0.49 kB
+@aiyazone/portal:build: dist/assets/youtube-fill-BnD2VuYJ.js                 0.80 kB │ gzip:  0.49 kB
+@aiyazone/portal:build: dist/assets/truck-line-2-D35VzedZ.js                 0.81 kB │ gzip:  0.37 kB
+@aiyazone/portal:build: dist/assets/check-line-gLiNHk4X.js                   0.81 kB │ gzip:  0.46 kB
+@aiyazone/portal:build: dist/assets/search-BQyPef98.js                       0.82 kB │ gzip:  0.42 kB
+@aiyazone/portal:build: dist/assets/question-DAcbj0hR.js                     0.84 kB │ gzip:  0.48 kB
+@aiyazone/portal:build: dist/assets/arrow-left-fill-DMc7BQk-.js              0.84 kB │ gzip:  0.50 kB
+@aiyazone/portal:build: dist/assets/arrow-right-fill-DjeDXHHb.js             0.84 kB │ gzip:  0.50 kB
+@aiyazone/portal:build: dist/assets/youtube-CJ7xyDBz.js                      0.85 kB │ gzip:  0.51 kB
+@aiyazone/portal:build: dist/assets/arrow-up-fill-suA4rCuz.js                0.86 kB │ gzip:  0.50 kB
+@aiyazone/portal:build: dist/assets/youtube-color-BPcd26MP.js                0.86 kB │ gzip:  0.52 kB
+@aiyazone/portal:build: dist/assets/close-BT9GqDsG.js                        0.99 kB │ gzip:  0.54 kB
+@aiyazone/portal:build: dist/assets/star-fill-B3W3pzNX.js                    0.99 kB │ gzip:  0.57 kB
+@aiyazone/portal:build: dist/assets/global-3A-pTdVR.js                       0.99 kB │ gzip:  0.55 kB
+@aiyazone/portal:build: dist/assets/heart-fill-CnlAvUfC.js                   0.99 kB │ gzip:  0.59 kB
+@aiyazone/portal:build: dist/assets/alert-fill-DwkN26n3.js                   1.00 kB │ gzip:  0.50 kB
+@aiyazone/portal:build: dist/assets/play-CTlENMai.js                         1.01 kB │ gzip:  0.58 kB
+@aiyazone/portal:build: dist/assets/refer-a-friend-color-DX17Qkr4.js         1.02 kB │ gzip:  0.61 kB
+@aiyazone/portal:build: dist/assets/loading-DM7TiwXH.js                      1.03 kB │ gzip:  0.56 kB
+@aiyazone/portal:build: dist/assets/refer-a-friend-DA9U66TM.js               1.03 kB │ gzip:  0.61 kB
+@aiyazone/portal:build: dist/assets/refer-a-friend-color-fill-D7ObhvCx.js    1.04 kB │ gzip:  0.61 kB
+@aiyazone/portal:build: dist/assets/refer-a-friend-fill-B3Wl_ODF.js          1.04 kB │ gzip:  0.60 kB
+@aiyazone/portal:build: dist/assets/play-fill-CWxnldgc.js                    1.08 kB │ gzip:  0.57 kB
+@aiyazone/portal:build: dist/assets/play-line-B85pyskB.js                    1.11 kB │ gzip:  0.58 kB
+@aiyazone/portal:build: dist/assets/share-BCmXvC5V.js                        1.14 kB │ gzip:  0.62 kB
+@aiyazone/portal:build: dist/assets/truck-line-1-DkxN2X3R.js                 1.17 kB │ gzip:  0.54 kB
+@aiyazone/portal:build: dist/assets/link-D5SPc0zw.js                         1.22 kB │ gzip:  0.63 kB
+@aiyazone/portal:build: dist/assets/whatsapp-CdwNrIJw.js                     1.23 kB │ gzip:  0.69 kB
+@aiyazone/portal:build: dist/assets/whatsapp-color-BJ9Dczuf.js               1.24 kB │ gzip:  0.70 kB
+@aiyazone/portal:build: dist/assets/link-color-fill-s2kP_jaM.js              1.25 kB │ gzip:  0.65 kB
+@aiyazone/portal:build: dist/assets/link-fill-B-AqT6Bm.js                    1.25 kB │ gzip:  0.65 kB
+@aiyazone/portal:build: dist/assets/info-line-Cf2lNKX2.js                    1.25 kB │ gzip:  0.60 kB
+@aiyazone/portal:build: dist/assets/link-color-5ihTZBm3.js                   1.25 kB │ gzip:  0.65 kB
+@aiyazone/portal:build: dist/assets/whatsapp-color-fill-B6sBHNSQ.js          1.26 kB │ gzip:  0.70 kB
+@aiyazone/portal:build: dist/assets/whatsapp-fill-D_MsdoX4.js                1.26 kB │ gzip:  0.70 kB
+@aiyazone/portal:build: dist/assets/plus-fill-D-UyFMn-.js                    1.27 kB │ gzip:  0.66 kB
+@aiyazone/portal:build: dist/assets/location-MBupTsCG.js                     1.30 kB │ gzip:  0.67 kB
+@aiyazone/portal:build: dist/assets/close-fill-DD3IAph6.js                   1.33 kB │ gzip:  0.67 kB
+@aiyazone/portal:build: dist/assets/question-fill-BQFauHM1.js                1.37 kB │ gzip:  0.64 kB
+@aiyazone/portal:build: dist/assets/phone-fill-dj6R33iN.js                   1.40 kB │ gzip:  0.77 kB
+@aiyazone/portal:build: dist/assets/link-big-4uBnFSxX.js                     1.43 kB │ gzip:  0.63 kB
+@aiyazone/portal:build: dist/assets/download-BXRx34ou.js                     1.43 kB │ gzip:  0.76 kB
+@aiyazone/portal:build: dist/assets/reddit-CAJqQ37N.js                       1.45 kB │ gzip:  0.73 kB
+@aiyazone/portal:build: dist/assets/delete-fill-seFyLMBm.js                  1.45 kB │ gzip:  0.80 kB
+@aiyazone/portal:build: dist/assets/reddit-color-MUV_sN6b.js                 1.45 kB │ gzip:  0.74 kB
+@aiyazone/portal:build: dist/assets/time-line-FBCBwdih.js                    1.48 kB │ gzip:  0.66 kB
+@aiyazone/portal:build: dist/assets/line-BYajnJIE.js                         1.49 kB │ gzip:  0.72 kB
+@aiyazone/portal:build: dist/assets/line-color-fill-CbcVRKoX.js              1.51 kB │ gzip:  0.73 kB
+@aiyazone/portal:build: dist/assets/line-fill-BxlmPMQa.js                    1.51 kB │ gzip:  0.72 kB
+@aiyazone/portal:build: dist/assets/line-color-BviKHOPd.js                   1.51 kB │ gzip:  0.74 kB
+@aiyazone/portal:build: dist/assets/question-line-mmrbDDaf.js                1.52 kB │ gzip:  0.69 kB
+@aiyazone/portal:build: dist/assets/reddit-color-fill-BziimOLe.js            1.57 kB │ gzip:  0.76 kB
+@aiyazone/portal:build: dist/assets/reddit-fill-DCTYBoWW.js                  1.57 kB │ gzip:  0.76 kB
+@aiyazone/portal:build: dist/assets/alert-line-DtoixnvO.js                   1.58 kB │ gzip:  0.55 kB
+@aiyazone/portal:build: dist/assets/instagram-BuiDNVoj.js                    1.61 kB │ gzip:  0.79 kB
+@aiyazone/portal:build: dist/assets/delete-line-Cdu514fM.js                  1.62 kB │ gzip:  0.87 kB
+@aiyazone/portal:build: dist/assets/star-line-CwCVr197.js                    1.71 kB │ gzip:  0.89 kB
+@aiyazone/portal:build: dist/assets/heart-line-ByP9XnuN.js                   1.76 kB │ gzip:  0.93 kB
+@aiyazone/portal:build: dist/assets/plus-line-BfbgHHxq.js                    1.77 kB │ gzip:  0.85 kB
+@aiyazone/portal:build: dist/assets/instagram-fill-CglGP3_g.js               1.78 kB │ gzip:  0.83 kB
+@aiyazone/portal:build: dist/assets/close-line-DQpfOlNJ.js                   1.78 kB │ gzip:  0.88 kB
+@aiyazone/portal:build: dist/assets/instagram-color-BCJmISSe.js              1.97 kB │ gzip:  0.96 kB
+@aiyazone/portal:build: dist/assets/threads-T5vrJ48z.js                      2.07 kB │ gzip:  1.12 kB
+@aiyazone/portal:build: dist/assets/instagram-color-fill-DqD0TA8W.js         2.10 kB │ gzip:  0.97 kB
+@aiyazone/portal:build: dist/assets/pdf-CegYDcUQ.js                          2.13 kB │ gzip:  0.83 kB
+@aiyazone/portal:build: dist/assets/phone-line-gIc0VJUh.js                   2.48 kB │ gzip:  1.26 kB
+@aiyazone/portal:build: dist/assets/architecture-T7C4CszA.js                19.26 kB │ gzip:  7.92 kB
+@aiyazone/portal:build: dist/assets/architectureReference-DyEpD7zE.js       91.88 kB │ gzip: 26.79 kB
+@aiyazone/portal:build: dist/assets/main-Ci0gaFDv.js                       242.35 kB │ gzip: 62.10 kB
+@aiyazone/portal:build: ✓ built in 1.98s
+@aiyazone/portal:build: ✓ 图标清单：113 个（system 59 / social-media 54）→ dist/icons/icons-manifest.json
+
+ Tasks:    6 successful, 6 total
+Cached:    0 cached, 6 total
+  Time:    34.755s 
+
+Building Examples...
+Running: pnpm --filter @aiyazone/examples run build
+
+> @aiyazone/examples@0.1.3 build /Users/ht-2502/Documents/Code/design-system/apps/examples
+> vite build
+
+vite v7.3.8 building client environment for production...
+transforming...
+✓ 266 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/pages/atoms/spinner.html                        0.92 kB │ gzip:  0.54 kB
+dist/pages/i18n/all.html                             1.12 kB │ gzip:  0.64 kB
+dist/pages/atoms/icons.html                          1.16 kB │ gzip:  0.68 kB
+dist/pages/components/public-style.html              1.25 kB │ gzip:  0.72 kB
+dist/pages/atoms/toast.html                          1.53 kB │ gzip:  0.74 kB
+dist/pages/i18n/index.html                           2.43 kB │ gzip:  1.06 kB
+dist/pages/atoms/tooltip.html                        3.07 kB │ gzip:  0.73 kB
+dist/pages/atoms/popover.html                        3.50 kB │ gzip:  0.83 kB
+dist/index.html                                      4.46 kB │ gzip:  1.75 kB
+dist/pages/atoms/dropdown.html                       5.34 kB │ gzip:  1.77 kB
+dist/assets/logo-CUlSh4Vr.svg                        6.07 kB │ gzip:  2.54 kB
+dist/pages/components/rte.html                       6.07 kB │ gzip:  1.61 kB
+dist/pages/atoms/badge.html                          7.25 kB │ gzip:  1.74 kB
+dist/pages/font/ja.html                              7.57 kB │ gzip:  2.65 kB
+dist/pages/atoms/filter-select.html                  7.64 kB │ gzip:  2.17 kB
+dist/pages/atoms/dialog.html                         7.84 kB │ gzip:  1.46 kB
+dist/pages/components/index.html                    10.24 kB │ gzip:  1.86 kB
+dist/pages/atoms/button.html                        10.44 kB │ gzip:  1.91 kB
+dist/pages/font/en.html                             19.04 kB │ gzip:  4.27 kB
+dist/assets/font-test-DpWGO3Ih.css                   4.66 kB │ gzip:  1.13 kB
+dist/assets/index-Dfp1j-6Y.css                       6.30 kB │ gzip:  1.50 kB
+dist/assets/examples-theme-v1.css                   44.17 kB │ gzip:  5.43 kB
+dist/assets/examples-theme-v3.css                   44.63 kB │ gzip:  5.54 kB
+dist/assets/examples-theme-v2.css                   45.15 kB │ gzip:  5.55 kB
+dist/assets/main-DCNJ8zqr.css                       53.95 kB │ gzip:  7.84 kB
+dist/assets/index-DdyyGjKM.js                        0.18 kB │ gzip:  0.18 kB │ map:   0.45 kB
+dist/assets/close-square-27RqXl7E.js                 0.33 kB │ gzip:  0.25 kB │ map:   0.57 kB
+dist/assets/radius-left-top-DfNUERm8.js              0.36 kB │ gzip:  0.29 kB │ map:   0.55 kB
+dist/assets/radius-right-bottom-DzH6xDfL.js          0.36 kB │ gzip:  0.30 kB │ map:   0.57 kB
+dist/assets/lamp-line-IyQA--gs.js                    0.43 kB │ gzip:  0.30 kB │ map:   0.66 kB
+dist/assets/cart-line-Cnh4mdnT.js                    0.48 kB │ gzip:  0.33 kB │ map:   0.70 kB
+dist/assets/check-DyIiBHs9.js                        0.51 kB │ gzip:  0.34 kB │ map:   0.73 kB
+dist/assets/tent-line-TvJO04Oi.js                    0.51 kB │ gzip:  0.32 kB │ map:   0.77 kB
+dist/assets/twitter-DrK8r3me.js                      0.52 kB │ gzip:  0.37 kB │ map:   0.76 kB
+dist/assets/facebook-DdOVirWe.js                     0.52 kB │ gzip:  0.38 kB │ map:   0.77 kB
+dist/assets/facebook-fill-CWjeI3PH.js                0.55 kB │ gzip:  0.38 kB │ map:   0.81 kB
+dist/assets/twitter-color-D3BRGeD3.js                0.55 kB │ gzip:  0.39 kB │ map:   0.82 kB
+dist/assets/facebook-color-fill-CS2x9cUc.js          0.55 kB │ gzip:  0.39 kB │ map:   0.83 kB
+dist/assets/twitter-fill-O_4fC0KB.js                 0.55 kB │ gzip:  0.39 kB │ map:   0.82 kB
+dist/assets/facebook-color-B-O-2hko.js               0.55 kB │ gzip:  0.40 kB │ map:   0.82 kB
+dist/assets/twitter-color-fill-B0fd3FBF.js           0.56 kB │ gzip:  0.39 kB │ map:   0.83 kB
+dist/assets/email-BWh9ZmTD.js                        0.56 kB │ gzip:  0.38 kB │ map:   0.80 kB
+dist/assets/telegram-color-fill-D0_wLo64.js          0.58 kB │ gzip:  0.42 kB │ map:   0.80 kB
+dist/assets/email-fill-c1bSXS0A.js                   0.58 kB │ gzip:  0.39 kB │ map:   0.84 kB
+dist/assets/email-color-fill-DqE6d09V.js             0.59 kB │ gzip:  0.39 kB │ map:   0.85 kB
+dist/assets/email-color-DjjU7ZXk.js                  0.60 kB │ gzip:  0.40 kB │ map:   0.86 kB
+dist/assets/telegram-CMgNy7ld.js                     0.60 kB │ gzip:  0.42 kB │ map:   0.86 kB
+dist/assets/arrow-up-long-sZmA53Bu.js                0.60 kB │ gzip:  0.38 kB │ map:   0.85 kB
+dist/assets/home-line-2-DtVIHLkL.js                  0.61 kB │ gzip:  0.34 kB │ map:   0.88 kB
+dist/assets/telegram-fill-BNbdI8Ev.js                0.62 kB │ gzip:  0.42 kB │ map:   0.89 kB
+dist/assets/time-fill-x4DzFjod.js                    0.62 kB │ gzip:  0.40 kB │ map:   0.90 kB
+dist/assets/arrow-right-long-C1pYZZOr.js             0.64 kB │ gzip:  0.40 kB │ map:   0.89 kB
+dist/assets/telegram-color-DeO3Stoo.js               0.64 kB │ gzip:  0.44 kB │ map:   0.91 kB
+dist/assets/battery-line-DtkliQ47.js                 0.64 kB │ gzip:  0.38 kB │ map:   0.90 kB
+dist/assets/check-fill-CjlKN0R3.js                   0.66 kB │ gzip:  0.41 kB │ map:   0.96 kB
+dist/assets/minus-B_Ny4986.js                        0.68 kB │ gzip:  0.42 kB │ map:   0.91 kB
+dist/assets/arrow-left-D2SEjrfz.js                   0.69 kB │ gzip:  0.44 kB │ map:   0.94 kB
+dist/assets/pages/atoms/filter-select-5oKUBVF_.js    0.71 kB │ gzip:  0.42 kB │ map:   1.69 kB
+dist/assets/arrow-up-CwG0xo2r.js                     0.72 kB │ gzip:  0.46 kB │ map:   0.95 kB
+dist/assets/home-line-1-CdksVx0O.js                  0.72 kB │ gzip:  0.36 kB │ map:   1.03 kB
+dist/assets/tag-CIWS-Bma.js                          0.74 kB │ gzip:  0.46 kB │ map:   1.01 kB
+dist/assets/pinterest-Bkn-rcwC.js                    0.75 kB │ gzip:  0.49 kB │ map:   1.00 kB
+dist/assets/tiktok-DsqZ5jvN.js                       0.76 kB │ gzip:  0.46 kB │ map:   1.02 kB
+dist/assets/tiktok-color-fill-CrGhmaRz.js            0.77 kB │ gzip:  0.46 kB │ map:   1.06 kB
+dist/assets/tiktok-fill-BALAGIhu.js                  0.77 kB │ gzip:  0.46 kB │ map:   1.05 kB
+dist/assets/pinterest-color-BvEWHfLj.js              0.78 kB │ gzip:  0.52 kB │ map:   1.06 kB
+dist/assets/tiktok-color--mdfI-C7.js                 0.79 kB │ gzip:  0.48 kB │ map:   1.08 kB
+dist/assets/pinterest-fill-aSuA5u_g.js               0.80 kB │ gzip:  0.52 kB │ map:   1.08 kB
+dist/assets/info-fill-CV6GFWON.js                    0.81 kB │ gzip:  0.48 kB │ map:   1.08 kB
+dist/assets/pinterest-color-fill-DvofoAE2.js         0.81 kB │ gzip:  0.53 kB │ map:   1.10 kB
+dist/assets/plus-CcXJ2miC.js                         0.83 kB │ gzip:  0.49 kB │ map:   1.06 kB
+dist/assets/calendar-line-Cg0lnNQc.js                0.84 kB │ gzip:  0.43 kB │ map:   1.13 kB
+dist/assets/youtube-fill-CQjAq0GZ.js                 0.85 kB │ gzip:  0.53 kB │ map:   1.13 kB
+dist/assets/truck-line-2-DyA5Zv9m.js                 0.86 kB │ gzip:  0.42 kB │ map:   1.23 kB
+dist/assets/youtube-color-fill-DI8gd6Jj.js           0.86 kB │ gzip:  0.54 kB │ map:   1.14 kB
+dist/assets/check-line-DoEBmd4P.js                   0.86 kB │ gzip:  0.50 kB │ map:   1.14 kB
+dist/assets/search-cnxhkps5.js                       0.87 kB │ gzip:  0.46 kB │ map:   1.07 kB
+dist/assets/question-Omsfpd6s.js                     0.89 kB │ gzip:  0.52 kB │ map:   1.12 kB
+dist/assets/arrow-left-fill-DtIwBnm5.js              0.90 kB │ gzip:  0.55 kB │ map:   1.14 kB
+dist/assets/arrow-right-fill-D5wP98-9.js             0.90 kB │ gzip:  0.54 kB │ map:   1.15 kB
+dist/assets/youtube-CltKVjnO.js                      0.90 kB │ gzip:  0.55 kB │ map:   1.15 kB
+dist/assets/arrow-up-fill-CEJS1R6-.js                0.91 kB │ gzip:  0.54 kB │ map:   1.15 kB
+dist/assets/youtube-color-DauU6ubK.js                0.91 kB │ gzip:  0.57 kB │ map:   1.18 kB
+dist/assets/close-CTtmap6g.js                        1.03 kB │ gzip:  0.58 kB │ map:   1.26 kB
+dist/assets/global-DS24ZS_8.js                       1.04 kB │ gzip:  0.60 kB │ map:   1.32 kB
+dist/assets/star-fill-GniWn-VC.js                    1.04 kB │ gzip:  0.62 kB │ map:   1.27 kB
+dist/assets/heart-fill-BrLI8DLl.js                   1.04 kB │ gzip:  0.64 kB │ map:   1.28 kB
+dist/assets/alert-fill-DKugP8Do.js                   1.05 kB │ gzip:  0.54 kB │ map:   1.40 kB
+dist/assets/play-BZ-6fIVz.js                         1.05 kB │ gzip:  0.62 kB │ map:   1.36 kB
+dist/assets/loading-DLSGLlSk.js                      1.07 kB │ gzip:  0.61 kB │ map:   1.28 kB
+dist/assets/refer-a-friend-color-BIPnB8TZ.js         1.08 kB │ gzip:  0.67 kB │ map:   1.35 kB
+dist/assets/refer-a-friend-Coyb8PbX.js               1.08 kB │ gzip:  0.66 kB │ map:   1.34 kB
+dist/assets/refer-a-friend-fill-tXOtoUwl.js          1.09 kB │ gzip:  0.66 kB │ map:   1.37 kB
+dist/assets/refer-a-friend-color-fill-sh7FBJJx.js    1.10 kB │ gzip:  0.66 kB │ map:   1.39 kB
+dist/assets/play-fill-CtCeeXfd.js                    1.12 kB │ gzip:  0.61 kB │ map:   1.40 kB
+dist/assets/play-line-A_qtneG2.js                    1.16 kB │ gzip:  0.63 kB │ map:   1.43 kB
+dist/assets/share-DfaugADB.js                        1.18 kB │ gzip:  0.66 kB │ map:   1.41 kB
+dist/assets/truck-line-1-D-1yw9XM.js                 1.22 kB │ gzip:  0.59 kB │ map:   1.62 kB
+dist/assets/link-2XVDjk_c.js                         1.26 kB │ gzip:  0.67 kB │ map:   1.54 kB
+dist/assets/whatsapp-DHGX-azb.js                     1.28 kB │ gzip:  0.74 kB │ map:   1.53 kB
+dist/assets/link-fill-DfKfkkUq.js                    1.29 kB │ gzip:  0.69 kB │ map:   1.58 kB
+dist/assets/info-line-DY0aVPVv.js                    1.29 kB │ gzip:  0.64 kB │ map:   1.65 kB
+dist/assets/whatsapp-color-DPq_370l.js               1.29 kB │ gzip:  0.75 kB │ map:   1.56 kB
+dist/assets/link-color-fill-6JF-5bCY.js              1.30 kB │ gzip:  0.70 kB │ map:   1.60 kB
+dist/assets/link-color-B-W-duhG.js                   1.30 kB │ gzip:  0.70 kB │ map:   1.59 kB
+dist/assets/whatsapp-fill-BFsFbkQW.js                1.31 kB │ gzip:  0.75 kB │ map:   1.58 kB
+dist/assets/whatsapp-color-fill-y-KFvZz5.js          1.32 kB │ gzip:  0.76 kB │ map:   1.60 kB
+dist/assets/plus-fill-D-DkgVDc.js                    1.32 kB │ gzip:  0.71 kB │ map:   1.56 kB
+dist/assets/location-88CAJEpR.js                     1.34 kB │ gzip:  0.71 kB │ map:   1.56 kB
+dist/assets/close-fill-paojG1aX.js                   1.38 kB │ gzip:  0.71 kB │ map:   1.62 kB
+dist/assets/question-fill-BCv_eXNM.js                1.42 kB │ gzip:  0.68 kB │ map:   1.79 kB
+dist/assets/phone-fill-Dbfdn2PC.js                   1.45 kB │ gzip:  0.82 kB │ map:   1.69 kB
+dist/assets/link-big-Dj8xuUmf.js                     1.47 kB │ gzip:  0.68 kB │ map:   1.66 kB
+dist/assets/download-CbXY8JV-.js                     1.48 kB │ gzip:  0.81 kB │ map:   1.75 kB
+dist/assets/reddit-DzkOECLW.js                       1.49 kB │ gzip:  0.78 kB │ map:   1.74 kB
+dist/assets/delete-fill-DmeFWOq5.js                  1.50 kB │ gzip:  0.85 kB │ map:   1.74 kB
+dist/assets/reddit-color-CZcjk2CW.js                 1.50 kB │ gzip:  0.79 kB │ map:   1.77 kB
+dist/assets/time-line-Dd_8-0Fx.js                    1.53 kB │ gzip:  0.70 kB │ map:   1.88 kB
+dist/assets/line-DRUjzS4k.js                         1.53 kB │ gzip:  0.76 kB │ map:   1.77 kB
+dist/assets/line-fill-BJiXAKfh.js                    1.56 kB │ gzip:  0.77 kB │ map:   1.82 kB
+dist/assets/line-color-fill-BbvCu_wv.js              1.56 kB │ gzip:  0.78 kB │ map:   1.83 kB
+dist/assets/line-color-B6LOIPGx.js                   1.56 kB │ gzip:  0.78 kB │ map:   1.83 kB
+dist/assets/question-line-DqxCeCE0.js                1.57 kB │ gzip:  0.73 kB │ map:   1.94 kB
+dist/assets/reddit-fill-BYPxpzIN.js                  1.62 kB │ gzip:  0.80 kB │ map:   1.88 kB
+dist/assets/reddit-color-fill-C66POEoz.js            1.62 kB │ gzip:  0.81 kB │ map:   1.90 kB
+dist/assets/alert-line-CkPJfK9v.js                   1.63 kB │ gzip:  0.58 kB │ map:   1.99 kB
+dist/assets/instagram-ClEErFdK.js                    1.66 kB │ gzip:  0.83 kB │ map:   1.91 kB
+dist/assets/delete-line-DNoa-MHP.js                  1.67 kB │ gzip:  0.92 kB │ map:   1.91 kB
+dist/assets/star-line-Dn3hqMSd.js                    1.75 kB │ gzip:  0.93 kB │ map:   1.99 kB
+dist/assets/heart-line-mTRupby3.js                   1.81 kB │ gzip:  0.98 kB │ map:   2.04 kB
+dist/assets/plus-line-CAxwwD84.js                    1.82 kB │ gzip:  0.90 kB │ map:   2.05 kB
+dist/assets/instagram-fill-BK4fLZUA.js               1.83 kB │ gzip:  0.88 kB │ map:   2.10 kB
+dist/assets/close-line-BD_6os65.js                   1.83 kB │ gzip:  0.93 kB │ map:   2.07 kB
+dist/assets/instagram-color-mpYK6j-d.js              2.03 kB │ gzip:  1.01 kB │ map:   2.43 kB
+dist/assets/threads-CqlNXfA-.js                      2.12 kB │ gzip:  1.18 kB │ map:   2.31 kB
+dist/assets/instagram-color-fill-bCxPoEUk.js         2.15 kB │ gzip:  1.01 kB │ map:   2.55 kB
+dist/assets/pdf-DuApUN4I.js                          2.17 kB │ gzip:  0.87 kB │ map:   2.34 kB
+dist/assets/phone-line-CDL6LJmd.js                   2.53 kB │ gzip:  1.32 kB │ map:   2.77 kB
+dist/assets/index-1rpU-Vw8.js                        3.84 kB │ gzip:  1.76 kB │ map:  10.22 kB
+dist/assets/pages/atoms/dropdown-odDldpHl.js         6.42 kB │ gzip:  2.44 kB │ map:  18.02 kB
+dist/assets/pages/i18n/all-BtRVjkBC.js               8.05 kB │ gzip:  3.02 kB │ map:  20.88 kB
+dist/assets/main-CA_x4i1F.js                       243.06 kB │ gzip: 61.02 kB │ map: 400.43 kB
+✓ built in 15.70s
+Copying /Users/ht-2502/Documents/Code/design-system/apps/examples/dist to /Users/ht-2502/Documents/Code/design-system/apps/portal/dist/examples
+Building Storybook...
+Running: pnpm --filter @aiyazone/storybook run build:storybook
+
+> @aiyazone/storybook@0.1.1 build:storybook /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> pnpm run build
+
+
+> @aiyazone/storybook@0.1.1 build /Users/ht-2502/Documents/Code/design-system/apps/storybook
+> storybook build -c ../../.storybook
+
+storybook v9.1.21
+
+info => Cleaning outputDir: storybook-static
+info => Loading presets
+info => Building manager..
+info => Building preview..
+No story files found for the specified pattern: ../../packages/utils/src/**/*.stories.@(js|ts|mdx)
+No story files found for the specified pattern: ../../packages/i18n/src/**/*.stories.@(js|ts|mdx)
+vite v7.3.8 building client environment for production...
+transforming...
+info => Copying static files: ../../public at storybook-static
+info => Copying static files: ../portal/public/shared at storybook-static/shared
+✓ 322 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-down.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /Users/ht-2502/Documents/Code/design-system/packages/icons/src/icons/system/arrow-right.svg?raw is dynamically imported by /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts, /Users/ht-2502/Documents/Code/design-system/packages/icons/src/components/index.ts but also statically imported by /Users/ht-2502/Documents/Code/design-system/packages/core/src/components/dropdown/index.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+storybook-static/iframe.html                                       20.07 kB │ gzip:   5.63 kB
+storybook-static/assets/iframe-BUQvc38A.css                        47.32 kB │ gzip:   5.47 kB
+storybook-static/assets/close-square-C1KT-yWF.js                    0.28 kB │ gzip:   0.20 kB
+storybook-static/assets/radius-left-top-DMWXWt7z.js                 0.30 kB │ gzip:   0.24 kB
+storybook-static/assets/radius-right-bottom-DzHC-hZi.js             0.31 kB │ gzip:   0.25 kB
+storybook-static/assets/lamp-line-CngT6vmA.js                       0.38 kB │ gzip:   0.26 kB
+storybook-static/assets/cart-line-CwiZSLYu.js                       0.43 kB │ gzip:   0.30 kB
+storybook-static/assets/react-pYxR2ZoL.js                           0.46 kB │ gzip:   0.29 kB
+storybook-static/assets/check-BOtKSUS9.js                           0.47 kB │ gzip:   0.31 kB
+storybook-static/assets/tent-line-Ch9T_jXL.js                       0.47 kB │ gzip:   0.28 kB
+storybook-static/assets/twitter-BrE8kSYm.js                         0.47 kB │ gzip:   0.33 kB
+storybook-static/assets/facebook-Dee9YJfm.js                        0.47 kB │ gzip:   0.33 kB
+storybook-static/assets/facebook-color-fill-B1Nq0myV.js             0.49 kB │ gzip:   0.34 kB
+storybook-static/assets/facebook-fill-1iSD8yVB.js                   0.50 kB │ gzip:   0.33 kB
+storybook-static/assets/twitter-color-DxWfqNU1.js                   0.50 kB │ gzip:   0.35 kB
+storybook-static/assets/twitter-color-fill-CE0eNhwL.js              0.50 kB │ gzip:   0.34 kB
+storybook-static/assets/facebook-color-BaOoc0u6.js                  0.50 kB │ gzip:   0.35 kB
+storybook-static/assets/twitter-fill-BDmZRiZx.js                    0.50 kB │ gzip:   0.34 kB
+storybook-static/assets/email-HVrgWlQi.js                           0.52 kB │ gzip:   0.34 kB
+storybook-static/assets/telegram-color-fill-BWF559oS.js             0.52 kB │ gzip:   0.37 kB
+storybook-static/assets/email-color-fill-ceZQV_EX.js                0.53 kB │ gzip:   0.35 kB
+storybook-static/assets/email-fill-BNWfoN3d.js                      0.53 kB │ gzip:   0.34 kB
+storybook-static/assets/email-color-DDlGKA-l.js                     0.55 kB │ gzip:   0.36 kB
+storybook-static/assets/arrow-up-long-9p8VcVo0.js                   0.55 kB │ gzip:   0.33 kB
+storybook-static/assets/telegram-PHFpMhiA.js                        0.56 kB │ gzip:   0.38 kB
+storybook-static/assets/home-line-2-cneRXK4c.js                     0.56 kB │ gzip:   0.30 kB
+storybook-static/assets/telegram-fill-DNiWk0s1.js                   0.57 kB │ gzip:   0.38 kB
+storybook-static/assets/time-fill-XZKfAKpf.js                       0.58 kB │ gzip:   0.36 kB
+storybook-static/assets/arrow-right-long-mlJIx9Jh.js                0.58 kB │ gzip:   0.35 kB
+storybook-static/assets/telegram-color-CjFVyOv4.js                  0.59 kB │ gzip:   0.40 kB
+storybook-static/assets/battery-line-qgPs_3pd.js                    0.59 kB │ gzip:   0.34 kB
+storybook-static/assets/check-fill-Dhw21q-n.js                      0.61 kB │ gzip:   0.37 kB
+storybook-static/assets/minus-B2Qe7Bnl.js                           0.64 kB │ gzip:   0.38 kB
+storybook-static/assets/arrow-left-CbpbxjVJ.js                      0.64 kB │ gzip:   0.39 kB
+storybook-static/assets/home-line-1-DFhFKg40.js                     0.67 kB │ gzip:   0.32 kB
+storybook-static/assets/arrow-up-CxcOwgJU.js                        0.67 kB │ gzip:   0.42 kB
+storybook-static/assets/pinterest-CnU8hIXT.js                       0.70 kB │ gzip:   0.45 kB
+storybook-static/assets/tag-BD9GlTu7.js                             0.70 kB │ gzip:   0.43 kB
+storybook-static/assets/tiktok-CdqXaidV.js                          0.71 kB │ gzip:   0.42 kB
+storybook-static/assets/tiktok-color-fill-DrLg71fq.js               0.72 kB │ gzip:   0.41 kB
+storybook-static/assets/tiktok-fill-B51e6RVW.js                     0.72 kB │ gzip:   0.41 kB
+storybook-static/assets/pinterest-color-BSjueacX.js                 0.73 kB │ gzip:   0.47 kB
+storybook-static/assets/tiktok-color-GqGyXgxo.js                    0.74 kB │ gzip:   0.43 kB
+storybook-static/assets/pinterest-color-fill-BVZ9RHYH.js            0.75 kB │ gzip:   0.48 kB
+storybook-static/assets/pinterest-fill-D4WxedAg.js                  0.75 kB │ gzip:   0.47 kB
+storybook-static/assets/info-fill-jjGx71Eg.js                       0.76 kB │ gzip:   0.44 kB
+storybook-static/assets/calendar-line-DqfC0OZC.js                   0.79 kB │ gzip:   0.39 kB
+storybook-static/assets/plus-3VUwL8B1.js                            0.79 kB │ gzip:   0.45 kB
+storybook-static/assets/animate-CAvCrSsC.js                         0.79 kB │ gzip:   0.53 kB
+storybook-static/assets/youtube-color-fill-BhAUocTg.js              0.80 kB │ gzip:   0.49 kB
+storybook-static/assets/youtube-fill-BnD2VuYJ.js                    0.80 kB │ gzip:   0.49 kB
+storybook-static/assets/truck-line-2-D35VzedZ.js                    0.81 kB │ gzip:   0.37 kB
+storybook-static/assets/check-line-gLiNHk4X.js                      0.81 kB │ gzip:   0.46 kB
+storybook-static/assets/search-BQyPef98.js                          0.82 kB │ gzip:   0.42 kB
+storybook-static/assets/question-DAcbj0hR.js                        0.84 kB │ gzip:   0.48 kB
+storybook-static/assets/arrow-left-fill-DMc7BQk-.js                 0.84 kB │ gzip:   0.50 kB
+storybook-static/assets/arrow-right-fill-DjeDXHHb.js                0.84 kB │ gzip:   0.50 kB
+storybook-static/assets/youtube-CJ7xyDBz.js                         0.85 kB │ gzip:   0.51 kB
+storybook-static/assets/arrow-up-fill-suA4rCuz.js                   0.86 kB │ gzip:   0.50 kB
+storybook-static/assets/youtube-color-BPcd26MP.js                   0.86 kB │ gzip:   0.52 kB
+storybook-static/assets/close-BT9GqDsG.js                           0.99 kB │ gzip:   0.54 kB
+storybook-static/assets/star-fill-B3W3pzNX.js                       0.99 kB │ gzip:   0.57 kB
+storybook-static/assets/global-3A-pTdVR.js                          0.99 kB │ gzip:   0.55 kB
+storybook-static/assets/heart-fill-CnlAvUfC.js                      0.99 kB │ gzip:   0.59 kB
+storybook-static/assets/alert-fill-DwkN26n3.js                      1.00 kB │ gzip:   0.50 kB
+storybook-static/assets/play-CTlENMai.js                            1.01 kB │ gzip:   0.58 kB
+storybook-static/assets/refer-a-friend-color-DX17Qkr4.js            1.02 kB │ gzip:   0.61 kB
+storybook-static/assets/loading-DM7TiwXH.js                         1.03 kB │ gzip:   0.56 kB
+storybook-static/assets/refer-a-friend-DA9U66TM.js                  1.03 kB │ gzip:   0.61 kB
+storybook-static/assets/refer-a-friend-color-fill-D7ObhvCx.js       1.04 kB │ gzip:   0.61 kB
+storybook-static/assets/refer-a-friend-fill-B3Wl_ODF.js             1.04 kB │ gzip:   0.60 kB
+storybook-static/assets/play-fill-CWxnldgc.js                       1.08 kB │ gzip:   0.57 kB
+storybook-static/assets/play-line-B85pyskB.js                       1.11 kB │ gzip:   0.58 kB
+storybook-static/assets/share-BCmXvC5V.js                           1.14 kB │ gzip:   0.62 kB
+storybook-static/assets/truck-line-1-DkxN2X3R.js                    1.17 kB │ gzip:   0.54 kB
+storybook-static/assets/link-D5SPc0zw.js                            1.22 kB │ gzip:   0.63 kB
+storybook-static/assets/preload-helper-PPVm8Dsz.js                  1.23 kB │ gzip:   0.71 kB
+storybook-static/assets/whatsapp-CdwNrIJw.js                        1.23 kB │ gzip:   0.69 kB
+storybook-static/assets/whatsapp-color-BJ9Dczuf.js                  1.24 kB │ gzip:   0.70 kB
+storybook-static/assets/link-color-fill-s2kP_jaM.js                 1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/link-fill-B-AqT6Bm.js                       1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/info-line-Cf2lNKX2.js                       1.25 kB │ gzip:   0.60 kB
+storybook-static/assets/link-color-5ihTZBm3.js                      1.25 kB │ gzip:   0.65 kB
+storybook-static/assets/whatsapp-color-fill-B6sBHNSQ.js             1.26 kB │ gzip:   0.70 kB
+storybook-static/assets/whatsapp-fill-D_MsdoX4.js                   1.26 kB │ gzip:   0.70 kB
+storybook-static/assets/plus-fill-D-UyFMn-.js                       1.27 kB │ gzip:   0.66 kB
+storybook-static/assets/location-MBupTsCG.js                        1.30 kB │ gzip:   0.67 kB
+storybook-static/assets/close-fill-DD3IAph6.js                      1.33 kB │ gzip:   0.67 kB
+storybook-static/assets/question-fill-BQFauHM1.js                   1.37 kB │ gzip:   0.64 kB
+storybook-static/assets/phone-fill-dj6R33iN.js                      1.40 kB │ gzip:   0.77 kB
+storybook-static/assets/link-big-4uBnFSxX.js                        1.43 kB │ gzip:   0.63 kB
+storybook-static/assets/download-BXRx34ou.js                        1.43 kB │ gzip:   0.76 kB
+storybook-static/assets/reddit-CAJqQ37N.js                          1.45 kB │ gzip:   0.73 kB
+storybook-static/assets/delete-fill-seFyLMBm.js                     1.45 kB │ gzip:   0.80 kB
+storybook-static/assets/reddit-color-MUV_sN6b.js                    1.45 kB │ gzip:   0.74 kB
+storybook-static/assets/time-line-FBCBwdih.js                       1.48 kB │ gzip:   0.66 kB
+storybook-static/assets/line-BYajnJIE.js                            1.49 kB │ gzip:   0.72 kB
+storybook-static/assets/line-color-fill-CbcVRKoX.js                 1.51 kB │ gzip:   0.73 kB
+storybook-static/assets/line-fill-BxlmPMQa.js                       1.51 kB │ gzip:   0.72 kB
+storybook-static/assets/line-color-BviKHOPd.js                      1.51 kB │ gzip:   0.74 kB
+storybook-static/assets/question-line-mmrbDDaf.js                   1.52 kB │ gzip:   0.69 kB
+storybook-static/assets/reddit-color-fill-BziimOLe.js               1.57 kB │ gzip:   0.76 kB
+storybook-static/assets/reddit-fill-DCTYBoWW.js                     1.57 kB │ gzip:   0.76 kB
+storybook-static/assets/alert-line-DtoixnvO.js                      1.58 kB │ gzip:   0.55 kB
+storybook-static/assets/instagram-BuiDNVoj.js                       1.61 kB │ gzip:   0.79 kB
+storybook-static/assets/delete-line-Cdu514fM.js                     1.62 kB │ gzip:   0.87 kB
+storybook-static/assets/star-line-CwCVr197.js                       1.71 kB │ gzip:   0.89 kB
+storybook-static/assets/heart-line-ByP9XnuN.js                      1.76 kB │ gzip:   0.93 kB
+storybook-static/assets/plus-line-BfbgHHxq.js                       1.77 kB │ gzip:   0.85 kB
+storybook-static/assets/instagram-fill-CglGP3_g.js                  1.78 kB │ gzip:   0.83 kB
+storybook-static/assets/close-line-DQpfOlNJ.js                      1.78 kB │ gzip:   0.88 kB
+storybook-static/assets/welcome-D8IOcpGo.js                         1.89 kB │ gzip:   1.07 kB
+storybook-static/assets/DocsRenderer-PQXLIZUC-lfprI-tb.js           1.94 kB │ gzip:   0.98 kB
+storybook-static/assets/instagram-color-BCJmISSe.js                 1.97 kB │ gzip:   0.96 kB
+storybook-static/assets/zone-checkbox.stories-B0ObURye.js           2.00 kB │ gzip:   0.78 kB
+storybook-static/assets/threads-T5vrJ48z.js                         2.07 kB │ gzip:   1.12 kB
+storybook-static/assets/instagram-color-fill-DqD0TA8W.js            2.10 kB │ gzip:   0.97 kB
+storybook-static/assets/pdf-CegYDcUQ.js                             2.13 kB │ gzip:   0.83 kB
+storybook-static/assets/phone-line-gIc0VJUh.js                      2.48 kB │ gzip:   1.26 kB
+storybook-static/assets/z-index-BlT6EI4b.js                         2.72 kB │ gzip:   1.46 kB
+storybook-static/assets/zone-spinner.stories-CXq7mY7z.js            3.77 kB │ gzip:   0.98 kB
+storybook-static/assets/radius-B_OJ56MB.js                          4.14 kB │ gzip:   1.45 kB
+storybook-static/assets/theme-architecture-Cfi_pb5t.js              4.34 kB │ gzip:   1.68 kB
+storybook-static/assets/responsive-design-BrF0Z7dF.js               4.94 kB │ gzip:   2.36 kB
+storybook-static/assets/colors-IlwafbvR.js                          5.62 kB │ gzip:   2.10 kB
+storybook-static/assets/size-and-spacing-TJ9GNLbq.js                5.88 kB │ gzip:   1.88 kB
+storybook-static/assets/zone-popover.stories-TbWUV-XJ.js            6.06 kB │ gzip:   1.38 kB
+storybook-static/assets/i18n-BKeODZ3I.js                            6.65 kB │ gzip:   2.96 kB
+storybook-static/assets/font-BNAM-K_W.js                            7.15 kB │ gzip:   2.48 kB
+storybook-static/assets/zone-toast.stories-Dw7tt4c1.js              7.21 kB │ gzip:   1.54 kB
+storybook-static/assets/zone-tooltip.stories-D8Y76QQW.js            7.43 kB │ gzip:   1.52 kB
+storybook-static/assets/zone-badge.stories-DlHUAKXh.js              7.62 kB │ gzip:   2.22 kB
+storybook-static/assets/zone-filter-select.stories-3x-EhZQP.js      7.79 kB │ gzip:   2.79 kB
+storybook-static/assets/zone-dropdown.stories-Ch0hsgp2.js           9.61 kB │ gzip:   3.07 kB
+storybook-static/assets/typography-CJzVkLPQ.js                     11.45 kB │ gzip:   2.31 kB
+storybook-static/assets/colors-spec-BQUo9PrS.js                    11.95 kB │ gzip:   2.44 kB
+storybook-static/assets/zone-button.stories-BFeY36EW.js            16.66 kB │ gzip:   3.47 kB
+storybook-static/assets/zone-dialog.stories-C-s_5Kbj.js            17.85 kB │ gzip:   3.73 kB
+storybook-static/vite-inject-mocker-entry.js                       28.30 kB │ gzip:   9.84 kB
+storybook-static/assets/Color-AVL7NMMY-C_ifUAJT.js                 29.13 kB │ gzip:  11.00 kB
+storybook-static/assets/matchers-7Z3WT2CE-CcSi9QFY.js              29.66 kB │ gzip:  10.29 kB
+storybook-static/assets/axe-DJOdZOYT.js                           675.80 kB │ gzip: 193.80 kB
+storybook-static/assets/blocks-CrtT-898.js                        785.16 kB │ gzip: 252.37 kB
+storybook-static/assets/iframe-BP8YQVdi.js                      1,268.96 kB │ gzip: 345.89 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 48.87s
+info => Output directory: /Users/ht-2502/Documents/Code/design-system/apps/storybook/storybook-static
+Copying /Users/ht-2502/Documents/Code/design-system/apps/storybook/storybook-static to /Users/ht-2502/Documents/Code/design-system/apps/portal/dist/storybook
+Building Icons gallery assets...
+Running: node apps/portal/scripts/build-icons-manifest.mjs
+✓ 图标清单：113 个（system 59 / social-media 54）→ dist/icons/icons-manifest.json
+All builds completed successfully!
+Portal is ready at: /Users/ht-2502/Documents/Code/design-system/apps/portal/dist

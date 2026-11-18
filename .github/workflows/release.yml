@@ -51,8 +51,19 @@ jobs:
 
       - name: Build
         run: |
+          pnpm run release:check
           pnpm run build
           pnpm run design:build
+          mkdir release-packages
+          pnpm run packages:test --record release-artifacts.json --pack-dir release-packages
+
+      - name: Save release artifact record
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-release-${{ github.ref_name }}
+          path: |
+            release-artifacts.json
+            release-packages/*.tgz
 
       - name: Publish @aiyazone/tokens
         working-directory: packages/tokens
@@ -60,7 +71,7 @@ jobs:
           if npm view "$(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")" version > /dev/null 2>&1; then
             echo "已存在，跳过"
           else
-            npm publish
+            npm publish ../../release-packages/aiyazone-tokens.tgz
           fi
 
       - name: Publish @aiyazone/design-system
@@ -68,5 +79,5 @@ jobs:
           if npm view "$(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")" version > /dev/null 2>&1; then
             echo "已存在，跳过"
           else
-            npm publish
+            npm publish release-packages/aiyazone-design-system.tgz
           fi

@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import viteCompression from "vite-plugin-compression";
 import { visualizer } from "rollup-plugin-visualizer";
+import { isLitImport, litBuildContract } from './scripts/lit-build-contract.mjs';
 
 const renameCssPlugin = (fileName = 'index.css') => ({
   name: 'rename-css-asset',
@@ -67,7 +68,7 @@ export default defineConfig((configEnv) => {
   const isDev = configEnv.mode === 'development';
   const isProd = configEnv.mode === 'production';
   const isLibrary = configEnv.mode === 'library';
-  const isLibrarySingle = configEnv.mode === 'library-single';
+  const isLibrarySingle = ['library-cdn', 'library-single'].includes(configEnv.mode);
   const isThemes = configEnv.mode === 'themes';
   const env = loadEnv(configEnv.mode, process.cwd(), '');
   const enableSourcemap = env.ZONE_SOURCEMAP === 'true';
@@ -88,7 +89,7 @@ export default defineConfig((configEnv) => {
           name: 'AIYAZONEDesignSystem'
         },
         rollupOptions: {
-          external: [],
+          external: isLitImport,
           output: ['es', 'cjs'].map(format => ({
             format,
             chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`,
@@ -116,6 +117,7 @@ export default defineConfig((configEnv) => {
         }
       },
       plugins: [
+        litBuildContract(),
         renameCssPlugin('index.css'),
         visualizer({
           open: false,
@@ -159,11 +161,11 @@ export default defineConfig((configEnv) => {
         sourcemap: enableSourcemap,
         minify: 'esbuild',
         emptyOutDir: true,
-        outDir: 'dist',
+        outDir: 'dist/cdn',
         lib: {
-          entry: './src/index.ts',
-          fileName: (format) => (format === 'es' ? 'index.single.js' : 'index.single.cjs'),
-          formats: ['es', 'cjs'],
+          entry: './src/entry.base.ts',
+          fileName: () => 'index.js',
+          formats: ['es'],
           name: 'AIYAZONEDesignSystem'
         },
         rollupOptions: {
@@ -193,10 +195,10 @@ export default defineConfig((configEnv) => {
         }
       },
       plugins: [
-        renameCssPlugin('index.single.css'),
+        litBuildContract(true),
         visualizer({
           open: false,
-          filename: 'dist/stats.single.html',
+          filename: 'dist/cdn/stats.html',
           gzipSize: true,
           brotliSize: true,
           template: 'treemap'

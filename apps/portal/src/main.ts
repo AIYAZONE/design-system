@@ -7,6 +7,7 @@ import { aiInstruction, bindCopy } from '../public/shared/copy-text.js';
 import { renderHomePreview, initHomePreview } from './home-preview';
 declare const __ZONE_VERSION__: string;
 const escape = (text: string) => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+// 0.3.2 为已发布旧入口；新自包含入口在 ZDS-02 发布后同步切换并验证。
 const cdn = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@${__ZONE_VERSION__}/dist/index-v3.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@aiyazone/design-system@${__ZONE_VERSION__}/dist/index.esm.js"></script>`;
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `

@@ -1,5 +1,6 @@
 {
   "name": "@aiyazone/i18n",
+  "private": true,
   "version": "0.1.1",
   "description": "AIYAZONE Design System - Internationalization",
   "type": "module",
@@ -47,8 +48,5 @@
     "vite": "^7.2.2",
     "vite-plugin-dts": "^5.1.2",
     "vitest": "^3.2.7"
-  },
-  "publishConfig": {
-    "access": "restricted"
   }
 }

@@ -23,28 +23,20 @@ AIYAZONE Design System 提供了一套完整、高性能的图标库。该库基
 
 ### 安装
 
-使用npm安装图标库：
+图标模块为私有工作区包，不独立发布。外部应用安装总包：
 
 ```bash
-npm install @aiyazone/icons
+npm install @aiyazone/design-system lit
 ```
 
-CDN引入：
-
-```html
-<script src="https://cdn.aiyazone.com/@aiyazone/icons/latest/index.umd.js"></script>
-
-<!-- 或者 -->
-
-<script type="module" src="https://cdn.aiyazone.com/@aiyazone/icons/latest/index.es.js"></script>
-```
+CDN 使用总包的固定版本自包含入口，发布状态与路径见 [README §5.2](../../README.md#52-cdn-引用基于-npm-公网包)。
 
 ### 使用
 
 在Lit框架中引入图标组件：
 
 ```javascript
-import '@aiyazone/icons';
+import '@aiyazone/design-system';
 ```
 
 在HTML中使用图标：
@@ -52,4 +44,3 @@ import '@aiyazone/icons';
 ```html
 <zone-icon name="alert-fill"></zone-icon>
 ```
-

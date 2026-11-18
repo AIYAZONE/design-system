@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import { isLitImport, litBuildContract } from '../../scripts/lit-build-contract.mjs';
 
 const isStorybookBuild = process.env.npm_lifecycle_event?.includes('storybook') || 
                           process.argv.some(arg => arg.includes('storybook'));
@@ -35,7 +36,8 @@ export default defineConfig({
 
     rollupOptions: {
       input: 'src/index.ts',
-      output: ['es', 'cjs', 'umd'].map(format => ({
+      external: id => isLitImport(id) || /^@aiyazone\/utils(?:$|\/)/.test(id),
+      output: ['es', 'cjs'].map(format => ({
         format,
         name: '@aiyazone/icons',
         chunkFileNames: `chunks/[name]-[hash].${format === 'cjs' ? 'cjs' : 'js'}`
@@ -51,6 +53,7 @@ export default defineConfig({
   },
   // 插件配置
   plugins: [
+    litBuildContract(),
     // Storybook 构建时跳过 dts 插件，避免解析 Storybook 内部模块报错
     ...(isStorybookBuild ? [] : [
       viteStaticCopy({
