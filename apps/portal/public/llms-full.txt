@@ -29,7 +29,7 @@ import '@aiyazone/design-system';   // 注册全部 zone-* 自定义元素
 import '@aiyazone/design-system/index-v3.css';   // 完整主题
 ```
 
-静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。新 CDN 入口当前仅本地验收，尚未发布；线上 0.3.2 继续使用旧入口。接入与回退方法见仓库 README §5.2。
+静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。接入示例与已验证版本见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ## 组件索引
 
@@ -118,7 +118,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-badge size="small">内容</zone-badge>
@@ -185,7 +185,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-button variant="primary">内容</zone-button>
@@ -282,7 +282,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-checkbox>内容</zone-checkbox>
@@ -361,7 +361,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-dialog size="extra">内容</zone-dialog>
@@ -430,7 +430,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-dropdown>内容</zone-dropdown>
@@ -508,7 +508,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-filter-select>内容</zone-filter-select>
@@ -604,7 +604,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-popover>内容</zone-popover>
@@ -678,7 +678,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-spinner>内容</zone-spinner>
@@ -724,7 +724,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-toast variant="info">内容</zone-toast>
@@ -815,7 +815,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-tooltip>内容</zone-tooltip>

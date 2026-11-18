@@ -314,7 +314,7 @@ function renderComponentMd(c) {
   L.push('npm 项目先安装总包与 Lit 3，在打包器入口导入组件和主题：', '');
   L.push('```bash', `pnpm add ${rootPkg.name} lit`, '```', '');
   L.push('```js', `import '${rootPkg.name}';`, `import '${rootPkg.name}/index-v3.css';`, '```', '');
-  L.push('静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。', '');
+  L.push('静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。', '');
   L.push('```html');
   L.push(c.usage ?? synthUsage(c));
   L.push('```');
@@ -428,7 +428,7 @@ function llmsIndex() {
   L.push(`import '${rootPkg.name}/index-v3.css';   // 完整主题`);
   L.push('```');
   L.push('');
-  L.push('静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。新 CDN 入口当前仅本地验收，尚未发布；线上 0.3.2 继续使用旧入口。接入与回退方法见仓库 README §5.2。');
+  L.push('静态 HTML 使用已发布版本的自包含 `dist/cdn/index.js`，单独加载同版本主题 CSS；npm 的 `dist/index.esm.js` 需要打包器解析 Lit 裸导入。接入示例与已验证版本见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。');
   L.push('');
   L.push('## 组件索引');
   L.push('');
