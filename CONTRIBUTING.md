@@ -40,7 +40,7 @@ pnpm run tokens:lint   # 禁止新增裸 hex（--update 冻结存量）
 
 CI job 名称（`ci.yml` 中 `quality` 的 `name:`）保持稳定；发布范围、Lit 产物和 tarball 消费者检查也在该任务内执行，新增步骤不更名。如确需更名，需同步更新 ruleset 中的 required check，并核对 PR 实际产生的检查。
 
-2026-11-18 已在本地恢复上述稳定检查名。当前 GitHub CLI 未登录，尚未重新核对远端实际规则；后续在 ZDS-03 中记录同一提交的 PR 检查结果。
+2026-11-18 已恢复上述稳定检查名，并通过 GitHub API 核对 master / develop 的 active Rulesets：检查名一致、来源为 GitHub Actions、要求分支更新且禁止强推与删除。传统分支保护接口返回 404，实际保护由 Rulesets 生效。PR 同一提交的 CI 结果在 [ZDS-03](docs/ROADMAP.md#zds-03-ci-名称兼容与远端核查2026-11-18) 中跟踪。
 
 ## 本地提交前自检
 
