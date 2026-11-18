@@ -720,7 +720,9 @@ export class ZoneDropdown extends LitElement {
         role=${tree ? "treeitem" : "option"}
         id=${node.id}
         aria-label=${node.option.label}
+        aria-labelledby=${`${node.id}-label`}
         aria-expanded=${ifDefined(branch ? String(expanded) : undefined)}
+        aria-owns=${ifDefined(nested && branch && expanded ? `${node.id}-group` : undefined)}
         aria-selected=${ifDefined(
           branch ? undefined : String(this.value === node.option.value),
         )}
@@ -755,12 +757,12 @@ export class ZoneDropdown extends LitElement {
                 ${unsafeSVG(arrowRight)}
               </span>`
             : nothing}
-          <span class="option-text">${node.option.label}</span>
+          <span id=${`${node.id}-label`} class="option-text">${node.option.label}</span>
         </div>
-        ${nested && branch && expanded
-          ? html`<div role="group">${this._renderNodes(node.children)}</div>`
-          : nothing}
-      </div>`;
+      </div>
+      ${nested && branch && expanded
+        ? html`<div id=${`${node.id}-group`} role="group">${this._renderNodes(node.children)}</div>`
+        : nothing}`;
     });
   }
 
@@ -867,6 +869,8 @@ export class ZoneDropdown extends LitElement {
         <div
           id="options"
           role=${this._tree.hierarchical ? "tree" : "listbox"}
+          tabindex="0"
+          aria-activedescendant=${ifDefined(this._tree.index.get(this._active)?.id)}
           aria-label=${this.label ||
           this.getAttribute("aria-label") ||
           this.placeholder}

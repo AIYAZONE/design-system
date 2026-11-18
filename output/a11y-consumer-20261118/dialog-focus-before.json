@@ -1,0 +1,18 @@
+{
+  "current": {
+    "scenario": "bundle",
+    "width": 1440
+  },
+  "message": "page.waitForFunction: Timeout 30000ms exceeded.",
+  "stack": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:69:22\n    at async withStaticServer (/Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:27:12)\n    at async checkConsumerBrowser (/Users/ht-2502/Documents/Code/design-system/scripts/check-consumer-browser.mjs:43:5)\n    at async file:///Users/ht-2502/Documents/Code/design-system/scripts/check-packed-consumer.mjs:222:3",
+  "errors": [],
+  "results": [],
+  "state": {
+    "active": "<zone-button id=\"open-dialog\" variant=\"primary\" kind=\"default\" size=\"large\" interaction=\"default\" iconposition=\"next\" icon-mode=\"inline\">打开弹窗</zone-button>",
+    "shadowActive": "<button part=\"button\" class=\" button has-content \" aria-disabled=\"false\" aria-busy=\"false\">\n            <!--?lit$137655114$--><!--?lit$137655114$--><span class=\"label\" part=\"label\"><!--?lit$137655114$--><slot></slot></span><!--?lit$137655114$--><slot name=\"icon\"><!--?lit$137655114$--></slot><!--?-->\n          </button>",
+    "dialog": {
+      "open": true,
+      "initialFocus": "#first"
+    }
+  }
+}

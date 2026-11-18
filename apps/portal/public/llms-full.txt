@@ -53,11 +53,11 @@ import '@aiyazone/design-system/index-v3.css';   // 完整主题
 :root {
   --zone-color-white: #FFFFFF;
   --zone-color-grey: #F5F5F5;
-  --zone-color-primary: #FF6727;
-  --zone-color-success: #5E8A4E;
-  --zone-color-danger: #F52317;
-  --zone-color-warning: #FAAD14;
-  --zone-color-info: #5794FF;
+  --zone-color-primary: #B83A00;
+  --zone-color-success: #3F7030;
+  --zone-color-danger: #BE2118;
+  --zone-color-warning: #875900;
+  --zone-color-info: #245BC0;
   --zone-color-neutral: #242F20;
   --zone-size-16: 1rem;                    /* 4 的倍数，2..128 */
   --zone-font-size-14: 0.875rem;           /* 12..96，最小 12px */
@@ -169,7 +169,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-button>`
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
-- **测试**：33 个用例
+- **测试**：34 个用例
 - **包**：`@aiyazone/design-system@0.4.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -249,7 +249,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 }
 ```
 
-共消费 110 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 111 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -345,7 +345,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **标签**：`<zone-dialog>`
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
-- **测试**：8 个用例
+- **测试**：9 个用例
 - **包**：`@aiyazone/design-system@0.4.1`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -771,9 +771,9 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
   --zone-color-danger-contrast: /* 你的值 */;
   --zone-color-info: /* 你的值 */;
   --zone-color-info-contrast: /* 你的值 */;
-  --zone-color-neutral-400: /* 你的值 */;
   --zone-color-success: /* 你的值 */;
   --zone-color-success-contrast: /* 你的值 */;
+  --zone-color-text-l2: /* 你的值 */;
   --zone-color-warning: /* 你的值 */;
   --zone-color-warning-contrast: /* 你的值 */;
   --zone-font-b2: /* 你的值 */;

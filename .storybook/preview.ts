@@ -10,6 +10,7 @@ import zoneDesignSystem from './zone-d';
 
 const preview: Preview = {
   parameters: {
+    a11y: { test: "error" },
     docs: { theme: zoneDesignSystem },
     controls: {
       matchers: {

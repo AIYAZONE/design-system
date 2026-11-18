@@ -53,11 +53,11 @@ import '@aiyazone/design-system/index-v3.css';   // 完整主题
 :root {
   --zone-color-white: #FFFFFF;
   --zone-color-grey: #F5F5F5;
-  --zone-color-primary: #FF6727;
-  --zone-color-success: #5E8A4E;
-  --zone-color-danger: #F52317;
-  --zone-color-warning: #FAAD14;
-  --zone-color-info: #5794FF;
+  --zone-color-primary: #B83A00;
+  --zone-color-success: #3F7030;
+  --zone-color-danger: #BE2118;
+  --zone-color-warning: #875900;
+  --zone-color-info: #245BC0;
   --zone-color-neutral: #242F20;
   --zone-size-16: 1rem;                    /* 4 的倍数，2..128 */
   --zone-font-size-14: 0.875rem;           /* 12..96，最小 12px */

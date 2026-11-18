@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "scenario": "bundle",
+      "width": 1440,
+      "themes": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "bundle",
+      "width": 768,
+      "themes": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "bundle",
+      "width": 390,
+      "themes": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "passed": true
+    }
+  ],
+  "errors": []
+}

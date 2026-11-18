@@ -68,7 +68,8 @@
 
   &:focus-visible {
     position: relative;
-    outline: none;
+    outline: 2px solid var(--zone-color-text-l1);
+    outline-offset: 3px;
   }
 }
 
@@ -498,7 +499,7 @@ slot[name="icon"] {
 
   .button {
     .label {
-      visibility: hidden;
+      opacity: 0;
     }
 
     slot[name="icon"] zone-spinner {

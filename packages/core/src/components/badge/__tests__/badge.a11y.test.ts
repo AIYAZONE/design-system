@@ -7,16 +7,15 @@ describe('zone-badge a11y', () => {
   it('count-only has accessible name and no axe violations', async () => {
     const { el } = mount('zone-badge', { count: 99 })
     await waitUpdate(el)
-    const hostLabel = el.getAttribute('aria-label')
-    expect(hostLabel === null || typeof hostLabel === 'string').toBe(true)
+    expect(el.shadowRoot.querySelector('.badge')?.getAttribute('aria-label')).toBe('计数：99')
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
-    expect(Array.isArray(results.violations)).toBe(true)
+    expect(results.violations).toEqual([])
   })
 
-  it('outline variant maintains contrast via currentColor', async () => {
+  it('outline variant has no structural violations (contrast requires a browser)', async () => {
     const { el } = mount('zone-badge', { variant: 'outline' }, '标签')
     await waitUpdate(el)
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
-    expect(Array.isArray(results.violations)).toBe(true)
+    expect(results.violations).toEqual([])
   })
 })

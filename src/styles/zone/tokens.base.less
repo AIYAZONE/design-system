@@ -56,10 +56,10 @@
 
 .generate-color-common(@color-name, @base-color, @contrast-color) {
   --zone-color-@{color-name}: var(--zone-custom-color-@{color-name}, @base-color);
-  --zone-color-@{color-name}-highlight: mix(#FFFFFF, @base-color, 15%);
+  --zone-color-@{color-name}-highlight: darken(@base-color, 8%);
 
   @supports (color: color-mix(in srgb, red, blue)) {
-    --zone-color-@{color-name}-highlight: color-mix(in srgb, #FFFFFF 15%, var(--zone-color-@{color-name}) 85%);
+    --zone-color-@{color-name}-highlight: color-mix(in srgb, black 15%, var(--zone-color-@{color-name}) 85%);
   }
 
   --zone-color-@{color-name}-contrast: @contrast-color;

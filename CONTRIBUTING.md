@@ -21,7 +21,15 @@ pnpm run docs:check    # 生成产物与源码同步校验
 pnpm run tokens:build  # tokens.json → less/css/ts
 pnpm run tokens:check  # 防漂移
 pnpm run tokens:lint   # 禁止新增裸 hex（--update 冻结存量）
+pnpm run packages:test:browser # tarball 独立安装、生产浏览器交互与三主题
+pnpm run storybook:a11y # 构建 Storybook 后扫描 1440 / 768 / 390 三尺寸
 ```
+
+jsdom 中的 axe 断言检查语义结构，不检查需要布局的 `color-contrast`。实际对比度由 Chromium 消费者与 Storybook 三尺寸扫描检查；保留 addon 默认关闭的文档画布 `region` 规则，其余规则不关闭。`incomplete` 结果保存到扫描报告，仍需人工核查，不能视为自动通过的完整无障碍证明。
+
+消费者默认清理安装目录、浏览器与 HTTP 服务。诊断写入 `output/consumer-browser`，失败包含 `failure.json` 与截图；可用 `--diagnostics <目录>` 指定输出，人工排查用 `--keep` 保留安装目录。原 `--pack-dir`、`--record` 继续可用。CI 失败上传两类浏览器报告；required check 名称保持不变。
+
+2026-11-18 的无障碍修复调整了默认主题语义色和悬浮色：主色、成功、危险、警告、信息色使用可读的深色值；V1 辅助文字、Toast 文字同步调整。`tokens.json` 是数据真源，生成文件由脚本更新；手写编译基线同步维护，用来检查生成器等价性。自定义主题和动态图层仍须检查实际前景／背景，建议普通正文至少 4.5:1。
 
 ## 视觉回归（Chromatic）启用步骤
 

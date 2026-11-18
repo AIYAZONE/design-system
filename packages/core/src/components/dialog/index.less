@@ -36,7 +36,7 @@
   box-shadow: var(--zone-dialog-shadow, none);
   transition: transform var(--zone-dialog-transition-duration, 0.3s) var(--zone-dialog-transition-easing, ease-out) 0.1s;
 
-  zone-icon.close {
+  button.close {
     position: absolute;
     top: var(--zone-size-16);
     right: var(--zone-size-16);
@@ -44,6 +44,15 @@
     font-size: var(--zone-size-32);
     color: var(--zone-color-text-l3);
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    line-height: 1;
+    display: flex;
+    &:focus-visible {
+      outline: 2px solid var(--zone-color-text-l1);
+      outline-offset: 3px;
+    }
   }
 
   #dialogCaption {
@@ -69,6 +78,7 @@
   /* 打开对话框时显示遮罩 */
   opacity: 1;
   visibility: visible;
+  transition: opacity var(--zone-dialog-transition-duration, 0.3s) var(--zone-dialog-transition-easing, ease-out);
 }
 
 @media screen and (min-width: 1024px) {
@@ -114,7 +124,7 @@
   .container {
     min-width: 17.5rem;
 
-    zone-icon.close {
+    button.close {
       font-size: var(--zone-size-48);
     }
 
