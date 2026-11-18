@@ -21,7 +21,7 @@ import '@aiyazone/design-system';
 import '@aiyazone/design-system/index-v3.css';
 ```
 
-静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。发布状态与回退方法见仓库 README §5.2。
+静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
 <zone-button variant="primary">内容</zone-button>

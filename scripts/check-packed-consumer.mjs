@@ -24,6 +24,13 @@ for (const directory of directories) {
   console.log(`已打包 ${manifest.name}@${manifest.version}`);
   dependencies[manifest.name] = `file:${tarball}`;
   const packedManifest = JSON.parse(execFileSync('tar', ['-xOf', tarball, 'package/package.json'], { encoding: 'utf8' }));
+  if (['@aiyazone/design-system', '@aiyazone/tokens'].includes(manifest.name)) {
+    for (const name of ['@aiyazone/eslint-config', '@aiyazone/tsconfig']) {
+      assert.ok(!(name in (packedManifest.devDependencies ?? {})), `${manifest.name} 发布产物不得包含内部开发依赖 ${name}`);
+    }
+    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf8')), manifest,
+      '打包不得改写仓库 package.json');
+  }
   if (!internal) {
     for (const section of ['dependencies', 'peerDependencies', 'optionalDependencies']) {
       for (const [name, range] of Object.entries(packedManifest[section] ?? {})) {

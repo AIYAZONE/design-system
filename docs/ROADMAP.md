@@ -68,6 +68,12 @@
 
 用户明确确认：“只发布总包和 tokens”。对外只承诺总包组件接入及独立令牌接入；core/icons/i18n/utils 保持私有工作区模块，保留内部子路径和六包 tarball 验证。共享 ESLint/TypeScript 配置也设为私有，避免 Changesets 误发。用户随后已授权正式发布。
 
+2026-11-18 发布元数据补充（P2，用户确认）：npm 依赖页会按开发依赖名称生成链接，未发布的共享配置包因此显示无效链接。采用 pnpm `beforePacking` 钩子，仅从两公开包的产物清单中移除 `@aiyazone/eslint-config` / `@aiyazone/tsconfig` 开发依赖。本地清单、运行依赖和其他开发依赖保留；沿用 tarball 消费者检查及 Release 发布同一份已验收产物的流程。
+
+- [x] 实际 tgz 不含两个内部开发依赖；打包后仓库清单不变。`packages:test` 已先复现旧产物断言失败，加入钩子后两公开包通过。
+- [x] `release:check`、`pnpm install --frozen-lockfile --ignore-scripts` 与 `packages:test` 通过：两包安装、14 个文件声明、ESM/CJS、bundler/nodenext 严格类型及 Vite 生产构建可用；锁文件仅增加钩子校验值。
+- [ ] 下一次正式发布后核查 npm 页面链接更新。
+
 两公开包独立采用语义版本，不设置固定或联动版本组。组件、图标、多语言与工具变化记入总包 Changeset；令牌变化记入 tokens，若影响总包生成的主题则也记入总包。Changesets 必须识别根目录总包，私有包不升版、不打标签。本次总包 minor 到 `0.4.0`（CDN 接入路径变化），tokens patch 到 `0.1.1`。
 
 实施与验收：
