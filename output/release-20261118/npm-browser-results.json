@@ -1,0 +1,56 @@
+[
+  {
+    "width": 1440,
+    "passed": true,
+    "sourceAliases": false,
+    "productionBuild": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": []
+  },
+  {
+    "width": 768,
+    "passed": true,
+    "sourceAliases": false,
+    "productionBuild": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": []
+  },
+  {
+    "width": 390,
+    "passed": true,
+    "sourceAliases": false,
+    "productionBuild": true,
+    "litVersions": [
+      [
+        "3.3.3"
+      ],
+      [
+        "4.2.2"
+      ],
+      [
+        "2.1.2"
+      ]
+    ],
+    "errors": []
+  }
+]

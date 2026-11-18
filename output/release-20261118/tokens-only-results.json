@@ -1,0 +1,9 @@
+{
+  "version": "0.1.1",
+  "registryInstall": true,
+  "json": true,
+  "css": true,
+  "typescript": true,
+  "litInstalled": false,
+  "componentsInstalled": false
+}

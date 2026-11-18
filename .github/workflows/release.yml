@@ -110,5 +110,5 @@ jobs:
           if npm view "$(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")" version > /dev/null 2>&1; then
             echo "已存在，跳过"
           else
-            npm publish release-packages/aiyazone-design-system.tgz --loglevel=verbose
+            npm publish ./release-packages/aiyazone-design-system.tgz --loglevel=verbose
           fi

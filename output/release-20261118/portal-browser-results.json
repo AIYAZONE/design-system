@@ -1,0 +1,26 @@
+[
+  {
+    "width": 1440,
+    "passed": true,
+    "homeCDN": "0.4.1/dist/cdn/index.js",
+    "dialog": "open/cancel/confirm",
+    "toast": "passed",
+    "errors": []
+  },
+  {
+    "width": 768,
+    "passed": true,
+    "homeCDN": "0.4.1/dist/cdn/index.js",
+    "dialog": "open/cancel/confirm",
+    "toast": "passed",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "passed": true,
+    "homeCDN": "0.4.1/dist/cdn/index.js",
+    "dialog": "open/cancel/confirm",
+    "toast": "passed",
+    "errors": []
+  }
+]
