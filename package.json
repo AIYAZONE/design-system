@@ -1,6 +1,6 @@
 {
   "name": "@aiyazone/design-system",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "AIYAZONE Design System (ZDS) - Monorepo",
   "author": "AIYAZONE F2E Team",
   "type": "module",
