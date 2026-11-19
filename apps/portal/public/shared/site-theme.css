@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --portal-bg: #080d17;
   --portal-surface: #101827;
   --portal-raised: #172338;
@@ -7,10 +8,34 @@
   --portal-line: #2a3a52;
   --portal-accent: #80c7ff;
   --portal-on-accent: #07111e;
+  --portal-accent-hover: #a5d7ff;
+  --portal-code-bg: #0e1624;
+  --portal-code-border: #203048;
+  --portal-highlight-bg: #80c7ff12;
+  --portal-card-shadow: 0 16px 48px #0003;
+  --portal-popup-shadow: 0 12px 32px #0006;
   --portal-font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --portal-mono: "SFMono-Regular", Menlo, Consolas, monospace;
   --portal-header-height: 76px;
   --portal-title-size: clamp(28px, 2.5vw, 36px);
+}
+/* Site appearance is independent from --zone-* component themes. */
+:root[data-site-theme="light"] {
+  color-scheme: light;
+  --portal-bg: #f7f9fc;
+  --portal-surface: #ffffff;
+  --portal-raised: #eaf0f8;
+  --portal-text: #17243a;
+  --portal-muted: #526177;
+  --portal-line: #d6deea;
+  --portal-accent: #1d4ed8;
+  --portal-on-accent: #ffffff;
+  --portal-accent-hover: #1e40af;
+  --portal-code-bg: #f0f4f9;
+  --portal-code-border: #d6deea;
+  --portal-highlight-bg: #1d4ed80d;
+  --portal-card-shadow: 0 12px 40px #17243a0d;
+  --portal-popup-shadow: 0 12px 32px #17243a14;
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 96px; }
@@ -32,7 +57,7 @@ button { cursor: pointer; }
 .site-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 20px; border: 1px solid var(--portal-line); border-radius: 8px; background: transparent; color: var(--portal-text); text-decoration: none; font-weight: 600; transition: background 180ms; }
 .site-button:hover { background: var(--portal-raised); }
 .site-button--primary { background: var(--portal-accent); color: var(--portal-on-accent); border-color: var(--portal-accent); }
-.site-button--primary:hover { background: #a5d7ff; }
+.site-button--primary:hover { background: var(--portal-accent-hover); }
 .site-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .site-code { background: var(--portal-surface); border: 1px solid var(--portal-line); border-radius: 12px; padding: 24px; margin: 24px 0; min-width: 0; }
 .site-code__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--portal-muted); font-size: 14px; }

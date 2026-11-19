@@ -49,15 +49,15 @@ const htmlRelativePaths = () => {
 const sharedFooterStyles = () => ({
   name: 'examples-shared-footer',
   configureServer(server) {
-    for (const name of ['site-footer.css', 'site-theme.css']) {
+    for (const name of ['site-footer.css', 'site-theme.css', 'site-color-mode.js']) {
       server.middlewares.use(`/shared/${name}`, (_request, response) => {
-        response.setHeader('Content-Type', 'text/css');
+        response.setHeader('Content-Type', name.endsWith('.js') ? 'text/javascript' : 'text/css');
         response.end(fs.readFileSync(path.resolve(__dirname, '../portal/public/shared', name), 'utf8'));
       });
     }
   },
   generateBundle() {
-    for (const name of ['site-footer.css', 'site-theme.css']) this.emitFile({ type: 'asset', fileName: `shared/${name}`, source: fs.readFileSync(path.resolve(__dirname, '../portal/public/shared', name), 'utf8') });
+    for (const name of ['site-footer.css', 'site-theme.css', 'site-color-mode.js']) this.emitFile({ type: 'asset', fileName: `shared/${name}`, source: fs.readFileSync(path.resolve(__dirname, '../portal/public/shared', name), 'utf8') });
   }
 });
 

@@ -8,7 +8,7 @@
 .home-caption { color: var(--portal-muted); font-size: 11px; margin: 22px 0 0; }
 .home-caption span { color: var(--portal-line); padding: 0 8px; }
 .home-main .site-button { min-height: 42px; padding: 8px 16px; font-size: 13px; border-radius: 6px; }
-.home-preview { position: relative; border: 1px solid var(--portal-line); border-radius: 12px; background: var(--portal-surface); box-shadow: 0 16px 48px #0003; }
+.home-preview { position: relative; border: 1px solid var(--portal-line); border-radius: 12px; background: var(--portal-surface); box-shadow: var(--portal-card-shadow); }
 .home-preview__bar { padding: 12px 16px; display: flex; gap: 12px; align-items: center; color: var(--portal-muted); font-size: 11px; }
 .preview-dots { display: flex; gap: 5px; }
 .preview-dots i { width: 5px; height: 5px; background: var(--portal-muted); border-radius: 50%; opacity: .5; }
@@ -44,7 +44,7 @@
 .home-start .site-steps h3 { font-size: 14px; margin: 0 0 4px; font-weight: 500; }
 .home-start .site-steps p { margin: 0; font-size: 12px; }
 .home-guide-link { font-size: 12px; text-decoration: none; }
-.home-main .site-code { margin: 0; padding: 18px 20px; border-radius: 8px; background: #0e1624; border-color: #203048; }
+.home-main .site-code { margin: 0; padding: 18px 20px; border-radius: 8px; background: var(--portal-code-bg); border-color: var(--portal-code-border); }
 .home-main .site-code__head { font-size: 12px; }
 .home-main pre { font-size: 12px; line-height: 1.85; color: var(--portal-muted); }
 .home-start .site-code { align-self: start; }

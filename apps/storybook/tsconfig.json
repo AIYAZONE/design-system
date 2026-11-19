@@ -16,6 +16,8 @@
     }
   },
   "include": [
+    "site-theme.ts",
+    "site-docs-container.ts",
     ".storybook/**/*",
     "stories/**/*",
     "../../src/types/**/*.d.ts"
