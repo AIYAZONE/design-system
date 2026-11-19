@@ -6,12 +6,13 @@ import "@aiyazone/icons";
 // 最后引入站点样式，使站点的 tokens 与变量覆盖核心包的默认值
 import "zone:styles";
 import { initialize, initI18nDom, setCurrLanguage } from "@aiyazone/i18n";
-import zoneDesignSystem from './zone-d';
+import zoneDesignSystem from "./zone-d";
+import { SiteDocsContainer } from "../apps/storybook/site-docs-container";
 
 const preview: Preview = {
   parameters: {
     a11y: { test: "error" },
-    docs: { theme: zoneDesignSystem },
+    docs: { theme: zoneDesignSystem, container: SiteDocsContainer },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -57,7 +58,9 @@ initI18nDom();
 // 注意：在切换 toolbar 时，Storybook 会更新 globals.locale，这里通过事件监听进行同步
 if (typeof window !== "undefined") {
   // 初始同步
-  setCurrLanguage((window as any).__STORYBOOK_PREVIEW__?.globals?.locale ?? "en");
+  setCurrLanguage(
+    (window as any).__STORYBOOK_PREVIEW__?.globals?.locale ?? "en",
+  );
 
   window.addEventListener("storyUpdate", () => {
     const locale = (window as any).__STORYBOOK_PREVIEW__?.globals?.locale;

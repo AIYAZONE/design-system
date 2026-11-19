@@ -55,17 +55,40 @@ const config = {
       ...(config.resolve ?? {}),
       alias: {
         ...(config.resolve?.alias ?? {}),
-        'storybook/theming': createRequire(resolve(process.cwd(), 'package.json')).resolve('storybook/theming'),
+        react: createRequire(resolve(process.cwd(), "package.json")).resolve(
+          "react",
+        ),
+        "storybook/theming": createRequire(
+          resolve(process.cwd(), "package.json"),
+        ).resolve("storybook/theming"),
         // 将工作区包映射到源码，避免依赖 dist 构建
-        '@aiyazone/i18n': resolve(process.cwd(), '../../packages/i18n/src/index.ts'),
-        '@aiyazone/core': resolve(process.cwd(), '../../packages/core/src/index.ts'),
-        '@aiyazone/icons': resolve(process.cwd(), '../../packages/icons/src/index.ts'),
-        '@aiyazone/utils': resolve(process.cwd(), '../../packages/utils/src/index.ts'),
+        "@aiyazone/i18n": resolve(
+          process.cwd(),
+          "../../packages/i18n/src/index.ts",
+        ),
+        "@aiyazone/core": resolve(
+          process.cwd(),
+          "../../packages/core/src/index.ts",
+        ),
+        "@aiyazone/icons": resolve(
+          process.cwd(),
+          "../../packages/icons/src/index.ts",
+        ),
+        "@aiyazone/utils": resolve(
+          process.cwd(),
+          "../../packages/utils/src/index.ts",
+        ),
         // 全局样式别名，指向绝对路径以触发 /@fs 解析
-        'zone:styles': resolve(process.cwd(), '../../src/styles/index.less'),
+        "zone:styles": resolve(process.cwd(), "../../src/styles/index.less"),
         // 修正 Storybook 在非仓库根作为 dev root 时对 preview.ts 的动态导入
-        '/.storybook/preview.ts': resolve(process.cwd(), '../../.storybook/preview.ts'),
-        '/.storybook/preview.js': resolve(process.cwd(), '../../.storybook/preview.ts'),
+        "/.storybook/preview.ts": resolve(
+          process.cwd(),
+          "../../.storybook/preview.ts",
+        ),
+        "/.storybook/preview.js": resolve(
+          process.cwd(),
+          "../../.storybook/preview.ts",
+        ),
       },
     };
     // 避免工作区包被 Vite 预构建处理（使用源码）
@@ -73,14 +96,16 @@ const config = {
       ...(config.optimizeDeps ?? {}),
       exclude: [
         ...((config.optimizeDeps?.exclude ?? []) as string[]),
-        '@aiyazone/i18n',
-        '@aiyazone/core',
-        '@aiyazone/icons',
-        '@aiyazone/utils',
+        "@aiyazone/i18n",
+        "@aiyazone/core",
+        "@aiyazone/icons",
+        "@aiyazone/utils",
       ],
-    } as ViteConfig['optimizeDeps'];
+    } as ViteConfig["optimizeDeps"];
     // 移除压缩插件以避免在 Storybook 预览构建阶段的 ENOENT 报错
-    config.plugins = (config.plugins ?? []).filter((p: any) => p?.name !== 'vite:compression');
+    config.plugins = (config.plugins ?? []).filter(
+      (p: any) => p?.name !== "vite:compression",
+    );
     // 移除将 storybook/internal 标记为 external 的错误设置，避免无法解析虚拟模块
     return config;
   },

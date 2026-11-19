@@ -380,3 +380,6 @@ g.arch-c4-container .arch-c4-node-shape { stroke-dasharray: 5 4; }
   .arch-panel-item, .arch-panel-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .arch-panel-row > div:nth-child(3) { grid-column: auto; }
 }
+
+:root[data-site-theme="light"] :is(.ap-back-overview, .ap-views, .ap-views button, .ap-views > span) { color: var(--portal-muted); }
+:root[data-site-theme="light"] :is(.ap-back-overview:hover, .ap-views button:hover) { background: var(--portal-raised); }

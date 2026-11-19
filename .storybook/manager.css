@@ -10,7 +10,7 @@
 
 .sidebar-header::before {
   content: "组件目录";
-  color: #AAB8CD;
+  color: var(--portal-muted);
   font-size: 14px;
   font-weight: 600;
 }

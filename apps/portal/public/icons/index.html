@@ -2,6 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <script src="/shared/site-color-mode.js"></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>图标库 · AIYAZONE Design System</title>
@@ -18,7 +19,7 @@
       .usage summary { color:var(--brand); min-height:44px; display:flex; align-items:center; gap:12px; font-weight:400; }
       .usage summary::after { content:"＋"; }
       .usage[open] summary::after { content:"−"; }
-      .usage-content { position:absolute; right:0; top:44px; width:340px; z-index:10; padding:16px 20px; border:1px solid var(--line); border-radius:8px; background:var(--portal-surface); box-shadow:0 12px 32px #0006; }
+      .usage-content { position:absolute; right:0; top:44px; width:340px; z-index:10; padding:16px 20px; border:1px solid var(--line); border-radius:8px; background:var(--portal-surface); box-shadow:var(--portal-popup-shadow); }
       .usage-content pre { font-size:11px; }
       .sub code { background:var(--portal-surface); padding:2px 6px; border-radius:4px; font-family: ui-monospace, monospace; font-size:.86em; }
 
@@ -42,7 +43,7 @@
       .count { color:var(--muted); font-size:11px; min-width:65px; text-align:right; }
 
       .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:8px; margin-top:20px; }
-      .card { background:#0e1624; border:1px solid transparent; border-radius:6px; padding:12px 8px; text-align:center;
+      .card { background:var(--portal-code-bg); border:1px solid transparent; border-radius:6px; padding:12px 8px; text-align:center;
         cursor:pointer; transition: border-color .15s, background .15s; position:relative; min-width:0; }
       .card:hover { border-color:var(--line); background:var(--portal-raised); }
       .card .glyph { height:64px; display:flex; align-items:center; justify-content:center; color:var(--ink); }
@@ -56,7 +57,7 @@
       .card.copied .tip { opacity:1; }
       .empty { color:var(--muted); text-align:center; padding:48px 0; }
       .notice { background:var(--portal-surface); border:1px solid var(--line); border-radius:10px; padding:10px 14px; color:var(--muted); font-size:.86rem; margin-bottom:16px; }
-      #copy-status { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:20; max-width:calc(100vw - 32px); width:max-content; background:var(--portal-raised); border:1px solid var(--line); border-radius:6px; padding:10px 16px; font-size:12px; color:var(--ink); box-shadow:0 8px 32px #0006; margin:0; overflow-wrap:anywhere; }
+      #copy-status { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:20; max-width:calc(100vw - 32px); width:max-content; background:var(--portal-raised); border:1px solid var(--line); border-radius:6px; padding:10px 16px; font-size:12px; color:var(--ink); box-shadow:var(--portal-popup-shadow); margin:0; overflow-wrap:anywhere; }
       #copy-status:empty { display:none; }
       @media(max-width:1000px) {
         .toolbar { grid-template-columns:1fr auto; gap:6px 20px; }
