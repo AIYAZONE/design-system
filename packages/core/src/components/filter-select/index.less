@@ -94,7 +94,7 @@
 }
 
 .trigger:focus-visible {
-  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline: 2px solid var(--zone-focus-color, var(--zone-color-primary));
   outline-offset: 1px;
 }
 
@@ -239,7 +239,7 @@
 }
 
 .clear:focus-visible {
-  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline: 2px solid var(--zone-focus-color, var(--zone-color-primary));
   outline-offset: 2px;
 }
 
@@ -256,7 +256,7 @@
 }
 
 .options:focus-visible {
-  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline: 2px solid var(--zone-focus-color, var(--zone-color-primary));
   outline-offset: 2px;
 }
 
@@ -354,7 +354,7 @@
 }
 
 .confirm:focus-visible {
-  outline: 2px solid var(--zone-color-primary, #fd5000);
+  outline: 2px solid var(--zone-focus-color, var(--zone-color-primary));
   outline-offset: 2px;
 }
 
@@ -390,3 +390,5 @@
     animation: none;
   }
 }
+
+@media (prefers-reduced-motion: reduce) { .panel, .trigger, .trigger__arrow { animation: none; transition: none; } }

@@ -19,7 +19,12 @@ import {
   shift,
   size,
 } from "@floating-ui/dom";
-import { I18nController, t, normalizeLanguage, type Language } from "@aiyazone/i18n";
+import {
+  I18nController,
+  t,
+  normalizeLanguage,
+  type Language,
+} from "@aiyazone/i18n";
 
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
@@ -111,7 +116,12 @@ export class ZoneFilterSelect extends LitElement {
     type: Array,
     converter: {
       fromAttribute: (raw: string | null): string[] =>
-        raw ? raw.split(",").map((item) => item.trim()).filter(Boolean) : [],
+        raw
+          ? raw
+              .split(",")
+              .map((item) => item.trim())
+              .filter(Boolean)
+          : [],
     },
   })
   value: string[] = [];
@@ -143,19 +153,31 @@ export class ZoneFilterSelect extends LitElement {
   /**
    * 是否展示底部确认按钮（false 时为即时生效模式）
    */
-  @property({ type: Boolean, converter: looseBooleanConverter, attribute: "show-confirm" })
+  @property({
+    type: Boolean,
+    converter: looseBooleanConverter,
+    attribute: "show-confirm",
+  })
   showConfirm = true;
 
   /**
    * 是否展示右上角清空按钮
    */
-  @property({ type: Boolean, converter: looseBooleanConverter, attribute: "show-clear" })
+  @property({
+    type: Boolean,
+    converter: looseBooleanConverter,
+    attribute: "show-clear",
+  })
   showClear = true;
 
   /**
    * 是否展示「已选 n/总数」计数
    */
-  @property({ type: Boolean, converter: looseBooleanConverter, attribute: "show-counter" })
+  @property({
+    type: Boolean,
+    converter: looseBooleanConverter,
+    attribute: "show-counter",
+  })
   showCounter = true;
 
   /**
@@ -194,7 +216,11 @@ export class ZoneFilterSelect extends LitElement {
    * 页面滚动时是否自动收起面板。
    * 面板内部（选项列表）滚动不会收起。
    */
-  @property({ type: Boolean, converter: looseBooleanConverter, attribute: "close-on-scroll" })
+  @property({
+    type: Boolean,
+    converter: looseBooleanConverter,
+    attribute: "close-on-scroll",
+  })
   closeOnScroll = true;
 
   /**
@@ -246,7 +272,10 @@ export class ZoneFilterSelect extends LitElement {
    * 取文案：显式设置优先，否则回退到内置多语言（按当前解析语言）
    */
   private _text(override: string | undefined, key: string): string {
-    return override ?? t(ZoneFilterSelect.I18N_PREFIX + key, undefined, this._resolveLang());
+    return (
+      override ??
+      t(ZoneFilterSelect.I18N_PREFIX + key, undefined, this._resolveLang())
+    );
   }
 
   private get _resolvedLabel(): string {
@@ -291,10 +320,13 @@ export class ZoneFilterSelect extends LitElement {
     super.disconnectedCallback?.();
     this._i18n?.hostDisconnected();
     this._i18n = undefined;
+    this._positionVersion++;
     this._cleanupPosition?.();
     this._cleanupPosition = undefined;
     this._detachListeners();
   }
+
+  private _positionVersion = 0;
 
   private _attachListeners(): void {
     document.addEventListener("click", this._handleClickOutside);
@@ -310,7 +342,9 @@ export class ZoneFilterSelect extends LitElement {
   private _detachListeners(): void {
     document.removeEventListener("click", this._handleClickOutside);
     document.removeEventListener("keydown", this._handleKeydown);
-    document.removeEventListener("scroll", this._handleScroll, { capture: true });
+    document.removeEventListener("scroll", this._handleScroll, {
+      capture: true,
+    });
   }
 
   protected willUpdate(changedProperties: PropertyValues<this>): void {
@@ -320,6 +354,21 @@ export class ZoneFilterSelect extends LitElement {
   }
 
   protected updated(changedProperties: PropertyValues<this>): void {
+    if (changedProperties.has("disabled") && this.disabled && this.open) {
+      this.hide();
+      return;
+    }
+    if (
+      changedProperties.has("open") ||
+      changedProperties.has("closeOnScroll")
+    ) {
+      this._detachListeners();
+      if (this.open && !this.disabled) this._attachListeners();
+      else if (!this.open) {
+        this._draft = [...(this.value ?? [])];
+        this._activeIndex = -1;
+      }
+    }
     if (
       changedProperties.has("open") ||
       changedProperties.has("placement") ||
@@ -336,7 +385,7 @@ export class ZoneFilterSelect extends LitElement {
     const changed = changedProperties as unknown as Map<PropertyKey, unknown>;
     if (changed.has("_activeIndex") && this._activeIndex >= 0) {
       const activeEl = this.renderRoot?.querySelector<HTMLElement>(
-        `[data-index="${this._activeIndex}"]`
+        `[data-index="${this._activeIndex}"]`,
       );
       activeEl?.scrollIntoView?.({ block: "nearest" });
     }
@@ -352,7 +401,12 @@ export class ZoneFilterSelect extends LitElement {
 
     this._attachListeners();
 
-    this.dispatchEvent(new CustomEvent("zone-filter-select-open", { bubbles: true, composed: true }));
+    this.dispatchEvent(
+      new CustomEvent("zone-filter-select-open", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   /** 收起面板，未确认时丢弃草稿 */
@@ -372,7 +426,7 @@ export class ZoneFilterSelect extends LitElement {
         detail: { confirmed },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 
@@ -393,7 +447,7 @@ export class ZoneFilterSelect extends LitElement {
         detail: { value: [...this._draft] },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
     this.hide(true);
   }
@@ -411,7 +465,7 @@ export class ZoneFilterSelect extends LitElement {
           detail: { value: [] },
           bubbles: true,
           composed: true,
-        })
+        }),
       );
       return;
     }
@@ -428,7 +482,7 @@ export class ZoneFilterSelect extends LitElement {
         detail: { value: next },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 
@@ -463,7 +517,8 @@ export class ZoneFilterSelect extends LitElement {
     if (!count) return;
 
     if (this._activeIndex < 0) {
-      this._activeIndex = delta > 0 ? this._firstEnabledIndex() : this._lastEnabledIndex();
+      this._activeIndex =
+        delta > 0 ? this._firstEnabledIndex() : this._lastEnabledIndex();
       return;
     }
 
@@ -487,7 +542,10 @@ export class ZoneFilterSelect extends LitElement {
       if (!this.open) {
         this.show();
         void this.updateComplete.then(() => {
-          this._activeIndex = event.key === "ArrowDown" ? this._firstEnabledIndex() : this._lastEnabledIndex();
+          this._activeIndex =
+            event.key === "ArrowDown"
+              ? this._firstEnabledIndex()
+              : this._lastEnabledIndex();
           this._focusListbox();
         });
       }
@@ -524,7 +582,8 @@ export class ZoneFilterSelect extends LitElement {
 
   /** 键盘打开面板：收起时把焦点还给触发器 */
   private _closeWithFocusRestore(): void {
-    const hadFocusInside = !!(this.renderRoot as ShadowRoot | null)?.activeElement;
+    const hadFocusInside = !!(this.renderRoot as ShadowRoot | null)
+      ?.activeElement;
     this.hide();
     if (hadFocusInside) this._focusTrigger();
   }
@@ -592,9 +651,11 @@ export class ZoneFilterSelect extends LitElement {
   }
 
   private _syncPosition(): void {
-    if (!this._triggerEl || !this._panelEl) return;
+    if (!this.open || !this.isConnected || !this._triggerEl || !this._panelEl)
+      return;
 
     this._cleanupPosition?.();
+    const version = ++this._positionVersion;
 
     this._cleanupPosition = autoUpdate(this._triggerEl, this._panelEl, () => {
       if (!this._triggerEl || !this._panelEl) return;
@@ -615,7 +676,13 @@ export class ZoneFilterSelect extends LitElement {
         ],
         strategy: "fixed",
       }).then(({ x, y, placement }) => {
-        if (!this._panelEl) return;
+        if (
+          !this.open ||
+          !this.isConnected ||
+          version !== this._positionVersion ||
+          !this._panelEl
+        )
+          return;
         Object.assign(this._panelEl.style, {
           left: `${x}px`,
           top: `${y}px`,
@@ -749,62 +816,70 @@ export class ZoneFilterSelect extends LitElement {
                   data-index=${index}
                   @click=${this._handleOptionClick}
                 >
-                  <span class="option__checkbox" part="checkbox" aria-hidden="true">
+                  <span
+                    class="option__checkbox"
+                    part="checkbox"
+                    aria-hidden="true"
+                  >
                     ${selected ? this._renderCheckedIcon() : this._renderUncheckedIcon()}
                   </span>
-                  <span class="option__label" part="option-label">${option.label}</span>
+                  <span class="option__label" part="option-label"
+                    >${option.label}</span
+                  >
                 </div>
               `;
             })}
           </div>
         `
-      : html`<div class="empty" part="empty">${this._text(this.emptyText, "empty")}</div>`;
+      : html`<div class="empty" part="empty">
+          ${this._text(this.emptyText, "empty")}
+        </div>`;
 
     return html`
       <div class="panel" part="panel">
-        ${showHeader
-          ? html`
-              <div class="panel__header" part="header">
-                ${this.showCounter
-                  ? html`
-                      <span class="counter" part="counter"
-                        ><span class="counter__label">${this._text(this.selectedText, "counter")}</span> <span
-                          class="counter__current"
-                          >${draftCount}</span
-                        ><span class="counter__sep">/</span
-                        ><span class="counter__total">${total}</span></span
-                      >
-                    `
-                  : html`<span class="panel__spacer"></span>`}
-                ${this.showClear
-                  ? html`
-                      <button
-                        type="button"
-                        class="clear"
-                        part="clear"
-                        @click=${this._handleClearClick}
-                      >
-                        ${this._text(this.clearText, "clear")}
-                      </button>
-                    `
-                  : nothing}
-              </div>
-              <div class="panel__divider" part="divider"></div>
-            `
-          : nothing}
+        ${
+          showHeader
+            ? html`
+                <div class="panel__header" part="header">
+                  ${
+                    this.showCounter
+                      ? html`<span class="counter" part="counter"><span class="counter__label">${this._text(this.selectedText, "counter")}</span> <span class="counter__current">${draftCount}</span><span class="counter__sep">/</span><span class="counter__total">${total}</span></span>`
+                      : html`<span class="panel__spacer"></span>`
+                  }
+                  ${
+                    this.showClear
+                      ? html`
+                          <button
+                            type="button"
+                            class="clear"
+                            part="clear"
+                            @click=${this._handleClearClick}
+                          >
+                            ${this._text(this.clearText, "clear")}
+                          </button>
+                        `
+                      : nothing
+                  }
+                </div>
+                <div class="panel__divider" part="divider"></div>
+              `
+            : nothing
+        }
         ${list}
-        ${this.showConfirm
-          ? html`
-              <button
-                type="button"
-                class="confirm"
-                part="confirm"
-                @click=${this._handleConfirmClick}
-              >
-                ${this._text(this.confirmText, "confirm")}
-              </button>
-            `
-          : nothing}
+        ${
+          this.showConfirm
+            ? html`
+                <button
+                  type="button"
+                  class="confirm"
+                  part="confirm"
+                  @click=${this._handleConfirmClick}
+                >
+                  ${this._text(this.confirmText, "confirm")}
+                </button>
+              `
+            : nothing
+        }
       </div>
     `;
   }

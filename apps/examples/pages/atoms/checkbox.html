@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>复选框示例 · AIYAZONE</title>
+    <link rel="icon" href="/favicon.svg" />
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="./checkbox-demo.ts"></script>
+  </head>
+  <body data-example-page="atoms/checkbox">
+    <div class="container examples-layout">
+      <div class="examples-workspace">
+        <header class="header">
+          <div class="content">
+            <h1>复选框示例</h1>
+            <p class="subtitle">
+              选择一个或多个独立选项，查看选中、禁用与表单行为。
+            </p>
+          </div>
+        </header>
+        <main class="example-preview" id="content">
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">01</span>
+              <h2 class="example-section__title" id="states">选择与禁用状态</h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-checkbox label="未选中"></zone-checkbox
+                ><zone-checkbox checked="" label="已选中"></zone-checkbox
+                ><zone-checkbox disabled="" label="禁用"></zone-checkbox
+                ><zone-checkbox
+                  disabled=""
+                  checked=""
+                  label="禁用已选"
+                ></zone-checkbox>
+              </div>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">02</span>
+              <h2 class="example-section__title" id="labels">标签与键盘操作</h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-checkbox label="通过 label 属性提供名称"></zone-checkbox>
+              </div>
+              <zone-checkbox
+                >通过插槽提供长标签：为这份礼物添加包装，并在包裹中附上一张祝福卡片。</zone-checkbox
+              >
+              <p>使用 Tab 定位，按空格切换；也可以点击整行标签。</p>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">03</span>
+              <h2 class="example-section__title" id="form">原生表单与事件</h2>
+            </header>
+            <div class="example-canvas">
+              <form id="checkbox-form">
+                <fieldset id="checkbox-fieldset">
+                  <legend>附加服务</legend>
+                  <div class="demo-row">
+                    <zone-checkbox
+                      name="service"
+                      value="gift"
+                      checked=""
+                      label="礼品包装"
+                    ></zone-checkbox
+                    ><zone-checkbox
+                      name="service"
+                      value="card"
+                      label="祝福卡片"
+                    ></zone-checkbox>
+                  </div>
+                </fieldset>
+                <div class="demo-row">
+                  <button class="example-tool" type="submit">查看提交值</button
+                  ><button class="example-tool" type="reset">重置选择</button
+                  ><button
+                    class="example-tool"
+                    type="button"
+                    id="checkbox-disable"
+                  >
+                    切换整组禁用
+                  </button>
+                </div>
+                <pre id="checkbox-result" role="status">
+选择服务后查看表单值。</pre>
+              </form>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

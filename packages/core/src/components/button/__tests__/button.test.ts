@@ -67,7 +67,7 @@ describe("zone-button", () => {
     const root = await getRoot(el);
     const anchor = root.querySelector("a")!;
     expect(anchor).toBeTruthy();
-    expect(anchor.getAttribute("role")).toBe("button");
+    expect(anchor.getAttribute("role")).toBeNull();
     expect(anchor.getAttribute("rel")).toBe("noopener noreferrer");
   });
 

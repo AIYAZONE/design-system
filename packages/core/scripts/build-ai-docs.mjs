@@ -107,9 +107,10 @@ function parseDecoratedFields(src) {
     const kind = m[1];
     const decoratorBody = src.slice(m.index + m[0].length, i - 1);
     // 字段声明紧跟装饰器（允许中间再叠其他装饰器）
-    const fm = /^\s*(?:@\w+\s*\([^)]*\)\s*)?([A-Za-z_$][\w$]*)\s*\??\s*(?::\s*([^=\n]+?)\s*)?(?:=\s*([^;\n]+))?;/.exec(
+    let fm = /^\s*(?:@\w+\s*\([^)]*\)\s*)?([A-Za-z_$][\w$]*)\s*\??\s*(?::\s*([^=\n]+?)\s*)?(?:=\s*([^;\n]+))?;/.exec(
       src.slice(i)
     );
+    if (!fm) fm = /^\s*get\s+([A-Za-z_$][\w$]*)\s*\(\)\s*:\s*([^\n{]+)\s*\{/.exec(src.slice(i));
     if (!fm) continue;
     if (kind === 'state') continue; // 内部状态不作为公开 API
     // 向前回看：取紧邻该装饰器（仅隔空白）的最后一个 JSDoc 块
@@ -126,7 +127,7 @@ function parseDecoratedFields(src) {
     const typeHint = /type\s*:\s*(Boolean|Number|String)/.exec(decoratorBody);
     fields.push({
       name: fm[1],
-      attribute: attrMatch ? null : fm[1].replace(/([A-Z])/g, (_, c) => '-' + c.toLowerCase()),
+      attribute: attrMatch ? null : /attribute\s*:\s*["']([^"']+)["']/.exec(decoratorBody)?.[1] ?? fm[1].toLowerCase(),
       reflects: reflect,
       type: fm[2]?.trim() ?? (typeHint ? typeHint[1] : 'string'),
       default: fm[3]?.trim() ?? null,
@@ -245,8 +246,18 @@ for (const dir of dirs) {
   summary = summary.split(/(?<=。|\.)\s/)[0].slice(0, 90).trim();
 
   const fields = parseDecoratedFields(src).map((f) => ({ ...f, type: expandType(f.type, aliases) }));
-  const events = parseEvents(src);
+  const eventMap = new Map();
+  for (const event of [...parseEvents(src), ...[...src.matchAll(/@event\(\s*["']([\w-]+)["']/g)].map(match => ({ name: match[1], description: '' })), ...(cemEntry?.events ?? [])]) {
+    if (!event.name) continue;
+    const previous = eventMap.get(event.name);
+    eventMap.set(event.name, { name: event.name, description: event.description || previous?.description || '' });
+  }
+  const events = [...eventMap.values()];
   const slots = parseSlots(src);
+  const methods = (cemEntry?.members ?? []).filter(member => member.kind === 'method' && member.privacy !== 'private' && !member.name.startsWith('_') && !['render', 'firstUpdated', 'updated', 'willUpdate', 'connectedCallback', 'disconnectedCallback', 'attributeChangedCallback', 'formDisabledCallback', 'formResetCallback', 'formStateRestoreCallback'].includes(member.name)).map(member => ({ name: member.name, description: member.description ?? '', parameters: member.parameters ?? [] }));
+  for (const match of src.matchAll(/^  ([A-Za-z]\w*)\s*=\s*\([^)]*\)\s*=>/gm)) {
+    if (!methods.some(method => method.name === match[1])) methods.push({ name: match[1], description: '', parameters: [] });
+  }
   const cssVars = parseCssVars(lessSrc);
 
   const storyFile = fs.readdirSync(path.join(COMPONENTS_DIR, dir)).find((f) => f.endsWith('.stories.ts'));
@@ -271,6 +282,7 @@ for (const dir of dirs) {
     attributes: fields.filter((f) => f.attribute),
     properties: fields.filter((f) => !f.attribute),
     events,
+    methods,
     slots,
     cssVariables: cssVars,
     cssProps,
@@ -279,6 +291,8 @@ for (const dir of dirs) {
     tests: testCount,
   };
   comp.usage = comp.usage ?? synthUsage(comp);
+  if (tag === 'zone-dropdown') comp.usage = '<zone-dropdown id="delivery" label="配送方式" name="delivery"></zone-dropdown>\n<script>\n  document.querySelector("#delivery").options = [\n    { value: "standard", label: "标准配送" },\n    { value: "express", label: "加急配送" }\n  ];\n</script>';
+  if (tag === 'zone-filter-select') comp.usage = '<zone-filter-select id="products" label="产品筛选"></zone-filter-select>\n<script>\n  document.querySelector("#products").options = [\n    { value: "solar", label: "太阳能板" },\n    { value: "battery", label: "便携电源" }\n  ];\n</script>';
   components.push(comp);
 }
 
@@ -289,8 +303,8 @@ const manifest = {
   package: corePkg.name,
   version: corePkg.version,
   generatedBy: 'packages/core/scripts/build-ai-docs.mjs',
-  components: components.map(({ tag, className, dir, summary, attributes, properties, events, slots, cssVariables, story, tests }) => ({
-    tag, className, dir, summary, attributes, properties, events, slots, cssVariables, story, tests,
+  components: components.map(({ tag, className, dir, summary, attributes, properties, events, methods, slots, cssVariables, story, tests }) => ({
+    tag, className, dir, summary, attributes, properties, events, methods, slots, cssVariables, story, tests,
   })),
 };
 fs.writeFileSync(path.join(CORE_DIR, 'zone-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
@@ -307,7 +321,7 @@ function renderComponentMd(c) {
   L.push(`- **标签**：\`<${c.tag}>\``);
   L.push(`- **实现**：\`${c.className}\`（Lit · Shadow DOM）`);
   L.push(`- **来源**：\`${c.scope}\``);
-  L.push(`- **测试**：${c.tests} 个用例`);
+  L.push(`- **组件专属测试**：${c.tests} 个用例；跨组件契约测试另计`);
   L.push(`- **包**：\`${rootPkg.name}@${rootPkg.version}\`（组件源码：\`${corePkg.name}@${corePkg.version}\`）`);
   L.push('');
   L.push('## 快速使用', '');
@@ -341,6 +355,11 @@ function renderComponentMd(c) {
     L.push('## 事件', '', '| 事件名 | 说明 |', '|--------|------|');
     for (const e of c.events) L.push(`| \`${e.name}\` | ${mdEscape(e.description)} |`);
     L.push('', '```js', `document.querySelector('${c.tag}').addEventListener('${c.events[0].name}', (e) => {`, '  console.log(e.detail);', '});', '```', '');
+  }
+  if (c.methods?.length) {
+    L.push('## 方法', '', '| 方法 | 参数 | 说明 |', '|---|---|---|');
+    for (const method of c.methods) L.push(`| \`${method.name}()\` | ${mdEscape(method.parameters.map(p => p.name + (p.optional ? '?' : '') + ': ' + (p.type?.text ?? 'unknown')).join(', '))} | ${mdEscape(method.description)} |`);
+    L.push('');
   }
   if (c.slots.length) {
     L.push('## 插槽', '', '| 插槽 | 说明 |', '|------|------|');

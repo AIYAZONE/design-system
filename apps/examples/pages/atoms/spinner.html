@@ -1,33 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spinner - 加载器</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" src="/main.ts"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spinner - 加载器</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <script type="module" src="/main.ts"></script>
-</head>
+  <body data-example-page="atoms/spinner">
+    <div class="container examples-layout">
+      <div class="examples-workspace">
+        <header class="header">
+          <a href="/" class="logo">
+            <img src="/favicon.svg" alt="AIYAZONE Logo" />
+          </a>
+          <div class="content">
+            <h1>加载指示示例</h1>
+            <p class="subtitle">各种样式和状态的加载器展示</p>
+          </div>
+        </header>
 
-<body>
-  <div class="container">
-    <header class="header">
-      <a href="/" class="logo">
-        <img src="/favicon.svg" alt="AIYAZONE Logo" />
-      </a>
-      <div class="content">
-        <h1>加载指示示例</h1>
-        <p class="subtitle">各种样式和状态的加载器展示</p>
+        <main class="example-preview" id="content">
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">01</span>
+              <h2 id="section-1" class="example-section__title">加载器样式</h2>
+            </header>
+            <div class="example-canvas">
+              <p class="demo-row">
+                <zone-spinner></zone-spinner>
+              </p>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">02</span>
+              <h2 class="example-section__title" id="sizes-and-context">
+                尺寸、颜色与等待区域
+              </h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-spinner size="16px" label="小尺寸加载"></zone-spinner
+                ><zone-spinner size="24px" label="标准尺寸加载"></zone-spinner
+                ><zone-spinner
+                  size="32px"
+                  color="var(--zone-color-success)"
+                  label="大尺寸加载"
+                ></zone-spinner
+                ><zone-spinner disabled="" label="禁用外观"></zone-spinner>
+              </div>
+              <div class="spinner-stage" aria-busy="true">
+                <p>正在准备内容…</p>
+                <zone-spinner
+                  overlay=""
+                  size="32px"
+                  color="white"
+                  label="内容加载中"
+                ></zone-spinner>
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
-    </header>
-
-    <main class="example-preview">
-      <h2>加载器样式</h2>
-      <p>
-        <zone-spinner></zone-spinner>
-      </p>
-    </main>
-  </div>
-</body>
-
+    </div>
+  </body>
 </html>

@@ -55,7 +55,7 @@
 
 // 焦点可见样式（可由主题覆盖）
 .badge:focus-visible {
-  outline: 2px solid var(--zone-badge-focus-ring-color, var(--zone-badge-color, var(--zone-color-primary)));
+  outline: 2px solid var(--zone-badge-focus-ring-color, var(--zone-focus-color, var(--zone-badge-color, var(--zone-color-primary))));
   outline-offset: 2px;
 }
 
@@ -80,7 +80,8 @@
 }
 
 // 小号徽章中不显示图标
-:host([size="small"]) zone-icon {
+:host([size="small"]) zone-icon,
+:host([size="small"]) ::slotted([slot="icon"]) {
   display: none;
 }
 

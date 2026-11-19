@@ -5,7 +5,7 @@
 - **标签**：`<zone-button>`
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
-- **测试**：34 个用例
+- **组件专属测试**：34 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -59,6 +59,13 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `focus()` |  |  |
+| `onClick()` |  |  |
+
 ## 插槽
 
 | 插槽 | 说明 |
@@ -85,7 +92,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 }
 ```
 
-共消费 111 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 112 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

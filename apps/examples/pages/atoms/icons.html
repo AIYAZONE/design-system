@@ -1,38 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icons - 图标</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" src="/main.ts"></script>
+    <style>
+      /* 由于入口已统一引入公共样式，这里仅保留页面内局部演示样式 */
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Icons - 图标</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <script type="module" src="/main.ts"></script>
-  <style>
-    /* 由于入口已统一引入公共样式，这里仅保留页面内局部演示样式 */
-  </style>
-</head>
+  <body data-example-page="atoms/icons">
+    <div class="container examples-layout">
+      <div class="examples-workspace">
+        <header class="header">
+          <a href="/" class="logo">
+            <img src="/favicon.svg" alt="AIYAZONE Logo" />
+          </a>
+          <div class="content">
+            <h1>图标组件示例</h1>
+            <p class="subtitle">各种样式和状态的图标展示</p>
+          </div>
+        </header>
 
-<body>
-  <div class="container">
-    <header class="header">
-      <a href="/" class="logo">
-        <img src="/favicon.svg" alt="AIYAZONE Logo" />
-      </a>
-      <div class="content">
-        <h1>图标组件示例</h1>
-        <p class="subtitle">各种样式和状态的图标展示</p>
+        <main class="example-preview" id="content">
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">01</span>
+              <h2 id="section-1" class="example-section__title">图标样式</h2>
+            </header>
+            <div class="example-canvas">
+              <p class="demo-row">
+                <zone-icon name="close"></zone-icon>
+                <zone-icon name="facebook" style="font-size: 48px"></zone-icon>
+                <zone-icon name="facebook-color"></zone-icon>
+              </p>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">02</span>
+              <h2 class="example-section__title" id="icon-alignment">
+                尺寸与图文对齐
+              </h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <span class="icon-specimen"
+                  ><zone-icon
+                    name="arrow-right"
+                    style="font-size: 16px"
+                  ></zone-icon
+                  >16px</span
+                ><span class="icon-specimen"
+                  ><zone-icon
+                    name="arrow-right"
+                    style="font-size: 24px"
+                  ></zone-icon
+                  >24px</span
+                ><span class="icon-specimen"
+                  ><zone-icon
+                    name="check-fill"
+                    style="font-size: 32px; color: var(--zone-color-success)"
+                  ></zone-icon
+                  >32px</span
+                >
+              </div>
+              <p>装饰图标随文字呈现；交互图标放入具有名称的按钮中。</p>
+            </div>
+          </section>
+        </main>
       </div>
-    </header>
-
-    <main class="example-preview">
-      <h2>图标样式</h2>
-      <p>
-        <zone-icon name="close"></zone-icon>
-        <zone-icon name="facebook" style="font-size:48px;"></zone-icon>
-        <zone-icon name="facebook-color"></zone-icon>
-      </p>
-    </main>
-  </div>
-</body>
-
+    </div>
+  </body>
 </html>

@@ -1,5 +1,6 @@
 {
   "common": {
+    "count": "計數",
     "back": "返回",
     "cancel": "取消",
     "changeLanguage": "切換語言",

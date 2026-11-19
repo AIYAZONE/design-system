@@ -1,5 +1,6 @@
 {
   "common": {
+    "count": "Nombre",
     "back": "Retour",
     "cancel": "Annuler",
     "changeLanguage": "Changer de langue",

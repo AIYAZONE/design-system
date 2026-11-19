@@ -21,7 +21,7 @@ export default class ZoneIcon extends LitElement {
     :host {
       display: inline-block;
       width: max-content;
-      cursor: pointer;
+      cursor: inherit;
     }
 
     :host div {
@@ -62,6 +62,9 @@ export default class ZoneIcon extends LitElement {
     }
   `;
 
+  private _loadVersion = 0;
+  private _hoverVersion = 0;
+
   private _iconName!: string;
   private _hoverIconName?: string;
 
@@ -83,7 +86,7 @@ export default class ZoneIcon extends LitElement {
   /**
    * 鼠标悬停时要显示的图标名称
    */
-  @property({ type: String, reflect: true, attribute: 'hover-name' })
+  @property({ type: String, reflect: true, attribute: "hover-name" })
   get hoverName(): string | undefined {
     return this._hoverIconName;
   }
@@ -108,67 +111,64 @@ export default class ZoneIcon extends LitElement {
   private onError!: EventDispatcher<string>;
 
   @state()
-  private svg: string = '';
+  private svg: string = "";
 
   @state()
-  private hoverSvg: string = '';
+  private hoverSvg: string = "";
+
+  private async _readIcon(name: string): Promise<string> {
+    const modules = import.meta.glob<string>("../icons/**/*.svg", {
+      query: "?raw",
+      import: "default",
+    });
+    const modulePath = getIconPath(getIconCategory(name), name);
+    if (!modules[modulePath]) throw new Error(`图标 "${name}" 不存在`);
+    if (!requestMap.has(modulePath))
+      requestMap.set(modulePath, modules[modulePath]());
+    try {
+      const content = await requestMap.get(modulePath);
+      if (!content) throw new Error("SVG content is empty");
+      return content;
+    } catch (error) {
+      requestMap.delete(modulePath);
+      throw error;
+    }
+  }
 
   async load() {
-    const svgModules = import.meta.glob<string>('../icons/**/*.svg', { query: '?raw', import: 'default' });
-    const category = getIconCategory(this.name);
-    const modulePath = getIconPath(category, this.name);
-
-    // 检查模块路径是否存在于 svgModules 中
-    if (!svgModules[modulePath]) {
-      throw new Error(`图标 "${this.name}" 不存在`);
-    }
-
-    // 如果请求未缓存，则创建新的请求并缓存
-    if (!requestMap.has(modulePath)) {
-      requestMap.set(modulePath, svgModules[modulePath]());
+    const version = ++this._loadVersion;
+    const name = this.name;
+    if (!name) {
+      this.svg = "";
+      return;
     }
     try {
-      const svgContent = await requestMap.get(modulePath);
-      if (!svgContent) {
-        throw new Error('SVG content is empty');
-      }
-      this.svg = svgContent;
-      this.onLoad(`${this.name} 图标加载完成`);
+      const content = await this._readIcon(name);
+      if (version !== this._loadVersion) return;
+      this.svg = content;
+      this.onLoad(`${name} 图标加载完成`);
     } catch (error) {
-      this.onError(`${this.name} 图标加载失败 [${error}]`);
-      requestMap.delete(modulePath);
+      if (version !== this._loadVersion) return;
+      this.svg = "";
+      this.onError(`${name} 图标加载失败 [${error}]`);
     }
   }
 
   async loadHoverIcon() {
-    if (!this.hoverName) {
-      this.hoverSvg = '';
+    const version = ++this._hoverVersion;
+    const name = this.hoverName;
+    if (!name) {
+      this.hoverSvg = "";
       return;
-    }
-
-    const svgModules = import.meta.glob<string>('../icons/**/*.svg', { query: '?raw', import: 'default' });
-    const category = getIconCategory(this.hoverName);
-    const modulePath = getIconPath(category, this.hoverName);
-
-    // 检查模块路径是否存在于 svgModules 中
-    if (!svgModules[modulePath]) {
-      console.warn(`悬停图标 "${this.hoverName}" 不存在`);
-      return;
-    }
-
-    // 如果请求未缓存，则创建新的请求并缓存
-    if (!requestMap.has(modulePath)) {
-      requestMap.set(modulePath, svgModules[modulePath]());
     }
     try {
-      const svgContent = await requestMap.get(modulePath);
-      if (!svgContent) {
-        throw new Error('SVG content is empty');
-      }
-      this.hoverSvg = svgContent;
+      const content = await this._readIcon(name);
+      if (version !== this._hoverVersion) return;
+      this.hoverSvg = content;
     } catch (error) {
-      console.warn(`悬停图标 "${this.hoverName}" 加载失败 [${error}]`);
-      requestMap.delete(modulePath);
+      if (version !== this._hoverVersion) return;
+      this.hoverSvg = "";
+      this.onError(`${name} 悬停图标加载失败 [${error}]`);
     }
   }
 

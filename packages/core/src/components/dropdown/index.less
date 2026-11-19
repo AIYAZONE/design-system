@@ -60,7 +60,7 @@
 .trigger:focus-visible,
 .clear:focus-visible {
   outline: 2px solid
-    var(--zone-dropdown-focus-color, var(--zone-color-primary, #fd5000));
+    var(--zone-dropdown-focus-color, var(--zone-focus-color, var(--zone-color-primary)));
   outline-offset: 2px;
 }
 .trigger:disabled {
@@ -198,7 +198,7 @@
 }
 .option[data-active="true"] {
   box-shadow: inset 2px 0
-    var(--zone-dropdown-focus-color, var(--zone-color-primary, #fd5000));
+    var(--zone-dropdown-focus-color, var(--zone-focus-color, var(--zone-color-primary)));
 }
 .option[data-disabled="true"] {
   color: var(--zone-color-text-invalid, #b2b2b2);

@@ -1,9 +1,23 @@
-import { html, LitElement, CSSResultGroup, unsafeCSS } from "lit";
-import { customElement, property, query, state } from '../../decorators';
-import { autoUpdate, computePosition, flip, offset, shift, arrow as flArrow, Placement } from '@floating-ui/dom';
+import {
+  html,
+  LitElement,
+  CSSResultGroup,
+  unsafeCSS,
+  type PropertyValues,
+} from "lit";
+import { customElement, property, query, state } from "../../decorators";
+import {
+  autoUpdate,
+  computePosition,
+  flip,
+  offset,
+  shift,
+  arrow as flArrow,
+  Placement,
+} from "@floating-ui/dom";
 
-import styles from './index.less?inline';
-import { adoptInternalStyles } from '../../styles/internal-shared';
+import styles from "./index.less?inline";
+import { adoptInternalStyles } from "../../styles/internal-shared";
 
 /**
  * AIYAZONE 气泡卡片组件
@@ -11,8 +25,9 @@ import { adoptInternalStyles } from '../../styles/internal-shared';
  *
  * @cssproperty [--zone-index-popover=100] - 浮层层级
  */
-@customElement('zone-popover')
+@customElement("zone-popover")
 export class ZonePopover extends LitElement {
+  private static _openPopovers: ZonePopover[] = [];
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   protected firstUpdated(): void {
@@ -20,7 +35,7 @@ export class ZonePopover extends LitElement {
   }
 
   @property({ type: String })
-  placement: Placement = 'bottom';
+  placement: Placement = "bottom";
 
   @property({ type: Boolean })
   fitSize = false;
@@ -28,19 +43,28 @@ export class ZonePopover extends LitElement {
   @property({ type: Number })
   offset = 8;
 
-  @property({ type: Number, attribute: 'arrow-padding' })
+  @property({ type: Number, attribute: "arrow-padding" })
   arrowPadding = 8;
 
   @property({ type: String })
-  target?: string;
+  target?: string | HTMLElement;
+
+  /** 由 Tooltip 等上层组件管理触发，不自动绑定点击或菜单语义。 */
+  @property({ type: Boolean }) manual = false;
+
+  get visible(): boolean {
+    return this._visible;
+  }
+  private _targetAttributes?: [string | null, string | null];
+  private _positionVersion = 0;
 
   @state()
   private _visible = false;
 
-  @query('.popover')
+  @query(".popover")
   private _popoverEl!: HTMLElement;
 
-  @query('.arrow')
+  @query(".arrow")
   private _arrowEl!: HTMLElement;
 
   private _targetEl?: HTMLElement;
@@ -49,25 +73,65 @@ export class ZonePopover extends LitElement {
 
   connectedCallback() {
     super.connectedCallback?.();
-    this._setupTarget();
+    void this.updateComplete.then(() => {
+      if (this.isConnected) this._setupTarget();
+    });
+  }
+
+  protected updated(changed: PropertyValues) {
+    if (changed.has("target") || changed.has("manual")) this._setupTarget();
+    if (
+      this._visible &&
+      (changed.has("placement") ||
+        changed.has("offset") ||
+        changed.has("arrowPadding"))
+    )
+      this.setPopover();
   }
 
   disconnectedCallback() {
+    this.hide();
+    this._releaseTarget();
     super.disconnectedCallback?.();
-    this._cleanup?.();
+  }
+
+  private _releaseTarget() {
+    if (!this._targetEl) return;
+    this._targetEl.removeEventListener("click", this._togglePopover);
+    if (this._targetAttributes) {
+      ["aria-haspopup", "aria-expanded"].forEach((name, index) => {
+        const value = this._targetAttributes![index];
+        if (value === null) this._targetEl!.removeAttribute(name);
+        else this._targetEl!.setAttribute(name, value);
+      });
+    }
+    this._targetAttributes = undefined;
+    this._targetEl = undefined;
   }
 
   private _setupTarget() {
-    if (this.target) {
-      this._targetEl = document.getElementById(this.target) || undefined;
-    } else {
-      this._targetEl = this.previousElementSibling as HTMLElement;
+    const root = this.getRootNode() as Document | ShadowRoot;
+    const next =
+      typeof this.target === "string"
+        ? (root.getElementById?.(this.target) ??
+          this.ownerDocument.getElementById(this.target))
+        : (this.target ?? this.previousElementSibling);
+    if (this._targetEl === next && !!this._targetAttributes === !this.manual)
+      return;
+    this._releaseTarget();
+    this._targetEl = next instanceof HTMLElement ? next : undefined;
+    if (this._targetEl && !this.manual) {
+      this._targetAttributes = [
+        this._targetEl.getAttribute("aria-haspopup"),
+        this._targetEl.getAttribute("aria-expanded"),
+      ];
+      this._targetEl.addEventListener("click", this._togglePopover);
+      this._targetEl.setAttribute("aria-haspopup", "dialog");
+      this._targetEl.setAttribute("aria-expanded", String(this._visible));
     }
-
-    if (this._targetEl) {
-      this._targetEl.addEventListener('click', this._togglePopover);
-      this._targetEl.setAttribute('aria-haspopup', 'true');
-      this._targetEl.setAttribute('aria-expanded', 'false');
+    if (this._visible) {
+      if (this._targetEl) this.setPopover();
+      else this.hide();
     }
   }
 
@@ -87,7 +151,9 @@ export class ZonePopover extends LitElement {
     ];
 
     if (this._arrowEl) {
-      middleware.push(flArrow({ element: this._arrowEl, padding: this.arrowPadding }));
+      middleware.push(
+        flArrow({ element: this._arrowEl, padding: this.arrowPadding }),
+      );
     }
 
     return middleware;
@@ -96,28 +162,36 @@ export class ZonePopover extends LitElement {
   private _handleClickOutside = (event: Event) => {
     if (!this._visible) return;
 
-    const target = event.target as Element;
-    if (!this._popoverEl.contains(target) && !this._targetEl?.contains(target)) {
+    const path = event.composedPath();
+    if (!path.includes(this) && !path.includes(this._targetEl!)) {
       this.hide();
     }
   };
 
   private _handleKeydownEvent = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (
+      event.key === "Escape" &&
+      !event.defaultPrevented &&
+      ZonePopover._openPopovers.at(-1) === this
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
       this.hide();
     }
   };
 
   show() {
-    if (this._visible || !this._targetEl) return;
+    this._setupTarget();
+    if (this._visible || !this._targetEl || !this.isConnected) return;
 
     this._visible = true;
-    this._targetEl?.setAttribute('aria-expanded', 'true');
+    ZonePopover._openPopovers.push(this);
+    if (!this.manual) this._targetEl?.setAttribute("aria-expanded", "true");
 
-    document.addEventListener('click', this._handleClickOutside);
-    document.addEventListener('keydown', this._handleKeydownEvent);
+    document.addEventListener("click", this._handleClickOutside);
+    document.addEventListener("keydown", this._handleKeydownEvent);
 
-    this.dispatchEvent(new CustomEvent('zone-popover-show'));
+    this.dispatchEvent(new CustomEvent("zone-popover-show"));
 
     this.updateComplete.then(() => {
       this.setPopover();
@@ -127,18 +201,39 @@ export class ZonePopover extends LitElement {
   hide() {
     if (!this._visible) return;
 
+    let focus = this.ownerDocument.activeElement;
+    while (focus?.shadowRoot?.activeElement)
+      focus = focus.shadowRoot.activeElement;
+    const restore =
+      !this.manual &&
+      !!focus &&
+      (this.contains(focus) || this._popoverEl?.contains(focus));
     this._visible = false;
-    this._targetEl?.setAttribute('aria-expanded', 'false');
+    ZonePopover._openPopovers = ZonePopover._openPopovers.filter(
+      (popover) => popover !== this,
+    );
+    if (restore) this._targetEl?.focus();
+    if (!this.manual) this._targetEl?.setAttribute("aria-expanded", "false");
 
-    document.removeEventListener('click', this._handleClickOutside);
-    document.removeEventListener('keydown', this._handleKeydownEvent);
+    document.removeEventListener("click", this._handleClickOutside);
+    document.removeEventListener("keydown", this._handleKeydownEvent);
 
-    this.dispatchEvent(new CustomEvent('zone-popover-hide'));
+    this.dispatchEvent(new CustomEvent("zone-popover-hide"));
+    this._positionVersion++;
     this._cleanup?.();
+    this._cleanup = undefined;
   }
 
   setPopover() {
-    if (!this._targetEl || !this._popoverEl) return;
+    if (
+      !this._visible ||
+      !this.isConnected ||
+      !this._targetEl ||
+      !this._popoverEl
+    )
+      return;
+    this._cleanup?.();
+    const version = ++this._positionVersion;
 
     this._cleanup = autoUpdate(this._targetEl, this._popoverEl, () => {
       if (!this._targetEl || !this._popoverEl) return;
@@ -146,22 +241,30 @@ export class ZonePopover extends LitElement {
       computePosition(this._targetEl, this._popoverEl, {
         placement: this.placement,
         middleware: this.getMiddleware(),
-        strategy: 'fixed',
+        strategy: "fixed",
       }).then(({ x, y, placement, middlewareData }) => {
-        if (!this._popoverEl) return;
+        if (
+          !this._popoverEl ||
+          !this._visible ||
+          version !== this._positionVersion
+        )
+          return;
 
         Object.assign(this._popoverEl.style, {
           left: `${x}px`,
           top: `${y}px`,
         });
 
-        this._popoverEl.setAttribute('data-placement', placement);
+        this._popoverEl.setAttribute("data-placement", placement);
 
         if (this._arrowEl && middlewareData?.arrow) {
-          const { x: ax, y: ay } = middlewareData.arrow as { x?: number; y?: number };
+          const { x: ax, y: ay } = middlewareData.arrow as {
+            x?: number;
+            y?: number;
+          };
           Object.assign(this._arrowEl.style, {
-            left: ax != null ? `${ax}px` : '',
-            top: ay != null ? `${ay}px` : '',
+            left: ax != null ? `${ax}px` : "",
+            top: ay != null ? `${ay}px` : "",
           });
         }
       });
@@ -170,7 +273,11 @@ export class ZonePopover extends LitElement {
 
   render() {
     return html`
-      <div class="popover ${this._visible ? 'visible' : ''}">
+      <div
+        class="popover ${this._visible ? "visible" : ""}"
+        role=${this.manual ? "presentation" : "dialog"}
+        aria-label=${this.manual ? "" : this.getAttribute("aria-label") || "Popover"}
+      >
         <slot></slot>
         <div class="arrow" part="arrow"></div>
       </div>
@@ -182,6 +289,6 @@ export type { Placement };
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-popover': Pick<ZonePopover, keyof ZonePopover>;
+    "zone-popover": Pick<ZonePopover, keyof ZonePopover>;
   }
 }

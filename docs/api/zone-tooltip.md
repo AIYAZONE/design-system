@@ -1,11 +1,11 @@
 # `<zone-tooltip>` · ZoneTooltip
 
-> AIYAZONE Tooltip 组件
+> 非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。
 
 - **标签**：`<zone-tooltip>`
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
-- **测试**：5 个用例
+- **组件专属测试**：5 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -31,7 +31,8 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `placement` | `placement` | `Placement` | `"top"` | 设置工具提示的位置 |
+| `placement` | `placement` | `Placement` | `"top"` |  |
+| `target` | `target` | `string \| HTMLElement` | — | 外部触发器的 ID，或通过 JavaScript 传入的元素。 |
 
 ## 事件
 
@@ -39,13 +40,19 @@ import '@aiyazone/design-system/index-v3.css';
 |--------|------|
 | `zone-tooltip-show` |  |
 | `zone-tooltip-hide` |  |
-| `zone-tooltip-hide` |  |
 
 ```js
 document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e) => {
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  |  |
+| `hide()` |  |  |
 
 ## 插槽
 
@@ -58,7 +65,7 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
-| `--zone-tooltip-trigger-display` | `inline-flex` | 设置工具提示触发器的显示方式。 |
+| `--zone-tooltip-trigger-display` | `inline-flex` | 触发器显示方式。 |
 
 另有 2 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 

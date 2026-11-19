@@ -5,7 +5,7 @@
 - **标签**：`<zone-spinner>`
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
-- **测试**：0 个用例
+- **组件专属测试**：0 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -35,6 +35,18 @@ import '@aiyazone/design-system/index-v3.css';
 | `disabled` | `disabled` | `boolean \| undefined` | `false` | 设置加载指示器的禁用状态 |
 | `overlay` | `overlay` | `boolean \| undefined` | `false` | 设置加载指示器的覆盖层状态 |
 | `color` | `color` | `string` | `"var(--zone-color-primary)"` | 设置加载指示器的颜色 |
+| `label` | `label` | `string` | `""` | 独立加载区的可访问名称；按钮内保持空值避免重复播报。 |
+
+## 可覆盖的 CSS 变量
+
+```css
+:root {
+  --zone-spinner-overlay-bg: /* 你的值 */;
+  --zone-spinner-overlay-index: /* 你的值 */;
+}
+```
+
+共消费 2 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

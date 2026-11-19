@@ -1,270 +1,246 @@
-import { html, LitElement, PropertyValues, TemplateResult, CSSResultGroup, unsafeCSS } from "lit";
-import { customElement, property, query, state } from "../../decorators";
-import { ifDefined } from "lit/directives/if-defined.js";
-import type { Placement } from "../popover";
+import { html, LitElement, type PropertyValues, unsafeCSS } from "lit";
+import { customElement, property, query } from "../../decorators";
+import { ZonePopover, type Placement } from "../popover";
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 
 /**
  * @tag zone-tooltip
- * @summary AIYAZONE Tooltip 组件
- * @dependency zone-popover
- *
- * @cssproperty [--zone-tooltip-trigger-display=inline-flex] 设置工具提示触发器的显示方式。
+ * @summary 非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。
+ * @slot tooltip-trigger - 提示触发器。
+ * @slot - 提示内容。
+ * @cssproperty [--zone-tooltip-trigger-display=inline-flex] 触发器显示方式。
  */
 @customElement("zone-tooltip")
 export class ZoneTooltip extends LitElement {
-  static styles = [unsafeCSS(styles)] as CSSResultGroup;
+  static styles = [unsafeCSS(styles)];
   private static _activeTouchTooltip: ZoneTooltip | null = null;
-  private readonly _popoverArrowPadding = 14;
-
-  protected firstUpdated(): void {
-    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
-  }
-
-  @query(".trigger") private trigger!: HTMLElement;
-  @query("zone-popover") private _popover!: any;
-
-  /**
-   * 设置工具提示的位置
-   */
-  @property({ type: String })
-  placement: Placement = "top";
-
-  @property() target!: string | HTMLElement;
-  @state() private _timer!: ReturnType<typeof setTimeout> | null;
+  private static _nextId = 0;
+  private _descriptionId = `zone-tooltip-description-${++ZoneTooltip._nextId}`;
+  private _timer?: ReturnType<typeof setTimeout>;
+  private _boundTarget?: HTMLElement;
+  private _description?: HTMLSpanElement;
+  private _control?: HTMLElement;
+  private _observer?: MutationObserver;
+  private _isScrolling = false;
+  @query("zone-popover") private _popover!: ZonePopover;
+  @property() placement: Placement = "top";
+  /** 外部触发器的 ID，或通过 JavaScript 传入的元素。 */
+  @property() target?: string | HTMLElement;
 
   private get _isTouchDevice() {
-    return typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+    return window.matchMedia?.("(pointer: coarse)").matches ?? false;
   }
-
-  protected update(changedProperties: PropertyValues) {
-    if (changedProperties.has("target")) {
-      const prev = changedProperties.get("target");
-      // 移除旧目标的事件
-      if (prev) {
-        this._removeEvents(prev);
-      }
-      // 添加新目标的事件
-      this._addEvents();
-    }
-    super.update(changedProperties);
-  }
-
-  private _addEvents() {
-    const target = this._getTarget();
-    if (!target) return
-
-    if (this._isTouchDevice) {
-      // 移动端：仅绑定 touchend 切换显示/隐藏
-      target.addEventListener("touchstart", this._handleTouchStart, { passive: true });
-      target.addEventListener("touchmove", this._handleTouchMove, { passive: true });
-      target.addEventListener("touchend", this._handleTouch, { passive: false });
-    } else {
-      target.addEventListener("focus", this.show, { capture: true });
-      target.addEventListener("mouseenter", this.show);
-      target.addEventListener("blur", this.hide, { capture: true });
-      target.addEventListener("mouseleave", this.hide);
-    }
-  }
-
-  private _removeEvents(value: string | HTMLElement) {
-    const target = this._getTargetFromValue(value);
-    if (!target) return;
-
-    target.removeEventListener("touchstart", this._handleTouchStart);
-    target.removeEventListener("touchmove", this._handleTouchMove);
-    target.removeEventListener("touchend", this._handleTouch);
-    target.removeEventListener("focus", this.show, { capture: true });
-    target.removeEventListener("mouseenter", this.show);
-    target.removeEventListener("blur", this.hide, { capture: true });
-    target.removeEventListener("mouseleave", this.hide);
-  }
-
-  private _getTarget(): HTMLElement | null {
-    return this._getTargetFromValue(this.target);
-  }
-
-  private _getTargetFromValue(value: string | HTMLElement): HTMLElement | null {
-    if (typeof value === 'string') {
-      return document.getElementById(value) as HTMLElement || null;
-    }
-    return value as HTMLElement;
+  get visible(): boolean {
+    return this._popover?.visible ?? false;
   }
 
   connectedCallback() {
     super.connectedCallback?.();
-    this._timer = null;
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
-    this._addEvents();
-
-    // 移动端：点击全局关闭工具提示
-    if (this._isTouchDevice) {
-      // 使用 click 监听全局，因为 touchend 在非交互元素上可能不冒泡
-      window.addEventListener('click', this._handleOutsideClick);
-      // 全局监听：滑动时隐藏
-      window.addEventListener('touchmove', this.hide, { passive: true });
-      window.addEventListener('scroll', this.hide, { passive: true, capture: true });
-    }
+    window.addEventListener("click", this._outside);
+    window.addEventListener("scroll", this._scroll, true);
+    window.addEventListener("touchmove", this._scroll, { passive: true });
+    this._observer = new MutationObserver(() => {
+      this._bindTarget();
+      this._syncDescription();
+    });
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+    void this.updateComplete.then(() => {
+      if (this.isConnected) this._bindTarget();
+    });
   }
-
+  protected firstUpdated() {
+    if (this.shadowRoot) adoptInternalStyles(this.shadowRoot);
+  }
+  protected updated(changed: PropertyValues) {
+    if (changed.has("target")) this._bindTarget();
+  }
   disconnectedCallback() {
+    clearTimeout(this._timer);
+    this._observer?.disconnect();
+    this._hideImmediately();
+    this._releaseTarget();
+    window.removeEventListener("click", this._outside);
+    window.removeEventListener("scroll", this._scroll, true);
+    window.removeEventListener("touchmove", this._scroll);
     super.disconnectedCallback?.();
-    this._removeEvents(this.target);
-    if (ZoneTooltip._activeTouchTooltip === this) {
-      ZoneTooltip._activeTouchTooltip = null;
-    }
-    if (this._isTouchDevice) {
-      window.removeEventListener('click', this._handleOutsideClick);
-      window.removeEventListener('touchmove', this.hide);
-      window.removeEventListener('scroll', this.hide, true);
-    }
   }
-
-  /**
-   * 移动端：点击全局关闭工具提示
-   */
-  private _handleOutsideClick = (e: Event) => {
-    // 兼容性处理：如果不支持 composedPath，回退到原始 target 判断
-    const path = e.composedPath ? e.composedPath() : [];
-    
-    // 如果点击目标不在组件内部，则关闭
-    if (this.visible && !path.includes(this)) {
-      this.hide();
-    }
+  private _resolveTarget(): HTMLElement | undefined {
+    if (typeof this.target === "string")
+      return this.ownerDocument.getElementById(this.target) ?? undefined;
+    return (
+      this.target ??
+      this.querySelector<HTMLElement>('[slot="tooltip-trigger"]') ??
+      undefined
+    );
   }
-
-  private _isScrolling = false;
-
-  private _handleTouchStart = () => {
+  private _releaseTarget() {
+    const target = this._boundTarget;
+    if (target) {
+      target.removeEventListener("focusin", this.show);
+      target.removeEventListener("focusout", this.hide);
+      target.removeEventListener("mouseenter", this.show);
+      target.removeEventListener("mouseleave", this.hide);
+      target.removeEventListener("touchstart", this._touchStart);
+      target.removeEventListener("touchmove", this._touchMove);
+      target.removeEventListener("touchend", this._touchEnd);
+    }
+    if (this._control) {
+      const ids = (this._control.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter((id) => id && id !== this._descriptionId);
+      if (ids.length)
+        this._control.setAttribute("aria-describedby", ids.join(" "));
+      else this._control.removeAttribute("aria-describedby");
+    }
+    this._description?.remove();
+    this._description = undefined;
+    this._control = undefined;
+    this._boundTarget = undefined;
+  }
+  private _bindTarget() {
+    const target = this._resolveTarget();
+    if (!this.isConnected || this._boundTarget === target) return;
+    this._hideImmediately();
+    this._releaseTarget();
+    if (!target) return;
+    this._boundTarget = target;
+    target.addEventListener("focusin", this.show);
+    target.addEventListener("focusout", this.hide);
+    target.addEventListener("mouseenter", this.show);
+    target.addEventListener("mouseleave", this.hide);
+    target.addEventListener("touchstart", this._touchStart, { passive: true });
+    target.addEventListener("touchmove", this._touchMove, { passive: true });
+    target.addEventListener("touchend", this._touchEnd, { passive: true });
+    void Promise.resolve(
+      (target as HTMLElement & { updateComplete?: Promise<unknown> })
+        .updateComplete,
+    ).then(() => {
+      if (!this.isConnected || this._boundTarget !== target) return;
+      this._control =
+        target.shadowRoot?.querySelector<HTMLElement>(
+          "button, a, input, [tabindex]",
+        ) ?? target;
+      const description = this.ownerDocument.createElement("span");
+      description.id = this._descriptionId;
+      description.hidden = true;
+      const root = this._control.getRootNode();
+      (root instanceof ShadowRoot ? root : this.ownerDocument.body).append(
+        description,
+      );
+      this._description = description;
+      const ids = new Set(
+        (this._control.getAttribute("aria-describedby") ?? "")
+          .split(/\s+/)
+          .filter(Boolean),
+      );
+      ids.add(this._descriptionId);
+      this._control.setAttribute("aria-describedby", [...ids].join(" "));
+      this._syncDescription();
+    });
+  }
+  private _syncDescription() {
+    if (this._description)
+      this._description.textContent = [...this.childNodes]
+        .filter(
+          (node) =>
+            !(
+              node instanceof Element &&
+              node.getAttribute("slot") === "tooltip-trigger"
+            ),
+        )
+        .map((node) => node.textContent)
+        .join(" ")
+        .trim();
+  }
+  private _touchStart = () => {
     this._isScrolling = false;
-  }
-
-  private _handleTouchMove = () => {
+  };
+  private _touchMove = () => {
     this._isScrolling = true;
-  }
-
-  /**
-   * 移动端专用的触摸逻辑
-   */
-  private _handleTouch = (e: TouchEvent) => {
-    if (this._isScrolling) {
-      return;
+  };
+  private _touchEnd = () => {
+    if (!this._isScrolling) {
+      if (this.visible) this.hide();
+      else this.show();
     }
-    // 阻止冒泡到 document 触发 _handleOutsideClick
-    e.preventDefault();
-    
-    if (this.visible) {
+  };
+  private _outside = (event: Event) => {
+    const path = event.composedPath();
+    if (
+      this.visible &&
+      !path.includes(this) &&
+      !path.includes(this._boundTarget!)
+    )
       this.hide();
-    } else {
-      this.show();
-    }
-  }
+  };
+  private _scroll = () => {
+    if (this.visible) this.hide();
+  };
 
-  /**
-   * 显示工具提示
-   */
   show = () => {
-    if (this._timer) {
-      clearTimeout(this._timer);
-      this._timer = null;
-    }
-    if (this._isTouchDevice && ZoneTooltip._activeTouchTooltip && ZoneTooltip._activeTouchTooltip !== this) {
-      ZoneTooltip._activeTouchTooltip._hideImmediately();
-    }
-    if (this._popover) {
-      this._popover.target = this.target ?? this.trigger;
-      this._popover.show();
-    }
-    if (this._isTouchDevice) {
-      ZoneTooltip._activeTouchTooltip = this;
-    }
-    this.dispatchEvent(new CustomEvent('zone-tooltip-show', { detail: "" }));
-  }
-
-  private _hideImmediately() {
-    if (this._timer) {
-      clearTimeout(this._timer);
-      this._timer = null;
-    }
-    this._hidePopover()
-  }
-
-  private _hidePopover() {
-    if (this._popover) {
-      this._popover.hide();
-    }
-    if (ZoneTooltip._activeTouchTooltip === this) {
+    clearTimeout(this._timer);
+    this._bindTarget();
+    this._syncDescription();
+    if (!this._popover || !this._boundTarget) return;
+    if (this._isTouchDevice && ZoneTooltip._activeTouchTooltip !== this)
+      ZoneTooltip._activeTouchTooltip?._hideImmediately();
+    this._popover.manual = true;
+    this._popover.target = this._boundTarget;
+    const wasVisible = this.visible;
+    this._popover.show();
+    if (this._isTouchDevice) ZoneTooltip._activeTouchTooltip = this;
+    if (!wasVisible && this.visible)
+      this.dispatchEvent(new CustomEvent("zone-tooltip-show"));
+  };
+  private _onHide = () => {
+    if (ZoneTooltip._activeTouchTooltip === this)
       ZoneTooltip._activeTouchTooltip = null;
-    }
-    this.dispatchEvent(new CustomEvent('zone-tooltip-hide', { detail: "" }));
+    this.dispatchEvent(new CustomEvent("zone-tooltip-hide"));
+  };
+  private _hideImmediately() {
+    clearTimeout(this._timer);
+    this._popover?.hide();
+    if (ZoneTooltip._activeTouchTooltip === this)
+      ZoneTooltip._activeTouchTooltip = null;
   }
-
-  /**
-   * 隐藏工具提示
-   */
   hide = () => {
-    // 移动端滑动或点击外部时，建议立即隐藏 (delay = 0)
-    const delay = this._isTouchDevice ? 0 : 150;
-
-    if (this._timer) {
-      clearTimeout(this._timer);
-    }
-    this._timer = setTimeout(() => {
-      this._timer = null;
-      this._hidePopover()
-    }, delay)
-  }
-
-  /**
-   * 获取工具提示的可见性状态
-   */
-  get visible(): boolean {
-    return Boolean(this._popover?.visible);
-  }
-
-  private triggerTemplate() {
-    return html`<slot
-      class="trigger"
-      name="tooltip-trigger"
-      aria-describedby="tooltip"
-      @focus=${{ handleEvent: () => this.show(), capture: true }}
-      @blur=${{ handleEvent: () => this.hide(), capture: true }}
-      @mouseenter=${() => this.show()}
-      @mouseleave=${() => this.hide()}
-      @touchstart=${this._isTouchDevice ? this._handleTouchStart : null}
-      @touchmove=${this._isTouchDevice ? this._handleTouchMove : null}
-      @touchend=${this._isTouchDevice ? this._handleTouch : null}
-    >
-    </slot>`;
-  }
-
-  render(): TemplateResult {
-    return html`
-      ${this.target ? "" : this.triggerTemplate()}
+    clearTimeout(this._timer);
+    this._timer = setTimeout(
+      () => this._hideImmediately(),
+      this._isTouchDevice ? 0 : 150,
+    );
+  };
+  render() {
+    return html` <slot
+        class="trigger"
+        name="tooltip-trigger"
+        @slotchange=${this._bindTarget}
+      ></slot>
       <zone-popover
         part="tooltip"
-        .target="${this.target ?? this.trigger}"
-        .arrowPadding="${this._popoverArrowPadding}"
-        placement="${ifDefined(this.placement)}"
-        @zone-popover-hide="${() => this.dispatchEvent(new CustomEvent('zone-tooltip-hide', { detail: "" }))}"
+        .manual=${true}
+        .target=${this._resolveTarget()}
+        .arrowPadding=${14}
+        .placement=${this.placement}
+        @zone-popover-hide=${this._onHide}
       >
-        <slot
+        <div
           class="content"
-          id="tooltip"
           role="tooltip"
-          @mouseenter=${() => this.show()}
-          @mouseleave=${() => this.hide()}
+          @mouseenter=${this.show}
+          @mouseleave=${this.hide}
         >
-        </slot>
-      </zone-popover>
-    `;
+          <slot @slotchange=${this._syncDescription}></slot>
+        </div>
+      </zone-popover>`;
   }
 }
-
 export default ZoneTooltip;
-
 declare global {
   interface HTMLElementTagNameMap {
     "zone-tooltip": Pick<ZoneTooltip, keyof ZoneTooltip>;

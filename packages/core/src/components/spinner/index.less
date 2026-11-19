@@ -18,8 +18,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(39 49 66 / 70%); // 设置背景颜色和透明度
-  z-index: 10; // 设置层叠顺序
+  background-color: var(--zone-spinner-overlay-bg, rgba(39 49 66 / 70%)); // 设置背景颜色和透明度
+  z-index: var(--zone-spinner-overlay-index, 10); // 设置层叠顺序
 }
 
 @keyframes spin {
@@ -31,3 +31,4 @@
     transform: rotate(360deg); // 动画结束时的旋转角度
   }
 }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }

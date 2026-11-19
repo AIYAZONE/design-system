@@ -5,7 +5,7 @@
 - **标签**：`<zone-dropdown>`
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
-- **测试**：29 个用例
+- **组件专属测试**：29 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -24,7 +24,13 @@ import '@aiyazone/design-system/index-v3.css';
 静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
-<zone-dropdown>内容</zone-dropdown>
+<zone-dropdown id="delivery" label="配送方式" name="delivery"></zone-dropdown>
+<script>
+  document.querySelector("#delivery").options = [
+    { value: "standard", label: "标准配送" },
+    { value: "express", label: "加急配送" }
+  ];
+</script>
 ```
 
 ## 属性（Attributes / Properties）
@@ -34,11 +40,15 @@ import '@aiyazone/design-system/index-v3.css';
 | `value` | `value` | `string` | `""` |  |
 | `name` | `name` | `string` | `""` |  |
 | `label` | `label` | `string` | `""` |  |
+| `placeholder` | `placeholder` | `string` | — | 未指定文案时使用当前语言；传入空字符串时保留空字符串。 |
 | `disabled` | `disabled` | `Boolean` | `false` |  |
 | `required` | `required` | `Boolean` | `false` |  |
 | `open` | `open` | `Boolean` | `false` |  |
 | `clearable` | `clearable` | `Boolean` | `false` |  |
 | `showPath` | `show-path` | `Boolean` | `false` | 默认显示所选叶子节点的名称；开启后显示完整路径。 |
+| `emptyText` | `empty-text` | `string` | — |  |
+| `requiredMessage` | `required-message` | `string` | — |  |
+| `clearLabel` | `clear-label` | `string` | — |  |
 | `errorMessage` | `error-message` | `string` | `""` |  |
 
 ## 仅 JS 属性（无对应 attribute）
@@ -46,6 +56,31 @@ import '@aiyazone/design-system/index-v3.css';
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `options` | `DropdownOption[]` | `[]` | 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
+
+## 事件
+
+| 事件名 | 说明 |
+|--------|------|
+| `change` | 用户选择或清空时触发，详情类型为 DropdownChangeDetail；支持冒泡并穿透 Shadow DOM。 |
+| `zone-dropdown-show` | 下拉面板已打开。 |
+| `zone-dropdown-hide` | 下拉面板已关闭。 |
+
+```js
+document.querySelector('zone-dropdown').addEventListener('change', (e) => {
+  console.log(e.detail);
+});
+```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `checkValidity()` |  |  |
+| `reportValidity()` |  |  |
+| `setCustomValidity()` | message: string |  |
+| `show()` |  |  |
+| `hide()` |  |  |
+| `focus()` | options?: FocusOptions |  |
 
 ## 可覆盖的 CSS 变量
 
@@ -66,7 +101,7 @@ import '@aiyazone/design-system/index-v3.css';
 }
 ```
 
-共消费 25 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 26 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

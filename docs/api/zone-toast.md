@@ -5,7 +5,7 @@
 - **标签**：`<zone-toast>`
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
-- **测试**：0 个用例
+- **组件专属测试**：0 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -38,6 +38,7 @@ import '@aiyazone/design-system/index-v3.css';
 | `caption` | `caption` | `string \| undefined` | — | 设置轻提示标题 |
 | `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性） |
 | `countdownTime` | `countdown-time` | `number` | `0` | 倒计时时间（以秒为单位） |
+| `closeLabel` | `close-label` | `string` | — | 关闭按钮名称；默认跟随页面语言。 |
 
 ## 事件
 
@@ -50,6 +51,13 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `open()` |  | 打开轻提示组件 |
+| `close()` |  | 关闭轻提示组件 |
 
 ## 插槽
 

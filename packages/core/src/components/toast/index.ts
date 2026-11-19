@@ -1,7 +1,17 @@
-import { html, LitElement, TemplateResult, CSSResultGroup, unsafeCSS } from "lit";
+import {
+  html,
+  LitElement,
+  TemplateResult,
+  CSSResultGroup,
+  unsafeCSS,
+  type PropertyValues,
+} from "lit";
 import { customElement, property } from "../../decorators";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+import { state } from "../../decorators";
+import { I18nController } from "@aiyazone/i18n";
+import { componentText } from "../component-text";
 import styles from "./index.less?inline";
 
 export type ToastVariant = "info" | "warning" | "success" | "danger";
@@ -13,6 +23,20 @@ export type ToastVariant = "info" | "warning" | "success" | "danger";
 
 @customElement("zone-toast")
 export class ZoneToast extends LitElement {
+  static get observedAttributes() {
+    return [...super.observedAttributes, "countdowntime"];
+  }
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    value: string | null,
+  ) {
+    super.attributeChangedCallback?.(
+      name === "countdowntime" ? "countdown-time" : name,
+      oldValue,
+      value,
+    );
+  }
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   /**
@@ -30,7 +54,18 @@ export class ZoneToast extends LitElement {
   /**
    * 允许自定义轻提示图标
    */
-  @property({ type: String })
+  @property({
+    converter: {
+      fromAttribute: (value: string | null) =>
+        value === null
+          ? undefined
+          : value === "" || value === "true"
+            ? true
+            : value === "false"
+              ? false
+              : value,
+    },
+  })
   icon: boolean | string | undefined; // 图标可选，支持布尔值和自定义图标
 
   /**
@@ -54,8 +89,15 @@ export class ZoneToast extends LitElement {
   /**
    * 倒计时时间（以秒为单位）
    */
-  @property({ type: Number })
+  @property({ type: Number, attribute: "countdown-time" })
   countdownTime: number = 0; //默认倒计时为0秒
+
+  private _i18n?: I18nController;
+  private _remaining = 0;
+  private _paused = false;
+  @state() private _hasActions = false;
+  /** 关闭按钮名称；默认跟随页面语言。 */
+  @property({ attribute: "close-label" }) closeLabel?: string;
 
   private countdownInterval?: number; //存储倒计时的定时器
 
@@ -63,37 +105,48 @@ export class ZoneToast extends LitElement {
    * 打开轻提示组件
    */
   public open() {
-    this.closed = false; // 设置为未关闭状态
+    this.closed = false;
+    this.startCountdown();
   }
 
   /**
    * 关闭轻提示组件
    */
   public close() {
-    this.closed = true; // 设置为关闭状态
+    this.closed = true;
+    this.stopCountdown();
   }
   connectedCallback() {
     super.connectedCallback?.();
-    this.startCountdown(); // 组件连接后启动倒计时
+    this._i18n = new I18nController(this, { observeHtmlLang: true });
+    if (!this.closed) this.startCountdown();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback?.();
-    this.stopCountdown(); // 组件断开时停止倒计时
+    this.stopCountdown();
+    this._i18n?.hostDisconnected();
+    this._i18n = undefined;
   }
 
   /**
    * 启动倒计时
    */
-  private startCountdown() {
-    if (this.countdownTime > 0) {
-      this.countdownInterval = window.setInterval(() => {
-        this.countdownTime--; // 每秒减少 1
-        if (this.countdownTime <= 0) {
-          this.close(); // 倒计时结束，关闭警报
-        }
-      }, 1000);
+  protected updated(changed: PropertyValues) {
+    if (changed.has("closed") || changed.has("countdownTime")) {
+      if (this.closed) this.stopCountdown();
+      else this.startCountdown();
     }
+  }
+
+  private startCountdown() {
+    this.stopCountdown();
+    this._remaining = this.countdownTime;
+    if (!this.isConnected || this.closed || this._remaining <= 0) return;
+    this.countdownInterval = window.setInterval(() => {
+      if (this._paused) return;
+      if (--this._remaining <= 0) this.close();
+    }, 1000);
   }
 
   /**
@@ -110,8 +163,9 @@ export class ZoneToast extends LitElement {
    * 当关闭按钮被点击时触发
    */
   private _closeHandler() {
-    this.closed = true; // 设置为关闭状态
-    this.dispatchEvent(new CustomEvent('zone-close', { detail: true })); // 触发关闭事件
+    this.closed = true;
+    this.stopCountdown();
+    this.dispatchEvent(new CustomEvent("zone-close", { detail: true })); // 触发关闭事件
   }
 
   // 检查是否有轻提示标题插槽
@@ -146,33 +200,28 @@ export class ZoneToast extends LitElement {
   private _initToastActionSlot(event: Event) {
     const slotElement = event.target as HTMLSlotElement;
     const slotElements = slotElement.assignedElements({ flatten: true });
-
-    slotElements.forEach((element) => {
-      if (element.tagName !== "ZONE-BUTTON") {
-        element.parentNode?.removeChild(element); // 移除非按钮元素
-        return;
-      }
-
-      // 显示操作区域
-      (
-        this.shadowRoot?.querySelector(".actions") as HTMLElement
-      ).style.display = "flex";
-
-      const variant =
-        slotElement.name === "action-secondary" ? "secondary" : "primary"; // 确定按钮变体
-      const buttonTypes: Record<ToastVariant, string> = {
-        info: "neutral",
-        warning: "neutral",
-        success: "success",
-        danger: "danger",
-      };
-
-      // 设置按钮属性
-      element.setAttribute("variant", variant);
-      element.setAttribute("kind", buttonTypes[this.variant]);
-      element.setAttribute("size", "medium");
-      element.removeAttribute("icon");
-    });
+    // Supply defaults only; slotted content and explicit consumer choices belong to the caller.
+    slotElements
+      .filter((element) => element.tagName === "ZONE-BUTTON")
+      .forEach((element) => {
+        if (!element.hasAttribute("variant"))
+          element.setAttribute(
+            "variant",
+            slotElement.name === "action-secondary" ? "secondary" : "primary",
+          );
+        if (!element.hasAttribute("kind"))
+          element.setAttribute(
+            "kind",
+            ["success", "danger"].includes(this.variant)
+              ? this.variant
+              : "neutral",
+          );
+        if (!element.hasAttribute("size"))
+          element.setAttribute("size", "medium");
+      });
+    this._hasActions =
+      [...this.querySelectorAll('[slot="action"], [slot="action-secondary"]')]
+        .length > 0;
   }
 
   render(): TemplateResult {
@@ -193,10 +242,10 @@ export class ZoneToast extends LitElement {
     const closable = this.closable
       ? html`<zone-button
           class="close"
-          label="close"
+          label=${this.closeLabel ?? componentText(this.ownerDocument, "close")}
           kind="neutral"
           icon="close"
-          variant="tertiary"
+          variant="text"
           @click=${this._closeHandler}
         ></zone-button>`
       : null;
@@ -206,13 +255,34 @@ export class ZoneToast extends LitElement {
     </span>`;
 
     return html`
-      <div class="toast">
+      <div
+        class="toast"
+        role=${this.variant === "danger" ? "alert" : "status"}
+        aria-atomic="true"
+        @mouseenter=${() => {
+          this._paused = true;
+        }}
+        @mouseleave=${() => {
+          this._paused = false;
+        }}
+        @focusin=${() => {
+          this._paused = true;
+        }}
+        @focusout=${(event: FocusEvent) => {
+          this._paused = !!(
+            event.relatedTarget && this.contains(event.relatedTarget as Node)
+          );
+        }}
+      >
         ${icon}
         <div class="wrapper">
           <div class="content">
             <div class="text-content">${caption} ${description}</div>
           </div>
-          <div class="actions">
+          <div
+            class="actions"
+            style=${this._hasActions ? "display:flex" : "display:none"}
+          >
             <slot
               class="action"
               name="action"

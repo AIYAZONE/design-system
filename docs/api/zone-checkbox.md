@@ -5,7 +5,7 @@
 - **标签**：`<zone-checkbox>`
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
-- **测试**：5 个用例
+- **组件专属测试**：5 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -49,6 +49,12 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `focus()` | options?: FocusOptions |  |
+
 ## 插槽
 
 | 插槽 | 说明 |
@@ -59,15 +65,19 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 
 ```css
 :root {
+  --zone-checkbox-hit-area: /* 你的值 */;
+  --zone-checkbox-radius: /* 你的值 */;
+  --zone-color-neutral: /* 你的值 */;
   --zone-color-primary: /* 你的值 */;
   --zone-color-text-primary: /* 你的值 */;
+  --zone-focus-color: /* 你的值 */;
   --zone-font-family: /* 你的值 */;
   --zone-font-size-16: /* 你的值 */;
   --zone-size-8: /* 你的值 */;
 }
 ```
 
-共消费 5 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 9 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

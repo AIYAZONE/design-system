@@ -68,7 +68,7 @@
 
   &:focus-visible {
     position: relative;
-    outline: 2px solid var(--zone-color-text-l1);
+    outline: 2px solid var(--zone-focus-color, var(--zone-color-text-l1));
     outline-offset: 3px;
   }
 }
@@ -819,4 +819,9 @@ slot[name="icon"] {
   color: var(--zone-color-white);
   background-color: var(--zone-btn-local-custom-color);
   border-color: var(--zone-btn-local-custom-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button, .button::before, .button::after, .capsule-icon, .capsule-icon__glyph, .label { animation: none !important; transition: none !important; }
+  :host([interaction="shine"]) .button::before, :host([interaction="shine"]) .button::after { opacity: 0; }
 }

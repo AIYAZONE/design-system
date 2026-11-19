@@ -5,7 +5,7 @@
 - **标签**：`<zone-popover>`
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
-- **测试**：2 个用例
+- **组件专属测试**：2 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -31,11 +31,12 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `placement` | `placement` | `Placement` | `'bottom'` |  |
-| `fitSize` | `fit-size` | `Boolean` | `false` |  |
+| `placement` | `placement` | `Placement` | `"bottom"` |  |
+| `fitSize` | `fitsize` | `Boolean` | `false` |  |
 | `offset` | `offset` | `Number` | `8` |  |
 | `arrowPadding` | `arrow-padding` | `Number` | `8` |  |
-| `target` | `target` | `string` | — |  |
+| `target` | `target` | `string \| HTMLElement` | — |  |
+| `manual` | `manual` | `Boolean` | `false` | 由 Tooltip 等上层组件管理触发，不自动绑定点击或菜单语义。 |
 
 ## 事件
 
@@ -49,6 +50,14 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  |  |
+| `hide()` |  |  |
+| `setPopover()` |  |  |
 
 ## 插槽
 

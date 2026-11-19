@@ -1,5 +1,12 @@
-import { html, LitElement, CSSResultGroup, unsafeCSS, TemplateResult } from "lit";
+import {
+  html,
+  LitElement,
+  CSSResultGroup,
+  unsafeCSS,
+  TemplateResult,
+} from "lit";
 import { customElement, property } from "../../decorators";
+import { ifDefined } from "lit/directives/if-defined.js";
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 
@@ -41,16 +48,26 @@ export class ZoneSpinner extends LitElement {
   @property({ type: String, reflect: true })
   color: string = "var(--zone-color-primary)";
 
+  /** 独立加载区的可访问名称；按钮内保持空值避免重复播报。 */
+  @property() label = "";
+
   // 渲染组件的HTML模板
   render(): TemplateResult {
-    return html`<zone-icon 
-      part="spinner"
-      class="spinner"
-      name="loading"
-      style="color: ${this.disabled
-        ? "var(--zone-color-white)"
-        : this.color}; font-size: ${this.size};"
-    ></zone-icon>`;
+    return html`<span
+      role=${ifDefined(this.label ? "status" : undefined)}
+      aria-label=${ifDefined(this.label || undefined)}
+      ><zone-icon
+        part="spinner"
+        class="spinner"
+        name="loading"
+        style="color: ${
+          this.disabled
+            ? "var(--zone-spinner-disabled-color, currentColor)"
+            : this.color
+        }; font-size: ${this.size};"
+        aria-hidden="true"
+      ></zone-icon
+    ></span>`;
   }
 }
 
