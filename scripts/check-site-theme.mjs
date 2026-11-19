@@ -42,18 +42,18 @@ try {
       await page.goto(`${origin}/index.html`);
       assert.equal(
         await page.locator("html").getAttribute("data-site-theme"),
-        "dark",
-        "retain dark default",
+        "light",
+        "light default",
       );
-      await page.getByRole("button", { name: "切换到浅色主题" }).click();
+      await page.getByRole("button", { name: "切换到深色主题" }).click();
       assert.equal(
         await page.evaluate((key) => localStorage.getItem(key), key),
-        "light",
+        "dark",
       );
       await page.reload();
       assert.equal(
         await page.locator("html").getAttribute("data-site-theme"),
-        "light",
+        "dark",
         "persist after reload",
       );
       results.push("default, switch and persistence");
@@ -100,6 +100,29 @@ try {
                 "rgb(247, 249, 252)",
                 route,
               );
+            if (width === 1440) {
+              const before = await page.locator("main").boundingBox();
+              await page.evaluate(async () => {
+                window.scrollTo(0, document.documentElement.scrollHeight);
+                await new Promise(requestAnimationFrame);
+                await new Promise(requestAnimationFrame);
+              });
+              const state = await page.evaluate(() => ({
+                top: document.querySelector(".portal-topbar").getBoundingClientRect().top,
+                scrolled: window.scrollY,
+                shadow: document.querySelector(".portal-topbar").classList.contains("is-scrolled"),
+                main: document.querySelector("main").getBoundingClientRect().top + window.scrollY,
+              }));
+              assert.ok(Math.abs(state.top) < 1, `sticky header ${route}`);
+              assert.equal(state.shadow, state.scrolled > 8, `scroll state ${route}`);
+              assert.ok(Math.abs(state.main - before.y) < 1, `header layout shift ${route}`);
+              await page.evaluate(async () => {
+                window.scrollTo(0, 0);
+                await new Promise(requestAnimationFrame);
+                await new Promise(requestAnimationFrame);
+              });
+              assert.equal(await page.locator(".portal-topbar").evaluate(el => el.classList.contains("is-scrolled")), false);
+            }
             results.push({ route, mode, width });
             if (
               [1440, 390].includes(width) &&
@@ -177,10 +200,10 @@ try {
       );
       const blockedPage = await blocked.newPage();
       await blockedPage.goto(`${origin}/index.html`);
-      await blockedPage.getByRole("button", { name: "切换到浅色主题" }).click();
+      await blockedPage.getByRole("button", { name: "切换到深色主题" }).click();
       assert.equal(
         await blockedPage.locator("html").getAttribute("data-site-theme"),
-        "light",
+        "dark",
       );
       await blocked.close();
       results.push("keyboard and blocked-storage fallback");

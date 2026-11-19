@@ -6,13 +6,13 @@
   const read = () => {
     try {
       const saved = localStorage.getItem(key);
-      return valid(saved) ? saved : "dark";
+      return valid(saved) ? saved : "light";
     } catch {
-      return "dark";
+      return "light";
     }
   };
   const getTheme = () =>
-    document.documentElement.dataset.siteTheme === "light" ? "light" : "dark";
+    document.documentElement.dataset.siteTheme === "dark" ? "dark" : "light";
   const apply = (theme, persist = false) => {
     if (!valid(theme)) return;
     const changed = document.documentElement.dataset.siteTheme !== theme;
