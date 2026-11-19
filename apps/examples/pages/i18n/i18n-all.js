@@ -32,7 +32,7 @@ function addStyles() {
     #tools .mode-select:focus { border-color:#0a67d1; box-shadow: 0 0 0 3px rgba(10,103,209,0.12); }
     .category-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
     .category-buttons button { padding: 6px 10px; border: 1px solid #ddd; background:#f7f7f7; border-radius:4px; cursor:pointer; }
-    .category-buttons button.active { background:#FD5000; color:#fff; border-color:#FD5000; }
+    .category-buttons button.active { background:var(--portal-accent); color:var(--portal-on-accent); border-color:var(--portal-accent); }
     table { width: 100%; border-collapse: collapse; border-top: 1px solid #e6e6ef; border-bottom: 1px solid #e6e6ef; }
     thead th { position: sticky; top: 0; background: #f9f9fb; z-index: 1; padding: 6px 12px; border: 1px solid #e6e6ef; }
     td { text-align: left; vertical-align: top; }
@@ -44,8 +44,8 @@ function addStyles() {
     .copy-btn { padding: 4px 8px; font-size: 12px; line-height: 18px; }
     .export-btn { padding: 6px 10px; }
     .copy-btn:hover { background:#45a049; color:#fff; }
-    .export-btn { background:#0a67d1; color:#fff; }
-    .export-btn:hover { background:#0055b0; }
+    .export-btn { background:var(--portal-accent); color:var(--portal-on-accent); }
+    .export-btn:hover { filter: brightness(.95); }
     .search-input { padding: 8px 12px; border:1px solid #d7d9e0; border-radius:6px; outline: none; }
     .search-input:focus { border-color:#0a67d1; box-shadow: 0 0 0 3px rgba(10,103,209,0.12); }
     .key-col { cursor:pointer; position: sticky; left: 0; z-index: 3; background: #f9f9fb; min-width: 240px; border-right: 1px solid #e6e6ef; }
@@ -60,6 +60,7 @@ function createToolbar(keys, onFilterChanged, onExport, onSort) {
   tools.innerHTML = '';
   const modeSelect = document.createElement('select');
   modeSelect.className = 'mode-select';
+  modeSelect.setAttribute('aria-label', '翻译显示方式');
   const optSingle = document.createElement('option'); optSingle.value = 'single'; optSingle.textContent = '单语言';
   const optFull = document.createElement('option'); optFull.value = 'full'; optFull.textContent = '全量';
   modeSelect.appendChild(optSingle); modeSelect.appendChild(optFull);
@@ -70,6 +71,7 @@ function createToolbar(keys, onFilterChanged, onExport, onSort) {
   const search = document.createElement('input');
   search.className = 'search-input';
   search.placeholder = '搜索键或文案...';
+  search.setAttribute('aria-label', '搜索翻译键或文案');
   search.oninput = () => onFilterChanged({ query: search.value, category: currentCategory });
 
   const exportBtn = document.createElement('button');

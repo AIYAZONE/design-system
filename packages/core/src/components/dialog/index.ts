@@ -1,7 +1,16 @@
-import { html, LitElement, PropertyValues, TemplateResult, CSSResultGroup, unsafeCSS } from "lit";
-import { customElement, property, query } from "../../decorators";
+import {
+  html,
+  LitElement,
+  PropertyValues,
+  TemplateResult,
+  CSSResultGroup,
+  unsafeCSS,
+} from "lit";
+import { customElement, property, query, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
 import { event, EventDispatcher } from "@aiyazone/utils";
+import { I18nController } from "@aiyazone/i18n";
+import { componentText } from "../component-text";
 import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 
@@ -19,10 +28,97 @@ export type DialogSize = "extra" | "large";
  */
 @customElement("zone-dialog")
 export class ZoneDialog extends LitElement {
-  static styles =  [unsafeCSS(styles)] as CSSResultGroup;
+  // Retain legacy HTML spellings while exposing the documented kebab-case attributes.
+  private static readonly _attributeAliases: Record<string, string> = {
+    showclose: "show-close",
+    disablebodyscroll: "disable-body-scroll",
+    arialabeltext: "aria-label-text",
+    initialfocus: "initial-focus",
+    closeicon: "close-icon",
+  };
+  static get observedAttributes() {
+    return [
+      ...super.observedAttributes,
+      ...Object.keys(this._attributeAliases),
+    ];
+  }
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    value: string | null,
+  ) {
+    const canonical = ZoneDialog._attributeAliases[name];
+    super.attributeChangedCallback?.(canonical ?? name, oldValue, value);
+  }
+
+  static styles = [unsafeCSS(styles)] as CSSResultGroup;
   private static _bodyScrollLockCount = 0;
-  private static _rootStyleSnapshot: { overflow: string; paddingRight: string } | null = null;
+  private static _rootStyleSnapshot: {
+    overflow: string;
+    paddingRight: string;
+  } | null = null;
   private static _openDialogs: ZoneDialog[] = [];
+  private static _inertSnapshots = new Map<HTMLElement, boolean>();
+  private static _backgroundObserver?: MutationObserver;
+  private _i18n?: I18nController;
+  private _closeReason = "programmatic";
+  @state() private _hasHeader = false;
+  /** 关闭操作名称，默认跟随页面语言。 */
+  @property({ attribute: "close-label" }) closeLabel?: string;
+
+  connectedCallback() {
+    super.connectedCallback?.();
+    this._i18n = new I18nController(this, { observeHtmlLang: true });
+    if (this.hasUpdated && this.open)
+      void this.updateComplete.then(() => {
+        if (this.isConnected) this.toggleDialogHandler();
+      });
+  }
+
+  private static syncBackground() {
+    for (const [element, wasInert] of this._inertSnapshots)
+      element.toggleAttribute("inert", wasInert);
+    this._inertSnapshots.clear();
+    const active = this._openDialogs.at(-1);
+    if (!active) {
+      this._backgroundObserver?.disconnect();
+      this._backgroundObserver = undefined;
+      return;
+    }
+    let branch: Element = active;
+    while (branch.parentNode) {
+      const parent = branch.parentNode;
+      if (parent instanceof Element || parent instanceof ShadowRoot) {
+        for (const sibling of Array.from(parent.children)) {
+          if (
+            sibling === branch ||
+            !(sibling instanceof HTMLElement) ||
+            sibling.matches("script, style, link")
+          )
+            continue;
+          this._inertSnapshots.set(sibling, sibling.hasAttribute("inert"));
+          sibling.setAttribute("inert", "");
+        }
+      }
+      if (parent instanceof ShadowRoot) branch = parent.host;
+      else if (
+        parent instanceof Element &&
+        parent !== active.ownerDocument.documentElement
+      )
+        branch = parent;
+      else break;
+    }
+    if (!this._backgroundObserver) {
+      this._backgroundObserver = new MutationObserver(() =>
+        this.syncBackground(),
+      );
+      this._backgroundObserver.observe(active.ownerDocument.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+  }
+
   private _focusTimer?: ReturnType<typeof setTimeout>;
 
   protected firstUpdated(): void {
@@ -35,7 +131,11 @@ export class ZoneDialog extends LitElement {
     super.disconnectedCallback?.();
     window?.removeEventListener("keydown", this.onKeydown);
     clearTimeout(this._focusTimer);
-    ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(dialog => dialog !== this);
+    this._i18n?.hostDisconnected();
+    ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(
+      (dialog) => dialog !== this,
+    );
+    ZoneDialog.syncBackground();
     if (this._isBodyScrollLockedByThisDialog) {
       this.unlockBodyScroll();
     }
@@ -54,7 +154,7 @@ export class ZoneDialog extends LitElement {
         return false;
       }
       return newVal !== oldVal;
-    }
+    },
   })
   size: DialogSize = "large";
 
@@ -93,27 +193,27 @@ export class ZoneDialog extends LitElement {
   /**
    * 是否显示右上角关闭按钮（默认显示）
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: "show-close" })
   showClose = true;
   /**
    * 打开时是否禁用页面滚动（body overflow: hidden）
    */
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean, reflect: true, attribute: "disable-body-scroll" })
   disableBodyScroll = true;
   /**
    * 无标题时用于可访问性的 aria-label 文本
    */
-  @property({ type: String })
+  @property({ type: String, attribute: "aria-label-text" })
   ariaLabelText?: string;
   /**
    * 初始聚焦选择器（打开后首先聚焦的元素），支持匹配插槽内容或 Shadow 内部元素
    */
-  @property({ type: String })
+  @property({ type: String, attribute: "initial-focus" })
   initialFocus?: string;
   /**
    * 关闭图标
    */
-  @property({ type: String })
+  @property({ type: String, attribute: "close-icon" })
   closeIcon = "close-fill";
 
   /**
@@ -181,15 +281,13 @@ export class ZoneDialog extends LitElement {
       target = document.querySelector(this.appendTo);
     } catch {
       console.warn(
-        `[zone-dialog] Invalid append-to selector: ${this.appendTo}`
+        `[zone-dialog] Invalid append-to selector: ${this.appendTo}`,
       );
       return;
     }
 
     if (!target) {
-      console.warn(
-        `[zone-dialog] Cannot find append target: ${this.appendTo}`
-      );
+      console.warn(`[zone-dialog] Cannot find append target: ${this.appendTo}`);
       return;
     }
 
@@ -206,7 +304,11 @@ export class ZoneDialog extends LitElement {
       if (this.open) {
         this.onOpen({ isOpen: true });
         this._lastFocus = this.deepActiveElement();
+        ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(
+          (dialog) => dialog !== this,
+        );
         ZoneDialog._openDialogs.push(this);
+        ZoneDialog.syncBackground();
         if (this.disableBodyScroll) this.lockBodyScroll();
         window?.addEventListener("keydown", this.onKeydown);
         this._focusTimer = setTimeout(() => {
@@ -215,7 +317,9 @@ export class ZoneDialog extends LitElement {
           if (!root) return;
           let target: HTMLElement | null = null;
           if (this.initialFocus) {
-            target = root.querySelector(this.initialFocus) as HTMLElement || (this.querySelector(this.initialFocus) as HTMLElement);
+            target =
+              (root.querySelector(this.initialFocus) as HTMLElement) ||
+              (this.querySelector(this.initialFocus) as HTMLElement);
           }
           if (!target) {
             const focusables = this.focusableElements();
@@ -225,8 +329,15 @@ export class ZoneDialog extends LitElement {
         }, 0);
       } else {
         clearTimeout(this._focusTimer);
-        ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(dialog => dialog !== this);
-        this.onClose({ isOpen: false }, { bubbles: false });
+        ZoneDialog._openDialogs = ZoneDialog._openDialogs.filter(
+          (dialog) => dialog !== this,
+        );
+        ZoneDialog.syncBackground();
+        this.onClose(
+          { isOpen: false, reason: this._closeReason },
+          { bubbles: false },
+        );
+        this._closeReason = "programmatic";
         this.unlockBodyScroll();
         this.restoreLastFocus();
         window?.removeEventListener("keydown", this.onKeydown);
@@ -279,7 +390,10 @@ export class ZoneDialog extends LitElement {
   private unlockBodyScroll() {
     if (!this._isBodyScrollLockedByThisDialog) return;
 
-    ZoneDialog._bodyScrollLockCount = Math.max(0, ZoneDialog._bodyScrollLockCount - 1);
+    ZoneDialog._bodyScrollLockCount = Math.max(
+      0,
+      ZoneDialog._bodyScrollLockCount - 1,
+    );
     this._isBodyScrollLockedByThisDialog = false;
 
     if (ZoneDialog._bodyScrollLockCount > 0) return;
@@ -309,14 +423,16 @@ export class ZoneDialog extends LitElement {
 
   private deepActiveElement(): Element | null {
     let active = document.activeElement;
-    while (active?.shadowRoot?.activeElement) active = active.shadowRoot.activeElement;
+    while (active?.shadowRoot?.activeElement)
+      active = active.shadowRoot.activeElement;
     return active;
   }
 
   private focusableElements(): HTMLElement[] {
     const result: HTMLElement[] = [];
     const visit = (element: Element) => {
-      if (element.hasAttribute("hidden") || element.hasAttribute("inert")) return;
+      if (element.hasAttribute("hidden") || element.hasAttribute("inert"))
+        return;
       const style = getComputedStyle(element);
       if (style.display === "none" || style.visibility === "hidden") return;
       if (element instanceof HTMLSlotElement) {
@@ -327,8 +443,13 @@ export class ZoneDialog extends LitElement {
         Array.from(element.shadowRoot.children).forEach(visit);
         return;
       }
-      if (element instanceof HTMLElement && element.tabIndex >= 0 &&
-          !element.matches(':disabled, [aria-disabled="true"], input[type="hidden"]')) {
+      if (
+        element instanceof HTMLElement &&
+        element.tabIndex >= 0 &&
+        !element.matches(
+          ':disabled, [aria-disabled="true"], input[type="hidden"]',
+        )
+      ) {
         result.push(element);
       }
       Array.from(element.children).forEach(visit);
@@ -344,15 +465,15 @@ export class ZoneDialog extends LitElement {
   private closeDialog(source: "close-button" | "keyboard" | "backdrop") {
     const requestCloseEvent = this.onRequestClose(
       { source },
-      { cancelable: true }
+      { cancelable: true },
     );
 
     if (requestCloseEvent.defaultPrevented) {
       return;
     }
 
+    this._closeReason = source;
     this.open = false;
-    this.onClose({ reason: source });
   }
 
   /**
@@ -370,7 +491,8 @@ export class ZoneDialog extends LitElement {
    * 键盘处理：ESC 关闭（critical 禁止）、Tab/Shift+Tab 焦点循环在对话框范围内
    */
   private onKeydown = (event: KeyboardEvent): void => {
-    if (ZoneDialog._openDialogs.at(-1) !== this) return;
+    if (event.defaultPrevented || ZoneDialog._openDialogs.at(-1) !== this)
+      return;
     if (event.code === "Escape" && this.open && !this.critical) {
       event.preventDefault();
       this.closeDialog("keyboard");
@@ -382,11 +504,16 @@ export class ZoneDialog extends LitElement {
         event.preventDefault();
         return;
       }
-      const currentIndex = focusables.indexOf(this.deepActiveElement() as HTMLElement);
+      const currentIndex = focusables.indexOf(
+        this.deepActiveElement() as HTMLElement,
+      );
       const dir = event.shiftKey ? -1 : 1;
-      const nextIndex = currentIndex < 0
-        ? (event.shiftKey ? focusables.length - 1 : 0)
-        : (currentIndex + dir + focusables.length) % focusables.length;
+      const nextIndex =
+        currentIndex < 0
+          ? event.shiftKey
+            ? focusables.length - 1
+            : 0
+          : (currentIndex + dir + focusables.length) % focusables.length;
       focusables[nextIndex].focus();
       event.preventDefault();
     }
@@ -397,7 +524,7 @@ export class ZoneDialog extends LitElement {
    */
   private renderContainer() {
     const title = this.caption
-      ? html`<h2 id="dialogCaption" part="dialog-title" class="zone-h4" .innerHTML="${this.caption}"></h2>`
+      ? html`<h2 part="dialog-title" class="zone-h4">${this.caption}</h2>`
       : "";
     const showClose = this.showClose && !this.noClose;
     const closeButton = showClose
@@ -405,20 +532,40 @@ export class ZoneDialog extends LitElement {
           type="button"
           part="dialog-close"
           class="close"
-          aria-label="关闭"
+          aria-label=${this.closeLabel ?? componentText(this.ownerDocument, "close")}
           @click="${() => this.closeDialog("close-button")}"
-        ><zone-icon class="close" name="${this.closeIcon}" aria-hidden="true"></zone-icon></button>`
+        >
+          <zone-icon
+            class="close"
+            name="${this.closeIcon}"
+            aria-hidden="true"
+          ></zone-icon>
+        </button>`
       : null;
 
     const classes = {
       container: true,
     };
 
-    return html`<div part="dialog-container" tabindex="-1" class="${classMap(classes)}">
+    return html`<div
+      part="dialog-container"
+      tabindex="-1"
+      class="${classMap(classes)}"
+    >
       ${closeButton}
       <section part="dialog-content" class="content">
-        ${title}
+        <div id="dialogCaption" ?hidden=${!this.caption && !this._hasHeader}>
+          <slot
+            name="header"
+            @slotchange=${(event: Event) => {
+              this._hasHeader =
+                (event.target as HTMLSlotElement).assignedElements().length > 0;
+            }}
+            >${title}</slot
+          >
+        </div>
         <slot></slot>
+        <slot name="footer"></slot>
       </section>
     </div>`;
   }
@@ -427,7 +574,7 @@ export class ZoneDialog extends LitElement {
    * 渲染外层 overlay 与 aria 属性：role='dialog'、aria-modal、aria-labelledby/aria-label
    */
   render(): TemplateResult {
-    const labelledBy = this.caption ? "dialogCaption" : "";
+    const labelledBy = this.caption || this._hasHeader ? "dialogCaption" : "";
     return html`<div
       part="dialog-polyfill"
       class="dialog-polyfill"

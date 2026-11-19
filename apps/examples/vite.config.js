@@ -45,10 +45,26 @@ const htmlRelativePaths = () => {
   };
 };
 
+// Shared footer also loads a stylesheet by URL; keep standalone examples runnable.
+const sharedFooterStyles = () => ({
+  name: 'examples-shared-footer',
+  configureServer(server) {
+    for (const name of ['site-footer.css', 'site-theme.css']) {
+      server.middlewares.use(`/shared/${name}`, (_request, response) => {
+        response.setHeader('Content-Type', 'text/css');
+        response.end(fs.readFileSync(path.resolve(__dirname, '../portal/public/shared', name), 'utf8'));
+      });
+    }
+  },
+  generateBundle() {
+    for (const name of ['site-footer.css', 'site-theme.css']) this.emitFile({ type: 'asset', fileName: `shared/${name}`, source: fs.readFileSync(path.resolve(__dirname, '../portal/public/shared', name), 'utf8') });
+  }
+});
+
 export default defineConfig(({ command }) => ({
   base: './',
   publicDir: path.resolve(__dirname, '../../public'),
-  plugins: [htmlRelativePaths()],
+  plugins: [htmlRelativePaths(), sharedFooterStyles()],
   server: {
     host: '0.0.0.0',
     port: 5174,

@@ -7,7 +7,7 @@ describe('zone-badge a11y', () => {
   it('count-only has accessible name and no axe violations', async () => {
     const { el } = mount('zone-badge', { count: 99 })
     await waitUpdate(el)
-    expect(el.shadowRoot.querySelector('.badge')?.getAttribute('aria-label')).toBe('计数：99')
+    expect(el.shadowRoot.querySelector('.badge')?.getAttribute('aria-label')).toBe('Count：99')
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
     expect(results.violations).toEqual([])
   })

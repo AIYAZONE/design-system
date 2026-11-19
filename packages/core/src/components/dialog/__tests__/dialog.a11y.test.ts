@@ -15,7 +15,7 @@ describe('zone-dialog a11y', () => {
     expect(roleEl?.getAttribute('aria-modal')).toBe('true')
     expect(roleEl?.getAttribute('aria-label')).toBe('确认操作')
     expect(results.violations).toEqual([])
-    expect(root.querySelector('button[part="dialog-close"]')?.getAttribute('aria-label')).toBe('关闭')
+    expect(root.querySelector('button[part="dialog-close"]')?.getAttribute('aria-label')).toBe('Close')
   })
 
   it('moves focus through slotted controls and restores the shadow trigger', async () => {

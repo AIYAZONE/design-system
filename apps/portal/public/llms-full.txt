@@ -44,7 +44,7 @@ import '@aiyazone/design-system/index-v3.css';   // 完整主题
 | `<zone-popover>` | AIYAZONE 气泡卡片组件 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定… | [zone-popover.md](./docs/api/zone-popover.md) |
 | `<zone-spinner>` | AIYAZONE 加载指示器组件 | [zone-spinner.md](./docs/api/zone-spinner.md) |
 | `<zone-toast>` | AIYAZONE 轻提示组件 | [zone-toast.md](./docs/api/zone-toast.md) |
-| `<zone-tooltip>` | AIYAZONE Tooltip 组件 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
+| `<zone-tooltip>` | 非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
 | `<zone-icon>` | 图标（名称清单见下方「图标库」章节） | /icons/ |
 
 ## 设计令牌摘要
@@ -102,7 +102,7 @@ email, email-color, email-color-fill, email-fill, facebook, facebook-color, face
 - **标签**：`<zone-badge>`
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
-- **测试**：7 个用例
+- **组件专属测试**：7 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -128,6 +128,7 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
+| `ariaLabelText` | `aria-label-text` | `string` | — |  |
 | `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | 设置徽章的大小（影响高度/内边距/图标大小） |
 | `variant` | `variant` | `"soft" \| "solid" \| "outline"` | `"soft"` | 徽章的风格变体：soft（浅色）、solid（实色）、outline（描边） |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "warning" \| "danger" \| "info" \| "custom"` | `"default"` | 徽章的语义种类（default/neutral/success/warning/danger/info/custom） |
@@ -152,7 +153,7 @@ import '@aiyazone/design-system/index-v3.css';
 | `--zone-badge-color` | `var(--zone-color-primary)` | 设置徽章语义主色（outline 边框默认跟随该值，solid 默认背景也会使用该值） |
 | `--zone-badge-text-color` | `var(--zone-badge-color)` | 设置徽章的文字颜色（所有变体通用） |
 
-另有 35 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 36 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -169,7 +170,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-button>`
 - **实现**：`ZoneButton`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/button`
-- **测试**：34 个用例
+- **组件专属测试**：34 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -223,6 +224,13 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `focus()` |  |  |
+| `onClick()` |  |  |
+
 ## 插槽
 
 | 插槽 | 说明 |
@@ -249,7 +257,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 }
 ```
 
-共消费 111 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 112 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -266,7 +274,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **标签**：`<zone-checkbox>`
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
-- **测试**：5 个用例
+- **组件专属测试**：5 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -310,6 +318,12 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `focus()` | options?: FocusOptions |  |
+
 ## 插槽
 
 | 插槽 | 说明 |
@@ -320,15 +334,19 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 
 ```css
 :root {
+  --zone-checkbox-hit-area: /* 你的值 */;
+  --zone-checkbox-radius: /* 你的值 */;
+  --zone-color-neutral: /* 你的值 */;
   --zone-color-primary: /* 你的值 */;
   --zone-color-text-primary: /* 你的值 */;
+  --zone-focus-color: /* 你的值 */;
   --zone-font-family: /* 你的值 */;
   --zone-font-size-16: /* 你的值 */;
   --zone-size-8: /* 你的值 */;
 }
 ```
 
-共消费 5 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 9 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -345,7 +363,7 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 - **标签**：`<zone-dialog>`
 - **实现**：`ZoneDialog`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dialog`
-- **测试**：9 个用例
+- **组件专属测试**：9 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -371,6 +389,7 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
+| `closeLabel` | `close-label` | `string` | — | 关闭操作名称，默认跟随页面语言。 |
 | `size` | `size` | `"extra" \| "large"` | `"large"` | 对话框尺寸 |
 | `open` | `open` | `Boolean` | `false` | 设置对话框的打开/关闭状态 |
 | `caption` | `caption` | `string` | — | 对话框标题文本；也可通过 header 插槽覆盖标题区域 |
@@ -383,11 +402,28 @@ import '@aiyazone/design-system/index-v3.css';
 | `closeIcon` | `close-icon` | `String` | `"close-fill"` | 关闭图标 |
 | `appendTo` | `append-to` | `string` | — | Dialog 挂载目标 支持 CSS Selector，例如： - body - #app - .modal-root |
 
+## 事件
+
+| 事件名 | 说明 |
+|--------|------|
+| `zone-dialog-open` |  |
+| `zone-dialog-request-close` |  |
+| `zone-dialog-close` |  |
+| `closed` |  |
+
+```js
+document.querySelector('zone-dialog').addEventListener('zone-dialog-open', (e) => {
+  console.log(e.detail);
+});
+```
+
 ## 插槽
 
 | 插槽 | 说明 |
 |------|------|
+| `header` | 具名插槽 header |
 | `（默认）` | 默认插槽 |
+| `footer` | 具名插槽 footer |
 
 ## 可覆盖的 CSS 变量
 
@@ -397,7 +433,7 @@ import '@aiyazone/design-system/index-v3.css';
 | `--zone-dialog-title-align` | `left` | 设置对话框标题的对齐方式 |
 | `--zone-dialog-index` | `500` | 设置对话框的z-index值 |
 
-另有 32 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 33 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -414,7 +450,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-dropdown>`
 - **实现**：`ZoneDropdown`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/dropdown`
-- **测试**：29 个用例
+- **组件专属测试**：29 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -433,7 +469,13 @@ import '@aiyazone/design-system/index-v3.css';
 静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
-<zone-dropdown>内容</zone-dropdown>
+<zone-dropdown id="delivery" label="配送方式" name="delivery"></zone-dropdown>
+<script>
+  document.querySelector("#delivery").options = [
+    { value: "standard", label: "标准配送" },
+    { value: "express", label: "加急配送" }
+  ];
+</script>
 ```
 
 ## 属性（Attributes / Properties）
@@ -443,11 +485,15 @@ import '@aiyazone/design-system/index-v3.css';
 | `value` | `value` | `string` | `""` |  |
 | `name` | `name` | `string` | `""` |  |
 | `label` | `label` | `string` | `""` |  |
+| `placeholder` | `placeholder` | `string` | — | 未指定文案时使用当前语言；传入空字符串时保留空字符串。 |
 | `disabled` | `disabled` | `Boolean` | `false` |  |
 | `required` | `required` | `Boolean` | `false` |  |
 | `open` | `open` | `Boolean` | `false` |  |
 | `clearable` | `clearable` | `Boolean` | `false` |  |
 | `showPath` | `show-path` | `Boolean` | `false` | 默认显示所选叶子节点的名称；开启后显示完整路径。 |
+| `emptyText` | `empty-text` | `string` | — |  |
+| `requiredMessage` | `required-message` | `string` | — |  |
+| `clearLabel` | `clear-label` | `string` | — |  |
 | `errorMessage` | `error-message` | `string` | `""` |  |
 
 ## 仅 JS 属性（无对应 attribute）
@@ -455,6 +501,31 @@ import '@aiyazone/design-system/index-v3.css';
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `options` | `DropdownOption[]` | `[]` | 通过 JavaScript 属性赋值，例如 element.options = [...]。 |
+
+## 事件
+
+| 事件名 | 说明 |
+|--------|------|
+| `change` | 用户选择或清空时触发，详情类型为 DropdownChangeDetail；支持冒泡并穿透 Shadow DOM。 |
+| `zone-dropdown-show` | 下拉面板已打开。 |
+| `zone-dropdown-hide` | 下拉面板已关闭。 |
+
+```js
+document.querySelector('zone-dropdown').addEventListener('change', (e) => {
+  console.log(e.detail);
+});
+```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `checkValidity()` |  |  |
+| `reportValidity()` |  |  |
+| `setCustomValidity()` | message: string |  |
+| `show()` |  |  |
+| `hide()` |  |  |
+| `focus()` | options?: FocusOptions |  |
 
 ## 可覆盖的 CSS 变量
 
@@ -475,7 +546,7 @@ import '@aiyazone/design-system/index-v3.css';
 }
 ```
 
-共消费 25 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 26 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -492,7 +563,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-filter-select>`
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
-- **测试**：52 个用例
+- **组件专属测试**：52 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -511,7 +582,13 @@ import '@aiyazone/design-system/index-v3.css';
 静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
-<zone-filter-select>内容</zone-filter-select>
+<zone-filter-select id="products" label="产品筛选"></zone-filter-select>
+<script>
+  document.querySelector("#products").options = [
+    { value: "solar", label: "太阳能板" },
+    { value: "battery", label: "便携电源" }
+  ];
+</script>
 ```
 
 ## 属性（Attributes / Properties）
@@ -552,6 +629,16 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  | 展开面板 |
+| `hide()` | confirmed: unknown | 收起面板，未确认时丢弃草稿 |
+| `toggle()` |  | 切换展开 / 收起 |
+| `confirm()` |  | 提交草稿并收起面板 |
+| `clear()` |  | 清空当前选中 |
+
 ## 可覆盖的 CSS 变量
 
 ```css
@@ -571,7 +658,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 }
 ```
 
-共消费 47 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 48 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -588,7 +675,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 - **标签**：`<zone-popover>`
 - **实现**：`ZonePopover`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/popover`
-- **测试**：2 个用例
+- **组件专属测试**：2 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -614,11 +701,12 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `placement` | `placement` | `Placement` | `'bottom'` |  |
-| `fitSize` | `fit-size` | `Boolean` | `false` |  |
+| `placement` | `placement` | `Placement` | `"bottom"` |  |
+| `fitSize` | `fitsize` | `Boolean` | `false` |  |
 | `offset` | `offset` | `Number` | `8` |  |
 | `arrowPadding` | `arrow-padding` | `Number` | `8` |  |
-| `target` | `target` | `string` | — |  |
+| `target` | `target` | `string \| HTMLElement` | — |  |
+| `manual` | `manual` | `Boolean` | `false` | 由 Tooltip 等上层组件管理触发，不自动绑定点击或菜单语义。 |
 
 ## 事件
 
@@ -632,6 +720,14 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  |  |
+| `hide()` |  |  |
+| `setPopover()` |  |  |
 
 ## 插槽
 
@@ -662,7 +758,7 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 - **标签**：`<zone-spinner>`
 - **实现**：`ZoneSpinner`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/spinner`
-- **测试**：0 个用例
+- **组件专属测试**：0 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -692,6 +788,18 @@ import '@aiyazone/design-system/index-v3.css';
 | `disabled` | `disabled` | `boolean \| undefined` | `false` | 设置加载指示器的禁用状态 |
 | `overlay` | `overlay` | `boolean \| undefined` | `false` | 设置加载指示器的覆盖层状态 |
 | `color` | `color` | `string` | `"var(--zone-color-primary)"` | 设置加载指示器的颜色 |
+| `label` | `label` | `string` | `""` | 独立加载区的可访问名称；按钮内保持空值避免重复播报。 |
+
+## 可覆盖的 CSS 变量
+
+```css
+:root {
+  --zone-spinner-overlay-bg: /* 你的值 */;
+  --zone-spinner-overlay-index: /* 你的值 */;
+}
+```
+
+共消费 2 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -708,7 +816,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-toast>`
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
-- **测试**：0 个用例
+- **组件专属测试**：0 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -741,6 +849,7 @@ import '@aiyazone/design-system/index-v3.css';
 | `caption` | `caption` | `string \| undefined` | — | 设置轻提示标题 |
 | `closed` | `closed` | `boolean` | `false` | 设置轻提示组件的显示状态（默认 false＝显示；初始隐藏必须设置 closed 属性） |
 | `countdownTime` | `countdown-time` | `number` | `0` | 倒计时时间（以秒为单位） |
+| `closeLabel` | `close-label` | `string` | — | 关闭按钮名称；默认跟随页面语言。 |
 
 ## 事件
 
@@ -753,6 +862,13 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `open()` |  | 打开轻提示组件 |
+| `close()` |  | 关闭轻提示组件 |
 
 ## 插槽
 
@@ -794,12 +910,12 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 
 # `<zone-tooltip>` · ZoneTooltip
 
-> AIYAZONE Tooltip 组件
+> 非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。
 
 - **标签**：`<zone-tooltip>`
 - **实现**：`ZoneTooltip`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/tooltip`
-- **测试**：5 个用例
+- **组件专属测试**：5 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -825,7 +941,8 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `placement` | `placement` | `Placement` | `"top"` | 设置工具提示的位置 |
+| `placement` | `placement` | `Placement` | `"top"` |  |
+| `target` | `target` | `string \| HTMLElement` | — | 外部触发器的 ID，或通过 JavaScript 传入的元素。 |
 
 ## 事件
 
@@ -833,13 +950,19 @@ import '@aiyazone/design-system/index-v3.css';
 |--------|------|
 | `zone-tooltip-show` |  |
 | `zone-tooltip-hide` |  |
-| `zone-tooltip-hide` |  |
 
 ```js
 document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e) => {
   console.log(e.detail);
 });
 ```
+
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  |  |
+| `hide()` |  |  |
 
 ## 插槽
 
@@ -852,7 +975,7 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
-| `--zone-tooltip-trigger-display` | `inline-flex` | 设置工具提示触发器的显示方式。 |
+| `--zone-tooltip-trigger-display` | `inline-flex` | 触发器显示方式。 |
 
 另有 2 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 

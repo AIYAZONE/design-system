@@ -5,7 +5,7 @@
 - **标签**：`<zone-filter-select>`
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
-- **测试**：52 个用例
+- **组件专属测试**：52 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -24,7 +24,13 @@ import '@aiyazone/design-system/index-v3.css';
 静态 HTML 需要已发布版本的自包含 CDN 入口；npm 入口不能直接放进浏览器 script。示例见 [README](https://github.com/AIYAZONE/design-system#cdn-静态页面)，升级与回退见 [接入说明](https://github.com/AIYAZONE/design-system/blob/master/docs/usage.md#版本与回退)。
 
 ```html
-<zone-filter-select>内容</zone-filter-select>
+<zone-filter-select id="products" label="产品筛选"></zone-filter-select>
+<script>
+  document.querySelector("#products").options = [
+    { value: "solar", label: "太阳能板" },
+    { value: "battery", label: "便携电源" }
+  ];
+</script>
 ```
 
 ## 属性（Attributes / Properties）
@@ -65,6 +71,16 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 });
 ```
 
+## 方法
+
+| 方法 | 参数 | 说明 |
+|---|---|---|
+| `show()` |  | 展开面板 |
+| `hide()` | confirmed: unknown | 收起面板，未确认时丢弃草稿 |
+| `toggle()` |  | 切换展开 / 收起 |
+| `confirm()` |  | 提交草稿并收起面板 |
+| `clear()` |  | 清空当前选中 |
+
 ## 可覆盖的 CSS 变量
 
 ```css
@@ -84,7 +100,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 }
 ```
 
-共消费 47 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 48 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

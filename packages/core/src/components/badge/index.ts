@@ -1,12 +1,21 @@
-import { html, LitElement, TemplateResult, CSSResultGroup, unsafeCSS } from "lit";
+import {
+  html,
+  LitElement,
+  TemplateResult,
+  CSSResultGroup,
+  unsafeCSS,
+} from "lit";
 import { customElement, property } from "../../decorators";
 
+import { I18nController } from "@aiyazone/i18n";
+import { componentText } from "../component-text";
 import styles from "./index.less?inline";
 
 // 定义徽章组件的大小类型
 export type BadgeSize = "small" | "medium" | "large";
 export type BadgeVariant = "soft" | "solid" | "outline";
-export type BadgeKind = "default" | "neutral" | "success" | "warning" | "danger" | "info" | "custom";
+export type BadgeKind =
+  "default" | "neutral" | "success" | "warning" | "danger" | "info" | "custom";
 export type BadgeIconPosition = "prev" | "next" | "start" | "end";
 
 /**
@@ -19,7 +28,37 @@ export type BadgeIconPosition = "prev" | "next" | "start" | "end";
  */
 @customElement("zone-badge")
 export class ZoneBadge extends LitElement {
+  private _i18n?: I18nController;
+  @property({ attribute: "aria-label-text" }) ariaLabelText?: string;
+  connectedCallback() {
+    super.connectedCallback?.();
+    this._i18n = new I18nController(this, { observeHtmlLang: true });
+  }
+  disconnectedCallback() {
+    this._i18n?.hostDisconnected();
+    super.disconnectedCallback?.();
+  }
   // 组件的样式
+  // Retain legacy HTML spellings while exposing the documented kebab-case attributes.
+  private static readonly _attributeAliases: Record<string, string> = {
+    iconposition: "icon-position",
+    maxcount: "max-count",
+  };
+  static get observedAttributes() {
+    return [
+      ...super.observedAttributes,
+      ...Object.keys(this._attributeAliases),
+    ];
+  }
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    value: string | null,
+  ) {
+    const canonical = ZoneBadge._attributeAliases[name];
+    super.attributeChangedCallback?.(canonical ?? name, oldValue, value);
+  }
+
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   /**
@@ -49,7 +88,7 @@ export class ZoneBadge extends LitElement {
   /**
    * 图标位置：prev（文本前）/ next（文本后）
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String, reflect: true, attribute: "icon-position" })
   iconPosition: BadgeIconPosition = "next";
 
   /**
@@ -66,7 +105,7 @@ export class ZoneBadge extends LitElement {
   /**
    * 计数显示上限（默认 99）
    */
-  @property({ type: Number })
+  @property({ type: Number, attribute: "max-count" })
   maxCount = 99;
 
   /**
@@ -99,13 +138,16 @@ export class ZoneBadge extends LitElement {
 
   // 移除键盘处理
 
-  private _warnedA11y = false;
-
   // 组件的渲染方法
   render(): TemplateResult {
-    const iconTemplate = this.icon ? html`<zone-icon name=${this.icon}></zone-icon>` : "";
+    const iconTemplate = this.icon
+      ? html`<zone-icon name=${this.icon}></zone-icon>`
+      : "";
     const iconSlot = html`<slot name="icon">${iconTemplate}</slot>`;
-    const resolvedIconPosition = this.iconPosition === "prev" || this.iconPosition === "start" ? "prev" : "next";
+    const resolvedIconPosition =
+      this.iconPosition === "prev" || this.iconPosition === "start"
+        ? "prev"
+        : "next";
 
     const countDisplay =
       typeof this.count === "number"
@@ -114,32 +156,32 @@ export class ZoneBadge extends LitElement {
           : `${this.count}`
         : undefined;
 
-    const needsAria = typeof this.count === "number";
-    if (needsAria && !this._warnedA11y) {
-      // 一次性告警，提示无障碍文本
-      console.warn("zone-badge: 仅计数时将自动生成 aria-label 以提升可访问性");
-      this._warnedA11y = true;
-    }
-
-    const textSlot = typeof this.count === "number"
-      ? html`<span class="count" aria-live="polite">${countDisplay}</span>`
-      : html`<slot></slot>`;
+    const textSlot =
+      typeof this.count === "number"
+        ? html`<span class="count" aria-live="polite">${countDisplay}</span>`
+        : html`<slot></slot>`;
 
     const closeBtn = "";
-    const content = resolvedIconPosition === "prev" ? html`${iconSlot}${textSlot}${closeBtn}` : html`${textSlot}${iconSlot}${closeBtn}`;
+    const content =
+      resolvedIconPosition === "prev"
+        ? html`${iconSlot}${textSlot}${closeBtn}`
+        : html`${textSlot}${iconSlot}${closeBtn}`;
 
     if (this.href) {
       return html`<a
-          class="badge"
-          href=${this.href}
-          rel="noopener noreferrer"
-          aria-label=${typeof this.count === "number" && !this.textContent ? `计数：${countDisplay}` : ""}
-        >
-          ${content}
-        </a>`;
+        class="badge"
+        href=${this.href}
+        rel="noopener noreferrer"
+        aria-label=${this.ariaLabelText ?? (typeof this.count === "number" && !this.textContent ? `${componentText(this.ownerDocument, "count")}：${countDisplay}` : "")}
+      >
+        ${content}
+      </a>`;
     }
 
-    return html`<span class="badge" aria-label=${typeof this.count === "number" && !this.textContent ? `计数：${countDisplay}` : ""}>
+    return html`<span
+      class="badge"
+      aria-label=${this.ariaLabelText ?? (typeof this.count === "number" && !this.textContent ? `${componentText(this.ownerDocument, "count")}：${countDisplay}` : "")}
+    >
       ${content}
     </span>`;
   }

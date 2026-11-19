@@ -12,6 +12,14 @@
       "summary": "AIYAZONE 徽章组件",
       "attributes": [
         {
+          "name": "ariaLabelText",
+          "attribute": "aria-label-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": ""
+        },
+        {
           "name": "size",
           "attribute": "size",
           "reflects": true,
@@ -78,6 +86,7 @@
       ],
       "properties": [],
       "events": [],
+      "methods": [],
       "slots": [
         {
           "name": "icon",
@@ -118,6 +127,7 @@
         "--zone-color-primary",
         "--zone-color-primary-contrast",
         "--zone-color-white",
+        "--zone-focus-color",
         "--zone-font-c1",
         "--zone-font-h3",
         "--zone-size-14",
@@ -265,6 +275,18 @@
           "description": ""
         }
       ],
+      "methods": [
+        {
+          "name": "focus",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "onClick",
+          "description": "",
+          "parameters": []
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -369,6 +391,7 @@
         "--zone-color-success-highlight",
         "--zone-color-text-l1",
         "--zone-color-white",
+        "--zone-focus-color",
         "--zone-font-b1",
         "--zone-font-b3",
         "--zone-font-family",
@@ -445,6 +468,21 @@
           "description": ""
         }
       ],
+      "methods": [
+        {
+          "name": "focus",
+          "description": "",
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "FocusOptions"
+              }
+            }
+          ]
+        }
+      ],
       "slots": [
         {
           "name": "",
@@ -452,8 +490,12 @@
         }
       ],
       "cssVariables": [
+        "--zone-checkbox-hit-area",
+        "--zone-checkbox-radius",
+        "--zone-color-neutral",
         "--zone-color-primary",
         "--zone-color-text-primary",
+        "--zone-focus-color",
         "--zone-font-family",
         "--zone-font-size-16",
         "--zone-size-8"
@@ -467,6 +509,14 @@
       "dir": "dialog",
       "summary": "AIYAZONE 对话框组件",
       "attributes": [
+        {
+          "name": "closeLabel",
+          "attribute": "close-label",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "关闭操作名称，默认跟随页面语言。"
+        },
         {
           "name": "size",
           "attribute": "size",
@@ -557,11 +607,37 @@
         }
       ],
       "properties": [],
-      "events": [],
+      "events": [
+        {
+          "name": "zone-dialog-open",
+          "description": ""
+        },
+        {
+          "name": "zone-dialog-request-close",
+          "description": ""
+        },
+        {
+          "name": "zone-dialog-close",
+          "description": ""
+        },
+        {
+          "name": "closed",
+          "description": ""
+        }
+      ],
+      "methods": [],
       "slots": [
+        {
+          "name": "header",
+          "description": "具名插槽 header"
+        },
         {
           "name": "",
           "description": "默认插槽"
+        },
+        {
+          "name": "footer",
+          "description": "具名插槽 footer"
         }
       ],
       "cssVariables": [
@@ -592,6 +668,7 @@
         "--zone-dialog-transition-duration",
         "--zone-dialog-transition-easing",
         "--zone-dialog-width",
+        "--zone-focus-color",
         "--zone-index-dialog",
         "--zone-rounded-12",
         "--zone-size-128",
@@ -635,6 +712,14 @@
           "description": ""
         },
         {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "未指定文案时使用当前语言；传入空字符串时保留空字符串。"
+        },
+        {
           "name": "disabled",
           "attribute": "disabled",
           "reflects": true,
@@ -675,6 +760,30 @@
           "description": "默认显示所选叶子节点的名称；开启后显示完整路径。"
         },
         {
+          "name": "emptyText",
+          "attribute": "empty-text",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": ""
+        },
+        {
+          "name": "requiredMessage",
+          "attribute": "required-message",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": ""
+        },
+        {
+          "name": "clearLabel",
+          "attribute": "clear-label",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": ""
+        },
+        {
           "name": "errorMessage",
           "attribute": "error-message",
           "reflects": false,
@@ -693,7 +802,67 @@
           "description": "通过 JavaScript 属性赋值，例如 element.options = [...]。"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "name": "change",
+          "description": "用户选择或清空时触发，详情类型为 DropdownChangeDetail；支持冒泡并穿透 Shadow DOM。"
+        },
+        {
+          "name": "zone-dropdown-show",
+          "description": "下拉面板已打开。"
+        },
+        {
+          "name": "zone-dropdown-hide",
+          "description": "下拉面板已关闭。"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "reportValidity",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "setCustomValidity",
+          "description": "",
+          "parameters": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "hide",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "focus",
+          "description": "",
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "FocusOptions"
+              }
+            }
+          ]
+        }
+      ],
       "slots": [],
       "cssVariables": [
         "--zone-color-bg-200",
@@ -717,6 +886,7 @@
         "--zone-dropdown-radius",
         "--zone-dropdown-shadow",
         "--zone-dropdown-width",
+        "--zone-focus-color",
         "--zone-font-family",
         "--zone-font-size-16",
         "--zone-font-size-20",
@@ -891,6 +1061,38 @@
           "description": ""
         }
       ],
+      "methods": [
+        {
+          "name": "show",
+          "description": "展开面板",
+          "parameters": []
+        },
+        {
+          "name": "hide",
+          "description": "收起面板，未确认时丢弃草稿",
+          "parameters": [
+            {
+              "name": "confirmed",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "name": "toggle",
+          "description": "切换展开 / 收起",
+          "parameters": []
+        },
+        {
+          "name": "confirm",
+          "description": "提交草稿并收起面板",
+          "parameters": []
+        },
+        {
+          "name": "clear",
+          "description": "清空当前选中",
+          "parameters": []
+        }
+      ],
       "slots": [],
       "cssVariables": [
         "--zone-color-primary",
@@ -929,6 +1131,7 @@
         "--zone-filter-select-trigger-radius",
         "--zone-filter-select-trigger-text-color",
         "--zone-filter-select-width",
+        "--zone-focus-color",
         "--zone-font-family",
         "--zone-font-size-14",
         "--zone-font-size-16",
@@ -955,12 +1158,12 @@
           "attribute": "placement",
           "reflects": false,
           "type": "Placement",
-          "default": "'bottom'",
+          "default": "\"bottom\"",
           "description": ""
         },
         {
           "name": "fitSize",
-          "attribute": "fit-size",
+          "attribute": "fitsize",
           "reflects": false,
           "type": "Boolean",
           "default": "false",
@@ -986,9 +1189,17 @@
           "name": "target",
           "attribute": "target",
           "reflects": false,
-          "type": "string",
+          "type": "string | HTMLElement",
           "default": null,
           "description": ""
+        },
+        {
+          "name": "manual",
+          "attribute": "manual",
+          "reflects": false,
+          "type": "Boolean",
+          "default": "false",
+          "description": "由 Tooltip 等上层组件管理触发，不自动绑定点击或菜单语义。"
         }
       ],
       "properties": [],
@@ -1000,6 +1211,23 @@
         {
           "name": "zone-popover-hide",
           "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "show",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "hide",
+          "description": "",
+          "parameters": []
+        },
+        {
+          "name": "setPopover",
+          "description": "",
+          "parameters": []
         }
       ],
       "slots": [
@@ -1067,12 +1295,24 @@
           "type": "string",
           "default": "\"var(--zone-color-primary)\"",
           "description": "设置加载指示器的颜色"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "reflects": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "独立加载区的可访问名称；按钮内保持空值避免重复播报。"
         }
       ],
       "properties": [],
       "events": [],
+      "methods": [],
       "slots": [],
-      "cssVariables": [],
+      "cssVariables": [
+        "--zone-spinner-overlay-bg",
+        "--zone-spinner-overlay-index"
+      ],
       "story": "zone-spinner.stories.ts",
       "tests": 0
     },
@@ -1137,6 +1377,14 @@
           "type": "number",
           "default": "0",
           "description": "倒计时时间（以秒为单位）"
+        },
+        {
+          "name": "closeLabel",
+          "attribute": "close-label",
+          "reflects": false,
+          "type": "string",
+          "default": null,
+          "description": "关闭按钮名称；默认跟随页面语言。"
         }
       ],
       "properties": [],
@@ -1144,6 +1392,18 @@
         {
           "name": "zone-close",
           "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "open",
+          "description": "打开轻提示组件",
+          "parameters": []
+        },
+        {
+          "name": "close",
+          "description": "关闭轻提示组件",
+          "parameters": []
         }
       ],
       "slots": [
@@ -1187,7 +1447,7 @@
       "tag": "zone-tooltip",
       "className": "ZoneTooltip",
       "dir": "tooltip",
-      "summary": "AIYAZONE Tooltip 组件",
+      "summary": "非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。",
       "attributes": [
         {
           "name": "placement",
@@ -1195,7 +1455,15 @@
           "reflects": false,
           "type": "Placement",
           "default": "\"top\"",
-          "description": "设置工具提示的位置"
+          "description": ""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "reflects": false,
+          "type": "string | HTMLElement",
+          "default": null,
+          "description": "外部触发器的 ID，或通过 JavaScript 传入的元素。"
         }
       ],
       "properties": [],
@@ -1207,10 +1475,18 @@
         {
           "name": "zone-tooltip-hide",
           "description": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "show",
+          "description": "",
+          "parameters": []
         },
         {
-          "name": "zone-tooltip-hide",
-          "description": ""
+          "name": "hide",
+          "description": "",
+          "parameters": []
         }
       ],
       "slots": [

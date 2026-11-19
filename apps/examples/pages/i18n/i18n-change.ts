@@ -61,7 +61,7 @@ export default class ZoneI18nChange extends LitElement {
     const currentLang = getCurrLanguage();
     return html`
       <div>
-        <select @change=${this._changeLanguage} .value=${currentLang}>
+        <select aria-label="演示语言" @change=${this._changeLanguage} .value=${currentLang}>
           ${this.languages.map(lang => html`
             <option value=${lang.value} ?selected=${currentLang === lang.value}>
               ${lang.label}

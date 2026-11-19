@@ -15,7 +15,7 @@ describe('zone-button a11y', () => {
     const { el } = mount('zone-button', { href: '/docs', target: '_blank', label: '查看' }, '查看')
     const root = await waitUpdate(el)
     const anchor = root.querySelector('a')!
-    expect(anchor.getAttribute('role')).toBe('button')
+    expect(anchor.getAttribute('role')).toBeNull()
     expect(anchor.getAttribute('rel')).toBe('noopener noreferrer')
     const results = await axe.run(el, { rules: { 'color-contrast': { enabled: false } } as any })
     expect(results.violations).toEqual([])

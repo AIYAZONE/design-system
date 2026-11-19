@@ -5,7 +5,7 @@
 - **标签**：`<zone-badge>`
 - **实现**：`ZoneBadge`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/badge`
-- **测试**：7 个用例
+- **组件专属测试**：7 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -31,6 +31,7 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
+| `ariaLabelText` | `aria-label-text` | `string` | — |  |
 | `size` | `size` | `"small" \| "medium" \| "large"` | `"medium"` | 设置徽章的大小（影响高度/内边距/图标大小） |
 | `variant` | `variant` | `"soft" \| "solid" \| "outline"` | `"soft"` | 徽章的风格变体：soft（浅色）、solid（实色）、outline（描边） |
 | `kind` | `kind` | `"default" \| "neutral" \| "success" \| "warning" \| "danger" \| "info" \| "custom"` | `"default"` | 徽章的语义种类（default/neutral/success/warning/danger/info/custom） |
@@ -55,7 +56,7 @@ import '@aiyazone/design-system/index-v3.css';
 | `--zone-badge-color` | `var(--zone-color-primary)` | 设置徽章语义主色（outline 边框默认跟随该值，solid 默认背景也会使用该值） |
 | `--zone-badge-text-color` | `var(--zone-badge-color)` | 设置徽章的文字颜色（所有变体通用） |
 
-另有 35 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 36 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

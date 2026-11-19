@@ -1,4 +1,10 @@
-import { html, LitElement, unsafeCSS, TemplateResult, CSSResultGroup} from "lit";
+import {
+  html,
+  LitElement,
+  unsafeCSS,
+  TemplateResult,
+  CSSResultGroup,
+} from "lit";
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
 import { ifDefined } from "lit/directives/if-defined.js";
@@ -9,7 +15,8 @@ import styles from "./index.less?inline";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 
 export type ButtonVariant = "primary" | "secondary" | "text";
-export type ButtonKind = "default" | "neutral" | "success" | "danger" | "custom";
+export type ButtonKind =
+  "default" | "neutral" | "success" | "danger" | "custom";
 export type ButtonSize = "extra" | "large" | "medium" | "small";
 export type ButtonInteraction = "default" | "shine";
 export type ButtonIconMode = "inline" | "capsule";
@@ -20,6 +27,25 @@ export type ButtonIconMode = "inline" | "capsule";
  */
 @customElement("zone-button")
 export class ZoneButton extends LitElement {
+  // Retain legacy HTML spellings while exposing the documented kebab-case attributes.
+  private static readonly _attributeAliases: Record<string, string> = {
+    iconposition: "icon-position",
+  };
+  static get observedAttributes() {
+    return [
+      ...super.observedAttributes,
+      ...Object.keys(this._attributeAliases),
+    ];
+  }
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    value: string | null,
+  ) {
+    const canonical = ZoneButton._attributeAliases[name];
+    super.attributeChangedCallback?.(canonical ?? name, oldValue, value);
+  }
+
   static styles = [unsafeCSS(styles)] as CSSResultGroup;
 
   protected firstUpdated(): void {
@@ -83,7 +109,7 @@ export class ZoneButton extends LitElement {
   /**
    * 图标位置：prev（文本前）/ next（文本后）
    */
-  @property({ reflect: true })
+  @property({ reflect: true, attribute: "icon-position" })
   iconPosition: "prev" | "next" = "next";
 
   /**
@@ -136,7 +162,9 @@ export class ZoneButton extends LitElement {
    * 点击事件回调（供 Storybook 使用）
    */
   onClick = (detail: any) => {
-    this.dispatchEvent(new CustomEvent("zone-click", { detail, bubbles: true, composed: true }));
+    this.dispatchEvent(
+      new CustomEvent("zone-click", { detail, bubbles: true, composed: true }),
+    );
   };
 
   connectedCallback() {
@@ -175,7 +203,9 @@ export class ZoneButton extends LitElement {
     if (match) {
       const majorVersion = parseInt(match[1], 10);
       const minorVersion = parseInt(match[2], 10);
-      this._iosVersionCache = majorVersion < major || (majorVersion === major && minorVersion < minor);
+      this._iosVersionCache =
+        majorVersion < major ||
+        (majorVersion === major && minorVersion < minor);
     } else {
       this._iosVersionCache = false;
     }
@@ -188,21 +218,23 @@ export class ZoneButton extends LitElement {
       event.stopPropagation();
       return;
     }
-    if (this.type === "submit") {
-      this._handleFormSubmit();
-    }
+    if (!this.href && this.type === "submit") this._handleFormSubmit();
+    if (!this.href && this.type === "reset") this._getForm()?.reset();
     this.onClick("Click event fired!");
   }
 
+  private _getForm(): HTMLFormElement | null {
+    const form =
+      this.form instanceof HTMLFormElement
+        ? this.form
+        : typeof this.form === "string" && this.form.trim()
+          ? this.ownerDocument.getElementById(this.form)
+          : this.closest("form");
+    return form instanceof HTMLFormElement ? form : null;
+  }
+
   private _handleFormSubmit() {
-    let targetForm: HTMLFormElement | null = null;
-    if (this.form instanceof HTMLFormElement) {
-      targetForm = this.form;
-    } else if (typeof this.form === "string" && this.form.trim()) {
-      targetForm = document.getElementById(this.form) as HTMLFormElement;
-    } else {
-      targetForm = this.closest("form") as HTMLFormElement;
-    }
+    const targetForm = this._getForm();
     if (targetForm && targetForm.tagName === "FORM") {
       try {
         submit(targetForm);
@@ -213,14 +245,16 @@ export class ZoneButton extends LitElement {
   }
 
   private _handleKeydown(event: KeyboardEvent) {
-    if (event.code === "Space") {
+    if (event.code === "Space" && !this.href) {
       event.preventDefault();
       this.button?.click();
     }
   }
 
   focus() {
-    (this.button ?? this.shadowRoot?.querySelector<HTMLElement>("button, a"))?.focus();
+    (
+      this.button ?? this.shadowRoot?.querySelector<HTMLElement>("button, a")
+    )?.focus();
   }
 
   get _hasIconSlot() {
@@ -243,7 +277,8 @@ export class ZoneButton extends LitElement {
   }
 
   private _computeHasDefaultSlot(): boolean {
-    const hasNonSlotElements = this.querySelector(":scope > :not([slot])") !== null;
+    const hasNonSlotElements =
+      this.querySelector(":scope > :not([slot])") !== null;
     if (hasNonSlotElements) return true;
     for (const node of this.childNodes) {
       if (node.nodeType === Node.TEXT_NODE) {
@@ -260,7 +295,9 @@ export class ZoneButton extends LitElement {
     const isDisabled = this.loading || this.disabled;
     const label = html`<slot></slot>`;
     const isAnchor = !!this.href;
-    const icon = this.icon ? html`<zone-icon part="icon" name=${this.icon}></zone-icon>` : "";
+    const icon = this.icon
+      ? html`<zone-icon part="icon" name=${this.icon}></zone-icon>`
+      : "";
     const canRenderCapsuleIcon =
       this.iconMode === "capsule" &&
       this.iconPosition === "next" &&
@@ -274,12 +311,12 @@ export class ZoneButton extends LitElement {
       this.kind === "custom"
         ? "var(--zone-btn-local-custom-color, var(--zone-btn-custom-color, var(--zone-color-primary)))"
         : this.kind === "neutral"
-        ? "var(--zone-color-neutral)"
-        : this.kind === "success"
-        ? "var(--zone-color-success)"
-        : this.kind === "danger"
-        ? "var(--zone-color-danger)"
-        : "var(--zone-color-primary)";
+          ? "var(--zone-color-neutral)"
+          : this.kind === "success"
+            ? "var(--zone-color-success)"
+            : this.kind === "danger"
+              ? "var(--zone-color-danger)"
+              : "var(--zone-color-primary)";
     const spinnerColor =
       this.variant === "primary" || this.variant === "secondary"
         ? "var(--zone-color-white)"
@@ -293,16 +330,21 @@ export class ZoneButton extends LitElement {
       ></zone-spinner>
     `;
     const labelSlot = html`<span class="label" part="label">${label}</span>`;
-    const inlineIconSlot = html`<slot name="icon">${this.loading ? loadingIcon : icon}</slot>`;
+    const inlineIconSlot = html`<slot name="icon"
+      >${this.loading ? loadingIcon : icon}</slot
+    >`;
     const capsuleIcon = html`
       <span class="capsule-icon" part="capsule-icon" aria-hidden="true">
-        <zone-icon class="capsule-icon__glyph" part="capsule-icon-glyph" name=${ifDefined(this.icon)}></zone-icon>
+        <zone-icon
+          class="capsule-icon__glyph"
+          part="capsule-icon-glyph"
+          name=${ifDefined(this.icon)}
+        ></zone-icon>
       </span>
     `;
-    const slots =
-      canRenderCapsuleIcon
-        ? html`${labelSlot}${capsuleIcon}`
-        : this.iconPosition === "prev"
+    const slots = canRenderCapsuleIcon
+      ? html`${labelSlot}${capsuleIcon}`
+      : this.iconPosition === "prev"
         ? html`${inlineIconSlot}${labelSlot}`
         : html`${labelSlot}${inlineIconSlot}`;
     const classes = classMap({
@@ -317,7 +359,9 @@ export class ZoneButton extends LitElement {
     return isAnchor
       ? html`
           <a
-            ${ref(element => { this.button = element as HTMLAnchorElement; })}
+            ${ref((element) => {
+              this.button = element as HTMLAnchorElement;
+            })}
             part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
@@ -329,14 +373,15 @@ export class ZoneButton extends LitElement {
             href=${ifDefined(this.href)}
             target=${ifDefined(this.target)}
             rel=${ifDefined(this.target === "_blank" ? "noopener noreferrer" : undefined)}
-            role="button"
           >
             ${slots}
           </a>
         `
       : html`
           <button
-            ${ref(element => { this.button = element as HTMLButtonElement; })}
+            ${ref((element) => {
+              this.button = element as HTMLButtonElement;
+            })}
             part="button"
             class=${classes}
             ?autofocus=${this.autofocus}
@@ -354,6 +399,6 @@ export class ZoneButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'zone-button': Pick<ZoneButton, keyof ZoneButton>;
+    "zone-button": Pick<ZoneButton, keyof ZoneButton>;
   }
 }

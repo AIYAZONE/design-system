@@ -11,8 +11,9 @@
   position: relative;
   font-family: var(--zone-font-family, Inter, "PingFang SC", sans-serif);
   font-size: var(--zone-font-size-16, 16px);
-  color: var(--zone-color-text-primary, #242f20);
-  line-height: normal;
+  color: var(--zone-color-text-primary, var(--zone-color-neutral));
+  line-height: 1.5;
+  min-height: var(--zone-checkbox-hit-area, 44px);
 }
 
 .checkbox--disabled {
@@ -47,13 +48,24 @@
 }
 
 .checkbox--checked .icon svg path {
-  fill: var(--zone-color-primary, #FD5000);
+  fill: var(--zone-color-primary);
 }
 
 .checkbox:not(.checkbox--checked) .icon svg path {
-  fill: var(--zone-color-text-primary, #242f20);
+  fill: var(--zone-color-text-primary, var(--zone-color-neutral));
 }
 
 .label {
   user-select: none;
 }
+
+.input:focus-visible + .icon {
+  outline: 2px solid var(--zone-focus-color, var(--zone-color-primary));
+  outline-offset: 3px;
+  border-radius: var(--zone-checkbox-radius, 3px);
+}
+@media (forced-colors: active) {
+  .icon svg path { fill: CanvasText !important; }
+  .checkbox--checked .icon svg path { fill: Highlight !important; }
+}
+@media (prefers-reduced-motion: reduce) { .icon { transition: none; } }

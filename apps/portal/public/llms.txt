@@ -44,7 +44,7 @@ import '@aiyazone/design-system/index-v3.css';   // 完整主题
 | `<zone-popover>` | AIYAZONE 气泡卡片组件 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定… | [zone-popover.md](./docs/api/zone-popover.md) |
 | `<zone-spinner>` | AIYAZONE 加载指示器组件 | [zone-spinner.md](./docs/api/zone-spinner.md) |
 | `<zone-toast>` | AIYAZONE 轻提示组件 | [zone-toast.md](./docs/api/zone-toast.md) |
-| `<zone-tooltip>` | AIYAZONE Tooltip 组件 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
+| `<zone-tooltip>` | 非交互说明；支持键盘、指针及触摸，触发器的主操作保持有效。 | [zone-tooltip.md](./docs/api/zone-tooltip.md) |
 | `<zone-icon>` | 图标（名称清单见下方「图标库」章节） | /icons/ |
 
 ## 设计令牌摘要

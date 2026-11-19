@@ -1,49 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>国际化使用示例</title>
-  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
-  <script type="module" src="/main.ts"></script>
-  <!-- 使用真实 i18n 包初始化于 main.ts，示例组件从 test 目录引入 -->
-  <script type="module" src="/pages/i18n/index.ts"></script>
-</head>
-<body>
-  <div class="container">
-    <header class="header">
-      <a href="/" class="logo">
-        <img src="/favicon.svg" alt="AIYAZONE Logo" />
-      </a>
-      <div class="content">
-        <h1>语言切换示例</h1>
-        <p class="subtitle">各种语法应用展示</p>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>国际化使用示例</title>
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/main.ts"></script>
+    <!-- 使用真实 i18n 包初始化于 main.ts，示例组件从 test 目录引入 -->
+    <script type="module" src="/pages/i18n/index.ts"></script>
+  </head>
+  <body data-example-page="i18n/index">
+    <div class="container examples-layout">
+      <div class="examples-workspace">
+        <header class="header">
+          <a href="/" class="logo">
+            <img src="/favicon.svg" alt="AIYAZONE Logo" />
+          </a>
+          <div class="content">
+            <h1>语言切换示例</h1>
+            <p class="subtitle">各种语法应用展示</p>
+          </div>
+        </header>
+        <main class="example-preview" id="content">
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">01</span>
+              <h2 id="section-1" class="example-section__title">交互演示</h2>
+            </header>
+            <div class="example-canvas">
+              语言切换：<zone-i18n-change></zone-i18n-change>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">02</span>
+              <h3
+                id="section-2"
+                class="example-section__title"
+                data-original-title="1. 自定义i18n组件：zone-i18n —— html或Lit组件内均可使用，推荐使用"
+              >
+                自定义翻译组件
+              </h3>
+            </header>
+            <p class="example-section__description">
+              1. 自定义i18n组件：zone-i18n —— html或Lit组件内均可使用，推荐使用
+            </p>
+            <div class="example-canvas">
+              <zone-i18n key="common.ok"></zone-i18n>
+              <pre>&lt;zone-i18n key="common.ok"&gt;&lt;/zone-i18n&gt;</pre>
+
+              <zone-i18n
+                key="common.welcome"
+                params='{"name":"World"}'
+              ></zone-i18n>
+              <pre>
+&lt;zone-i18n key="common.welcome" params='{"name":"World"}'&gt;&lt;/zone-i18n&gt;</pre>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">03</span>
+              <h3
+                id="section-3"
+                class="example-section__title"
+                data-original-title="2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用"
+              >
+                声明式翻译
+              </h3>
+            </header>
+            <p class="example-section__description">
+              2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用
+            </p>
+            <div class="example-canvas">
+              <p>common.yes: <span data-i18n-key="common.yes"></span></p>
+              <pre>&lt;span data-i18n-key="common.yes"&gt;&lt;/span&gt;</pre>
+
+              <p
+                data-i18n-key="common.welcome"
+                data-i18n-params='{"name":"World"}'
+              ></p>
+              <pre>
+&lt;p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'&gt;&lt;/p&gt;</pre>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">04</span>
+              <h3
+                id="section-4"
+                class="example-section__title"
+                data-original-title="3. 模板字符串形式 —— html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新"
+              >
+                模板字符串
+              </h3>
+            </header>
+            <p class="example-section__description">
+              3. 模板字符串形式 ——
+              html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新
+            </p>
+            <div class="example-canvas">
+              <p title="${window.i18n.t('common.ok')}">
+                common.ok:${window.i18n.t('common.ok')}
+              </p>
+              <pre>
+&lt;p title="${window.i18n.t('common.ok')}"&gt;common.ok:${window.i18n.t('common.ok')}&lt;/p&gt;</pre>
+
+              <zone-i18n-example
+                title="i18n:common.ok"
+                message="i18n:common.yes"
+              ></zone-i18n-example>
+              <pre>
+&lt;zone-i18n-example title="i18n:common.ok" message="i18n:common.yes"&gt;&lt;/zone-i18n-example&gt;</pre>
+            </div>
+          </section>
+        </main>
       </div>
-    </header>
-    <main class="example-preview">
-      语言切换：<zone-i18n-change></zone-i18n-change>
-
-      <h3>1. 自定义i18n组件：zone-i18n —— html或Lit组件内均可使用，推荐使用</h3>
-      <zone-i18n key="common.ok"></zone-i18n>
-      <pre>&lt;zone-i18n key="common.ok"&gt;&lt;/zone-i18n&gt;</pre>
-
-      <zone-i18n key="common.welcome" params='{"name":"World"}'></zone-i18n>
-      <pre>&lt;zone-i18n key="common.welcome" params='{"name":"World"}'&gt;&lt;/zone-i18n&gt;</pre>
-
-      <h3>2. 声明式翻译 —— 仅在html文件（非自定义Lit组件）内部直接使用</h3>
-      <p>common.yes: <span data-i18n-key="common.yes"></span></p>
-      <pre>&lt;span data-i18n-key="common.yes"&gt;&lt;/span&gt;</pre>
-
-      <p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'></p>
-      <pre>&lt;p data-i18n-key="common.welcome" data-i18n-params='{"name":"World"}'&gt;&lt;/p&gt;</pre>
-
-      <h3>3. 模板字符串形式 —— html内直接使用，只初次加载展示正确翻译。不随语言切换自动更新</h3>
-      <p title="${window.i18n.t('common.ok')}">common.ok:${window.i18n.t('common.ok')}</p>
-      <pre>&lt;p title="${window.i18n.t('common.ok')}"&gt;common.ok:${window.i18n.t('common.ok')}&lt;/p&gt;</pre>
-
-      <zone-i18n-example title="i18n:common.ok" message="i18n:common.yes"></zone-i18n-example>
-      <pre>&lt;zone-i18n-example title="i18n:common.ok" message="i18n:common.yes"&gt;&lt;/zone-i18n-example&gt;</pre>
-    </main>
-  </div>
-</body>
+    </div>
+  </body>
 </html>

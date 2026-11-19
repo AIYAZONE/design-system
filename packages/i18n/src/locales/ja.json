@@ -1,5 +1,6 @@
 {
   "common": {
+    "count": "件数",
     "back": "戻る",
     "cancel": "キャンセル",
     "changeLanguage": "言語を変更",
