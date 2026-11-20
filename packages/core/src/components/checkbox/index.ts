@@ -41,6 +41,7 @@ export class ZoneCheckbox extends LitElement {
 
   formResetCallback() {
     this.checked = this._defaultChecked;
+    this.indeterminate = false;
   }
   formStateRestoreCallback(state: string) {
     this.checked = state === "true";
@@ -63,6 +64,10 @@ export class ZoneCheckbox extends LitElement {
    */
   @property({ type: Boolean, reflect: true })
   checked = false;
+
+  /** 部分选中状态；用户切换后恢复为确定状态，不单独影响表单值。 */
+  @property({ type: Boolean, reflect: true })
+  indeterminate = false;
 
   /**
    * 是否禁用
@@ -98,6 +103,7 @@ export class ZoneCheckbox extends LitElement {
       return;
     }
     const target = event.target as HTMLInputElement;
+    this.indeterminate = false;
     this.checked = target.checked;
     this.dispatchEvent(
       new CustomEvent("change", {
@@ -112,7 +118,7 @@ export class ZoneCheckbox extends LitElement {
     const classes = classMap({
       checkbox: true,
       "checkbox--disabled": this.disabled || this._formDisabled,
-      "checkbox--checked": this.checked,
+      "checkbox--checked": this.checked || this.indeterminate,
     });
 
     const uncheckedIcon = html`
@@ -143,7 +149,23 @@ export class ZoneCheckbox extends LitElement {
       </svg>
     `;
 
-    const icon = this.checked ? checkedIcon : uncheckedIcon;
+    const mixedIcon = html`<svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.3 3.5A1.8 1.8 0 0 0 3.5 5.3v13.4a1.8 1.8 0 0 0 1.8 1.8h13.4a1.8 1.8 0 0 0 1.8-1.8V5.3a1.8 1.8 0 0 0-1.8-1.8H5.3ZM7 11.25v1.5h10v-1.5H7Z"
+      />
+    </svg>`;
+    const icon = this.indeterminate
+      ? mixedIcon
+      : this.checked
+        ? checkedIcon
+        : uncheckedIcon;
 
     return html`
       <label class=${classes}>
@@ -151,12 +173,13 @@ export class ZoneCheckbox extends LitElement {
           class="input"
           type="checkbox"
           .checked=${this.checked}
+          .indeterminate=${this.indeterminate}
           ?disabled=${this.disabled || this._formDisabled}
           name=${ifDefined(this.name)}
           value=${ifDefined(this.value)}
           @change=${this._handleChange}
         />
-        <span class="icon" part="icon"> ${icon} </span>
+        <span class="icon" part="icon" aria-hidden="true"> ${icon} </span>
         <span class="label" part="label">
           <slot>${this.label}</slot>
         </span>

@@ -10,6 +10,9 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * @slot tooltip-trigger - 提示触发器。
  * @slot - 提示内容。
  * @cssproperty [--zone-tooltip-trigger-display=inline-flex] 触发器显示方式。
+ * @cssproperty [--zone-tooltip-max-width=320px] 提示内容最大宽度。
+ * @cssproperty [--zone-tooltip-padding] 提示内容内边距。
+ * @cssproperty [--zone-tooltip-font] 提示内容字体。
  */
 @customElement("zone-tooltip")
 export class ZoneTooltip extends LitElement {

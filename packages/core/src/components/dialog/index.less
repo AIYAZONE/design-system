@@ -27,21 +27,26 @@
   left: 50%;
   z-index: var(--zone-dialog-index, var(--zone-index-dialog, 500));
   padding: 0;
-  max-width: 100%;
+  box-sizing: border-box;
+  max-width: calc(100vw - var(--zone-size-32, 32px));
   height: auto;
   border: 0;
-  background: var(--zone-dialog-bg, var(--zone-color-white, #ffffff));
-  color: var(--zone-dialog-fg, var(--zone-color-text-l1, #1a1a1a));
+  background: var(--zone-dialog-bg, var(--zone-color-white, Canvas));
+  color: var(--zone-dialog-fg, var(--zone-color-text-l1, CanvasText));
   border-radius: var(--zone-dialog-radius, var(--zone-rounded-12, 12px));
   box-shadow: var(--zone-dialog-shadow, none);
   transition: transform var(--zone-dialog-transition-duration, 0.3s) var(--zone-dialog-transition-easing, ease-out) 0.1s;
 
   button.close {
     position: absolute;
-    top: var(--zone-size-16);
-    right: var(--zone-size-16);
+    top: var(--zone-size-8);
+    inset-inline-end: var(--zone-size-8);
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
-    font-size: var(--zone-size-32);
+    font-size: var(--zone-dialog-close-icon-size, 24px);
     color: var(--zone-color-text-l3);
     cursor: pointer;
     border: 0;
@@ -56,6 +61,7 @@
   }
 
   #dialogCaption {
+    overflow-wrap: anywhere;
     margin-bottom: var(--zone-dialog-gap, var(--zone-size-16, 16px));
     text-align: var(--zone-dialog-title-align, left);
   }
@@ -64,8 +70,11 @@
     margin-right: 6px;
     padding-left: 0;
     padding-bottom: 0;
-    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -125,7 +134,7 @@
     min-width: 17.5rem;
 
     button.close {
-      font-size: var(--zone-size-48);
+      font-size: var(--zone-dialog-close-icon-size, 24px);
     }
 
     .content {
@@ -152,6 +161,8 @@
     width: var(--zone-dialog-width, var(--zone-dialog-max-width-extra, 100%));
     min-height: var(--zone-dialog-min-height, var(--zone-dialog-min-height-extra, calc(400 / 32 * 1rem)));
     max-height: var(--zone-dialog-max-height, var(--zone-dialog-max-height-extra, calc(100dvh - var(--zone-size-64))));
+    max-width: 100%;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -173,4 +184,12 @@
   :host([size='extra'][open]) .container {
     transform: translateX(-50%) translateY(0);
   }
+}
+
+.container:has(button.close) #dialogCaption { padding-inline-end: 28px; }
+@media (max-height: 500px) {
+  :host([size="large"]) .container, :host([size="extra"]) .container { min-height: 0; max-height: calc(100dvh - 32px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog-polyfill, .container { transition: none; }
 }

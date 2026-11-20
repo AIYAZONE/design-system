@@ -17,6 +17,7 @@ export function mountPresentation(theme: string) {
   const suffix = location.pathname.split("/pages/")[1];
   const sidebar = document.createElement("aside");
   sidebar.className = "examples-sidebar";
+  sidebar.setAttribute("aria-label", "示例导航");
   const menu = document.createElement("details");
   menu.className = "examples-navigation";
   menu.open = matchMedia("(min-width: 1100px)").matches;
@@ -69,6 +70,7 @@ export function mountPresentation(theme: string) {
   if (headings.length) {
     const toc = document.createElement("aside");
     toc.className = "examples-toc";
+    toc.setAttribute("aria-label", "本页目录");
     const details = document.createElement("details");
     details.open = matchMedia("(min-width: 1360px)").matches;
     const summary = document.createElement("summary");

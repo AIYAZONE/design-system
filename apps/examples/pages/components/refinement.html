@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="/shared/site-color-mode.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" />
+    <title>组件状态与边界 · AIYAZONE</title>
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="./refinement.ts"></script>
+  </head>
+  <body>
+    <div class="container examples-layout">
+      <div class="examples-workspace">
+        <header class="header">
+          <div class="content">
+            <h1>组件状态与边界</h1>
+            <p class="subtitle">
+              在三套主题中试用长文本、半选、键盘选择和浮层滚动。原有组件页面保留全部场景。
+            </p>
+          </div>
+        </header>
+        <main class="example-preview" id="content">
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">01</span>
+              <h2 class="example-section__title" id="checks">
+                复选框与操作状态
+              </h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-checkbox
+                  id="mixed-checkbox"
+                  indeterminate
+                  label="部分选中，点击后全选"
+                ></zone-checkbox
+                ><zone-checkbox
+                  disabled
+                  indeterminate
+                  label="禁用半选"
+                ></zone-checkbox>
+              </div>
+              <zone-checkbox id="long-checkbox"
+                >我希望接收订单进度和配送通知，并在包裹交付时发送确认信息。LongUnbrokenIdentifierWithoutSpacesForWrapping。</zone-checkbox
+              >
+              <p class="example-label">
+                使用 Tab 和空格切换；按钮原有外观与全部场景保持一致。
+              </p>
+              <div class="demo-row">
+                <zone-button>保存资料</zone-button
+                ><zone-button loading>正在保存</zone-button
+                ><zone-button disabled>暂不可用</zone-button>
+              </div>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">02</span>
+              <h2 class="example-section__title" id="selection">
+                选择与键盘反馈
+              </h2>
+            </header>
+            <div class="example-canvas selection-grid">
+              <div>
+                <p class="example-label">
+                  下拉选择：方向键移动，Enter 确认，Escape 关闭。
+                </p>
+                <zone-dropdown
+                  id="refined-dropdown"
+                  label="配送方式"
+                  clearable
+                  placeholder="请选择配送方式"
+                ></zone-dropdown>
+              </div>
+              <div>
+                <p class="example-label">
+                  多选筛选：焦点行有明确标记，长列表可独立滚动。
+                </p>
+                <zone-filter-select
+                  id="refined-filter"
+                  label="筛选服务"
+                ></zone-filter-select>
+              </div>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">03</span>
+              <h2 class="example-section__title" id="badges">徽章与长内容</h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-badge size="small">小号</zone-badge
+                ><zone-badge icon="check-fill" kind="success">已确认</zone-badge
+                ><zone-badge variant="outline">待处理</zone-badge
+                ><zone-badge href="#notifications">查看通知</zone-badge>
+              </div>
+              <zone-badge
+                id="long-badge"
+                icon="info-fill"
+                style="max-width: 200px"
+                >等待审核：资料已提交，需要补充一份配送说明。LongUnbrokenIdentifierWithoutSpaces</zone-badge
+              >
+              <p class="example-label">
+                长内容自动换行，图标不被挤压；徽章链接保留键盘焦点。
+              </p>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">04</span>
+              <h2 class="example-section__title" id="notifications">
+                通知与操作
+              </h2>
+            </header>
+            <div class="example-canvas notification-example">
+              <zone-toast
+                id="long-toast"
+                icon
+                closable
+                caption="配送偏好已更新"
+                description="你可以继续编辑账户资料，也可以查看这次更新的详细记录。LongUnbrokenIdentifierWithoutSpacesToVerifyCompactNotificationWrapping"
+                ><zone-button slot="action">查看记录</zone-button
+                ><zone-button slot="action-secondary"
+                  >稍后处理</zone-button
+                ></zone-toast
+              >
+              <button
+                class="example-tool"
+                type="button"
+                data-replay-toast="long-toast"
+              >
+                重新显示通知
+              </button>
+              <zone-toast
+                variant="warning"
+                icon
+                caption="仍有一项待确认"
+                description="状态通过图标、标题和文字共同表达。"
+              ></zone-toast>
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">05</span>
+              <h2 class="example-section__title" id="floating">
+                弹层边界与关闭
+              </h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-button id="popover-trigger" variant="secondary"
+                  >查看长内容浮层</zone-button
+                ><zone-popover
+                  id="long-popover"
+                  target="popover-trigger"
+                  style="
+                    --zone-popover-max-width: 360px;
+                    --zone-popover-arrow-display: block;
+                  "
+                  ><div id="popover-copy"></div
+                ></zone-popover>
+                <zone-tooltip id="long-tooltip"
+                  ><zone-button slot="tooltip-trigger" variant="secondary"
+                    >悬停或聚焦查看说明</zone-button
+                  >填写配送信息后，你可以在确认前继续修改。提示内容会在窄屏中自动换行，并保持在视口内。LongUnbrokenIdentifierWithoutSpacesForTooltipWrapping</zone-tooltip
+                >
+                <zone-button id="dialog-trigger">打开长内容对话框</zone-button>
+              </div>
+              <p class="example-label">
+                浮层支持 Escape
+                关闭；对话框关闭后焦点返回触发按钮。缩短浏览器高度可检查内部滚动。
+              </p>
+              <zone-dialog
+                id="refined-dialog"
+                caption="确认配送信息与通知偏好，较长标题也应保持完整可读"
+                
+                ><div id="dialog-copy"></div>
+                <div slot="footer" class="example-dialog-actions">
+                  <zone-button id="dialog-confirm">确认并关闭</zone-button>
+                </div></zone-dialog
+              >
+            </div>
+          </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">06</span>
+              <h2 class="example-section__title" id="loading">
+                加载与静止状态
+              </h2>
+            </header>
+            <div class="example-canvas">
+              <div class="demo-row">
+                <zone-spinner
+                  id="refined-spinner"
+                  size="24px"
+                  label="正在加载"
+                ></zone-spinner
+                ><span>正在加载配送信息</span
+                ><zone-spinner
+                  id="paused-spinner"
+                  size="24px"
+                  disabled
+                  label="加载已暂停"
+                ></zone-spinner
+                ><span>已暂停</span>
+              </div>
+              <p class="example-label">
+                加载图标居中对齐；减少动效设置下保持静止，仍能通过文字识别状态。
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <div data-site-footer></div>
+  </body>
+</html>

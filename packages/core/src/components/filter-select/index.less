@@ -3,6 +3,7 @@
   position: relative;
   box-sizing: border-box;
   width: var(--zone-filter-select-width, 200px);
+  max-width: 100%;
   font-family: var(--zone-font-family, Inter, "PingFang SC", "Noto Sans JP", sans-serif);
   font-size: var(--zone-filter-select-font-size, var(--zone-font-size-14, 14px));
   vertical-align: middle;
@@ -20,24 +21,24 @@
 .filter-select {
   /* 触发器 */
   --trigger-height: var(--zone-filter-select-trigger-height, 36px);
-  --trigger-bg: var(--zone-filter-select-trigger-bg, var(--zone-color-white, #ffffff));
-  --trigger-border-color: var(--zone-filter-select-trigger-border-color, #c6c7c8);
-  --trigger-border-hover-color: var(--zone-filter-select-trigger-border-hover-color, #a9aaac);
+  --trigger-bg: var(--zone-filter-select-trigger-bg, var(--zone-color-white, Canvas));
+  --trigger-border-color: var(--zone-filter-select-trigger-border-color, var(--zone-color-neutral-300, var(--zone-color-hr)));
+  --trigger-border-hover-color: var(--zone-filter-select-trigger-border-hover-color, var(--zone-color-text-l3));
   --trigger-radius: var(--zone-filter-select-trigger-radius, 0px);
-  --trigger-text-color: var(--zone-filter-select-trigger-text-color, #242f20);
-  --trigger-arrow-color: var(--zone-filter-select-trigger-arrow-color, #242f20);
+  --trigger-text-color: var(--zone-filter-select-trigger-text-color, var(--zone-color-text-l1));
+  --trigger-arrow-color: var(--zone-filter-select-trigger-arrow-color, var(--zone-color-text-l1));
   --trigger-arrow-opacity: var(--zone-filter-select-trigger-arrow-opacity, 0.65);
   --font-size: var(--zone-filter-select-font-size, var(--zone-font-size-16, 16px));
   /* 面板 */
-  --panel-bg: var(--zone-filter-select-panel-bg, var(--zone-color-white, #ffffff));
+  --panel-bg: var(--zone-filter-select-panel-bg, var(--zone-color-white, Canvas));
   --panel-shadow: var(--zone-filter-select-panel-shadow, 0px 4px 16px rgba(0, 0, 0, 0.08));
   --panel-radius: var(--zone-filter-select-panel-radius, 0px);
   --panel-padding: var(--zone-filter-select-panel-padding, var(--zone-size-16, 16px));
   --panel-gap: var(--zone-filter-select-panel-gap, var(--zone-size-10, 10px));
   /* 分割线 */
-  --divider-color: var(--zone-filter-select-divider-color, #e8e8e5);
+  --divider-color: var(--zone-filter-select-divider-color, var(--zone-color-hr));
   /* 选项 */
-  --option-text-color: var(--zone-filter-select-option-text-color, rgba(0, 0, 0, 0.65));
+  --option-text-color: var(--zone-filter-select-option-text-color, var(--zone-color-text-l2));
   --option-min-height: var(--zone-filter-select-option-min-height, 28px);
   --option-line-height: var(--zone-filter-select-option-line-height, 20px);
   --option-disabled-opacity: var(--zone-filter-select-option-disabled-opacity, 0.4);
@@ -45,18 +46,18 @@
   /* 注意：checkbox 为固定视觉尺寸（设计稿 16px），不随移动端 rem 基准（750 稿）缩放 */
   --checkbox-size: var(--zone-filter-select-checkbox-size, 16px);
   --checkbox-gap: var(--zone-filter-select-checkbox-gap, var(--zone-size-8, 8px));
-  --checkbox-border-color: var(--zone-filter-select-checkbox-border-color, #c6c7c8);
-  --checkbox-checked-bg: var(--zone-filter-select-checkbox-checked-bg, #242f20);
-  --checkbox-checked-color: var(--zone-filter-select-checkbox-checked-color, #ffffff);
+  --checkbox-border-color: var(--zone-filter-select-checkbox-border-color, var(--zone-color-neutral-300, var(--zone-color-hr)));
+  --checkbox-checked-bg: var(--zone-filter-select-checkbox-checked-bg, var(--zone-color-primary));
+  --checkbox-checked-color: var(--zone-filter-select-checkbox-checked-color, var(--zone-color-white, Canvas));
   /* 计数与操作 */
-  --counter-color: var(--zone-filter-select-counter-color, #242f20);
-  --counter-total-color: var(--zone-filter-select-counter-total-color, #b2b2b2);
-  --action-color: var(--zone-filter-select-action-color, #242f20);
-  --empty-color: var(--zone-filter-select-empty-color, #b2b2b2);
+  --counter-color: var(--zone-filter-select-counter-color, var(--zone-color-text-l1));
+  --counter-total-color: var(--zone-filter-select-counter-total-color, var(--zone-color-text-l3));
+  --action-color: var(--zone-filter-select-action-color, var(--zone-color-text-l1));
+  --empty-color: var(--zone-filter-select-empty-color, var(--zone-color-text-l3));
   /* 确认按钮 */
   --confirm-height: var(--zone-filter-select-confirm-height, 36px);
-  --confirm-bg: var(--zone-filter-select-confirm-bg, #242f20);
-  --confirm-color: var(--zone-filter-select-confirm-color, #ffffff);
+  --confirm-bg: var(--zone-filter-select-confirm-bg, var(--zone-color-primary));
+  --confirm-color: var(--zone-filter-select-confirm-color, var(--zone-color-white, Canvas));
   --confirm-radius: var(--zone-filter-select-confirm-radius, 0px);
   /* 选项列表最大高度 */
   --options-max-height: var(--zone-filter-select-options-max-height, 228px);
@@ -152,6 +153,8 @@
   gap: var(--panel-gap);
   width: var(--zone-filter-select-width, 200px);
   max-width: calc(100vw - var(--zone-size-24, 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: var(--panel-padding);
   border-radius: var(--panel-radius);
   background: var(--panel-bg);
@@ -171,7 +174,7 @@
   justify-content: space-between;
   flex: none;
   gap: var(--zone-size-8, 8px);
-  min-height: 20px;
+  min-height: 28px;
   line-height: 20px;
 }
 
@@ -224,7 +227,7 @@
 .clear {
   flex: none;
   margin: 0;
-  padding: 0;
+  padding: 4px 0;
   border: none;
   background: none;
   color: var(--action-color);
@@ -249,6 +252,7 @@
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
+  min-height: 0;
   gap: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -391,4 +395,16 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) { .panel, .trigger, .trigger__arrow { animation: none; transition: none; } }
+
+.option:not(.option--disabled):hover, .option--active {
+  background: var(--zone-filter-select-option-hover-bg, var(--zone-color-bg-200, var(--zone-color-grey)));
+}
+.option--active { box-shadow: inset 2px 0 var(--zone-focus-color, var(--zone-color-primary)); }
+.option--selected .option__label { font-weight: 500; }
+@media (forced-colors: active) {
+  .option--active { outline: 1px solid Highlight; outline-offset: -1px; }
+}
+
+@media (pointer: coarse) {
+  .trigger, .confirm, .option { min-height: 44px; }
+}

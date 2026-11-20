@@ -25,6 +25,7 @@ export type DialogSize = "extra" | "large";
  * @cssproperty [--zone-dialog-width=640px] - 设置对话框内容的宽度
  * @cssproperty [--zone-dialog-title-align=left] - 设置对话框标题的对齐方式
  * @cssproperty [--zone-dialog-index=500] - 设置对话框的z-index值
+ * @cssproperty [--zone-dialog-close-icon-size=24px] - 关闭图标大小，点击区域至少为 44px
  */
 @customElement("zone-dialog")
 export class ZoneDialog extends LitElement {
@@ -322,8 +323,13 @@ export class ZoneDialog extends LitElement {
               (this.querySelector(this.initialFocus) as HTMLElement);
           }
           if (!target) {
+            const content = root.querySelector<HTMLElement>(".content");
+            if (content) content.scrollTop = 0;
             const focusables = this.focusableElements();
-            target = focusables[0] || this.container;
+            // Read long content from its beginning instead of jumping to a footer action.
+            target = content && content.scrollHeight > content.clientHeight
+              ? this.container
+              : focusables[0] || this.container;
           }
           target?.focus();
         }, 0);

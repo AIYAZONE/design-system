@@ -6,7 +6,7 @@
 |------|------|------|------|------|------|
 | [ZoneBadge](./zone-badge.md) | `<zone-badge>` | AIYAZONE 徽章组件 | 9 | 0 | 2 |
 | [ZoneButton](./zone-button.md) | `<zone-button>` | ZONE Button 组件 支持变体、种类、尺寸、加载、禁用、链接等配置 | 15 | 1 | 2 |
-| [ZoneCheckbox](./zone-checkbox.md) | `<zone-checkbox>` | ZONE Checkbox 组件 | 5 | 1 | 1 |
+| [ZoneCheckbox](./zone-checkbox.md) | `<zone-checkbox>` | ZONE Checkbox 组件 | 6 | 1 | 1 |
 | [ZoneDialog](./zone-dialog.md) | `<zone-dialog>` | AIYAZONE 对话框组件 | 12 | 4 | 3 |
 | [ZoneDropdown](./zone-dropdown.md) | `<zone-dropdown>` | 单选下拉框；数据包含子节点时自动启用树形列表。 | 13 | 3 | 0 |
 | [ZoneFilterSelect](./zone-filter-select.md) | `<zone-filter-select>` | ZONE FilterSelect 组件 下拉筛选多选：触发器 + 浮层面板（已选计… | 17 | 5 | 0 |

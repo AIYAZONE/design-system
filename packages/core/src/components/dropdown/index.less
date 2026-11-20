@@ -253,3 +253,18 @@
     padding-inline-start: 36px;
   }
 }
+
+@media (hover: hover) {
+  .trigger:not(:disabled):hover { border-color: var(--zone-dropdown-focus-color, var(--zone-focus-color, var(--zone-color-primary))); }
+}
+.control:focus-within .clear { color: var(--zone-color-text-l1); }
+.label, .error { overflow-wrap: anywhere; }
+.option[data-selected="true"] .option-text { font-weight: 500; }
+@media (pointer: coarse) {
+  .option { min-height: 44px; }
+  .clear { min-width: 32px; min-height: 36px; }
+}
+@media (forced-colors: active) {
+  .option[data-active="true"] { outline: 1px solid Highlight; outline-offset: -1px; }
+  .option[data-selected="true"] { color: Highlight; }
+}

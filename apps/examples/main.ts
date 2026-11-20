@@ -35,6 +35,12 @@ function mountExamples() {
   if (main && !main.id) main.id = "content";
   const header = document.querySelector(".header, .index-header");
   if (header) {
+    const title = header.querySelector("h1");
+    if (title) {
+      title.id ||= "example-page-title";
+      header.setAttribute("role", "group");
+      header.setAttribute("aria-labelledby", title.id);
+    }
     const back = document.createElement("a");
     back.href = location.pathname.startsWith("/examples/") ? "/examples/" : "/";
     back.className = "examples-back";

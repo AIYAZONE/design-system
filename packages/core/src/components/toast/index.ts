@@ -19,6 +19,10 @@ export type ToastVariant = "info" | "warning" | "success" | "danger";
 /**
  * @tag zone-toast
  * @summary AIYAZONE 轻提示组件
+ * @cssproperty [--zone-toast-max-width=560px] 通知最大宽度，不超过父容器
+ * @cssproperty [--zone-toast-padding] 通知内边距
+ * @cssproperty [--zone-toast-caption-font] 通知标题字体
+ * @cssproperty [--zone-toast-icon-size=20px] 通知图标大小
  */
 
 @customElement("zone-toast")

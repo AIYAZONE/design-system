@@ -5,7 +5,7 @@
 - **标签**：`<zone-filter-select>`
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
-- **组件专属测试**：52 个用例；跨组件契约测试另计
+- **组件专属测试**：53 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -85,22 +85,22 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 
 ```css
 :root {
+  --zone-color-bg-200: /* 你的值 */;
+  --zone-color-grey: /* 你的值 */;
+  --zone-color-hr: /* 你的值 */;
+  --zone-color-neutral-300: /* 你的值 */;
   --zone-color-primary: /* 你的值 */;
+  --zone-color-text-l1: /* 你的值 */;
+  --zone-color-text-l2: /* 你的值 */;
+  --zone-color-text-l3: /* 你的值 */;
   --zone-color-white: /* 你的值 */;
   --zone-filter-select-action-color: /* 你的值 */;
   --zone-filter-select-checkbox-border-color: /* 你的值 */;
   --zone-filter-select-checkbox-checked-bg: /* 你的值 */;
-  --zone-filter-select-checkbox-checked-color: /* 你的值 */;
-  --zone-filter-select-checkbox-gap: /* 你的值 */;
-  --zone-filter-select-checkbox-size: /* 你的值 */;
-  --zone-filter-select-confirm-bg: /* 你的值 */;
-  --zone-filter-select-confirm-color: /* 你的值 */;
-  --zone-filter-select-confirm-height: /* 你的值 */;
-  --zone-filter-select-confirm-radius: /* 你的值 */;
 }
 ```
 
-共消费 48 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 56 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

@@ -1,4 +1,5 @@
 :root {
+  --portal-header-index: 40;
   color-scheme: dark;
   --portal-bg: #080d17;
   --portal-surface: #101827;

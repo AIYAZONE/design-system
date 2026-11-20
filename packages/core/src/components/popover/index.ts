@@ -12,6 +12,7 @@ import {
   flip,
   offset,
   shift,
+  size,
   arrow as flArrow,
   Placement,
 } from "@floating-ui/dom";
@@ -24,6 +25,8 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定位方向
  *
  * @cssproperty [--zone-index-popover=100] - 浮层层级
+ * @cssproperty [--zone-popover-color] - 浮层正文颜色，默认使用一级文字色
+ * @cssproperty [--zone-popover-viewport-gutter=16px] - 视口两侧预留的总间距
  */
 @customElement("zone-popover")
 export class ZonePopover extends LitElement {
@@ -240,7 +243,18 @@ export class ZonePopover extends LitElement {
 
       computePosition(this._targetEl, this._popoverEl, {
         placement: this.placement,
-        middleware: this.getMiddleware(),
+        middleware: [
+          ...this.getMiddleware(),
+          size({
+            padding: this._viewportPadding,
+            apply({ availableHeight, elements }) {
+              elements.floating.style.setProperty(
+                "--_available-height",
+                `${Math.max(0, availableHeight)}px`,
+              );
+            },
+          }),
+        ],
         strategy: "fixed",
       }).then(({ x, y, placement, middlewareData }) => {
         if (
@@ -278,7 +292,7 @@ export class ZonePopover extends LitElement {
         role=${this.manual ? "presentation" : "dialog"}
         aria-label=${this.manual ? "" : this.getAttribute("aria-label") || "Popover"}
       >
-        <slot></slot>
+        <div class="popover__content"><slot></slot></div>
         <div class="arrow" part="arrow"></div>
       </div>
     `;

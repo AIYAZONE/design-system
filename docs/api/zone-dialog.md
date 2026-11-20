@@ -74,8 +74,9 @@ document.querySelector('zone-dialog').addEventListener('zone-dialog-open', (e) =
 | `--zone-dialog-width` | `640px` | 设置对话框内容的宽度 |
 | `--zone-dialog-title-align` | `left` | 设置对话框标题的对齐方式 |
 | `--zone-dialog-index` | `500` | 设置对话框的z-index值 |
+| `--zone-dialog-close-icon-size` | `24px` | 关闭图标大小，点击区域至少为 44px |
 
-另有 33 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 34 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

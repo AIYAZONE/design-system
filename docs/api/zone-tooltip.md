@@ -66,8 +66,11 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-tooltip-trigger-display` | `inline-flex` | 触发器显示方式。 |
+| `--zone-tooltip-max-width` | `320px` | 提示内容最大宽度。 |
+| `--zone-tooltip-padding` | — | 提示内容内边距。 |
+| `--zone-tooltip-font` | — | 提示内容字体。 |
 
-另有 2 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 4 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
