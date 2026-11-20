@@ -28,7 +28,7 @@ export class ZoneSpinner extends LitElement {
    * 设置加载指示器的大小
    */
   @property({ type: String, reflect: true })
-  size: string = "var(--zone-spinner-size, var(--zone-size-14))";
+  size: string = "var(--zone-spinner-size, 14px)";
 
   /**
    * 设置加载指示器的禁用状态

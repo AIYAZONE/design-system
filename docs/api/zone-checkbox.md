@@ -64,21 +64,11 @@ document.querySelector('zone-checkbox').addEventListener('change', (e) => {
 
 ## 可覆盖的 CSS 变量
 
-```css
-:root {
-  --zone-checkbox-hit-area: /* 你的值 */;
-  --zone-checkbox-radius: /* 你的值 */;
-  --zone-color-neutral: /* 你的值 */;
-  --zone-color-primary: /* 你的值 */;
-  --zone-color-text-primary: /* 你的值 */;
-  --zone-focus-color: /* 你的值 */;
-  --zone-font-family: /* 你的值 */;
-  --zone-font-size-16: /* 你的值 */;
-  --zone-size-8: /* 你的值 */;
-}
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--zone-checkbox-font-size` | `16px` | 标签字号，与视口缩放分离 |
 
-共消费 9 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 8 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

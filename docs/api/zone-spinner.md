@@ -31,7 +31,7 @@ import '@aiyazone/design-system/index-v3.css';
 
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
-| `size` | `size` | `string` | `"var(--zone-spinner-size, var(--zone-size-14))"` | 设置加载指示器的大小 |
+| `size` | `size` | `string` | `"var(--zone-spinner-size, 14px)"` | 设置加载指示器的大小 |
 | `disabled` | `disabled` | `boolean \| undefined` | `false` | 设置加载指示器的禁用状态 |
 | `overlay` | `overlay` | `boolean \| undefined` | `false` | 设置加载指示器的覆盖层状态 |
 | `color` | `color` | `string` | `"var(--zone-color-primary)"` | 设置加载指示器的颜色 |

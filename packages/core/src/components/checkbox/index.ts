@@ -14,6 +14,7 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
 
 /**
  * ZONE Checkbox 组件
+ * @cssproperty [--zone-checkbox-font-size=16px] 标签字号，与视口缩放分离
  */
 @customElement("zone-checkbox")
 export class ZoneCheckbox extends LitElement {
