@@ -327,6 +327,7 @@ export class ZoneFilterSelect extends LitElement {
   }
 
   private _positionVersion = 0;
+  private _triggerOrigin?: { top: number; left: number };
 
   private _attachListeners(): void {
     document.addEventListener("click", this._handleClickOutside);
@@ -387,7 +388,14 @@ export class ZoneFilterSelect extends LitElement {
       const activeEl = this.renderRoot?.querySelector<HTMLElement>(
         `[data-index="${this._activeIndex}"]`,
       );
-      activeEl?.scrollIntoView?.({ block: "nearest" });
+      const list = this.renderRoot?.querySelector<HTMLElement>(".options");
+      if (activeEl && list) {
+        const item = activeEl.getBoundingClientRect();
+        const bounds = list.getBoundingClientRect();
+        if (item.top < bounds.top) list.scrollTop += item.top - bounds.top;
+        else if (item.bottom > bounds.bottom)
+          list.scrollTop += item.bottom - bounds.bottom;
+      }
     }
   }
 
@@ -395,6 +403,10 @@ export class ZoneFilterSelect extends LitElement {
   show(): void {
     if (this.disabled || this.open) return;
 
+    const bounds = this._triggerEl?.getBoundingClientRect();
+    this._triggerOrigin = bounds
+      ? { top: bounds.top, left: bounds.left }
+      : undefined;
     this.open = true;
     this._draft = [...(this.value ?? [])];
     this._activeIndex = -1;
@@ -571,6 +583,15 @@ export class ZoneFilterSelect extends LitElement {
       if (event.composedPath().includes(panel)) return;
     }
 
+    // A queued focus scroll may arrive after opening. Close only if the trigger moved.
+    const bounds = this._triggerEl?.getBoundingClientRect();
+    if (
+      bounds &&
+      this._triggerOrigin &&
+      Math.abs(bounds.top - this._triggerOrigin.top) < 0.5 &&
+      Math.abs(bounds.left - this._triggerOrigin.left) < 0.5
+    )
+      return;
     this.hide();
   };
 
@@ -667,9 +688,11 @@ export class ZoneFilterSelect extends LitElement {
           flip({ padding: this._viewportPadding }),
           shift({ padding: this._viewportPadding }),
           size({
-            apply({ rects, elements }) {
+            padding: this._viewportPadding,
+            apply({ rects, elements, availableHeight }) {
               Object.assign(elements.floating.style, {
                 width: `${rects.reference.width}px`,
+                maxHeight: `${Math.max(0, availableHeight)}px`,
               });
             },
           }),

@@ -5,7 +5,7 @@ import {
   CSSResultGroup,
   unsafeCSS,
 } from "lit";
-import { customElement, property } from "../../decorators";
+import { customElement, property, state } from "../../decorators";
 
 import { I18nController } from "@aiyazone/i18n";
 import { componentText } from "../component-text";
@@ -29,6 +29,7 @@ export type BadgeIconPosition = "prev" | "next" | "start" | "end";
 @customElement("zone-badge")
 export class ZoneBadge extends LitElement {
   private _i18n?: I18nController;
+  @state() private _hasIconSlot = false;
   @property({ attribute: "aria-label-text" }) ariaLabelText?: string;
   connectedCallback() {
     super.connectedCallback?.();
@@ -143,7 +144,15 @@ export class ZoneBadge extends LitElement {
     const iconTemplate = this.icon
       ? html`<zone-icon name=${this.icon}></zone-icon>`
       : "";
-    const iconSlot = html`<slot name="icon">${iconTemplate}</slot>`;
+    const iconSlot = html`<slot
+      name="icon"
+      ?hidden=${!this.icon && !this._hasIconSlot}
+      @slotchange=${(event: Event) => {
+        this._hasIconSlot =
+          (event.target as HTMLSlotElement).assignedElements().length > 0;
+      }}
+      >${iconTemplate}</slot
+    >`;
     const resolvedIconPosition =
       this.iconPosition === "prev" || this.iconPosition === "start"
         ? "prev"
@@ -156,11 +165,12 @@ export class ZoneBadge extends LitElement {
           : `${this.count}`
         : undefined;
 
-    const textSlot =
+    const textContent =
       typeof this.count === "number"
         ? html`<span class="count" aria-live="polite">${countDisplay}</span>`
         : html`<slot></slot>`;
 
+    const textSlot = html`<span class="label">${textContent}</span>`;
     const closeBtn = "";
     const content =
       resolvedIconPosition === "prev"

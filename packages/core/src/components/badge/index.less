@@ -16,17 +16,24 @@
   justify-content: center;
   align-items: center;
 
+  --_badge-height: var(--zone-badge-height, var(--zone-size-20));
+  --_badge-py: var(--zone-badge-padding-vertical, var(--zone-size-4));
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  text-decoration: none;
+  text-align: start;
   border: 1px solid transparent;
   border-radius: var(--zone-badge-border-radius, var(--zone-size-4));
   margin: 0;
-  padding: var(--zone-badge-padding-vertical, var(--zone-size-4)) var(--zone-badge-padding-horizontal, var(--zone-size-6));
+  padding: min(var(--_badge-py), max(0px, calc((var(--_badge-height) - 1.2em - 2px) / 2))) var(--zone-badge-padding-horizontal, var(--zone-size-6));
   background-color: var(--zone-badge-bg-color, var(--zone-color-primary-contrast));
   color: var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary)));
   font: var(--zone-badge-font, var(--zone-font-c1));
   font-kerning: none;
-  height: var(--zone-badge-height, var(--zone-size-20));
+  line-height: 1.2;
+  min-height: var(--_badge-height);
 }
 
 // 变体：outline（描边）
@@ -62,15 +69,19 @@
 // 小号徽章样式
 :host([size="small"]) .badge {
   font: var(--zone-badge-small-font, var(--zone-font-c1));
-  height: var(--zone-badge-small-height, var(--zone-size-16));
-  padding: var(--zone-badge-small-padding-vertical, var(--zone-size-4)) var(--zone-badge-small-padding-horizontal, var(--zone-size-6));
+  --_badge-height: var(--zone-badge-small-height, var(--zone-size-16));
+  --_badge-py: var(--zone-badge-small-padding-vertical, var(--zone-size-4));
+  line-height: 1.2;
+  padding-inline: var(--zone-badge-small-padding-horizontal, var(--zone-size-6));
 }
 
 // 大号徽章样式
 :host([size="large"]) .badge {
   font: var(--zone-badge-large-font, var(--zone-font-h3));
-  padding: var(--zone-badge-large-padding-vertical, var(--zone-size-8)) var(--zone-badge-large-padding-horizontal, var(--zone-size-8));
-  height: var(--zone-badge-large-height, var(--zone-size-24));
+  padding-inline: var(--zone-badge-large-padding-horizontal, var(--zone-size-8));
+  --_badge-height: var(--zone-badge-large-height, var(--zone-size-24));
+  --_badge-py: var(--zone-badge-large-padding-vertical, var(--zone-size-8));
+  line-height: 1.2;
   --zone-badge-icon-size: var(--zone-badge-large-icon-size, var(--zone-size-16));
 }
 
@@ -95,3 +106,8 @@
     color: currentColor;
   }
 }
+
+.label { min-width: 0; overflow-wrap: anywhere; }
+slot[name="icon"] { display: inline-flex; flex: none; align-items: center; }
+slot[hidden] { display: none; }
+:host([href]) .badge:hover { text-decoration: underline; text-underline-offset: 2px; }

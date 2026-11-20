@@ -429,6 +429,14 @@
           "description": "是否选中"
         },
         {
+          "name": "indeterminate",
+          "attribute": "indeterminate",
+          "reflects": true,
+          "type": "Boolean",
+          "default": "false",
+          "description": "部分选中状态；用户切换后恢复为确定状态，不单独影响表单值。"
+        },
+        {
           "name": "disabled",
           "attribute": "disabled",
           "reflects": true,
@@ -501,7 +509,7 @@
         "--zone-size-8"
       ],
       "story": "zone-checkbox.stories.ts",
-      "tests": 5
+      "tests": 7
     },
     {
       "tag": "zone-dialog",
@@ -646,6 +654,7 @@
         "--zone-color-text-l3",
         "--zone-color-white",
         "--zone-dialog-bg",
+        "--zone-dialog-close-icon-size",
         "--zone-dialog-fg",
         "--zone-dialog-gap",
         "--zone-dialog-index",
@@ -676,7 +685,8 @@
         "--zone-size-160",
         "--zone-size-32",
         "--zone-size-48",
-        "--zone-size-64"
+        "--zone-size-64",
+        "--zone-size-8"
       ],
       "story": "zone-dialog.stories.ts",
       "tests": 9
@@ -1095,7 +1105,14 @@
       ],
       "slots": [],
       "cssVariables": [
+        "--zone-color-bg-200",
+        "--zone-color-grey",
+        "--zone-color-hr",
+        "--zone-color-neutral-300",
         "--zone-color-primary",
+        "--zone-color-text-l1",
+        "--zone-color-text-l2",
+        "--zone-color-text-l3",
         "--zone-color-white",
         "--zone-filter-select-action-color",
         "--zone-filter-select-checkbox-border-color",
@@ -1113,6 +1130,7 @@
         "--zone-filter-select-empty-color",
         "--zone-filter-select-font-size",
         "--zone-filter-select-option-disabled-opacity",
+        "--zone-filter-select-option-hover-bg",
         "--zone-filter-select-option-line-height",
         "--zone-filter-select-option-min-height",
         "--zone-filter-select-option-text-color",
@@ -1145,7 +1163,7 @@
         "--zone-size-8"
       ],
       "story": "zone-filter-select.stories.ts",
-      "tests": 52
+      "tests": 53
     },
     {
       "tag": "zone-popover",
@@ -1237,8 +1255,8 @@
         }
       ],
       "cssVariables": [
-        "--zone-color-neutral-400",
         "--zone-color-primary-highlight",
+        "--zone-color-text-l1",
         "--zone-color-white",
         "--zone-font-b1-regular",
         "--zone-index-popover",
@@ -1247,10 +1265,11 @@
         "--zone-popover-border-color",
         "--zone-popover-border-radius",
         "--zone-popover-border-size",
+        "--zone-popover-color",
         "--zone-popover-max-width",
         "--zone-popover-padding",
         "--zone-popover-position",
-        "--zone-size-14",
+        "--zone-popover-viewport-gutter",
         "--zone-size-16",
         "--zone-size-6",
         "--zone-size-8"
@@ -1431,14 +1450,20 @@
         "--zone-color-info-contrast",
         "--zone-color-success",
         "--zone-color-success-contrast",
+        "--zone-color-text-l1",
         "--zone-color-text-l2",
         "--zone-color-warning",
         "--zone-color-warning-contrast",
+        "--zone-font-b1",
         "--zone-font-b2",
-        "--zone-font-h3",
+        "--zone-size-12",
         "--zone-size-16",
-        "--zone-size-20",
-        "--zone-size-8"
+        "--zone-size-4",
+        "--zone-size-8",
+        "--zone-toast-caption-font",
+        "--zone-toast-icon-size",
+        "--zone-toast-max-width",
+        "--zone-toast-padding"
       ],
       "story": "zone-toast.stories.ts",
       "tests": 0
@@ -1502,6 +1527,11 @@
       "cssVariables": [
         "--zone-color-info",
         "--zone-color-white",
+        "--zone-font-b2",
+        "--zone-size-12",
+        "--zone-tooltip-font",
+        "--zone-tooltip-max-width",
+        "--zone-tooltip-padding",
         "--zone-tooltip-trigger-display"
       ],
       "story": "zone-tooltip.stories.ts",

@@ -70,24 +70,14 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 
 ## 可覆盖的 CSS 变量
 
-```css
-:root {
-  --zone-color-danger: /* 你的值 */;
-  --zone-color-danger-contrast: /* 你的值 */;
-  --zone-color-info: /* 你的值 */;
-  --zone-color-info-contrast: /* 你的值 */;
-  --zone-color-success: /* 你的值 */;
-  --zone-color-success-contrast: /* 你的值 */;
-  --zone-color-text-l2: /* 你的值 */;
-  --zone-color-warning: /* 你的值 */;
-  --zone-color-warning-contrast: /* 你的值 */;
-  --zone-font-b2: /* 你的值 */;
-  --zone-font-h3: /* 你的值 */;
-  --zone-size-16: /* 你的值 */;
-}
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--zone-toast-max-width` | `560px` | 通知最大宽度，不超过父容器 |
+| `--zone-toast-padding` | — | 通知内边距 |
+| `--zone-toast-caption-font` | — | 通知标题字体 |
+| `--zone-toast-icon-size` | `20px` | 通知图标大小 |
 
-共消费 14 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 16 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

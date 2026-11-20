@@ -274,7 +274,7 @@ document.querySelector('zone-button').addEventListener('zone-click', (e) => {
 - **标签**：`<zone-checkbox>`
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
-- **组件专属测试**：5 个用例；跨组件契约测试另计
+- **组件专属测试**：7 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -301,6 +301,7 @@ import '@aiyazone/design-system/index-v3.css';
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
 | `checked` | `checked` | `Boolean` | `false` | 是否选中 |
+| `indeterminate` | `indeterminate` | `Boolean` | `false` | 部分选中状态；用户切换后恢复为确定状态，不单独影响表单值。 |
 | `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
 | `value` | `value` | `string` | `"on"` | 表单值 |
 | `name` | `name` | `string` | `""` | 表单名称 |
@@ -432,8 +433,9 @@ document.querySelector('zone-dialog').addEventListener('zone-dialog-open', (e) =
 | `--zone-dialog-width` | `640px` | 设置对话框内容的宽度 |
 | `--zone-dialog-title-align` | `left` | 设置对话框标题的对齐方式 |
 | `--zone-dialog-index` | `500` | 设置对话框的z-index值 |
+| `--zone-dialog-close-icon-size` | `24px` | 关闭图标大小，点击区域至少为 44px |
 
-另有 33 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 34 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -563,7 +565,7 @@ document.querySelector('zone-dropdown').addEventListener('change', (e) => {
 - **标签**：`<zone-filter-select>`
 - **实现**：`ZoneFilterSelect`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/filter-select`
-- **组件专属测试**：52 个用例；跨组件契约测试另计
+- **组件专属测试**：53 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -643,22 +645,22 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 
 ```css
 :root {
+  --zone-color-bg-200: /* 你的值 */;
+  --zone-color-grey: /* 你的值 */;
+  --zone-color-hr: /* 你的值 */;
+  --zone-color-neutral-300: /* 你的值 */;
   --zone-color-primary: /* 你的值 */;
+  --zone-color-text-l1: /* 你的值 */;
+  --zone-color-text-l2: /* 你的值 */;
+  --zone-color-text-l3: /* 你的值 */;
   --zone-color-white: /* 你的值 */;
   --zone-filter-select-action-color: /* 你的值 */;
   --zone-filter-select-checkbox-border-color: /* 你的值 */;
   --zone-filter-select-checkbox-checked-bg: /* 你的值 */;
-  --zone-filter-select-checkbox-checked-color: /* 你的值 */;
-  --zone-filter-select-checkbox-gap: /* 你的值 */;
-  --zone-filter-select-checkbox-size: /* 你的值 */;
-  --zone-filter-select-confirm-bg: /* 你的值 */;
-  --zone-filter-select-confirm-color: /* 你的值 */;
-  --zone-filter-select-confirm-height: /* 你的值 */;
-  --zone-filter-select-confirm-radius: /* 你的值 */;
 }
 ```
 
-共消费 48 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 56 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -740,8 +742,10 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-index-popover` | `100` | 浮层层级 |
+| `--zone-popover-color` | — | 浮层正文颜色，默认使用一级文字色 |
+| `--zone-popover-viewport-gutter` | `16px` | 视口两侧预留的总间距 |
 
-另有 16 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 15 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -881,24 +885,14 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 
 ## 可覆盖的 CSS 变量
 
-```css
-:root {
-  --zone-color-danger: /* 你的值 */;
-  --zone-color-danger-contrast: /* 你的值 */;
-  --zone-color-info: /* 你的值 */;
-  --zone-color-info-contrast: /* 你的值 */;
-  --zone-color-success: /* 你的值 */;
-  --zone-color-success-contrast: /* 你的值 */;
-  --zone-color-text-l2: /* 你的值 */;
-  --zone-color-warning: /* 你的值 */;
-  --zone-color-warning-contrast: /* 你的值 */;
-  --zone-font-b2: /* 你的值 */;
-  --zone-font-h3: /* 你的值 */;
-  --zone-size-16: /* 你的值 */;
-}
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--zone-toast-max-width` | `560px` | 通知最大宽度，不超过父容器 |
+| `--zone-toast-padding` | — | 通知内边距 |
+| `--zone-toast-caption-font` | — | 通知标题字体 |
+| `--zone-toast-icon-size` | `20px` | 通知图标大小 |
 
-共消费 14 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 16 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -976,8 +970,11 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-tooltip-trigger-display` | `inline-flex` | 触发器显示方式。 |
+| `--zone-tooltip-max-width` | `320px` | 提示内容最大宽度。 |
+| `--zone-tooltip-padding` | — | 提示内容内边距。 |
+| `--zone-tooltip-font` | — | 提示内容字体。 |
 
-另有 2 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 4 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

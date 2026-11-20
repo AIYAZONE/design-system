@@ -5,7 +5,7 @@
 - **标签**：`<zone-checkbox>`
 - **实现**：`ZoneCheckbox`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/checkbox`
-- **组件专属测试**：5 个用例；跨组件契约测试另计
+- **组件专属测试**：7 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -32,6 +32,7 @@ import '@aiyazone/design-system/index-v3.css';
 | 属性 | Attribute | 类型 | 默认值 | 说明 |
 |------|-----------|------|--------|------|
 | `checked` | `checked` | `Boolean` | `false` | 是否选中 |
+| `indeterminate` | `indeterminate` | `Boolean` | `false` | 部分选中状态；用户切换后恢复为确定状态，不单独影响表单值。 |
 | `disabled` | `disabled` | `Boolean` | `false` | 是否禁用 |
 | `value` | `value` | `string` | `"on"` | 表单值 |
 | `name` | `name` | `string` | `""` | 表单名称 |

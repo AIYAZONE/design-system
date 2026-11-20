@@ -203,10 +203,19 @@ describe("zone-filter-select interaction", () => {
     expect(() => document.body.click()).not.toThrow();
   });
 
+  it("ignores a queued focus scroll that does not move the trigger", async () => {
+    const { el } = await setup({ options: OPTIONS });
+    await open(el);
+    document.dispatchEvent(new Event("scroll"));
+    await waitUpdate(el);
+    expect(el.open).toBe(true);
+  });
+
   it("closes when the page scrolls", async () => {
     const { el } = await setup({ options: OPTIONS });
     await open(el);
 
+    vi.spyOn(q(el.shadowRoot, ".trigger"), "getBoundingClientRect").mockReturnValue({ top: -10, left: 0 } as DOMRect);
     document.dispatchEvent(new Event("scroll"));
     await waitUpdate(el);
 
@@ -221,6 +230,7 @@ describe("zone-filter-select interaction", () => {
     const outer = document.createElement("div");
     document.body.appendChild(outer);
     outer.appendChild(el);
+    vi.spyOn(q(root, ".trigger"), "getBoundingClientRect").mockReturnValue({ top: -10, left: 0 } as DOMRect);
     outer.dispatchEvent(new Event("scroll"));
     await waitUpdate(el);
 

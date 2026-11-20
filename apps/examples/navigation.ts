@@ -3,6 +3,7 @@ export const exampleGroups = [
     title: "基础组件",
     items: [
       ["components/index.html", "组件总览", "Overview"],
+      ["components/refinement.html", "状态与边界", "States & limits"],
       ["atoms/button.html", "按钮", "Button"],
       ["atoms/checkbox.html", "复选框", "Checkbox"],
       ["atoms/badge.html", "徽章", "Badge"],

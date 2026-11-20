@@ -31,7 +31,7 @@ export function renderNavigation(path = location.pathname) {
   return `<a class="skip-link" href="#content">跳到正文</a><header class="portal-topbar"><div class="portal-topbar__inner">
     <a class="portal-brand" href="/index.html" aria-label="AIYAZONE Design System"><span class="portal-brand__logo" aria-hidden="true"></span></a>
     <nav class="portal-nav" id="site-navigation" aria-label="主导航">${navigation.map(([href, text]) => `<a href="${href}" class="portal-nav__link${active === href ? " is-active" : ""}"${active === href ? ' aria-current="page"' : ""}>${text}</a>`).join("")}</nav>
-    <button class="site-theme-toggle" type="button" data-site-theme-toggle aria-label="切换到深色主题" aria-pressed="true">
+    <button class="site-theme-toggle" type="button" data-site-theme-toggle aria-label="浅色主题，切换到深色主题" aria-pressed="true">
       <svg class="site-theme-icon site-theme-icon--sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       <svg class="site-theme-icon site-theme-icon--moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 14.2A9 9 0 0 1 9.8 3.2a9 9 0 1 0 11 11Z"/></svg>
       <span data-site-theme-label>浅色</span>
@@ -54,7 +54,7 @@ export function bindNavigation(root) {
     button?.setAttribute("aria-pressed", String(light));
     button?.setAttribute(
       "aria-label",
-      light ? "切换到深色主题" : "切换到浅色主题",
+      light ? "浅色主题，切换到深色主题" : "深色主题，切换到浅色主题",
     );
     button?.setAttribute("title", light ? "切换到深色主题" : "切换到浅色主题");
     const label = button?.querySelector("[data-site-theme-label]");

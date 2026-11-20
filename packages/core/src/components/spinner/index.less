@@ -3,6 +3,8 @@
   display: inline-flex;
   width: max-content;
   align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
 .spinner {
@@ -32,3 +34,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+:host > span { display: inline-flex; align-items: center; justify-content: center; }
+:host([disabled]) .spinner { animation-play-state: paused; }

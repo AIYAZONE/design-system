@@ -1,11 +1,15 @@
 :host {
   display: inline-block;
   vertical-align: middle;
+  max-width: 100%;
 }
 
 .checkbox {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-block: max(0px, calc((var(--zone-checkbox-hit-area, 44px) - 24px) / 2));
   cursor: pointer;
   gap: var(--zone-size-8, 8px);
   position: relative;
@@ -34,6 +38,7 @@
 .icon {
   width: 24px;
   height: 24px;
+  margin-top: max(0px, calc((1.5em - 24px) / 2));
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -56,6 +61,8 @@
 }
 
 .label {
+  min-width: 0;
+  overflow-wrap: anywhere;
   user-select: none;
 }
 
