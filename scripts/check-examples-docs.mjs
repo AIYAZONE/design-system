@@ -8,7 +8,6 @@ const output = path.join(root, "output/responsive-docs-20261120");
 const fixtures = path.join(output, "copied-examples");
 fs.mkdirSync(fixtures, { recursive: true });
 const routes = [
-  "index.html",
   ...fs
     .readdirSync(path.join(root, "apps/examples/pages"), { recursive: true })
     .filter((p) => p.endsWith(".html"))
@@ -36,6 +35,26 @@ try {
       );
       const page = await context.newPage();
       page.on("pageerror", (e) => errors.push(e.message));
+      // The directory page stays focused on navigation, without detail-page docs.
+      for (const theme of ["v1", "v2", "v3"])
+        for (const width of [1440, 820, 375]) {
+          await page.setViewportSize({ width, height: 1000 });
+          await page.goto(`${origin}/examples/index.html?theme=${theme}`);
+          await page.waitForSelector(".examples-feature");
+          assert.equal(await page.locator("[data-example-doc]").count(), 0);
+          assert.equal(await page.locator(".examples-groups a").count(), 18);
+          const gap = await page.evaluate(() => {
+            const groups = document.querySelector(".examples-groups").getBoundingClientRect();
+            const feature = document.querySelector(".examples-feature").getBoundingClientRect();
+            return feature.top - groups.bottom;
+          });
+          assert.ok(gap >= (width <= 760 ? 32 : 40), `Homepage gap: ${gap}`);
+          assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+          if (theme === "v1") {
+            await page.locator(".examples-feature").scrollIntoViewIfNeeded();
+            await page.screenshot({ path: path.join(output, `examples-home-${width}.png`) });
+          }
+        }
       for (const theme of ["v1", "v2", "v3"])
         for (const route of routes) {
           await page.setViewportSize({ width: 820, height: 1000 });
@@ -98,7 +117,6 @@ try {
               "pages/atoms/button.html",
               "pages/atoms/filter-select.html",
               "pages/font/ja.html",
-              "index.html",
             ].includes(route)
           ) {
             await page.evaluate(() => window.scrollTo(0, 0));

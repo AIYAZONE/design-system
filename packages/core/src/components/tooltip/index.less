@@ -8,7 +8,8 @@
 }
 
 zone-popover {
-  --zone-popover-background-color: var(--zone-color-info);
+  --zone-popover-background-color: var(--zone-tooltip-background-color, var(--zone-color-neutral));
+  --zone-popover-color: var(--zone-tooltip-color, var(--zone-color-white));
   --zone-popover-arrow-display: block;
   --zone-popover-border-size: 0px;
   --zone-popover-max-width: var(--zone-tooltip-max-width, 320px);
@@ -16,7 +17,7 @@ zone-popover {
 }
 
 .content {
-  color: var(--zone-color-white);
+  color: var(--zone-tooltip-color, var(--zone-color-white));
   overflow-wrap: anywhere;
   font: var(--zone-tooltip-font, var(--zone-font-b2));
   line-height: 1.5;
