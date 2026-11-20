@@ -22,6 +22,7 @@ export type DialogSize = "extra" | "large";
  * @tag zone-dialog
  * @summary AIYAZONE 对话框组件
  *
+ * @cssproperty [--zone-dialog-title-font] 标题字体，默认24px、手机20px。
  * @cssproperty [--zone-dialog-width=640px] - 设置对话框内容的宽度
  * @cssproperty [--zone-dialog-title-align=left] - 设置对话框标题的对齐方式
  * @cssproperty [--zone-dialog-index=500] - 设置对话框的z-index值
@@ -530,7 +531,7 @@ export class ZoneDialog extends LitElement {
    */
   private renderContainer() {
     const title = this.caption
-      ? html`<h2 part="dialog-title" class="zone-h4">${this.caption}</h2>`
+      ? html`<h2 part="dialog-title" class="dialog-title">${this.caption}</h2>`
       : "";
     const showClose = this.showClose && !this.noClose;
     const closeButton = showClose

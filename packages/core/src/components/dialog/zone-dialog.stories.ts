@@ -50,13 +50,14 @@ const meta = {
 | --zone-dialog-bg | 背景色 | white |
 | --zone-dialog-fg | 前景色 | text-l1 |
 | --zone-dialog-overlay-bg | 遮罩背景 | overlay-70 |
-| --zone-dialog-radius | 圆角 | rounded-12 (Desktop) / 24 (Mobile) |
+| --zone-dialog-radius | 圆角 | 12px；V2/V3 为直角 |
+| --zone-dialog-title-font | 标题字体 | 24px / 手机20px |
 | --zone-dialog-shadow | 阴影 | none |
 | --zone-dialog-width | 宽度 (Desktop) | 640px (Large) / 1200px (Extra) |
-| --zone-dialog-min-height | 最小高度 | 240px (Desktop) / 320px (Mobile) |
-| --zone-dialog-max-height | 最大高度 | 100vh - 128px |
-| --zone-dialog-padding-x-large | 水平内边距 (Large) | 64px (Desktop) / 32px (Mobile) |
-| --zone-dialog-padding-y-large | 垂直内边距 (Large) | 48px (Desktop) / 32px (Mobile) |
+| --zone-dialog-min-height | 最小高度 | 160px (Large) / 240px (Extra) |
+| --zone-dialog-max-height | 最大高度 | 100dvh - 48px；手机 Large 留32px |
+| --zone-dialog-padding-x-large | 水平内边距 (Large) | 32px (Desktop) / 24px (Tablet) / 16px (Phone) |
+| --zone-dialog-padding-y-large | 垂直内边距 (Large) | 32px (Desktop) / 24px (Tablet & Phone) |
 | --zone-dialog-transition-duration | 动画时长 | 0.3s |
 `,
       },

@@ -35,3 +35,8 @@
 :host([variant="danger"]) .toast { --main-color: var(--zone-color-danger); --main-bg-color: var(--zone-color-danger-contrast); }
 
 @media (pointer: coarse) { .close { --zone-btn-height: 44px; } }
+
+.actions ::slotted(zone-button) { --zone-btn-medium-height: var(--zone-toast-action-height, 36px); }
+@media (pointer: coarse) {
+  .actions ::slotted(zone-button) { --zone-btn-medium-height: var(--zone-toast-action-height, 44px); }
+}

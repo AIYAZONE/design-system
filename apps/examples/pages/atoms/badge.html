@@ -102,13 +102,13 @@
                 <zone-badge
                   variant="solid"
                   kind="success"
-                  style="--zone-badge-text-color: #1a1a1a"
+                  style="--zone-badge-text-color: rgb(255 255 230)"
                   >Text Color</zone-badge
                 >
                 <zone-badge
                   variant="solid"
                   kind="custom"
-                  style="--zone-badge-color: #5794ff"
+                  style="--zone-badge-color: #5794ff; --zone-badge-text-color: var(--zone-color-text-l1)"
                   >Custom</zone-badge
                 >
               </p>
@@ -138,7 +138,7 @@
                 <zone-badge
                   variant="outline"
                   kind="custom"
-                  style="--zone-badge-color: #8c4eff"
+                  style="--zone-badge-color: rgb(111 53 196)"
                   >Custom</zone-badge
                 >
               </p>
@@ -338,7 +338,7 @@
                 <zone-badge
                   style="
                     --zone-badge-bg-color: #eef4ff;
-                    --zone-badge-text-color: #5794ff;
+                    --zone-badge-text-color: var(--zone-color-info);
                     --zone-badge-color: #5794ff;
                   "
                   >自定义背景/文字</zone-badge
@@ -346,14 +346,14 @@
                 <zone-badge
                   variant="solid"
                   style="
-                    --zone-badge-color: #8c4eff;
+                    --zone-badge-color: rgb(111 53 196);
                     --zone-badge-text-color: #ffffff;
                   "
                   >solid 自定义</zone-badge
                 >
                 <zone-badge
                   variant="outline"
-                  style="--zone-badge-color: #f27a1a"
+                  style="--zone-badge-color: var(--zone-color-primary)"
                   >outline 自定义</zone-badge
                 >
                 <zone-badge style="--zone-badge-border-radius: 999px"
@@ -376,6 +376,7 @@
                   style="--zone-badge-icon-size: 20px"
                   >自定义 icon 大小</zone-badge
                 >
+                <zone-badge size="large" style="--zone-badge-large-font: 500 24px/1.2 var(--zone-font-family); --zone-badge-large-height: 42px">展示级标签</zone-badge>
               </p>
             </div>
           </section>

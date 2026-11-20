@@ -65,6 +65,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     ],
     html: '<zone-badge kind="success" icon="check-fill">已确认</zone-badge>\n<zone-badge kind="warning" variant="outline">待审核</zone-badge>\n<zone-badge count="120" max-count="99" aria-label-text="120 条未读消息"></zone-badge>',
     notes: [
+      "常规尺寸固定为12/14/16px文字与20/24/28px高度；展示级标签可通过原有字体、高度变量定制。自定义色应成对设置前景和背景并检查对比度。",
       "颜色不能成为唯一的状态提示，文字应能独立说明含义。",
       "使用短标签；长文本虽能换行，详细解释更适合正文或提示。",
       "small 隐藏图标是既有设计；不要依赖小号徽章的图标传递唯一信息。",
@@ -110,6 +111,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     html: '<zone-filter-select id="service-filter" label="筛选服务"></zone-filter-select>\n<p id="filter-result" role="status"></p>',
     js: "const filter = document.querySelector('#service-filter');\nfilter.options = [\n  { value: 'gift', label: '礼品包装' },\n  { value: 'card', label: '祝福卡片' },\n  { value: 'later', label: '暂未开放', disabled: true },\n];\nfilter.addEventListener('zone-filter-select-change', (event) => {\n  document.querySelector('#filter-result').textContent = event.detail.value.join(', ');\n});",
     notes: [
+      "触发器16px、面板14px，选项桌面至少36px、触屏44px。面板默认不小于240px及触发器，可通过 --zone-filter-select-panel-width 独立设置宽度。",
       "关闭面板会丢弃未确认草稿；不要在普通选项点击时假定业务值已提交。",
       "options 与 value 通过 property 传入；不要把 JavaScript 数组直接放进 HTML attribute。",
       "方向键、Home、End 移动焦点，空格选择；列表内部滚动不会关闭面板。",
@@ -132,6 +134,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     html: '<zone-button id="open-confirm">检查配送信息</zone-button>\n<zone-dialog id="confirm-dialog" caption="确认配送信息">\n  <p>请核对收件信息，确认后再提交。</p>\n  <zone-button id="close-confirm" slot="footer">确认并关闭</zone-button>\n</zone-dialog>',
     js: "const dialog = document.querySelector('#confirm-dialog');\ndocument.querySelector('#open-confirm').addEventListener('zone-click', () => { dialog.open = true; });\ndocument.querySelector('#close-confirm').addEventListener('zone-click', () => { dialog.open = false; });",
     notes: [
+      "标题默认24px、手机20px；常规弹窗宽度不超过640px。桌面/平板/手机内边距分档，1024px两侧保持相近的内容比例。",
       "caption 按纯文本处理；带格式的标题请放入 header 插槽。",
       "长内容从顶部开始，正文在弹窗内部滚动；重要信息不要只放在底部。",
       "默认支持 Escape 和焦点恢复；自定义 initial-focus 前检查键盘路径与长内容起始位置。",
@@ -150,6 +153,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     ],
     html: '<zone-button id="details-trigger" variant="secondary">配送说明</zone-button>\n<zone-popover target="details-trigger" placement="bottom-start">\n  <p>工作日安排配送，签收前会发送通知。</p>\n</zone-popover>',
     notes: [
+      "默认使用中性边框、轻阴影与16px正文；通过 --zone-popover-font、--zone-popover-shadow 定制，箭头配色跟随面板。",
       "target 必须指向实际存在的触发器；更换或移除触发器时检查关闭和焦点行为。",
       "方向只是首选，空间不足时浮层会翻转或位移，不应依赖绝对像素位置。",
       "长内容会在内部滚动；完整表单或必须确认的信息更适合对话框。",
@@ -168,6 +172,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     ],
     html: '<zone-tooltip placement="top">\n  <zone-button slot="tooltip-trigger" variant="secondary">了解配送</zone-button>\n  工作日安排配送，节假日可能顺延。\n</zone-tooltip>',
     notes: [
+      "说明文字默认14px、内边距10px；较长解释使用正文或 Popover，避免让提示承担主要阅读内容。",
       "默认中性色底配白字，箭头跟随底色。通过 --zone-tooltip-background-color 和 --zone-tooltip-color 成对定制，避免只改一端造成对比不足。",
       "提示中不放按钮、链接或表单；需要交互内容时使用 Popover。",
       "重要说明应直接可见，不让用户必须悬停才能获知。",
@@ -194,6 +199,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     html: '<zone-button id="show-notice">显示保存结果</zone-button>\n<zone-toast id="saved-notice" variant="success" icon closable closed caption="资料已保存" description="你可以继续编辑其他信息。"></zone-toast>',
     js: "const notice = document.querySelector('#saved-notice');\ndocument.querySelector('#show-notice').addEventListener('zone-click', () => { notice.open(); });",
     notes: [
+      "action 默认中号主操作，action-secondary 默认中号次操作；显式 variant/kind/size 保留。中号操作桌面36px、触屏44px，重要操作不要依赖自动消失的通知。",
       "closed 才表示初始隐藏；不写 closed 时通知会显示。",
       "倒计时单位是秒；重要错误或带操作的信息应留足阅读和操作时间。",
       "通知宽度不超过父容器；长文本与操作会换行，避免手动固定高度。",
@@ -266,6 +272,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     ],
     html: '<zone-checkbox indeterminate label="全部服务（部分已选）"></zone-checkbox>\n<zone-badge style="max-width: 180px">等待审核：配送说明需要补充</zone-badge>\n<zone-toast icon caption="资料已更新" description="较长说明会在容器内换行。"></zone-toast>',
     notes: [
+      "底部提供完整的保存偏好、确认、结果通知与撤销流程；单个大号按钮场景仍保留，组合表单使用中号操作。",
       "本页故意包含长标识符和长列表，它们是边界检查内容，不是推荐业务文案。",
       "检查 1023px 和 1024px 两侧，以及短窗口、键盘和真实触屏。",
       "不要通过隐藏原场景或裁切页面来掩盖适配问题。",

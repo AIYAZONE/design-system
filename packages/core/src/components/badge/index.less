@@ -40,7 +40,7 @@
 :host([variant="outline"]) .badge {
   background-color: transparent;
   border-color: var(--zone-badge-outline-border, var(--zone-badge-color, var(--zone-color-primary)));
-  color: var(--zone-badge-outline-fg, var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary))));
+  color: var(--zone-badge-text-color, var(--zone-badge-outline-fg, var(--zone-badge-color, var(--zone-color-primary))));
 }
 
 // 变体：solid（实色）
@@ -52,7 +52,7 @@
 // 变体：soft（浅色）使用专用 Token，提升对比度
 :host([variant="soft"]) .badge {
   background-color: var(--zone-badge-soft-bg, var(--zone-badge-bg-color, var(--zone-color-primary-contrast)));
-  color: var(--zone-badge-soft-fg, var(--zone-badge-text-color, var(--zone-badge-color, var(--zone-color-primary))));
+  color: var(--zone-badge-text-color, var(--zone-badge-soft-fg, var(--zone-badge-color, var(--zone-color-primary))));
 }
 
 // 可点击样式
@@ -111,3 +111,8 @@
 slot[name="icon"] { display: inline-flex; flex: none; align-items: center; }
 slot[hidden] { display: none; }
 :host([href]) .badge:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+:host([href]) .badge { min-height: max(24px, var(--_badge-height)); }
+@media (pointer: coarse) {
+  :host([href]) .badge { min-height: max(44px, var(--_badge-height)); }
+}

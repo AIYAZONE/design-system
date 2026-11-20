@@ -70,10 +70,12 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-index-popover` | `100` | 浮层层级 |
+| `--zone-popover-font` | — | 正文字体，默认16px与1.5倍行高 |
+| `--zone-popover-shadow` | — | 浮层阴影 |
 | `--zone-popover-color` | — | 浮层正文颜色，默认使用一级文字色 |
 | `--zone-popover-viewport-gutter` | `16px` | 视口两侧预留的总间距 |
 
-另有 15 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 14 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

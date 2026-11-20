@@ -4,6 +4,7 @@ import {
   unsafeCSS,
   TemplateResult,
   CSSResultGroup,
+  type PropertyDeclaration,
 } from "lit";
 import { customElement, property, state } from "../../decorators";
 import { classMap } from "lit/directives/class-map.js";
@@ -12,6 +13,7 @@ import { ref } from "lit/directives/ref.js";
 import { submit } from "@aiyazone/utils";
 
 import styles from "./index.less?inline";
+import { recordButtonConfiguration } from "./context-defaults";
 import { adoptInternalStyles } from "../../styles/internal-shared";
 
 export type ButtonVariant = "primary" | "secondary" | "text";
@@ -152,6 +154,18 @@ export class ZoneButton extends LitElement {
    * 按钮元素引用
    */
   private button?: HTMLButtonElement | HTMLAnchorElement;
+
+  // Set after field defaults: subsequent assignments are consumer configuration.
+  private _configurationReady = true;
+
+  requestUpdate(
+    name?: PropertyKey,
+    oldValue?: unknown,
+    options?: PropertyDeclaration,
+  ) {
+    if (this._configurationReady) recordButtonConfiguration(this, name);
+    super.requestUpdate(name, oldValue, options);
+  }
 
   /**
    * 插槽观察器

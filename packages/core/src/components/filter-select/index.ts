@@ -66,6 +66,10 @@ const looseBooleanConverter = {
  *
  * 默认采用「草稿 + 确认」语义：面板内的勾选只更新草稿，点击确认后才提交到 `value`。
  * 当 `show-confirm` 为 false 时切换为「即时生效」模式。
+ *
+ * @cssproperty [--zone-filter-select-panel-width] 面板宽度，默认不小于240px与触发器宽度，受视口限制。
+ * @cssproperty [--zone-filter-select-option-font-size=14px] 面板文字字号。
+ * @cssproperty [--zone-filter-select-option-min-height=36px] 选项最小高度，触屏至少44px。
  */
 @customElement("zone-filter-select")
 export class ZoneFilterSelect extends LitElement {
@@ -691,7 +695,7 @@ export class ZoneFilterSelect extends LitElement {
             padding: this._viewportPadding,
             apply({ rects, elements, availableHeight }) {
               Object.assign(elements.floating.style, {
-                width: `${rects.reference.width}px`,
+                width: `var(--zone-filter-select-panel-width, max(240px, ${rects.reference.width}px))`,
                 maxHeight: `${Math.max(0, availableHeight)}px`,
               });
             },

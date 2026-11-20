@@ -5,7 +5,7 @@
 - **标签**：`<zone-toast>`
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
-- **组件专属测试**：0 个用例；跨组件契约测试另计
+- **组件专属测试**：4 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -75,6 +75,7 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 | `--zone-toast-max-width` | `560px` | 通知最大宽度，不超过父容器 |
 | `--zone-toast-padding` | — | 通知内边距 |
 | `--zone-toast-caption-font` | — | 通知标题字体 |
+| `--zone-toast-action-height` | — | 中号操作按钮高度，默认36px、触屏44px。 |
 | `--zone-toast-icon-size` | `20px` | 通知图标大小 |
 
 另有 16 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。

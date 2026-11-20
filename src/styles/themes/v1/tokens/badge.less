@@ -2,33 +2,28 @@
   --zone-badge-bg-color: var(--zone-color-primary-contrast);
   --zone-badge-color: var(--zone-color-primary);
   --zone-badge-border-radius: var(--zone-rounded-4);
-  --zone-badge-margin-icon: var(--zone-size-4);
-  --zone-badge-icon-size: var(--zone-size-14);
-  --zone-badge-height: var(--zone-size-28);
-  --zone-badge-padding-vertical: var(--zone-size-4);
-  --zone-badge-padding-horizontal: var(--zone-size-8);
-  --zone-badge-font: var(--zone-font-b2);
+  --zone-badge-margin-icon: 4px;
+  --zone-badge-icon-size: 14px;
+  --zone-badge-height: 24px;
+  --zone-badge-padding-vertical: 2px;
+  --zone-badge-padding-horizontal: 6px;
+  --zone-badge-font: 500 14px/1.2 var(--zone-font-family);
 
   /* small 覆盖 */
-  --zone-badge-small-font: var(--zone-font-c1);
-  --zone-badge-small-height: var(--zone-size-16);
-  --zone-badge-small-padding-vertical: var(--zone-size-4);
-  --zone-badge-small-padding-horizontal: var(--zone-size-6);
+  --zone-badge-small-font: 400 12px/1.2 var(--zone-font-family);
+  --zone-badge-small-height: 20px;
+  --zone-badge-small-padding-vertical: 2px;
+  --zone-badge-small-padding-horizontal: 4px;
 
   /* large 覆盖 */
-  --zone-badge-large-font: var(--zone-font-h5);
-  --zone-badge-large-padding-vertical: var(--zone-size-10);
-  --zone-badge-large-padding-horizontal: var(--zone-size-12);
-  --zone-badge-large-height: var(--zone-size-42);
-  --zone-badge-large-icon-size: var(--zone-size-16);
+  --zone-badge-large-font: 500 16px/1.2 var(--zone-font-family);
+  --zone-badge-large-padding-vertical: 4px;
+  --zone-badge-large-padding-horizontal: 8px;
+  --zone-badge-large-height: 28px;
+  --zone-badge-large-icon-size: 16px;
 
-  /* 变体派生（默认） */
-  --zone-badge-solid-bg: var(--zone-badge-color);
-  --zone-badge-solid-fg: var(--zone-color-white);
-  --zone-badge-soft-bg: var(--zone-badge-bg-color);
-  --zone-badge-soft-fg: var(--zone-badge-color);
-  --zone-badge-outline-border: var(--zone-badge-color);
-  --zone-badge-outline-fg: var(--zone-badge-color);
+  // Default variant colors resolve inside the component, so local overrides work.
+
 }
 
 /* kind 派生：neutral/success/danger/custom（其余回退到 primary） */
@@ -84,33 +79,18 @@ zone-badge[kind="info"] {
   --zone-badge-outline-fg: var(--zone-badge-color);
 }
 zone-badge[kind="custom"] {
-  --zone-badge-custom-base-color: var(--zone-badge-color, var(--zone-badge-custom-color, var(--zone-color-primary)));
-  --zone-badge-color: var(--zone-badge-custom-base-color);
+  --zone-badge-custom-base-color: var(--zone-badge-custom-color, var(--zone-badge-color, var(--zone-color-primary)));
   --zone-badge-bg-color: var(--zone-badge-custom-base-color);
   --zone-badge-soft-bg: var(--zone-badge-custom-base-color);
   --zone-badge-soft-fg: var(--zone-badge-custom-base-color);
 
   @supports (color: color-mix(in srgb, red, blue)) {
     --zone-badge-bg-color: color-mix(in srgb, #FFFFFF 15%, var(--zone-badge-custom-base-color) 85%);
-    --zone-badge-soft-bg: color-mix(in srgb, #FFFFFF 65%, var(--zone-badge-custom-base-color) 35%);
-    --zone-badge-soft-fg: color-mix(in srgb, var(--zone-badge-custom-base-color) 80%, #000000 20%);
+    --zone-badge-soft-bg: color-mix(in srgb, var(--zone-color-white) 85%, var(--zone-badge-custom-base-color) 15%);
+    --zone-badge-soft-fg: color-mix(in srgb, var(--zone-badge-custom-base-color) 40%, black 60%);
   }
   --zone-badge-solid-bg: var(--zone-badge-color);
   --zone-badge-solid-fg: var(--zone-color-white);
   --zone-badge-outline-border: var(--zone-badge-color);
   --zone-badge-outline-fg: var(--zone-badge-color);
-}
-
-@media screen and (max-width: 1023.98px) {
-  @{rootSel} {
-    --zone-badge-height: var(--zone-size-56);
-    --zone-badge-padding-vertical: var(--zone-size-12);
-    --zone-badge-padding-horizontal: var(--zone-size-16);
-    --zone-badge-small-height: var(--zone-size-32);
-    --zone-badge-small-padding-vertical: var(--zone-size-8);
-    --zone-badge-small-padding-horizontal: var(--zone-size-12);
-    --zone-badge-large-height: max(0, 84 * (1rem / 32));
-    --zone-badge-large-padding-vertical: var(--zone-size-20);
-    --zone-badge-large-padding-horizontal: var(--zone-size-24);
-  }
 }

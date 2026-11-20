@@ -211,6 +211,40 @@
               </p>
             </div>
           </section>
+          <section class="example-section">
+            <header class="example-section__heading">
+              <span class="example-section__number">07</span>
+              <h2 class="example-section__title" id="composition">表单、确认与结果通知</h2>
+            </header>
+            <div class="example-canvas">
+              <p class="example-label">试用保存偏好 → 确认 → 查看结果或撤销。所有操作仅影响当前演示。</p>
+              <form id="composition-form" class="composition-form">
+                <div class="selection-grid">
+                  <zone-dropdown id="composition-shipping" name="shipping" label="配送方式" value="standard"></zone-dropdown>
+                  <zone-filter-select id="composition-services" label="附加服务"></zone-filter-select>
+                </div>
+                <zone-checkbox name="updates" value="yes" checked label="接收配送进度通知"></zone-checkbox>
+                <div class="composition-actions">
+                  <zone-button size="medium" type="submit">保存偏好</zone-button>
+                  <zone-button size="medium" variant="secondary" type="reset">重置</zone-button>
+                  <zone-badge id="composition-state" kind="neutral">待保存</zone-badge>
+                </div>
+              </form>
+              <zone-dialog id="composition-dialog" caption="确认保存配送偏好？">
+                <p>确认后更新本页演示状态，你可以在结果通知中撤销。</p>
+                <div slot="footer" class="composition-actions">
+                  <zone-button id="composition-confirm" size="medium">确认保存</zone-button>
+                  <zone-button id="composition-cancel" size="medium" variant="secondary">继续编辑</zone-button>
+                </div>
+              </zone-dialog>
+              <zone-toast id="composition-result" class="composition-result" variant="success" caption="演示：配送偏好已保存" icon closable closed>
+                <span id="composition-summary"></span>
+                <zone-button id="composition-record" slot="action">查看记录</zone-button>
+                <zone-button id="composition-undo" slot="action-secondary">撤销</zone-button>
+              </zone-toast>
+              <p id="composition-feedback" class="example-label" role="status"></p>
+            </div>
+          </section>
         </main>
       </div>
     </div>

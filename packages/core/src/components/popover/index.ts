@@ -25,6 +25,8 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * 点击 / 悬停触发浮层，支持自定义触发元素、箭头与定位方向
  *
  * @cssproperty [--zone-index-popover=100] - 浮层层级
+ * @cssproperty [--zone-popover-font] - 正文字体，默认16px与1.5倍行高
+ * @cssproperty [--zone-popover-shadow] - 浮层阴影
  * @cssproperty [--zone-popover-color] - 浮层正文颜色，默认使用一级文字色
  * @cssproperty [--zone-popover-viewport-gutter=16px] - 视口两侧预留的总间距
  */

@@ -60,6 +60,11 @@
     }
   }
 
+  .dialog-title {
+    margin: 0;
+    font: var(--zone-dialog-title-font, 600 24px/1.35 var(--zone-font-family, system-ui));
+  }
+
   #dialogCaption {
     overflow-wrap: anywhere;
     margin-bottom: var(--zone-dialog-gap, var(--zone-size-16, 16px));
@@ -92,7 +97,7 @@
 
 @media screen and (min-width: 1024px) {
   .container {
-    min-width: 30rem;
+    min-width: 0;
 
     .content {
       margin-top: var(--zone-dialog-padding-y-large);
@@ -131,7 +136,7 @@
   }
 
   .container {
-    min-width: 17.5rem;
+    min-width: 0;
 
     button.close {
       font-size: var(--zone-dialog-close-icon-size, 24px);
@@ -187,6 +192,9 @@
 }
 
 .container:has(button.close) #dialogCaption { padding-inline-end: 28px; }
+@media (max-width: 599.98px) {
+  .container:has(button.close) #dialogCaption { padding-inline-end: 36px; }
+}
 @media (max-height: 500px) {
   :host([size="large"]) .container, :host([size="extra"]) .container { min-height: 0; max-height: calc(100dvh - 32px); }
 }
