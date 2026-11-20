@@ -254,11 +254,12 @@ for (const dir of dirs) {
   }
   const events = [...eventMap.values()];
   const slots = parseSlots(src);
-  const methods = (cemEntry?.members ?? []).filter(member => member.kind === 'method' && member.privacy !== 'private' && !member.name.startsWith('_') && !['render', 'firstUpdated', 'updated', 'willUpdate', 'connectedCallback', 'disconnectedCallback', 'attributeChangedCallback', 'formDisabledCallback', 'formResetCallback', 'formStateRestoreCallback'].includes(member.name)).map(member => ({ name: member.name, description: member.description ?? '', parameters: member.parameters ?? [] }));
+  const methods = (cemEntry?.members ?? []).filter(member => member.kind === 'method' && member.privacy !== 'private' && !member.name.startsWith('_') && !['render', 'requestUpdate', 'firstUpdated', 'updated', 'willUpdate', 'connectedCallback', 'disconnectedCallback', 'attributeChangedCallback', 'formDisabledCallback', 'formResetCallback', 'formStateRestoreCallback'].includes(member.name)).map(member => ({ name: member.name, description: member.description ?? '', parameters: member.parameters ?? [] }));
   for (const match of src.matchAll(/^  ([A-Za-z]\w*)\s*=\s*\([^)]*\)\s*=>/gm)) {
     if (!methods.some(method => method.name === match[1])) methods.push({ name: match[1], description: '', parameters: [] });
   }
-  const cssVars = parseCssVars(lessSrc);
+  // Include documented variables consumed in positioning code as well as Less.
+  const cssVars = [...new Set([...parseCssVars(lessSrc), ...cssProps.map(prop => prop.name)])].sort();
 
   const storyFile = fs.readdirSync(path.join(COMPONENTS_DIR, dir)).find((f) => f.endsWith('.stories.ts'));
   const storyPath = storyFile ? path.join(COMPONENTS_DIR, dir, storyFile) : null;

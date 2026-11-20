@@ -39,7 +39,8 @@
   --divider-color: var(--zone-filter-select-divider-color, var(--zone-color-hr));
   /* 选项 */
   --option-text-color: var(--zone-filter-select-option-text-color, var(--zone-color-text-l2));
-  --option-min-height: var(--zone-filter-select-option-min-height, 28px);
+  --option-min-height: var(--zone-filter-select-option-min-height, 36px);
+  --panel-font-size: var(--zone-filter-select-option-font-size, var(--zone-filter-select-font-size, 14px));
   --option-line-height: var(--zone-filter-select-option-line-height, 20px);
   --option-disabled-opacity: var(--zone-filter-select-option-disabled-opacity, 0.4);
   /* 复选框 */
@@ -132,8 +133,8 @@
 
 .trigger__arrow svg {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 16px;
+  height: 16px;
 }
 
 .trigger[aria-expanded="true"] .trigger__arrow {
@@ -159,7 +160,7 @@
   border-radius: var(--panel-radius);
   background: var(--panel-bg);
   box-shadow: var(--panel-shadow);
-  font-size: var(--font-size);
+  font-size: var(--panel-font-size);
   color: var(--option-text-color);
   animation: zone-filter-select-in 0.16s ease-out;
 }
@@ -232,7 +233,7 @@
   background: none;
   color: var(--action-color);
   font-family: inherit;
-  font-size: var(--font-size);
+  font-size: var(--panel-font-size);
   line-height: 20px;
   cursor: pointer;
 }
@@ -342,7 +343,7 @@
   background: var(--confirm-bg);
   color: var(--confirm-color);
   font-family: inherit;
-  font-size: var(--font-size);
+  font-size: var(--panel-font-size);
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -378,7 +379,7 @@
     width: 100%;
     max-width: calc(100vw - var(--zone-size-32, 32px));
     padding: var(--zone-size-24, 12px);
-    font-size: var(--font-size);
+    font-size: var(--panel-font-size);
   }
 }
 

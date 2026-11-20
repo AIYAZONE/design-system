@@ -1,73 +1,48 @@
 @{rootSel} {
-  // 颜色
   --zone-dialog-bg: var(--zone-color-white);
   --zone-dialog-fg: var(--zone-color-text-l1);
   --zone-dialog-overlay-bg: var(--zone-color-overlay-70);
-
-  // 层级
   --zone-dialog-index: var(--zone-index-dialog);
-
-  // 动效
   --zone-dialog-transition-duration: 0.3s;
   --zone-dialog-transition-easing: ease-out;
-
-  // 阴影
   --zone-dialog-shadow: none;
-
-  // 间距
-  --zone-dialog-gap: var(--zone-size-16);
+  --zone-dialog-gap: 16px;
+  --zone-dialog-radius: 0px;
+  --zone-dialog-title-font: 600 24px/1.35 var(--zone-font-family);
+  --zone-dialog-max-width-large: min(640px, calc(100vw - 32px));
+  --zone-dialog-min-height-large: 160px;
+  --zone-dialog-max-height-large: calc(100dvh - 48px);
+  --zone-dialog-max-width-extra: min(1200px, calc(100vw - 48px));
+  --zone-dialog-min-height-extra: 240px;
+  --zone-dialog-max-height-extra: calc(100dvh - 48px);
+  --zone-dialog-padding-x-large: 32px;
+  --zone-dialog-padding-y-large: 32px;
+  --zone-dialog-padding-x-extra: 32px;
+  --zone-dialog-padding-y-extra: 32px;
 }
 
-@media screen and (min-width: 1024px) {
+@media (max-width: 1023.98px) {
   @{rootSel} {
-    // 造型 - v2 直角
-    --zone-dialog-radius: 0;
-
-    // 尺寸 - Large
-    --zone-dialog-max-width-large: 640px;
-    --zone-dialog-min-height-large: calc(240 / 16 * 1rem);
-    --zone-dialog-max-height-large: calc(100vh - var(--zone-size-64) * 2);
-
-    // 尺寸 - Extra
-    --zone-dialog-max-width-extra: 1200px;
-    --zone-dialog-min-height-extra: calc(400 / 16 * 1rem);
-    --zone-dialog-max-height-extra: calc(100vh - var(--zone-size-64) * 2);
-
-    // Padding
-    --zone-dialog-padding-x-large: var(--zone-size-64);
-    --zone-dialog-padding-y-large: var(--zone-size-48);
-    
-    --zone-dialog-padding-x-extra: var(--zone-size-64);
-    --zone-dialog-padding-y-extra: var(--zone-size-48);
+    --zone-dialog-max-width-extra: 100%;
+    --zone-dialog-max-height-extra: calc(100dvh - 32px);
+    --zone-dialog-padding-x-large: 24px;
+    --zone-dialog-padding-y-large: 24px;
+    --zone-dialog-padding-x-extra: 24px;
+    --zone-dialog-padding-y-extra: 24px;
   }
 }
 
-@media screen and (max-width: 1023.98px) {
+@media (max-width: 599.98px) {
   @{rootSel} {
-    // 造型 - v2 直角
-    --zone-dialog-radius: 0;
-
-    // 尺寸 - Large
-    --zone-dialog-max-width-large: calc(100vw - var(--zone-size-48) * 2);
-    --zone-dialog-min-height-large: calc(320 / 32 * 1rem);
-    --zone-dialog-max-height-large: calc(100vh - var(--zone-size-128) * 2);
-
-    // 尺寸 - Extra
-    --zone-dialog-max-width-extra: 100%;
-    --zone-dialog-min-height-extra: calc(400 / 32 * 1rem);
-    --zone-dialog-max-height-extra: calc(100vh - var(--zone-size-64));
-
-    // Padding
-    --zone-dialog-padding-x-large: var(--zone-size-32);
-    --zone-dialog-padding-y-large: var(--zone-size-32);
-    
-    --zone-dialog-padding-x-extra: var(--zone-size-32);
-    --zone-dialog-padding-y-extra: var(--zone-size-32);
+    --zone-dialog-title-font: 600 20px/1.4 var(--zone-font-family);
+    --zone-dialog-padding-x-large: 16px;
+    --zone-dialog-padding-y-large: 24px;
+    --zone-dialog-padding-x-extra: 16px;
+    --zone-dialog-padding-y-extra: 24px;
+    --zone-dialog-max-height-large: calc(100dvh - 32px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  @{rootSel} {
-    --zone-dialog-transition-duration: 0.01s;
-  }
+  @{rootSel} { --zone-dialog-transition-duration: 0.01s; }
 }

@@ -420,12 +420,13 @@ document.querySelector('zone-dialog').addEventListener('zone-dialog-open', (e) =
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
+| `--zone-dialog-title-font` | — | 标题字体，默认24px、手机20px。 |
 | `--zone-dialog-width` | `640px` | 设置对话框内容的宽度 |
 | `--zone-dialog-title-align` | `left` | 设置对话框标题的对齐方式 |
 | `--zone-dialog-index` | `500` | 设置对话框的z-index值 |
 | `--zone-dialog-close-icon-size` | `24px` | 关闭图标大小，点击区域至少为 44px |
 
-另有 34 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 35 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -538,7 +539,7 @@ document.querySelector('zone-dropdown').addEventListener('change', (e) => {
 | `--zone-dropdown-option-background` | — | 选中、激活和悬停行底色。 |
 | `--zone-dropdown-index` | — | 浮层层级。 |
 
-另有 11 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 14 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -633,24 +634,13 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 
 ## 可覆盖的 CSS 变量
 
-```css
-:root {
-  --zone-color-bg-200: /* 你的值 */;
-  --zone-color-grey: /* 你的值 */;
-  --zone-color-hr: /* 你的值 */;
-  --zone-color-neutral-300: /* 你的值 */;
-  --zone-color-primary: /* 你的值 */;
-  --zone-color-text-l1: /* 你的值 */;
-  --zone-color-text-l2: /* 你的值 */;
-  --zone-color-text-l3: /* 你的值 */;
-  --zone-color-white: /* 你的值 */;
-  --zone-filter-select-action-color: /* 你的值 */;
-  --zone-filter-select-checkbox-border-color: /* 你的值 */;
-  --zone-filter-select-checkbox-checked-bg: /* 你的值 */;
-}
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--zone-filter-select-panel-width` | — | 面板宽度，默认不小于240px与触发器宽度，受视口限制。 |
+| `--zone-filter-select-option-font-size` | `14px` | 面板文字字号。 |
+| `--zone-filter-select-option-min-height` | `36px` | 选项最小高度，触屏至少44px。 |
 
-共消费 54 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 53 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -732,10 +722,12 @@ document.querySelector('zone-popover').addEventListener('zone-popover-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-index-popover` | `100` | 浮层层级 |
+| `--zone-popover-font` | — | 正文字体，默认16px与1.5倍行高 |
+| `--zone-popover-shadow` | — | 浮层阴影 |
 | `--zone-popover-color` | — | 浮层正文颜色，默认使用一级文字色 |
 | `--zone-popover-viewport-gutter` | `16px` | 视口两侧预留的总间距 |
 
-另有 15 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 14 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
@@ -810,7 +802,7 @@ import '@aiyazone/design-system/index-v3.css';
 - **标签**：`<zone-toast>`
 - **实现**：`ZoneToast`（Lit · Shadow DOM）
 - **来源**：`packages/core/src/components/toast`
-- **组件专属测试**：0 个用例；跨组件契约测试另计
+- **组件专属测试**：4 个用例；跨组件契约测试另计
 - **包**：`@aiyazone/design-system@0.5.0`（组件源码：`@aiyazone/core@0.1.9`）
 
 ## 快速使用
@@ -880,6 +872,7 @@ document.querySelector('zone-toast').addEventListener('zone-close', (e) => {
 | `--zone-toast-max-width` | `560px` | 通知最大宽度，不超过父容器 |
 | `--zone-toast-padding` | — | 通知内边距 |
 | `--zone-toast-caption-font` | — | 通知标题字体 |
+| `--zone-toast-action-height` | — | 中号操作按钮高度，默认36px、触屏44px。 |
 | `--zone-toast-icon-size` | `20px` | 通知图标大小 |
 
 另有 16 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
@@ -963,10 +956,10 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | `--zone-tooltip-background-color` | — | 提示底色，默认跟随主题中性色，箭头使用同一颜色。 |
 | `--zone-tooltip-color` | — | 提示文字色，默认白色；定制时需与底色一起检查对比度。 |
 | `--zone-tooltip-max-width` | `320px` | 提示内容最大宽度。 |
-| `--zone-tooltip-padding` | — | 提示内容内边距。 |
-| `--zone-tooltip-font` | — | 提示内容字体。 |
+| `--zone-tooltip-padding` | `10px` | 提示内容内边距。 |
+| `--zone-tooltip-font` | — | 提示内容字体，默认14px与1.5倍行高。 |
 
-另有 4 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 3 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

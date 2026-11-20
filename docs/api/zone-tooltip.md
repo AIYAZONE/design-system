@@ -69,10 +69,10 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | `--zone-tooltip-background-color` | — | 提示底色，默认跟随主题中性色，箭头使用同一颜色。 |
 | `--zone-tooltip-color` | — | 提示文字色，默认白色；定制时需与底色一起检查对比度。 |
 | `--zone-tooltip-max-width` | `320px` | 提示内容最大宽度。 |
-| `--zone-tooltip-padding` | — | 提示内容内边距。 |
-| `--zone-tooltip-font` | — | 提示内容字体。 |
+| `--zone-tooltip-padding` | `10px` | 提示内容内边距。 |
+| `--zone-tooltip-font` | — | 提示内容字体，默认14px与1.5倍行高。 |
 
-另有 4 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 3 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

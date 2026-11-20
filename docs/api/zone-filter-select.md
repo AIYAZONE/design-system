@@ -83,24 +83,13 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 
 ## 可覆盖的 CSS 变量
 
-```css
-:root {
-  --zone-color-bg-200: /* 你的值 */;
-  --zone-color-grey: /* 你的值 */;
-  --zone-color-hr: /* 你的值 */;
-  --zone-color-neutral-300: /* 你的值 */;
-  --zone-color-primary: /* 你的值 */;
-  --zone-color-text-l1: /* 你的值 */;
-  --zone-color-text-l2: /* 你的值 */;
-  --zone-color-text-l3: /* 你的值 */;
-  --zone-color-white: /* 你的值 */;
-  --zone-filter-select-action-color: /* 你的值 */;
-  --zone-filter-select-checkbox-border-color: /* 你的值 */;
-  --zone-filter-select-checkbox-checked-bg: /* 你的值 */;
-}
-```
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--zone-filter-select-panel-width` | — | 面板宽度，默认不小于240px与触发器宽度，受视口限制。 |
+| `--zone-filter-select-option-font-size` | `14px` | 面板文字字号。 |
+| `--zone-filter-select-option-min-height` | `36px` | 选项最小高度，触屏至少44px。 |
 
-共消费 54 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 53 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

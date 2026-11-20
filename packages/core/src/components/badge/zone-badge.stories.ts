@@ -16,7 +16,7 @@ const meta = {
           "- 文字：--zone-badge-text-color（不设置时回退 --zone-badge-color）",
           "- outline 边框：默认跟随 --zone-badge-color",
           "",
-          "solid 默认白字以保证对比度；如需自定义文字色优先使用 --zone-badge-text-color（旧变量 --zone-badge-solid-fg 仍兼容）。",
+          "solid 默认白字；浅色自定义背景应配深色文字并检查对比度；如需自定义文字色优先使用 --zone-badge-text-color（旧变量 --zone-badge-solid-fg 仍兼容）。",
           "kind=custom 时可直接使用 --zone-badge-color 作为主色输入；主题会基于该值推导 soft 背景/前景。",
         ].join("\n"),
       },
@@ -26,7 +26,7 @@ const meta = {
     size: {
       control: { type: "select" },
       options: ["small", "medium", "large"],
-      description: "尺寸：small/medium/large，用于控制高度与字体大小",
+      description: "尺寸：small 20px/12px、medium 24px/14px、large 28px/16px；链接另保留可操作区域",
       table: { category: "基础", defaultValue: { summary: "medium" } },
     },
     content: {

@@ -13,6 +13,7 @@ import { state } from "../../decorators";
 import { I18nController } from "@aiyazone/i18n";
 import { componentText } from "../component-text";
 import styles from "./index.less?inline";
+import { applyButtonDefaults } from "../button/context-defaults";
 
 export type ToastVariant = "info" | "warning" | "success" | "danger";
 
@@ -22,6 +23,7 @@ export type ToastVariant = "info" | "warning" | "success" | "danger";
  * @cssproperty [--zone-toast-max-width=560px] 通知最大宽度，不超过父容器
  * @cssproperty [--zone-toast-padding] 通知内边距
  * @cssproperty [--zone-toast-caption-font] 通知标题字体
+ * @cssproperty [--zone-toast-action-height] 中号操作按钮高度，默认36px、触屏44px。
  * @cssproperty [--zone-toast-icon-size=20px] 通知图标大小
  */
 
@@ -137,6 +139,15 @@ export class ZoneToast extends LitElement {
    * 启动倒计时
    */
   protected updated(changed: PropertyValues) {
+    if (changed.has("variant")) {
+      this.shadowRoot
+        ?.querySelectorAll<HTMLSlotElement>(
+          'slot[name="action"], slot[name="action-secondary"]',
+        )
+        .forEach((slot) =>
+          this._initToastActionSlot({ target: slot } as unknown as Event),
+        );
+    }
     if (changed.has("closed") || changed.has("countdownTime")) {
       if (this.closed) this.stopCountdown();
       else this.startCountdown();
@@ -208,20 +219,23 @@ export class ZoneToast extends LitElement {
     slotElements
       .filter((element) => element.tagName === "ZONE-BUTTON")
       .forEach((element) => {
-        if (!element.hasAttribute("variant"))
-          element.setAttribute(
-            "variant",
-            slotElement.name === "action-secondary" ? "secondary" : "primary",
-          );
-        if (!element.hasAttribute("kind"))
-          element.setAttribute(
-            "kind",
-            ["success", "danger"].includes(this.variant)
+        const apply = () => {
+          if (
+            element.parentElement !== this ||
+            element.slot !== slotElement.name
+          )
+            return;
+          applyButtonDefaults(element as HTMLElement, {
+            variant:
+              slotElement.name === "action-secondary" ? "secondary" : "primary",
+            kind: ["success", "danger"].includes(this.variant)
               ? this.variant
               : "neutral",
-          );
-        if (!element.hasAttribute("size"))
-          element.setAttribute("size", "medium");
+            size: "medium",
+          });
+        };
+        if (customElements.get("zone-button")) apply();
+        else void customElements.whenDefined("zone-button").then(apply);
       });
     this._hasActions =
       [...this.querySelectorAll('[slot="action"], [slot="action-secondary"]')]
