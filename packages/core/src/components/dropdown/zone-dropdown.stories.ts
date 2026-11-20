@@ -20,7 +20,7 @@ const meta = {
 
 键盘：上下键移动，左右键展开/收起，Home/End 到首尾，Enter/Space 确认，Escape 取消，Tab 离开。默认回填叶子名称，show-path 显示完整路径。
 
-样式变量：--zone-dropdown-width、--zone-dropdown-height、--zone-dropdown-font-size、--zone-dropdown-child-font-size、--zone-dropdown-indent、--zone-dropdown-max-height、--zone-dropdown-border-color、--zone-dropdown-radius、--zone-dropdown-shadow、--zone-dropdown-focus-color、--zone-dropdown-option-background、--zone-dropdown-index。Parts：label、trigger、panel、option、clear、error。断点沿用项目 1024px。
+样式变量：--zone-dropdown-width、--zone-dropdown-height、--zone-dropdown-font-size、--zone-dropdown-child-font-size、--zone-dropdown-indent、--zone-dropdown-max-height、--zone-dropdown-border-color、--zone-dropdown-radius、--zone-dropdown-shadow、--zone-dropdown-focus-color、--zone-dropdown-option-background、--zone-dropdown-index。Parts：label、trigger、panel、option、clear、error。比例：桌面触发器36px/16px，标签与选项14px；触屏触发器和选项点击区域至少44px。层级通过缩进和展开箭头区分。
 
 浮层使用浏览器 Popover top layer（支持时）和 Floating UI，避免 overflow 裁切。表单集成依赖浏览器 ElementInternals；jsdom 单测不替代真实浏览器表单校验。`,
       },

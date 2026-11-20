@@ -12,26 +12,6 @@ export type UsageGuide = {
 
 /** Per-page guidance and tested, caller-owned examples. No specimen content is replaced. */
 export const usageGuides: Record<string, UsageGuide> = {
-  "index.html": {
-    when: "先按任务找到组件，再比较三套主题和完整状态；接入前可以从一个最小示例开始。",
-    choose: [
-      [
-        "单个操作或选择",
-        "进入按钮、复选框、下拉或多选筛选，查看边界与键盘行为。",
-      ],
-      ["多个组件组成页面", "先看组件总览与状态边界，再试用账户设置完整页面。"],
-      [
-        "字体、排版或语言",
-        "使用设计资源和多语言分类；站点明暗切换与 V1/V2/V3 组件主题相互独立。",
-      ],
-    ],
-    html: '<zone-button>开始使用</zone-button>\n<zone-checkbox label="接收更新"></zone-checkbox>',
-    notes: [
-      "完整保留所有状态，页面上的小号、加载或禁用示例不代表默认推荐尺寸。",
-      "平板不再按整张手机设计稿持续放大；布局按容器换行，触屏操作区域单独适配。",
-      "文档对应当前仓库构建；安装已发布包时需核对所需功能是否已发布。",
-    ],
-  },
   "atoms/button.html": {
     when: "触发保存、确认、重试等操作；如果目的是前往另一个位置，使用带 href 的链接按钮。",
     choose: [
@@ -107,6 +87,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     html: '<zone-dropdown id="shipping" label="配送方式" placeholder="请选择" clearable></zone-dropdown>\n<p id="shipping-result" role="status"></p>',
     js: "const select = document.querySelector('#shipping');\nselect.options = [\n  { value: 'standard', label: '标准配送' },\n  { value: 'express', label: '加急配送' },\n  { value: 'unavailable', label: '暂不可用', disabled: true },\n];\nselect.addEventListener('change', (event) => {\n  document.querySelector('#shipping-result').textContent = event.detail.pathLabels.join(' / ');\n});",
     notes: [
+      "默认对齐同类表单控件：桌面高度36px、触屏44px，触发文字16px、标签与选项14px；层级使用缩进和展开箭头表达。",
       "复杂 options 通过 JavaScript property 传入，不把对象数组写成普通 HTML 字符串。",
       "value 必须是非空且唯一的字符串；禁用父节点的可用性要和业务规则一起核对。",
       "方向键移动、Enter 确认、Escape 关闭；多选筛选应选择 FilterSelect。",
@@ -187,6 +168,7 @@ export const usageGuides: Record<string, UsageGuide> = {
     ],
     html: '<zone-tooltip placement="top">\n  <zone-button slot="tooltip-trigger" variant="secondary">了解配送</zone-button>\n  工作日安排配送，节假日可能顺延。\n</zone-tooltip>',
     notes: [
+      "默认中性色底配白字，箭头跟随底色。通过 --zone-tooltip-background-color 和 --zone-tooltip-color 成对定制，避免只改一端造成对比不足。",
       "提示中不放按钮、链接或表单；需要交互内容时使用 Popover。",
       "重要说明应直接可见，不让用户必须悬停才能获知。",
       "键盘聚焦可查看、Escape 可关闭；触屏仍保留触发器的主操作。",

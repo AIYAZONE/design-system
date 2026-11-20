@@ -10,6 +10,8 @@ import { adoptInternalStyles } from "../../styles/internal-shared";
  * @slot tooltip-trigger - 提示触发器。
  * @slot - 提示内容。
  * @cssproperty [--zone-tooltip-trigger-display=inline-flex] 触发器显示方式。
+ * @cssproperty [--zone-tooltip-background-color] 提示底色，默认跟随主题中性色，箭头使用同一颜色。
+ * @cssproperty [--zone-tooltip-color] 提示文字色，默认白色；定制时需与底色一起检查对比度。
  * @cssproperty [--zone-tooltip-max-width=320px] 提示内容最大宽度。
  * @cssproperty [--zone-tooltip-padding] 提示内容内边距。
  * @cssproperty [--zone-tooltip-font] 提示内容字体。

@@ -74,9 +74,7 @@ export function getExampleSource(guide: UsageGuide, theme: string) {
   return { js, css, html };
 }
 export function mountUsageDocs(theme: string) {
-  const main = document.querySelector<HTMLElement>(
-    "main.example-preview, main.examples-home",
-  );
+  const main = document.querySelector<HTMLElement>("main.example-preview");
   const view = new URLSearchParams(location.search).get("view");
   if (
     !main ||
@@ -85,7 +83,8 @@ export function mountUsageDocs(theme: string) {
       ["pc", "mb"].includes(view ?? ""))
   )
     return;
-  const path = location.pathname.split("/pages/")[1] ?? "index.html";
+  const path = location.pathname.split("/pages/")[1];
+  if (!path) return;
   const guide = usageGuides[path];
   if (!guide || main.querySelector("[data-example-doc]")) return;
   const source = getExampleSource(guide, theme);
@@ -167,19 +166,12 @@ export function mountUsageDocs(theme: string) {
     link.href = `/storybook/?path=${encodeURIComponent(`/docs/03-基础组件-${guide.api}--document`)}`;
     notes.append(link);
   }
-  if (main.classList.contains("examples-home")) {
-    const groups = main.querySelector<HTMLElement>(".examples-groups");
-    if (groups) groups.id = "usage-demos";
-    const feature = main.querySelector(".examples-feature");
-    for (const part of [intro, quick, notes]) main.insertBefore(part, feature);
-  } else {
-    const demoLabel = node(
-      "p",
-      "usage-demo-label",
-      "交互与状态演示 · 原有场景完整保留",
-    );
-    demoLabel.id = "usage-demos";
-    main.prepend(intro, quick, demoLabel);
-    main.append(notes);
-  }
+  const demoLabel = node(
+    "p",
+    "usage-demo-label",
+    "交互与状态演示 · 原有场景完整保留",
+  );
+  demoLabel.id = "usage-demos";
+  main.prepend(intro, quick, demoLabel);
+  main.append(notes);
 }

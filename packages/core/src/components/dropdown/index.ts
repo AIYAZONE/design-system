@@ -45,6 +45,20 @@ export type { DropdownOption, DropdownChangeDetail } from "./types";
  * @csspart panel - 可滚动的选项面板。
  * @csspart option - 选项行。
  * @csspart label - 字段标签。
+ * @cssproperty [--zone-dropdown-width=100%] 组件宽度。
+ * @cssproperty [--zone-dropdown-height] 触发器高度，默认桌面36px、触屏44px。
+ * @cssproperty [--zone-dropdown-font-size=16px] 触发器文字字号。
+ * @cssproperty [--zone-dropdown-label-font-size=14px] 字段标签字号。
+ * @cssproperty [--zone-dropdown-child-font-size=14px] 选项文字字号，根级与子级保持一致。
+ * @cssproperty [--zone-dropdown-indent=16px] 树形层级缩进。
+ * @cssproperty [--zone-dropdown-max-height=360px] 选项面板最大高度。
+ * @cssproperty [--zone-dropdown-border-color] 触发器边框颜色。
+ * @cssproperty [--zone-dropdown-panel-border-color] 面板边框颜色。
+ * @cssproperty [--zone-dropdown-radius=0px] 触发器与面板圆角。
+ * @cssproperty [--zone-dropdown-shadow] 浮层阴影。
+ * @cssproperty [--zone-dropdown-focus-color] 键盘焦点标记颜色。
+ * @cssproperty [--zone-dropdown-option-background] 选中、激活和悬停行底色。
+ * @cssproperty [--zone-dropdown-index] 浮层层级。
  */
 @customElement("zone-dropdown")
 export class ZoneDropdown extends LitElement {

@@ -66,6 +66,8 @@ document.querySelector('zone-tooltip').addEventListener('zone-tooltip-show', (e)
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `--zone-tooltip-trigger-display` | `inline-flex` | 触发器显示方式。 |
+| `--zone-tooltip-background-color` | — | 提示底色，默认跟随主题中性色，箭头使用同一颜色。 |
+| `--zone-tooltip-color` | — | 提示文字色，默认白色；定制时需与底色一起检查对比度。 |
 | `--zone-tooltip-max-width` | `320px` | 提示内容最大宽度。 |
 | `--zone-tooltip-padding` | — | 提示内容内边距。 |
 | `--zone-tooltip-font` | — | 提示内容字体。 |
