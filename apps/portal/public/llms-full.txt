@@ -538,7 +538,7 @@ document.querySelector('zone-dropdown').addEventListener('change', (e) => {
 | `--zone-dropdown-option-background` | — | 选中、激活和悬停行底色。 |
 | `--zone-dropdown-index` | — | 浮层层级。 |
 
-另有 14 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+另有 11 个间接消费的 `--zone-*` 令牌；令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 
