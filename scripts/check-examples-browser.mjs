@@ -38,7 +38,7 @@ try {
           errors.push(`${response.status()} ${response.url()}`);
       });
       for (const theme of ["v1", "v2", "v3"]) {
-        for (const width of [1440, 768, 390, 320]) {
+        for (const width of [1440, 1024, 1023, 820, 768, 390, 320]) {
           await page.setViewportSize({ width, height: 1000 });
           for (const file of pages) {
             errors = [];

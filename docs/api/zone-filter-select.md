@@ -100,7 +100,7 @@ document.querySelector('zone-filter-select').addEventListener('zone-filter-selec
 }
 ```
 
-共消费 56 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
+共消费 54 个 `--zone-*` 令牌，令牌值定义见 [packages/tokens/tokens.json](../../packages/tokens/tokens.json)。
 
 ## 接入建议
 

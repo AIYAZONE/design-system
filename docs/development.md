@@ -139,3 +139,10 @@ Vercel 项目关联 `AIYAZONE/design-system`，生产域名为 `design.aiyazone.
 | Toast | 父容器约束、长文本和操作按钮换行、标题层级、图标及关闭按钮对齐 |
 
 导航层级使用独立的 `--portal-header-index`，低于组件浮层和对话框。Examples 的锚点偏移由共享 Header 统一处理，侧栏使用 Header 实际高度，不重复叠加固定偏移。
+
+## 响应式与 Examples 文档验证
+
+- `node scripts/check-responsive-scale.mjs`：检查三套主题在 320/375/414/600/768/820/900/1023/1024/1280/1440px 的字号、控件高度和溢出，以及 1024px 断点两侧的跳变。
+- `node scripts/check-examples-docs.mjs`：先构建站点和总包（`pnpm portal:build:all`、`pnpm design:build`），再检查全部 20 个页面的文档与复制反馈，独立构建 60 份复制示例并分别在手机和平板宽度运行。
+
+逐页文案和代码放在 `apps/examples/usage-content.ts`，共享渲染与复制逻辑位于 `usage-docs.ts`。文档使用独立的站点样式，不覆盖演示组件；仅向现有页面添加指南、快速接入和注意事项，原示例区域及三套主题保留。新增页面应同步添加对应指导内容，并通过独立示例构建验证。

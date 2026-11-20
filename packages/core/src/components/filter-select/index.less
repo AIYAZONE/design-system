@@ -28,7 +28,7 @@
   --trigger-text-color: var(--zone-filter-select-trigger-text-color, var(--zone-color-text-l1));
   --trigger-arrow-color: var(--zone-filter-select-trigger-arrow-color, var(--zone-color-text-l1));
   --trigger-arrow-opacity: var(--zone-filter-select-trigger-arrow-opacity, 0.65);
-  --font-size: var(--zone-filter-select-font-size, var(--zone-font-size-16, 16px));
+  --font-size: var(--zone-filter-select-font-size, 16px);
   /* 面板 */
   --panel-bg: var(--zone-filter-select-panel-bg, var(--zone-color-white, Canvas));
   --panel-shadow: var(--zone-filter-select-panel-shadow, 0px 4px 16px rgba(0, 0, 0, 0.08));
@@ -378,7 +378,7 @@
     width: 100%;
     max-width: calc(100vw - var(--zone-size-32, 32px));
     padding: var(--zone-size-24, 12px);
-    font-size:  var(--zone-size-28, 14px);
+    font-size: var(--font-size);
   }
 }
 

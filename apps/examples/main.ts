@@ -1,5 +1,6 @@
 import "@aiyazone/design-system";
 import { mountPresentation } from "./presentation";
+import { mountUsageDocs } from "./usage-docs";
 import "./styles/public.less";
 import "../portal/public/shared/site-header.css";
 import "../portal/public/shared/page-intro.css";
@@ -60,6 +61,7 @@ function mountExamples() {
       }),
     );
   }
+  mountUsageDocs(current);
   mountPresentation(current);
   document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((anchor) => {
     if (anchor.getAttribute("href")?.startsWith("#")) return;

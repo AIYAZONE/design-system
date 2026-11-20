@@ -498,6 +498,7 @@
         }
       ],
       "cssVariables": [
+        "--zone-checkbox-font-size",
         "--zone-checkbox-hit-area",
         "--zone-checkbox-radius",
         "--zone-color-neutral",
@@ -505,7 +506,6 @@
         "--zone-color-text-primary",
         "--zone-focus-color",
         "--zone-font-family",
-        "--zone-font-size-16",
         "--zone-size-8"
       ],
       "story": "zone-checkbox.stories.ts",
@@ -1152,13 +1152,11 @@
         "--zone-focus-color",
         "--zone-font-family",
         "--zone-font-size-14",
-        "--zone-font-size-16",
         "--zone-index-popover",
         "--zone-size-10",
         "--zone-size-12",
         "--zone-size-16",
         "--zone-size-24",
-        "--zone-size-28",
         "--zone-size-32",
         "--zone-size-8"
       ],
@@ -1288,7 +1286,7 @@
           "attribute": "size",
           "reflects": true,
           "type": "string",
-          "default": "\"var(--zone-spinner-size, var(--zone-size-14))\"",
+          "default": "\"var(--zone-spinner-size, 14px)\"",
           "description": "设置加载指示器的大小"
         },
         {
